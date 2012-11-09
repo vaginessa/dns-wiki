@@ -1,11 +1,3 @@
-I migrated [this post](http://forum.xda-developers.com/showpost.php?p=33660282&postcount=65) from [welle12](http://forum.xda-developers.com/member.php?u=2508838) and improved the howto. 
-
-I think the best way to handle all the docs is that we create a separate folder called "docs" and integrate the Changelog, Howto compile and other text thinks in this folder. And after that we can link the docs folder with all the documents into the Readme, that will be the best solution and the most comprehensive to handle all these files. 
-I like it clear on the Readme. Everything else is too confusing for other peoples.
-
-OR we place it into our Wiki?!
-
-
 HOWTO compile AFWall+
 -------------
 
@@ -84,3 +76,5 @@ adb -d install -r ${signed.apk}
 ## Useful Links
 * [List of Sample Apps | Android Developers](http://developer.android.com/intl/zh-CN/resources/samples/index.html)
 * [Installing the SDK  |Android Developers](https://developer.android.com/sdk/installing/index.html)
+
+## Thanks to welle12 & CHEF-KOCH 
