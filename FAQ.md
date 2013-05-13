@@ -88,8 +88,8 @@ _eth0_
 ### How can i purge the iptables rules?
 > Open Android Terminal Emulator 
   1. Type _su_ to get access 
-  2. _iptables -F_1. 1. 1. 
-  3. _iptables -X_
+  2. iptables -F
+  3. iptables -X
   4. Reboot.
 
 You can also do this via 'Firewall Rules' -> 'flush rules'. 
