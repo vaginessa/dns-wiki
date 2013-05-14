@@ -10,6 +10,7 @@ Requirements
 
 - An Android device with at least the 2.3 ( Gingerbread ) version of the OS.
 - The device **must be rooted**.
+- The kernel/rom must have init.d support (for external sripts)
 
 
 ##Information for AFWall+ users
