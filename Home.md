@@ -18,7 +18,7 @@ Requirements
 * [[CustomScripts]] contains the beginnings of a user manual. Some questions about working with iptables might be answered here.
 
 
-Need help using or setting up K-9?
+Need help using or setting up AFWall+?
 * [[FAQ]] Before you ask everything take a look into our FAQ.
 * [[Help]] Need help? Click it!
 
