@@ -98,4 +98,21 @@ You can also do this via 'Firewall Rules' -> 'flush rules'.
 > Only apps are listed that have **internet permissions**. 
 
 ### AFWall+ does not work under CM 7.x, how can i fix this?
-> Please upgrade your CM version, because this is **not supported anymore**. As a workaround you can try to update your iptables to the latest version. 
+> Please upgrade your CM version, because this is **not supported anymore**. As a workaround you can try to update your iptables to the latest version.
+
+### Install as regular app
+> adb install afwall+.apk
+
+Or you may also copy and download the afwall+.apk file on your device and install it using [File Explorer](https://play.google.com/store/apps/developer?id=ES+APP+Group) etc.
+
+### Install as system app (**not recommend and only for test!**)
+> adb remount
+> adb push afwall+.apk /system/app
+
+You may an also move the .APK file to the _/system/app_ directory manually. Make sure you set the file permission properly _-rw-r--r--_. To uninstall, please remove afwall+.apk from _/system/app_ manually.
+
+### Permissions
+* _RECEIVE_BOOT_COMPLETED_: Autostart (Bootup) AFWall+ after the system finishes booting.
+* _ACCESS_NETWORK_STATE_: Allows AFWall+ to access information about networks (iptables).
+* _WRITE_EXTERNAL_STORAGE_: Allows AFWall+ to write to external storage for debug log and export iptables rules.
+* _ACCESS_SUPERUSER_: Support for SuperSU ([by Koushik](http://www.androidpolice.com/2013/02/25/koush-releases-free-open-source-superuser-app-with-support-for-multi-user-tablet-ui-x86arm-pin-and-effort-for-apps-to-declare-root-permission/)).
