@@ -23,6 +23,7 @@ You an check this with any [Onavo Count | Monitor Data](https://play.google.com/
 - Press Menu button
 - Tap on _'More'_
 - Tap _'Disable data connection'_, or _'disable data on boot'_. 
+- Once the boot are complete you an re-enable the data connection.
 
 --------------------
 For the second Workaround you need init.d support. Ask you ROM/Kernel Developer or see on you readme if you have init.d support or not. Do **NOT** ask on this Github-Repro!
@@ -36,6 +37,7 @@ For the second Workaround you need init.d support. Ask you ROM/Kernel Developer 
 * [TaintDroid: Realtime Privacy Monitoring on Smartphones | Appanalysis](http://appanalysis.org/)
 * [Disabling Mobile Data at First Boot | XDA-Forum](http://forum.xda-developers.com/showthread.php?p=7196260)
 * [How to Minimize Your Android Data Usage and Avoid Overage Charges | How-To Geek](http://www.howtogeek.com/140261/how-to-minimize-your-android-data-usage-and-avoid-overage-charges/)
+* [The Android boot process from power on | Xdin Android Blog](http://www.androidenea.com/2009/06/android-boot-process-from-power-on.html)
 
 
 ---------------
