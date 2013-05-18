@@ -17,6 +17,7 @@ Requirements
 
 * [ReleaseNotes](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each version of AFWall+.
 * [[CustomScripts]] contains the beginnings of a user manual. Some questions about working with iptables might be answered here.
+* [[Apps leak user privacy data during boot]] contains background information about the 'Data leak' during boot. 
 
 
 Need help using or setting up AFWall+?
