@@ -15,7 +15,29 @@
 
 
 ###### How do I capture my logcat?
-* This is VERY important especially for any crashes. To do this I recommend an application like ['aLogCat'](https://play.google.com/store/apps/details?id=org.jtb.alogcat&hl=de) which is free in the Android Market. The most important part of the logcat are when plex first starts and logs around the time when your problem occurred. Generally it's a good idea to just capture the whole thing and attach that as discussed when reporting your issue. The logcat is only 64k big - so you have to act quickly after a problem occurs - this is a google Android not Plex limitation. 
+* This is **VERY important especially for any crashes**. To do this I recommend an application like ['aLogCat'](https://play.google.com/store/apps/details?id=org.jtb.alogcat&hl=de) or [Catlog](https://play.google.com/store/apps/details?id=com.nolanlawson.logcat&feature=search_result#?t=W251bGwsMSwxLDEsImNvbS5ub2xhbmxhd3Nvbi5sb2djYXQiXQ..) which is totally free available on Google Play Store. Both of these programs can dump their logs to a txt file, which is very useful for debugging. Or, you can do it in terminal emulator. The most important part of the logcat are when AFWall+ first starts and logs around the time when your problem occurred. Generally it's a good idea to just capture the whole thing and attach that as discussed when reporting your issue. The logcat is only 64Kb big (adb logcat -g) - so you have to act quickly after a problem occurs - this is a Google Android OS limitation.
+
+###### Logcat step-by-step (through Terminal Emulator)
+Type _su_ and hit enter before you run the logcat command! 
+
+The code for logcat to output to a file is:
+> logcat > name of problem.txt
+
+You can also do:
+> logcat -f name of problem.txt
+
+How I prefer to do it is this way:
+> logcat -v long > name of problem.txt
+
+Logcat will be saved under:
+> /dev/log/[system]
+
+If you want the log on your sdcard type this:
+> logcat -d -f /sdcard/name of problem.txt *:V
+
+With the -v flag & the long argument, it changes output to long style, which means every line of logcat will be on its own line. -f tell it where to save the log to and -d makes it dump the logcat.
+
+**Important:** When outputting to a file, you will see a newline, but nothing printed, this is normal. To stop logcat from writing to a file, you need to press _ctrl+c_.
 
 
 ######  Sending bug report
@@ -23,14 +45,31 @@
 * Make sure you include Phone Name and Model (ie Samsung Galaxy SII I-9100)
 * Make sure you include version of Android (ie 2.2)
 * Make sure you include your problem description. Your problem description should be a step-by-step way to reproduce your problem. Details are very important! Without any information it does not help the developers to find the problem and fix them.
-* Upload any sample files if necessary (i.e. if Plex crashes when play a video, upload a sample that causes crash)
-* Please also run <code>"adb logcat > logcat.txt"</code> or <code>logcat > /sdcard/logfile.txt</code>  via Terminal and archive the output.
+* Upload any sample files if necessary (i.e. if AFWall+ crashes when apply new rules, upload a sample that causes crash - Logcat or it never happened!)
+* You can copy and paste the output to a site like [pastebin.com](http://www.pastebin.com/).
+
+
+###### Template (copy/paste it for bug report) 
+Please make sure AFWall+ running! (green AFWall+ shield!)
+>* **AFWall+ Mode (whitelist/blacklist)**
+>* [your text]
+>* **What steps will reproduce the problem?**
+>* [your text]
+>* **What is the expected output? What do you see instead?**
+>* [your text]
+>* **What version of the product are you using? On what operating system?**
+>* [your text]
+>* **Please provide any additional information below (e.g. logcat).**
+>* [your text/file/link] 
 
 
 ######  After sending the report
 * Be open to work with the developer to help them resolve the problem. [AFWall+](https://github.com/ukanth/afwall) is free!!
+* If you want to donating something to the developer there is also an [AFWall+ (Donate)](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate#?t=W251bGwsMSwxLDIxMiwiZGV2LnVrYW50aC51ZmlyZXdhbGwuZG9uYXRlIl0.) version on Google Play Store. This have exact the same functionality except support to import Droidwall rules. 
 
 ###### Useful Links
+* [Logcat (read this first!)|  Android Developers] (http://developer.android.com/tools/help/logcat.html)
+* [Working with ADB | Android Developer] (http://developer.android.com/tools/help/adb.html)
 * [Report Bugs | Source Android](https://source.android.com/source/report-bugs.html)
 * [Adding a Bug Reporter / Suggestion Box To Your Android App | dreamincode](http://www.dreamincode.net/forums/topic/244932-adding-a-bug-reporter-suggestion-box-to-your-android-app/)
 * [androidlogcatviewer | Googlecode](https://code.google.com/p/androidlogcatviewer/downloads/list)
