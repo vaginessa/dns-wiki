@@ -27,7 +27,8 @@ You can list _/proc/uid_stat/_ dir right now to see which UIDs have been spendin
 
 ### Temporally workarounds (maybe not working on all devices!)
 
-Method 1: Disable Data Connection on Android Core
+
+Method 1: **Disable Data Connection on Android Core**
 - Open dialer
 - Dial *#*#4636#*#* or *#*#6436#*#*
 - Tap _'Phone Information'_
@@ -37,7 +38,9 @@ Method 1: Disable Data Connection on Android Core
 - Once the boot are complete you an re-enable the data connection.
 
 
-Method 2: Disable Data Connection through AFWall+
+
+Method 2: **Disable Data Connection through AFWall+**
+
 For the second workaround you need init.d support. Ask you ROM/Kernel Developer or see on you readme if you have init.d support or not. Do **NOT** ask on this Github-Repro!
 - Open AFWall+ Settings
 - Scroll down until you see _'Experimental Preferences'_
@@ -45,7 +48,9 @@ For the second workaround you need init.d support. Ask you ROM/Kernel Developer 
 - On some ROM's you also have to enable _'Fix Device Start Rules'_ e.g. [CyanogenMod 10.1](http://www.cyanogenmod.org/).
 
 
-Method 3: APNDroid to Turn Off Data Connection
+
+Method 3: **APNDroid to Turn Off Data Connection**
+
 [APNDroid](https://play.google.com/store/apps/developer?id=Apndroid+Inloop) prevents the phone from connecting to Internet through cellular data line by modifying the APN (Access Point Name) names and APN types by adding ‘apndroid’ suffix to them. There is also a script based Locale plug-in for free. 
 
 
