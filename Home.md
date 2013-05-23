@@ -23,7 +23,10 @@ Requirements
 
 Need help using or setting up AFWall+?
 * [[FAQ]] Before you ask everything take a look into our FAQ.
-* [[Help]] Need help? Click it!
+* Need help? Click it! -> [[Help]]
+
+Got an error code?
+* [[Error codes]] may help you.
 
 Found a bug?
 * [[Learn how to report it|HOWTO Report Bug]]
