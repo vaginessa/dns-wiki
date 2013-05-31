@@ -125,6 +125,7 @@ If you need to disable the firewall temporarily, you can flush all the rules usi
 
 Or via script
 > echo "Stopping firewall and allowing everyone..."
+
 > iptables -F
 
 > iptables -X
