@@ -117,4 +117,28 @@ You may an also move the .APK file to the _/system/app_ directory manually. Make
 * _WRITE_EXTERNAL_STORAGE_: Allows AFWall+ to write to external storage for debug log and export iptables rules.
 * _ACCESS_SUPERUSER_: Support for SuperSU ([by Koushik](http://www.androidpolice.com/2013/02/25/koush-releases-free-open-source-superuser-app-with-support-for-multi-user-tablet-ui-x86arm-pin-and-effort-for-apps-to-declare-root-permission/)).
 * _INTERNET_ : NetworkInterface.getNetworkInterfaces() needs android.permission.INTERNET. This is just being used to get the IPv4 and IPv6 addresses/subnets for each interface, so the LAN address ranges can be determined. Nothing is actually trying to access the network.
-* _ACCESS_WIFI_STATE_ : Added to detect tether state
+* _ACCESS_WIFI_STATE_ : Added to detect tether state.
+
+### Disabling the firewall temporarily
+If you need to disable the firewall temporarily, you can flush all the rules using
+> iptables -F
+
+Or via script
+> echo "Stopping firewall and allowing everyone..."
+> iptables -F
+
+> iptables -X
+
+> iptables -t nat -F
+
+> iptables -t nat -X
+
+> iptables -t mangle -F
+
+> iptables -t mangle -X
+
+> iptables -P INPUT ACCEPT
+
+> iptables -P FORWARD ACCEPT
+
+> iptables -P OUTPUT ACCEPT
