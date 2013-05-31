@@ -112,3 +112,7 @@ iptables -I INPUT -i eth1 -s 1.2.3.4 -j DROP</pre>
 
 ## Block outgoing request from LAN IP 192.168.1.200?
 <pre>iptables -A OUTPUT -s 192.168.1.200 -j DROP</pre>
+
+
+## Some other useful links
+* [Simple Iptables Script Generator | Mista.nu](http://www.mista.nu/iptables/) [On some devices $IPT not working .. try to replace with $IPTABLES or update your kernel!)
