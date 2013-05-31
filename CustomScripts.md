@@ -116,3 +116,4 @@ iptables -I INPUT -i eth1 -s 1.2.3.4 -j DROP</pre>
 
 ## Some other useful links
 * [Simple Iptables Script Generator | Mista.nu](http://www.mista.nu/iptables/) [On some devices $IPT not working .. try to replace with $IPTABLES or update your kernel!)
+[Simple Iptables Test| Myresolver.info](http://myresolver.info )
