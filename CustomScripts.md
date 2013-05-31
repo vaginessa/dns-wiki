@@ -95,7 +95,7 @@ or
 <pre>iptables -L INPUT -v -n</pre>
 
 
-## How do I block subnet like 11.00.11.00/11)?
+## How do I block subnet like (11.00.11.00/11)?
 Use the following syntax to block 11.00.11.00/11 on eth1 public interface:
 <pre>iptables -i eth1 -A INPUT -s 10.0.0.0/8 -j DROP</pre>
 
