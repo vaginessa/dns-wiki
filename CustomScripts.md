@@ -51,20 +51,23 @@ $IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN || exit</pre>
 <pre># Try to apply another custom rule, but ignore any errors on it
 $IPTABLES -A "afwall" -p TCP --destination-port 80 -j "afwall-reject"</pre>
 
-## Loading scripts from files ( CURRENTLY UNAVILABLE !)
+## Loading scripts from files
 
-<del>Big scripts can be quite hard to edit in the "Set custom script" screen, so it may be a good idea to put your script in a file, then load it from there.</del>
+Big scripts can be quite hard to edit in the "Set custom script" screen, so it may be a good idea to put your script in a file, then load it from there.
 
-<del>To do that, just use the "." (dot) shell command in the "Set custom script" dialog to load your script from an external file. E.g.:
+To do that, just use the "." (dot) shell command in the "Set custom script" dialog to load your script from an external file. E.g.:
 
-. /path/to/script.sh</del>
+. /path/to/script.sh
 
-<del>
+
 This will cause your script file to be loaded and executed every time the rules are applied.
 You can even have multiple scripts executed in sequence...
-</del>
-<del>
+
+
 . /path/to/load-modules.sh
+
 . /path/to/myrules.sh
+
 . /path/to/myscript.sh</pre>
-However, please note that this can create a serious security breach on your device, since the script will be always executed as root! You must place your script where other applications will not be able to modify it (the sdcard is NOT a good place)</del>
+
+However, please note that this can create a serious security breach on your device, since the script will be always executed as root! You must place your script where other applications will not be able to modify it (the sdcard is NOT a good place!).
