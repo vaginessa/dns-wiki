@@ -29,7 +29,13 @@ If you use any chain not listed above, then you need to manually purge it BEFORE
 **IMPORTANT: Never manually purge the OUTPUT chain - this will cause AFWall+ rules to be ignored. Use the 'afwall' chain instead.**
 
 
-## Examples
+## Some examples
+
+Syntax to block an IP address
+> $IPTABLES -A INPUT -s IP-ADDRESS -j DROP
+
+<pre>#If you just want to block access to one port from an ip 65.55.44.100 to port 25 then type command:
+$IPTABLES -A INPUT -s 65.55.44.100 -p tcp --destination-port 25 -j DROP</pre>
 
 <pre># Always allow connections to 192.168.0.1, no matter the interface
 $IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN</pre>
@@ -38,7 +44,10 @@ $IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN</pre>
 $IPTABLES -A "afwall-wifi" --destination "192.168.0.0/24" -j RETURN</pre>
 
 <pre># Block all connections in the TCP port 80 (http) 
-$IPTABLES -A "afwall" -p TCP --destination-port 80 -j "afwall-reject"</pre>
+$IPTABLES -A "afwall-web" -p TCP --dport 80 -j "afwall-reject"</pre>
+
+<pre># Block all connections in the TCP port 22 (ssh) 
+$IPTABLES -A "afwall-ssh" -p TCP --dport 22 -j "afwall-reject"</pre>
 
 <pre># Block HTTP connections, but only on cellular interface
 $IPTABLES -A "afwall-3g" -p TCP --destination-port 80 -j "afwall-reject"</pre>
@@ -71,3 +80,21 @@ You can even have multiple scripts executed in sequence...
 . /path/to/myscript.sh</pre>
 
 However, please note that this can create a serious security breach on your device, since the script will be always executed as root! You must place your script where other applications will not be able to modify it (the sdcard is NOT a good place!).
+
+
+## How do I view blocked IP address?
+
+<pre>iptables -L -v</pre>
+
+or
+
+<pre>iptables -L INPUT -v</pre>
+
+or 
+
+<pre>iptables -L INPUT -v -n</pre>
+
+
+## How do I block subnet like 11.00.11.00/11)?
+Use the following syntax to block 11.00.11.00/11 on eth1 public interface:
+<pre>iptables -i eth1 -A INPUT -s 10.0.0.0/8 -j DROP</pre>
