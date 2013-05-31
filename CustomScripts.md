@@ -6,7 +6,7 @@ Once a custom script is defined, it will be automatically executed every time th
 
 To define a custom script, just choose "Set custom script" from the menu (right corner).
 
-**WARNING**: This functionality should be used only by **experienced users that know what they are doing**!
+**WARNING**: This functionality should be used only by **experienced users that know what they are doing** These examples may block your Android device if not executed with proper care. Be careful when applying these settings on remote device servers over ssh session.!
 
 ## Adding custom rules
 
@@ -98,3 +98,17 @@ or
 ## How do I block subnet like 11.00.11.00/11)?
 Use the following syntax to block 11.00.11.00/11 on eth1 public interface:
 <pre>iptables -i eth1 -A INPUT -s 10.0.0.0/8 -j DROP</pre>
+
+
+## Block incoming request from ip 1.2.3.4
+The following command will drop any packet coming from the IP address 1.2.3.4:
+<pre>iptables -I INPUT -s {IP-HERE} -j DROP
+iptables -I INPUT -s 1.2.3.4 -j DROP</pre>
+
+You can also specify an interface such as eth1 via which a packet was received:
+<pre>iptables -I INPUT -i {INTERFACE-NAME-HERE} -s {IP-HERE} -j DROP
+iptables -I INPUT -i eth1 -s 1.2.3.4 -j DROP</pre>
+
+
+## Block outgoing request from LAN IP 192.168.1.200?
+<pre>iptables -A OUTPUT -s 192.168.1.200 -j DROP</pre>
