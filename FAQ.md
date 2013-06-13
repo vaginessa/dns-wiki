@@ -25,6 +25,9 @@ Considered a faster and more secure alternative to [ipchains](http://en.wikipedi
 ### Is a reboot required after edit/saving linux iptables?
 > Changes to iptables take effect immediately when they are run. If you are making your changes in a script, you must make sure that script gets run in order for the changes to take affect. The rules are enforced as soon as the actual commands are sent to the kernel. You will need to figure out how to run the script or apply whatever conf changes you have saved to a file. A reboot actually clears all iptables rules. On first boot the tables will always be empty, you always have to set all the rules after booting. That's what the AFwall+ automatically does (make sure it's enabled).
 
+### How long does it take for an iptables rule to apply?
+> Iptables rules take effect immediately. Because your script is appending (-A) to the INPUT and OUTPUT chains, your rules are being added to the end of those chains. If you have other terminating rules that precede these rules, then they will take effect (and later rules will not).
+
 ### Youtube/Online Radio streaming is not working anymore. How can i fix this without disabling AFWall+? 
 > Please whitelist "Media Server" or remove it from your blacklist.
          
