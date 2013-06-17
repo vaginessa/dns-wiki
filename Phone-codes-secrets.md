@@ -42,7 +42,7 @@ May not working on all devices or roms! Most codes are for Samsung phones and ro
 
 
 command line via direct URI broadcast call: <br>
-am broadcast -a android.provider.Telephony.SECRET_CODE -d android_secret_code://1111
+> am broadcast -a android.provider.Telephony.SECRET_CODE -d android_secret_code://1111
 
 
 So how do you find new codes?<br>
