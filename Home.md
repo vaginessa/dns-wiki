@@ -34,6 +34,9 @@ Found a bug?
 Want to compile it yourself?
 * [[All you need to know about compiling AFWall+|HOWTO Compile AFWall]]
 
+Debugging?
+* [[Phone codes secrets]] contain some useful codes for viewing e. g. MAC address  
+
 
 License
 -------------
