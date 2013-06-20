@@ -12,6 +12,10 @@
 
 Considered a faster and more secure alternative to [ipchains](http://en.wikipedia.org/wiki/Ipchains), iptables has become the default firewall package installed under Linux and Android OS.
 
+### How do I know if my phone supports iptables?
+Issue the following command in ADB shell or in Terminal Emulator:
+> iptables -L -t nat
+
 ### Packet processing in iptables
 > All packets inspected by iptables pass through a sequence of built-in tables (queues) for processing. Each of these queues is dedicated to a particular type of packet activity and is controlled by an associated packet transformation/filtering chain.
 
