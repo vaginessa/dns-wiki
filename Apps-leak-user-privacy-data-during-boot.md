@@ -56,6 +56,7 @@ Method 3: **APNDroid to Turn Off Data Connection**
 
 
 Method 4: **XPrivacy**
+
 There are a lot of difficult patches like Openpdroid, Pdroid 2.0 or PDroid which allow to prevent applications from leaking privacy sensitive data but this patches need to be integrate into the ROM you are using. It's maybe to complicated for some users and not work with all Apps without an FC (force close).
 [XPrivacy](https://github.com/M66B/XPrivacy#installation) is the only solution that works an almost every device without patching everything after you upgrade your ROM like CM 10.1 and do almost the same.
 
