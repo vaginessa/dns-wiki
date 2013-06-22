@@ -64,6 +64,11 @@ The Default Android iptables chain policy is ACCEPT for all INPUT, FORWARD and O
 After changing the INPUT, FORWARD, OUTPUT policies to DROP, all the incoming/outgoing/forwarding connections are dropped by AFWall+. So we need to open every INPUT, FORWARD and OUTPUT connections in firewall/iptables with rules. If you change the default OUTPUT policy to DROP you cannot communicate with other systems/networks.
 
 
+Method 4: XPrivacy 
+There are a lot of difficult patches like Openpdroid, Pdroid 2.0 or PDroid which allow to prevent applications from leaking privacy sensitive data but this patches need to be integrate into the ROM you are using. It's maybe to complicated for some users and not work with all Apps without an FC (force close).
+[XPrivacy](https://github.com/M66B/XPrivacy#installation) is the only solution that works an almost every device without patching everything after you upgrade your ROM like CM 10.1 and do almost the same.
+
+
 ## Some other useful links
 * [TaintDroid: Realtime Privacy Monitoring on Smartphones | Appanalysis](http://appanalysis.org/)
 * [Disabling Mobile Data at First Boot | XDA-Forum](http://forum.xda-developers.com/showthread.php?p=7196260)
