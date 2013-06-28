@@ -41,7 +41,7 @@ Method 1: **Disable Data Connection on Android Core**
 
 Method 2: **Disable Data Connection through AFWall+**
 
-For the second workaround you need init.d support. Ask you ROM/Kernel Developer or see on you readme if you have init.d support or not. Do **NOT** ask on this Github-Repro!
+For the second workaround you need init.d support. Ask you ROM/Kernel Developer or check the README if you have init.d support or not. Do **NOT** ask on this Github repository!
 - Open AFWall+ Settings
 - Scroll down until you see _'Experimental Preferences'_
 - Enable _'Fix Startup Data Leak'_
