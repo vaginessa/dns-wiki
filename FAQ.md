@@ -108,7 +108,8 @@ You can also do this via 'Firewall Rules' -> 'flush rules'.
 > Only apps are listed that have **internet permissions**. 
 
 ### AFWall+ does not work under CM 7.x, how can i fix this?
-> Please upgrade your CM version, because this is **not supported anymore**. As a workaround you can try to update your iptables to the latest version.
+
+> CM 7.x uses old version of iptables which has conflict with AFWall+ built-in iptables. As a workaround you can try to update your iptables to the latest version. But it should work without it. Contact developer/raise an issue on github.
 
 ### Install as regular app
 > adb install afwall+.apk
