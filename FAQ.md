@@ -13,7 +13,7 @@
 Considered a faster and more secure alternative to [ipchains](http://en.wikipedia.org/wiki/Ipchains), iptables has become the default firewall package installed under Linux and Android OS.
 
 ### How do I know if my phone supports iptables?
-Issue the following command in ADB shell or in Terminal Emulator:
+Issue the following command in ADB shell or in Terminal Emulator as root (`su`):
 > iptables -L -t nat
 
 ### Packet processing in iptables
@@ -67,32 +67,20 @@ If you want to see what is conneting during the boot take a look at the _/proc/u
 
 Each network interface config is in under the /sys/class/net/ dir. If you list that dir on Android, you'll probably see [something like that](http://developer.android.com/reference/android/net/TrafficStats.html):
 
-_$ ls sys/class/net_
-_lo_
-
-_dummy0_
-
-_ifb0_
-
-_ifb1_
-
-_rmnet0_
-
-_rmnet1_
-
-_rmnet2_
-
-_usb0_
-
-_sit0_
-
-_ip6tnl0_
-
-_gannet0_
-
-_tun_
-
-_eth0_
+    $ ls sys/class/net
+    lo
+    dummy0
+    ifb0
+    ifb1
+    rmnet0
+    rmnet1
+    rmnet2
+    usb0
+    sit0
+    ip6tnl0
+    gannet0
+    tun
+    eth0
 
 
 ### How can i purge the iptables rules?
