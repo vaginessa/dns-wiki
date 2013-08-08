@@ -32,6 +32,11 @@ Issue the following command in ADB shell or in Terminal Emulator as root (`su`):
 ### How long does it take for an iptables rule to apply?
 > Iptables rules take effect immediately. Because your script is appending (-A) to the INPUT and OUTPUT chains, your rules are being added to the end of those chains. If you have other terminating rules that precede these rules, then they will take effect (and later rules will not).
 
+### What is Active Rules ?
+AFWall+ doesn't have control over iptables. Any root/system application with access to iptables can modify the rules. That's the reason, some time people gets data leak because some other process might have overwritten the OUTPUT chain to allow itself. To Prevent this, AFWall+ will apply rules on every connectivity change. 
+
+Also for roaming/LAN, AFWall+ need to change the iptable rules in order to check Roaming status and LAN ipaddress.
+
 ### Youtube/Online Radio streaming is not working anymore. How can i fix this without disabling AFWall+? 
 > Please whitelist "Media Server" or remove it from your blacklist.
          
@@ -114,7 +119,7 @@ You may an also move the .APK file to the _/system/app_ directory manually. Make
 * _RECEIVE_BOOT_COMPLETED_: Autostart (Bootup) AFWall+ after the system finishes booting.
 * _ACCESS_NETWORK_STATE_: Allows AFWall+ to access information about networks (iptables).
 * _WRITE_EXTERNAL_STORAGE_: Allows AFWall+ to write to external storage for debug log and export iptables rules.
-* _ACCESS_SUPERUSER_: Support for SuperSU ([by Koushik](http://www.androidpolice.com/2013/02/25/koush-releases-free-open-source-superuser-app-with-support-for-multi-user-tablet-ui-x86arm-pin-and-effort-for-apps-to-declare-root-permission/)).
+* _ACCESS_SUPERUSER_: Standard to support Superuser ([by Koushik](http://www.androidpolice.com/2013/02/25/koush-releases-free-open-source-superuser-app-with-support-for-multi-user-tablet-ui-x86arm-pin-and-effort-for-apps-to-declare-root-permission/)).
 * _INTERNET_ : NetworkInterface.getNetworkInterfaces() needs android.permission.INTERNET. This is just being used to get the IPv4 and IPv6 addresses/subnets for each interface, so the LAN address ranges can be determined. Nothing is actually trying to access the network.
 * _ACCESS_WIFI_STATE_ : Added to detect tether state.
 
