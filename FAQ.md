@@ -45,7 +45,12 @@ Also for roaming/LAN, AFWall+ need to change the iptable rules in order to check
          
 ### My Logs (logcat) are not displaying anything or always empty, why? 
 > AFWall+ logs are depend on dmesg (kernel logs). Either your kernel disabled dmesg or it's getting overwritten quickly. Please check if you kernel does have an option like "Android logger Control" or something like that an enable this service.
-         
+
+### Support for Android 4.3 ?
+UID 0 (root) needs 53/udp open for DNS on Android 4.3. - Enable DNS from application list.
+UID 1000 (system) needs 123/udp open for NTP. - Enable NTP from application list.
+
+        
 ### Can i block incoming SMS?
 > **No**, you [can't block it via AFWall+](https://github.com/ukanth/afwall/issues/111), iptables can't block low level traffic.
 
@@ -57,9 +62,14 @@ Also for roaming/LAN, AFWall+ need to change the iptable rules in order to check
 
 ### UDP Port 53 is blocked if whitelisting are enabled, why?
 > Please read [this](https://github.com/ukanth/afwall/issues/18). It's **disabled by default**.
+Enable DNS from application list will enable this.
 
 ### How can i show the iptables rules?
 > Via  _iptables -L_ command in apps like [Android Terminal Emulator](https://play.google.com/store/apps/developer?id=Jack+Palevich). Most roms already use this. 
+
+Or 
+
+> Via Firewall rules from menu
 
 ### My Apps can bypass AFWall's whitelist mode before the boot are complete.
 > Please read [#7](https://github.com/ukanth/afwall/issues/7), [#91](https://github.com/ukanth/afwall/issues/91). As a workaround you can try to **enable the experimental functions**.
@@ -131,19 +141,11 @@ Or via script
 > echo "Stopping firewall and allowing everyone..."
 
 > iptables -F
-
 > iptables -X
-
 > iptables -t nat -F
-
 > iptables -t nat -X
-
 > iptables -t mangle -F
-
 > iptables -t mangle -X
-
 > iptables -P INPUT ACCEPT
-
 > iptables -P FORWARD ACCEPT
-
 > iptables -P OUTPUT ACCEPT
