@@ -21,7 +21,7 @@ cp /data/data/android.tether/bin/iptables /system/bin
 
 //Remount the system as ro! (read only)
 
-mount -o remount,ro -t yaffs2 /dev/block/mtdblock3 /system
+mount -o remount,ro /system
 
 
 
