@@ -13,7 +13,7 @@ su
 
 //Remount the system as rw (read / write enabled)
 
-mount -o remount,rw -t yaffs2 /dev/block/mtdblock3 /system
+mount -o remount,rw /system
 
 //Add syslink IPtable to the android.tether directory
 
