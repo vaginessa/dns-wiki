@@ -38,6 +38,17 @@ After this we set our JAVA_HOME path:
 
 This build the .apk and place it in bin/afwall-debug.apk
 
+#### Compiling native binaries
+
+On the host side you'll need to install:
+
+NDK r9, nominally under /opt/android-ndk-r9
+Host-side gcc, make, etc. (Red Hat "Development Tools" group or Debian build-essential)
+autoconf, automake, and libtool
+This command will build the Android binaries and copy them into res/raw/:
+
+make -C external NDK=/opt/android-ndk-r9
+
 #### Via graphical user interface (GUI)
 * [Here](https://www.xda-developers.com/xda-tv-2/how-to-build-an-android-app-part-1-setting-up-eclipse-and-android-sdk-xda-tv/) is a Video Tutorial from a xda member for those users who want to use the GUI method. 
 The tutorial is based on the needed software explained above. 
