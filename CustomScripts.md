@@ -44,10 +44,10 @@ $IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN</pre>
 $IPTABLES -A "afwall-wifi" --destination "192.168.0.0/24" -j RETURN</pre>
 
 <pre># Block all connections in the TCP port 80 (http) 
-$IPTABLES -A "afwall-web" -p TCP --dport 80 -j "afwall-reject"</pre>
+$IPTABLES -A "afwall" -p TCP --dport 80 -j "afwall-reject"</pre>
 
 <pre># Block all connections in the TCP port 22 (ssh) 
-$IPTABLES -A "afwall-ssh" -p TCP --dport 22 -j "afwall-reject"</pre>
+$IPTABLES -A "afwall" -p TCP --dport 22 -j "afwall-reject"</pre>
 
 <pre># Block HTTP connections, but only on cellular interface
 $IPTABLES -A "afwall-3g" -p TCP --destination-port 80 -j "afwall-reject"</pre>
