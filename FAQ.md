@@ -269,6 +269,12 @@ Things like *It doesn't work* or *it crashes* is insufficient. So, please descri
 
 This ensures that other applications cannot uninstall AFWall+ without your knowledge.
 
+<a name="FAQ34"></a>
+**(34) Why the Kernel need an internet connection all the time?**
+
+The kernel does not communicate directly, it only pass packet information (for the interfaces eg. uid0) from some applications.  
+
+
 Feature related
 ---------------
 
@@ -277,11 +283,20 @@ Feature related
 
 No, AFWall+ does not support [nftables](http://wiki.nftables.org/wiki-nftables/index.php/Main_Page).
 
+<a name="FAQ36"></a>
+**(36) Can I use XPrivacy, Lightning Wall, or any other Firewalls/Security Apps together with AFWall+?**
+
+* XPrivacy: should work fine, if you not restrict any AFWall+ or System related important features like 'IPC' or internet access. Be careful, if there is any problem you can watch what is blocked under the watch list in XPrivacy and try to remove it. 
+* Lightning Wall: also works fine together with AFWall+, because it does not interact with the existent iptables.
+* Avast: please disable this firewall if it's turned on (disabled by default). 
+
+Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball: 
+
 More Questions?
 ---------------
 
-<a name="FAQ35"></a>
-**(35) Can I ask xyz that was not written down here?**
+<a name="FAQ37"></a>
+**(37) Can I ask xyz that was not written down here?**
 
 If you have any question, please leave a message in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
 
