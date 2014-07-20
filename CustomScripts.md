@@ -2,9 +2,9 @@ Index
 -----
 
 * [Introduction](#Introduction)
+* [Loading scripts from files](#loading-scripts-from-files)
 * [Adding custom rules](#adding-custom-rules)
 * [Some examples](#some-examples)
-* [Loading scripts from files](#loading-scripts-from-files)
 * [How do I view blocked IP address?](#how-do-I-view-blocked-IP-address?)
 * [How do I block subnet?](#how-do-I-block-subnet?)
 * [Block incoming request from IP](#block-incoming-request-from-ip)
@@ -21,7 +21,34 @@ Once a custom script is defined, it will be automatically executed every time th
 
 To define a custom script, just choose "Set custom script" from the menu (right corner).
 
-**WARNING**: This functionality should be used only by **experienced users that know what they are doing** These examples may block your Android device if not executed with proper care. Be careful when applying these settings on remote device servers over ssh session.!
+**WARNING**: This functionality should be used only by **experienced users that know what they are doing!**. These examples may block your Android device (or block the whole internet) if not executed with proper care. Be careful when applying these settings on remote device servers over ssh session.!
+
+Loading scripts from files
+--------------------------
+
+Please first go into 'Settings' -> 'Developer Options' and enable 'USB Debugging' and change Root Access to 'Apps and ADB'. 
+
+Big scripts can be quite hard to edit in the "Set custom script" screen, so it may be a good idea to put your script in a file, then load it from there.
+
+To do that, just use the "." (dot) shell command in the "Set custom script" dialog to load your script from an external file. e.g.:
+
+<pre>. /path/to/script.sh  (example . /data/local/myawesomescript.sh)</pre>
+
+
+This will cause your script file to be loaded and executed every time the rules are applied. Make sure that this folder have the right permissions, if not AFWall+ can't read any script. 
+You can even have multiple scripts executed in sequence...
+
+<pre>. /path/to/load-modules.sh
+
+#. /path/to/myrules.sh
+
+#. /path/to/myscript.sh</pre>
+
+
+However, please note that this can create a serious security breach on your device, since the script will be always executed as root! You must place your script where other applications will not be able to modify it (the sdcard is NOT a good place!).
+
+**Warning**
+If you mistype any of those files, things may break. Because the userinit.sh script blocks all network at boot, if you make a typo in the userinit.sh script (CM-User related), you will be unable to use the Internet at all!
 
 Adding custom rules
 ----------------------
@@ -253,7 +280,7 @@ $IPTABLES -A OUTPUT-afwall -j LOG --log-prefix "Denied bootup IPv4 output: "
 $IPTABLES -A OUTPUT-afwall -j DROP
 $IPTABLES -I OUTPUT -j OUTPUT-afwall</pre>
 
-test settings do follow:
+Test above settings please do follow:
 > adb shell su -c 'cp /PATH/userinit.sh /data/local/userinit.sh'
 
 > adb shell su -c "settings put global captive_portal_server 127.0.0.1"
@@ -267,27 +294,6 @@ $IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN || exit</pre>
 
 <pre># Try to apply another custom rule, but ignore any errors on it
 $IPTABLES -A "afwall" -p TCP --destination-port 80 -j "afwall-reject"</pre>
-
-Loading scripts from files
---------------------------
-
-Big scripts can be quite hard to edit in the "Set custom script" screen, so it may be a good idea to put your script in a file, then load it from there.
-
-To do that, just use the "." (dot) shell command in the "Set custom script" dialog to load your script from an external file. e.g.:
-
-<pre>. /path/to/script.sh  (example . /data/app-asec/myawesomescript.sh)</pre>
-
-
-This will cause your script file to be loaded and executed every time the rules are applied. Make sure that this folder have the right permissions, if not AFWall+ can't read any script. 
-You can even have multiple scripts executed in sequence...
-
-<pre>. /path/to/load-modules.sh
-
-. /path/to/myrules.sh
-
-. /path/to/myscript.sh</pre>
-
-However, please note that this can create a serious security breach on your device, since the script will be always executed as root! You must place your script where other applications will not be able to modify it (the sdcard is NOT a good place!).
 
 How do I view blocked IP address?
 ---------------------------------
@@ -330,14 +336,15 @@ Orbot transparent proxy
 
 1. Turn off transparent proxying in Orbot.
 2. The app that should be redirected through Orbot still needs be allowed normally in AFWall+ for the desired networks.
-3. The following lines need to be added to custom script rules in AFWall+ for each app (the app uid needs to be adjusted in each line to represent the uid of your app, in the example the uid is '10001'):
+3. Do not grant Orbot superuser access! It still opens the transproxy ports you need without root, and AFWall+ is managing installation of the transproxy rules, not Orbot.
+4. The following lines need to be added to custom script rules in AFWall+ for each app (the app uid needs to be adjusted in each line to represent the uid of your app, in the example the uid is '10001'):
 
 <pre>$IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 -o lo -j ACCEPT
 $IPTABLES -t nat -A OUTPUT -p tcp ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -m owner --uid-owner 10001 -m tcp --syn -j REDIRECT --to-ports 9040
 $IPTABLES -t nat -A OUTPUT -p udp -m owner --uid-owner 10001 -m udp --dport 53 -j REDIRECT --to-ports 5400
 $IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -j REJECT</pre>
 
-Thanks to an0n981, original posted [here on XDA](http://forum.xda-developers.com/showpost.php?p=54134521&postcount=2126).
+Thanks to an0n981, original posted [here on XDA](http://forum.xda-developers.com/showpost.php?p=54134521&postcount=2126) and modded by [CHEF-KOCH](https://github.com/CHEF-KOCH).
 
 Useful links
 ------------
@@ -346,4 +353,4 @@ Useful links
 * [Simple Iptables Test | Myresolver.info](http://myresolver.info)
 * [25 Most Frequently Used Linux IPTables Rules Examples | thegeekstuff.com](http://www.thegeekstuff.com/2011/06/iptables-rules-examples/)
 * [Collection of basic Linux Firewall iptables rules | linuxconfig.org](http://linuxconfig.org/collection-of-basic-linux-firewall-iptables-rules)
-* [AFWall+/Droidwall permissions vulnerability | torproject.org](https://lists.torproject.org/pipermail/tor-talk/2014-March/032503.html) - [Original Issue 260 @ Droidwall | https://code.google.com/p/droidwall/issues/detail?id=260)
+* [AFWall+/Droidwall permissions vulnerability | torproject.org](https://lists.torproject.org/pipermail/tor-talk/2014-March/032503.html) - [Original Issue 260 @ Droidwall](https://code.google.com/p/droidwall/issues/detail?id=260)
