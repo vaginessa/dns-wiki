@@ -9,6 +9,7 @@ Index
 * [How do I block subnet?](#how-do-I-block-subnet?)
 * [Block incoming request from IP](#block-incoming-request-from-ip)
 * [Block outgoing request from LAN](#block-outgoing-request-from-lan)
+* [Orbot transparent proxy](#orbot-transparent-proxy)
 * [Useful links](#Useful-links)
 
 Introduction
@@ -139,6 +140,20 @@ Block outgoing request from LAN
 
 Block outgoing request from LAN IP 192.168.1.200? Here is the solution:
 <pre>iptables -A OUTPUT -s 192.168.1.200 -j DROP</pre>
+
+Orbot transparent proxy
+-----------------------
+
+1. Turn off transparent proxying in Orbot.
+2. The app that should be redirected through Orbot still needs be allowed normally in AFWall+ for the desired networks.
+3. The following lines need to be added to custom script rules in AFWall+ for each app (the app uid needs to be adjusted in each line to represent the uid of your app, in the example the uid is '10001'):
+
+<pre>$IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 -o lo -j ACCEPT
+$IPTABLES -t nat -A OUTPUT -p tcp ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -m owner --uid-owner 10001 -m tcp --syn -j REDIRECT --to-ports 9040
+$IPTABLES -t nat -A OUTPUT -p udp -m owner --uid-owner 10001 -m udp --dport 53 -j REDIRECT --to-ports 5400
+$IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -j REJECT<pre>
+
+Thanks to an0n981, original posted [here on XDA](http://forum.xda-developers.com/showpost.php?p=54134521&postcount=2126).
 
 Useful links
 ------------
