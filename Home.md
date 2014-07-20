@@ -6,22 +6,21 @@ AFWall+ is an open source firewall client focused on making it easy to work with
 Requirements
 -------------
 
-- An Android device with at least the 2.3 (Gingerbread/API level 8, NDK 4) version of the OS.
+- An Android OS device with at least the 2.3 (Gingerbread/API level 8, NDK 4) or higher version. 
 - The device **must be rooted**.
-- The kernel/rom must have init.d support (for external scripts).
-- The kernel must have NETFILTER/CONFIG_NETFILTER enabled (adb pull /proc/config.gz - Once you unzip it, you can search e.g. "NETFILTER").
+- The Kernel/ROM must have init.d support (for external custom script and data leak fix!).
+- The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (adb pull /proc/config.gz - Once you unzip it, you can search for e.g. "NETFILTER").
 
 
 ##Information for AFWall+ users
 
-* [ReleaseNotes](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each version of AFWall+.
+* [Changelog](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each version of AFWall+.
 * [[CustomScripts]] contains the beginnings of a user manual. Some questions about working with iptables might be answered here.
-* [[Apps leak user privacy data during boot]] contains background information about the 'Data leak' during boot. 
+* [[Apps leak user privacy data during boot]] contains background information about the 'Data leak' during boot.
 
 
 Need help using or setting up AFWall+?
-* [[FAQ]] Before you ask everything take a look into our FAQ.
-* Need help? Click it! -> [[Help]]
+* Before you ask everything take a look into our [[FAQ]].
 
 Got an error code?
 * [[Error codes]] may help you.
@@ -29,11 +28,11 @@ Got an error code?
 Found a bug?
 * [[Learn how to report it|HOWTO Report Bug]]
 
-Want to compile it yourself?
+Want to compile AFWall+ yourself?
 * [[All you need to know about compiling AFWall+|HOWTO Compile AFWall]]
 
 Debugging?
-* [[Phone codes secrets]] contain some useful codes for viewing e. g. MAC address  
+* [[Phone codes secrets]] contain some useful codes for viewing e. g. MAC address.
 
 
 License
