@@ -114,7 +114,7 @@ Or
 **(16) My Apps can bypass AFWall+ whitelist mode before the boot are complete**
 
 > Please read [#7](https://github.com/ukanth/afwall/issues/7), [#91](https://github.com/ukanth/afwall/issues/91). As a workaround you can try to **enable the experimental functions**.
-If you want to see what is conneting during the boot take a look at the _/proc/uid_stat/_ folder.
+If you want to see what is connecting during the boot take a look at the _/proc/uid_stat/_ folder.
 
 **Important note:** procfs is mounted at boot time, which means that every time your device is rebooted  there're 0 traffic values for all UIDs. You can list _/proc/uid_stat/_ dir right now to see which UIDs have been spending traffic since last reboot.
 
@@ -217,27 +217,17 @@ Use your favorite search engine to find one.
 <a name="FAQ26"></a>
 **(26) Does AFWall+ need a lot of battery/memory?**
 
-Not really.
+Not really. Usually around 11 - 16 MB (non shared memory), dependent which configuration you use. 
 
 <a name="FAQ27"></a>
 **(27) How safe is AFWall+?**
 
-Nothing is really safe, see the limitations but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. The app can crash sometimes, feel free to submit a error log report via eMail or on the Github Issue tracker.
+Nothing is really safe, see the limitations but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. The app can crash sometimes, feel free to submit a error log report via eMail or on our Github Issue tracker.
 
 <a name="FAQ28"></a>
 **(28) How can I make a logcat?**
 
-The simplest way is to use an application, like [Catlog](https://play.google.com/store/apps/details?id=com.nolanlawson.logcat) or with the build in NFLOG but logcats captured this way are not always sufficient. The best way to capture a logcat is:
-
-* Install the [Android SDK](http://developer.android.com/sdk/index.html) (Click *Download for other platforms* for a minimal download)
-* Make sure you can connect to your device via USB (see [here](http://developer.android.com/sdk/win-usb.html) for drivers and instructions)
-* **Enable AFWall+ logging in the main settings**
-* Power off your device
-* Start logging by entering this command on the command line: *adb logcat >log.txt*
-* Power on your device
-* Reproduce the problem
-
-Upload the captured logcat somewhere, for example using Google Drive, and link to it from the issue you (should) have created. Don't forget to mention the *uid* of the application to look into when relevant.
+Please take a deeper look at our [[Howto report a bug|HOWTO Report Bug]] page for additional details. 
 
 <a name="FAQ29"></a>
 **(29) Will there be iOS or Windows Phone versions?**
@@ -247,22 +237,22 @@ No, because it's too difficult to implement something like AFWall+ on these OS's
 <a name="FAQ30"></a>
 **(30) Does AFWall+ work with SELinux (Fort Knox)?**
 
-Should be without any problem.
+Should be without any bigger problem.
 
 <a name="FAQ31"></a>
-**(31) Can AFWall+ be detected by other application?**
+**(31) Can AFWall+ be detected by other applications?**
+
+Yes, but it should be no security problem as long as the rules not get touched. 
 
 <a name="FAQ32"></a>
 **(32) Do I need to have the Play store/services installed for the donate version?**
 
 Fast answer, no!
 
-Yes, but it should be no security problem.
-
 <a name="FAQ33"></a>
 **(33) Why was my issue closed?**
 
-Things like *It doesn't work* or *it crashes* is insufficient. So, please describe the exact steps to reproduce the problem and/or provide a logcat. More info always means better help.
+Things like *It doesn't work* or *it crashes* is insufficient. So, please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help.
 
 <a name="FAQ34"></a>
 **(34) What happens if I make AFWall+ device administrator?**
@@ -279,7 +269,7 @@ Feature related
 ---------------
 
 <a name="FAQ36"></a>
-**(36) Does AFWall+ support nftables?**
+**(36) Does AFWall+ support nftables yet?**
 
 No, AFWall+ does not support [nftables](http://wiki.nftables.org/wiki-nftables/index.php/Main_Page).
 
@@ -301,3 +291,8 @@ More Questions?
 If you have any question, please leave a message in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
 
 **Please do not ask questions using GitHub issues!** Because GitHub issues are for bug reports and feature requests.
+
+<a name="FAQ39"></a>
+**(39) Is there a BusyBox solution that does not need root?**
+
+Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows). It doesn't provide all extra binaries but the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly via [Google Play Store](https://play.google.com/store/apps/details?id=burrows.apps.busybox.paid&hl=en).
