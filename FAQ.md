@@ -6,6 +6,7 @@ Index
 
 * [Frequently asked questions](#frequently-asked-questions)
 * [General Questions](#general-questions)
+* [Feature related](#feature-related)
 * [More Questions?](#more-questions?)
 
 <a name="FAQ1"></a> 
@@ -268,12 +269,20 @@ Things like *It doesn't work* or *it crashes* is insufficient. So, please descri
 
 This ensures that other applications cannot uninstall AFWall+ without your knowledge.
 
-Questions
----------
+Feature related
+---------------
 
-<a name="FAQ34"></a>
-**(34) Can I ask xyz that was not written down here?**
+<a name="FAQ35"></a>
+**(35) Does AFWall+ support nftables?**
 
-If you have any question, please leave a message in the [XDA XPrivacy forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
+No, AFWall+ does not support [nftables](http://wiki.nftables.org/wiki-nftables/index.php/Main_Page).
+
+More Questions?
+---------------
+
+<a name="FAQ35"></a>
+**(35) Can I ask xyz that was not written down here?**
+
+If you have any question, please leave a message in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
 
 **Please do not ask questions using GitHub issues!** Because GitHub issues are for bug reports and feature requests.
