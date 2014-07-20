@@ -151,12 +151,14 @@ Orbot transparent proxy
 <pre>$IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 -o lo -j ACCEPT
 $IPTABLES -t nat -A OUTPUT -p tcp ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -m owner --uid-owner 10001 -m tcp --syn -j REDIRECT --to-ports 9040
 $IPTABLES -t nat -A OUTPUT -p udp -m owner --uid-owner 10001 -m udp --dport 53 -j REDIRECT --to-ports 5400
-$IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -j REJECT<pre>
+$IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -j REJECT</pre>
 
 Thanks to an0n981, original posted [here on XDA](http://forum.xda-developers.com/showpost.php?p=54134521&postcount=2126).
 
 Useful links
 ------------
 
-* [Simple Iptables Script Generator | Mista.nu](http://www.mista.nu/iptables/) [On some devices $IPT not working .. try to replace with $IPTABLES or update your kernel!)
-[Simple Iptables Test| Myresolver.info](http://myresolver.info )
+* [Simple Iptables Script Generator | Mista.nu](http://www.mista.nu/iptables/) (On some devices $IPT not working, try to replace with $IPTABLES or update your kernel!)
+* [Simple Iptables Test | Myresolver.info](http://myresolver.info)
+* [25 Most Frequently Used Linux IPTables Rules Examples | thegeekstuff.com](http://www.thegeekstuff.com/2011/06/iptables-rules-examples/)
+* [Collection of basic Linux Firewall iptables rules | linuxconfig.org](http://linuxconfig.org/collection-of-basic-linux-firewall-iptables-rules)
