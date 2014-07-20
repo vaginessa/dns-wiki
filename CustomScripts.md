@@ -1,4 +1,18 @@
-## Introduction
+Index
+-----
+
+* [Introduction](#Introduction)
+* [Adding custom rules](#adding-custom-rules)
+* [Some examples](#some-examples)
+* [Loading scripts from files](#loading-scripts-from-files)
+* [How do I view blocked IP address?](#how-do-I-view-blocked-IP-address?)
+* [How do I block subnet?](#how-do-I-block-subnet?)
+* [Block incoming request from IP](#block-incoming-request-from-ip)
+* [Block outgoing request from LAN](#block-outgoing-request-from-lan)
+* [Useful links](#Useful-links)
+
+Introduction
+------------
 
 Advanced AFWall+ users may wish to define a custom script to be executed by Android Firewall +.
 
@@ -8,7 +22,8 @@ To define a custom script, just choose "Set custom script" from the menu (right 
 
 **WARNING**: This functionality should be used only by **experienced users that know what they are doing** These examples may block your Android device if not executed with proper care. Be careful when applying these settings on remote device servers over ssh session.!
 
-## Adding custom rules
+Adding custom rules
+----------------------
 
 If you want to add custom iptables rules, just use the **$IPTABLES** shell variable to call iptables.
 
@@ -28,8 +43,8 @@ If you use any chain not listed above, then you need to manually purge it BEFORE
 
 **IMPORTANT: Never manually purge the OUTPUT chain - this will cause AFWall+ rules to be ignored. Use the 'afwall' chain instead.**
 
-
-## Some examples
+Some examples
+-------------
 
 Syntax to block an IP address
 > $IPTABLES -A INPUT -s IP-ADDRESS -j DROP
@@ -60,7 +75,8 @@ $IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN || exit</pre>
 <pre># Try to apply another custom rule, but ignore any errors on it
 $IPTABLES -A "afwall" -p TCP --destination-port 80 -j "afwall-reject"</pre>
 
-## Loading scripts from files
+Loading scripts from files
+--------------------------
 
 Big scripts can be quite hard to edit in the "Set custom script" screen, so it may be a good idea to put your script in a file, then load it from there.
 
@@ -81,8 +97,8 @@ You can even have multiple scripts executed in sequence...
 
 However, please note that this can create a serious security breach on your device, since the script will be always executed as root! You must place your script where other applications will not be able to modify it (the sdcard is NOT a good place!).
 
-
-## How do I view blocked IP address?
+How do I view blocked IP address?
+---------------------------------
 
 <pre>iptables -L -v</pre>
 
@@ -95,12 +111,16 @@ or
 <pre>iptables -L INPUT -v -n</pre>
 
 
-## How do I block subnet like (11.00.11.00/11)?
-Use the following syntax to block 11.00.11.00/11 on eth1 public interface:
+How do I block subnet?
+---------------------
+
+If you like to block a subnet like (11.00.11.00/11) use the following syntax to block 11.00.11.00/11 on eth1 public interface:
 <pre>iptables -i eth1 -A INPUT -s 10.0.0.0/8 -j DROP</pre>
 
 
-## Block incoming request from ip 1.2.3.4
+Block incoming request from IP
+------------------------------
+
 The following command will drop any packet coming from the IP address 1.2.3.4:
 <pre>iptables -I INPUT -s {IP-HERE} -j DROP
 iptables -I INPUT -s 1.2.3.4 -j DROP</pre>
@@ -109,11 +129,14 @@ You can also specify an interface such as eth1 via which a packet was received:
 <pre>iptables -I INPUT -i {INTERFACE-NAME-HERE} -s {IP-HERE} -j DROP
 iptables -I INPUT -i eth1 -s 1.2.3.4 -j DROP</pre>
 
+Block outgoing request from LAN
+-------------------------------
 
-## Block outgoing request from LAN IP 192.168.1.200?
+Block outgoing request from LAN IP 192.168.1.200? Here is the solution:
 <pre>iptables -A OUTPUT -s 192.168.1.200 -j DROP</pre>
 
+Useful links
+------------
 
-## Some other useful links
 * [Simple Iptables Script Generator | Mista.nu](http://www.mista.nu/iptables/) [On some devices $IPT not working .. try to replace with $IPTABLES or update your kernel!)
 [Simple Iptables Test| Myresolver.info](http://myresolver.info )
