@@ -21,7 +21,7 @@ Once a custom script is defined, it will be automatically executed every time th
 
 To define a custom script, just choose "Set custom script" from the menu (right corner).
 
-**WARNING**: This functionality should be used only by **experienced users that know what they are doing!**. These examples may block your Android device (or block the whole internet) if not executed with proper care. Be careful when applying these settings on remote device servers over ssh session.!
+**WARNING**: This functionality should be used only by **experienced users that know what they are doing!** These examples may block your Android device (or block the whole internet) if not executed with proper care. Be careful when applying these settings on remote device servers over ssh session.!
 
 Loading scripts from files
 --------------------------
@@ -133,6 +133,37 @@ $IPTABLES -I afwall -m owner --uid-owner $VOIP_UID1 -p udp -j RETURN
 
 $IPTABLES -I afwall -m owner --uid-owner $VOIP_UID2 -p udp -j RETURN
 #$IPTABLES -t nat -I OUTPUT -m owner --uid-owner $VOIP_UID2 -p udp -j RETURN</pre>
+
+<pre># Shutdown script to run when AFWall+ is disabled. It will block everything.
+# Droidwall 
+#chmod 755 /data/data/com.googlecode.droidwall/app_bin/droidwall.sh
+# AFWall+
+chmod 755 /data/data/dev.ukanth.ufirewall/app_bin/afwallshutdown.sh
+
+# Clear Rules
+$IP6TABLES -t nat -F
+$IP6TABLES -F
+$IPTABLES -t nat -F
+$IPTABLES -F INPUT-firewall
+$IPTABLES -F OUTPUT-firewall
+
+## Create Chains ##
+$IPTABLES -N INPUT-firewall
+$IPTABLES -D INPUT -j INPUT-firewall
+$IPTABLES -I INPUT -j INPUT-firewall
+$IPTABLES -N OUTPUT-firewall
+$IPTABLES -D OUTPUT -j OUTPUT-firewall
+$IPTABLES -I OUTPUT -j OUTPUT-firewall
+
+## DROP TRAFFIC ##
+$IP6TABLES -A INPUT -j LOG --log-prefix "Denied IPv6 input: "
+$IP6TABLES -A INPUT -j DROP
+$IP6TABLES -A OUTPUT -j LOG --log-prefix "Denied IPv6 output: "
+$IP6TABLES -A OUTPUT -j DROP
+$IPTABLES -A INPUT-firewall -j LOG --log-prefix "Denied IPv4 input: "
+$IPTABLES -A INPUT-firewall -j DROP
+$IPTABLES -A OUTPUT-firewall -j LOG --log-prefix "Denied IPv4 output: "
+$IPTABLES -A OUTPUT-firewall -j DROP</pre>
 
 <pre># Allow stock Browser (com.android.browser)
 IP6TABLES=/system/bin/ip6tables
@@ -263,8 +294,8 @@ IP6TABLES=/system/bin/ip6tables
 IPTABLES=/system/bin/iptables
 
 ## Block all traffic at boot ##
-$IP6TABLES -t nat -F
 $IP6TABLES -F
+$IP6TABLES -t nat -F
 $IP6TABLES -A INPUT -j LOG --log-prefix "Denied bootup IPv6 input: "
 $IP6TABLES -A INPUT -j DROP
 $IP6TABLES -A OUTPUT -j LOG --log-prefix "Denied bootup IPv6 output: "
@@ -283,9 +314,12 @@ $IPTABLES -I OUTPUT -j OUTPUT-afwall</pre>
 Test above settings please do follow:
 > adb shell su -c 'cp /PATH/userinit.sh /data/local/userinit.sh'
 
+To stop the DNS resolve of, and HTTP request to, clients3.google.com on every connection to any Wifi Access Point:
 > adb shell su -c "settings put global captive_portal_server 127.0.0.1"
-
 > adb shell su -c "settings put global captive_portal_detection_enabled 0"
+
+To stop the resolve/request for 2.android.pool.ntp.org on every boot (even with network time disabled!):
+> su -c "settings put global ntp_server 127.0.0.1"
 
 If you want AFWall+to report failures on your rules, you must manually "exit" from the script on error. E.g.:
 
