@@ -244,33 +244,33 @@ Upload the captured logcat somewhere, for example using Google Drive, and link t
 
 No, because it's too difficult to implement something like AFWall+ on these OS's, because they are not open source.
 
-<a name="FAQ29"></a>
-**(29) Does XPrivacy work with SELinux (Fort Knox)?**
-
-Should be. 
-
 <a name="FAQ30"></a>
-**(37) Do I need to have the Play store/services installed for the donate version?**
+**(30) Does AFWall+ work with SELinux (Fort Knox)?**
 
-Fast answer, no!
+Should be without any problem.
 
 <a name="FAQ31"></a>
 **(31) Can AFWall+ be detected by other application?**
 
+<a name="FAQ32"></a>
+**(32) Do I need to have the Play store/services installed for the donate version?**
+
+Fast answer, no!
+
 Yes, but it should be no security problem.
 
-<a name="FAQ32"></a>
-**(32) Why was my issue closed?**
+<a name="FAQ33"></a>
+**(33) Why was my issue closed?**
 
 Things like *It doesn't work* or *it crashes* is insufficient. So, please describe the exact steps to reproduce the problem and/or provide a logcat. More info always means better help.
 
-<a name="FAQ33"></a>
-**(33) What happens if I make AFWall+ device administrator?**
+<a name="FAQ34"></a>
+**(34) What happens if I make AFWall+ device administrator?**
 
 This ensures that other applications cannot uninstall AFWall+ without your knowledge.
 
-<a name="FAQ34"></a>
-**(34) Why the Kernel need an internet connection all the time?**
+<a name="FAQ35"></a>
+**(35) Why the Kernel need an internet connection all the time?**
 
 The kernel does not communicate directly, it only pass packet information (for the interfaces eg. uid0) from some applications.  
 
@@ -278,13 +278,13 @@ The kernel does not communicate directly, it only pass packet information (for t
 Feature related
 ---------------
 
-<a name="FAQ35"></a>
-**(35) Does AFWall+ support nftables?**
+<a name="FAQ36"></a>
+**(36) Does AFWall+ support nftables?**
 
 No, AFWall+ does not support [nftables](http://wiki.nftables.org/wiki-nftables/index.php/Main_Page).
 
-<a name="FAQ36"></a>
-**(36) Can I use XPrivacy, Lightning Wall, or any other Firewalls/Security Apps together with AFWall+?**
+<a name="FAQ37"></a>
+**(37) Can I use XPrivacy, Lightning Wall, or any other Firewalls/Security Apps together with AFWall+?**
 
 * XPrivacy: should work fine, if you not restrict any AFWall+ or System related important features like 'IPC' or internet access. Be careful, if there is any problem you can watch what is blocked under the watch list in XPrivacy and try to remove it. 
 * Lightning Wall: also works fine together with AFWall+, because it does not interact with the existent iptables.
@@ -295,8 +295,8 @@ Generally it's not necessary to use two firewalls together and it could be probl
 More Questions?
 ---------------
 
-<a name="FAQ37"></a>
-**(37) Can I ask xyz that was not written down here?**
+<a name="FAQ38"></a>
+**(38) Can I ask xyz that was not written down here?**
 
 If you have any question, please leave a message in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
 
