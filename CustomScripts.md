@@ -49,7 +49,7 @@ Some examples
 Syntax to block an IP address
 > $IPTABLES -A INPUT -s IP-ADDRESS -j DROP
 
-<pre>#If you just want to block access to one port from an ip 65.55.44.100 to port 25 then type command:
+<pre># If you just want to block access to one port from an ip 65.55.44.100 to port 25 then type command:
 $IPTABLES -A INPUT -s 65.55.44.100 -p tcp --destination-port 25 -j DROP</pre>
 
 <pre># Always allow connections to 192.168.0.1, no matter the interface
@@ -67,6 +67,14 @@ $IPTABLES -A "afwall" -p TCP --dport 22 -j "afwall-reject"</pre>
 <pre># Block HTTP connections, but only on cellular interface
 $IPTABLES -A "afwall-3g" -p TCP --destination-port 80 -j "afwall-reject"</pre>
 
+<pre># Restore policies
+$IPTABLES -P INPUT ACCEPT
+$IPTABLES -P FORWARD ACCEPT</pre>
+
+<pre># Drop all but outbound
+$IPTABLES -P INPUT DROP
+$IPTABLES -P FORWARD DROP</pre>
+
 If you want AFWall+to report failures on your rules, you must manually "exit" from the script on error. E.g.:
 
 <pre># Try to apply my custom rule, but report any failure (and abort)
@@ -80,12 +88,12 @@ Loading scripts from files
 
 Big scripts can be quite hard to edit in the "Set custom script" screen, so it may be a good idea to put your script in a file, then load it from there.
 
-To do that, just use the "." (dot) shell command in the "Set custom script" dialog to load your script from an external file. E.g.:
+To do that, just use the "." (dot) shell command in the "Set custom script" dialog to load your script from an external file. e.g.:
 
-. /path/to/script.sh
+. /path/to/script.sh  (example . /data/app-asec/myawesomescript.sh)
 
 
-This will cause your script file to be loaded and executed every time the rules are applied.
+This will cause your script file to be loaded and executed every time the rules are applied. Make sure that this folder have the right permissions, if not AFWall+ can't read any script. 
 You can even have multiple scripts executed in sequence...
 
 
@@ -110,13 +118,11 @@ or
 
 <pre>iptables -L INPUT -v -n</pre>
 
-
 How do I block subnet?
 ---------------------
 
 If you like to block a subnet like (11.00.11.00/11) use the following syntax to block 11.00.11.00/11 on eth1 public interface:
 <pre>iptables -i eth1 -A INPUT -s 10.0.0.0/8 -j DROP</pre>
-
 
 Block incoming request from IP
 ------------------------------
