@@ -76,6 +76,190 @@ $IPTABLES -P FORWARD ACCEPT</pre>
 $IPTABLES -P INPUT DROP
 $IPTABLES -P FORWARD DROP</pre>
 
+<pre># Temporarily allow network adb access when you need it at port 5555
+IP6TABLES=/system/bin/ip6tables
+IPTABLES=/system/bin/iptables
+ADB_UID=10004
+SHELL_UID=2000
+SAFE_NETWORK=10.23.69.0/24
+
+# Allow adb (port 5555)
+$IPTABLES -I INPUT-afwall -s $SAFE_NETWORK -p tcp --dport 5555 -j RETURN
+$IPTABLES -I afwall -m owner --uid-owner $ADB_UID -d $SAFE_NETWORK -m conntrack --ctstate ESTABLISHED -p tcp --sport 5555 -j RETURN
+$IPTABLES -I afwall -m owner --uid-owner $SHELL_UID -d $SAFE_NETWORK -m conntrack --ctstate ESTABLISHED -p tcp --sport 5555 -j RETURN
+
+# Remove transproxy for adb output
+$IPTABLES -t nat -I OUTPUT -d $SAFE_NETWORK -m conntrack --ctstate ESTABLISHED -p tcp --sport 5555 -j ACCEPT</pre>
+
+<pre># Allow the UDP activity of LinPhone to bypass Tor, to allow ZRTP-encrypted Voice and Video SIP/VoIP calls. SIP account login/registration and call setup/signaling can be done over TCP, and Linphone's TCP activity is still sent through Tor with this script.
+IPTABLES=/system/bin/iptables
+VOIP_UID1=`dumpsys package org.linphone | grep userId | cut -d= -f2 - | cut -d' ' -f1 -`
+#VOIP_UID2=`dumpsys package org.lumicall.android | grep userId | cut -d= -f2 - | cut -d' ' -f1 -`
+
+# Allow VOIP client UDP return
+$IPTABLES -I INPUT-afwall -m owner --uid-owner $VOIP_UID1 -m conntrack --ctstate RELATED,ESTABLISHED -p udp -j RETURN
+#$IPTABLES -I INPUT-afwall -m owner --uid-owner $VOIP_UID2 -m conntrack --ctstate RELATED,ESTABLISHED -p udp -j RETURN
+
+# Remove transproxy for VOIP client UDP
+$IPTABLES -I afwall -m owner --uid-owner $VOIP_UID1 -p udp -j RETURN
+#$IPTABLES -t nat -I OUTPUT -m owner --uid-owner $VOIP_UID2 -p udp -j RETURN
+
+$IPTABLES -I afwall -m owner --uid-owner $VOIP_UID2 -p udp -j RETURN
+#$IPTABLES -t nat -I OUTPUT -m owner --uid-owner $VOIP_UID2 -p udp -j RETURN</pre>
+
+<pre># Allow stock Browser (com.android.browser)
+IP6TABLES=/system/bin/ip6tables
+IPTABLES=/system/bin/iptables
+BROWSER_UID=`dumpsys package com.android.browser | grep userId | cut -d= -f2 - | cut -d' ' -f1 -`
+
+# Allow DNS input
+$IPTABLES -I INPUT -m conntrack --ctstate RELATED,ESTABLISHED -p udp --sport 53 -j ACCEPT
+
+# Allow already ESTABLISHED browser input
+$IPTABLES -I INPUT -m conntrack --ctstate ESTABLISHED -m owner --uid-owner $BROWSER_UID -j ACCEPT
+
+# Allow root DNS output
+$IPTABLES -I afwall-wifi -m owner --uid-owner 0 -p udp --dport 53 -j ACCEPT
+
+# Remove transproxy for root DNS
+$IPTABLES -t nat -I OUTPUT -m owner --uid-owner 0 -p udp -m multiport --port 53 -j ACCEPT
+
+# Remove transproxy for browser
+$IPTABLES -t nat -I OUTPUT -m owner --uid-owner $BROWSER_UID -j ACCEPT</pre>
+
+<pre># Allow totify (org.torproject.android)
+IP6TABLES=/system/bin/ip6tables
+IPTABLES=/system/bin/iptables
+ORBOT_UID=`dumpsys package org.torproject.android | grep userId | cut -d= -f2 - | cut -d' ' -f1 -`
+
+# Fix for https://code.google.com/p/afwall/issues/detail?id=260
+chmod 755 /data/data/com.googlecode.afwall/app_bin/afwall.sh
+
+## Block all IPv6 ##
+$IP6TABLES -t nat -F || true
+$IP6TABLES -F
+$IP6TABLES -A INPUT -j LOG --log-prefix "Denied IPv6 input: "
+$IP6TABLES -A INPUT -j DROP
+$IP6TABLES -A OUTPUT -j LOG --log-prefix "Denied IPv6 output: "
+$IP6TABLES -A OUTPUT -j DROP
+
+## INPUT ##
+# Clear previous input firewall rules
+# Re-create INPUT-afwall if it doesn't exist
+$IPTABLES -N INPUT-afwall || true
+$IPTABLES -F INPUT-afwall || true
+$IPTABLES -D INPUT -j INPUT-afwall || true
+$IPTABLES -I INPUT -j INPUT-afwall || true
+
+# Create INPUT firewall. Only allow Orbot input and local Orbot ports
+$IPTABLES -A INPUT-afwall -m conntrack --ctstate ESTABLISHED -m tcp -p tcp -m owner --uid-owner $ORBOT_UID -j RETURN || exit
+$IPTABLES -A INPUT-afwall -d 127.0.0.1 -m tcp -p tcp --dport 8118 -j DROP || exit
+$IPTABLES -A INPUT-afwall -i lo -j RETURN # Transproxy output comes from lo
+$IPTABLES -A INPUT-afwall -d 127.0.0.1 -m udp -p udp --dport 5400 -j RETURN || exit
+$IPTABLES -A INPUT-afwall -j LOG --log-prefix "INPUT DROPPED: " --log-uid || exit
+$IPTABLES -A INPUT-afwall -j DROP || exit
+
+
+## OUTPUT ##
+# Clear previous output firewall rules
+$IPTABLES -D OUTPUT -j OUTPUT-afwall || true
+
+## Kill afwall lan rule. It's not currently used, but if it ever gets
+# activated it allows all DNS. So kill it as future-proofing
+$IPTABLES -F afwall-wifi-lan || true
+$IPTABLES -D afwall-wifi-lan || true
+
+## Transproxy+Tor limits ##
+# Note: We deliberately omit --syn because it causes leaks if used
+$IPTABLES -t nat -F
+$IPTABLES -t nat -A OUTPUT ! -d 127.0.0.1 -m owner ! --uid-owner $ORBOT_UID -p tcp -j REDIRECT --to-ports 9040 || exit
+$IPTABLES -t nat -A OUTPUT -p udp -m owner ! --uid-owner $ORBOT_UID -m udp --dport 53 -j REDIRECT --to-ports 5400 || exit
+
+# Allow root's DNS proxy and kernel to do their transproxy thang
+# FIXME: On newer kernels, this may require 1-9999999 instead of 0 (because
+# the kernel is flagged as UID 0 instead of blank UID)
+$IPTABLES -A afwall -d 127.0.0.1/32 -p udp -m owner --uid-owner 0 -m udp --dport 5400 -j RETURN || exit
+
+#$IPTABLES -A afwall -s 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp -m multiport --ports 9040 -j RETURN || exit
+$IPTABLES -A afwall -s 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --sport 9040 -j RETURN || exit
+$IPTABLES -A afwall -s 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --dport 9040 -j RETURN || exit
+
+#$IPTABLES -A afwall -d 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp -m multiport --ports 9040 -j RETURN || exit
+$IPTABLES -A afwall -d 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --sport 9040 -j RETURN || exit
+$IPTABLES -A afwall -d 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --dport 9040 -j RETURN || exit
+
+#$IPTABLES -A afwall -s 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp -m multiport --ports 5400 -j RETURN || exit
+$IPTABLES -A afwall -s 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --sport 5400 -j RETURN || exit
+$IPTABLES -A afwall -s 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --dport 5400 -j RETURN || exit
+
+#$IPTABLES -A afwall -d 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp -m multiport --ports 5400 -j RETURN || exit
+$IPTABLES -A afwall -d 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --sport 5400 -j RETURN || exit
+$IPTABLES -A afwall -d 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --dport 5400 -j RETURN || exit
+
+
+# Allow all from Orbot
+$IPTABLES -A afwall -m owner --uid-owner $ORBOT_UID -j RETURN || exit
+
+# We also want to block remaining UDP. All app UDP should be already transproxied
+$IPTABLES -A afwall -p udp ! --dport 5400 -j LOG --log-prefix "Denied UDP: " --log-uid || exit
+$IPTABLES -A afwall -p udp ! --dport 5400 -j DROP || exit
+
+## Transproxy state leak fixes for
+$IPTABLES -A afwall -m conntrack --ctstate INVALID -j LOG --log-prefix "Transproxy ctstate leak blocked: " --log-uid
+$IPTABLES -A afwall -m conntrack --ctstate INVALID -j DROP
+$IPTABLES -A afwall -m state --state INVALID -j LOG --log-prefix "Transproxy state leak blocked: " --log-uid
+$IPTABLES -A afwall -m state --state INVALID -j DROP
+
+# XXX: These are probably overkill and uncessary.
+# They remain for defense in depth/debugging.
+$IPTABLES -A afwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,FIN ACK,FIN -j LOG --log-prefix "Transproxy leak blocked: " --log-uid || exit
+$IPTABLES -A afwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,RST ACK,RST -j LOG --log-prefix "Transproxy leak blocked: " --log-uid || exit
+$IPTABLES -A afwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,FIN ACK,FIN -j DROP || exit
+$IPTABLES -A afwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,RST ACK,RST -j DROP || exit
+
+
+## REJECT FIXUPS
+# Rewrite the reject rule to drop. ICMP is just logspam and ends up going to
+# the wrong ports anyways
+$IPTABLES -F afwall-reject
+$IPTABLES -A afwall-reject -j LOG --log-prefix "[afwall] " --log-uid || exit
+$IPTABLES -A afwall-reject -j DROP || exit</pre>
+
+<pre># Try to apply my custom rule, but report any failure (and abort)
+$IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN || exit</pre>
+
+<pre># CM 11 M5 boot fix (userinit.sh)
+# It disables "Google Captive Portal Detection", which involves connection attempts to Google servers upon Wifi assocation (these requests are made by the Android Settings UID, which should normally be blocked from the network, unless you are first registering for Google Play).
+#!/system/bin/sh
+
+IP6TABLES=/system/bin/ip6tables
+IPTABLES=/system/bin/iptables
+
+## Block all traffic at boot ##
+$IP6TABLES -t nat -F
+$IP6TABLES -F
+$IP6TABLES -A INPUT -j LOG --log-prefix "Denied bootup IPv6 input: "
+$IP6TABLES -A INPUT -j DROP
+$IP6TABLES -A OUTPUT -j LOG --log-prefix "Denied bootup IPv6 output: "
+$IP6TABLES -A OUTPUT -j DROP
+
+$IPTABLES -N INPUT-afwall
+$IPTABLES -A INPUT-afwall -j LOG --log-prefix "Denied bootup IPv4 input: "
+$IPTABLES -A INPUT-afwall -j DROP
+$IPTABLES -I INPUT -j INPUT-afwall
+
+$IPTABLES -N OUTPUT-afwall
+$IPTABLES -A OUTPUT-afwall -j LOG --log-prefix "Denied bootup IPv4 output: "
+$IPTABLES -A OUTPUT-afwall -j DROP
+$IPTABLES -I OUTPUT -j OUTPUT-afwall</pre>
+
+test settings do follow:
+> adb shell su -c 'cp /PATH/userinit.sh /data/local/userinit.sh'
+
+> adb shell su -c "settings put global captive_portal_server 127.0.0.1"
+
+> adb shell su -c "settings put global captive_portal_detection_enabled 0"
+
 If you want AFWall+to report failures on your rules, you must manually "exit" from the script on error. E.g.:
 
 <pre># Try to apply my custom rule, but report any failure (and abort)
@@ -162,3 +346,4 @@ Useful links
 * [Simple Iptables Test | Myresolver.info](http://myresolver.info)
 * [25 Most Frequently Used Linux IPTables Rules Examples | thegeekstuff.com](http://www.thegeekstuff.com/2011/06/iptables-rules-examples/)
 * [Collection of basic Linux Firewall iptables rules | linuxconfig.org](http://linuxconfig.org/collection-of-basic-linux-firewall-iptables-rules)
+* [AFWall+/Droidwall permissions vulnerability | torproject.org](https://lists.torproject.org/pipermail/tor-talk/2014-March/032503.html) - [Original Issue 260 @ Droidwall | https://code.google.com/p/droidwall/issues/detail?id=260)
