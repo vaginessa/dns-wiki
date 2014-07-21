@@ -1,6 +1,6 @@
 ## Welcome to the AFWall+ Wiki!
 
-AFWall+ is an open source firewall client focused on making it easy to work with iptables on your Android OS.
+AFWall+ is an Open-Source Firewall client focused on making it easy to work with IPtables on your Android OS.
 
 Index
 -----
@@ -14,6 +14,7 @@ Requirements
 
 - An Android OS device with at least the 2.3 (Gingerbread/API level 8, NDK 4) or a higher version. 
 - The device **must be rooted**.
+- [[BusyBox]] and [[IPtables]] (also included in AFWall+ for Kernel/ROM's without it)
 - The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leak fix)!
 - The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (adb pull /proc/config.gz - Once you unzip it, you can search for e.g. "NETFILTER").
 
