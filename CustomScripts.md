@@ -312,6 +312,8 @@ $IPTABLES -A OUTPUT-afwall -j LOG --log-prefix "Denied bootup IPv4 output: "
 $IPTABLES -A OUTPUT-afwall -j DROP
 $IPTABLES -I OUTPUT -j OUTPUT-afwall</pre>
 
+The Droidwalls only scripts are all downloadable via [git clone](https://gist.github.com/e0b8771cd1fd17c9b4d3.git) or as [raw files](https://gist.github.com/CHEF-KOCH/e0b8771cd1fd17c9b4d3).
+
 Test above settings please do follow:
 > adb shell su -c 'cp /PATH/userinit.sh /data/local/userinit.sh'
 
