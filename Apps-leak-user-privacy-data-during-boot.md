@@ -24,8 +24,11 @@ What's the risk?
 
 The main problem with mobile data connection is that most data plan from mobile carrier is not unlimited. When connection is established and data is transferred, the free bandwidth allocation is used and depleted. Once the free data transfer quota limit has been used up, users have to pay exorbitantly and ridiculously high and expensive price on extra data bandwidth been used.
 
-Think of it like accessing your online banking service via a website that isn't secure. Theoretically, anyone could intercept that unencrypted data as it travels between your computer and the bank's server, stealing your password details or initiating false transactions. 
+Think of it like accessing your online banking service via a website that isn't secure. Theoretically, anyone could intercept that unencrypted data as it travels between your computer and the bank's server, stealing your password details or initiating false transactions.
 
+**Warning**
+Please do not post this <code>bugreport</code> anymore here on Github, we know about it and it was already mentioned many many times (#7, #91, #172, #235 and in the original Droidwall issue tracker).
+It's pretty annoying and frustrating to see this again and again with every new Android OS version or new devices. Once there will be a final solution we will write it here not as workaround but as final solution.
 
 Does I have such problem?
 -------------------------
@@ -50,7 +53,7 @@ Temporally workarounds
 
 Method 1: **Disable Data Connection on Android Core**
 - Open dialer
-- Dial *#*#4636#*#* or *#*#6436#*#* (also take a look at the [[Phone codes secrets]] article
+- Dial *#*#4636#*#* or *#*#6436#*#* (also take a look at the [[Phone codes secrets]] article)
 - Tap _'Phone Information'_
 - Press Menu button
 - Tap on _'More'_
@@ -99,4 +102,5 @@ Useful links
 * [How to Minimize Your Android Data Usage and Avoid Overage Charges | How-To Geek](http://www.howtogeek.com/140261/how-to-minimize-your-android-data-usage-and-avoid-overage-charges/)
 * [The Android boot process from power on | Xdin Android Blog](http://www.androidenea.com/2009/06/android-boot-process-from-power-on.html)
 * [Android Community | Android Source] (http://source.android.com/source/community/index.html)
-* [iptables4n1 workaround for Android Froyo (Nexus One)| Google Code]  (http://code.google.com/p/iptables4n1/)
+* [iptables4n1 workaround for Android Froyo (Nexus One) | Google Code]  (http://code.google.com/p/iptables4n1/)
+* [Possible userinit.sh & Orbot leak fix | https://github.com/ukanth/afwall/wiki/CustomScripts#some-examples]
