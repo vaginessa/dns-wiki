@@ -26,7 +26,8 @@ To define a custom script, just choose "Set custom script" from the menu (right 
 Loading scripts from files
 --------------------------
 
-Please first go into 'Settings' -> 'Developer Options' and enable 'USB Debugging' and change Root Access to 'Apps and ADB'. 
+* Please first go into 'Settings' -> 'Developer Options' and enable 'USB Debugging' and change Root Access to 'Apps and ADB'. (Necessary if you push/test your files via adb).
+* Whenever you finish using adb, always remember to disable USB Debugging and restore Root Access to Apps only. While Android 4.2+ ROMs now prompt you to authorize an RSA key fingerprint before allowing a debugging connection (thus mitigating adb exploit tools that bypass screen lock and can install root apps), you still risk additional vulnerability surface by leaving debugging enabled.
 
 Big scripts can be quite hard to edit in the "Set custom script" screen, so it may be a good idea to put your script in a file, then load it from there.
 
