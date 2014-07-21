@@ -27,6 +27,7 @@ The main problem with mobile data connection is that most data plan from mobile 
 Think of it like accessing your online banking service via a website that isn't secure. Theoretically, anyone could intercept that unencrypted data as it travels between your computer and the bank's server, stealing your password details or initiating false transactions.
 
 **Warning**
+
 Please do not post this <code>bugreport</code> anymore here on Github, we know about it and it was already mentioned many many times (#7, #91, #172, #235 and in the original Droidwall issue tracker).
 It's pretty annoying and frustrating to see this again and again with every new Android OS version or new devices. Once there will be a final solution we will write it here not as workaround but as final solution.
 
@@ -103,4 +104,4 @@ Useful links
 * [The Android boot process from power on | Xdin Android Blog](http://www.androidenea.com/2009/06/android-boot-process-from-power-on.html)
 * [Android Community | Android Source] (http://source.android.com/source/community/index.html)
 * [iptables4n1 workaround for Android Froyo (Nexus One) | Google Code]  (http://code.google.com/p/iptables4n1/)
-* [Possible userinit.sh & Orbot leak fix | https://github.com/ukanth/afwall/wiki/CustomScripts#some-examples]
+* [Possible userinit.sh & Orbot leak fix](https://github.com/ukanth/afwall/wiki/CustomScripts#some-examples)
