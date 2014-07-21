@@ -33,6 +33,7 @@ Found a bug?
 
 Want to compile AFWall+ yourself?
 * [[All you need to know about compiling AFWall+|HOWTO Compile AFWall]]
+* [[All you need to know about compiling iptables|HOWTO Compiling iptable]]
 
 Debugging?
 * [[Phone codes secrets]] contain some useful codes for viewing e. g. MAC address.
