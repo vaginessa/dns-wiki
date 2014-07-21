@@ -82,7 +82,8 @@ Issue the following command in ADB shell or in Terminal Emulator as root (`su`):
 
 <a name="FAQ6"></a>
 **(6) What is Active Rules ?**
-AFWall+ doesn't have control over iptables. Any root/system application with access to iptables can modify the rules. That's the reason, some time people gets data leak because some other process might have overwritten the OUTPUT chain to allow itself. To Prevent this, AFWall+ will apply rules on every connectivity change. 
+
+AFWall+ doesn't have control over iptables itself. Any root/system application with access to iptables can modify the rules. That's the reason, some time people gets data leak because some other process might have overwritten the OUTPUT chain to allow itself. To Prevent this, AFWall+ will apply rules on every connectivity change. 
 
 Also for roaming/LAN, AFWall+ need to change the iptable rules in order to check Roaming status and LAN ipaddress.
 
@@ -104,15 +105,15 @@ Also for roaming/LAN, AFWall+ need to change the iptable rules in order to check
 <a name="FAQ10"></a>
 **(10) Does AFWall+ support Android 4.3, 4.4 or higher?**
 
-Yes, generally it should work with newer Android versions. 
-UID 0 (root) needs 53/udp open for DNS on Android 4.3. - Enable DNS from application list.
-UID 1000 (system) needs 123/udp open for NTP. - Enable NTP from application list.
-Android L need a little configuration change and a external Busybox app to get the rules apply. 
+> Yes, generally it should work with newer Android versions. 
+* UID 0 (root) needs 53/udp open for DNS on Android 4.3. - Enable DNS from application list.
+* UID 1000 (system) needs 123/udp open for NTP. - Enable NTP from application list.
+* Android L need a little configuration change and a external Busybox app to get the rules apply.
 
 <a name="FAQ11"></a>   
 **(11) Can i block incoming SMS?**
 
-> **No**, you [can't block it via AFWall+](https://github.com/ukanth/afwall/issues/111), iptables can't block low level traffic.
+> **No**, you [can't block it via AFWall+](https://github.com/ukanth/afwall/issues/111), iptables can't block low level traffic, some custom ROMs have such function already implemented in the dialer or sms app. 
 
 <a name="FAQ12"></a>
 **(12) Can I block IPv6 traffic?**
@@ -128,7 +129,7 @@ Android L need a little configuration change and a external Busybox app to get t
 **(14) UDP Port 53 is blocked if white-listing mode is enabled, why?**
 
 > Please read [this](https://github.com/ukanth/afwall/issues/18). It's **disabled by default**.
-Enable DNS from application list will enable unlock it.
+Enable DNS from application list will unlock it.
 
 <a name="FAQ15"></a>
 **(15) How can i show the iptables rules?**
@@ -137,22 +138,25 @@ Enable DNS from application list will enable unlock it.
 
 Or 
 
-> Via Firewall rules from the main menu
+> Via <code>Firewall rules</code> from the AFWall+ preferences. 
 
 <a name="FAQ16"></a>
 **(16) My Apps can bypass AFWall+ whitelist mode before the boot are complete**
 
-> Please read [#7](https://github.com/ukanth/afwall/issues/7), [#91](https://github.com/ukanth/afwall/issues/91). As a workaround you can try to **enable the experimental functions**.
-If you want to see what is connecting during the boot take a look at the _/proc/uid_stat/_ folder.
+> Please read [this](https://github.com/ukanth/afwall/wiki/Apps-leak-user-privacy-data-during-boot).
+
+> If you want to see what is connecting during the boot take a look at the _/proc/uid_stat/_ folder.
 
 **Important note:** procfs is mounted at boot time, which means that every time your device is rebooted  there're 0 traffic values for all UIDs. You can list _/proc/uid_stat/_ dir right now to see which UIDs have been spending traffic since last reboot.
 
 <a name="FAQ17"></a>
 **(17) How do I display all available network interfaces names using bash shell prompt?**
 
-> Type _$ ip link show_.
+> Open Android Terminal Emulator and type this:
 
-Each network interface config is in under the /sys/class/net/ dir. If you list that dir on Android, you'll probably see [something like that](http://developer.android.com/reference/android/net/TrafficStats.html):
+<code>$ ip link show</code>
+
+Each network interface config is stored under the <code>/sys/class/net/</code> dir. If you list that dir on Android, you'll probably see [something like that](http://developer.android.com/reference/android/net/TrafficStats.html):
 
     $ ls sys/class/net
     lo
@@ -172,13 +176,17 @@ Each network interface config is in under the /sys/class/net/ dir. If you list t
 <a name="FAQ18"></a>
 **(18) How can i purge the iptables rules?**
 
-> Open Android Terminal Emulator and type
-  1. su
-  2. iptables -F
-  3. iptables -X
-  4. Reboot
+> Open Android Terminal Emulator and type this:
 
-You can also do this via 'Firewall Rules' -> 'flush rules'. 
+<code>su
+
+iptables -F
+
+iptables -X
+
+Reboot</code>
+
+You can also do this via </code>Firewall Rules</code> and click on the </code>flush rules</code> option. 
 
 <a name="FAQ19"></a>
 **(19) AFWall+ does not show app xyz in my list, why?**
@@ -198,10 +206,10 @@ You can also do this via 'Firewall Rules' -> 'flush rules'.
 Or you may also copy and download the afwall+.apk file on your device and install it using [File Explorer](https://play.google.com/store/apps/developer?id=ES+APP+Group) etc.
 
 <a name="FAQ22"></a>
-**(22) How to install as system app (**not recommend and only for test!**)?**
+**(22) How to install as system app (**not recommend, only for test**)?**
 
 > adb remount
-> adb push afwall+.apk /system/app  (or /system/priv-app/ Android 4.4 or higher)
+> adb push afwall+.apk /system/app  (or _/system/priv-app/_ Android 4.2 or higher)
 
 You may an also move the .APK file to the _/system/app_ directory manually. Make sure you set the file permission properly _-rw-r--r--_. To uninstall, please remove afwall+.apk from _/system/app_ manually.
 
@@ -246,12 +254,12 @@ Use your favorite search engine to find one.
 <a name="FAQ26"></a>
 **(26) Does AFWall+ need a lot of battery/memory?**
 
-Not really. Usually around 11 - 16 MB (non shared memory), dependent which configuration you use. 
+Not really. Usually around 11 - 16 MB (non shared memory), dependent which configuration you use.
 
 <a name="FAQ27"></a>
 **(27) How safe is AFWall+?**
 
-Nothing is really safe, see the limitations but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. The app can crash sometimes, feel free to submit a error log report via eMail or on our Github Issue tracker.
+Nothing is really safe, see the [limitations](https://github.com/ukanth/afwall#limitations) in the README.md for more details, but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. The app can crash sometimes, feel free to submit a error log report via eMail or on our Github Issue tracker.
 
 <a name="FAQ28"></a>
 **(28) How can I make a logcat?**
@@ -293,7 +301,6 @@ This ensures that other applications cannot uninstall AFWall+ without your knowl
 
 The kernel does not communicate directly, it only pass packet information (for the interfaces eg. uid0) from some applications.  
 
-
 Feature related
 ---------------
 
@@ -314,7 +321,7 @@ Generally it's not necessary to use two firewalls together and it could be probl
 <a name="FAQ38"></a>
 **(38) Will you integrate any HOSTS blocking option?**
 
-No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
+No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
 A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like [MoaAB](http://forum.xda-developers.com/showthread.php?t=1916098) or and XPosed modul called [UnbelovedHosts] (http://repo.xposed.info/module/de.defim.apk.unbelovedhosts).
 
 More Questions?
