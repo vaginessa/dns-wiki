@@ -4,7 +4,7 @@ Index
 * [Software](#software)
 * [Build via Command Line](#build-via-command-line)
 * [Compiling native binaries](#compiling-native-binaries)
-* [Via graphical user interface](#via-graphical-user-interface)
+* [Compiling via graphical user interface](#compiling-via-graphical-user-interface)
 * [For experts user only!](#for-experts-user-only!)
 * [Useful links](#useful-links)
 
@@ -62,8 +62,8 @@ This command will build the Android binaries and copy them into <code>res/raw/</
 
 > make -C external NDK=/opt/android-ndk-r9
 
-Via graphical user interface
-----------------------------
+Compiling via graphical user interface
+--------------------------------------
 
 * [Here](https://www.xda-developers.com/xda-tv-2/how-to-build-an-android-app-part-1-setting-up-eclipse-and-android-sdk-xda-tv/) is a Video Tutorial from a xda member for those users who want to use the graphical user interface (GUI) method. 
 The tutorial is based on the needed software explained above. 
