@@ -26,11 +26,6 @@ The main problem with mobile data connection is that most data plan from mobile 
 
 Think of it like accessing your online banking service via a website that isn't secure. Theoretically, anyone could intercept that unencrypted data as it travels between your computer and the bank's server, stealing your password details or initiating false transactions.
 
-**Warning**
-
-Please do not post this <code>bugreport such 'Fix Startup Data Leak' doesn't work</code> anymore here on Github, we know about it and it was already mentioned many many times ([#7](https://github.com/ukanth/afwall/issues/7), [#91](https://github.com/ukanth/afwall/issues/91), [#172](https://github.com/ukanth/afwall/issues/172), [#235] (https://github.com/ukanth/afwall/issues/235) - and in the original Droidwall issue tracker).
-It's pretty annoying and frustrating to see this again and again with every new Android OS version or new devices. Once there will be a final solution we will write it here not as workaround but as final solution.
-
 Does I have such problem?
 -------------------------
 
@@ -46,7 +41,7 @@ For received UID traffic stats take a look at here:
 >* /proc/uid_stat/[uid]/tcp_snd
 
 On older versions procfs is mounted at boot time, which means that every time your device is rebooted there are 0 traffic values for all UIDs (except lan0).
-You can list _/proc/uid_stat/_ dir right now to see which UIDs have been spending traffic since last reboot.
+You can list <code>/proc/uid_stat/</code> dir right now to see which UIDs have been spending traffic since last reboot.
 
 Temporally workarounds
 ----------------------
@@ -54,7 +49,7 @@ Temporally workarounds
 
 Method 1: **Disable Data Connection on Android Core**
 - Open dialer
-- Dial *#*#4636#*#* or *#*#6436#*#* (also take a look at the [[Phone codes secrets]] article)
+- Dial _'*#*#4636#*#*'_ or _'*#*#6436#*#*'_ (also take a look at the [[Phone codes secrets]] article)
 - Tap _'Phone Information'_
 - Press Menu button
 - Tap on _'More'_
@@ -70,6 +65,11 @@ For the second workaround you need [[init.d]] support. Ask you ROM/Kernel Develo
 - Scroll down until you see _'Experimental Preferences'_
 - Enable _'Fix Startup Data Leak'_
 
+**Warning**
+
+Please do not post this <code>bugreport such 'Fix Startup Data Leak' doesn't work</code> anymore here on Github, we know about it and it was already mentioned many many times ([#7](https://github.com/ukanth/afwall/issues/7), [#91](https://github.com/ukanth/afwall/issues/91), [#172](https://github.com/ukanth/afwall/issues/172), [#235] (https://github.com/ukanth/afwall/issues/235) - and in the original Droidwall issue tracker).
+It's pretty annoying and frustrating to see this again and again with every new Android OS version or new devices. Once there will be a final solution we will write it here not as workaround but as final solution.
+
 
 
 Method 3: **APNDroid to Turn Off Data Connection**
@@ -81,7 +81,7 @@ Method 3: **APNDroid to Turn Off Data Connection**
 Method 4: **XPrivacy**
 
 There are a lot of difficult patches like Openpdroid, Pdroid 2.0 or PDroid which allow to prevent applications from leaking privacy sensitive data but this patches need to be integrate into the ROM you are using. It's maybe to complicated for some users and not work with all Apps without an FC (force close).
-[XPrivacy](https://github.com/M66B/XPrivacy#installation) is the only solution that works an almost every device without patching everything after you upgrade your ROM like CM 10.1 and do almost the same.
+[XPrivacy](https://github.com/M66B/XPrivacy#installation) is the only solution that works an almost every device without patching everything after you upgrade your ROM like CM 11 and do almost the same.
 
 
 Default IPtables Chain Policy
