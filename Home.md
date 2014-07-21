@@ -14,7 +14,7 @@ Requirements
 
 - An Android OS device with at least the 2.3 (Gingerbread/API level 8, NDK 4) or a higher version. 
 - The device **must be rooted**.
-- The Kernel/ROM must have init.d support (for external custom script and data leak fix!).
+- The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leak fix)!
 - The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (adb pull /proc/config.gz - Once you unzip it, you can search for e.g. "NETFILTER").
 
 Important Information
