@@ -6,7 +6,7 @@ Index
 -----
 
 * [Requirements](#requirements)
-* [Information for AFWall+ users](#information-for-afwall+-users)
+* [Important Information](#Important Information)
 * [License](#license)
 
 Requirements
@@ -17,11 +17,11 @@ Requirements
 - The Kernel/ROM must have init.d support (for external custom script and data leak fix!).
 - The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (adb pull /proc/config.gz - Once you unzip it, you can search for e.g. "NETFILTER").
 
-Information for AFWall+ users
------------------------------
+Important Information
+---------------------
 
 * [Changelog](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each version of AFWall+.
-* [[CustomScripts]] contains the beginnings of a user manual. Some questions about working with iptables might be answered here.
+* [[CustomScripts]] contains the beginnings of a user manual. Some questions about working with iptables might be answered here, it also contains some predefined scripts you can use (Copy into a .txt file, rename .txt extension to .sh).
 * [[Apps leak user privacy data during boot]] contains background information about the 'Data leak' during boot.
 * Before you ask everything please take a look into our [[FAQ]].
 
