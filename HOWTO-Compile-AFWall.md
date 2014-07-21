@@ -73,19 +73,18 @@ For experts user only!
 ----------------------
 
 ######  Create an unsigned .APK file with apkbuilder
-use <code>_apkbuilder_</code> (included in the Android Develop Kit)
+Use <code>apkbuilder</code> (included in the Android Develop Kit)
 
 > apkbuilder  ${output.apk.file} -u -z  ${packagedresource.file} -f  ${dex.file}
 
 
 ######  Sign an .APK file via jarsigner
-use <code>_[jarsigner]</code>(http://docs.oracle.com/javase/6/docs/technotes/tools/windows/jarsigner.html)_
+Use [jarsigner](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/jarsigner.html)
 
 > jarsigner  -keystore ${keystore} -storepass  ${keystore.password} -keypass ${keypass} -signedjar ${signed.apkfile} ${unsigned.apkfile} ${keyalias}
 
 
 ######  Publish the latest .APK file
-use adb
 > adb -d install -r ${signed.apk}
 
 Useful links
@@ -95,6 +94,6 @@ Useful links
 * [Installing the Android SDK | Android Developers](https://developer.android.com/sdk/installing/index.html)
 * [Signing Your Applications | Android Developers](http://developer.android.com/tools/publishing/app-signing.html#signapp)
 * [How To: Decompile / Compile .APK | XDA-Froum](http://forum.xda-developers.com/showthread.php?t=707189)
-* [How to build .apk file? | Stack Overflow](http://stackoverflow.com/questions/4600891/how-to-build-apk-file)
-* [How-To: Decompile/Recompile apk's with ApkTool | AndroidForums](http://androidforums.com/esteem-all-things-root/520917-guide-how-properly-decompile-recompile-apks-apktool.html)
-* [How to Create Android Apps - Eclipse Export .apk Market Ready Files Step-by-Step Guide | YouTube](http://www.youtube.com/watch?v=DvBI16jv7xs)
+* [How to build .APK file? | Stack Overflow](http://stackoverflow.com/questions/4600891/how-to-build-apk-file)
+* [How-To: Decompile/Recompile APK's with ApkTool | AndroidForums](http://androidforums.com/esteem-all-things-root/520917-guide-how-properly-decompile-recompile-apks-apktool.html)
+* [How to Create Android Apps - Eclipse Export .APK Market Ready Files Step-by-Step Guide | YouTube](http://www.youtube.com/watch?v=DvBI16jv7xs)
