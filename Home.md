@@ -12,9 +12,11 @@ Index
 Requirements
 -------------
 
+AFWall+ need this to run at his best:
+
 - An Android OS device with at least the 2.3 (Gingerbread/API level 8, NDK 4) or a higher version. 
-- The device **must be rooted**.
-- [[BusyBox]] and [[IPtables]] (also included in AFWall+ for Kernel/ROM's without it)
+- Your device **must be rooted**.
+- [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
 - The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leak fix)!
 - The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (adb pull /proc/config.gz - Once you unzip it, you can search for e.g. "NETFILTER").
 
@@ -24,7 +26,7 @@ Important Information
 * [Changelog](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each version of AFWall+.
 * [[CustomScripts]] contains the beginnings of a user manual. Some questions about working with iptables might be answered here, it also contains some predefined scripts you can use (Copy into a .txt file, rename .txt extension to .sh).
 * [[Apps leak user privacy data during boot]] contains background information about the 'Data leak' during boot.
-* Before you ask everything please take a look into our [[FAQ]].
+* Before you ask anything please take a look into our [[FAQ]].
 
 Got an error message?
 * [[Error codes]] may help you to understand the error messages. 
