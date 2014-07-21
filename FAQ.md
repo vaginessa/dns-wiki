@@ -309,19 +309,25 @@ No, AFWall+ does not support [nftables](http://wiki.nftables.org/wiki-nftables/i
 * Lightning Wall: also works fine together with AFWall+, because it does not interact with the existent iptables.
 * Avast: please disable this firewall if it's turned on (disabled by default). 
 
-Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball: 
+Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball:
+
+<a name="FAQ38"></a>
+**(38) Will you integrate any HOSTS blocking option?**
+
+No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
+A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like [MoaAB](http://forum.xda-developers.com/showthread.php?t=1916098) or and XPosed modul called [UnbelovedHosts] (http://repo.xposed.info/module/de.defim.apk.unbelovedhosts).
 
 More Questions?
 ---------------
 
-<a name="FAQ38"></a>
-**(38) Can I ask xyz that was not written down here?**
+<a name="FAQ39"></a>
+**(39) Can I ask xyz that was not written down here?**
 
 If you have any question, please leave a message in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
 
 **Please do not ask questions using GitHub issues!** Because GitHub issues are for bug reports and feature requests.
 
-<a name="FAQ39"></a>
-**(39) Is there a BusyBox solution that does not need root?**
+<a name="FAQ40"></a>
+**(40) Is there a BusyBox solution that does not need root?**
 
 Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows). It doesn't provide all extra binaries but the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly via [Google Play Store](https://play.google.com/store/apps/details?id=burrows.apps.busybox.paid&hl=en).
