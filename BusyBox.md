@@ -7,16 +7,25 @@ Index
 
 Description
 -----------
-BusyBox combines tiny versions of many common UNIX utilities into a single small executable.  
+
+**BusyBox combines tiny versions of many common UNIX utilities into a single small executable.**  
 It provides minimalist replacements for most of the utilities you usually find in bzip2, coreutils, dhcp, diffutils, e2fsprogs, file, findutils, gawk, grep, inetutils, less, modutils, net-tools, procps, sed, shadow, sysklogd, sysvinit, tar, util-linux, and vim.  The utilities in BusyBox often have fewer options than their full-featured cousins; however, the options that are included provide the expected functionality and behave very much like their larger counterparts.
 
-BusyBox has been written with size-optimization and limited resources in mind, both to produce small binaries and to reduce run-time memory usage. Busybox is also extremely modular so you can easily include or exclude commands (or features) at compile time.  This makes it easy to customize embedded systems; to create a working system, just add /dev, /etc, and a Linux kernel. Busybox (usually together with uClibc) has also been used as a component of "thin client" desktop systems, live-CD distributions, rescue disks, installers, and so on.
+BusyBox has been written with size-optimization and limited resources in mind, both to produce small binaries and to reduce run-time memory usage. Busybox is also extremely modular so you can easily include or exclude commands (or features) at compile time.  This makes it easy to customize embedded systems; to create a working system, just add /dev, /etc, and a Linux kernel. Busybox (usually together with uClibc) has also been used as a component of "thin client" desktop systems, live-CD distributions, rescue disks, installers, Android, and so on.
+
+__Short description__
+* Root required.
+* Provides many standard Unix tools.
+* Necessary in AFWall+ to execute some Linux commands.
+* AFWall+ comes with a Busybox binary, so you don't have to install Busybox manually anymore.
+* There are also some _non-root_ solutions on the Google Play Store, we not recommend to use one of this!
 
 How do I configure Busybox?
 ---------------------------
 
-The most important Busybox configurators are:
-make <code>defconfig</code> - Create the maximum "sane" configuration, AFWall+ use this as default. This enables almost all features, minus things like debugging options and features that require changes to the rest of the system to work (such as selinux or devfs device names). Use this if you want to start from a full-featured Busybox and remove features until it's small enough.
+The most important Busybox configurations are:
+
+make <code>defconfig</code> - Create the maximum "sane" configuration, **AFWall+ use this as default**. This enables almost all features, minus things like debugging options and features that require changes to the rest of the system to work (such as selinux or devfs device names). Use this if you want to start from a full-featured Busybox and remove features until it's small enough.
 
 make <code>allnoconfig</code> - Disable everything. This creates a tiny version of Busybox that doesn't do anything. Start here if you know exactly what you want and would like to select only those features.
 
@@ -29,12 +38,14 @@ make <code>allyesconfig</code> - Select absolutely everything. This creates a st
 
 make <code>randconfig</code> - Create a random configuration for test purposes.
 
-
 Useful links
 -------------
 
 * [Official BusyBox FAQ | BusyBox.net](http://www.busybox.net/FAQ.html)
 * [BusyBox Download | BusyBox.net](http://busybox.net/downloads/)
+* [BusyBox Download | F-Droid](https://f-droid.org/wiki/page/stericson.busybox)
 * [Browse the source code |git.busybox.net](http://git.busybox.net/busybox/)
 * [Anonymous GIT access | BusyBox.net](http://www.busybox.net/source.html)
 * [Bug Tracker | Bugs.BusyBox.net](https://bugs.busybox.net)
+* [BusyBox Installer | Google Play Store](https://play.google.com/store/apps/details?id=com.jrummy.busybox.installer)
+* [busybox-free | Stericson - GitHub](https://github.com/Stericson/busybox-free)
