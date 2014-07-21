@@ -28,7 +28,7 @@ Think of it like accessing your online banking service via a website that isn't 
 
 **Warning**
 
-Please do not post this <code>bugreport</code> anymore here on Github, we know about it and it was already mentioned many many times (#7, #91, #172, #235 and in the original Droidwall issue tracker).
+Please do not post this <code>bugreport such 'Fix Startup Data Leak' doesn't work</code> anymore here on Github, we know about it and it was already mentioned many many times ([#7](https://github.com/ukanth/afwall/issues/7), [#91](https://github.com/ukanth/afwall/issues/91), [#172](https://github.com/ukanth/afwall/issues/172), [#235] (https://github.com/ukanth/afwall/issues/235) - and in the original Droidwall issue tracker).
 It's pretty annoying and frustrating to see this again and again with every new Android OS version or new devices. Once there will be a final solution we will write it here not as workaround but as final solution.
 
 Does I have such problem?
