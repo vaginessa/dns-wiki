@@ -26,7 +26,7 @@ Important Information
 * Before you ask everything please take a look into our [[FAQ]].
 
 Got an error message?
-* [[Error codes]] may help you.
+* [[Error codes]] may help you to understand the error messages. 
 
 Found a bug?
 * [[Learn how to report it|HOWTO Report Bug]]
