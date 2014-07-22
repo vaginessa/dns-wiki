@@ -47,13 +47,13 @@ Frequently asked questions
 **(2) How do I know if my phone supports iptables?**
 
 > Use the following command in ADB shell or in Terminal Emulator as root (`su`):
+
 <code>iptables -L -t nat</code>
 
 <a name="FAQ3"></a> 
 **(3) Packet processing in iptables**
 
 > All packets inspected by iptables pass through a sequence of built-in tables (queues) for processing. Each of these queues is dedicated to a particular type of packet activity and is controlled by an associated packet transformation/filtering chain.
-
 * Forward (FORWARD) chain: Filters packets to servers protected by the firewall.
 * Input (INPUT) chain: Filters packets destined for the firewall.
 * Output (OUTPUT) chain: Filters packets originating from the firewall. 
@@ -102,7 +102,7 @@ Frequently asked questions
 * Android L need a little configuration change and a external Busybox app to get the rules apply.
 
 <a name="FAQ11"></a>   
-**(11) Can i block incoming SMS?**
+**(11) Can I block incoming SMS?**
 
 > **No**, you [can't block it via AFWall+](https://github.com/ukanth/afwall/issues/111), iptables can't block low level traffic, some custom ROMs have such function already implemented in the dialer or sms app. 
 
@@ -167,17 +167,14 @@ Or
 <a name="FAQ18"></a>
 **(18) How can I purge the iptables rules?**
 
-> Open Android Terminal Emulator and type this:
+> Open adb shell or Android Terminal Emulator and type this:
 
-<code>su
+    su
+    iptables -F
+    iptables -X
+    Reboot
 
-iptables -F
-
-iptables -X
-
-Reboot</code>
-
-> You can also do this via </code>Firewall Rules</code> and click on the </code>flush rules</code> option. 
+> You can also do this via <code>Firewall Rules</code> option and click on the <code>flush rules</code> button. 
 
 <a name="FAQ19"></a>
 **(19) AFWall+ does not show app xyz in my list, why?**
@@ -199,16 +196,15 @@ Reboot</code>
 <a name="FAQ22"></a>
 **(22) How to install AFWall+ as system app (**not recommend, only for test!**)**
 
-<code> adb remount
+    adb remount
+    adb push afwall+.apk /system/app (or /system/priv-app/ Android 4.3 or higher)
 
-adb push afwall+.apk /system/app </code> (or _/system/priv-app/_ Android 4.3 or higher)
-
-You may an also move the .APK file to the _/system/app_ directory manually. Make sure you set the file permission properly _-rw-r--r--_. To uninstall, please remove afwall+.apk from _/system/app_ manually.
+> You may an also move the .APK file to the _/system/app_ directory manually. Make sure you set the file permission properly _-rw-r--r--_. To uninstall, please remove afwall+.apk from _/system/app_ manually.
 
 <a name="FAQ23"></a>
 **(23) Which Permissions are used?**
 
-* _RECEIVE_BOOT_COMPLETED_: Autostart (Bootup) AFWall+ after the system finishes booting.
+>* _RECEIVE_BOOT_COMPLETED_: Autostart (Bootup) AFWall+ after the system finishes booting.
 * _ACCESS_NETWORK_STATE_: Allows AFWall+ to access information about networks (iptables).
 * _WRITE_EXTERNAL_STORAGE_: Allows AFWall+ to write to external storage for debug log and export iptables rules.
 * _ACCESS_SUPERUSER_: Standard to support Superuser ([by Koushik](http://www.androidpolice.com/2013/02/25/koush-releases-free-open-source-superuser-app-with-support-for-multi-user-tablet-ui-x86arm-pin-and-effort-for-apps-to-declare-root-permission/)).
@@ -219,30 +215,24 @@ You may an also move the .APK file to the _/system/app_ directory manually. Make
 **(24) How can I disable the firewall temporarily?**
 
 > If you need to disable the firewall temporarily, you can flush all the rules using
+
 <code>iptables -F</code>
 
 Or via script
-<code>echo "Stopping firewall and allowing everything..."
 
-iptables -F
+    echo "Stopping firewall and allowing everything..."
+    iptables -F
+    iptables -X
+    iptables -t nat -F
+    iptables -t nat -X
+    iptables -t mangle -F
+    iptables -t mangle -X
+    iptables -P INPUT ACCEPT
+    iptables -P FORWARD ACCEPT
+    iptables -P OUTPUT ACCEPT
+    exit 0
 
-iptables -X
-
-iptables -t nat -F
-
-iptables -t nat -X
-
-iptables -t mangle -F
-
-iptables -t mangle -X
-
-iptables -P INPUT ACCEPT
-
-iptables -P FORWARD ACCEPT
-
-iptables -P OUTPUT ACCEPT
-
-exit 0</code>
+Or within the app itself.
 
 General Questions
 -----------------
