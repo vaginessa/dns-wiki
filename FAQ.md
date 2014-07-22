@@ -41,7 +41,7 @@ Frequently asked questions
 <a name="FAQ1"></a> 
 **(1) What is iptables?**
 
-Take a look [[IPtables | here]] for a detailed overview.
+Take a look [[here|IPtables]] for a detailed overview.
 
 <a name="FAQ2"></a>
 **(2) How do I know if my phone supports iptables?**
