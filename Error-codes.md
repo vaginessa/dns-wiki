@@ -1,31 +1,35 @@
-### Error applying iptables rules. Exit code: -1
-This error usually means that the kernel does not support the iptables owner match kernel module. AFWall+ will unfortunately not work on your ROM.
+Index
+-----
 
-But! there are some workarounds for this. First try to change the iptables binary from preferences from "Built-in" to "System". In most cases this works on newer ROM's.
+* [Description](#description)
+* [Codes](#codes)
+* [Useful links](#useful-links)
 
+Description
+-----------
 
+This page should explain some details about some error codes that AFWall+ may gave you.
 
-Or manually via Terminal Emulator
+Codes
+-----
 
-//Switch to root
+<a name="Code1"></a>
+**(1) Error applying iptables rules. Exit code: -1**
+> This error usually means that the kernel does not support the iptables owner match kernel module. AFWall+ will unfortunately not work on your ROM.
+But, there are some workarounds for this. First try to change the iptables binary from _preferences_ from "Built-in" to "System". In most cases this works on newer ROM's.
 
-su
+> Or manually via adb shell or Terminal Emulator:
 
-//Remount the system as rw (read / write enabled)
+    su
+    mount -o remount,rw /system
+    cp /data/data/android.tether/bin/iptables /system/bin
+    mount -o remount,ro /system
 
-mount -o remount,rw /system
+<a name="Code2"></a>
+**(2) Error 127 – “iptables: not found”**
 
-//Add syslink IPtable to the android.tether directory
+>This error happens because iptables user-space software application that allows the system administrator to configure the tables provided by the Linux kernel firewall and the chains and rules for storage, is not an operating system Android OS. **Please try the same method as described above.**
 
-cp /data/data/android.tether/bin/iptables /system/bin
-
-//Remount the system as ro! (read only)
-
-mount -o remount,ro /system
-
-
-
-### Error 127 – “iptables: not found”
-This error happens because iptables user-space software application that allows the system administrator to configure the tables provided by the Linux kernel firewall and the chains and rules for storage, is not an operating system Android OS.
-
-> Try the same method as described above.
+Useful links
+------------
+* [AFWall+ Issue Tracker | GitHub.com](https://github.com/ukanth/afwall/issues)
