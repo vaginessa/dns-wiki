@@ -7,12 +7,17 @@ Index
 
 Description
 -----------
-Iptables is a powerful firewall built into the Linux kernel and is part of the netfilter project. It can be configured directly, or by using one of the many frontends and GUIs such AFWall+/Droidwall. With it we have control over IPv4  and IPv6 (ip6tables).
 
-There are also some more benefits:
-* Stateful packet inspection. This means that the firewall keeps track of each connection passing through it and in certain cases will view the contents of data flows in an attempt to anticipate the next action of certain protocols. This is an important feature in the support of active FTP and DNS, as well as many other network services.
-* A rate limiting feature that helps iptables block some types of denial of service (DoS) attacks.
-* A firewall is a critical part of any establishment that connects to an unprotected network such as the Internet, but a firewall is never sufficient.
+> Originally, the most popular firewall/[NAT](http://en.wikipedia.org/wiki/Network_address_translation) package running on Linux/Android was ipchains, but it had a number of shortcomings. To rectify this, the [Netfilter](http://en.wikipedia.org/wiki/Netfilter) organization decided to create a new product called iptables, giving it such improvements as:
+
+* Better integration with the Linux kernel with the capability of loading iptables-specific kernel modules designed for improved speed and reliability.
+* [Stateful packet inspection](http://en.wikipedia.org/wiki/Stateful_packet_inspection). This means that the firewall keeps track of each connection passing through it and in certain cases will view the contents of data flows in an attempt to anticipate the next action of certain protocols. This is an important feature in the support of active [FTP](http://en.wikipedia.org/wiki/FTP) and [DNS](http://en.wikipedia.org/wiki/Domain_Name_System), as well as many other network services.
+* Filtering packets based on a [MAC address](http://en.wikipedia.org/wiki/MAC_address) and the values of the flags in the TCP header. This is helpful in preventing attacks using malformed packets and in restricting access from locally attached servers to other networks in spite of their IP addresses.
+* System logging that provides the option of adjusting the level of detail of the reporting.
+* Better network address translation.
+* A rate limiting feature that helps iptables block some types of denial of service ([DoS](http://en.wikipedia.org/wiki/Denial-of-service_attack)) attacks. 
+
+Considered a faster and more secure alternative to [ipchains](http://en.wikipedia.org/wiki/Ipchains), iptables has become the default firewall package installed under Linux and Android OS.
 
 [Nftables](http://www.netfilter.org/projects/nftables/index.html) will replace it some day, but is not merged with AFWall+ at the moment.
 
