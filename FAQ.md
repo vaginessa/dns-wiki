@@ -39,18 +39,9 @@ Frequently asked questions
 --------------------------
 
 <a name="FAQ1"></a> 
-**(1) What are iptables?**
+**(1) What is iptables?**
 
-> Originally, the most popular firewall/[NAT](http://en.wikipedia.org/wiki/Network_address_translation) package running on Linux/Android was ipchains, but it had a number of shortcomings. To rectify this, the [Netfilter](http://en.wikipedia.org/wiki/Netfilter) organization decided to create a new product called iptables, giving it such improvements as:
-
-* Better integration with the Linux kernel with the capability of loading iptables-specific kernel modules designed for improved speed and reliability.
-* [Stateful packet inspection](http://en.wikipedia.org/wiki/Stateful_packet_inspection). This means that the firewall keeps track of each connection passing through it and in certain cases will view the contents of data flows in an attempt to anticipate the next action of certain protocols. This is an important feature in the support of active [FTP](http://en.wikipedia.org/wiki/FTP) and [DNS](http://en.wikipedia.org/wiki/Domain_Name_System), as well as many other network services.
-* Filtering packets based on a [MAC address](http://en.wikipedia.org/wiki/MAC_address) and the values of the flags in the TCP header. This is helpful in preventing attacks using malformed packets and in restricting access from locally attached servers to other networks in spite of their IP addresses.
-* System logging that provides the option of adjusting the level of detail of the reporting.
-* Better network address translation.
-* A rate limiting feature that helps iptables block some types of denial of service ([DoS](http://en.wikipedia.org/wiki/Denial-of-service_attack)) attacks. 
-
-Considered a faster and more secure alternative to [ipchains](http://en.wikipedia.org/wiki/Ipchains), iptables has become the default firewall package installed under Linux and Android OS.
+Take a look [[IPtables | here]] for a detailed overview.
 
 <a name="FAQ2"></a>
 **(2) How do I know if my phone supports iptables?**
@@ -81,11 +72,11 @@ Issue the following command in ADB shell or in Terminal Emulator as root (`su`):
 > Iptables rules take effect immediately. Because your script is appending (-A) to the INPUT and OUTPUT chains, your rules are being added to the end of those chains. If you have other terminating rules that precede these rules, then they will take effect (and later rules will not).
 
 <a name="FAQ6"></a>
-**(6) What is Active Rules ?**
+**(6) What is Active Rules?**
 
 AFWall+ doesn't have control over iptables itself. Any root/system application with access to iptables can modify the rules. That's the reason, some time people gets data leak because some other process might have overwritten the OUTPUT chain to allow itself. To Prevent this, AFWall+ will apply rules on every connectivity change. 
 
-Also for roaming/LAN, AFWall+ need to change the iptable rules in order to check Roaming status and LAN ipaddress.
+Also for roaming/LAN, AFWall+ need to change the iptable rules in order to check Roaming status and LAN ip address.
 
 <a name="FAQ7"></a>
 **(7) Youtube/Online Radio streaming is not working anymore. How can i fix this without disabling AFWall+?**
