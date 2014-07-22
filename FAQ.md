@@ -41,13 +41,13 @@ Frequently asked questions
 <a name="FAQ1"></a> 
 **(1) What is iptables?**
 
-Take a look [[here|IPtables]] for a detailed overview.
+> Take a look [[here|IPtables]] for a detailed overview.
 
 <a name="FAQ2"></a>
 **(2) How do I know if my phone supports iptables?**
 
-Issue the following command in ADB shell or in Terminal Emulator as root (`su`):
-> iptables -L -t nat
+> Use the following command in ADB shell or in Terminal Emulator as root (`su`):
+<code>iptables -L -t nat</code>
 
 <a name="FAQ3"></a> 
 **(3) Packet processing in iptables**
@@ -74,19 +74,19 @@ Issue the following command in ADB shell or in Terminal Emulator as root (`su`):
 <a name="FAQ6"></a>
 **(6) What is Active Rules?**
 
-AFWall+ doesn't have control over iptables itself. Any root/system application with access to iptables can modify the rules. That's the reason, some time people gets data leak because some other process might have overwritten the OUTPUT chain to allow itself. To Prevent this, AFWall+ will apply rules on every connectivity change. 
+> AFWall+ doesn't have control over iptables itself. Any root/system application with access to iptables can modify the rules. That's the reason, some time people gets data leak because some other process might have overwritten the OUTPUT chain to allow itself. To Prevent this, AFWall+ will apply rules on every connectivity change. 
 
-Also for roaming/LAN, AFWall+ need to change the iptable rules in order to check Roaming status and LAN ip address.
+> Also for roaming/LAN, AFWall+ need to change the iptable rules in order to check Roaming status and LAN ip address.
 
 <a name="FAQ7"></a>
-**(7) Youtube/Online Radio streaming is not working anymore. How can i fix this without disabling AFWall+?**
+**(7) YouTube/Online Radio streaming is not working anymore. How can i fix this without disabling AFWall+?**
 
 > Please whitelist "Media Server" or remove it from your blacklist.
 
 <a name="FAQ8"></a>
 **(8) What is the third column in the main page with "R"?**
 
-> "R" indicates "Roaming". You can whitelist/blacklist applications when you are on roaming! 
+> "R" indicates "Roaming". You can whitelist/blacklist applications when you are on a roaming network! 
 
 <a name="FAQ9"></a>
 **(9) My Logs (logcat) are not displaying anything or always empty, why?**
@@ -112,18 +112,18 @@ Also for roaming/LAN, AFWall+ need to change the iptable rules in order to check
 > [Sure](https://github.com/ukanth/afwall/issues/108), please use AFWall+ 1.2.4 (or higher). Some kernels have an option to disable IPv6, make sure it's enabled. Also "Enable IPv6 support" in AFWall+ options, because this is disabled by default.
 
 <a name="FAQ13"></a>
-**(13) Tasker/Locale support?**
+**(13) Is there Tasker/Locale support?**
 
 > Tasker/Locale apps working together with AFWall+ (1.0.4a or higher).
 
 <a name="FAQ14"></a>
-**(14) UDP Port 53 is blocked if white-listing mode is enabled, why?**
+**(14) UDP Port 53 is blocked if whitelisting mode is enabled, why?**
 
 > Please read [this](https://github.com/ukanth/afwall/issues/18). It's **disabled by default**.
 Enable DNS from application list will unlock it.
 
 <a name="FAQ15"></a>
-**(15) How can i show the iptables rules?**
+**(15) How can I show the iptables rules?**
 
 > Via  _iptables -L_ command in apps like [Android Terminal Emulator](https://play.google.com/store/apps/developer?id=Jack+Palevich). Most ROM's already use this. 
 
@@ -147,7 +147,7 @@ Or
 
 <code>$ ip link show</code>
 
-Each network interface config is stored under the <code>/sys/class/net/</code> dir. If you list that dir on Android, you'll probably see [something like that](http://developer.android.com/reference/android/net/TrafficStats.html):
+> Each network interface config is stored under the <code>/sys/class/net/</code> dir. If you list that dir on Android, you'll probably see [something like that](http://developer.android.com/reference/android/net/TrafficStats.html):
 
     $ ls sys/class/net
     lo
@@ -165,7 +165,7 @@ Each network interface config is stored under the <code>/sys/class/net/</code> d
     eth0
 
 <a name="FAQ18"></a>
-**(18) How can i purge the iptables rules?**
+**(18) How can I purge the iptables rules?**
 
 > Open Android Terminal Emulator and type this:
 
@@ -177,7 +177,7 @@ iptables -X
 
 Reboot</code>
 
-You can also do this via </code>Firewall Rules</code> and click on the </code>flush rules</code> option. 
+> You can also do this via </code>Firewall Rules</code> and click on the </code>flush rules</code> option. 
 
 <a name="FAQ19"></a>
 **(19) AFWall+ does not show app xyz in my list, why?**
@@ -187,25 +187,26 @@ You can also do this via </code>Firewall Rules</code> and click on the </code>fl
 <a name="FAQ20"></a>
 **(20) AFWall+ does not work under CM 7.x -11.x, how can i fix this?**
 
-> CM 7.x uses old version of iptables which has conflict with AFWall+ built-in iptables. As a workaround you can try to update your iptables to the latest version. But it should work without it. Contact developer/raise an issue on github.
+> CM 7.x uses old version of iptables which has conflict with AFWall+ built-in iptables. As a workaround you can try to update your iptables to the latest version. But it should work without it. Contact developer/raise an issue on GitHub.
 
 <a name="FAQ21"></a>
-**(21) How to install as regular app?**
+**(21) How to install AFWall+ as regular app?**
 
-> adb install afwall+.apk
+<code> adb install afwall+.apk </code> (default install method)
 
-Or you may also copy and download the afwall+.apk file on your device and install it using [File Explorer](https://play.google.com/store/apps/developer?id=ES+APP+Group) etc.
+> Or you may also copy and download the afwall+.apk file on your device and install it using [File Explorer](https://play.google.com/store/apps/developer?id=ES+APP+Group) etc.
 
 <a name="FAQ22"></a>
-**(22) How to install as system app (**not recommend, only for test**)?**
+**(22) How to install AFWall+ as system app (**not recommend, only for test!**)**
 
-> adb remount
-> adb push afwall+.apk /system/app  (or _/system/priv-app/_ Android 4.2 or higher)
+<code> adb remount
+
+adb push afwall+.apk /system/app </code> (or _/system/priv-app/_ Android 4.3 or higher)
 
 You may an also move the .APK file to the _/system/app_ directory manually. Make sure you set the file permission properly _-rw-r--r--_. To uninstall, please remove afwall+.apk from _/system/app_ manually.
 
 <a name="FAQ23"></a>
-**(23) Permissions**
+**(23) Which Permissions are used?**
 
 * _RECEIVE_BOOT_COMPLETED_: Autostart (Bootup) AFWall+ after the system finishes booting.
 * _ACCESS_NETWORK_STATE_: Allows AFWall+ to access information about networks (iptables).
@@ -217,21 +218,31 @@ You may an also move the .APK file to the _/system/app_ directory manually. Make
 <a name="FAQ24"></a>
 **(24) How can I disable the firewall temporarily?**
 
-If you need to disable the firewall temporarily, you can flush all the rules using
-> iptables -F
+> If you need to disable the firewall temporarily, you can flush all the rules using
+<code>iptables -F</code>
 
 Or via script
-> echo "Stopping firewall and allowing everyone..."
+<code>echo "Stopping firewall and allowing everything..."
 
-> iptables -F
-> iptables -X
-> iptables -t nat -F
-> iptables -t nat -X
-> iptables -t mangle -F
-> iptables -t mangle -X
-> iptables -P INPUT ACCEPT
-> iptables -P FORWARD ACCEPT
-> iptables -P OUTPUT ACCEPT
+iptables -F
+
+iptables -X
+
+iptables -t nat -F
+
+iptables -t nat -X
+
+iptables -t mangle -F
+
+iptables -t mangle -X
+
+iptables -P INPUT ACCEPT
+
+iptables -P FORWARD ACCEPT
+
+iptables -P OUTPUT ACCEPT
+
+exit 0</code>
 
 General Questions
 -----------------
@@ -239,58 +250,58 @@ General Questions
 <a name="FAQ25"></a>
 **(25) Can you help me with rooting my device?**
 
-There are already enough [guides](http://www.androidcentral.com/root) to help you to root your device.
+> There are already enough [guides](http://www.androidcentral.com/root) to help you to root your device.
 Use your favorite search engine to find one.
 
 <a name="FAQ26"></a>
 **(26) Does AFWall+ need a lot of battery/memory?**
 
-Not really. Usually around 11 - 16 MB (non shared memory), dependent which configuration you use.
+> Not really. Usually around _11 - 16 MB_ (non shared memory), dependent which configuration you use.
 
 <a name="FAQ27"></a>
 **(27) How safe is AFWall+?**
 
-Nothing is really safe, see the [limitations](https://github.com/ukanth/afwall#limitations) in the README.md for more details, but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. The app can crash sometimes, feel free to submit a error log report via eMail or on our Github Issue tracker.
+> Nothing is really safe, see the [limitations](https://github.com/ukanth/afwall#limitations) in the README.md for more details, but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. The app can crash sometimes, feel free to submit a error log report via eMail or on our GitHub Issue tracker.
 
 <a name="FAQ28"></a>
 **(28) How can I make a logcat?**
 
-Please take a deeper look at our [[Howto report a bug|HOWTO Report Bug]] page for additional details. 
+> Please take a deeper look at our [[Howto report a bug|HOWTO Report Bug]] page for additional details. 
 
 <a name="FAQ29"></a>
 **(29) Will there be iOS or Windows Phone versions?**
 
-No, because it's too difficult to implement something like AFWall+ on these OS's, because they are not open source.
+> No, because it's too difficult to implement something like AFWall+ on these OS's, because they are not open source.
 
 <a name="FAQ30"></a>
 **(30) Does AFWall+ work with SELinux (Fort Knox)?**
 
-Should be without any bigger problem.
+> Should be without any bigger problem.
 
 <a name="FAQ31"></a>
 **(31) Can AFWall+ be detected by other applications?**
 
-Yes, but it should be no security problem as long as the rules not get touched. 
+> Yes, but it should be no security problem as long as the rules not get touched. 
 
 <a name="FAQ32"></a>
-**(32) Do I need to have the Play store/services installed for the donate version?**
+**(32) Do I need to have the Google Play Store installed for the donate version?**
 
-Fast answer, no!
+> Fast answer, no! There is no hidden license check.
 
 <a name="FAQ33"></a>
 **(33) Why was my issue closed?**
 
-Things like *It doesn't work* or *it crashes* is insufficient. So, please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help.
+> Things like ***It doesn't work* or *it crashes* is insufficient**. So, please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help you.
 
 <a name="FAQ34"></a>
 **(34) What happens if I make AFWall+ device administrator?**
 
-This ensures that other applications cannot uninstall AFWall+ without your knowledge.
+> This ensures that other applications cannot uninstall AFWall+ without your knowledge.
 
 <a name="FAQ35"></a>
 **(35) Why the Kernel need an internet connection all the time?**
 
-The kernel does not communicate directly, it only pass packet information (for the interfaces eg. uid0) from some applications.  
+> The kernel does not communicate directly, it only pass packet information (for the interfaces eg. uid0) from some applications.  
 
 Feature related
 ---------------
@@ -298,21 +309,21 @@ Feature related
 <a name="FAQ36"></a>
 **(36) Does AFWall+ support nftables yet?**
 
-No, AFWall+ does not support [nftables](http://wiki.nftables.org/wiki-nftables/index.php/Main_Page).
+> No, AFWall+ does not support [nftables](http://wiki.nftables.org/wiki-nftables/index.php/Main_Page).
 
 <a name="FAQ37"></a>
 **(37) Can I use XPrivacy, Lightning Wall, or any other Firewalls/Security Apps together with AFWall+?**
 
-* XPrivacy: should work fine, if you not restrict any AFWall+ or System related important features like 'IPC' or internet access. Be careful, if there is any problem you can watch what is blocked under the watch list in XPrivacy and try to remove it. 
+>* XPrivacy: should work fine, if you not restrict any AFWall+ or System related important features like 'IPC' or internet access. Be careful, if there is any problem you can watch what is blocked under the watch list in XPrivacy and try to remove it. 
 * Lightning Wall: also works fine together with AFWall+, because it does not interact with the existent iptables.
 * Avast: please disable this firewall if it's turned on (disabled by default). 
 
-Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball:
+> Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball:
 
 <a name="FAQ38"></a>
 **(38) Will you integrate any HOSTS blocking option?**
 
-No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
+> No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
 A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like [MoaAB](http://forum.xda-developers.com/showthread.php?t=1916098) or and XPosed modul called [UnbelovedHosts] (http://repo.xposed.info/module/de.defim.apk.unbelovedhosts).
 
 More Questions?
@@ -321,11 +332,11 @@ More Questions?
 <a name="FAQ39"></a>
 **(39) Can I ask xyz that was not written down here?**
 
-If you have any question, please leave a message in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
+> If you have any question, please leave a message in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
 
 **Please do not ask questions using GitHub issues!** Because GitHub issues are for bug reports and feature requests.
 
 <a name="FAQ40"></a>
 **(40) Is there a BusyBox solution that does not need root?**
 
-Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows). It doesn't provide all extra binaries but the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly via [Google Play Store](https://play.google.com/store/apps/details?id=burrows.apps.busybox.paid&hl=en).
+> Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows). It doesn't provide all extra binaries but the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly via [Google Play Store](https://play.google.com/store/apps/details?id=burrows.apps.busybox.paid&hl=en). We not recommend to use it!
