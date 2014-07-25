@@ -7,6 +7,7 @@ Index
 
 * [Requirements](#requirements)
 * [Important Information](#Important Information)
+* [Similar solutions](#similar-solutions)
 * [License](#license)
 
 Requirements
@@ -38,8 +39,20 @@ Want to compile AFWall+ yourself?
 * [[All you need to know about compiling AFWall+|HOWTO Compile AFWall]]
 * [[All you need to know about compiling iptables|HOWTO Compiling iptable]]
 
-Debugging?
+Some useful things:
 * [[Phone codes secrets]] contain some useful codes for viewing e. g. MAC address.
+
+Similar solutions
+-----------------
+
+* _Builtin_ linux iptables 
+* [DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free) _deprecated_ 
+* [Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
+* [LBE Privacy Guard](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
+* [LostNet Firewall](https://play.google.com/store/apps/details?id=com.lostnet.fw.pro)
+
+[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:
+* [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
 
 License
 -------
