@@ -1,6 +1,6 @@
 ## Welcome to the AFWall+ Wiki!
 
-AFWall+ is an Open-Source Firewall client focused on making it easy to work with IPtables on your Android OS.
+AFWall+ is an open source firewall user interface client focused on making it easy to work with [iptables](https://en.wikipedia.org/wiki/Iptables) on Android OS.
 
 Index
 -----
@@ -44,4 +44,4 @@ Debugging?
 License
 -------
 
-This program is open source software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+AFWall+ is open source software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
