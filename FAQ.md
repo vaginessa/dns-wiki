@@ -267,7 +267,7 @@ Use your favorite search engine to find one.
 <a name="FAQ30"></a>
 **(30) Does AFWall+ work with SELinux (Fort Knox)?**
 
-> Should be without any bigger problem.
+> Should be without any bigger problem. For more info please look [here](http://www.selinuxproject.org/page/Main_Page) and [here](https://danwalsh.livejournal.com/28545.html).
 
 <a name="FAQ31"></a>
 **(31) Can AFWall+ be detected by other applications?**
@@ -280,34 +280,34 @@ Use your favorite search engine to find one.
 > Fast answer, no! There is no hidden license check.
 
 <a name="FAQ33"></a>
-**(33) Why was my issue closed?**
-
-> Things like ***It doesn't work* or *it crashes* is insufficient**. So, please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help you.
-
-<a name="FAQ34"></a>
-**(34) What happens if I make AFWall+ device administrator?**
+**(33) What happens if I make AFWall+ device administrator?**
 
 > This ensures that other applications cannot uninstall AFWall+ without your knowledge.
 
-<a name="FAQ35"></a>
-**(35) Why the Kernel need an internet connection all the time?**
+<a name="FAQ34"></a>
+**(34) Why the Kernel need an internet connection all the time?**
 
-> The kernel does not communicate directly, it only pass packet information (for the interfaces eg. uid0) from some applications.  
+> The kernel does not communicate directly, it only pass packet information (for the interfaces e.g. uid0) from some applications.  
 
 Feature related
 ---------------
 
+<a name="FAQ35"></a>
+**(35) Why was my issue closed?**
+
+> Things like ***It doesn't work* or *it crashes* is insufficient**. So, please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help you.
+
 <a name="FAQ36"></a>
 **(36) Does AFWall+ support nftables yet?**
 
-> No, AFWall+ does not support [nftables](http://wiki.nftables.org/wiki-nftables/index.php/Main_Page).
+> No, AFWall+ does not support [nftables](https://github.com/ukanth/afwall/issues/293) yet.
 
 <a name="FAQ37"></a>
-**(37) Can I use XPrivacy, Lightning Wall, or any other Firewalls/Security Apps together with AFWall+?**
+**(37) Can I use XPrivacy, Lightning Wall, or any other Firewalls/Security apps together with AFWall+?**
 
 >* XPrivacy: should work fine, if you not restrict any AFWall+ or System related important features like 'IPC' or internet access. Be careful, if there is any problem you can watch what is blocked under the watch list in XPrivacy and try to remove it. 
-* Lightning Wall: also works fine together with AFWall+, because it does not interact with the existent iptables.
-* Avast: please disable this firewall if it's turned on (disabled by default). 
+* Lightning Wall: works fine together with AFWall+, because it does not interact with the existent iptables (leave iptables unchecked).
+* Avast: please disable this firewall if it's turned on (unchecked by default). 
 
 > Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball:
 
@@ -315,7 +315,7 @@ Feature related
 **(38) Will you integrate any HOSTS blocking option?**
 
 > No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
-A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like [MoaAB](http://forum.xda-developers.com/showthread.php?t=1916098) or and XPosed modul called [UnbelovedHosts] (http://repo.xposed.info/module/de.defim.apk.unbelovedhosts).
+A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like [MoaAB](http://forum.xda-developers.com/showthread.php?t=1916098) or and Xposed module called [UnbelovedHosts] (http://repo.xposed.info/module/de.defim.apk.unbelovedhosts).
 
 More Questions?
 ---------------
@@ -328,6 +328,13 @@ More Questions?
 **Please do not ask questions using GitHub issues!** Because GitHub issues are for bug reports and feature requests.
 
 <a name="FAQ40"></a>
-**(40) Is there a BusyBox solution that does not need root?**
+**(40) Is there a BusyBox solution that doesn't need root?**
 
 > Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows). It doesn't provide all extra binaries but the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly via [Google Play Store](https://play.google.com/store/apps/details?id=burrows.apps.busybox.paid&hl=en). We not recommend to use it!
+
+<a name="FAQ41"></a>
+**(41) Was is UID?**
+
+> The Android OS is based on Linux, so basically it's the same UID you have in a Unix-like OS. When installing an app/package, Android by default creates a [UID](http://developer.android.com/reference/android/os/Process.html#myUid%28%29) specifically for that package, so that it can have its private resources/storage space. When no packages are using anymore that UID (which could be shared), the UID is deleted.
+
+> We can override this behavior with [android:sharedUserId](http://developer.android.com/guide/topics/manifest/manifest-element.html#uid), but it has some [drawbacks](http://stackoverflow.com/questions/5529846/androidprocess-and-process-name/5530160#5530160).
