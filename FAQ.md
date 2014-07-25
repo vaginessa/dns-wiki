@@ -334,7 +334,7 @@ More Questions?
 > Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows). It doesn't provide all extra binaries but the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly via [Google Play Store](https://play.google.com/store/apps/details?id=burrows.apps.busybox.paid&hl=en). We not recommend to use it!
 
 <a name="FAQ41"></a>
-**(41) Was is UID?**
+**(41) What is UID?**
 
 > The Android OS is based on Linux, so basically it's the same UID you have in a Unix-like OS. When installing an app/package, Android by default creates a [UID](http://developer.android.com/reference/android/os/Process.html#myUid%28%29) specifically for that package, so that it can have its private resources/storage space. When no packages are using anymore that UID (which could be shared), the UID is deleted.
 
