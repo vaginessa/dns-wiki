@@ -5,6 +5,7 @@ Index
 * [Loading scripts from files](#loading-scripts-from-files)
 * [Adding custom rules](#adding-custom-rules)
 * [Some examples](#some-examples)
+* [Droidwall only examples](#droidwall-only-examples)
 * [How do I view blocked IP address?](#how-do-I-view-blocked-IP-address?)
 * [How do I block subnet?](#how-do-I-block-subnet?)
 * [Block incoming request from IP](#block-incoming-request-from-ip)
@@ -104,7 +105,41 @@ $IPTABLES -P FORWARD ACCEPT</pre>
 $IPTABLES -P INPUT DROP
 $IPTABLES -P FORWARD DROP</pre>
 
-<pre># Temporarily allow network adb access when you need it at port 5555
+If you want AFWall+to report failures on your rules, you must manually "exit" from the script on error. E.g.:
+
+<pre># Try to apply my custom rule, but report any failure (and abort)
+$IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN || exit</pre>
+
+<pre># Try to apply another custom rule, but ignore any errors on it
+$IPTABLES -A "afwall" -p TCP --destination-port 80 -j "afwall-reject"</pre>
+
+<pre># Connect Wifi-Tethered Clients to VPN
+#!/system/bin/sh 
+iptables -t filter -F FORWARD
+iptables -t nat -F POSTROUTING
+iptables -t filter -A FORWARD -j ACCEPT
+iptables -t nat -A POSTROUTING -j MASQUERADE</pre>
+
+<pre>#Tethering + OpenVPN issues on KitKat/4.4 with OpenVPN 2.3.2 and higher
+#iptables --flush
+push "dhcp-option DNS 8.8.8.8"
+push "dhcp-option DNS 8.8.4.4"
+# push "redirect-gateway autolocal def1" (server config)
+iptables -t filter -F FORWARD
+iptables -t nat -F POSTROUTING
+iptables -t filter -I FORWARD -j ACCEPT
+iptables -t nat -I POSTROUTING -j MASQUERADE
+
+#DHCP with OpenVPN set to tun0 and Lan is set to 192.168.43.whatever
+ip rule add from 192.168.43.0/24 lookup 61
+ip route add default dev tun0 scope link table 61
+ip route add 192.168.43.0/24 dev wlan0 scope link table 61
+ip route add broadcast 255.255.255.255 dev wlan0 scope link table 61</pre>
+
+DroidWall only examples
+-----------------------
+
+<pre># Temporarily allow network adb access when you need it at port 5555 (for Android Studio 5005)
 IP6TABLES=/system/bin/ip6tables
 IPTABLES=/system/bin/iptables
 ADB_UID=10004
@@ -112,9 +147,9 @@ SHELL_UID=2000
 SAFE_NETWORK=10.23.69.0/24
 
 # Allow adb (port 5555)
-$IPTABLES -I INPUT-afwall -s $SAFE_NETWORK -p tcp --dport 5555 -j RETURN
-$IPTABLES -I afwall -m owner --uid-owner $ADB_UID -d $SAFE_NETWORK -m conntrack --ctstate ESTABLISHED -p tcp --sport 5555 -j RETURN
-$IPTABLES -I afwall -m owner --uid-owner $SHELL_UID -d $SAFE_NETWORK -m conntrack --ctstate ESTABLISHED -p tcp --sport 5555 -j RETURN
+$IPTABLES -I INPUT-firewall -s $SAFE_NETWORK -p tcp --dport 5555 -j RETURN
+$IPTABLES -I droidwall -m owner --uid-owner $ADB_UID -d $SAFE_NETWORK -m conntrack --ctstate ESTABLISHED -p tcp --sport 5555 -j RETURN
+$IPTABLES -I droidwall -m owner --uid-owner $SHELL_UID -d $SAFE_NETWORK -m conntrack --ctstate ESTABLISHED -p tcp --sport 5555 -j RETURN
 
 # Remove transproxy for adb output
 $IPTABLES -t nat -I OUTPUT -d $SAFE_NETWORK -m conntrack --ctstate ESTABLISHED -p tcp --sport 5555 -j ACCEPT</pre>
@@ -125,21 +160,19 @@ VOIP_UID1=`dumpsys package org.linphone | grep userId | cut -d= -f2 - | cut -d' 
 #VOIP_UID2=`dumpsys package org.lumicall.android | grep userId | cut -d= -f2 - | cut -d' ' -f1 -`
 
 # Allow VOIP client UDP return
-$IPTABLES -I INPUT-afwall -m owner --uid-owner $VOIP_UID1 -m conntrack --ctstate RELATED,ESTABLISHED -p udp -j RETURN
-#$IPTABLES -I INPUT-afwall -m owner --uid-owner $VOIP_UID2 -m conntrack --ctstate RELATED,ESTABLISHED -p udp -j RETURN
+$IPTABLES -I INPUT-firewall -m owner --uid-owner $VOIP_UID1 -m conntrack --ctstate RELATED,ESTABLISHED -p udp -j RETURN
+#$IPTABLES -I INPUT-firewall -m owner --uid-owner $VOIP_UID2 -m conntrack --ctstate RELATED,ESTABLISHED -p udp -j RETURN
 
 # Remove transproxy for VOIP client UDP
-$IPTABLES -I afwall -m owner --uid-owner $VOIP_UID1 -p udp -j RETURN
+$IPTABLES -I droidwall -m owner --uid-owner $VOIP_UID1 -p udp -j RETURN
 #$IPTABLES -t nat -I OUTPUT -m owner --uid-owner $VOIP_UID2 -p udp -j RETURN
 
-$IPTABLES -I afwall -m owner --uid-owner $VOIP_UID2 -p udp -j RETURN
+$IPTABLES -I droidwall -m owner --uid-owner $VOIP_UID2 -p udp -j RETURN
 #$IPTABLES -t nat -I OUTPUT -m owner --uid-owner $VOIP_UID2 -p udp -j RETURN</pre>
 
 <pre># Shutdown script to run when AFWall+ is disabled. It will block everything.
 # Droidwall 
 #chmod 755 /data/data/com.googlecode.droidwall/app_bin/droidwall.sh
-# AFWall+
-chmod 755 /data/data/dev.ukanth.ufirewall/app_bin/afwallshutdown.sh
 
 # Clear Rules
 $IP6TABLES -t nat -F
@@ -178,7 +211,7 @@ $IPTABLES -I INPUT -m conntrack --ctstate RELATED,ESTABLISHED -p udp --sport 53 
 $IPTABLES -I INPUT -m conntrack --ctstate ESTABLISHED -m owner --uid-owner $BROWSER_UID -j ACCEPT
 
 # Allow root DNS output
-$IPTABLES -I afwall-wifi -m owner --uid-owner 0 -p udp --dport 53 -j ACCEPT
+$IPTABLES -I droidwall-wifi -m owner --uid-owner 0 -p udp --dport 53 -j ACCEPT
 
 # Remove transproxy for root DNS
 $IPTABLES -t nat -I OUTPUT -m owner --uid-owner 0 -p udp -m multiport --port 53 -j ACCEPT
@@ -191,8 +224,8 @@ IP6TABLES=/system/bin/ip6tables
 IPTABLES=/system/bin/iptables
 ORBOT_UID=`dumpsys package org.torproject.android | grep userId | cut -d= -f2 - | cut -d' ' -f1 -`
 
-# Fix for https://code.google.com/p/afwall/issues/detail?id=260
-chmod 755 /data/data/com.googlecode.afwall/app_bin/afwall.sh
+# Fix for https://code.google.com/p/droidwall/issues/detail?id=260
+chmod 755 /data/data/com.googlecode.droidwall/app_bin/droidwall.sh
 
 ## Block all IPv6 ##
 $IP6TABLES -t nat -F || true
@@ -204,29 +237,29 @@ $IP6TABLES -A OUTPUT -j DROP
 
 ## INPUT ##
 # Clear previous input firewall rules
-# Re-create INPUT-afwall if it doesn't exist
-$IPTABLES -N INPUT-afwall || true
-$IPTABLES -F INPUT-afwall || true
-$IPTABLES -D INPUT -j INPUT-afwall || true
-$IPTABLES -I INPUT -j INPUT-afwall || true
+# Re-create INPUT-firewall if it doesn't exist
+$IPTABLES -N INPUT-firewall || true
+$IPTABLES -F INPUT-firewall || true
+$IPTABLES -D INPUT -j INPUT-firewall || true
+$IPTABLES -I INPUT -j INPUT-firewall || true
 
-# Create INPUT firewall. Only allow Orbot input and local Orbot ports
-$IPTABLES -A INPUT-afwall -m conntrack --ctstate ESTABLISHED -m tcp -p tcp -m owner --uid-owner $ORBOT_UID -j RETURN || exit
-$IPTABLES -A INPUT-afwall -d 127.0.0.1 -m tcp -p tcp --dport 8118 -j DROP || exit
-$IPTABLES -A INPUT-afwall -i lo -j RETURN # Transproxy output comes from lo
-$IPTABLES -A INPUT-afwall -d 127.0.0.1 -m udp -p udp --dport 5400 -j RETURN || exit
-$IPTABLES -A INPUT-afwall -j LOG --log-prefix "INPUT DROPPED: " --log-uid || exit
-$IPTABLES -A INPUT-afwall -j DROP || exit
+# Create INPUT firewall. Only allow orbot input and local orbot ports
+$IPTABLES -A INPUT-firewall -m conntrack --ctstate ESTABLISHED -m tcp -p tcp -m owner --uid-owner $ORBOT_UID -j RETURN || exit
+$IPTABLES -A INPUT-firewall -d 127.0.0.1 -m tcp -p tcp --dport 8118 -j DROP || exit
+$IPTABLES -A INPUT-firewall -i lo -j RETURN # Transproxy output comes from lo
+$IPTABLES -A INPUT-firewall -d 127.0.0.1 -m udp -p udp --dport 5400 -j RETURN || exit
+$IPTABLES -A INPUT-firewall -j LOG --log-prefix "INPUT DROPPED: " --log-uid || exit
+$IPTABLES -A INPUT-firewall -j DROP || exit
 
 
 ## OUTPUT ##
 # Clear previous output firewall rules
-$IPTABLES -D OUTPUT -j OUTPUT-afwall || true
+$IPTABLES -D OUTPUT -j OUTPUT-firewall || true
 
-## Kill afwall lan rule. It's not currently used, but if it ever gets
+## Kill droidwall lan rule. It's not currently used, but if it ever gets
 # activated it allows all DNS. So kill it as future-proofing
-$IPTABLES -F afwall-wifi-lan || true
-$IPTABLES -D afwall-wifi-lan || true
+$IPTABLES -F droidwall-wifi-lan || true
+$IPTABLES -D droidwall-wifi-lan || true
 
 ## Transproxy+Tor limits ##
 # Note: We deliberately omit --syn because it causes leaks if used
@@ -237,55 +270,54 @@ $IPTABLES -t nat -A OUTPUT -p udp -m owner ! --uid-owner $ORBOT_UID -m udp --dpo
 # Allow root's DNS proxy and kernel to do their transproxy thang
 # FIXME: On newer kernels, this may require 1-9999999 instead of 0 (because
 # the kernel is flagged as UID 0 instead of blank UID)
-$IPTABLES -A afwall -d 127.0.0.1/32 -p udp -m owner --uid-owner 0 -m udp --dport 5400 -j RETURN || exit
+$IPTABLES -A droidwall -d 127.0.0.1/32 -p udp -m owner --uid-owner 0 -m udp --dport 5400 -j RETURN || exit
 
-#$IPTABLES -A afwall -s 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp -m multiport --ports 9040 -j RETURN || exit
-$IPTABLES -A afwall -s 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --sport 9040 -j RETURN || exit
-$IPTABLES -A afwall -s 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --dport 9040 -j RETURN || exit
+#$IPTABLES -A droidwall -s 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp -m multiport --ports 9040 -j RETURN || exit
+$IPTABLES -A droidwall -s 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --sport 9040 -j RETURN || exit
+$IPTABLES -A droidwall -s 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --dport 9040 -j RETURN || exit
 
-#$IPTABLES -A afwall -d 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp -m multiport --ports 9040 -j RETURN || exit
-$IPTABLES -A afwall -d 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --sport 9040 -j RETURN || exit
-$IPTABLES -A afwall -d 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --dport 9040 -j RETURN || exit
+#$IPTABLES -A droidwall -d 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp -m multiport --ports 9040 -j RETURN || exit
+$IPTABLES -A droidwall -d 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --sport 9040 -j RETURN || exit
+$IPTABLES -A droidwall -d 127.0.0.1 -p tcp -m owner ! --uid-owner 0-9999999 -m tcp --dport 9040 -j RETURN || exit
 
-#$IPTABLES -A afwall -s 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp -m multiport --ports 5400 -j RETURN || exit
-$IPTABLES -A afwall -s 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --sport 5400 -j RETURN || exit
-$IPTABLES -A afwall -s 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --dport 5400 -j RETURN || exit
+#$IPTABLES -A droidwall -s 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp -m multiport --ports 5400 -j RETURN || exit
+$IPTABLES -A droidwall -s 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --sport 5400 -j RETURN || exit
+$IPTABLES -A droidwall -s 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --dport 5400 -j RETURN || exit
 
-#$IPTABLES -A afwall -d 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp -m multiport --ports 5400 -j RETURN || exit
-$IPTABLES -A afwall -d 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --sport 5400 -j RETURN || exit
-$IPTABLES -A afwall -d 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --dport 5400 -j RETURN || exit
+#$IPTABLES -A droidwall -d 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp -m multiport --ports 5400 -j RETURN || exit
+$IPTABLES -A droidwall -d 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --sport 5400 -j RETURN || exit
+$IPTABLES -A droidwall -d 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m udp --dport 5400 -j RETURN || exit
 
-
-# Allow all from Orbot
-$IPTABLES -A afwall -m owner --uid-owner $ORBOT_UID -j RETURN || exit
+# Allow all from orbot
+$IPTABLES -A droidwall -m owner --uid-owner $ORBOT_UID -j RETURN || exit
 
 # We also want to block remaining UDP. All app UDP should be already transproxied
-$IPTABLES -A afwall -p udp ! --dport 5400 -j LOG --log-prefix "Denied UDP: " --log-uid || exit
-$IPTABLES -A afwall -p udp ! --dport 5400 -j DROP || exit
+$IPTABLES -A droidwall -p udp ! --dport 5400 -j LOG --log-prefix "Denied UDP: " --log-uid || exit
+$IPTABLES -A droidwall -p udp ! --dport 5400 -j DROP || exit
 
 ## Transproxy state leak fixes for
-$IPTABLES -A afwall -m conntrack --ctstate INVALID -j LOG --log-prefix "Transproxy ctstate leak blocked: " --log-uid
-$IPTABLES -A afwall -m conntrack --ctstate INVALID -j DROP
-$IPTABLES -A afwall -m state --state INVALID -j LOG --log-prefix "Transproxy state leak blocked: " --log-uid
-$IPTABLES -A afwall -m state --state INVALID -j DROP
+# https://lists.torproject.org/pipermail/tor-talk/2014-March/032503.html
+$IPTABLES -A droidwall -m conntrack --ctstate INVALID -j LOG --log-prefix "Transproxy ctstate leak blocked: " --log-uid
+$IPTABLES -A droidwall -m conntrack --ctstate INVALID -j DROP
+$IPTABLES -A droidwall -m state --state INVALID -j LOG --log-prefix "Transproxy state leak blocked: " --log-uid
+$IPTABLES -A droidwall -m state --state INVALID -j DROP
 
 # XXX: These are probably overkill and uncessary.
 # They remain for defense in depth/debugging.
-$IPTABLES -A afwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,FIN ACK,FIN -j LOG --log-prefix "Transproxy leak blocked: " --log-uid || exit
-$IPTABLES -A afwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,RST ACK,RST -j LOG --log-prefix "Transproxy leak blocked: " --log-uid || exit
-$IPTABLES -A afwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,FIN ACK,FIN -j DROP || exit
-$IPTABLES -A afwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,RST ACK,RST -j DROP || exit
-
+$IPTABLES -A droidwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,FIN ACK,FIN -j LOG --log-prefix "Transproxy leak blocked: " --log-uid || exit
+$IPTABLES -A droidwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,RST ACK,RST -j LOG --log-prefix "Transproxy leak blocked: " --log-uid || exit
+$IPTABLES -A droidwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,FIN ACK,FIN -j DROP || exit
+$IPTABLES -A droidwall ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,RST ACK,RST -j DROP || exit
 
 ## REJECT FIXUPS
 # Rewrite the reject rule to drop. ICMP is just logspam and ends up going to
 # the wrong ports anyways
-$IPTABLES -F afwall-reject
-$IPTABLES -A afwall-reject -j LOG --log-prefix "[afwall] " --log-uid || exit
-$IPTABLES -A afwall-reject -j DROP || exit</pre>
+$IPTABLES -F droidwall-reject
+$IPTABLES -A droidwall-reject -j LOG --log-prefix "[DROIDWALL] " --log-uid || exit
+$IPTABLES -A droidwall-reject -j DROP || exit</pre>
 
 <pre># Try to apply my custom rule, but report any failure (and abort)
-$IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN || exit</pre>
+$IPTABLES -A -firewall --destination "192.168.0.1" -j RETURN || exit</pre>
 
 <pre># CM 11 M5 boot fix (userinit.sh)
 # It disables "Google Captive Portal Detection", which involves connection attempts to Google servers upon Wifi assocation (these requests are made by the Android Settings UID, which should normally be blocked from the network, unless you are first registering for Google Play).
@@ -319,18 +351,12 @@ Test above settings please do follow:
 
 To stop the DNS resolve of, and HTTP request to, clients3.google.com on every connection to any Wifi Access Point:
 > adb shell su -c "settings put global captive_portal_server 127.0.0.1"
+
 > adb shell su -c "settings put global captive_portal_detection_enabled 0"
 
 To stop the resolve/request for 2.android.pool.ntp.org on every boot (even with network time disabled!):
 > su -c "settings put global ntp_server 127.0.0.1"
 
-If you want AFWall+to report failures on your rules, you must manually "exit" from the script on error. E.g.:
-
-<pre># Try to apply my custom rule, but report any failure (and abort)
-$IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN || exit</pre>
-
-<pre># Try to apply another custom rule, but ignore any errors on it
-$IPTABLES -A "afwall" -p TCP --destination-port 80 -j "afwall-reject"</pre>
 
 How do I view blocked IP address?
 ---------------------------------
