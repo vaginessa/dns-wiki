@@ -287,7 +287,8 @@ Use your favorite search engine to find one.
 <a name="FAQ34"></a>
 **(34) Why the Kernel need an internet connection all the time?**
 
-> The kernel does not communicate directly, it only pass packet information (for the interfaces e.g. uid0) from some applications.  
+> The kernel does not communicate directly, it only pass packet information (for the interfaces e.g. uid0) from some applications.
+One problem with using policy routing based on fwmark with locally generated traffic (as is the case with Android) is that the mark must be set in the user process. It is because the routing decision is made before the fwmark can be set in any iptables rule, at least in vanilla kernels.
 
 Feature related
 ---------------
