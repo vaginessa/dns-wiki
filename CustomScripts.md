@@ -16,23 +16,23 @@ Index
 Introduction
 ------------
 
-Advanced AFWall+ users may wish to define a custom script to be executed by Android Firewall +.
+Advanced AFWall+ users may wish to define a custom script to be executed by Android Firewall+.
 
 Once a custom script is defined, it will be automatically executed every time that the AFWall+ rules are applied (inclusive on startup/shutdown if the firewall is enabled).
 
-To define a custom script, just choose "Set custom script" from the menu (right corner).
+To define a custom script, just choose <code>Set custom script</code> from the menu (right corner).
 
 **WARNING**: This functionality should be used only by **experienced users that know what they are doing!** These examples may block your Android device (or block the whole internet) if not executed with proper care. Be careful when applying these settings on remote device servers over ssh session.!
 
 Loading scripts from files
 --------------------------
 
-* Please first go into 'Settings' -> 'Developer Options' and enable 'USB Debugging' and change Root Access to 'Apps and ADB'. (Necessary if you push/test your files via adb).
+* Please first go into <code>Settings</code> -> <code>Developer Options</code> and enable <code>USB Debugging</code> and change Root Access to <code>Apps and ADB</code>. (Necessary if you push/test your files via adb).
 * Whenever you finish using adb, always remember to disable USB Debugging and restore Root Access to Apps only. While Android 4.2+ ROMs now prompt you to authorize an RSA key fingerprint before allowing a debugging connection (thus mitigating adb exploit tools that bypass screen lock and can install root apps), you still risk additional vulnerability surface by leaving debugging enabled.
 
-Big scripts can be quite hard to edit in the "Set custom script" screen, so it may be a good idea to put your script in a file, then load it from there.
+Big scripts can be quite hard to edit in the <code>Set custom script<code> screen, so it may be a good idea to put your script in a file, then load it from there.
 
-To do that, just use the "." (dot) shell command in the "Set custom script" dialog to load your script from an external file. e.g.:
+To do that, just use the "." (dot) shell command in the <code>Set custom script</code> dialog to load your script from an external file. e.g.:
 
 <pre>. /path/to/script.sh  (example . /data/local/myawesomescript.sh)</pre>
 
@@ -40,7 +40,7 @@ To do that, just use the "." (dot) shell command in the "Set custom script" dial
 This will cause your script file to be loaded and executed every time the rules are applied. Make sure that this folder have the right permissions, if not AFWall+ can't read any script. 
 You can even have multiple scripts executed in sequence...
 
-<pre>. /path/to/load-modules.sh
+<pre>. /path/to/load-modules.sh (e.g. /system/local/script.sh)
 
 #. /path/to/myrules.sh
 
