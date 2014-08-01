@@ -8,6 +8,7 @@ Index
 * [Sending bug report](#sending-bug-report)
 * [Template](#template)
 * [After sending the report](#after-sending-the-report)
+* [Custom ROMs](#custom-roms)
 * [Useful Links](#useful-links)
 
 You should NOT
@@ -110,8 +111,12 @@ More details always means more and better help.
 After sending the report
 ------------------------
 
-* Be open to work with the developer to help them resolve the problem. [AFWall+](https://github.com/ukanth/afwall) is free!!
+* Be open to work with the developers to help them resolve your problem. Remember: [AFWall+](https://github.com/ukanth/afwall) is free!!
 * If you want to donating something to the developer there is also an [AFWall+ (Donate)](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate#?t=W251bGwsMSwxLDIxMiwiZGV2LnVrYW50aC51ZmlyZXdhbGwuZG9uYXRlIl0.) version on Google Play Store. This have exact the same functionality except support to import Droidwall rules. 
+
+Custom ROMs
+-----------
+Some custom ROMs come with their own shells and utilities. If you are using a custom ROM, check its documentation to find out what's available.
 
 Useful Links
 ------------
@@ -122,3 +127,4 @@ Useful Links
 * [Adding a Bug Reporter / Suggestion Box To Your Android App | dreamincode](http://www.dreamincode.net/forums/topic/244932-adding-a-bug-reporter-suggestion-box-to-your-android-app/)
 * [androidlogcatviewer | Googlecode](https://code.google.com/p/androidlogcatviewer/downloads/list)
 * [All about Log | Android Developers](https://developer.android.com/reference/android/util/Log.html)
+* [Android Shell Command Reference](https://github.com/jackpal/Android-Terminal-Emulator/wiki/Android-Shell-Command-Reference)
