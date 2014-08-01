@@ -34,13 +34,13 @@ Big scripts can be quite hard to edit in the <code>Set custom script<code> scree
 
 To do that, just use the "." (dot) shell command in the <code>Set custom script</code> dialog to load your script from an external file. e.g.:
 
-<pre>. /path/to/script.sh  (example . /data/local/myawesomescript.sh)</pre>
+<pre>. /path/to/script.sh  (e.g. . /data/local/myawesomescript.sh)</pre>
 
 
 This will cause your script file to be loaded and executed every time the rules are applied. Make sure that this folder have the right permissions, if not AFWall+ can't read any script. 
 You can even have multiple scripts executed in sequence...
 
-<pre>. /path/to/load-modules.sh (e.g. /system/local/script.sh)
+<pre>. /path/to/load-modules.sh (e.g. /data/local/script.sh)
 
 #. /path/to/myrules.sh
 
