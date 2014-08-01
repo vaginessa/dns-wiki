@@ -101,8 +101,10 @@ Please make sure AFWall+ running! (Green AFWall+ shield!)
 >* [your text]
 >* **What version of the product are you using? On what operating system?**
 >* [your text]
->* **Attach your rules.log**
+>* **Attach your rules.log** 
 >* [your rules]
+>* **iptables -L -v** 
+>* [List current rules]
 >* **Please provide any additional information below (e.g. logcat).**
 >* [your text/file or link]
 
