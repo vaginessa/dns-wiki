@@ -45,7 +45,8 @@ Some useful things:
 Similar solutions
 -----------------
 
-* _Builtin_ linux iptables 
+* _Builtin_ linux iptables
+* [Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
 * [DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free) _deprecated_ 
 * [Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
 * [LBE Privacy Guard](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
