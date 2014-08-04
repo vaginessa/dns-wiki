@@ -5,10 +5,55 @@ AFWall+ is an open source firewall user interface client focused on making it ea
 Index
 -----
 
+* [Contact](#contact)
 * [Requirements](#requirements)
 * [Important Information](#Important Information)
 * [Similar solutions](#similar-solutions)
 * [License](#license)
+
+Contact
+-------
+
+| Developer| Misc (Wiki/Patches/Icons) | Translator | Web/eMail |
+| :---: | :--: | :---: | :---: |
+| Umakanthan Chandan | | | cumakt [at] gmail.com |
+| Kevin Cernekee |  | | cernekee [at] gmail.com |
+| | CHEF-KOCH |  | Nvinside [at] gmail.com |
+| | Hush66 | | hush66.devianart.com |
+| | | tianchaoren | Crowdin |
+| | | wuwufei | Crowdin |
+| | | yinfugang | Crowdin |
+| | | shiuan | Crowdin |
+| | | Syk3s | Crowdin |
+| | | ondra | Crowdin |
+| | | DutchWaG | Crowdin |
+| | | GermainZ | XDA |
+| | | Looki75 | XDA |
+| | | La_Globule | Crowdin |
+| | | CHEF-KOCH | XDA/Crowdin |
+| | | user_99 | XDA |
+| | | Gronkdalonka | XDA |
+| | | mpqo | Crowdin |
+| | | l3s | Crowdin |
+| | | mirulumam | Crowdin |
+| | | giammatheo | Crowdin |
+| | | benzo | Crowdin |
+| | | nnnn | Crowdin |
+| | | tst | Crowdin |
+| | | eskimos72 | Crowdin |
+| | | Piotr Kowalski| Crowdin |
+| | | lemor2008| Crowdin |
+| | | mysterys3by-facebook | Crowdin |
+| | | andycris | Crowdin |
+| | | Kirhe | XDA |
+| | | YaroslavKa78 | Crowdin |
+| | | bungabunga | Crowdin |
+| | | spezzino | Crowdin |
+| | | CreepyLinguist | Crowdin |
+| | | BahadirDemirel | Crowdin |
+| | | myasa | Crowdin |
+| | | ozgurahmet95 | Crowdin |
+| | | andriykopanytsia | Crowdin |
 
 Requirements
 -------------
