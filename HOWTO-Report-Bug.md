@@ -77,7 +77,7 @@ but logcats captured this way are not always sufficient. The best way to capture
 * Power on your device
 * Reproduce the problem
 
-Upload the captured logcat somewhere, for example using Google Drive, Dropbox, Pastebin and link to it from the issue you (should) have created. Don't forget to mention the *uid* of the application to look into when relevant.
+Upload the captured logcat somewhere, for example using Google Drive, Dropbox, Pastebin and link to it from the issue you (should) have created. Don't forget to mention the *uid* of the application to look into when it's relevant.
 
 Sending bug report
 ------------------
@@ -107,10 +107,8 @@ Please make sure AFWall+ is running! (Green AFWall+ shield activated!)
 >* [List current rules]
 >* **ip route show table (number)** 
 >* [List current local routing table]
-
 >* **adb bugreport** 
 >* [Bugreport from your ROM]
-
 >* **Please provide any additional information below (e.g. logcat).**
 >* [your text/file or link]
 
@@ -120,7 +118,7 @@ After sending the report
 ------------------------
 
 * Be open to work with the developers to help them resolve your problem. Remember: [AFWall+](https://github.com/ukanth/afwall) is free!!
-* If you want to donating something to the developer there is also an [AFWall+ (Donate)](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate#?t=W251bGwsMSwxLDIxMiwiZGV2LnVrYW50aC51ZmlyZXdhbGwuZG9uYXRlIl0.) version on Google Play Store. This have exact the same functionality except support to import Droidwall rules. 
+* If you want to donating something to the developer there is also an [AFWall+ (Donate)](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate) version on Google Play Store. This have exact the same functionality except support to import Droidwall rules. 
 
 Custom ROMs
 -----------
