@@ -103,16 +103,18 @@ Please make sure AFWall+ is running! (Green AFWall+ shield activated!)
 >* [your text]
 >* **Attach your rules.log** 
 >* [your rules]
->* **iptables -L -v** 
+>* **iptables -vnL** 
+>* [List current rules]
+>* **iptables -vnL -t nat** 
 >* [List current rules]
 >* **ip route show table (number)** 
->* [List current local routing table]
+>* [ ]
 >* **adb bugreport** 
 >* [Bugreport from your ROM]
 >* **Please provide any additional information below (e.g. logcat).**
 >* [your text/file or link]
 
-More details always means more and better help.
+More details always means more and better help! 
 
 After sending the report
 ------------------------
