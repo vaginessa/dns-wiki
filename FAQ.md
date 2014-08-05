@@ -309,7 +309,8 @@ Feature related
 >* XPrivacy: should work fine, if you not restrict any AFWall+ or System related important features like 'IPC' or internet access. Be careful, if there is any problem you can watch what is blocked under the watch list in XPrivacy and try to remove it. 
 * Lightning Wall: works fine together with AFWall+, because it does not interact with the existent iptables (leave iptables unchecked).
 * Avast: please disable this firewall if it's turned on (unchecked by default).
-* Android Tuner: Same as Avast, but the Firewall is disabled by default. 
+* Android Tuner: Same as Avast, but the Firewall is disabled by default.
+* orWall: [orWall](https://orwall.org/) is not compatible with AFWall+. Please disable it and enable the _Transparent Proxy_ option in Orbot. 
 
 > Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball:
 
