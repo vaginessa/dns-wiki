@@ -2,6 +2,7 @@ Index
 -----
 
 * [Description](#description)
+* [Explanation](#explanation)
 * [Important](#important)
 * [Basics](#basics)
 * [Useful links](#useful-links)
@@ -21,6 +22,16 @@ Description
 Considered a faster and more secure alternative to [ipchains](http://en.wikipedia.org/wiki/Ipchains), iptables has become the default firewall package installed under Linux and Android OS.
 
 [Nftables](http://www.netfilter.org/projects/nftables/index.html) will replace it some day, but is not merged with AFWall+ at the moment.
+
+Netfilter is generally a part of the [Linux kernel](https://kernel.org/). The IP packet filter rules in the Linux kernel are being configured by the user space command line tools of netfilter: iptables, ip6tables, ebtables, arptables and ipset.
+
+Explanation
+-----------
+Please have a look at this most excellent scheme: Netfilter components & Netfilter Packet Flow by Jan Engelhardt to understand how a packet traverses netfilter. The green stuff is the domain of iptables and ip6tables, while the blue stuff is being handled by ebtables.
+
+![Netfilter components](http://upload.wikimedia.org/wikipedia/commons/d/dd/Netfilter-components.svg)
+
+![Packet flow in Netfilter and General Networking](http://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg)
 
 Important
 ---------
