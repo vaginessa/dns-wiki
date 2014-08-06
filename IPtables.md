@@ -113,3 +113,6 @@ Useful links
 * [iptables tutorial by Oskar Andreasson | Frozentux.net](http://www.frozentux.net/iptables-tutorial/iptables-tutorial.html)
 * [Quick HOWTO : Ch14 : Linux Firewalls Using iptables | Linuxhomenetworking.com](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)
 * [IptablesHowTo | Help.Ubuntu.com](https://help.ubuntu.com/community/IptablesHowTo)
+* [Connection Tracking | Rigacci.org]  (http://www.rigacci.org/wiki/lib/exe/fetch.php/doc/appunti/linux/sa/iptables/conntrack.html)
+* [How to Setup a Linux Firewall with PPPoE/NAT/iptables | akadia.com] (http://www.akadia.com/services/pppoe_iptables.html)
+* [German introduction: Private Feuerwände | Linux-Community.de) (http://www.linux-community.de/Internal/Artikel/Print-Artikel/LinuxUser/2002/05/Paketfilter-Firewall)
