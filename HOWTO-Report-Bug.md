@@ -129,8 +129,9 @@ Some custom ROMs come with their own shells and utilities. If you are using a cu
 Useful Links
 ------------
 
+* [Life of a Bug | Android Developers](https://source.android.com/source/life-of-a-bug.html)
 * [ADB - Android Wiki](http://android-dls.com/wiki/index.php?title=ADB)
-* [Logcat (read this first!)|  Android Developers] (http://developer.android.com/tools/help/logcat.html)
+* [Logcat (read this first!) |  Android Developers] (http://developer.android.com/tools/help/logcat.html)
 * [Working with ADB | Android Developer] (http://developer.android.com/tools/help/adb.html)
 * [Report Bugs | Source Android](https://source.android.com/source/report-bugs.html)
 * [Adding a Bug Reporter / Suggestion Box To Your Android App | dreamincode](http://www.dreamincode.net/forums/topic/244932-adding-a-bug-reporter-suggestion-box-to-your-android-app/)
