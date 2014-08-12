@@ -125,7 +125,7 @@ Enable DNS from application list will unlock it.
 <a name="FAQ15"></a>
 **(15) How can I show actually used iptables rules?**
 
-> Via  _iptables -L_ command in apps like [Android Terminal Emulator](https://play.google.com/store/apps/developer?id=Jack+Palevich). Most ROM's already use this. 
+> Via  _iptables -L_ command in apps like [Android Terminal Emulator](https://play.google.com/store/apps/developer?id=Jack+Palevich). Most ROM's contain this. 
 
 Or 
 
@@ -341,3 +341,26 @@ More Questions?
 > The Android OS is based on Linux, so basically it's the same UID you have in a Unix-like OS. When installing an app/package, Android by default creates a [UID](http://developer.android.com/reference/android/os/Process.html#myUid%28%29) specifically for that package, so that it can have its private resources/storage space. When no packages are using anymore that UID (which could be shared), the UID is deleted.
 
 > We can override this behavior with [android:sharedUserId](http://developer.android.com/guide/topics/manifest/manifest-element.html#uid), but it has some [drawbacks](http://stackoverflow.com/questions/5529846/androidprocess-and-process-name/5530160#5530160).
+
+<a name="FAQ42"></a>
+**(42) How to change the DNS Settings on Android?**
+
+> There are some tools, but why we need tools if we can use it by simply edit some .config files? Android DNS file contains in following directory (please make a **backup first!**):
+
+<code>system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf</code>
+
+Set your DNS in the following two lines e.g.:
+> setprop dhcp.eth0.dns1 8.8.8.8
+
+> setprop dhcp.eth0.dns2 8.8.8.4
+
+> If there is no setprop you can write the values before the _unset_dns_props()_ begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
+
+> The _getprop_ or _setprop_ method does not work on higher Android versions (4.4+) anymore. Those values, when changed, get simply ignored by the _netd_ daemon. It's necessary to communicate directly to the daemon via the _/dev/socket/netd socket_. In Android it's now present a tool called _ndc_ which does exactly this job.
+
+> If you still like external apps, you should take a look at [DNS Forwarder](https://play.google.com/store/apps/details?id=com.evanhe.dnsforward) and [Override DNS](https://play.google.com/store/apps/details?id=net.mx17.overridedns) which does more or less the same. That may solve some problems on Android 4.4/L but there is no guarantee, some ROM's may handle it different. 
+
+<a name="FAQ43"></a>
+**(43) Will there a "Connection confirm dialog" feature implemented soon?**
+
+> It's already been asked [#269](https://github.com/ukanth/afwall/issues/269), there is currently no Android Firewall which include such feature yet.
