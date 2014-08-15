@@ -8,24 +8,23 @@ Index
 Introduction
 -----------
 
-This guide has nothing todo with AFWall+ itself but it can help to protect against known problems and attacks (e.g. DOS) and are tested with Linux kernels 2.3 - 2.6 (and _higher?!_), so that's the reason why it's written down here (security everywhere! :+1:). These _tweaks_ are based on the articles that you can find on the bottom under the [useful links](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
+This guide has nothing todo with AFWall+ itself but it can help to protect against known problems and attacks (e.g. DOS/UDP flood) and are tested with Linux kernels 2.3 - 2.6 (and _higher?!_), so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the [useful links](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
 
 Please make a **backup first**, and of course there is **no support** or **guarantee that it works on your system**. If you unsure, simply don't use it, ask your ROM/Kernel developer if it's useful to integrate/use it.
 
-You can use it directly via a .sh (busybox sysctl -e -w [_your_param_] script or edit the _/proc/sys/net/ipv4/[param_script]_ directly.
+You can use it directly via ADB/Terminal Emulator (busybox sysctl -e -w [_your_param_] script or edit the _/proc/sys/net/ipv4/[param_script]_ directly and native under _system/etc/sysctl.conf_ (same like e.g. FreeBSD) with e.g. EsExplorer.
 
 Requirements
 ------------
-* Time to read the articles first
-* Time to backup your existent configuration
-* ADB/Terminal Emulator Busybox & a **rooted device**
+* Time to read the articles first & to backup (show current settings via _#sysctl -a_) your existent configuration
+* ADB/Terminal Emulator/Busybox & a **rooted device**
 * Kernel/ROM that support these kind of tweaks (if not it doesn't work or is useless)
 * init.d support if you like to store these tweaks into a .sh script and apply them at boot (once)
 
-| Category| Value| Description |
+| Category| Value to be set | Description |
 | :--- | :--: | :---: |
 | Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_syncookies=1 | Enable TCP SYN Cookie Protection |
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_synack_retries |  |
+| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_synack_retries=2 | Tells the kernel how many times to try to retransmit the initial SYN packet for an active TCP connection attempt |
 | Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_syn_retries=2 |  |
 | Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_max_syn_backlog=1280 | TCP syn half-opened |
 | Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_max_tw_buckets=16384 | Bump up tw_buckets in case we get DoS'd|
@@ -72,15 +71,23 @@ Requirements
 | Misc | net.ipv4.tcp_timestamps=0 |  |
 | Misc | net.ipv4.tcp_sack=1 |  |
 | Misc | net.ipv4.tcp_fack=1 |  |
-| Misc | net.ipv4.tcp_window_scaling=1 |  |
+| Misc | net.ipv4.tcp_window_scaling=1 | Turn on the tcp_window_scaling |
+
+Then to have the settings take effect immediately, run:
+<code>#sysctl -p</code>
+
+I should point out that there are many other options/settings that are available in _/proc/sys/net_, some of  which are not there unless you compiled them into your kernel (all the ones I mentioned above “should” be in most distro’s stock kernel). I only went over, and set, the ones that have a direct impact on broadband performance–and left out some other settings that can improve security, but at the _cost of speed_.
 
 Useful links
 ------------
 
+* [/proc file system | Wikipedia.org](http://en.wikipedia.org/wiki/Procfs)
+* [Ieft.org](http://www.ietf.org/)
 * [Linux tweaking | SpeedGuide.net](http://www.speedguide.net/articles/linux-tweaking-121)
 * [Linux TCP Tune | PSC.edu ](http://www.psc.edu/networking/projects/tcptune/#Linux)
 * [Linux TCP Tuning | Cyberciti.biz](http://www.cyberciti.biz/faq/linux-tcp-tuning)
 * [IP sysctl documentation (.txt file) | Cyberciti.biz](http://www.cyberciti.biz/files/linux-kernel/Documentation/networking/ip-sysctl.txt)
 * [Linux Kernel etcsysctl conf security hardening | Cyberciti.biz](http://www.cyberciti.biz/faq/linux-kernel-etcsysctl-conf-security-hardening)
 * [Hardening TCP/IP Stack Syn Attacks | Symantec.com](http://www.symantec.com/connect/articles/hardening-tcpip-stack-syn-attacks)
-* [ Whitepaper - Android Security Hardening (33799.pdf file) | Sans.org](http://www.sans.org/reading-room/whitepapers/sysadmin/securely-deploying-android-devices-33799)
+* [Whitepaper - Android Security Hardening (33799.pdf file) | Sans.org](http://www.sans.org/reading-room/whitepapers/sysadmin/securely-deploying-android-devices-33799)
+* [Ipsysctl-tutorial | Frozentux.net](https://www.frozentux.net/documents/ipsysctl-tutorial/)
