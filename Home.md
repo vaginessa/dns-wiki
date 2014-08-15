@@ -7,7 +7,7 @@ Index
 
 * [Contact](#contact)
 * [Requirements](#requirements)
-* [Important Information](#Important Information)
+* [Important Information](#important-information)
 * [Similar solutions](#similar-solutions)
 * [License](#license)
 
@@ -15,7 +15,7 @@ Contact
 -------
 
 | Developer| Misc (Wiki/Patches/Icons) | Translator | Web/eMail |
-| :---: | :--: | :---: | :---: |
+| :---: | :--: | :---: | ---: |
 | Umakanthan Chandan | | | cumakt [at] gmail.com |
 | Kevin Cernekee |  | | cernekee [at] gmail.com |
 | | CHEF-KOCH |  | Nvinside [at] gmail.com |
@@ -87,7 +87,7 @@ Want to compile AFWall+ yourself?
 Some useful things:
 * [[Phone codes secrets]] contain some useful codes for viewing e. g. MAC address.
 
-TCP security in Linux
+TCP security under Linux:
 * [[TCP security]] may help to protect you against some known attacks. 
 
 Similar solutions
