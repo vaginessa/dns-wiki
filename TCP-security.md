@@ -12,13 +12,13 @@ This guide has nothing todo with AFWall+ itself but it can help to protect again
 
 Please make a **backup first**, and of course there is **no support** or **guarantee that it works on your system**. If you unsure, simply don't use it, ask your ROM/Kernel developer if it's useful to integrate/use it.
 
-You can use it directly via a .sh (busybox sysctl -e -w [_your_param_] script or edit the _/proc/sys/net/ipv4/tcp_congestion_control_ directly.
+You can use it directly via a .sh (busybox sysctl -e -w [_your_param_] script or edit the _/proc/sys/net/ipv4/[param_script]_ directly.
 
 Requirements
 ------------
 * Time to read the articles first
 * Time to backup your existent configuration
-* Busybox
+* Busybox & a rooted device
 * Kernel/ROM that support these kind of tweaks (if not it doesn't work or is useless)
 * init.d support if you like to store these tweaks into a .sh script and apply them at boot (once)
 
@@ -48,6 +48,28 @@ Requirements
 | Don't accept redirects | net.ipv4.conf.default.accept_redirects=0 |  |
 | Don't accept redirects | net.ipv4.conf.all.secure_redirects=0 |  |
 | Don't accept redirects | net.ipv4.conf.default.secure_redirects=0 |  |
+| Re-use sockets in time-wait state | net.ipv4.tcp_tw_recycle=1 |  |
+| Re-use sockets in time-wait state | net.ipv4.tcp_tw_reuse=1 |  |
+| Queue size modifications | net.core.wmem_max=1048576 |  |
+| Queue size modifications | net.core.rmem_max=1048576 |  |
+| Queue size modifications | net.core.rmem_default=262144 | Be careful, better leave device default! |
+| Queue size modifications | net.core.wmem_default=262144 | Be careful, better leave device default! |
+| Queue size modifications | net.core.optmem_max=20480 |  |
+| Queue size modifications | net.unix.max_dgram_qlen=50 |  |
+| Misc | net.ipv4.tcp_congestion_control=cubic | Change network congestion algorithm to CUBIC |
+| Misc | net.ipv4.tcp_moderate_rcvbuf=1 |  |
+| Misc | net.ipv4.route.flush=1 |  |
+| Misc | net.ipv4.udp_rmem_min=6144 |  |
+| Misc | net.ipv4.udp_wmem_min=6144 |  |
+| Misc | net.ipv4.tcp_rfc1337=1 |  |
+| Misc | net.ipv4.ip_no_pmtu_disc=0 |  |
+| Misc | net.ipv4.tcp_ecn=0 |  |
+| Misc | net.ipv4.tcp_rmem='6144 87380 1048576' |  |
+| Misc | net.ipv4.tcp_wmem='6144 87380 1048576' |  |
+| Misc | net.ipv4.tcp_timestamps=0 |  |
+| Misc | net.ipv4.tcp_sack=1 |  |
+| Misc | net.ipv4.tcp_fack=1 |  |
+| Misc | net.ipv4.tcp_window_scaling=1 |  |
 
 Useful links
 ------------
