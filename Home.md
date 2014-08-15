@@ -64,7 +64,7 @@ AFWall+ need this to run at his best:
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
 - The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leak fix)!
-- The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (adb pull /proc/config.gz - Once you unzip it, you can search for e.g. "NETFILTER").
+- The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (<code>adb pull /proc/config.gz</code> - Once you unzip it, you can search for e.g. _NETFILTER_).
 
 Important Information
 ---------------------
@@ -87,10 +87,13 @@ Want to compile AFWall+ yourself?
 Some useful things:
 * [[Phone codes secrets]] contain some useful codes for viewing e. g. MAC address.
 
+TCP security in Linux
+* [[TCP security]] may help to protect you against some known attacks. 
+
 Similar solutions
 -----------------
 
-* _Builtin_ linux iptables
+* _Builtin_ linux iptables (no GUI)
 * [Android Firewall](https://github.com/skullone/android_firewall)
 * [Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
 * [DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free) _deprecated_ 
