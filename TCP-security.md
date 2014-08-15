@@ -8,7 +8,7 @@ Index
 Introduction
 -----------
 
-This guide has nothing todo with AFWall+ itself but it can help to protect against known problems and attacks (e.g. DOS/UDP flood) and are tested with Linux kernels 2.3 - 2.6 (and _higher?!_), so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the [useful links](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
+This guide has nothing todo with AFWall+ itself but it can help to protect against known problems and attacks (e.g. DOS/UDP flood) and are tested with Linux kernels 2.2 - 2.6 (and _higher?!_), so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the [useful links](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
 
 Please make a **backup first**, and of course there is **no support** or **guarantee that it works on your system**. If you unsure, simply don't use it, ask your ROM/Kernel developer if it's useful to integrate/use it.
 
@@ -28,7 +28,7 @@ Requirements
 | Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_syn_retries=2 |  |
 | Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_max_syn_backlog=1280 | TCP syn half-opened |
 | Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_max_tw_buckets=16384 | Bump up tw_buckets in case we get DoS'd|
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.icmp_echo_ignore_all=1 | Ignores Ping requests|
+| Hardening the TCP/IP stack to SYN attacks | net.ipv4.icmp_echo_ignore_all=1 | Ignore Directed pings |
 | Hardening the TCP/IP stack to SYN attacks | net.ipv4.icmp_echo_ignore_broadcasts=1 | Don't reply to broadcasts (prevents joining a smurf attack) |
 | Hardening the TCP/IP stack to SYN attacks | net.ipv4.icmp_ignore_bogus_error_responses=1 | Enable bad error message protection (should be enabled by default)|
 | Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_no_metrics_save=1 | Don't cache connection metrics from previous connection|
@@ -39,17 +39,19 @@ Requirements
 | Don't pass traffic between networks or act as a router | net.ipv4.ip_forward=0 | Disable IP Packet forwarding (default disabled)|
 | Don't pass traffic between networks or act as a router | net.ipv4.conf.all.send_redirects=0| No ICMP redirects |
 | Don't pass traffic between networks or act as a router | net.ipv4.conf.default.send_redirects=0 |  |
-| Enable spoofing protection (turn on reverse packet filtering) | net.ipv4.conf.all.rp_filter=1 |  |
-| Enable spoofing protection (turn on reverse packet filtering) | net.ipv4.conf.default.rp_filter=1 |  |
-| Enable spoofing protection (turn on reverse packet filtering) | net.ipv4.conf.all.log_martians | Filter martians |
-| Enable spoofing protection (turn on reverse packet filtering) | net.ipv4.conf.all.forwarding | Forwarding traffic |
+| IP Spoofing protection | net.ipv4.conf.all.rp_filter=1 |  |
+| IP Spoofing protection | net.ipv4.conf.default.rp_filter=1 |  |
+| Enable spoofing protection (turn on reverse packet filtering) | net.ipv4.conf.all.log_martians=1 | Filter martians |
+| Enable spoofing protection (turn on reverse packet filtering) | net.ipv4.conf.all.forwarding=1 | Forwarding traffic |
 | Don't accept source routing | net.ipv4.conf.all.accept_source_route=0 | Source routing disable |
 | Don't accept source routing | net.ipv4.conf.default.accept_source_route=0 |  |
-| Don't accept redirects | net.ipv4.conf.all.accept_redirects=0 | ICMP redirects ipv4 |
-| Don't accept redirects | net.ipv6.conf.all.accept_redirects=0 | ICMP redirects ipv6 |
-| Don't accept redirects | net.ipv4.conf.default.accept_redirects=0 |  |
-| Don't accept redirects | net.ipv4.conf.all.secure_redirects=0 |  |
-| Don't accept redirects | net.ipv4.conf.default.secure_redirects=0 |  |
+| Don't accept redirects | net.ipv4.conf.all.accept_redirects=0 | Ignore ICMP redirects ipv4 |
+| Don't accept redirects | net.ipv6.conf.all.accept_redirects=0 | Ignore ICMP redirects ipv6 |
+| Don't accept redirects | net.ipv4.conf.default.accept_redirects=0 | Ignore ICMP redirects |
+| Don't accept redirects | net.ipv4.conf.all.secure_redirects=0 | Ignore ICMP redirects |
+| Don't accept redirects | net.ipv6.conf.all.secure_redirects=0 | Ignore ICMP redirects |
+| Don't accept redirects | net.ipv4.conf.default.secure_redirects=0 | Ignore ICMP redirects |
+| Don't accept redirects | net.ipv6.conf.default.accept_redirects=0 | Ignore ICMP redirects |
 | Re-use sockets in time-wait state | net.ipv4.tcp_tw_recycle=1 |  |
 | Re-use sockets in time-wait state | net.ipv4.tcp_tw_reuse=1 |  |
 | Queue size modifications | net.core.wmem_max=1048576 |  |
