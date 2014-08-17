@@ -310,7 +310,8 @@ Feature related
 * Lightning Wall: works fine together with AFWall+, because it does not interact with the existent iptables (leave iptables unchecked).
 * Avast: please disable this firewall if it's turned on (unchecked by default).
 * Android Tuner: Same as Avast, but the Firewall is disabled by default.
-* orWall: [orWall](https://orwall.org/) is not compatible with AFWall+. Please disable it and enable the _Transparent Proxy_ option in Orbot. 
+* [DonkeyGuard](http://www.repo.xposed.info/node/474): It can't control iptables, but Android's permission, so generally it work but don't restrict some important functions like _write_external_storage_, or AFWall+ log can't be created on your sdcard. 
+* orWall: [orWall](https://orwall.org/) is not compatible with AFWall+. Please disable it and enable the _Transparent Proxy_ option in Orbot.
 
 > Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball:
 
