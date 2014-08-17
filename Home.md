@@ -15,7 +15,7 @@ Contact
 -------
 
 | Developer| Misc (Wiki/Patches/Icons) | Translator | Web/eMail |
-| :---: | :--: | :---: | ---: |
+| :---: | :--: | :---: | :---: |
 | Umakanthan Chandan | | | cumakt [at] gmail.com |
 | Kevin Cernekee |  | | cernekee [at] gmail.com |
 | | CHEF-KOCH |  | Nvinside [at] gmail.com |
@@ -97,7 +97,7 @@ Similar solutions
 * [Android Firewall](https://github.com/skullone/android_firewall)
 * [Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
 * [DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free) _deprecated_ 
-* [Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
+* [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
 * [LBE Privacy Guard](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
 * [LostNet Firewall](https://play.google.com/store/apps/details?id=com.lostnet.fw.pro)
 
