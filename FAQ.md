@@ -372,5 +372,10 @@ Set your DNS in the following two lines e.g.:
 > First of all, AFWall+ is not [Adblock Plus](https://adblockplus.org/en/android-install). It's a firewall, which is not able (and never will be) to block all your ads and there is a good reason. Some app developer make money with in-app advertising and if we block this, no one is motivated to make some awesome apps anymore. If you really want to block such ads, better use [MinMinGuard](http://repo.xposed.info/module/tw.fatminmin.xposed.minminguard), but it's general a bad idea to block all things, because above reason.
 
 > So I blocked my ads with ad server hostnames and IP addresses, why is it still visible?
+
 > There are [some limitations](https://adblockplus.org/en/android-config#proxy) e.g. Adblock Plus for Android does not allow ads to be blocked on https/SSL encrypted websites, some ad-servers use a proxy behind it, it's hard to filter JavaScript generated content and [many more](http://en.wikipedia.org/wiki/Ad_filtering). 
 The easierst way is to block ads on Android seems to manipulate your DNS/Hosts file, for this you can use [this](http://hosts-file.net/?s=Download) or [this](forum.xda-developers.com/showthread.php?t=1916098&page=201) Hosts file which getting regular updates. There are [some alternative ways](https://sfxpt.wordpress.com/2011/02/21/the-best-ad-blocking-method/), but on newer Android systems they not seems to work anymore due some internal changes. 
+
+> And why was Adblock Plus removed from Google Play Store?
+
+> Read the full story over [here](https://adblockplus.org/blog/adblock-plus-for-android-removed-from-google-play-store).
