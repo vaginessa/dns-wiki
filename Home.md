@@ -64,7 +64,7 @@ AFWall+ need this to run at his best:
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
 - The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leak fix)!
-- The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (<code>adb pull /proc/config.gz</code> - Once you unzip it, you can search for e.g. _NETFILTER_).
+- The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (<code>adb pull /proc/config.gz</code> - Once you unzip it, you can search for e.g. _NETFILTER_). AFWall+ also can check it automatically if your Kernel does have support for it. 
 
 Important Information
 ---------------------
