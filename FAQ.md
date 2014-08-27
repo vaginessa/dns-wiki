@@ -291,12 +291,13 @@ One problem with using policy routing based on fwmark with locally generated tra
 <a name="FAQ35"></a>
 ##### (35) Why was my issue closed?
 
-> Things like ***It doesn't work* or *it crashes* is insufficient**. So, please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help you.
+> Things like ***It doesn't work* or *it crashes* is insufficient**. So, please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help you. Or your issue was a duplicate, or fixed with the next release.
+
 
 <a name="FAQ36"></a>
 ##### (36) Does AFWall+ support nftables yet?
 
-> No, AFWall+ does not support [nftables](https://github.com/ukanth/afwall/issues/293) yet.
+> No, AFWall+ does not support [nftables](https://github.com/ukanth/afwall/issues/293) yet. There is currently no Android nftables firewall available on the whole www.
 
 <a name="FAQ37"></a>
 ##### (37) Can I use XPrivacy, Lightning Wall, or any other Firewalls/Security apps together with AFWall+?
@@ -307,13 +308,14 @@ One problem with using policy routing based on fwmark with locally generated tra
 * Android Tuner: Same as Avast, but the Firewall is disabled by default.
 * [DonkeyGuard](http://www.repo.xposed.info/node/474): It can't control iptables, but Android's permission, so generally it work but don't restrict some important functions like _write_external_storage_, or AFWall+ log can't be created on your sdcard. 
 * orWall: [orWall](https://orwall.org/) is not compatible with AFWall+. Please disable it and enable the _Transparent Proxy_ option in Orbot.
+* Adblock Plus: Comes with there own iptables, but it should be no problem to use it together with AFWall+. If something went wrong and you like to report a bug, please disabled it first and try to reproduce the problem, if you manually created/enabled a proxy, shut it down first.
 
 > Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball:
 
 <a name="FAQ38"></a>
 ##### (38) Will you integrate any HOSTS blocking option?
 
-> No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
+> No, (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
 A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like [MoaAB](http://forum.xda-developers.com/showthread.php?t=1916098) or and Xposed module called [UnbelovedHosts] (http://repo.xposed.info/module/de.defim.apk.unbelovedhosts).
 
 <a name="FAQ39"></a>
@@ -326,7 +328,7 @@ A big HOST file can also slow-down non high end smartphones, block some ads whic
 <a name="FAQ40"></a>
 ##### (40) Is there a BusyBox solution that doesn't need root?
 
-> Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows). It doesn't provide all extra binaries but the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly via [Google Play Store](https://play.google.com/store/apps/details?id=burrows.apps.busybox.paid&hl=en). We not recommend to use it!
+> Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows) but it doesn't provide all extra binaries, the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly from [Google Play Store](https://play.google.com/store/apps/details?id=burrows.apps.busybox.paid&hl=en). We not recommend to use it!
 
 <a name="FAQ41"></a>
 ##### (41) What is UID?
@@ -354,9 +356,9 @@ Set your DNS in the following two lines e.g.:
 > If you still like external apps, you should take a look at [DNS Forwarder](https://play.google.com/store/apps/details?id=com.evanhe.dnsforward) and [Override DNS](https://play.google.com/store/apps/details?id=net.mx17.overridedns) which does more or less the same. That may solve some problems on Android 4.4/L but there is no guarantee, some ROM's may handle it different. 
 
 <a name="FAQ43"></a>
-##### (43) Will there a "Connection confirm dialog" feature implemented soon?
+##### (43) Will there a "Connection confirm dialog" (on-demand) feature implemented soon?
 
-> It's already been asked [#269](https://github.com/ukanth/afwall/issues/269), there is currently no Android Firewall which include such feature yet.
+> It's already been asked [#269](https://github.com/ukanth/afwall/issues/269), there is currently no Android Firewall which include such feature yet. There is no on-demand firewall based on iptables available on Google Play Store/F-Droid. 
 
 <a name="FAQ44"></a>
 ##### (44) Will you implement an Adblock function, and why are some Ads are still visible if I try to block them via iptables?
@@ -365,7 +367,7 @@ Set your DNS in the following two lines e.g.:
 
 > So I blocked my ads with ad server hostnames and IP addresses, why they are still visible?
 
-> There are [some limitations](https://adblockplus.org/en/android-config#proxy) e.g. Adblock Plus for Android does not allow ads to be blocked on https/SSL encrypted websites [due Android limitations], some ad-servers use a proxy behind it, so it's hard to filter JavaScript generated content. 
+> There are [some limitations](https://adblockplus.org/en/android-config#proxy) e.g. Adblock Plus for Android does not allow ads to be blocked on https/SSL encrypted websites [due Android limitations], some ad-servers use a proxy behind it, and it's generally hard to filter JavaScript generated content, currently there is no element hiding addon for Android. 
 The easierst way is to block ads on Android seems to manipulate your DNS/Hosts file, for this you can use [this](http://hosts-file.net/?s=Download) or [this](forum.xda-developers.com/showthread.php?t=1916098&page=201) Hosts file which getting regular updates. There are [some alternative ways](https://sfxpt.wordpress.com/2011/02/21/the-best-ad-blocking-method/), but on newer Android systems they not seems to work anymore due some internal changes. 
 
 > And why was Adblock Plus removed from Google Play Store?
