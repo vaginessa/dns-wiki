@@ -373,3 +373,7 @@ The easierst way is to block ads on Android seems to manipulate your DNS/Hosts f
 > And why was Adblock Plus removed from Google Play Store?
 
 > Read the full story [here](https://adblockplus.org/blog/adblock-plus-for-android-removed-from-google-play-store).
+
+<a name="FAQ45"></a>
+##### (45) I don't have the iptables binary on my phone, what can I do?
+If you have netfilter enabled in your kernel and not have the iptables binary you can use the AFWall+ inbuild iptables (make sure you enabled it in the options), or use use another app (not recommend) like [Iptables (beta)](https://play.google.com/store/apps/details?id=com.mgranja.iptables).
