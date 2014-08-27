@@ -193,7 +193,7 @@ CM 11 users may need to change the busybox version from _bultin_ to _system busy
 
 <code> adb install afwall+.apk </code> (default install method)
 
-> Or you may also copy and download the afwall+.apk file on your device and install it using [File Explorer](https://play.google.com/store/apps/developer?id=ES+APP+Group) etc.
+> Or you may also copy and download the afwall+.apk file on your device and install it using any file explorers
 
 <a name="FAQ22"></a>
 ##### (22) How to install AFWall+ as system app (**not recommend, only for test!**)
@@ -239,8 +239,7 @@ Or within the app itself.
 <a name="FAQ25"></a>
 ##### (25) Can you help me with rooting my device?
 
-> There are already enough [guides](http://www.androidcentral.com/root) to help you to root your device.
-Use your favorite search engine to find one.
+> There are already enough guides to help you to root your device.Use your favorite search engine to find one.
 
 <a name="FAQ26"></a>
 ##### (26) Does AFWall+ need a lot of battery/memory?
