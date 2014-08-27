@@ -1,29 +1,30 @@
 Frequently Asked Questions (FAQ)
 ========
 
+This FAQ is designed to answer the most questions about AFWall+, please take your time to read it. 
+
 Index
 -----
 
 * [Quick Guide](#quick-guide)
 * [Frequently asked questions](#frequently-asked-questions)
-* [General Questions](#general-questions)
-* [Feature related](#feature-related)
-* [More Questions?](#more-questions?)
 
 Quick Guide
 -----------
 
-Using AFWall+
+Start using AFWall+ the first time
 
-1. Click on Mode to switch between white-list and black-list modes (white-list by default).
+1. Click on Mode to switch between white-list (default enabled) and black-list modes.
 2. Mark the applications that you want to block or allow (depending on the selected mode), for each interface.
-3. Open the menu and enable the firewall. If the firewall is already enabled, just select _Apply_ and it will submit your changes.
-4. The rules will be saved and automatically restored when you restart your phone. If not check the data leak option.
+3. Open the menu and enable the firewall (green shield means enabled). If the AFWall+ is already enabled, just select _Apply_ and it will submit your changes.
+4. The rules will be saved and automatically and restored when you restart your phone. If not check the "data leak" option.
 5. If you want to check all current iptables rules, select _Firewall Rules_ in the menu.
 
-Widget
+Widget(s)
 
-To quickly enable or disable the firewall, add the AFWall+ widget to your home screen.
+To quickly enable or disable the firewall, add the AFWall+ widget to your home screen. 
+There is no Widget description, the green shield means that the firewall is running, red means it's disabled. 
+AFWall+ comes with three widgets, an settings widget, and two to toggle the firewall between enabled/disabled.
 
 Firewall logs
 
@@ -84,9 +85,9 @@ Frequently asked questions
 > Please whitelist "Media Server" or remove it from your blacklist.
 
 <a name="FAQ8"></a>
-##### (8) What is the third column in the main page with "R"?
+##### (8) What does the little "R" icon means?
 
-> "R" indicates "Roaming". You can whitelist/blacklist applications when you are on a roaming network! 
+> "R" indicates "Roaming". You can whitelist/blacklist applications when you are on a roaming network! It's disabled by default.
 
 <a name="FAQ9"></a>
 ##### (9) My Logs (logcat) are not displaying anything or are always empty, why?
@@ -235,9 +236,6 @@ Or via script
 
 Or within the app itself.
 
-General Questions
------------------
-
 <a name="FAQ25"></a>
 ##### (25) Can you help me with rooting my device?
 
@@ -290,9 +288,6 @@ Use your favorite search engine to find one.
 > The kernel does not communicate directly, it only pass packet information (for the interfaces e.g. uid0) from some applications.
 One problem with using policy routing based on fwmark with locally generated traffic (as is the case with Android) is that the mark must be set in the user process. It is because the routing decision is made before the fwmark can be set in any iptables rule, at least in vanilla kernels.
 
-Feature related
----------------
-
 <a name="FAQ35"></a>
 ##### (35) Why was my issue closed?
 
@@ -320,9 +315,6 @@ Feature related
 
 > No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
 A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like [MoaAB](http://forum.xda-developers.com/showthread.php?t=1916098) or and Xposed module called [UnbelovedHosts] (http://repo.xposed.info/module/de.defim.apk.unbelovedhosts).
-
-More Questions?
----------------
 
 <a name="FAQ39"></a>
 ##### (39) Can I ask xyz that was not written down here?
@@ -367,15 +359,15 @@ Set your DNS in the following two lines e.g.:
 > It's already been asked [#269](https://github.com/ukanth/afwall/issues/269), there is currently no Android Firewall which include such feature yet.
 
 <a name="FAQ44"></a>
-##### (44) Will you implement an Adblock function, and why are some Ads are visible if I try to block them?
+##### (44) Will you implement an Adblock function, and why are some Ads are still visible if I try to block them via iptables?
 
-> First of all, AFWall+ is not [Adblock Plus](https://adblockplus.org/en/android-install). It's a firewall, which is not able (and never will be) to block all your ads and there is a good reason. Some app developer make money with in-app advertising and if we block this, no one is motivated to make some awesome apps anymore. If you really want to block such ads, better use [MinMinGuard](http://repo.xposed.info/module/tw.fatminmin.xposed.minminguard), but it's general a bad idea to block all things, because above reason.
+> First of all, AFWall+ is not [Adblock Plus](https://adblockplus.org/en/android-install). It's a firewall, which is not able (and never will be) to block all your visible ads and there are some good reason. Some app developer make money with in-app advertising (ie AdMob) and if we block this, no one is motivated to make some awesome apps anymore. If you really want to block such ads, you still can use [MinMinGuard](http://repo.xposed.info/module/tw.fatminmin.xposed.minminguard), but it's [general a bad idea to block all things](http://forum.xda-developers.com/showpost.php?p=49112940&postcount=1). For a quick overview over ad blocking please take a look at the [Wikipedia article](http://en.wikipedia.org/wiki/Ad_filtering).
 
-> So I blocked my ads with ad server hostnames and IP addresses, why is it still visible?
+> So I blocked my ads with ad server hostnames and IP addresses, why they are still visible?
 
-> There are [some limitations](https://adblockplus.org/en/android-config#proxy) e.g. Adblock Plus for Android does not allow ads to be blocked on https/SSL encrypted websites, some ad-servers use a proxy behind it, it's hard to filter JavaScript generated content and [many more](http://en.wikipedia.org/wiki/Ad_filtering). 
+> There are [some limitations](https://adblockplus.org/en/android-config#proxy) e.g. Adblock Plus for Android does not allow ads to be blocked on https/SSL encrypted websites [due Android limitations], some ad-servers use a proxy behind it, so it's hard to filter JavaScript generated content. 
 The easierst way is to block ads on Android seems to manipulate your DNS/Hosts file, for this you can use [this](http://hosts-file.net/?s=Download) or [this](forum.xda-developers.com/showthread.php?t=1916098&page=201) Hosts file which getting regular updates. There are [some alternative ways](https://sfxpt.wordpress.com/2011/02/21/the-best-ad-blocking-method/), but on newer Android systems they not seems to work anymore due some internal changes. 
 
 > And why was Adblock Plus removed from Google Play Store?
 
-> Read the full story over [here](https://adblockplus.org/blog/adblock-plus-for-android-removed-from-google-play-store).
+> Read the full story [here](https://adblockplus.org/blog/adblock-plus-for-android-removed-from-google-play-store).
