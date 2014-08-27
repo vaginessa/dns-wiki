@@ -75,9 +75,9 @@ Frequently asked questions
 <a name="FAQ6"></a>
 ##### (6) What is Active Rules?
 
-> AFWall+ doesn't have control over iptables itself. Any root/system application with access to iptables can modify the rules. That's the reason, some time people gets data leak because some other process might have overwritten the OUTPUT chain to allow itself. To Prevent this, AFWall+ will apply rules on every connectivity change. 
+> AFWall+ doesn't have control over iptables itself. Any root/system application with access to iptables can modify the rules. That's the reason, some time people gets app data leaks because some other process might have overwritten the OUTPUT chain to allow itself. To prevent this, AFWall+ will apply rules on every connectivity change. 
 
-> Also for roaming/LAN, AFWall+ need to change the iptable rules in order to check Roaming status and LAN ip address.
+> Also for roaming/LAN, AFWall+ need to change the iptables rules in order to check Roaming status and LAN ip address.
 
 <a name="FAQ7"></a>
 ##### (7) YouTube/Online Radio streaming is not working anymore. How can i fix this without disabling AFWall+?
@@ -110,7 +110,7 @@ Frequently asked questions
 <a name="FAQ12"></a>
 ##### (12) Can I block IPv6 traffic?
 
-> [Sure](https://github.com/ukanth/afwall/issues/108), please use AFWall+ 1.2.4 (or higher). Some kernels have an option to disable IPv6, make sure it's enabled. Also "Enable IPv6 support" in AFWall+ options, because this is disabled by default.
+> [Sure](https://github.com/ukanth/afwall/issues/108), please use AFWall+ 1.2.4 (or higher). Some kernels have an option to disable IPv6, make sure it's enabled (reboot required). "Enable IPv6 support" in AFWall+ options, because this is disabled by default.
 
 <a name="FAQ13"></a>
 ##### (13) Is there Tasker/Locale support?
@@ -180,7 +180,7 @@ Or
 <a name="FAQ19"></a>
 ##### (19) AFWall+ does not show app xyz in my list, why?
 
-> Only apps are listed that have **internet permissions**. 
+> Only apps are listed that have **internet permissions** in the AndroidManifest.xml.
 
 <a name="FAQ20"></a>
 ##### (20) AFWall+ does not work under CM 7.x - 11.x, how can i fix this?
@@ -250,7 +250,7 @@ Use your favorite search engine to find one.
 <a name="FAQ27"></a>
 ##### (27) How safe is AFWall+?
 
-> Nothing is really safe, see the [limitations](https://github.com/ukanth/afwall#limitations) in the README.md for more details, but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. The app can crash sometimes, feel free to submit a error log report via eMail or on our GitHub Issue tracker.
+> Nothing is really safe, see the [limitations](https://github.com/ukanth/afwall#limitations) in the README.md for more details, but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. If the app may crash sometimes than feel free to submit a error log report via eMail or on our GitHub Issue tracker, we are always motivated to fix problems and answer your questions.
 
 <a name="FAQ28"></a>
 ##### (28) How can I make a logcat?
@@ -260,10 +260,10 @@ Use your favorite search engine to find one.
 <a name="FAQ29"></a>
 ##### (29) Will there be iOS or Windows Phone versions?
 
-> No, because it's too difficult to implement something like AFWall+ on these OS's, because they are not open source.
+> No, because it's too difficult to implement something like AFWall+ on these OS's, because they are not open source and/or not supporting netfilters.
 
 <a name="FAQ30"></a>
-##### (30) Does AFWall+ work with SELinux (Fort Knox)?
+##### (30) Does AFWall+ work with SELinux (aka Fort Knox)?
 
 > Should be without any bigger problem. For more info please look [here](http://www.selinuxproject.org/page/Main_Page) and [here](https://danwalsh.livejournal.com/28545.html).
 
@@ -376,4 +376,4 @@ The easierst way is to block ads on Android seems to manipulate your DNS/Hosts f
 
 <a name="FAQ45"></a>
 ##### (45) I don't have the iptables binary on my phone, what can I do?
-If you have netfilter enabled in your kernel and not have the iptables binary you can use the AFWall+ inbuild iptables (make sure you enabled it in the options), or use use another app (not recommend) like [Iptables (beta)](https://play.google.com/store/apps/details?id=com.mgranja.iptables).
+> If you have netfilter enabled in your kernel and not have the iptables binary you can use the AFWall+ inbuild iptables (make sure you enabled it in the options), or use use another app (not recommend) like [Iptables (beta)](https://play.google.com/store/apps/details?id=com.mgranja.iptables).
