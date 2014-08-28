@@ -15,7 +15,7 @@ Contact
 -------
 
 | Developer| Misc (Wiki/Patches/Icons) | Translator | Web/eMail |
-| :---: | :--: | :---: | :---: |
+| :--- | :--: | :---: | :--- |
 | Umakanthan Chandan | | | cumakt [at] gmail.com |
 | Kevin Cernekee |  | | cernekee [at] gmail.com |
 | | CHEF-KOCH |  | Nvinside [at] gmail.com |
@@ -60,7 +60,7 @@ Requirements
 
 AFWall+ need this to run at his best:
 
-- An Android OS device with at least the 2.3 (Gingerbread/API level 8, NDK 4) or a higher version. 
+- An Android OS device with at least the 2.3 (Gingerbread/API level 8, NDK 9) or a higher version. 
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
 - The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leak fix)!
