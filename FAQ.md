@@ -14,7 +14,7 @@ Quick Guide
 
 Start using AFWall+ the first time
 
-1. Click on Mode to switch between white-list (default enabled) and black-list modes.
+1. Click on _Mode_ to switch between whitelist- (default enabled) and blacklist-mode.
 2. Mark the applications that you want to block or allow (depending on the selected mode), for each interface.
 3. Open the menu and enable the firewall (green shield means enabled). If the AFWall+ is already enabled, just select _Apply_ and it will submit your changes.
 4. The rules will be saved and automatically and restored when you restart your phone. If not check the "data leak" option.
@@ -239,7 +239,7 @@ Or within the app itself.
 <a name="FAQ25"></a>
 ##### (25) Can you help me with rooting my device?
 
-> There are already enough guides to help you to root your device.Use your favorite search engine to find one.
+> There are already enough guides to help you to root your device. Use your favorite search engine to find one.
 
 <a name="FAQ26"></a>
 ##### (26) Does AFWall+ need a lot of battery/memory?
