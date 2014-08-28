@@ -15,7 +15,7 @@ Contact
 -------
 
 | Developer| Misc (Wiki/Patches/Icons) | Translator | Web/eMail |
-| :--- | :--: | :---: | :--- |
+| :--- | :--: | :--- | :--- |
 | Umakanthan Chandan | | | cumakt [at] gmail.com |
 | Kevin Cernekee |  | | cernekee [at] gmail.com |
 | | CHEF-KOCH |  | Nvinside [at] gmail.com |
