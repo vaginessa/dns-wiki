@@ -274,7 +274,7 @@ Or within the app itself.
 <a name="FAQ32"></a>
 ##### (32) Do I need to have the Google Play Store installed for the donate version?
 
-> Fast answer, no! There is no hidden license check.
+> Fast answer, no! There is no hidden license check integrated. 
 
 <a name="FAQ33"></a>
 ##### (33) What happens if I make AFWall+ device administrator?
@@ -290,8 +290,9 @@ One problem with using policy routing based on fwmark with locally generated tra
 <a name="FAQ35"></a>
 ##### (35) Why was my issue closed?
 
-> Things like ***It doesn't work* or *it crashes* is insufficient**. So, please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help you. Or your issue was a duplicate, or fixed with the next release.
+> Things like ***It doesn't work* or *it crashes* is insufficient**. So, please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help you. 
 
+> It's also possible your issue is a duplicate, or is already fixed. Please watch the Changelog.md and TODO.md files carefully.
 
 <a name="FAQ36"></a>
 ##### (36) Does AFWall+ support nftables yet?
@@ -314,7 +315,7 @@ One problem with using policy routing based on fwmark with locally generated tra
 <a name="FAQ38"></a>
 ##### (38) Will you integrate any HOSTS blocking option?
 
-> No, (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
+> No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
 A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like [MoaAB](http://forum.xda-developers.com/showthread.php?t=1916098) or and Xposed module called [UnbelovedHosts] (http://repo.xposed.info/module/de.defim.apk.unbelovedhosts).
 
 <a name="FAQ39"></a>
@@ -322,7 +323,7 @@ A big HOST file can also slow-down non high end smartphones, block some ads whic
 
 > If you have any question, please leave a message in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
 
-**Please do not ask questions using GitHub issues!** Because GitHub issues are for bug reports and feature requests.
+**If possible please do not ask questions using GitHub issues report!** Because GitHub issues are designed for bug reports and feature requests.
 
 <a name="FAQ40"></a>
 ##### (40) Is there a BusyBox solution that doesn't need root?
