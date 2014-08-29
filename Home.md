@@ -16,7 +16,7 @@ Contact
 -------
 
 | Developer| Misc (Wiki/Patches/Icons) | Translator | Web/eMail |
-| :--- | :--: | :---: | :--- |
+| :--- | :--: | :---: | :---: |
 | Umakanthan Chandan | | | cumakt [at] gmail.com |
 | Kevin Cernekee |  | | cernekee [at] gmail.com |
 | | CHEF-KOCH |  | Nvinside [at] gmail.com |
@@ -112,7 +112,7 @@ VPN/Proxy based:
 A word about non-root Firewalls
 ---------------------
 
-All of these firewalls working with a proxy/[vpn](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size and _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). Th biggest con is that such VPN services not working with WiFi tethering or WiFi hotspots. And another con is that you can't run a VPN service and vpn/proxy apps at the same time (Android limitation, but do we really need a firewall on a VPN session?!). 
+All of these firewalls working with a proxy/[vpn](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size and _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest con is that such VPN services not works with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN service and vpn/proxy apps at the same time (Android limitation, but do we really need a firewall on a VPN session?!). 
 
 License
 -------
