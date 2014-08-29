@@ -9,6 +9,7 @@ Index
 * [Requirements](#requirements)
 * [Important Information](#important-information)
 * [Similar solutions](#similar-solutions)
+* [A word about non-root Firewalls](#a-word-about-non-root-firewalls)
 * [License](#license)
 
 Contact
@@ -99,10 +100,19 @@ Similar solutions
 * [DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free) _deprecated_ 
 * [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
 * [LBE Privacy Guard](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
+
+VPN/Proxy based:
 * [LostNet Firewall](https://play.google.com/store/apps/details?id=com.lostnet.fw.pro)
+* [Grey Shirts NoRoot Firewall](https://play.google.com/store/apps/details?id=app.greyshirts.firewall)
+* [Netspark Firewall](https://play.google.com/store/apps/details?id=com.netspark.firewall&hl=en)
 
 [Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
+
+A word about non-root Firewalls
+---------------------
+
+All of these firewalls working with a proxy/[vpn](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size and _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). Th biggest con is that such VPN services not working with WiFi tethering or WiFi hotspots. And another con is that you can't run a VPN service and vpn/proxy apps at the same time (Android limitation, but do we really need a firewall on a VPN session?!). 
 
 License
 -------
