@@ -23,10 +23,11 @@ Before contacting support
 -------------------------
 
 * Ask yourself is your issue reproducible?
+* Watch the Changelog.md / Todo.md files if the problem is already fixed or on our radar.
 * Can you document the steps to reproduce it so that it happens every time?
 * Search and browse current tickets to make sure someone hasn't already reported your issue.
-* Make sure you have the latest version of the application/source. This can be done by checking the Google Play Store (Google+ Beta page) for updates or push the latest source.
-* Make sure you have the latest Android OS updates. This can be done in Settings on the phone or manually.
+* Make sure you have the latest version of the application/source code. This can be done by checking the Google Play Store (Google+ Beta page) for updates or push the latest GitHub source.
+* Make sure you have the latest Android OS updates (stable -> no nightlys!). This can be done in Settings on the phone or manually on XDA.
 * Make sure you know the version of Android you are running on your phone. This can be found in the _Setting_ under _About Phone_.
 * Make sure there is only AFWall+ installed and enabled, other tools like Avast can make some troubles if they are enabled.
 * Make sure you enabled the in-build loggin option under _Preferences_ - _Log_ _Preferences_ and enable the <code>Enable Firewall Logs</code> option. In the main menu you can now hit _Firewall_ _Logs_. Now you can see an _Export to SDCard_ option, which will export you log to <code>/sdcard/afwall/rules.log</code>.
@@ -85,41 +86,46 @@ Sending bug report
 * Create a new ticket ("New Issues") here on GitHub.
 * Make sure you include Phone Name and Model (ie Samsung Galaxy SII I-9100)
 * Make sure you include version of Android (ie Android 2.2)
-* Make sure you include your problem description. Your problem description should be a step-by-step way to reproduce your problem. Details are very important! Without any information it does not help the developers to find the problem and fix them.
-* Upload any sample files if necessary (i.e. if AFWall+ crashes when apply new rules, upload a sample that causes crash - Logcat or it never happened!)
-* You can copy and paste the output to a site like [pastebin.com](http://www.pastebin.com/).
+* Make sure you include your problem description. Your problem description should be a step-by-step way to reproduce your problem. Details are very important! Without any information it does not help the developers to find the problem and fix them!
+* Make sure you not use a CM nightly, CM does not allow nightly bug reports because it's unstable and some things may change with upcoming versions. 
+* Upload any sample files if necessary (i.e. if AFWall+ crashes when apply your new rules, upload a sample that causes crash - Logcat or it never happened!).
+* You can copy and paste the output to a site like [pastebin.com](http://www.pastebin.com/) or export them with the copy/export function.
 
 Template
 --------
 
 Please make sure AFWall+ is running! (Green AFWall+ shield activated!)
->* **AFWall+ Mode (whitelist/blacklist)**
+>* **AFWall+ Mode (whitelist [default enabled]/blacklist)**
+>* [your text]
+>* **Android ROM and exactly versions number**
 >* [your text]
 >* **What steps will reproduce the problem?**
 >* [your text]
->* **What is the expected output? What do you see instead?**
+>* **Additional security software installed (like XPrivacy/Avast)? Disable first!**
 >* [your text]
->* **What version of the product are you using? On what operating system?**
+>* **What is the expected output? What do you see instead?**
 >* [your text]
 >* **Attach your rules.log** 
 >* [your rules]
->* **iptables -vnL** 
+>* **iptables -v -n -L** 
 >* [List current rules]
->* **iptables -vnL -t nat** 
+>* **ip rule list** 
 >* [List current rules]
 >* **ip route show table (number)** 
 >* [ ]
+>* **iptables -L -t mangle (only on VPN)** 
+>* [your rules]
 >* **adb bugreport** 
 >* [Bugreport from your ROM]
 >* **Please provide any additional information below (e.g. logcat).**
 >* [your text/file or link]
 
-More details always means more and better help! 
+More details always means more and faster help! 
 
 After sending the report
 ------------------------
 
-* Be open to work with the developers to help them resolve your problem. Remember: [AFWall+](https://github.com/ukanth/afwall) is free!!
+* Be open to work with the developers to help them resolve your problem. Remember: [AFWall+](https://github.com/ukanth/afwall) is free do not expect 24 hours support per day!
 * If you want to donating something to the developer there is also an [AFWall+ (Donate)](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate) version on Google Play Store. This have exact the same functionality except support to import Droidwall rules. 
 
 Custom ROMs
