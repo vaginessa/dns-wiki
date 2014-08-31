@@ -377,3 +377,8 @@ The easierst way is to block ads on Android seems to manipulate your DNS/Hosts f
 <a name="FAQ45"></a>
 ##### (45) I don't have the iptables binary on my phone, what can I do?
 > If you have netfilter enabled in your kernel and not have the iptables binary you can use the AFWall+ inbuild iptables (make sure you enabled it in the options).
+
+<a name="FAQ46"></a>
+##### (46) Is there a good tool to collect Network Info?
+
+> AFWall+ already collect some useful infos in the _Firewall Rules_ dialog but if you need a good and free tool to show some more infos, you can use [Network Info II](https://play.google.com/store/apps/details?id=aws.apps.networkInfoIi).
