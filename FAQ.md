@@ -362,16 +362,21 @@ To check against it (on e.g. wlan) use
 
 > The _getprop_ or _setprop_ method does not work on higher Android versions (4.4+) anymore. Those values, when changed, get simply ignored by the _netd_ daemon. It's necessary to communicate directly to the daemon via the _/dev/socket/netd socket_. In Android it's now present a tool called _ndc_ which does exactly this job.
 
-On 4.3 or 4.4 KitKat:
-> # ndc resolver setifdns eth0 "" 208.67.222.222  208.67.220.220 192.168.1.1
-> # ndc resolver setdefaultif eth0
+On 4.3 or 4.4 KitKat (#su):
+> ndc resolver setifdns eth0 "" 208.67.222.222  208.67.220.220 192.168.1.1
+
+> ndc resolver setdefaultif eth0
 
 Or via AFWall+ custom script (init.d):
-$IPTABLES -t nat -D OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
-$IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
+>$IPTABLES -t nat -D OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
 
-$IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
-$IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53
+>$IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
+
+
+
+>$IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
+
+>$IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53
 
 > Only Google Puplic DNS supports IPv6! So uncheck IPv6 in your kernel (if checked!).
 
