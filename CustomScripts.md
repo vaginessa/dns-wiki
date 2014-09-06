@@ -37,11 +37,12 @@ To do that, just use the "." (dot) shell command in the <code>Set custom script<
 <pre>. /path/to/script.sh  (e.g. . /data/local/myawesomescript.sh)</pre>
 
 
-This will cause your script file to be loaded and executed every time the rules are applied. Make sure that this folder have the right permissions, if not AFWall+ can't read any script. 
+This will cause your script file to be loaded and executed every time the rules are applied. Make sure that this folder have the right permissions _0755_ (Group/User _0_), if not AFWall+ can't read any script and you will get an error such _"Can't apply rules/script"_. It's also very important if you are under Windows/Mac OS to _save yourscript.sh with Unix file encoding_! If you use Notepad++, go to _Edit_ - _EOL Conversion_ and hit _Convert to Unix format_. 
 You can even have multiple scripts executed in sequence...
 
 <pre>. /path/to/load-modules.sh (e.g. /data/local/script.sh)
 
+# This is a comment or outlined rule/script
 #. /path/to/myrules.sh
 
 #. /path/to/myscript.sh</pre>
