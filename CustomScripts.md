@@ -76,9 +76,33 @@ If you use any chain not listed above, then you need to manually purge it BEFORE
 
 Some examples
 -------------
+<pre># Necessary at the beginning of each script! 
+IP6TABLES=/system/bin/ip6tables
+IPTABLES=/system/bin/iptables
+# Now add your rules...</pre>
 
-Syntax to block an IP address
+<pre># Flush/Purge all rules
+$IPTABLES -F
+$IPTABLES -t nat -F
+$IPTABLES -t mangle -F
+$IP6TABLES -F
+$IP6TABLES -t nat -F
+$IP6TABLES -t mangle -F</pre>
+
+<pre># Flush/Purge all chains
+$IPTABLES -X   
+$IPTABLES -t nat -X  
+$IPTABLES -t mangle -X  
+$IP6TABLES -X   
+$IP6TABLES -t nat -X  
+$IP6TABLES -t mangle -X</pre>
+
+<pre># Set IPtables to masquerade
+> $IPTABLES -t nat -A POSTROUTING -j MASQUERADE</pre>
+
+<pre># Syntax to block an IP address
 > $IPTABLES -A INPUT -s IP-ADDRESS -j DROP
+> $IPTABLES -A "afwall" -d 22.22.22.0/21 -j REJECT</pre>
 
 <pre># If you just want to block access to one port from an ip 65.55.44.100 to port 25 then type command:
 $IPTABLES -A INPUT -s 65.55.44.100 -p tcp --destination-port 25 -j DROP</pre>
@@ -123,8 +147,8 @@ iptables -t nat -A POSTROUTING -j MASQUERADE</pre>
 
 <pre>#Tethering + OpenVPN issues on KitKat/4.4 with OpenVPN 2.3.2 and higher
 #iptables --flush
-push "dhcp-option DNS 8.8.8.8"
-push "dhcp-option DNS 8.8.4.4"
+push "dhcp-option DNS 208.67.222.222"
+push "dhcp-option DNS 208.67.220.220"
 # push "redirect-gateway autolocal def1" (server config)
 iptables -t filter -F FORWARD
 iptables -t nat -F POSTROUTING
@@ -136,6 +160,14 @@ ip rule add from 192.168.43.0/24 lookup 61
 ip route add default dev tun0 scope link table 61
 ip route add 192.168.43.0/24 dev wlan0 scope link table 61
 ip route add broadcast 255.255.255.255 dev wlan0 scope link table 61</pre>
+
+<pre># Force DNS (in this Case [OpenDNS](http://www.opendns.com/))
+$IPTABLES -t nat -D OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
+$IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true</pre>
+
+<pre># Deny IPv6 only connections  
+$IP6TABLES -P INPUT DROP  
+$IP6TABLES -P OUTPUT DROP</pre>
 
 DroidWall only examples
 -----------------------
@@ -173,7 +205,7 @@ $IPTABLES -I droidwall -m owner --uid-owner $VOIP_UID2 -p udp -j RETURN
 
 <pre># Shutdown script to run when AFWall+ is disabled. It will block everything.
 # Droidwall 
-#chmod 755 /data/data/com.googlecode.droidwall/app_bin/droidwall.sh
+#chmod 0755 /data/data/com.googlecode.droidwall/app_bin/droidwall.sh
 
 # Clear Rules
 $IP6TABLES -t nat -F
