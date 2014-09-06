@@ -76,6 +76,7 @@ If you use any chain not listed above, then you need to manually purge it BEFORE
 
 Some examples
 -------------
+
 <pre># Necessary at the beginning of each script! 
 IP6TABLES=/system/bin/ip6tables
 IPTABLES=/system/bin/iptables
@@ -102,6 +103,7 @@ $IP6TABLES -t mangle -X</pre>
 
 <pre># Syntax to block an IP address
 > $IPTABLES -A INPUT -s IP-ADDRESS -j DROP
+> # Example...
 > $IPTABLES -A "afwall" -d 22.22.22.0/21 -j REJECT</pre>
 
 <pre># If you just want to block access to one port from an ip 65.55.44.100 to port 25 then type command:
