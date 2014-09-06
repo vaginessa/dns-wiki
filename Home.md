@@ -17,7 +17,7 @@ Contact
 
 | Developer| Misc (Wiki/Patches/Icons) | Translator | Web/eMail |
 | :--- | :--: | :---: | :---: |
-| Umakanthan Chandan | | | cumakt [at] gmail.com |
+| **Umakanthan Chandan** | | | cumakt [at] gmail.com |
 | Kevin Cernekee |  | | cernekee [at] gmail.com |
 | | CHEF-KOCH |  | Nvinside [at] gmail.com |
 | | Hush66 | | [Devianart](http://www.hush66.devianart.com) |
@@ -108,6 +108,10 @@ VPN/Proxy based:
 
 [Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
+
+Anti IMSI-Catcher:
+* [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/)
+
 
 A word about non-root Firewalls
 ---------------------
