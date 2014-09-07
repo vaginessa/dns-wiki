@@ -349,7 +349,7 @@ Execute these commands as root user: setprop net.rmnet0.dns1 208.67.222.222. set
 
 <code>20-dns.conf</code>
 
-To change the DNS servers, use the command “setprop <property name>”
+To change the DNS servers, use the command _setprop property name_
 <pre>
 setprop net.dns1=208.67.222.222
 setprop net.dns2=208.67.220.220
@@ -392,10 +392,11 @@ On 4.3 or 4.4 KitKat (#su):
 
 > ndc resolver setdefaultif eth0
 
-Or via AFWall+ custom script (init.d):
+Or via AFWall+ custom script:
 <pre>
 $IPTABLES -t nat -D OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
-$IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true</pre>
+$IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
+</pre>
 
 Or init.d:
 <pre>
@@ -423,7 +424,7 @@ $IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222
 > So I blocked my ads with ad server hostnames and IP addresses, why they are still visible?
 
 > There are [some limitations](https://adblockplus.org/en/android-config#proxy) e.g. Adblock Plus for Android does not allow ads to be blocked on https/SSL encrypted websites [due Android limitations], some ad-servers use a proxy behind it, and it's generally hard to filter JavaScript generated content, currently there is no element hiding addon for Android. 
-The easierst way is to block ads on Android seems to manipulate your DNS/Hosts file, for this you can use [this](http://hosts-file.net/?s=Download) or [this](forum.xda-developers.com/showthread.php?t=1916098&page=201) Hosts file which getting regular updates. There are [some alternative ways](https://sfxpt.wordpress.com/2011/02/21/the-best-ad-blocking-method/), but on newer Android systems they not seems to work anymore due some internal changes. 
+The easiest way is to block ads on Android seems to manipulate your DNS/Hosts file, for this you can use [this](http://hosts-file.net/?s=Download) or [this](forum.xda-developers.com/showthread.php?t=1916098&page=201) Hosts file which getting regular updates. There are [some alternative ways](https://sfxpt.wordpress.com/2011/02/21/the-best-ad-blocking-method/), but on newer Android systems they not seems to work anymore due some internal changes. 
 
 > And why was Adblock Plus removed from Google Play Store?
 
@@ -431,7 +432,7 @@ The easierst way is to block ads on Android seems to manipulate your DNS/Hosts f
 
 <a name="FAQ45"></a>
 ##### (45) I don't have the iptables binary on my phone, what can I do?
-> If you have netfilter enabled in your kernel and not have the iptables binary you can use the AFWall+ inbuild iptables (make sure you enabled it in the options).
+> If you have netfilter enabled in your kernel and not have the iptables binary you can use the AFWall+ in-build iptables (make sure you enabled it in the options).
 
 <a name="FAQ46"></a>
 ##### (46) Is there a good tool to collect Network Info?
