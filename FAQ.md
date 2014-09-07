@@ -105,7 +105,7 @@ Frequently asked questions
 <a name="FAQ11"></a>   
 ##### (11) Can I block incoming SMS?
 
-> **No**, you [can't block it via AFWall+](https://github.com/ukanth/afwall/issues/111), iptables can't block low level traffic, some custom ROMs have such function already implemented in the dialer or sms app. 
+> **No**, you [can't block it via AFWall+](https://github.com/ukanth/afwall/issues/111), iptables can't block low level traffic, some custom ROM's have such function already implemented in the dialer or sms app (blacklist). 
 
 <a name="FAQ12"></a>
 ##### (12) Can I block IPv6 traffic?
@@ -340,8 +340,8 @@ A big HOST file can also slow-down non high end smartphones, block some ads whic
 <a name="FAQ42"></a>
 ##### (42) How to change the DNS Settings on Android?
 
-> Use the command getprop | grep dns to know all the dns properties being used. This command requires BusyBox. Please install it if you have not done it already. 
-> 'rmnet0’ is the interface name for the 3G connection. net.rmnet0.dns1 and net.rmnet0.dns2 are the properties to be changed to point to OpenDNS server. Since, these properties are changed after the connection is established, net.dns1 and net.dns2 also have to be changed.
+> On Android <4.4 we can use the command <code>getprop | grep dns</code> to know all the dns properties being used. This command requires BusyBox! 
+> 'rmnet0’ is the interface name for the 3G connection. net.rmnet0.dns1 and net.rmnet0.dns2 are the properties to be changed to point to OpenDNS server (the settings are still present in CM/AOSP code). Since, these properties are changed after the connection is established, net.dns1 and net.dns2 also have to be changed.
 Execute these commands as root user: setprop net.rmnet0.dns1 208.67.222.222. setprop net.rmnet0.dns2 208.67.220.220. setprop net.dns1 208.67.222.222. setprop net.dns2 208.67.220.220
 > Remember, the settings will be applicable only for the current session! You will have to repeat it when you are re-connecting to the network.
 
@@ -350,17 +350,42 @@ Execute these commands as root user: setprop net.rmnet0.dns1 208.67.222.222. set
 <code>20-dns.conf</code>
 
 To change the DNS servers, use the command “setprop <property name>”
-> setprop dhcp.eth0.dns1 208.67.222.222
+<pre>
+setprop net.dns1=208.67.222.222
+setprop net.dns2=208.67.220.220
+setprop net.eth0.dns1=208.67.222.222
+setprop net.eth0.dns2=208.67.220.220 
+setprop net.rmnet0.dns1=208.67.222.222
+setprop net.rmnet0.dns2=208.67.220.220
+setprop dhcp.tiwlan0.dns1=208.67.222.222
+setprop dhcp.tiwlan0.dns2=208.67.220.220
+setprop net.ppp0.dns1=208.67.222.222
+setprop net.ppp0.dns2=208.67.220.220
+setprop net.pdpbr1.dns1=208.67.222.222
+setprop net.pdpbr1.dns2=208.67.220.220</pre>
 
-> setprop dhcp.eth0.dns2 208.67.220.220
-
+Or as init.d script (won't reapply after connectivity change):
+<pre>
+#!/system/bin/sh
+setprop dhcp.tiwlan0.dns1 208.67.222.222
+setprop dhcp.tiwlan0.dns2 208.67.220.220
+setprop net.ppp0.dns1 208.67.222.222
+setprop net.ppp0.dns2 208.67.220.220
+setprop net.dns1 208.67.222.222
+setprop net.dns2 208.67.220.220
+setprop net.rmnet0.dns1 208.67.222.222
+setprop net.rmnet0.dns2 208.67.220.220
+setprop net.pdpbr1.dns1 208.67.222.222
+setprop net.pdpbr1.dns2 208.67.220.220</pre>
 
 To check against it (on e.g. wlan) use
 > tcpdump -ns0 -i wlan0 'port 53'
 
+> [MyResolver](http://myresolver.info/) is a secure proof if it worked.
+
 > If there is no setprop you can write the values before the _unset_dns_props()_ begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
 
-> The _getprop_ or _setprop_ method does not work on higher Android versions (4.4+) anymore. Those values, when changed, get simply ignored by the _netd_ daemon. It's necessary to communicate directly to the daemon via the _/dev/socket/netd socket_. In Android it's now present a tool called _ndc_ which does exactly this job.
+> The <code>getprop</code> or <code>setprop</code> method **does not work on Android versions (>4.4+) anymore**. Those values, when changed, get simply ignored by the _netd_ daemon. It's necessary to communicate directly to the daemon via the _/dev/socket/netd socket_. In Android it's now present a tool called _ndc_ which does exactly this job.
 
 On 4.3 or 4.4 KitKat (#su):
 > ndc resolver setifdns eth0 "" 208.67.222.222  208.67.220.220 192.168.1.1
@@ -368,19 +393,22 @@ On 4.3 or 4.4 KitKat (#su):
 > ndc resolver setdefaultif eth0
 
 Or via AFWall+ custom script (init.d):
->$IPTABLES -t nat -D OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
+<pre>
+$IPTABLES -t nat -D OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
+$IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true</pre>
 
->$IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
+Or init.d:
+<pre>
+#!/system/bin/sh
+IP6TABLES=/system/bin/ip6tables
+IPTABLES=/system/bin/iptables if there are troubles apply them
+# Maybe need to change $IPTABLES to iptables
+$IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
+$IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53</pre>
 
+> Only _Google Puplic DNS_ supports IPv6 atm! So uncheck IPv6 in your kernel (if checked!) or disable via custom script.
 
-
->$IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
-
->$IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53
-
-> Only Google Puplic DNS supports IPv6! So uncheck IPv6 in your kernel (if checked!).
-
-> If you still like external apps, you should take a look at [DNS Forwarder](https://play.google.com/store/apps/details?id=com.evanhe.dnsforward) and [Override DNS](https://play.google.com/store/apps/details?id=net.mx17.overridedns) which does more or less the same. That may solve some problems on Android 4.4/L but there is no guarantee, some ROM's may handle it different. 
+> If you still like external apps, you should take a look at [DNS Forwarder](https://play.google.com/store/apps/details?id=com.evanhe.dnsforward) and [Override DNS](https://play.google.com/store/apps/details?id=net.mx17.overridedns)[tested, working on 4.4.4] which does more or less the same. That may solve some problems on Android 4.4/L but there is no guarantee, some ROM's may handle it different (still buggy/limitation).
 
 <a name="FAQ43"></a>
 ##### (43) Will there a "Connection confirm dialog" (on-demand) feature implemented soon?
