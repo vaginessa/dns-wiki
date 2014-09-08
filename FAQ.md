@@ -419,7 +419,7 @@ $IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222
 <a name="FAQ44"></a>
 ##### (44) Will you implement an Adblock function, and why are some Ads are still visible if I try to block them via iptables?
 
-> First of all, AFWall+ is not [Adblock Plus](https://adblockplus.org/en/android-install). It's a firewall, which is not able (and never will be) to block all your visible ads and there are some good reason. Some app developer make money with in-app advertising (ie AdMob) and if we block this, no one is motivated to make some awesome apps anymore. If you really want to block such ads, you still can use [MinMinGuard](http://repo.xposed.info/module/tw.fatminmin.xposed.minminguard), but it's [general a bad idea to block all things](http://forum.xda-developers.com/showpost.php?p=49112940&postcount=1). For a quick overview over ad blocking please take a look at the [Wikipedia article](http://en.wikipedia.org/wiki/Ad_filtering).
+> First of all, AFWall+ is not an Ad-blocker! It's a firewall, which is not able (and never will be) to block all your visible ads and there are some good reason. Some app developer make money with in-app advertising (ie AdMob) and if we block this, no one is motivated to make some awesome apps anymore. If you really want to block such ads, you still can use [MinMinGuard](http://repo.xposed.info/module/tw.fatminmin.xposed.minminguard), but it's [general a bad idea to block all things](http://forum.xda-developers.com/showpost.php?p=49112940&postcount=1). For a quick overview over ad blocking please take a look at the [Wikipedia article](http://en.wikipedia.org/wiki/Ad_filtering).
 
 > So I blocked my ads with ad server hostnames and IP addresses, why they are still visible?
 
