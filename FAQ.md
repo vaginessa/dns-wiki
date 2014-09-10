@@ -455,6 +455,6 @@ The easiest way is to block ads on Android seems to manipulate your DNS/Hosts fi
 <pre>
 su
 mount -o remount,rw /system
-rm -f /system/etc/init.d/91firewall
+rm -f /system/etc/init.d/afwallstart
 mount -o remount,ro /system
 reboot</pre>
