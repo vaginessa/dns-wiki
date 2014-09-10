@@ -284,10 +284,14 @@ Or within the app itself.
 > This ensures that other applications cannot uninstall AFWall+ without your knowledge.
 
 <a name="FAQ34"></a>
-##### (34) Why the Kernel need an internet connection all the time?
+##### (34) Why the Kernel need an internet connection all the time? AFWall+ shows AppID (-11) blocked.
 
 > The kernel does not communicate directly, it only pass packet information (for the interfaces e.g. uid0) from some applications.
 One problem with using policy routing based on fwmark with locally generated traffic (as is the case with Android) is that the mark must be set in the user process. It is because the routing decision is made before the fwmark can be set in any iptables rule, at least in vanilla kernels.
+
+> Since Android 4.3 and higher all DNS-requests are manged by the netd daemon, it works similar like an proxy/tunnel. That means AFWall+ can't detect the special UID's/DNS-requests. To disable such behavior you can use the _DNS-Proxy_ option under _Preferences_. Choose _Disable DNS via netd_ to restore the default behavior before 4.3. Now you should make sure that your apps are whitelisted, if not it will be blocked, same with your (Root) application, if not Android is maybe not able to establish a connection. Dnsproxy2, is an alternative app to redereict DNS-requests. But if there are troubles with your connection, check your logs, use Netzwerk Log app (identify all traffic), whitelist the specific app(s) that is maybe blocked or enable the netd daemon again. 
+
+If you choose under preferences to disable netd (Android 4.3+) all traffic goes through your apps, which means AFWall+ shows 
 
 <a name="FAQ35"></a>
 ##### (35) Why was my issue closed?
