@@ -93,6 +93,7 @@ TCP security under Linux:
 
 Similar solutions
 -----------------
+We're not responsible for any of these external apps, usage as always with own risk!
 
 * _Builtin_ linux iptables (no GUI)
 * [Android Firewall](https://github.com/skullone/android_firewall)
@@ -116,7 +117,7 @@ Anti IMSI-Catcher:
 A word about non-root Firewalls
 ---------------------
 
-All of these firewalls working with a proxy/[vpn](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size and _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest con is that such VPN services not works with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN service and vpn/proxy apps at the same time (Android limitation, but do we really need a firewall on a VPN session?!). 
+All of these firewalls working with a Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size and _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest con is that such VPN services not works with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN service and VPN/Proxy apps at the same time (Android limitation, but do we really need a firewall on a VPN session?!). 
 
 License
 -------
