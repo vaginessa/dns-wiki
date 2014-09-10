@@ -447,3 +447,14 @@ The easiest way is to block ads on Android seems to manipulate your DNS/Hosts fi
 ##### (46) Is there a good tool to collect Network Info?
 
 > AFWall+ already collect some useful infos in the _Firewall Rules_ dialog but if you need a good and free alternative tool to show some more infos use e.g. Network Info II.
+
+<a name="FAQ47"></a>
+##### (47) The startup-script is still present how can I remove it?
+
+> In the normal case AFWall+ should automatically check/detect if you have the _afwallstart_ script in the init.d dir. A simply press on the _Fix Startup Data Leak_ should remove/re-enable it again but in very rare situation maybe the system needs to be remounted again. In this case you can remove the script with your favorite file explorer app under <code>/system/etc/init.d/afwallstart</code> or via ADB/Terminal.
+<pre>
+su
+mount -o remount,rw /system
+rm -f /system/etc/init.d/91firewall
+mount -o remount,ro /system
+reboot</pre>
