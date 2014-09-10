@@ -112,7 +112,9 @@ Frequently asked questions
 <a name="FAQ12"></a>
 ##### (12) Can I block IPv6 traffic?
 
-> [Sure](https://github.com/ukanth/afwall/issues/108), please use AFWall+ 1.2.4 (or higher). Some kernels have an option to disable IPv6, make sure it's enabled (reboot required). "Enable IPv6 support" in AFWall+ options, because this is disabled by default.
+> [Sure](https://github.com/ukanth/afwall/issues/108), please use AFWall+ 1.2.4 (or higher). Some kernels have an option to disable IPv6, make sure it's enabled (reboot required). _Enable IPv6 support_ in AFWall+ options, because this is disabled by default.
+
+> If you use custom scripts this option could be problematic in some cases, uncheck it if you script is okay but AFWall+ doesn't apply it.
 
 <a name="FAQ13"></a>
 ##### (13) Is there Tasker/Locale support?
@@ -290,8 +292,6 @@ Or within the app itself.
 One problem with using policy routing based on fwmark with locally generated traffic (as is the case with Android) is that the mark must be set in the user process. It is because the routing decision is made before the fwmark can be set in any iptables rule, at least in vanilla kernels.
 
 > Since Android 4.3 and higher all DNS-requests are manged by the netd daemon, it works similar like an proxy/tunnel. That means AFWall+ can't detect the special UID's/DNS-requests. To disable such behavior you can use the _DNS-Proxy_ option under _Preferences_. Choose _Disable DNS via netd_ to restore the default behavior before 4.3. Now you should make sure that your apps are whitelisted, if not it will be blocked, same with your (Root) application, if not Android is maybe not able to establish a connection. Dnsproxy2, is an alternative app to redereict DNS-requests. But if there are troubles with your connection, check your logs, use Netzwerk Log app (identify all traffic), whitelist the specific app(s) that is maybe blocked or enable the netd daemon again. 
-
-If you choose under preferences to disable netd (Android 4.3+) all traffic goes through your apps, which means AFWall+ shows 
 
 <a name="FAQ35"></a>
 ##### (35) Why was my issue closed?
