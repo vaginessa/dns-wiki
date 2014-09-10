@@ -1,7 +1,9 @@
 Frequently Asked Questions (FAQ)
 ========
 
-This FAQ is designed to answer the most questions about AFWall+, please take your time to read it. 
+This FAQ is designed to answer the most common questions, please take your time to read it before you ask anything.
+
+We are not responsible for external content!
 
 Index
 -----
@@ -16,7 +18,7 @@ Start using AFWall+ the first time
 
 1. Click on _Mode_ to switch between whitelist- (default enabled) and blacklist-mode.
 2. Mark the applications that you want to block or allow (depending on the selected mode), for each interface.
-3. Open the menu and enable the firewall (green shield means enabled). If the AFWall+ is already enabled, just select _Apply_ and it will submit your changes.
+3. Open the menu and enable the firewall (green shield means enabled). If AFWall+ is already enabled, just select _Apply_ and it will submit your changes.
 4. The rules will be saved and automatically and restored when you restart your phone. If not check the "data leak" option.
 5. If you want to check all current iptables rules, select _Firewall Rules_ in the menu.
 
@@ -42,7 +44,7 @@ Frequently asked questions
 <a name="FAQ1"></a>
 ##### (1) What is iptables?
 
-> Take a look [[here|IPtables]] for a detailed overview.
+> Please take a look [[here|IPtables]] for a detailed overview.
 
 <a name="FAQ2"></a>
 ##### (2) How do I know if my phone supports iptables?
@@ -105,7 +107,7 @@ Frequently asked questions
 <a name="FAQ11"></a>   
 ##### (11) Can I block incoming SMS?
 
-> **No**, you [can't block it via AFWall+](https://github.com/ukanth/afwall/issues/111), iptables can't block low level traffic, some custom ROM's have such function already implemented in the dialer or sms app (blacklist). 
+> **No**, you [can't block it via AFWall+](https://github.com/ukanth/afwall/issues/111), iptables can't block low level traffic, some custom ROM's have such function already implemented in the dialer or sms app (blacklist option). 
 
 <a name="FAQ12"></a>
 ##### (12) Can I block IPv6 traffic?
@@ -126,7 +128,7 @@ Enable DNS from application list will unlock it.
 <a name="FAQ15"></a>
 ##### (15) How can I show actually used iptables rules?
 
-> Via  _iptables -L_ command in apps like [Android Terminal Emulator](https://play.google.com/store/apps/developer?id=Jack+Palevich). Most ROM's contain this. 
+> Via  _iptables -L_ command in apps like Android Terminal Emulator. Most ROM's comes already with this. 
 
 Or 
 
@@ -306,8 +308,8 @@ One problem with using policy routing based on fwmark with locally generated tra
 * Lightning Wall: works fine together with AFWall+, because it does not interact with the existent iptables (leave iptables unchecked).
 * Avast: please disable this firewall if it's turned on (unchecked by default).
 * Android Tuner: Same as Avast, but the Firewall is disabled by default.
-* [DonkeyGuard](http://www.repo.xposed.info/node/474): It can't control iptables, but Android's permission, so generally it work but don't restrict some important functions like _write_external_storage_, or AFWall+ log can't be created on your sdcard. 
-* orWall: [orWall](https://orwall.org/) is not compatible with AFWall+. Please disable it and enable the _Transparent Proxy_ option in Orbot.
+* DonkeyGuard: It can't control iptables, but Android's permission, so generally it work but don't restrict some important functions like _write_external_storage_, or AFWall+ log can't be created on your sdcard. 
+* orWall: orWall is not compatible with AFWall+. Please disable it and enable the _Transparent Proxy_ option in Orbot.
 * Adblock Plus: Comes with there own iptables, but it should be no problem to use it together with AFWall+. If something went wrong and you like to report a bug, please disabled it first and try to reproduce the problem, if you manually created/enabled a proxy, shut it down first.
 
 > Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball:
@@ -316,7 +318,7 @@ One problem with using policy routing based on fwmark with locally generated tra
 ##### (38) Will you integrate any HOSTS blocking option?
 
 > No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
-A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like [MoaAB](http://forum.xda-developers.com/showthread.php?t=1916098) or and Xposed module called [UnbelovedHosts] (http://repo.xposed.info/module/de.defim.apk.unbelovedhosts).
+A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like [MoaAB](http://forum.xda-developers.com/showthread.php?t=1916098) or and Xposed module called UnbelovedHosts.
 
 <a name="FAQ39"></a>
 ##### (39) Can I ask xyz that was not written down here?
@@ -328,7 +330,7 @@ A big HOST file can also slow-down non high end smartphones, block some ads whic
 <a name="FAQ40"></a>
 ##### (40) Is there a BusyBox solution that doesn't need root?
 
-> Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows) but it doesn't provide all extra binaries, the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly from [Google Play Store](https://play.google.com/store/apps/details?id=burrows.apps.busybox.paid&hl=en). We not recommend to use it!
+> Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows) but it doesn't provide all extra binaries, the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly from Google Play Store. We not recommend to use it!
 
 <a name="FAQ41"></a>
 ##### (41) What is UID?
@@ -342,7 +344,7 @@ A big HOST file can also slow-down non high end smartphones, block some ads whic
 
 > On Android <4.4 we can use the command <code>getprop | grep dns</code> to know all the dns properties being used. This command requires BusyBox! 
 > 'rmnet0’ is the interface name for the 3G connection. net.rmnet0.dns1 and net.rmnet0.dns2 are the properties to be changed to point to OpenDNS server (the settings are still present in CM/AOSP code). Since, these properties are changed after the connection is established, net.dns1 and net.dns2 also have to be changed.
-Execute these commands as root user: setprop net.rmnet0.dns1 208.67.222.222. setprop net.rmnet0.dns2 208.67.220.220. setprop net.dns1 208.67.222.222. setprop net.dns2 208.67.220.220
+Execute these commands as root user: <code>setprop net.rmnet0.dns1 208.67.222.222.</code> <code>setprop net.rmnet0.dns2 208.67.220.220</code>. <code>setprop net.dns1 208.67.222.222</code>. <code>setprop net.dns2 208.67.220.220</code>.
 > Remember, the settings will be applicable only for the current session! You will have to repeat it when you are re-connecting to the network.
 
 > Android system chooses the DNS servers using the script located at _/system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf_
@@ -414,7 +416,7 @@ $IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222
 <a name="FAQ43"></a>
 ##### (43) Will there a "Connection confirm dialog" (on-demand) feature implemented soon?
 
-> It's already been asked [#269](https://github.com/ukanth/afwall/issues/269), there is currently no Android Firewall which include such feature yet. There is no on-demand firewall based on iptables available on Google Play Store/F-Droid. 
+> It's already been asked [#269](https://github.com/ukanth/afwall/issues/269), there is currently no Android firewall which include such feature yet. There is no on-demand firewall based on iptables available on Google Play Store or F-Droid. 
 
 <a name="FAQ44"></a>
 ##### (44) Will you implement an Adblock function, and why are some Ads are still visible if I try to block them via iptables?
@@ -437,4 +439,4 @@ The easiest way is to block ads on Android seems to manipulate your DNS/Hosts fi
 <a name="FAQ46"></a>
 ##### (46) Is there a good tool to collect Network Info?
 
-> AFWall+ already collect some useful infos in the _Firewall Rules_ dialog but if you need a good and free tool to show some more infos, you can use [Network Info II](https://play.google.com/store/apps/details?id=aws.apps.networkInfoIi).
+> AFWall+ already collect some useful infos in the _Firewall Rules_ dialog but if you need a good and free tool to show some more infos, you can use Network Info II.
