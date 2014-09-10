@@ -318,7 +318,7 @@ One problem with using policy routing based on fwmark with locally generated tra
 ##### (38) Will you integrate any HOSTS blocking option?
 
 > No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
-A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like [MoaAB](http://forum.xda-developers.com/showthread.php?t=1916098) or and Xposed module called UnbelovedHosts.
+A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like MoaAB or and Xposed module called UnbelovedHosts.
 
 <a name="FAQ39"></a>
 ##### (39) Can I ask xyz that was not written down here?
@@ -381,18 +381,19 @@ setprop net.pdpbr1.dns1 208.67.222.222
 setprop net.pdpbr1.dns2 208.67.220.220</pre>
 
 To check against it (on e.g. wlan) use
-> tcpdump -ns0 -i wlan0 'port 53'
+<pre>
+tcpdump -ns0 -i wlan0 'port 53'</pre>
 
-> [MyResolver](http://myresolver.info/) is a secure proof if it worked.
+> [MyResolver](http://myresolver.info/) is a secure proof if DNS is working or not.
 
-> If there is no setprop you can write the values before the _unset_dns_props()_ begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
+> If there is no setprop you can write the values before the <code>unset_dns_props()</code> begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
 
-> The <code>getprop</code> or <code>setprop</code> method **does not work on Android versions (>4.4+) anymore**. Those values, when changed, get simply ignored by the _netd_ daemon. It's necessary to communicate directly to the daemon via the _/dev/socket/netd socket_. In Android it's now present a tool called _ndc_ which does exactly this job.
+> The <code>getprop</code> or <code>setprop</code> method **does not work on Android versions >4.4+** anymore. Those values, when changed, get simply ignored by the _netd_ daemon. It's necessary to communicate directly to the daemon via the <code>/dev/socket/netd socket</code>. In Android it's now present a tool called <code>ndc</code> which does exactly this job.
 
 On 4.3 or 4.4 KitKat (#su):
-> ndc resolver setifdns eth0 "" 208.67.222.222  208.67.220.220 192.168.1.1
-
-> ndc resolver setdefaultif eth0
+<pre>
+ndc resolver setifdns eth0 "" 208.67.222.222  208.67.220.220 192.168.1.1
+ndc resolver setdefaultif eth0</pre>
 
 Or via AFWall+ custom script:
 <pre>
@@ -400,9 +401,11 @@ $IPTABLES -t nat -D OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222
 $IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
 </pre>
 
-Or init.d:
+Or via init.d:
 <pre>
 #!/system/bin/sh
+# File without file extension
+
 IP6TABLES=/system/bin/ip6tables
 IPTABLES=/system/bin/iptables if there are troubles apply them
 # Maybe need to change $IPTABLES to iptables
@@ -411,7 +414,7 @@ $IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222
 
 > Only _Google Puplic DNS_ supports IPv6 atm! So uncheck IPv6 in your kernel (if checked!) or disable via custom script.
 
-> If you still like external apps, you should take a look at [DNS Forwarder](https://play.google.com/store/apps/details?id=com.evanhe.dnsforward) and [Override DNS](https://play.google.com/store/apps/details?id=net.mx17.overridedns)[tested, working on 4.4.4] which does more or less the same. That may solve some problems on Android 4.4/L but there is no guarantee, some ROM's may handle it different (still buggy/limitation).
+> If you still like external apps, you should take a look at DNS Forwarder and Override DNS [tested, working on 4.4.4] which does more or less the same. That may solve some problems on Android 4.4/L but there is no guarantee, some ROM's may handle it different (still buggy/limitation).
 
 <a name="FAQ43"></a>
 ##### (43) Will there a "Connection confirm dialog" (on-demand) feature implemented soon?
@@ -421,7 +424,7 @@ $IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222
 <a name="FAQ44"></a>
 ##### (44) Will you implement an Adblock function, and why are some Ads are still visible if I try to block them via iptables?
 
-> First of all, AFWall+ is not an Ad-blocker! It's a firewall, which is not able (and never will be) to block all your visible ads and there are some good reason. Some app developer make money with in-app advertising (ie AdMob) and if we block this, no one is motivated to make some awesome apps anymore. If you really want to block such ads, you still can use [MinMinGuard](http://repo.xposed.info/module/tw.fatminmin.xposed.minminguard), but it's [general a bad idea to block all things](http://forum.xda-developers.com/showpost.php?p=49112940&postcount=1). For a quick overview over ad blocking please take a look at the [Wikipedia article](http://en.wikipedia.org/wiki/Ad_filtering).
+> First of all, AFWall+ is not an Ad-blocker! It's a firewall, which is not able (and never will be) to block all your visible ads and there are some good reason. Some app developer make money with in-app advertising (ie AdMob) and if we block this, no one is motivated to make some awesome apps anymore. If you really want to block such ads, you still can use MinMinGuard, but it's [general a bad idea to block all things](http://forum.xda-developers.com/showpost.php?p=49112940&postcount=1). For a quick overview over ad blocking please take a look at the [Wikipedia article](http://en.wikipedia.org/wiki/Ad_filtering).
 
 > So I blocked my ads with ad server hostnames and IP addresses, why they are still visible?
 
@@ -439,4 +442,4 @@ The easiest way is to block ads on Android seems to manipulate your DNS/Hosts fi
 <a name="FAQ46"></a>
 ##### (46) Is there a good tool to collect Network Info?
 
-> AFWall+ already collect some useful infos in the _Firewall Rules_ dialog but if you need a good and free tool to show some more infos, you can use Network Info II.
+> AFWall+ already collect some useful infos in the _Firewall Rules_ dialog but if you need a good and free alternative tool to show some more infos use e.g. Network Info II.
