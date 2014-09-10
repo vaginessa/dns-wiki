@@ -407,8 +407,8 @@ Or via init.d:
 # File without file extension
 
 IP6TABLES=/system/bin/ip6tables
-IPTABLES=/system/bin/iptables if there are troubles apply them
-# Maybe need to change $IPTABLES to iptables
+IPTABLES=/system/bin/iptables
+# Maybe need to change $IPTABLES to iptables if there are troubles apply them
 $IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
 $IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53</pre>
 
