@@ -82,20 +82,22 @@ IP6TABLES=/system/bin/ip6tables
 IPTABLES=/system/bin/iptables
 # Now add your rules...</pre>
 
-<pre># Flush/Purge all rules
-$IPTABLES -F
+<pre># Flush/Purge all rules expect OUTPUT
+$IPTABLES -F INPUT
+$IPTABLES -F FORWARD
 $IPTABLES -t nat -F
 $IPTABLES -t mangle -F
-$IP6TABLES -F
+$IP6TABLES -F INPUT
+$IP6TABLES -F FORWARD
 $IP6TABLES -t nat -F
 $IP6TABLES -t mangle -F</pre>
 
 <pre># Flush/Purge all chains
-$IPTABLES -X   
-$IPTABLES -t nat -X  
-$IPTABLES -t mangle -X  
-$IP6TABLES -X   
-$IP6TABLES -t nat -X  
+$IPTABLES -X
+$IPTABLES -t nat -X
+$IPTABLES -t mangle -X
+$IP6TABLES -X
+$IP6TABLES -t nat -X
 $IP6TABLES -t mangle -X</pre>
 
 <pre># Set IPtables to masquerade
