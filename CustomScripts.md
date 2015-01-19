@@ -117,10 +117,10 @@ $IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN</pre>
 <pre># Allow all connections to the local network (192.168.0.XXX) on Wi-fi
 $IPTABLES -A "afwall-wifi" --destination "192.168.0.0/24" -j RETURN</pre>
 
-<pre># Block all connections in the TCP port 80 (http) 
+<pre># Block all connections in the TCP port 80 (http)
 $IPTABLES -A "afwall" -p TCP --dport 80 -j "afwall-reject"</pre>
 
-<pre># Block all connections in the TCP port 22 (ssh) 
+<pre># Block all connections in the TCP port 22 (ssh)
 $IPTABLES -A "afwall" -p TCP --dport 22 -j "afwall-reject"</pre>
 
 <pre># Block HTTP connections, but only on cellular interface
@@ -165,9 +165,9 @@ ip route add default dev tun0 scope link table 61
 ip route add 192.168.43.0/24 dev wlan0 scope link table 61
 ip route add broadcast 255.255.255.255 dev wlan0 scope link table 61</pre>
 
-<pre># Force DNS (in this Case [OpenDNS](http://www.opendns.com/))
-$IPTABLES -t nat -D OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
-$IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true</pre>
+<pre># Force specific DNS (in this case http://www.opendns.com/)
+$IPTABLES -t nat -A OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53
+$IPTABLES -t nat -A OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53</pre>
 
 <pre># Deny IPv6 only connections  
 $IP6TABLES -P INPUT DROP  
@@ -328,6 +328,10 @@ $IPTABLES -A droidwall -d 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m u
 # Allow all from orbot
 $IPTABLES -A droidwall -m owner --uid-owner $ORBOT_UID -j RETURN || exit
 
+# Allow all apps access to standard Orbot ports
+$IPTABLES -A "afwall" -d 127.0.0.1 -p tcp --dport 9040 -j ACCEPT
+$IPTABLES -A "afwall" -d 127.0.0.1 -p udp --dport 5400 -j ACCEPT
+
 # We also want to block remaining UDP. All app UDP should be already transproxied
 $IPTABLES -A droidwall -p udp ! --dport 5400 -j LOG --log-prefix "Denied UDP: " --log-uid || exit
 $IPTABLES -A droidwall -p udp ! --dport 5400 -j DROP || exit
@@ -454,3 +458,4 @@ Useful links
 * [25 Most Frequently Used Linux IPTables Rules Examples | thegeekstuff.com](http://www.thegeekstuff.com/2011/06/iptables-rules-examples/)
 * [Collection of basic Linux Firewall iptables rules | linuxconfig.org](http://linuxconfig.org/collection-of-basic-linux-firewall-iptables-rules)
 * [AFWall+/Droidwall permissions vulnerability | torproject.org](https://lists.torproject.org/pipermail/tor-talk/2014-March/032503.html) - [Original Issue 260 @ Droidwall](https://code.google.com/p/droidwall/issues/detail?id=260)
+* [DNSleaktest | DNSleaktest.com] (https://www.dnsleaktest.com/)
