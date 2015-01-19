@@ -93,12 +93,14 @@ Got an error message?
 Found a bug?
 * [[Learn how to report it|HOWTO Report Bug]]
 
-Want to compile AFWall+ yourself?
+Want compile AFWall+ yourself?
 * [[All you need to know about compiling AFWall+|HOWTO Compile AFWall]]
 * [[All you need to know about compiling iptables|HOWTO Compiling iptable]]
 
 Some useful things:
 * [[Phone codes secrets]] contain some useful codes for viewing e. g. MAC address.
+* [[WhatsApp blocking|HOWTO blocking WhatsApp]]
+* [[Orwall and AFWall+|HOWTO OrWall together with AFWall+]]
 
 TCP security under Linux:
 * [[TCP security]] may help to protect you against some known attacks. 
@@ -109,7 +111,7 @@ We're not responsible for any of these external apps, usage as always with own r
 
 * _Builtin_ linux iptables (no GUI)
 * [Android Firewall](https://github.com/skullone/android_firewall)
-* [Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
+* [3C Toolbox aka Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
 * [DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free) _deprecated_ 
 * [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
 * [LBE Privacy Guard](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
