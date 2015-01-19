@@ -6,6 +6,7 @@ Index
 -----
 
 * [Contact](#contact)
+* [Installation](#installation)
 * [Requirements](#requirements)
 * [Important Information](#important-information)
 * [Similar solutions](#similar-solutions)
@@ -55,6 +56,17 @@ Contact
 | | | myasa | Crowdin |
 | | | ozgurahmet95 | Crowdin |
 | | | andriykopanytsia | Crowdin |
+
+Installation
+-------------
+
+* Temporarily enable "Unknown sources" in your settings.
+* Download the latest release from GitHub or F-Droid.
+* Delete any previous version of the AFWall+ app, an upgrade from an existent installation is also possible.
+* Delete any remnant application directory from /sdcard/afwall/ or similar.
+* Install the newest version.
+
+Enjoy and profit. Contribute to the project with pull requests!
 
 Requirements
 -------------
