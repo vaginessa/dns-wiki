@@ -6,8 +6,8 @@ Index
 -----
 
 * [Contact](#contact)
-* [Installation](#installation)
 * [Requirements](#requirements)
+* [Installation](#installation)
 * [Important Information](#important-information)
 * [Similar solutions](#similar-solutions)
 * [A word about non-root Firewalls](#a-word-about-non-root-firewalls)
@@ -57,6 +57,17 @@ Contact
 | | | ozgurahmet95 | Crowdin |
 | | | andriykopanytsia | Crowdin |
 
+Requirements
+-------------
+
+AFWall+ need this to run at his best:
+
+- An Android OS device with at least the 4.0 (ICS/API level 14, NDK 10) or a higher version. 
+- Your device **must be rooted**.
+- [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
+- The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leak fix)!
+- The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (<code>adb pull /proc/config.gz</code> - Once you unzip it, you can search for e.g. _NETFILTER_). AFWall+ also can check it automatically if your Kernel does have support for it. 
+
 Installation
 -------------
 
@@ -67,17 +78,6 @@ Installation
 * Install the newest version.
 
 Enjoy and profit. Contribute to the project with pull requests!
-
-Requirements
--------------
-
-AFWall+ need this to run at his best:
-
-- An Android OS device with at least the 2.3 (Gingerbread/API level 8, NDK 9) or a higher version. 
-- Your device **must be rooted**.
-- [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
-- The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leak fix)!
-- The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (<code>adb pull /proc/config.gz</code> - Once you unzip it, you can search for e.g. _NETFILTER_). AFWall+ also can check it automatically if your Kernel does have support for it. 
 
 Important Information
 ---------------------
