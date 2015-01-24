@@ -7,6 +7,7 @@ Index
 * [Requirements](#requirements)
 * [First Method](#first-method-using-orbot-without-orwall)
 * [Second Method](#second-method-using-orbot-together-with-afWall+)
+* [Tor or Orxy?](#tor-or-orxy?)
 * [Useful Links](#useful-links)
 
 
@@ -79,6 +80,21 @@ The last step (Remote DNS) is important so that DNS lookups are done through the
 
 For mobile browsers:
 Go under _Preferences_ > _Advanced_ > _Network tab_ > _Settings_ manually set Firefox to use the SOCKS proxy _localhost_ with port 9050. Then you must type _about:config_ into the address bar. Change _network.proxy.socks_remote_dns_ to _true_ and restart the browser. This channels all DNS requests through TOR's socks proxy. 
+
+
+Tor or Orxy?
+------------
+
+Orxy is an Orbot alternative that supports devices running the latest Android OS, and also supports the add-on which is called Orxify, it enables a per app protection, technically it's just a Tor VPN based app (which is able to _understand_ .onion addresses).
+
+Here are some little facts (because there are a lot of false info available):
+* Orbot uses iptables to proxy all apps through Tor, which requires root access.
+* Apps that use the built-in Android VPN interface do not require root access. This is the primary advantage of Orxify over Orbot.
+* On Android 4.x (or higher) apps can create a native VPN connection without root access to send and receive all network traffic. Orxify app creates a VPN connection to Tor and routes the internet traffic through the VPN.
+* The Orxify add-on is not open source and not free (Orxy itself is free but comes with in-app billing).
+* AFWall (iptables) works with it but it's also not recommend to use both the same time.
+
+There are also some other free and open source apps like Drony, it also uses a VPN but redirect them all to the Orbot app.
 
 
 Useful Links
