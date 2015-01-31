@@ -62,7 +62,7 @@ Requirements
 
 AFWall+ need this to run at his best:
 
-- An Android OS device with at least the 4.0 (ICS/API level 14, NDK 10) or a higher version. 
+- An Android OS device with at least the 4.0 (ICS/API level 14, NDK 10) or a higher version.
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
 - The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leak fix)!
@@ -71,10 +71,12 @@ AFWall+ need this to run at his best:
 Installation
 -------------
 
+A general discussion platform can be found [here on XDA](http://forum.xda-developers.com/showthread.php?t=1957231). Use the GitHub platform for issue reports.
+
 * Temporarily enable "Unknown sources" in your settings.
-* Download the latest release from GitHub or F-Droid.
+* Download the latest release from [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall), [GitHub](https://github.com/ukanth/afwall/releases) or [F-Droid](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall).
 * Delete any previous version of the AFWall+ app, an upgrade from an existent installation is also possible.
-* Delete any remnant application directory from /sdcard/afwall/ or similar.
+* Delete any remnant application directory from <code>/sdcard0/afwall/</code> or similar.
 * Install the newest version.
 
 Enjoy and profit. Contribute to the project with pull requests!
@@ -82,11 +84,12 @@ Enjoy and profit. Contribute to the project with pull requests!
 Important Information
 ---------------------
 
+:exclamation: Before you ask anything please take a look first into our [[FAQ]].
+
 * [Changelog](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each version of AFWall+.
 * [[CustomScripts]] contains the beginnings of a user manual. Some questions about working with iptables might be answered here, it also contains some predefined scripts you can use (Copy into a .txt file, rename .txt extension to .sh).
 * [[Apps leak user privacy data during boot]] contains background information about the 'Data leak' during boot.
 * [[Android kernel traffic]] contains background information about the Android OS & Kernel generated traffic.
-* Before you ask anything please take a look into our [[FAQ]].
 
 Got an error message?
 * [[Error codes]] may help you to understand the error messages. 
@@ -96,6 +99,7 @@ Found a bug?
 
 Want compile AFWall+ yourself?
 * [[All you need to know about compiling AFWall+|HOWTO Compile AFWall]]
+* [[All you need to know about compiling busybox|HOWTO Compiling busybox]]
 * [[All you need to know about compiling iptables|HOWTO Compiling iptable]]
 
 Some useful things:
@@ -110,10 +114,10 @@ Similar solutions
 -----------------
 We're not responsible for any of these external apps, usage as always with own risk!
 
-* _Builtin_ linux iptables (no GUI)
+* _Builtin_ linux iptables/toolbox (there is no GUI)
 * [Android Firewall](https://github.com/skullone/android_firewall)
 * [3C Toolbox aka Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
-* [DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free) _deprecated_ 
+* ~~[DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free)~~ _deprecated_ 
 * [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
 * [LBE Privacy Guard](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
 
@@ -125,14 +129,13 @@ VPN/Proxy based:
 [Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
 
-Anti IMSI-Catcher:
+Anti IMSI-Catcher (protection against IMSI-Catchers, StingRay and Silent/Stealth SMS):
 * [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/)
-
 
 A word about non-root Firewalls
 ---------------------
 
-All of these firewalls working with a Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size and _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest con is that such VPN services not works with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN service and VPN/Proxy apps at the same time (Android limitation, but do we really need a firewall on a VPN session?!). 
+All of these firewalls working with a Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size and _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest con is that such VPN services not works with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN service and VPN/Proxy apps at the same time. 
 
 License
 -------
