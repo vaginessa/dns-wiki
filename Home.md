@@ -132,6 +132,9 @@ VPN/Proxy based:
 Anti IMSI-Catcher (protection against IMSI-Catchers, StingRay and Silent/Stealth SMS):
 * [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/)
 
+Browser based:
+* [Firefox NSA NoScript Anywhere](https://noscript.net/nsa/#download)
+
 A word about non-root Firewalls
 ---------------------
 
