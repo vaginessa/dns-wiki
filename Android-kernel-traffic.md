@@ -1,4 +1,4 @@
-:warning: This article is in a early beta stage and could contain false information until all is done. This article is based on the Android 4.0 OS (Kernel 3.4), this means newer Kernel or/and network changes could be differ a little bit.
+:warning: This article is in a early beta stage and could contain _false information_ until all is done. This article is based on the Stock Android 4.0 OS (Kernel 3.4), this means newer Kernel or/and network changes could be differ a little bit.
 
 :warning: On Windows I highly recommend to use Burp/HTTP Scoop/Fiddler instead of Whireshark for several reasons, one of them is that it's low-level and overpowered for quickly looking through HTTP traces [but you're the boss].
 
@@ -95,6 +95,7 @@ Protocol statistics
 UIDs stats
 providing traffic usage per application
 
+
 UID stats (this ones never change):
 ```
 0 - Root
@@ -108,7 +109,7 @@ UID stats (this ones never change):
 1007 - Log
 1008 - Compass
 1009 - Mount
-1010 - Wi-Fi
+1010 - WiFi
 1011 - ADB
 1012 - Install
 1013 - Media
@@ -134,6 +135,14 @@ UID stats (this ones never change):
 Tethering data
 -------
 
+We can't monitor our WiFi network using tethering even if Android supports promiscuous mode for the WiFi chipset.
+
+
+Because:
+
+Tethering does NAT internally and assigns you an IP in a 192.168.* private range via a DHCP daemon running on our phone. There's no way we can see pure WiFi traffic only this way.
+The only workaround is a custom firmware we can install on our device and do a tcpdump (see above) on the phone itself, but only if it supports both types, promisc mode and tcpdump [raw 802.11 frames -> "Monitor mode"]).
+
 
 Capture all network traffic
 -------
@@ -158,6 +167,7 @@ Capture HTTP traffic over port 80 (change iface name if it's different):
 
 
 About DNS traffic:
+
 It's an UDP based protocol and each packet is around ~62 bytes per request, which comes in only a few packets. Means if you have an app that does generate frequent DNS lookups, these can add up to a fair amount of data usage (dependency how many requests it uses).
 
 This is how DNS requests looks like in a firewall (iptables based) like Avast, AFWall+ or Avast:
@@ -171,7 +181,8 @@ pkts bytes target     prot opt in     out     source               destination
 
 There're quite a few types of packets that are reported by the "Data usage" app as part of the network traffic of "Android OS". Among others DNS requests belong to these kind of traffic. 
 
-But it's wrong:\
+But it's wrong:
+
 UID=1000 belongs to an Android component that is usually called "Android OS", but DNS requests come from a process running as root (UID=0 [root]) so if you see "Android OS" in an app list, it can mean a root process or an UID=1000 process as well.
 
 
