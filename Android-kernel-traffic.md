@@ -1,8 +1,8 @@
 :warning: This article is in a early beta stage and could contain false information until all is done. This article is based on the Android 4.0 OS (Kernel 3.4), this means newer Kernel or/and network changes could be differ a little bit.
 
-:warning: On Windows I highly recommend to use Burp instead of Whireshark for several reasons.
+:warning: On Windows I highly recommend to use Burp/HTTP Scoop/Fiddler instead of Whireshark for several reasons, one of them is that it's low-level and overpowered for quickly looking through HTTP traces [but you're the boss].
 
-As you might know, Android's kernel is based on the Linux kernel so the output could be similar. This article will clear some questions about the Android Kernel and his data usage and also may answer some addition questions like why is there traffic under _Android OS_ (uid1000).
+As you might know, Android's kernel is based on the Linux kernel so the output could be similar. This article will clear some questions about the Android Kernel and his data usage and also may answer some addition questions like why is there traffic under _Android OS_ (UID=1000).
 
 Most Internet applications are using TCP as their protocol of choice, and TCP maintains a connection bound to an IP address. Whenever you change your Internet access, you switch IP addresses and all existing TCP connections vanish. Your downloads are aborted, your SSH connections are closed,[...]
 
@@ -63,16 +63,17 @@ Get basic info about process info via `busybox netstat -tp`.
 
 
 Log in/out iptables:
-
-> $ adb shell su -c "fgrep '[IPtables IN ' /proc/kmsg"
-
-> $ adb shell su -c "fgrep '[IPtables OUT ' /proc/kmsg"
+```
+$ adb shell su -c "fgrep '[IPtables IN ' /proc/kmsg"
+$ adb shell su -c "fgrep '[IPtables OUT ' /proc/kmsg"
+```
 
 
 Drop rule into the output chain
-> iptables -F OUTPUT
-
-> iptables -A OUTPUT -j DROP
+``` 
+iptables -F OUTPUT
+iptables -A OUTPUT -j DROP
+```
 
 
 
@@ -95,37 +96,39 @@ UIDs stats
 providing traffic usage per application
 
 UID stats (this ones never change):
-> 0 - Root
-> 1000 - System
-> 1001 - Radio
-> 1002 - Bluetooth
-> 1003 - Graphics
-> 1004 - Input
-> 1005 - Audio
-> 1006 - Camera
-> 1007 - Log
-> 1008 - Compass
-> 1009 - Mount
-> 1010 - Wi-Fi
-> 1011 - ADB
-> 1012 - Install
-> 1013 - Media
-> 1014 - DHCP
-> 1015 - External Storage
-> 1016 - VPN
-> 1017 - Keystore
-> 1018 - USB Devices
-> 1019 - DRM
-> 1020 - Available
-> 1021 - GPS
-> 1022 - deprecated
-> 1023 - Internal Media Storage
-> 1024 - MTP USB
-> 1025 - NFC
-> 1026 - DRM RPC
-> 2000 - Shell (User) for example ddms (generates traffic for txt/png and such)
-> <10000 = system reserved 
-> 10000(and higher) = applications UIDs   
+```
+0 - Root
+1000 - System
+1001 - Radio
+1002 - Bluetooth
+1003 - Graphics
+1004 - Input
+1005 - Audio
+1006 - Camera
+1007 - Log
+1008 - Compass
+1009 - Mount
+1010 - Wi-Fi
+1011 - ADB
+1012 - Install
+1013 - Media
+1014 - DHCP
+1015 - External Storage
+1016 - VPN
+1017 - Keystore
+1018 - USB Devices
+1019 - DRM
+1020 - Available
+1021 - GPS
+1022 - deprecated
+1023 - Internal Media Storage
+1024 - MTP USB
+1025 - NFC
+1026 - DRM RPC
+2000 - Shell (User) for example ddms (generates traffic for txt/png and such)
+<10000 = system reserved 
+10000(and higher) = applications UIDs
+```
 
 
 Tethering data
@@ -141,7 +144,7 @@ Capture all network traffic
 * tcptrace
 * ~~[Fuse](http://de.wikipedia.org/wiki/Filesystem_in_Userspace) (driver) / [YAFFS](http://en.wikipedia.org/wiki/YAFFS) (on newer models YAFFS2)~~ (only for forensic reasons)
 * `tcpdump -i br0 -s 0 -w [SSID].cap`
-* [Wireshark](https://www.wireshark.org/download.html) (for our .cap files)
+* [Wireshark](https://www.wireshark.org/download.html) / [Burp](http://portswigger.net/) / [HTTP Scoop](http://www.tuffcode.com/) (for our .cap files)
 
 Host and Guest connections:
 * lsof -i -n -P
@@ -159,17 +162,16 @@ It's an UDP based protocol and each packet is around ~62 bytes per request, whic
 
 This is how DNS requests looks like in a firewall (iptables based) like Avast, AFWall+ or Avast:
 
-<code>
+```
 Chain afwall (1 references)
-
 pkts bytes target     prot opt in     out     source               destination
     0     0 RETURN     udp  --  *      *       0.0.0.0/0            0.0.0.0/0
          udp dpt:53
-</code>
+```
 
 There're quite a few types of packets that are reported by the "Data usage" app as part of the network traffic of "Android OS". Among others DNS requests belong to these kind of traffic. 
 
-But it's wrong:
+But it's wrong:\
 UID=1000 belongs to an Android component that is usually called "Android OS", but DNS requests come from a process running as root (UID=0 [root]) so if you see "Android OS" in an app list, it can mean a root process or an UID=1000 process as well.
 
 
