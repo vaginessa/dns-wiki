@@ -80,7 +80,11 @@ Build via Command Line
 
 Use the Android SDK Manager to install API 19 (or higher) and select it.
 To list all of available targets, type
-> * $ android list targets
+
+```
+$ android list targets
+```
+
 Then, you will see like
 
 > * "id: 4 or "Google Inc.:Google APIs:19"
