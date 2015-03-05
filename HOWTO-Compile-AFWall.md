@@ -87,25 +87,32 @@ $ android list targets
 
 Then, you will see like
 
-> * "id: 4 or "Google Inc.:Google APIs:19"
-> * Name: Google APIs
-> * Type: Add-On
-> * Vendor: Google Inc. .... "
+```
+"id: 4 or "Google Inc.:Google APIs:19"
+Name: Google APIs
+Type: Add-On
+Vendor: Google Inc. .... "
+```
 
 To select this, use the "-t" argument in the following build-process like
-> * android update project -p . -s -t 4
 
-After this we set our JAVA_HOME path:
+```
+$ android update project -p . -s -t 4
+```
 
-> * export ANDROID_JAVA_HOME="/opt/sun-jdk-1.9.0__22" 
-> * mkdir afwall_build
-> * cd afwall_build
-> * git clone git://github.com/ukanth/afwall.git 
-> * cd afwall
-> * git submodule init
-> * git submodule update
-> * android update project -p . -s
-> * ant debug
+After this we set our JAVA_HOME path and go into building:
+
+```
+$ export ANDROID_JAVA_HOME="/opt/sun-jdk-1.9.0__22" 
+$ mkdir afwall_build
+$ cd afwall_build
+$ git clone git://github.com/ukanth/afwall.git 
+$ cd afwall
+$ git submodule init
+$ git submodule update
+$ android update project -p . -s
+$ ant debug
+```
 
 This build the afwall-debug.apk and place it into <code>/bin</code> folder.
 
