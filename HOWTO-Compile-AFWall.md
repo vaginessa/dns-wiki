@@ -78,15 +78,18 @@ Selecting "Open an existing Android Studio Project" doesn't work, as it doesn't 
 Build via Command Line 
 ----------------------
 
-Choose the Android list targets - lists all your installed Android target e.g. API level 17 for the latest Android Version.
+Use the Android SDK Manager to install API 19 (or higher) and select it.
+To list all of available targets, type
+> * $ android list targets
+Then, you will see like
 
-Select:
-"id: 4 or "Google Inc.:Google APIs:17"
-Name: Google APIs
-Type: Add-On
-Vendor: Google Inc. .... "
+> * "id: 4 or "Google Inc.:Google APIs:19"
+> * Name: Google APIs
+> * Type: Add-On
+> * Vendor: Google Inc. .... "
 
-You also can use the "-t 4" argument.
+To select this, use the "-t" argument in the following build-process like
+> * android update project -p . -s -t 4
 
 After this we set our JAVA_HOME path:
 
