@@ -5,13 +5,15 @@ Index
 * [Requirements](#requirements)
 * [Compile](#Compile)
 * [Steps for SELinux-enabled busybox](#steps-for-selinux-enabled-busybox)
-* [Example .config for non-SELinux](#example-config-for non-selinux)
+* [Example .config for non-SELinux](#example-config-for-non-selinux)
+* [Example .config for SELinux](#example-config-for-selinux)
 * [Useful links](#useful-links)
 
 Description
 -----------
 
 Please take a look over [here](https://github.com/ukanth/afwall/wiki/BusyBox) to get the basic BusyBox information.
+This guide is for compiling BusyBox directly on your Android.
 
 
 Requirements
@@ -20,7 +22,7 @@ Requirements
 * Android Terminal app (latest .apk is available [here](http://jackpal.github.com/Android-Terminal-Emulator/downloads/Term.apk))
 * [Complete Linux Installer](http://sourceforge.net/projects/linuxonandroid/?source=typ_redirect) or Linux Deploy
 * [Latest BusyBox source](http://www.busybox.net/downloads/busybox-snapshot.tar.bz2)
-* OS, Kali, Debian or any other Live bootable OS (of course Windows and MAC OS would also work but this guide is written for Ubuntu which works as his best with the mentioned 'Complete Linux Installer' under Android)
+* Operating System -  Like Kali, Debian or any other Live bootable OS (of course Windows and MAC OS would also work but this guide is written for Ubuntu which works as his best with the mentioned 'Complete Linux Installer' under Android)
 
 
 Compile
@@ -1161,7 +1163,6 @@ CONFIG_LOGGER=y
 
 Example .config for SELinux
 -------------
-
 ```
 #
 # Automatically generated make config: don't edit
