@@ -3,6 +3,7 @@ Index
 
 * [Description](#description)
 * [How do I configure Busybox?](#config-busybox)
+* [Difference between SELinux and non-SELinux BusyBox](#difference-between-selinux-and-non-selinux-busybox)
 * [Useful links](#useful-links)
 
 Description
@@ -37,6 +38,12 @@ make <code>oldconfig</code> - Update an old .config file for a newer version of 
 make <code>allyesconfig</code> - Select absolutely everything. This creates a statically linked version of Busybox full of debug code, with dependencies on selinux, using devfs names... This makes sure everything compiles. Whether or not the result would do anything useful is an open question.
 
 make <code>randconfig</code> - Create a random configuration for test purposes.
+
+
+Difference between SELinux and non-SELinux BusyBox
+-------------
+
+The SELinux (NSA security enhanced Linux) binary comes with the following extra utilities: _chcon_, _getenforce_, _getsebool_, _load_policy_, _matchpathcon_, _restorecon_, _runcon_, _selinuxenabled_, _setenforce_, _setfiles_, _setsebool_, and _sestatus_. There are also some selinux flags enabled for applets such as "ps" and "ls", e.g. "ps -Z" and "ls -Z" to show the context for processes or files. If you are using Android 4.3 or higher, then you probably want to use the SELinux-enabled BusyBox since Android 4.3 is when SELinux was introduced to Android. Using the SELinux BusyBox on older version of Android without SELinux file structure should probably work besides the SELinux applets. The non-SELinux binary can be used on any version of Android. When it comes down to it, the system actually uses "/system/bin/toolbox" SELinux applets for SELinux operations, so unless you specifically want to use BusyBox's SELinux tools for personal use, the safest option is to go with the non-SELinux BusyBox. 
 
 Useful links
 -------------
