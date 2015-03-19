@@ -105,9 +105,9 @@ Frequently asked questions
 * Android L need a little configuration change and a external Busybox app to get the rules apply.
 
 <a name="FAQ11"></a>   
-##### (11) Can I block incoming SMS?
+##### (11) Can I block incoming SMS? - Premium SMS Warning
 
-> **No**, you [can't block it via AFWall+](https://github.com/ukanth/afwall/issues/111), iptables can't block low level traffic, some custom ROM's have such function already implemented in the dialer or sms app (blacklist option). 
+> Android OS (5+) includes support for warning users of any outgoing premium SMS message. Premium SMS messages are text messages sent to a service registered with a carrier that may incur a charge to the user. Device implementations that declare support for _android.hardware.telephony_ MUST warn users before sending a SMS message to numbers identified by regular expressions defined in <code>/data/misc/sms/codes.xml</code> file in the device. The upstream Android Open Source Project provides an implementation that satisfies this requirement. See [here](https://github.com/ukanth/afwall/issues/111) for more information.
 
 <a name="FAQ12"></a>
 ##### (12) Can I block IPv6 traffic?
@@ -283,7 +283,8 @@ Or within the app itself.
 <a name="FAQ33"></a>
 ##### (33) What happens if I make AFWall+ device administrator?
 
-> This ensures that other applications cannot uninstall AFWall+ without your knowledge.
+> Android includes features that allow security-aware applications to perform device administration functions at the system level, such as enforcing password policies or performing remote wipe, through the Android Device
+Administration API. This ensures that other applications cannot uninstall AFWall+ without your knowledge. Device implementations must provide an implementation of the _DevicePolicyManager_ class. Device implementations that include support for lock screen must support the full range of device administration policies defined in the Android SDK documentation and report the platform feature _android.software.device_admin_.
 
 <a name="FAQ34"></a>
 ##### (34) Why the Kernel need an internet connection all the time? AFWall+ shows AppID (-11) blocked.
