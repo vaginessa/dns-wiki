@@ -83,13 +83,15 @@ Upload the captured logcat somewhere, for example using Google Drive, Dropbox, P
 Sending bug report
 ------------------
 
-* Create a new ticket ("New Issues") here on GitHub.
+* Copy and/or send the integrated LogCat within AFWall+ (under _Firewall Rules_/_Send error report_) via eMail.
+
+* Create a new ticket ("New Issues") [here](https://github.com/ukanth/afwall/issues) on GitHub.
 * Make sure you include Phone Name and Model (ie Samsung Galaxy SII I-9100)
-* Make sure you include version of Android (ie Android 2.2)
+* Make sure you include version of Android (ie Android 5.1)
 * Make sure you include your problem description. Your problem description should be a step-by-step way to reproduce your problem. Details are very important! Without any information it does not help the developers to find the problem and fix them!
 * Make sure you not use a CM nightly, CM does not allow nightly bug reports because it's unstable and some things may change with upcoming versions. 
-* Upload any sample files if necessary (i.e. if AFWall+ crashes when apply your new rules, upload a sample that causes crash - Logcat or it never happened!).
-* You can copy and paste the output to a site like [pastebin.com](http://www.pastebin.com/) or export them with the copy/export function.
+* Upload any sample files if necessary (i.e. if AFWall+ crashes when apply your new rules, upload a sample that causes crash - **Logcat or it never happened!**).
+* You can copy and paste the output to a site like [defuse.ca](https://defuse.ca) or export them with the copy/export function.
 
 Template
 --------
