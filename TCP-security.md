@@ -2,17 +2,33 @@ Index
 -----
 
 * [Introduction](#introduction)
+* [Known attacks](known-attacks)
 * [Requirements](#requirements)
 * [Useful links](#useful-links)
 
 Introduction
 -----------
 
-This guide has nothing todo with AFWall+ itself but it can help to protect against known problems and attacks (e.g. DOS/UDP flood) and are tested with Linux kernels 2.2 - 2.6 (and _higher?!_), so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the [useful links](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
+This guide has nothing todo with AFWall+ itself but it can help to protect against known _problems_ and attacks (e.g. DOS/UDP flood) and are tested with Linux kernels 2.2 - 2.6 (and _higher?!_), so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the [useful links](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
 
 Please make a **backup first**, and of course there is **no support** or **guarantee that it works on your system**. If you unsure, simply don't use it, ask your ROM/Kernel developer if it's useful to integrate/use it.
 
 You can use it directly via ADB/Terminal Emulator (busybox sysctl -e -w [_your_param_] script or edit the _/proc/sys/net/ipv4/[param_script]_ directly and native under _system/etc/sysctl.conf_ (same like e.g. FreeBSD) with e.g. EsExplorer.
+
+Known attacks
+------------
+
+* Desynchronization during connection establishment
+* Desynchronization in the middle of a connection
+* ICMP attacks
+* Routing (RIP) attacks
+* DNS attacks
+* Hijacking of the connection
+* Sequence Guessing
+* Unique Identifiers attacks
+* TCP SYN attacks
+* IP spoofing
+* .... Authentication and encryption problems due lack of protocol itself.
 
 Requirements
 ------------
