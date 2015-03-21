@@ -345,7 +345,7 @@ A big HOST file can also slow-down non high end smartphones, block some ads whic
 > We can override this behavior with [android:sharedUserId](http://developer.android.com/guide/topics/manifest/manifest-element.html#uid), but it has some [drawbacks](http://stackoverflow.com/questions/5529846/androidprocess-and-process-name/5530160#5530160).
 
 <a name="FAQ42"></a>
-##### (42) How to change the DNS Settings on Android?
+##### (42) How to change the DNS Settings on Android? (optional)
 
 > On Android <4.4 we can use the command <code>getprop | grep dns</code> to know all the dns properties being used. This command requires BusyBox! 
 > 'rmnet0’ is the interface name for the 3G connection. net.rmnet0.dns1 and net.rmnet0.dns2 are the properties to be changed to point to OpenDNS server (the settings are still present in CM/AOSP code). Since, these properties are changed after the connection is established, net.dns1 and net.dns2 also have to be changed.
@@ -371,7 +371,7 @@ setprop net.ppp0.dns2=208.67.220.220
 setprop net.pdpbr1.dns1=208.67.222.222
 setprop net.pdpbr1.dns2=208.67.220.220</pre>
 
-Or as init.d script (won't reapply after connectivity change):
+Or via init.d script (won't reapply after connectivity change):
 <pre>
 #!/system/bin/sh
 setprop dhcp.tiwlan0.dns1 208.67.222.222
@@ -389,7 +389,7 @@ To check against it (on e.g. wlan) use
 <pre>
 tcpdump -ns0 -i wlan0 'port 53'</pre>
 
-> [MyResolver](http://myresolver.info/) is a secure proof if DNS is working or not.
+> [MyResolver](http://myresolver.info/) is a secure proof if DNS is working or not. Please remember that there are some problems generally with the DNS security protocol, there are several known attacks, like DOS, Cache poisoning, ghost domain names & [others](http://ianix.com/pub/dnssec-outages.html). For more information take a look over [here](http://www.theregister.co.uk/2015/03/18/is_the_dns_security_protocol_a_waste_of_everyones_time_and_money/#)
 
 > If there is no setprop you can write the values before the <code>unset_dns_props()</code> begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
 
