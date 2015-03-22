@@ -41,6 +41,33 @@ A very good explanation of all the attacks listed above are on [Peters Smith fan
 
 Requirements
 ------------
+
+As described over [here](http://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) this should be blacklisted by default for any vulnerability scanner.
+
+| Address | RFC | Description |
+| :--- | :--: | ---: |
+| 0.0.0.0/8 | RFC1122 | Host Network |
+| 10.0.0.0/8 | RFC1918 | Private-Use |
+| 100.64.0.0/10 | RFC6598 | Shared Address Space |
+| 127.0.0.0/8 | RFC1122 | Loopback|
+| 169.254.0.0/16 | RFC3927 | Link Local |
+| 172.16.0.0/12 | RFC1918 | Private-Use |
+| 192.0.0.0/24 | RFC6890 | IETF Protocol Assignments |
+| 192.0.2.0/24 | RFC5737 | Documentation (TEST-NET-1) |
+| 192.88.99.0/24 | RFC3068 | 6to4 Relay Anycast |
+| 192.168.0.0/16 | RFC1918 | Private-Use |
+| 198.18.0.0/15 | RFC2544 | Benchmarking (nmap) |
+| 198.51.100.0/24 | RFC5737 | ? |
+| 203.0.113.0/24 | RFC5737 | ? |
+| 240.0.0.0/4 | RFC1112 | Reserved |
+| 255.255.255.255/32 | RFC0919 | Limited Broadcast |
+
+For [Multicast](http://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml):
+
+| Address | RFC | Description |
+| :--- | :--: | ---: |
+| 224.0.0.0/4 | RFC5771 | Multicast/Reserved |
+
 * Time to read the articles + to backup (show current settings via _#sysctl -a_) your existent configuration (just in case something goes wrong - shit happens!) 
 * ADB/Terminal Emulator/Busybox & a **rooted device**
 * Kernel/ROM that support these kind of tweaks (if not it doesn't work or is useless)
