@@ -21,15 +21,20 @@ Known attacks
 * Desynchronization during connection establishment
 * Desynchronization in the middle of a connection
 * ICMP attacks
+* Nonblind Spoofing
 * Routing (RIP) attacks
-* DNS attacks
-* Hijacking of the connection
+* DNS attacks such DNS Poisoning and BIND attacks
+* Hijacking/Injection of the connection
 * Sequence Guessing
+* Dsniff attacks
+* Replay attacks
+* LAN Sniffing (general Packet's Sniffing)
 * Denial of Service (DoS)
 * Unique Identifiers attacks
 * TCP SYN attacks (flooding)
 * IP spoofing
-* Smurf attacks 
+* Smurf attacks
+* Man-in-the-Middle Attacks
 * .... Authentication and encryption problems due lack of protocol itself.
 
 A very good explanation of all the attacks listed above are on [Peters Smith fantastic article](http://linuxbox.co.uk/linux-network-security/) about common Linux security.
