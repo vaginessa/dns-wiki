@@ -9,7 +9,7 @@ Index
 Introduction
 -----------
 
-This guide has nothing todo with AFWall+ itself but it can help to protect against known _problems_ and attacks (e.g. DOS/UDP flood) and are tested with Linux kernels 2.2 - 2.6 (and _higher?!_), so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the [useful links](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
+This guide has nothing much todo with AFWall+ itself but it can help to protect against known _problems_ and attacks (e.g. DOS/UDP flooding) and are tested with Linux kernels 2-2 up to 3.2, so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the [useful links](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
 
 Please make a **backup first**, and of course there is **no support** or **guarantee that it works on your system**. If you unsure, simply don't use it, ask your ROM/Kernel developer if it's useful to integrate/use it.
 
@@ -25,14 +25,18 @@ Known attacks
 * DNS attacks
 * Hijacking of the connection
 * Sequence Guessing
+* Denial of Service (DoS)
 * Unique Identifiers attacks
-* TCP SYN attacks
+* TCP SYN attacks (flooding)
 * IP spoofing
+* Smurf attacks 
 * .... Authentication and encryption problems due lack of protocol itself.
+
+A very good explanation of all the attacks listed above are on [Peters Smith fantastic article](http://linuxbox.co.uk/linux-network-security/) about common Linux security.
 
 Requirements
 ------------
-* Time to read the articles first & to backup (show current settings via _#sysctl -a_) your existent configuration
+* Time to read the articles + to backup (show current settings via _#sysctl -a_) your existent configuration (just in case something goes wrong - shit happens!) 
 * ADB/Terminal Emulator/Busybox & a **rooted device**
 * Kernel/ROM that support these kind of tweaks (if not it doesn't work or is useless)
 * init.d support if you like to store these tweaks into a .sh script and apply them at boot (once)
