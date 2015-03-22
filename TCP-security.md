@@ -46,27 +46,27 @@ As described over [here](http://www.iana.org/assignments/iana-ipv4-special-regis
 
 | Address | RFC | Description |
 | :--- | :--: | ---: |
-| 0.0.0.0/8 | RFC1122 | Host Network |
-| 10.0.0.0/8 | RFC1918 | Private-Use |
-| 100.64.0.0/10 | RFC6598 | Shared Address Space |
-| 127.0.0.0/8 | RFC1122 | Loopback|
-| 169.254.0.0/16 | RFC3927 | Link Local |
-| 172.16.0.0/12 | RFC1918 | Private-Use |
-| 192.0.0.0/24 | RFC6890 | IETF Protocol Assignments |
-| 192.0.2.0/24 | RFC5737 | Documentation (TEST-NET-1) |
-| 192.88.99.0/24 | RFC3068 | 6to4 Relay Anycast |
-| 192.168.0.0/16 | RFC1918 | Private-Use |
-| 198.18.0.0/15 | RFC2544 | Benchmarking (nmap) |
-| 198.51.100.0/24 | RFC5737 | ? |
-| 203.0.113.0/24 | RFC5737 | ? |
-| 240.0.0.0/4 | RFC1112 | Reserved |
-| 255.255.255.255/32 | RFC0919 | Limited Broadcast |
+| 0.0.0.0/8 | [RFC1122](https://tools.ietf.org/html/rfc1122) | Host Network |
+| 10.0.0.0/8 | [RFC1918](https://tools.ietf.org/html/rfc1918) | Private-Use |
+| 100.64.0.0/10 | [RFC6598](https://tools.ietf.org/html/rfc6598)| Shared Address Space |
+| 127.0.0.0/8 | [RFC1122](https://tools.ietf.org/html/rfc1122) | Loopback|
+| 169.254.0.0/16 | [RFC3927](https://tools.ietf.org/html/rfc3927) | Link Local |
+| 172.16.0.0/12 | [RFC1918](https://tools.ietf.org/html/rfc1918) | Private-Use |
+| 192.0.0.0/24 | [RFC6890](https://tools.ietf.org/html/rfc6890) | IETF Protocol Assignments |
+| 192.0.2.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | Documentation (TEST-NET-1) |
+| 192.88.99.0/24 | [RFC3068](https://tools.ietf.org/html/rfc3068) | 6to4 Relay Anycast |
+| 192.168.0.0/16 | [RFC1918](https://tools.ietf.org/html/rfc1918) | Private-Use |
+| 198.18.0.0/15 | [RFC2544](https://tools.ietf.org/html/rfc2544) | Benchmarking (nmap) |
+| 198.51.100.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | ? |
+| 203.0.113.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | ? |
+| 240.0.0.0/4 | [RFC1112](https://tools.ietf.org/html/rfc1112) | Reserved |
+| 255.255.255.255/32 | [RFC0919](https://tools.ietf.org/html/rfc0919) | Limited Broadcast |
 
 For [Multicast](http://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml):
 
 | Address | RFC | Description |
 | :--- | :--: | ---: |
-| 224.0.0.0/4 | RFC5771 | Multicast/Reserved |
+| 224.0.0.0/4 | [RFC5771](https://tools.ietf.org/html/rfc5771) | Multicast/Reserved |
 
 * Time to read the articles + to backup (show current settings via _#sysctl -a_) your existent configuration (just in case something goes wrong - shit happens!) 
 * ADB/Terminal Emulator/Busybox & a **rooted device**
