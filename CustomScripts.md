@@ -25,11 +25,10 @@ To define a custom script, just choose <code>Set custom script</code> from the m
 
 **WARNING**: This functionality should be used only by **experienced users that know what they are doing!** These examples may block your Android device (or block the whole internet) if not executed with proper care. Be careful when applying these settings on remote device servers over ssh session.!
 
-
 IPv4 and IPv6
 ------------
 IPtables only filters IPv4 traffic (RFC 1918). Rules setup in iptables will not touch ipv6 traffic so we need our ip6tables. 
-IPv6 does not include private network features such as NAT. Because of the very large number of IPv6 addresses. However, FC00::/7 (and FC20::/7) prefix used to identify Local IPv6 unicast addresses. All IPv6 users should be able to obtain IPv6 address space for use at their discretion and without artificial barriers between their network and the Internet.
+**IPv6 does not include private network features such as NAT**. Because of the very large number of IPv6 addresses. However, <code>FC00::/7 (and FC20::/7)</code> prefix used to identify Local IPv6 unicast addresses. All IPv6 users should be able to obtain IPv6 address space for use at their discretion and without artificial barriers between their network and the Internet.
 
 Loading scripts from files
 ------------
@@ -138,30 +137,30 @@ $IP6TABLES -A FORWARD -s ::1/128 -j DROP
 $IP6TABLES -A FORWARD -i $WAN_IF -s FC00::/7 -j DROP</pre>
 
 <pre># Set IPtables to masquerade
-> $IPTABLES -t nat -A POSTROUTING -j MASQUERADE</pre>
+$IPTABLES -t nat -A POSTROUTING -j MASQUERADE</pre>
 
 <pre># Tunnel traffic (for native IPv6 connections only! -> 6to4: 2002::/16 & Teredo: 2001:0::/32) 
-> $IP6TABLES -A INPUT -s 2002::/16 -j DROP
-> $IP6TABLES -A INPUT -s 2001:0::/32 -j DROP
-> $IP6TABLES -A FORWARD -s 2002::/16 -j DROP
-> $IP6TABLES -A FORWARD -s 2001:0::/32 -j DROP</pre>
+$IP6TABLES -A INPUT -s 2002::/16 -j DROP
+$IP6TABLES -A INPUT -s 2001:0::/32 -j DROP
+$IP6TABLES -A FORWARD -s 2002::/16 -j DROP
+$IP6TABLES -A FORWARD -s 2001:0::/32 -j DROP</pre>
 
 <pre># Block all IPv6 in IPv4 communication (for native IPv6 connections only!)
 # This must be done in our IPv4 tables!
-> $IPTABLES -A INPUT -p 41 -j DROP
-> $IPTABLES -A FORWARD -p 41 -j DROP</pre>
+$IPTABLES -A INPUT -p 41 -j DROP
+$IPTABLES -A FORWARD -p 41 -j DROP</pre>
 
 <pre># Allow SSH/HTTPS/SNMP (Ports 22tcp/443tcp/161udp)
 $IP6TABLES -A INPUT -i $LAN_IF -s $LAN_NET -p tcp -m multiport –dport 22,80,443 -j ACCEPT</pre>
 
 <pre># Syntax to block an IP address
-> $IPTABLES -A INPUT -s IP-ADDRESS -j DROP
-> # Example...
-> $IPTABLES -A "afwall" -d 22.22.22.0/21 -j REJECT</pre>
+$IPTABLES -A INPUT -s IP-ADDRESS -j DROP
+# Example in AFWall+
+$IPTABLES -A "afwall" -d 22.22.22.0/21 -j REJECT</pre>
 
 <pre># Force a specific NTP in this case  DE ntp0.fau.de (131.188.3.220), Location: University Erlangen-Nuernberg
-> #$IPTABLES -t nat -A OUTPUT -p tcp --dport 123 -j DNAT --to-destination 131.188.3.222:123
-> #$IPTABLES -t nat -A OUTPUT -p udp --dport 123 -j DNAT --to-destination 131.188.3.222:123</pre>
+$IPTABLES -t nat -A OUTPUT -p tcp --dport 123 -j DNAT --to-destination 131.188.3.222:123
+$IPTABLES -t nat -A OUTPUT -p udp --dport 123 -j DNAT --to-destination 131.188.3.222:123</pre>
 
 <pre># If you just want to block access to one port from an ip 65.55.44.100 to port 25 then type command:
 $IPTABLES -A INPUT -s 65.55.44.100 -p tcp --destination-port 25 -j DROP</pre>
@@ -208,7 +207,7 @@ $IPTABLES -t nat -F POSTROUTING
 $IPTABLES -t filter -A FORWARD -j ACCEPT
 $IPTABLES -t nat -A POSTROUTING -j MASQUERADE</pre>
 
-<pre>#Tethering + OpenVPN issues on KitKat/4.4 with OpenVPN 2.3.2 and higher
+<pre># Tethering + OpenVPN issues on KitKat/4.4 with OpenVPN 2.3.2 and higher
 # iptables --flush
 push "dhcp-option DNS 208.67.222.222"
 push "dhcp-option DNS 208.67.220.220"
@@ -244,10 +243,10 @@ $IP6TABLES -P FORWARD DROP
 $IP6TABLES -P OUTPUT DROP</pre>
 
 <pre># Web and mail from the LAN 
-> $IP6TABLES -A FORWARD -i $LAN_IF -s $LAN_NET -p tcp -m multiport –dport 25,80,443 -j ACCEPT</pre>
+$IP6TABLES -A FORWARD -i $LAN_IF -s $LAN_NET -p tcp -m multiport –dport 25,80,443 -j ACCEPT</pre>
 
 <pre># Web and mail from the internet
-> $IP6TABLES -A FORWARD -i $WAN_IF -s 2000::/3 -d $DMZ_NET -p -m multiport tcp –dport 25,80,443 -j ACCEPT</pre>
+$IP6TABLES -A FORWARD -i $WAN_IF -s 2000::/3 -d $DMZ_NET -p -m multiport tcp –dport 25,80,443 -j ACCEPT</pre>
 
 <pre># ICMPv6 - Do not allow that IPv6 gets control over everything
 # Type 1: Destination unreachable
@@ -259,39 +258,39 @@ $IP6TABLES -P OUTPUT DROP</pre>
 # -> Router Discovery (ICMPv6-Typen 133 + 134)
 # -> Path MTU-Discovery (ICMPv6-Typ 2)
 # If you want multicast connections you can use some of this shown rules as an example!
-> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 1 -j ACCEPT
-> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 2 -j ACCEPT
-> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 3 -j ACCEPT
-> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 4 -j ACCEPT
-> $IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 1 -j ACCEPT
-> $IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 2 -j ACCEPT
-> $IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 3 -j ACCEPT
-> $IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 4 -j ACCEPT
+$IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 1 -j ACCEPT
+$IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 2 -j ACCEPT
+$IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 3 -j ACCEPT
+$IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 4 -j ACCEPT
+$IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 1 -j ACCEPT
+$IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 2 -j ACCEPT
+$IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 3 -j ACCEPT
+$IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 4 -j ACCEPT
 
 # Router & Neighbor Discovery in-/outgoing
-> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 133 -j ACCEPT
-> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 134 -j ACCEPT
-> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 135 -j ACCEPT
-> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 136 -j ACCEPT
-> $IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 133 -j ACCEPT
-> $IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 134 -j ACCEPT
-> $IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 135 -j ACCEPT
-> $IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 136 -j ACCEPT
+$IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 133 -j ACCEPT
+$IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 134 -j ACCEPT
+$IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 135 -j ACCEPT
+$IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 136 -j ACCEPT
+$IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 133 -j ACCEPT
+$IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 134 -j ACCEPT
+$IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 135 -j ACCEPT
+$IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 136 -j ACCEPT
 
 # Ping-Request to the Firewall from the LAN and DMZ
-> $IP6TABLES -A INPUT ! -i $WAN_IF -p icmpv6 –icmpv6-type 128 -j ACCEPT
+$IP6TABLES -A INPUT ! -i $WAN_IF -p icmpv6 –icmpv6-type 128 -j ACCEPT
 
 # Ping-Request from the Firewall, LAN and DMZ
-> $IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 128 -j ACCEPT
-> $IP6TABLES -A FORWARD ! -i $WAN_IF -p icmpv6 –icmpv6-type 128 -j ACCEPT</pre>
+$IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 128 -j ACCEPT
+$IP6TABLES -A FORWARD ! -i $WAN_IF -p icmpv6 –icmpv6-type 128 -j ACCEPT</pre>
 
-# Allow full outgoing connection but no incoming stuff
-> $IP6TABLES -A INPUT -i $WAN_IF -m state --state ESTABLISHED,RELATED -j ACCEPT
-> $IP6TABLES -A OUTPUT -o $WAN_IF -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT</pre>
+<pre># Allow full outgoing connection but no incoming stuff
+$IP6TABLES -A INPUT -i $WAN_IF -m state --state ESTABLISHED,RELATED -j ACCEPT
+$IP6TABLES -A OUTPUT -o $WAN_IF -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT</pre>
 
-# Allow incoming ICMP ping 
-> $IP6TABLES -A INPUT -i $WAN_IF -p ipv6-icmp -j ACCEPT
-> $IP6TABLES -A OUTPUT -o $WAN_IF -p ipv6-icmp -j ACCEPT</pre>
+<pre># Allow incoming ICMP ping 
+$IP6TABLES -A INPUT -i $WAN_IF -p ipv6-icmp -j ACCEPT
+$IP6TABLES -A OUTPUT -o $WAN_IF -p ipv6-icmp -j ACCEPT</pre>
 
 
 DroidWall only examples
@@ -385,7 +384,7 @@ ORBOT_UID=`dumpsys package org.torproject.android | grep userId | cut -d= -f2 - 
 # Fix for https://code.google.com/p/droidwall/issues/detail?id=260
 chmod 755 /data/data/com.googlecode.droidwall/app_bin/droidwall.sh
 
-## Block all IPv6 ##
+## Block all IPv6 and logs denied input ##
 $IP6TABLES -t nat -F || true
 $IP6TABLES -F
 $IP6TABLES -A INPUT -j LOG --log-prefix "Denied IPv6 input: "
@@ -408,7 +407,6 @@ $IPTABLES -A INPUT-firewall -i lo -j RETURN # Transproxy output comes from lo
 $IPTABLES -A INPUT-firewall -d 127.0.0.1 -m udp -p udp --dport 5400 -j RETURN || exit
 $IPTABLES -A INPUT-firewall -j LOG --log-prefix "INPUT DROPPED: " --log-uid || exit
 $IPTABLES -A INPUT-firewall -j DROP || exit
-
 
 ## OUTPUT ##
 # Clear previous output firewall rules
@@ -505,15 +503,14 @@ $IPTABLES -I OUTPUT -j OUTPUT-afwall</pre>
 The Droidwalls only scripts are all downloadable via [git clone](https://gist.github.com/e0b8771cd1fd17c9b4d3.git) or as [raw files](https://gist.github.com/CHEF-KOCH/e0b8771cd1fd17c9b4d3).
 
 Test above settings please do follow:
-> adb shell su -c 'cp /PATH/userinit.sh /data/local/userinit.sh'
+<pre>adb shell su -c 'cp /PATH/userinit.sh /data/local/userinit.sh'</pre>
 
-To stop the DNS resolve of, and HTTP request to, clients3.google.com on every connection to any Wifi Access Point:
-> adb shell su -c "settings put global captive_portal_server 127.0.0.1"
-
-> adb shell su -c "settings put global captive_portal_detection_enabled 0"
+To stop the DNS resolve of check [the capital portal](http://en.wikipedia.org/wiki/Captive_portal) and HTTP request to, clients3.google.com on every connection to any Wifi Access Point (see also [here](https://gist.github.com/CHEF-KOCH/32e9bcb0b53d273e8eb0)):<pre>
+adb shell su -c "settings put global captive_portal_server 127.0.0.1"
+adb shell su -c "settings put global captive_portal_detection_enabled 0"</pre>
 
 To stop the resolve/request for 2.android.pool.ntp.org on every boot (even with network time disabled!):
-> su -c "settings put global ntp_server 127.0.0.1"
+<pre>su -c "settings put global ntp_server 127.0.0.1"</pre>
 
 
 How do I view blocked IP address?
