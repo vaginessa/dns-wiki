@@ -2,7 +2,7 @@ Index
 -----
 
 * [Introduction](#introduction)
-* [IPv4 and IPv6](#ipv4-and-ipv6)
+* [Important notes about IPv4 and IPv6 differences](#important-notes-about-ipv4-and-ipv6-differences)
 * [Loading scripts from files](#loading-scripts-from-files)
 * [Adding custom rules](#adding-custom-rules)
 * [Some examples](#some-examples)
@@ -12,6 +12,7 @@ Index
 * [Block incoming request from IP](#block-incoming-request-from-ip)
 * [Block outgoing request from LAN](#block-outgoing-request-from-lan)
 * [Orbot transparent proxy](#orbot-transparent-proxy)
+* [How can I use a whitelist or blacklist?](#how-can-i-use-a-whitelist-or-blacklist?)
 * [Useful links](#useful-links)
 
 Introduction
@@ -25,10 +26,14 @@ To define a custom script, just choose <code>Set custom script</code> from the m
 
 **WARNING**: This functionality should be used only by **experienced users that know what they are doing!** These examples may block your Android device (or block the whole internet) if not executed with proper care. Be careful when applying these settings on remote device servers over ssh session.!
 
-IPv4 and IPv6
+Important notes about IPv4 and IPv6 differences
 ------------
 IPtables only filters IPv4 traffic (RFC 1918). Rules setup in iptables will not touch ipv6 traffic so we need our ip6tables. 
 **IPv6 does not include private network features such as NAT**. Because of the very large number of IPv6 addresses. However, <code>FC00::/7 (and FC20::/7)</code> prefix used to identify Local IPv6 unicast addresses. All IPv6 users should be able to obtain IPv6 address space for use at their discretion and without artificial barriers between their network and the Internet.
+
+**IPv6 uses ICMP a lot more than IPv4**, and not letting ICMP packets ingoing can severely cripple your traffic because you won't receive error messages related to that traffic. This can cause long delays + timeouts. Allowing ICMPv6 traffic in usually doesn't hurt, so we can can add this to our firewall rules <code>ip6tables -A INPUT -p icmpv6 -j ACCEPT</code>. There are some guys out there which want really block ping6 (for unknown reasons), so here we are <code>ip6tables -A INPUT -p icmpv6 --icmpv6-type 128 -j DROP</code>.
+
+More about IPv6 parameters, type's and error codes can be found [here](http://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml).
 
 Loading scripts from files
 ------------
@@ -130,11 +135,30 @@ $IP6TABLES -A INPUT -m state –state ESTABLISHED,RELATED -j ACCEPT
 $IP6TABLES -A FORWARD -m state –state ESTABLISHED,RELATED -j ACCEPT
 $IP6TABLES -A OUTPUT -m state –state ESTABLISHED,RELATED -j ACCEPT</pre>
 
+<pre># Block Shellshock
+$IPTABLES -A INPUT -m string --algo bm --hex-string '|28 29 20 7B|' -j DROP
+$IP6TABLES -A INPUT -m string --algo bm --hex-string '|28 29 20 7B|' -j DROP</pre>
+
 <pre># Anti-Spoofing on loopback ::1 & the unique local address FC00::/7 
 $IP6TABLES -A INPUT ! -i lo -s ::1/128 -j DROP
 $IP6TABLES -A INPUT -i $WAN_IF -s FC00::/7 -j DROP
 $IP6TABLES -A FORWARD -s ::1/128 -j DROP
 $IP6TABLES -A FORWARD -i $WAN_IF -s FC00::/7 -j DROP</pre>
+
+<pre># SSH for eth0 only 
+$IPTABLES -A TCP -i eth0 -p tcp --dport ssh -j ACCEPT</pre>
+
+<pre># Prevent SYN attacks
+$IPTABLES -I TCP -p tcp --match recent --update --seconds 60 --name TCP-PORTSCAN -j DROP
+$IP6TABLES -I TCP -p tcp --match recent --update --seconds 60 --name TCP-PORTSCAN -j DROP
+$IPTABLES -A INPUT -p tcp --match recent --set --name TCP-PORTSCAN -j DROP
+$IP6TABLES -A INPUT -p tcp --match recent --set --name TCP-PORTSCAN -j DROP</pre>
+
+<pre>#Prevent SMURF attacks
+$IPTABLES -A INPUT -p icmp -m icmp --icmp-type address-mask-request -j DROP
+$IPTABLES -A INPUT -p icmp -m icmp --icmp-type timestamp-request -j DROP
+$IPTABLES -A INPUT -p icmp -m limit --limit 2/second --limit-burst 2 -j ACCEPT
+$IP6TABLES -A INPUT -p icmpv6 -m limit --limit 2/second --limit-burst 2 -j ACCEPT</pre>
 
 <pre># Set IPtables to masquerade
 $IPTABLES -t nat -A POSTROUTING -j MASQUERADE</pre>
@@ -291,6 +315,16 @@ $IP6TABLES -A OUTPUT -o $WAN_IF -m state --state NEW,ESTABLISHED,RELATED -j ACCE
 <pre># Allow incoming ICMP ping 
 $IP6TABLES -A INPUT -i $WAN_IF -p ipv6-icmp -j ACCEPT
 $IP6TABLES -A OUTPUT -o $WAN_IF -p ipv6-icmp -j ACCEPT</pre>
+
+<pre># Drop normal Multicast-adresses 
+$IPTABLES -A INPUT -s 224.0.0.0/4 -j DROP
+$IPTABLES -A INPUT -d 224.0.0.0/4 -j DROP
+$IPTABLES -A INPUT -s 240.0.0.0/5 -j DROP
+$IPTABLES -A INPUT -d 240.0.0.0/5 -j DROP
+$IPTABLES -A INPUT -s 0.0.0.0/8 -j DROP
+$IPTABLES -A INPUT -d 0.0.0.0/8 -j DROP
+$IPTABLES -A INPUT -d 239.255.255.0/24 -j DROP
+$IPTABLES -A INPUT -d 255.255.255.255 -j DROP</pre>
 
 
 DroidWall only examples
@@ -563,6 +597,34 @@ $IPTABLES -t nat -A OUTPUT -p udp -m owner --uid-owner 10001 -m udp --dport 53 -
 $IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -j REJECT</pre>
 
 Thanks to an0n981, original posted [here on XDA](http://forum.xda-developers.com/showpost.php?p=54134521&postcount=2126) and modded by [CHEF-KOCH](https://github.com/CHEF-KOCH).
+
+How can I use a whitelist or blacklist?
+------------
+
+If you want to log whitelisted or denied traffic in a .txt for debugging reasons) you can add this into the startup script.<pre>
+#!/bin/bash
+
+WHITELIST=/whitelist.txt
+BLACKLIST=/blacklist.txt
+
+# Clear all existent rules 
+echo 'Clearing all rules'
+iptables -F
+
+
+# Whitelist
+for x in `grep -v ^# $WHITELIST | awk '{print $1}'`; do
+        echo "Allowing $x..."
+        $IPTABLES -A INPUT -t filter -s $x -j ACCEPT
+done
+
+
+# Blacklist
+for x in `grep -v ^# $BLACKLIST | awk '{print $1}'`; do
+        echo "Denied $x..."
+        $IPTABLES -A INPUT -t filter -s $x -j DROP
+done</pre>
+
 
 Useful links
 ------------
