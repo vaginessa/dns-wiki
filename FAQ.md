@@ -14,7 +14,7 @@ Index
 Quick Guide
 -----------
 
-Start using AFWall+ the first time
+Using AFWall+ the first time:
 
 1. Click on _Mode_ to switch between whitelist- (default enabled) and blacklist-mode.
 2. Mark the applications that you want to block or allow (depending on the selected mode), for each interface.
@@ -52,6 +52,10 @@ Frequently asked questions
 > Use the following command in ADB shell or in Terminal Emulator as root (`su`):
 
 <code>iptables -L -t nat</code>
+
+To check on which place iptabes are stored simply use:
+<pre>which iptables
+which ip6tables</pre>
 
 <a name="FAQ3"></a> 
 ##### (3) Packet processing in iptables
@@ -459,3 +463,50 @@ mount -o remount,rw /system
 rm -f /system/etc/init.d/afwallstart
 mount -o remount,ro /system
 reboot</pre>
+
+<a name="FAQ48"></a>
+##### (48) How can my script survive an Over-the-Air (OTA) Update?
+
+> Just navigate to /system/addon.d/ and copy the 50-cm.sh file. You can rename the copy to whatever you want for example 98-myfiles.sh, now open it and search for the line etc/hosts and add the script you want to protect in our case we want to protect the afwallstart script (present if you use the experimental fix data leak option in AFWall+):
+
+```
+...
+cat <<EOF
+etc/init.d/afwallstart
+etc/gps.conf
+etc/resolv.conf
+EOF
+...
+```
+> The last step is to save the file and set the correct permission. (root:root -rwxr-xr-x bzw. 755) 
+
+<a name="FAQ49"></a>
+##### (49) How can my script survive an system wipe?
+
+> This is a little bit harder but not impossible. It's almost the same procesdure as mentioned in FAQ48 except the dir you need to place the file in; /data/local/userinit.d/ (if not present just create it - root:root -rwxr-xr-x bzw. 755) Now place your script in there. To restore other script just put it under /data/local/. 
+
+````
+#!/system/bin/sh
+# This is the script /data/local/userinit.d/98-afwallstart-repair 
+# (permissions root:root -rwxr-xr-x 755)
+# It takes care, that the AFWall+ firewall is correctly blocking network 
+# traffic at boot time (see data leak fix)
+
+# We want to write to the system partition
+mount -o remount,rw /system
+
+# Take care that (OTA) updates do not break AFWall firewall security 
+cp /data/local/afwallstart /system/etc/init.d/afwallstart
+chown root:root /system/etc/init.d/afwallstart
+chmod 555 /system/etc/init.d/afwallstart
+
+# Take care that system wipes do not harm our tweaks 
+# as example we use the script file name "98-myfiles.sh"
+# for this, uncomment the following 3 lines = remove the "#"
+#cp /data/local/98-myfiles.sh /system/addon.d/98-myfiles.sh
+#chown root:root /system/addon.d/98-myfiles.sh
+#chmod 755 /system/addon.d/98-myfiles.sh
+
+# lock up system partition read-only
+mount -o remount,ro /system
+````
