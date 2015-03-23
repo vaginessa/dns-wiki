@@ -3,7 +3,7 @@ Frequently Asked Questions (FAQ)
 
 This FAQ is designed to answer the most common questions, please take your time to read it before you ask anything.
 
-We are not responsible for external content!
+:warning: We are not responsible for external content! :warning:
 
 Index
 -----
@@ -419,11 +419,12 @@ Or via init.d:
 
 IP6TABLES=/system/bin/ip6tables
 IPTABLES=/system/bin/iptables
+
 # Maybe need to change $IPTABLES to iptables if there are troubles apply them
 $IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
 $IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53</pre>
 
-> Only _Google Puplic DNS_ supports IPv6 atm! So uncheck IPv6 in your kernel (if checked!) or disable via custom script.
+> Only _Google Puplic DNS_ supports native IPv6 atm! So uncheck IPv6 in your kernel (if checked!) or disable it via custom script.
 
 > If you still like external apps, you should take a look at DNS Forwarder and Override DNS [tested, working on 4.4.4] which does more or less the same. That may solve some problems on Android 4.4/L but there is no guarantee, some ROM's may handle it different (still buggy/limitation).
 
@@ -485,7 +486,7 @@ EOF
 <a name="FAQ49"></a>
 ##### (49) How can my script survive an system wipe?
 
-> This is a little bit harder but not impossible. It's almost the same procesdure as mentioned in FAQ48 except the dir you need to place the file in; /data/local/userinit.d/ (if not present just create it - root:root -rwxr-xr-x bzw. 755) Now place your script in there. To restore other script just put it under /data/local/. 
+> This is a little bit harder but not impossible. It's almost the same procedure as mentioned in FAQ48 except the dir you need to place the file in; /data/local/userinit.d/ (if not present just create it - root:root -rwxr-xr-x bzw. 755) Now place your script in there. To restore other script just put it under /data/local/. 
 
 ````
 #!/system/bin/sh
@@ -512,3 +513,13 @@ chmod 555 /system/etc/init.d/afwallstart
 # lock up system partition read-only
 mount -o remount,ro /system
 ````
+
+<a name="FAQ50"></a>
+##### (50) Where are AFWall's settings stored?
+
+> Exported content like profiles are stored under your internal sdcard /sdcard0/afwall all other stuff is stored under /data/data/dec.ukanth.ufirewall/. 
+
+<a name="FAQ51"></a>
+##### (51) I get "Unable to parse package." if I try to install AFWall+?
+
+> This means AFWalls's .apk file seems to be corrupt. Try disabling your popup blocker, check your internet connection and re-download the whole apk.
