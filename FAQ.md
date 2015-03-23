@@ -54,8 +54,10 @@ Frequently asked questions
 <code>iptables -L -t nat</code>
 
 To check on which place iptabes are stored simply use:
-<pre>which iptables
-which ip6tables</pre>
+```
+which iptables
+which ip6tables
+```
 
 <a name="FAQ3"></a> 
 ##### (3) Packet processing in iptables
