@@ -28,7 +28,7 @@ To define a custom script, just choose <code>Set custom script</code> from the m
 
 Important notes about IPv4 and IPv6 differences
 ------------
-IPtables only filters IPv4 traffic (RFC 1918). Rules setup in iptables will not touch ipv6 traffic so we need our ip6tables. 
+IPTables only filters IPv4 traffic ([RFC 1918](https://tools.ietf.org/html/rfc1918)). Rules setup in iptables will not touch ipv6 traffic so we need our ip6tables. 
 **IPv6 does not include private network features such as NAT**. Because of the very large number of IPv6 addresses. However, <code>FC00::/7 (and FC20::/7)</code> prefix used to identify Local IPv6 unicast addresses. All IPv6 users should be able to obtain IPv6 address space for use at their discretion and without artificial barriers between their network and the Internet.
 
 **IPv6 uses ICMP a lot more than IPv4**, and not letting ICMP packets ingoing can severely cripple your traffic because you won't receive error messages related to that traffic. This can cause long delays + timeouts. Allowing ICMPv6 traffic in usually doesn't hurt, so we can can add this to our firewall rules <code>ip6tables -A INPUT -p icmpv6 -j ACCEPT</code>. There are some guys out there which want really block ping6 (for unknown reasons), so here we are <code>ip6tables -A INPUT -p icmpv6 --icmpv6-type 128 -j DROP</code>.
@@ -601,7 +601,7 @@ Thanks to an0n981, original posted [here on XDA](http://forum.xda-developers.com
 How can I use a whitelist or blacklist?
 ------------
 
-If you want to log whitelisted or denied traffic in a .txt for debugging reasons) you can add this into the startup script.
+If you want to log whitelisted or denied traffic in a .txt file(for debugging reasons) you can add this into the startup script.
 ````
 #!/bin/bash
 
