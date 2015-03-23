@@ -1,17 +1,18 @@
 Index
 -----
 
-* [Introduction](#Introduction)
+* [Introduction](#introduction)
+* [IPv4 and IPv6](#ipv4-and-ipv6)
 * [Loading scripts from files](#loading-scripts-from-files)
 * [Adding custom rules](#adding-custom-rules)
 * [Some examples](#some-examples)
 * [Droidwall only examples](#droidwall-only-examples)
-* [How do I view blocked IP address?](#how-do-I-view-blocked-IP-address?)
-* [How do I block subnet?](#how-do-I-block-subnet?)
+* [How do I view blocked IP address?](#how-do-I-view-blocked-ip-address?)
+* [How do I block subnet?](#how-do-i-block-subnet?)
 * [Block incoming request from IP](#block-incoming-request-from-ip)
 * [Block outgoing request from LAN](#block-outgoing-request-from-lan)
 * [Orbot transparent proxy](#orbot-transparent-proxy)
-* [Useful links](#Useful-links)
+* [Useful links](#useful-links)
 
 Introduction
 ------------
@@ -24,8 +25,14 @@ To define a custom script, just choose <code>Set custom script</code> from the m
 
 **WARNING**: This functionality should be used only by **experienced users that know what they are doing!** These examples may block your Android device (or block the whole internet) if not executed with proper care. Be careful when applying these settings on remote device servers over ssh session.!
 
+
+IPv4 and IPv6
+------------
+IPtables only filters IPv4 traffic (RFC 1918). Rules setup in iptables will not touch ipv6 traffic so we need our ip6tables. 
+IPv6 does not include private network features such as NAT. Because of the very large number of IPv6 addresses. However, FC00::/7 (and FC20::/7) prefix used to identify Local IPv6 unicast addresses. All IPv6 users should be able to obtain IPv6 address space for use at their discretion and without artificial barriers between their network and the Internet.
+
 Loading scripts from files
---------------------------
+------------
 
 * Please first go into <code>Settings</code> -> <code>Developer Options</code> and enable <code>USB Debugging</code> and change Root Access to <code>Apps and ADB</code>. (Necessary if you push/test your files via adb).
 * Whenever you finish using adb, always remember to disable USB Debugging and restore Root Access to Apps only. While Android 4.2+ ROMs now prompt you to authorize an RSA key fingerprint before allowing a debugging connection (thus mitigating adb exploit tools that bypass screen lock and can install root apps), you still risk additional vulnerability surface by leaving debugging enabled.
@@ -80,7 +87,22 @@ Some examples
 <pre># Necessary at the beginning of each script! 
 IP6TABLES=/system/bin/ip6tables
 IPTABLES=/system/bin/iptables
-# Now add your rules...</pre>
+
+# Now add your own rules...</pre>
+
+<pre># To change the names of the iptables to whatever you want  
+myownipv6tablesname=/system/bin/ip6tables
+myownipv4tablesname=/system/bin/iptables
+
+Remember that you now must use the selected names myownipv6tablesname for IP6TABLES and myownipv4tablesname for your IPTABLES.</pre>
+
+<pre># Interface configuration - replace with your interfaces (ifconfig -a)
+# This is for advance users only which like o work with specific interfaces only!
+WAN_IF="eth1"
+LAN_IF="eth0"
+DMZ_IF="eth2"
+LAN_NET="2001:db8:1::/64"
+DMZ_NET="2001:db8:2::/64"</pre>
 
 <pre># Flush/Purge all rules expect OUTPUT
 $IPTABLES -F INPUT
@@ -100,13 +122,46 @@ $IP6TABLES -X
 $IP6TABLES -t nat -X
 $IP6TABLES -t mangle -X</pre>
 
+<pre># Allow loopback communication (necessary on IPv6)
+$IP6TABLES -A INPUT -i lo -j ACCEPT
+$IP6TABLES -A OUTPUT -o lo -j ACCEPT</pre>
+
+<pre># Stateful-Inspection 
+$IP6TABLES -A INPUT -m state –state ESTABLISHED,RELATED -j ACCEPT
+$IP6TABLES -A FORWARD -m state –state ESTABLISHED,RELATED -j ACCEPT
+$IP6TABLES -A OUTPUT -m state –state ESTABLISHED,RELATED -j ACCEPT</pre>
+
+<pre># Anti-Spoofing on loopback ::1 & the unique local address FC00::/7 
+$IP6TABLES -A INPUT ! -i lo -s ::1/128 -j DROP
+$IP6TABLES -A INPUT -i $WAN_IF -s FC00::/7 -j DROP
+$IP6TABLES -A FORWARD -s ::1/128 -j DROP
+$IP6TABLES -A FORWARD -i $WAN_IF -s FC00::/7 -j DROP</pre>
+
 <pre># Set IPtables to masquerade
 > $IPTABLES -t nat -A POSTROUTING -j MASQUERADE</pre>
+
+<pre># Tunnel traffic (for native IPv6 connections only! -> 6to4: 2002::/16 & Teredo: 2001:0::/32) 
+> $IP6TABLES -A INPUT -s 2002::/16 -j DROP
+> $IP6TABLES -A INPUT -s 2001:0::/32 -j DROP
+> $IP6TABLES -A FORWARD -s 2002::/16 -j DROP
+> $IP6TABLES -A FORWARD -s 2001:0::/32 -j DROP</pre>
+
+<pre># Block all IPv6 in IPv4 communication (for native IPv6 connections only!)
+# This must be done in our IPv4 tables!
+> $IPTABLES -A INPUT -p 41 -j DROP
+> $IPTABLES -A FORWARD -p 41 -j DROP</pre>
+
+<pre># Allow SSH/HTTPS/SNMP (Ports 22tcp/443tcp/161udp)
+$IP6TABLES -A INPUT -i $LAN_IF -s $LAN_NET -p tcp -m multiport –dport 22,80,443 -j ACCEPT</pre>
 
 <pre># Syntax to block an IP address
 > $IPTABLES -A INPUT -s IP-ADDRESS -j DROP
 > # Example...
 > $IPTABLES -A "afwall" -d 22.22.22.0/21 -j REJECT</pre>
+
+<pre># Force a specific NTP in this case  DE ntp0.fau.de (131.188.3.220), Location: University Erlangen-Nuernberg
+> #$IPTABLES -t nat -A OUTPUT -p tcp --dport 123 -j DNAT --to-destination 131.188.3.222:123
+> #$IPTABLES -t nat -A OUTPUT -p udp --dport 123 -j DNAT --to-destination 131.188.3.222:123</pre>
 
 <pre># If you just want to block access to one port from an ip 65.55.44.100 to port 25 then type command:
 $IPTABLES -A INPUT -s 65.55.44.100 -p tcp --destination-port 25 -j DROP</pre>
@@ -126,6 +181,10 @@ $IPTABLES -A "afwall" -p TCP --dport 22 -j "afwall-reject"</pre>
 <pre># Block HTTP connections, but only on cellular interface
 $IPTABLES -A "afwall-3g" -p TCP --destination-port 80 -j "afwall-reject"</pre>
 
+<pre># Allow all apps access to standard Orbot ports
+$IPTABLES -A "afwall" -d 127.0.0.1 -p tcp --dport 9040 -j ACCEPT
+$IPTABLES -A "afwall" -d 127.0.0.1 -p udp --dport 5400 -j ACCEPT</pre>
+
 <pre># Restore policies
 $IPTABLES -P INPUT ACCEPT
 $IPTABLES -P FORWARD ACCEPT</pre>
@@ -144,34 +203,96 @@ $IPTABLES -A "afwall" -p TCP --destination-port 80 -j "afwall-reject"</pre>
 
 <pre># Connect Wifi-Tethered Clients to VPN
 #!/system/bin/sh 
-iptables -t filter -F FORWARD
-iptables -t nat -F POSTROUTING
-iptables -t filter -A FORWARD -j ACCEPT
-iptables -t nat -A POSTROUTING -j MASQUERADE</pre>
+$IPTABLES -t filter -F FORWARD
+$IPTABLES -t nat -F POSTROUTING
+$IPTABLES -t filter -A FORWARD -j ACCEPT
+$IPTABLES -t nat -A POSTROUTING -j MASQUERADE</pre>
 
 <pre>#Tethering + OpenVPN issues on KitKat/4.4 with OpenVPN 2.3.2 and higher
-#iptables --flush
+# iptables --flush
 push "dhcp-option DNS 208.67.222.222"
 push "dhcp-option DNS 208.67.220.220"
 # push "redirect-gateway autolocal def1" (server config)
-iptables -t filter -F FORWARD
-iptables -t nat -F POSTROUTING
-iptables -t filter -I FORWARD -j ACCEPT
-iptables -t nat -I POSTROUTING -j MASQUERADE
+$IPTABLES -t filter -F FORWARD
+$IPTABLES -t nat -F POSTROUTING
+$IPTABLES -t filter -I FORWARD -j ACCEPT
+$IPTABLES -t nat -I POSTROUTING -j MASQUERADE
 
-#DHCP with OpenVPN set to tun0 and Lan is set to 192.168.43.whatever
+# DHCP with OpenVPN set to tun0 and Lan is set to 192.168.43.whatever
 ip rule add from 192.168.43.0/24 lookup 61
 ip route add default dev tun0 scope link table 61
 ip route add 192.168.43.0/24 dev wlan0 scope link table 61
 ip route add broadcast 255.255.255.255 dev wlan0 scope link table 61</pre>
 
-<pre># Force specific DNS (in this case http://www.opendns.com/)
-$IPTABLES -t nat -A OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53
-$IPTABLES -t nat -A OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53</pre>
+<pre># Force a specific DNS for mobile networks (in this case http://www.opendns.com/)
+# First two lines delete current DNS settings
+$IPTABLES -t nat -D OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
+$IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
+
+# This two new lines set our new DNS to OpenDNS
+$IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
+$IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53
+
+# For IPv6 we need to change it in a different way since there is no nat!
+$IP6TABLES -A INPUT -i $LAN_IF -s $LAN_NET -p udp –dport 53 -j ACCEPT
+$IP6TABLES -A FORWARD -i $LAN_IF -s $LAN_NET -p udp –dport 53 -j ACCEPT
+$IP6TABLES -A OUTPUT -p udp –dport 53 -j ACCEPT</pre>
 
 <pre># Deny IPv6 only connections  
-$IP6TABLES -P INPUT DROP  
+$IP6TABLES -P INPUT DROP
+$IP6TABLES -P FORWARD DROP
 $IP6TABLES -P OUTPUT DROP</pre>
+
+<pre># Web and mail from the LAN 
+> $IP6TABLES -A FORWARD -i $LAN_IF -s $LAN_NET -p tcp -m multiport –dport 25,80,443 -j ACCEPT</pre>
+
+<pre># Web and mail from the internet
+> $IP6TABLES -A FORWARD -i $WAN_IF -s 2000::/3 -d $DMZ_NET -p -m multiport tcp –dport 25,80,443 -j ACCEPT</pre>
+
+<pre># ICMPv6 - Do not allow that IPv6 gets control over everything
+# Type 1: Destination unreachable
+# Type 2: Time Exceeded
+# Type 3: Parameter problem
+# -> Multicast Listener Discovery (130, 131, 132 INPUT and OUTPUT)
+# -> Ping (128 + 129, INPUT, OUTPUT and FORWARDING)
+# -> Neighbor Discovery (ICMPv6-Typen 135 + 136)
+# -> Router Discovery (ICMPv6-Typen 133 + 134)
+# -> Path MTU-Discovery (ICMPv6-Typ 2)
+# If you want multicast connections you can use some of this shown rules as an example!
+> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 1 -j ACCEPT
+> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 2 -j ACCEPT
+> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 3 -j ACCEPT
+> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 4 -j ACCEPT
+> $IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 1 -j ACCEPT
+> $IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 2 -j ACCEPT
+> $IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 3 -j ACCEPT
+> $IP6TABLES -A FORWARD -i $WAN_IF -p icmpv6 –icmpv6-type 4 -j ACCEPT
+
+# Router & Neighbor Discovery in-/outgoing
+> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 133 -j ACCEPT
+> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 134 -j ACCEPT
+> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 135 -j ACCEPT
+> $IP6TABLES -A INPUT -p icmpv6 –icmpv6-type 136 -j ACCEPT
+> $IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 133 -j ACCEPT
+> $IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 134 -j ACCEPT
+> $IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 135 -j ACCEPT
+> $IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 136 -j ACCEPT
+
+# Ping-Request to the Firewall from the LAN and DMZ
+> $IP6TABLES -A INPUT ! -i $WAN_IF -p icmpv6 –icmpv6-type 128 -j ACCEPT
+
+# Ping-Request from the Firewall, LAN and DMZ
+> $IP6TABLES -A OUTPUT -p icmpv6 –icmpv6-type 128 -j ACCEPT
+> $IP6TABLES -A FORWARD ! -i $WAN_IF -p icmpv6 –icmpv6-type 128 -j ACCEPT</pre>
+
+# Allow full outgoing connection but no incoming stuff
+> $IP6TABLES -A INPUT -i $WAN_IF -m state --state ESTABLISHED,RELATED -j ACCEPT
+> $IP6TABLES -A OUTPUT -o $WAN_IF -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT</pre>
+
+# Allow incoming ICMP ping 
+> $IP6TABLES -A INPUT -i $WAN_IF -p ipv6-icmp -j ACCEPT
+> $IP6TABLES -A OUTPUT -o $WAN_IF -p ipv6-icmp -j ACCEPT</pre>
+
 
 DroidWall only examples
 -----------------------
@@ -327,10 +448,6 @@ $IPTABLES -A droidwall -d 127.0.0.1 -p udp -m owner ! --uid-owner 0-9999999 -m u
 
 # Allow all from orbot
 $IPTABLES -A droidwall -m owner --uid-owner $ORBOT_UID -j RETURN || exit
-
-# Allow all apps access to standard Orbot ports
-$IPTABLES -A "afwall" -d 127.0.0.1 -p tcp --dport 9040 -j ACCEPT
-$IPTABLES -A "afwall" -d 127.0.0.1 -p udp --dport 5400 -j ACCEPT
 
 # We also want to block remaining UDP. All app UDP should be already transproxied
 $IPTABLES -A droidwall -p udp ! --dport 5400 -j LOG --log-prefix "Denied UDP: " --log-uid || exit
