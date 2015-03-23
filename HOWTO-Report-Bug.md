@@ -4,9 +4,10 @@ Index
 * [You should NOT](#you-should-not)
 * [Before contacting support](#before-contacting-support)
 * [How do I capture my logcat?](#how-do-i-capture-my-logcat?)
-* [Logcat step-by-step](#logcat-step-by-step)
+* [Logcat step-by-step via Terminal Emulator](#logcat-step-by-step-via-terminal-emulator)
+* [Logcat step-by-step via SDK](#logcat-step-by-step-via-sdk)
 * [Sending bug report](#sending-bug-report)
-* [Template](#template)
+* [Template for GitHub](#template-for-github)
 * [After sending the report](#after-sending-the-report)
 * [Custom ROMs](#custom-roms)
 * [Useful Links](#useful-links)
@@ -36,7 +37,7 @@ How do I capture my logcat?
 ---------------------------
 * This is **VERY important especially for any crashes**. To do this I recommend an application like [aLogCat](https://play.google.com/store/apps/details?id=org.jtb.alogcat&hl=de) or [Catlog](https://play.google.com/store/apps/details?id=com.nolanlawson.logcat&feature=search_result#?t=W251bGwsMSwxLDEsImNvbS5ub2xhbmxhd3Nvbi5sb2djYXQiXQ..) which is totally free available on Google Play Store. Both of these programs can dump their logs to a .txt file, which is very useful for debugging. Or, you can do it in terminal emulator. The most important part of the logcat are when AFWall+ first starts and logs around the time when your problem occurred. Generally it's a good idea to just capture the whole thing and attach that as discussed when reporting your issue. The logcat is only 64Kb big (adb logcat -g) - so you have to act quickly after a problem occurs - this is a Google Android OS limitation.
 
-Logcat step-by-step
+Logcat step-by-step via Terminal Emulator
 -------------------
 
 Through Terminal Emulator:
@@ -46,7 +47,7 @@ Type _su_ and hit enter before you run the logcat command!
 The code for logcat to output to a file is:
 > logcat > name of problem.txt
 
-You can also do:
+You can also add the _-f_ argument:
 > logcat -f name of problem.txt
 
 How I prefer to do it is this way:
@@ -63,28 +64,29 @@ With the -v flag & the long argument, it changes output to long style, which mea
 **Important:** When outputting to a file, you will see a newline, but nothing printed, this is normal. To stop logcat from writing to a file, you need to press _ctrl+c_.
 
 
-## Logcat step-by-step
+Logcat step-by-step via SDK
+-------------------
 
-Through SDK:
+The simplest way is to use an application, like [Catlog](https://play.google.com/store/apps/details?id=com.nolanlawson.logcat), but logcats captured this way are not always sufficient. The _best way_ to capture a logcat is:
 
-The simplest way is to use an application, like [Catlog](https://play.google.com/store/apps/details?id=com.nolanlawson.logcat),
-but logcats captured this way are not always sufficient. The best way to capture a logcat is:
-
-* Install the [Android SDK](http://developer.android.com/sdk/index.html) (Click *Download for other platforms* for a minimal download)
+* Install the [Android SDK](http://developer.android.com/sdk/index.html) (Click *Download for other platforms* for a minimal download) an light alternative to the huge SDK is the [ADB 15 seconds installer](http://www.xda-developers.com/15-second-adb-installer-gives-you-lightning-fast-adb-fastboot-and-driver-installation/).
 * Make sure you can connect to your device via USB (see [here](http://developer.android.com/sdk/win-usb.html) for drivers and instructions)
-* **Enable AFWall+ logging in the main settings** (you can also export it to sdcard)
+* **Enable AFWall+ logging in the main settings** (you can also export it to _/sdcard/_)
 * Power off your device
 * Start logging by entering this command on the command line: *adb logcat >log.txt*
 * Power on your device
 * Reproduce the problem
+* Send us the logcat 
 
-Upload the captured logcat somewhere, for example using Google Drive, Dropbox, Pastebin and link to it from the issue you (should) have created. Don't forget to mention the *uid* of the application to look into when it's relevant.
+Upload the captured logcat somewhere, for example using Google Drive, Dropbox, Pastebin and link to it from [the issue](https://github.com/ukanth/afwall/issues) you (should) have created or send it [directly via email](afwall-report@googlegroups.com). Don't forget to mention the *uid* of the application to look into when it's relevant.
 
 Sending bug report
 ------------------
 
+Via AFWall+:
 * Copy and/or send the integrated LogCat within AFWall+ (under _Firewall Rules_/_Send error report_) via eMail.
 
+Via GitHub:
 * Create a new ticket ("New Issues") [here](https://github.com/ukanth/afwall/issues) on GitHub.
 * Make sure you include Phone Name and Model (ie Samsung Galaxy SII I-9100)
 * Make sure you include version of Android (ie Android 5.1)
@@ -93,8 +95,8 @@ Sending bug report
 * Upload any sample files if necessary (i.e. if AFWall+ crashes when apply your new rules, upload a sample that causes crash - **Logcat or it never happened!**).
 * You can copy and paste the output to a site like [defuse.ca](https://defuse.ca) or export them with the copy/export function.
 
-Template
---------
+Template for GitHub
+------------------
 
 Please make sure AFWall+ is running! (Green AFWall+ shield activated!)
 >* **AFWall+ Mode (whitelist [default enabled]/blacklist)**
@@ -122,7 +124,7 @@ Please make sure AFWall+ is running! (Green AFWall+ shield activated!)
 >* **Please provide any additional information below (e.g. logcat).**
 >* [your text/file or link]
 
-More details always means more and faster help! 
+More details always means more and faster/better help! 
 
 After sending the report
 ------------------------
@@ -132,7 +134,7 @@ After sending the report
 
 Custom ROMs
 -----------
-Some custom ROMs come with their own shells and utilities. If you are using a custom ROM, check its documentation to find out what's available.
+Some custom ROMs come with their own shells and utilities. If you are using a custom ROM, check its documentation to find out what's available and what's not. For security reasons some binary's are not present e.g. on the GuardianROM.
 
 Useful Links
 ------------
