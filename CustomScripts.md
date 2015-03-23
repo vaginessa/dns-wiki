@@ -601,7 +601,8 @@ Thanks to an0n981, original posted [here on XDA](http://forum.xda-developers.com
 How can I use a whitelist or blacklist?
 ------------
 
-If you want to log whitelisted or denied traffic in a .txt for debugging reasons) you can add this into the startup script.<pre>
+If you want to log whitelisted or denied traffic in a .txt for debugging reasons) you can add this into the startup script.
+````
 #!/bin/bash
 
 WHITELIST=/whitelist.txt
@@ -623,7 +624,8 @@ done
 for x in `grep -v ^# $BLACKLIST | awk '{print $1}'`; do
         echo "Denied $x..."
         $IPTABLES -A INPUT -t filter -s $x -j DROP
-done</pre>
+done
+````
 
 
 Useful links
