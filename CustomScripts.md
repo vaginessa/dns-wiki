@@ -28,12 +28,15 @@ To define a custom script, just choose <code>Set custom script</code> from the m
 
 Important notes about IPv4 and IPv6 differences
 ------------
+
+If you do not need IPv6 or your provider does not support it (native) you can just disable it via <code>net.ipv6.conf.all.disable_ipv6=1</code> in your build.prop or _better_ in your sysctl.conf file which will be applied right after the boot.  
+
 IPTables only filters IPv4 traffic ([RFC 1918](https://tools.ietf.org/html/rfc1918)). Rules setup in iptables will not touch ipv6 traffic so we need our ip6tables. 
 **IPv6 does not include private network features such as NAT**. Because of the very large number of IPv6 addresses. However, <code>FC00::/7 (and FC20::/7)</code> prefix used to identify Local IPv6 unicast addresses. All IPv6 users should be able to obtain IPv6 address space for use at their discretion and without artificial barriers between their network and the Internet.
 
 **IPv6 uses ICMP a lot more than IPv4**, and not letting ICMP packets ingoing can severely cripple your traffic because you won't receive error messages related to that traffic. This can cause long delays + timeouts. Allowing ICMPv6 traffic in usually doesn't hurt, so we can can add this to our firewall rules <code>ip6tables -A INPUT -p icmpv6 -j ACCEPT</code>. There are some guys out there which want really block ping6 (for unknown reasons), so here we are <code>ip6tables -A INPUT -p icmpv6 --icmpv6-type 128 -j DROP</code>.
 
-More about IPv6 parameters, type's and error codes can be found [here](http://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml).
+The available ICMPv6 [error codes](http://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml) are listed in [RFC 4443](https://tools.ietf.org/html/rfc4443#section-3.1), which specifies connection attempts blocked by a firewall rule. 
 
 Loading scripts from files
 ------------
