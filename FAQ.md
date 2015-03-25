@@ -95,13 +95,17 @@ which ip6tables
 <a name="FAQ8"></a>
 ##### (8) What does the little icons on top of the application(s) list stand for?
 
-> **From** left to the right the icons meaning the following:</br>
-> **LAN** = All internal Local Area Network (LAN) traffic (default disabled, needs to be enabled in the options)</br>
-> **WIFI** = All traffic that goes through the wlan0 interface</br>
-> **Mobile** = All traffic that comes in/out from 2G/3G/4G/5G</br>
-> **Roaming** = Global roaming traffic which coasts money dependency on which provider you are connected to (default disabled, needs to be enabled in the options)</br>
+> **From** left to the right the icons meaning the following:
+
+> **LAN** = All internal Local Area Network (LAN) traffic (default disabled, needs to be enabled in the options)
+
+> **WIFI** = All traffic that goes through the wlan0 interface
+
+> **Mobile** = All traffic that comes in/out from 2G/3G/4G/5G
+
+> **Roaming** = Global roaming traffic which coasts money dependency on which provider you are connected to (default disabled, needs to be enabled in the options)
+
 > **VPN** = All Virtual Private Network traffic e.g. from the Tor Network, OpenVPN or other providers (default disabled, needs to be enabled in the options)
-```
 
 <a name="FAQ9"></a>
 ##### (9) My Logs (logcat) are not displaying anything or are always empty, why?
