@@ -2,6 +2,8 @@
 
 AFWall+ is an open source firewall user interface client focused on making it easy to work with [iptables](https://en.wikipedia.org/wiki/Iptables) on Android OS.
 
+:warning: We are not responsible for any external content mentioned here in this Wiki! :warning:
+
 Index
 -----
 
