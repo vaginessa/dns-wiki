@@ -95,7 +95,7 @@ which ip6tables
 <a name="FAQ8"></a>
 ##### (8) What does the little icons on top of the application(s) list stand for?
 
-> **From** left to the right the icons meaning the following:
+> From left to the right the icons meaning the following:
 
 > **LAN** = All internal Local Area Network (LAN) traffic (default disabled, needs to be enabled in the options)
 
@@ -115,7 +115,7 @@ which ip6tables
 <a name="FAQ10"></a>
 ##### (10) Does AFWall+ support Android 4.3, 4.4 or higher?
 
-> Yes, generally it should work with newer Android OS versions. 
+> Yes, it works with newer Android OS versions too!
 * UID 0 (root) needs 53/udp open for DNS on Android 4.3. - Enable DNS from application list!
 * UID 1000 (system) needs 123/udp open for NTP. - Enable NTP from application list!
 * Android L need a little configuration change and a external Busybox app to get the rules apply.
@@ -128,7 +128,7 @@ which ip6tables
 <a name="FAQ12"></a>
 ##### (12) Can I block IPv6 traffic?
 
-> [Sure](https://github.com/ukanth/afwall/issues/108), please use AFWall+ 1.2.4 (or higher). Some kernels have an option to disable IPv6, make sure it's enabled (reboot required). _Enable IPv6 support_ in AFWall+ options, because this is disabled by default.
+> [Sure](https://github.com/ukanth/afwall/issues/108), please use AFWall+ 1.2.4 (or higher). Some kernels have an option to disable IPv6, make sure it's enabled (reboot required). _Enable IPv6 support_ in AFWall+ options because this is disabled by default. Take also a closer look about the important notes from IPv6 over [here](https://github.com/ukanth/afwall/wiki/CustomScripts#important-notes-about-ipv4-and-ipv6-differences).
 
 > If you use custom scripts this option could be problematic in some cases, uncheck it if you script is okay but AFWall+ doesn't apply it.
 
@@ -159,7 +159,7 @@ Or
 
 > If you want to see what is connecting during the boot take a look at the _/proc/uid_stat/_ folder.
 
-**Important note:** procfs is mounted at boot time, which means that every time your device is rebooted  there're 0 traffic values for all UIDs. You can list _/proc/uid_stat/_ dir right now to see which UIDs have been spending traffic since last reboot.
+**Important note:** [procfs](http://linux.die.net/man/5/proc) is mounted at boot time, which means that every time your device is rebooted  there're 0 traffic values for all UIDs. You can list _/proc/uid_stat/_ dir right now to see which UIDs have been spending traffic since last reboot.
 
 <a name="FAQ17"></a>
 ##### (17) How do I display all available network interfaces names using bash shell prompt?
@@ -200,23 +200,28 @@ Or
 <a name="FAQ19"></a>
 ##### (19) AFWall+ does not show app xyz in my list, why?
 
-> Only apps are listed that have **internet permissions** in the AndroidManifest.xml.
+> Only apps are listed that have **internet permissions** in the AndroidManifest.xml. If it's not listed this means that this app [don't use any internet permission](http://developer.android.com/reference/android/Manifest.permission.html). 
 
 <a name="FAQ20"></a>
-##### (20) AFWall+ does not work under CM 7.x - 11.x, how can i fix this?
+##### (20) AFWall+ does not work under CM 7.x - 12.x, how can i fix this?
 
-> CM 7.x uses old version of iptables which has conflict with AFWall+ built-in iptables. As a workaround you can try to update your iptables to the latest version. But it should work without it. Contact developer/raise an issue on GitHub.
+> CM 7.x uses an old version of iptables which has maybe conflicts with AFWall+ own built-in iptables. As a workaround you can try to update your iptables to the latest version. But it should work without it. 
 CM 11 users may need to change the busybox version from _bultin_ to _system busybox_. Of course you need to install it first.
+CM 12 users may need to change the busybox version from _bultin_ to _system busybox_. Of course you need to install it first.
 
 <a name="FAQ21"></a>
-##### (21) How to install AFWall+ as regular app?
+##### (21) How to install AFWall+ as a regular app?
+
+> Just download it via Google Play Store, F-Droid or GitHub and install it - that's it! 
+
+> Advance users can directly install it via adb:
 
 <code> adb install afwall+.apk </code> (default install method)
 
-> Or you may also copy and download the afwall+.apk file on your device and install it using any file explorers
+> Or you may also copy and download the afwall+.apk file on your device and install it using any file explorers. 
 
 <a name="FAQ22"></a>
-##### (22) How to install AFWall+ as system app (**not recommend, only for test!**)
+##### (22) How to install AFWall+ as system app (**not recommend, only for test reasons!**)
 
     adb remount
     adb push afwall+.apk /system/app (or /system/priv-app/ Android 4.3 or higher)
@@ -236,11 +241,11 @@ CM 11 users may need to change the busybox version from _bultin_ to _system busy
 <a name="FAQ24"></a>
 ##### (24) How can I disable the firewall temporarily?
 
-> If you need to disable the firewall temporarily, you can flush all the rules using
+> If you need to disable the firewall temporarily, you can flush all the rules by using
 
 <code>iptables -F</code>
 
-Or via script
+Or via an external script:
 
     echo "Stopping firewall and allowing everything..."
     iptables -F
@@ -254,7 +259,7 @@ Or via script
     iptables -P OUTPUT ACCEPT
     exit 0
 
-Or within the app itself.
+Or within the app itself or via the AFWall+ widget.
 
 <a name="FAQ25"></a>
 ##### (25) Can you help me with rooting my device?
@@ -262,22 +267,22 @@ Or within the app itself.
 > There are already enough guides to help you to root your device. Use your favorite search engine to find one.
 
 <a name="FAQ26"></a>
-##### (26) Does AFWall+ need a lot of battery/memory?
+##### (26) Does AFWall+ needs a lot of battery/memory?
 
 > Not really. Usually around _11 - 16 MB_ (non shared memory), dependent which configuration you use.
 
 <a name="FAQ27"></a>
 ##### (27) How safe is AFWall+?
 
-> Nothing is really safe, see the [limitations](https://github.com/ukanth/afwall#limitations) in the README.md for more details, but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. If the app may crash sometimes than feel free to submit a error log report via eMail or on our GitHub Issue tracker, we are always motivated to fix problems and answer your questions.
+> Nothing is really safe, see the [limitations](https://github.com/ukanth/afwall#limitations) in the README.md for more details, but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. If the app may crash sometimes than feel free to submit a error log report via eMail or here on our GitHub Issue tracker, we are always motivated to fix problems and answer your questions as soon as possible.
 
 <a name="FAQ28"></a>
-##### (28) How can I make a logcat?
+##### (28) How can I make a logcat to indicate which case the crash?
 
 > Please take a deeper look at our [[Howto report a bug|HOWTO Report Bug]] page for additional details. 
 
 <a name="FAQ29"></a>
-##### (29) Will there be iOS or Windows Phone versions?
+##### (29) Will there be an iOS or Windows Phone version?
 
 > No, because it's too difficult to implement something like AFWall+ on these OS's, because they are not open source and/or not supporting netfilters.
 
@@ -302,7 +307,7 @@ emulator -selinux permissive
 <a name="FAQ32"></a>
 ##### (32) Do I need to have the Google Play Store installed for the donate version?
 
-> Fast answer, no! There is no hidden license check integrated. 
+> No! There is no hidden license check integrated. There is also no "call home" function. 
 
 <a name="FAQ33"></a>
 ##### (33) What happens if I make AFWall+ device administrator?
@@ -347,7 +352,7 @@ One problem with using policy routing based on fwmark with locally generated tra
 ##### (38) Will you integrate any HOSTS blocking option?
 
 > No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control iptables with some gimmicks such custom scripts and this already implemented.
-A big HOST file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like MoaAB or and Xposed module called UnbelovedHosts.
+A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like MoaAB or and Xposed module called UnbelovedHosts.
 
 <a name="FAQ39"></a>
 ##### (39) Can I ask xyz that was not written down here?
