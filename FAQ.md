@@ -93,9 +93,16 @@ which ip6tables
 > Please whitelist "Media Server" or remove it from your blacklist.
 
 <a name="FAQ8"></a>
-##### (8) What does the little "R" icon means?
+##### (8) What does the little icons on top of the applications() list stand for?
 
-> "R" indicates "Roaming". You can whitelist/blacklist applications when you are on a roaming network! It's disabled by default.
+```
+# From left to the right the icons meaning the following:
+LAN = All internal Local Area Network (LAN) traffic (default disabled, needs to be enabled in the options)
+WIFI = All traffic that goes through the wlan0 interface
+Mobile = All traffic that comes in/out from 2G/3G/4G/5G 
+Roaming = Global roaming traffic which coasts money dependency on which provider you are connected to (default disabled, needs to be enabled in the options)
+VPN = All Virtual Private Network traffic e.g. from the Tor Network, OpenVPN or other providers (default disabled, needs to be enabled in the options)
+```
 
 <a name="FAQ9"></a>
 ##### (9) My Logs (logcat) are not displaying anything or are always empty, why?
@@ -274,8 +281,16 @@ Or within the app itself.
 <a name="FAQ30"></a>
 ##### (30) Does AFWall+ work with SELinux (aka Fort Knox)?
 
-> Should be without any bigger problem. For more info please look [here](http://www.selinuxproject.org/page/Main_Page) and [here](https://danwalsh.livejournal.com/28545.html).
+> It should be without any bigger problem. For more info please look [here](http://www.selinuxproject.org/page/Main_Page) and [here](https://danwalsh.livejournal.com/28545.html).
 
+> To toggle between enforcing and permissive mode just use adb
+```
+# 1 = enforcing mode / 0 = permissive 
+adb shell su 0 setenforce 1
+
+# On an emulator use
+emulator -selinux permissive
+```
 <a name="FAQ31"></a>
 ##### (31) Can AFWall+ be detected by other applications?
 
