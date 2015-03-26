@@ -114,14 +114,23 @@ TCP security under Linux:
 
 Similar solutions
 -----------------
-We're not responsible for any of these external apps, usage as always with own risk!
 
+IPTables based:
 * _Builtin_ linux iptables/toolbox (there is no GUI)
 * [Android Firewall](https://github.com/skullone/android_firewall)
 * [3C Toolbox aka Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
 * ~~[DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free)~~ _deprecated_ 
 * [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
-* [LBE Privacy Guard](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
+* [LBE Privacy Guard/Master](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
+
+Anti IMSI-Catcher (protection against IMSI-Catchers, StingRay and Silent/Stealth SMS):
+* [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/)
+
+Bluetooth Firewall:
+* [Bluetooth Firewall](https://play.google.com/store/apps/details?id=com.fruitmobile.android.bluetooth.firewall)
+
+Browser based:
+* [Firefox NSA NoScript Anywhere](https://noscript.net/nsa/#download)
 
 VPN/Proxy based:
 * [LostNet Firewall](https://play.google.com/store/apps/details?id=com.lostnet.fw.pro)
@@ -130,12 +139,6 @@ VPN/Proxy based:
 
 [Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
-
-Anti IMSI-Catcher (protection against IMSI-Catchers, StingRay and Silent/Stealth SMS):
-* [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/)
-
-Browser based:
-* [Firefox NSA NoScript Anywhere](https://noscript.net/nsa/#download)
 
 A word about non-root Firewalls
 ---------------------
