@@ -14,6 +14,7 @@ Index
 * [Similar solutions](#similar-solutions)
 * [A word about non-root Firewalls](#a-word-about-non-root-firewalls)
 * [License](#license)
+* [Making Donations](#making-onations)
 
 Contact
 -------
@@ -148,4 +149,10 @@ All of these firewalls working with a Proxy/[VPN](https://developer.android.com/
 License
 -------
 
-AFWall+ is open source software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+AFWall+ is open source software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Donating the project are always welcome via PayPal <code>devipriyapu[at]gmail.com</code>, it's always a good motivation!
+
+Making Donations
+-------
+
+Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation.
+It can be Done via F-Droid, Google Play Store or directly on PayPal <code>devipriyapu[at]gmail.com</code>
