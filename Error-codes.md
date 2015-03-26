@@ -2,7 +2,7 @@ Index
 -----
 
 * [Description](#description)
-* [Codes](#codes)
+* [Error Codes](#error-codes)
 * [Useful links](#useful-links)
 
 Description
@@ -10,8 +10,8 @@ Description
 
 This page should explain some details about some error codes that AFWall+ may gave you.
 
-Codes
------
+Error Codes
+-----------
 
 <a name="Code1"></a>
 **(1) Error applying iptables rules. Exit code: -1**
@@ -28,7 +28,12 @@ But, there are some workarounds for this. First try to change the iptables binar
 <a name="Code2"></a>
 **(2) Error 127 – “iptables: not found”**
 
->This error happens because iptables user-space software application that allows the system administrator to configure the tables provided by the Linux kernel firewall and the chains and rules for storage, is not an operating system Android OS. **Please try the same method as described above.**
+> This error happens because iptables user-space software application that allows the system administrator to configure the tables provided by the Linux kernel firewall and the chains and rules for storage, is not an operating system Android OS. **Please try the same method as described above.**
+
+<a name="Code3"></a>
+**(3) Error applying iptables rules. Exit code: 4**
+
+> IPTables can exit with status 4 if two or more processes tries to update the same table again and again. 
 
 Useful links
 ------------
