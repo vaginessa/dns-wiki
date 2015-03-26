@@ -13,8 +13,8 @@ Index
 * [Important Information](#important-information)
 * [Similar solutions](#similar-solutions)
 * [A word about non-root Firewalls](#a-word-about-non-root-firewalls)
+* [Making Donations](#making-donations)
 * [License](#license)
-* [Making Donations](#making-onations)
 
 Contact
 -------
@@ -146,13 +146,13 @@ A word about non-root Firewalls
 
 All of these firewalls working with a Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size and _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest con is that such VPN services not works with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN service and VPN/Proxy apps at the same time. 
 
-License
--------
-
-AFWall+ is open source software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Donating the project are always welcome via PayPal <code>devipriyapu[at]gmail.com</code>, it's always a good motivation!
-
 Making Donations
 -------
 
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation.
 It can be Done via F-Droid, Google Play Store or directly on PayPal <code>devipriyapu[at]gmail.com</code>
+
+License
+-------
+
+AFWall+ is open source software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
