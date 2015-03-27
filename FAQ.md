@@ -295,10 +295,10 @@ Or within the app itself or via the AFWall+ widget.
 ```
 # 1 = enforcing mode / 0 = permissive 
 adb shell su 0 setenforce 1
-
 # On an emulator use
 emulator -selinux permissive
 ```
+
 <a name="FAQ31"></a>
 ##### (31) Can AFWall+ be detected by other applications?
 
