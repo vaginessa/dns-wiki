@@ -7,7 +7,7 @@ Index
 * [Adding custom rules](#adding-custom-rules)
 * [Some examples](#some-examples)
 * [Droidwall only examples](#droidwall-only-examples)
-* [How do I view blocked IP address?](#how-do-I-view-blocked-ip-address?)
+* [How do I view blocked IP address?](#how-do-i-view-blocked-ip-address?)
 * [How do I block subnet?](#how-do-i-block-subnet?)
 * [Block incoming request from IP](#block-incoming-request-from-ip)
 * [Block outgoing request from LAN](#block-outgoing-request-from-lan)
@@ -18,11 +18,11 @@ Index
 Introduction
 ------------
 
-Advanced AFWall+ users may wish to define a custom script to be executed by Android Firewall+.
+Advanced AFWall+ users may wish to define a custom script to be executed by AFWall+.
 
 Once a custom script is defined, it will be automatically executed every time that the AFWall+ rules are applied (inclusive on startup/shutdown if the firewall is enabled).
 
-To define a custom script, just choose <code>Set custom script</code> from the menu (right corner).
+To define a custom script, just choose <code>Set custom script</code> from the menu (right corner) on the main menu. 
 
 **WARNING**: This functionality should be used only by **experienced users that know what they are doing!** These examples may block your internet connection if not executed with proper care. So be careful when applying these settings, especially on remote device 'servers' with an ssh session! 
 
@@ -32,7 +32,7 @@ An example IPv6 only script can be found [here](https://gist.github.com/CHEF-KOC
 Important notes about IPv4 and IPv6 differences
 ------------
 
-If you do not need IPv6 or your provider does not support it (native) you can just disable it via <code>net.ipv6.conf.all.disable_ipv6=1</code> in your build.prop or _better_ in your sysctl.conf file which will be applied right after the boot.  
+If you do not need IPv6 or your provider does not support it ([native](http://test-ipv6.com/faq.html)) you can just disable it via <code>net.ipv6.conf.all.disable_ipv6=1</code> in your build.prop or _better_ in your sysctl.conf file which will be applied right after the boot.  
 
 IPTables only filters IPv4 traffic ([RFC 1918](https://tools.ietf.org/html/rfc1918)). Rules setup in iptables will not touch ipv6 traffic so we need our ip6tables. 
 **IPv6 does not include private network features such as NAT**. Because of the very large number of IPv6 addresses. However, <code>FC00::/7 (and FC20::/7)</code> prefix used to identify Local IPv6 unicast addresses. All IPv6 users should be able to obtain IPv6 address space for use at their discretion and without artificial barriers between their network and the Internet.
@@ -237,7 +237,7 @@ $IPTABLES -t nat -F POSTROUTING
 $IPTABLES -t filter -A FORWARD -j ACCEPT
 $IPTABLES -t nat -A POSTROUTING -j MASQUERADE</pre>
 
-<pre># Possible Tethering + OpenVPN issues on KitKat 4.x devices, to fix the VPN leakage look [here](https://gist.github.com/CHEF-KOCH/52fe5cd9a5aa7721fe74)
+<pre># Possible Tethering + OpenVPN issues on KitKat 4.x devices
 # iptables --flush
 push "dhcp-option DNS 208.67.222.222"
 push "dhcp-option DNS 208.67.220.220"
@@ -643,3 +643,5 @@ Useful links
 * [Collection of basic Linux Firewall iptables rules | linuxconfig.org](http://linuxconfig.org/collection-of-basic-linux-firewall-iptables-rules)
 * [AFWall+/Droidwall permissions vulnerability | torproject.org](https://lists.torproject.org/pipermail/tor-talk/2014-March/032503.html) - [Original Issue 260 @ Droidwall](https://code.google.com/p/droidwall/issues/detail?id=260)
 * [DNSleaktest | DNSleaktest.com] (https://www.dnsleaktest.com/)
+* To fix the possible VPN leakage problem, take a look over [here](https://gist.github.com/CHEF-KOCH/52fe5cd9a5aa7721fe74)
+* [Test your IPv6 connectivity | test-ipv6.com](http://test-ipv6.com/)
