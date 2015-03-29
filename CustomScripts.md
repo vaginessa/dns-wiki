@@ -24,7 +24,10 @@ Once a custom script is defined, it will be automatically executed every time th
 
 To define a custom script, just choose <code>Set custom script</code> from the menu (right corner).
 
-**WARNING**: This functionality should be used only by **experienced users that know what they are doing!** These examples may block your Android device (or block the whole internet) if not executed with proper care. Be careful when applying these settings on remote device servers over ssh session.!
+**WARNING**: This functionality should be used only by **experienced users that know what they are doing!** These examples may block your internet connection if not executed with proper care. So be careful when applying these settings, especially on remote device 'servers' with an ssh session! 
+
+An example IPv6 only script can be found [here](https://gist.github.com/CHEF-KOCH/e43246690da6906fa516).
+
 
 Important notes about IPv4 and IPv6 differences
 ------------
