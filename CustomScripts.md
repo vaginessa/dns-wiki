@@ -237,7 +237,7 @@ $IPTABLES -t nat -F POSTROUTING
 $IPTABLES -t filter -A FORWARD -j ACCEPT
 $IPTABLES -t nat -A POSTROUTING -j MASQUERADE</pre>
 
-<pre># Tethering + OpenVPN issues on KitKat/4.4 with OpenVPN 2.3.2 and higher
+<pre># Possible Tethering + OpenVPN issues on KitKat 4.x devices, to fix the VPN leakage look [here](https://gist.github.com/CHEF-KOCH/52fe5cd9a5aa7721fe74)
 # iptables --flush
 push "dhcp-option DNS 208.67.222.222"
 push "dhcp-option DNS 208.67.220.220"
