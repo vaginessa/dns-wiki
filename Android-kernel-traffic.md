@@ -1,4 +1,4 @@
-:warning: This article is in a early beta stage and could contain _false information_ until all is done. This article is based on the Stock Android 4.0 OS (Kernel 3.4), this means newer Kernel or/and network changes could be differ a little bit.
+:warning: This article is in a early beta stage and could contain _false information_ until all is done. This article is based on the Stock Android 4.0 OS (Kernel 2.6.x), this means newer Kernel or/and network changes could be differ a little bit.
 
 :warning: On Windows I highly recommend to use Burp/HTTP Scoop/Fiddler instead of Whireshark for several reasons, one of them is that it's low-level and overpowered for quickly looking through HTTP traces [but you're the boss].
 
@@ -232,7 +232,7 @@ Tutorials:
 * [Bluetooth packet capture on Android 4.4 | Nowsecure](https://www.nowsecure.com/blog/2014/02/07/bluetooth-packet-capture-android/)
 * [How to sniffing Android Application with Wireshark (VirtualBox) | talat](http://talat.uyarer.com/post/68706747099/how-to-sniffing-android-application-with-wireshark)
 
-
+```bash
  _________       ______            
 |  _   _  |     |_   _ `.          
 |_/ | | \_|.--.   | | `. \  .--.   
@@ -241,10 +241,12 @@ Tutorials:
   |_____| '.__.'|______.'  '.__.'  .....
                                                                                                       
 * Add more basic info to prevent and analyze such traffic
+* Explain why is there a difference between the amount of data reported from the device, and from what your carrier counts - reconnects, bad connections/signals/re-transmitted data/location data/push/backup/device manager/scroogle
 * Making a tunnel to existent article "tcp security"
 * Add a good method for block DNS queries, WhatsApp and other apps (and the os) constantly want to connect to it without any reasons ... (without iptables/root)
 * Seems [TrafficStats](http://developer.android.com/reference/android/net/TrafficStats.html).getUidRxBytes(uid) & TrafficStats.getUidTxBytes(uid) isn't fixed at all (need some more tests to really see if the data traffic is still incorrect for e.g. Facebook app) 
 * Maybe a quick guide to show howto debug traffic on the emulator (via DDMS) or with fiddler (on ssl)
 * Stuff/tools which make life easier to inspect Android OS traffic directly on the device (most tools are way outdated/deprecated, like OS Monitor, Shark, ... or they simply not work on Android 5 because it needs to be recompiled with the Position Indipendent Executables (-pie or on libs -fPIC) flag
+```
 
 -> Since I don't have any real motivation I'm always open minded what I should show/explain over here...
