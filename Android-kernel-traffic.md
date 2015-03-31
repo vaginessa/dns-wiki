@@ -14,6 +14,7 @@ Most Internet applications are using TCP as their protocol of choice, and TCP ma
 Index
 -----
 
+* [Known ports](#known-ports)
 * [Interface statistics](#interface-statistics)
 * [Routing and ARP tables](#routing-and-arp-tables)
 * [Protocol statistics](#protocol-statistics)
@@ -22,6 +23,18 @@ Index
 * [Tethering data](#tethering-data)
 * [Closing words](#closing-words)
 * [Useful links](#useful-links)
+
+Known ports
+-------
+
+This is a small list which ports are open on every Linux/Android system, this is normally not critical as long there is no high traffic on it but you may need to understand what they do and how they should work. Remember: Closing all port's isn't a good idea (and in fact you not close the port you only disabling the application listening on it) since this will break most of internet stuff, but as long there are no suspect activity's all is good. For example one of a hacker goal is to send large volumes of network traffic at a host in order to cause legitimate traffic to be dropped, normally this behavior exists if the attacker doesn't control enouth bandwidth himself to exceed the target's bandwidth. As a result you'll see that your sever or address is unreasonable over the network. 
+
+* Port 53 (tcp/udp) - Port 53 is used by well known DNS (Domain Name System). DNS takes care of resolving human readable 'host names' into numeric IP addresses. A commonly used DNS server called BIND has had a rich history of security problems. As a result, [BIND](http://bindguard.activezone.de/) and port 53 are frequent targets and a couple worms used BIND exploits to propagate. There are [several attacks](https://www.dns-oarc.net/wiki/mitigating-dns-denial-of-service-attacks), like DNS resolver/recursive, poisoning, DOS, worms, ...
+* Port 80 -
+* Anything what cause SYNC_SENT/BIND (which shows traffic on some roms/apps on the notification bar) in fact that does not cause any real traffic and your provider does not log such traffic (no traffic lost).
+* These are known ports which "cause/show" traffic even if nothing is started or have any active internet connection.
+Port 443 - .....
+* You will need tools like tcpdump/wireshark/burf to really see what's going on behind the scenes since you only see symptoms on your device.
 
 Interface statistics
 -------
@@ -201,6 +214,7 @@ Internet security is hard. Let's go bake some cookies!
 Useful links
 -------
 
+* [Domain Name System (DNS) | Wikipedia](http://en.wikipedia.org/wiki/Domain_Name_System)
 * [Android Data Usage | Source Android](https://source.android.com/devices/tech/datausage/index.html)
 * [Android Git repositories | Android GoogleSource](https://android.googlesource.com/) (iptables, kernel,[...])
 * [Android Traffic Stats | Android Developer] (http://developer.android.com/reference/android/net/TrafficStats.html)
@@ -217,3 +231,20 @@ Tutorials:
 * [Whireshark WLAN capturing on 802.11 | Wiki Whireskark](http://wiki.wireshark.org/CaptureSetup/WLAN)
 * [Bluetooth packet capture on Android 4.4 | Nowsecure](https://www.nowsecure.com/blog/2014/02/07/bluetooth-packet-capture-android/)
 * [How to sniffing Android Application with Wireshark (VirtualBox) | talat](http://talat.uyarer.com/post/68706747099/how-to-sniffing-android-application-with-wireshark)
+
+
+ _________       ______            
+|  _   _  |     |_   _ `.          
+|_/ | | \_|.--.   | | `. \  .--.   
+    | |  / .'`\ \ | |  | |/ .'`\ \ 
+   _| |_ | \__. |_| |_.' /| \__. | 
+  |_____| '.__.'|______.'  '.__.'  .....
+                                                                                                      
+* Add more basic info to prevent and analyze such traffic
+* Making a tunnel to existent article "tcp security"
+* Add a good method for block DNS queries, WhatsApp and other apps (and the os) constantly want to connect to it without any reasons ... (without iptables/root)
+* Seems [TrafficStats](http://developer.android.com/reference/android/net/TrafficStats.html).getUidRxBytes(uid) & TrafficStats.getUidTxBytes(uid) isn't fixed at all (need some more tests to really see if the data traffic is still incorrect for e.g. Facebook app) 
+* Maybe a quick guide to show howto debug traffic on the emulator (via DDMS) or with fiddler (on ssl)
+* Stuff/tools which make life easier to inspect Android OS traffic directly on the device (most tools are way outdated/deprecated, like OS Monitor, Shark, ... or they simply not work on Android 5 because it needs to be recompiled with the Position Indipendent Executables (-pie or on libs -fPIC) flag
+
+-> Since I don't have any real motivation I'm always open minded what I should show/explain over here...
