@@ -152,7 +152,12 @@ Making Donations
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation.
 It can be done directly on F-Droid, Google Play Store or via PayPal (Donation email: <code>devipriyapu [at] gmail.com</code>.
 
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9KKEUVYEY6BN" target="_blank"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" /></a>
+<script src="paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
+    data-button="donate"
+    data-name="AFWall+"
+    data-amount="1.00"
+    async
+></script>
 
 License
 -------
