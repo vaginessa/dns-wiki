@@ -2,8 +2,8 @@ Index
 -----
 
 * [Description](#description)
-* [Installation instructions](#install-instructions]
-* [How do I configure Busybox?](#config-busybox)
+* [Installation instructions](#install-instructions)
+* [How do I configure BusyBox?](#config-busybox)
 * [Difference between SELinux and non-SELinux BusyBox](#difference-between-selinux-and-non-selinux-busybox)
 * [Useful links](#useful-links)
 
@@ -16,17 +16,17 @@ It provides minimalist replacements for most of the utilities you usually find i
 BusyBox has been written with size-optimization and limited resources in mind, both to produce small binaries and to reduce run-time memory usage. Busybox is also extremely modular so you can easily include or exclude commands (or features) at compile time.  This makes it easy to customize embedded systems; to create a working system, just add /dev, /etc, and a Linux kernel. Busybox (usually together with uClibc) has also been used as a component of "thin client" desktop systems, live-CD distributions, rescue disks, installers, Android, and so on.
 
 __Short description__
-* Root required.
-* Provides many standard Unix tools.
-* Necessary in AFWall+ to execute some Linux commands.
-* AFWall+ comes with a Busybox binary, so you don't have to install Busybox manually anymore.
+* Root required
+* Provides many standard Unix tools
+* Necessary in AFWall+ to execute some Linux commands
+* AFWall+ comes with an integrated BusyBox binary, so you don't have to install BusyBox manually anymore
 * There are also some _non-root_ solutions on the Google Play Store, we not recommend to use one of this!
 
 Installation instructions
 ---------------------------
 
-Normally BusyBox is included in your ROM, but on some Stock (OEM Firmwares) and AOSP (Android Open Source Project) based ROM's it is possible that this isn't integrated (Androids own toolbox will be used instead). 
-So you can use the BusyBox Pro app (the name is a bit 'wrong/confusing' since it isn't a BusyBox app - it's more an app which integrates a binary (called _busybox_) that will be installed/integrated in your system) or you can just use your own (or pre) compiled binary explained over [here](https://github.com/ukanth/afwall/wiki/HOWTO-Compiling-busybox). 
+Normally BusyBox is included in your ROM and AFWall+ ships with his own, but on some Stock (OEM Firmwares) and AOSP (Android Open Source Project) based ROM's it is possible that this isn't integrated (Androids own toolbox will be used instead). 
+So you can use the BusyBox app (the name is a bit 'wrong/confusing' since it isn't a BusyBox app - it's more an app which integrates a binary (called _busybox_) that will be installed/integrated in your system) or you can just use your own (or pre) compiled binary explained over [here](https://github.com/ukanth/afwall/wiki/HOWTO-Compiling-busybox). 
 
 So if you use the BusyBox app make sure all symlinks are proper set to /xbin (system/xbin) this will automatically set. 
 If you use any external or own compiled binary, you can simple use the following commands via adb:
@@ -36,7 +36,7 @@ cp /sdcard/busybox /system/xbin/busybox
 chmod 755 /system/xbin/busybox
 ```
 
-All BusyBox binarys also provide a simply install setup if you binary was already copied into _xbin_ you can simply use <code>busybox --install /system/xbin</code>. On older ROM's like 2.3 or 3.x this needs to be changed to _bin_ instead xbin.
+All BusyBox binarys also provide a simply install setup if you binary was already copied into _xbin_ you can simply use <code>busybox --install /system/xbin</code>. On older ROM's like 2.3 or 3.x this needs to be changed to _bin_ instead _xbin_ directory.
 
 On the recovery TWRP you can do this via (CWM does not include any file manager!):
 Go to 'Mount'-> tick 'system'
@@ -50,12 +50,12 @@ Tap on your 'busybox' binary
 Tap "chmod 755" (this will change the permissions to the correct one)
 Done
 
-Some binary's are also flashable (means you can select your .zip under CWM/TWRP and flash that, sometimes that can be problematically if the permissions are not proper set or the system shows the wrong symlinks (means you will see strange and cryptographic chars in the SU log. 
+Some binary's are also flashable (means you can select your .zip under CWM/TWRP and flash that, sometimes that can be problematically if the permissions are not proper set or the system shows the wrong symlinks (means you will see strange and cryptographic chars in the SuperSU log. 
 
-How do I configure Busybox?
+How do I configure BusyBox?
 ---------------------------
 
-The most important Busybox configurations are:
+The most important BusyBox configurations are:
 
 make <code>defconfig</code> - Create the maximum "sane" configuration, **AFWall+ use this as default**. This enables almost all features, minus things like debugging options and features that require changes to the rest of the system to work (such as selinux or devfs device names). Use this if you want to start from a full-featured Busybox and remove features until it's small enough.
 
@@ -64,7 +64,7 @@ make <code>allnoconfig</code> - Disable everything. This creates a tiny version 
 make <code>menuconfig</code> - Interactively modify a .config file through a multi-level menu interface. Use this after one of the previous two.
 Some other configuration options are:
 
-make <code>oldconfig</code> - Update an old .config file for a newer version of Busybox.
+make <code>oldconfig</code> - Update an old .config file for a newer version of BusyBox.
 
 make <code>allyesconfig</code> - Select absolutely everything. This creates a statically linked version of Busybox full of debug code, with dependencies on selinux, using devfs names... This makes sure everything compiles. Whether or not the result would do anything useful is an open question.
 
@@ -86,4 +86,4 @@ Useful links
 * [Anonymous GIT access | BusyBox.net](http://www.busybox.net/source.html)
 * [Bug Tracker | Bugs.BusyBox.net](https://bugs.busybox.net)
 * [BusyBox Installer | Google Play Store](https://play.google.com/store/apps/details?id=com.jrummy.busybox.installer)
-* [busybox-free | Stericson - GitHub](https://github.com/Stericson/busybox-free)
+* [Busybox-free | Stericson - GitHub](https://github.com/Stericson/busybox-free)
