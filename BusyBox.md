@@ -25,11 +25,19 @@ __Short description__
 Installation instructions
 ---------------------------
 
-Normally BusyBox is included in your ROM and AFWall+ ships with his own, but on some Stock (OEM Firmwares) and AOSP (Android Open Source Project) based ROM's it is possible that this isn't integrated (Androids own toolbox will be used instead). 
-So you can use the BusyBox app (the name is a bit 'wrong/confusing' since it isn't a BusyBox app - it's more an app which integrates a binary (called _busybox_) that will be installed/integrated in your system) or you can just use your own (or pre) compiled binary explained over [here](https://github.com/ukanth/afwall/wiki/HOWTO-Compiling-busybox). 
+Normally BusyBox is included in your ROM and AFWall+ also comes with his own, but on some Stock (OEM Firmwares) and AOSP (Android Open Source Project) based ROM's it is possible that this isn't integrated (Androids own toolbox will be used instead). 
 
-So if you use the BusyBox app make sure all symlinks are proper set to /xbin (system/xbin) this will automatically set. 
-If you use any external or own compiled binary, you can simple use the following commands via adb:
+In this case:
+1) Open AFWall+ 
+2) In the main menu tap on 'Preferences'
+3) Now tap on 'Binaries' 
+4) Tap on 'BusyBox Binary' and select '_Build-in BusyBox_'
+
+If you like to manually update your system own binarie, because it getting an update or for other reasons, you can use the external BusyBox app (the name is a bit 'wrong/confusing' since it isn't a BusyBox app - it's more an app which integrates a binary (called _busybox_) that will be installed/integrated in your system) or you can just use your own (or pre) compiled binary explained over [here](https://github.com/ukanth/afwall/wiki/HOWTO-Compiling-busybox).
+
+With the BusyBox app make sure all symlinks are proper set to /xbin (system/xbin) this will normally automatically set by this app (all shows green and you see small check marks).
+
+But if you use any external or own compiled binary, you can simple use the following commands via adb:
 ```bash
 mount -o remount,rw /system
 cp /sdcard/busybox /system/xbin/busybox
@@ -55,6 +63,8 @@ Some binary's are also flashable (means you can select your .zip under CWM/TWRP 
 How do I configure BusyBox?
 ---------------------------
 
+**This is not necessary, but important for developers and advanced users which want to compile there own BusyBox from the source**
+
 The most important BusyBox configurations are:
 
 make <code>defconfig</code> - Create the maximum "sane" configuration, **AFWall+ use this as default**. This enables almost all features, minus things like debugging options and features that require changes to the rest of the system to work (such as selinux or devfs device names). Use this if you want to start from a full-featured Busybox and remove features until it's small enough.
@@ -79,11 +89,11 @@ The SELinux (NSA security enhanced Linux) binary comes with the following extra 
 Useful links
 -------------
 
+* [Official BusyBox Download Documentation Page | BusyBox.net](http://busybox.net/downloads/)
 * [Official BusyBox FAQ | BusyBox.net](http://www.busybox.net/FAQ.html)
-* [BusyBox Download | BusyBox.net](http://busybox.net/downloads/)
-* [BusyBox Download | F-Droid](https://f-droid.org/wiki/page/stericson.busybox)
+* [BusyBox Download on F-Droid | F-Droid](https://f-droid.org/wiki/page/stericson.busybox)
 * [Browse the source code |git.busybox.net](http://git.busybox.net/busybox/)
 * [Anonymous GIT access | BusyBox.net](http://www.busybox.net/source.html)
 * [Bug Tracker | Bugs.BusyBox.net](https://bugs.busybox.net)
-* [BusyBox Installer | Google Play Store](https://play.google.com/store/apps/details?id=com.jrummy.busybox.installer)
-* [Busybox-free | Stericson - GitHub](https://github.com/Stericson/busybox-free)
+* [Official BusyBox Installer | Google Play Store](https://play.google.com/store/apps/details?id=com.jrummy.busybox.installer)
+* [Busybox Free | Stericson on GitHub](https://github.com/Stericson/busybox-free)
