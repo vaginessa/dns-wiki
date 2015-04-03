@@ -159,6 +159,14 @@ It can be done directly on F-Droid, Google Play Store or via PayPal (Donation em
     async
 ></script>
 
+<script src="paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
+    data-button="qr"
+    data-name="AFWall+ via QR code"
+    data-amount="1.00"
+    data-size="250"
+    async
+></script>
+
 License
 -------
 
