@@ -150,22 +150,8 @@ Making Donations
 -------
 
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation.
-It can be done directly on F-Droid, Google Play Store or via PayPal (Donation email: <code>devipriyapu [at] gmail.com</code>.
+It can be done directly via [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate). 
 
-<script src="paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
-    data-button="donate"
-    data-name="AFWall+"
-    data-amount="1.00"
-    async
-></script>
-
-<script src="paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
-    data-button="qr"
-    data-name="AFWall+ via QR code"
-    data-amount="1.00"
-    data-size="250"
-    async
-></script>
 
 License
 -------
