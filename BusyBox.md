@@ -2,6 +2,7 @@ Index
 -----
 
 * [Description](#description)
+* [Installation instructions](#install-instructions]
 * [How do I configure Busybox?](#config-busybox)
 * [Difference between SELinux and non-SELinux BusyBox](#difference-between-selinux-and-non-selinux-busybox)
 * [Useful links](#useful-links)
@@ -20,6 +21,36 @@ __Short description__
 * Necessary in AFWall+ to execute some Linux commands.
 * AFWall+ comes with a Busybox binary, so you don't have to install Busybox manually anymore.
 * There are also some _non-root_ solutions on the Google Play Store, we not recommend to use one of this!
+
+Installation instructions
+---------------------------
+
+Normally BusyBox is included in your ROM, but on some Stock (OEM Firmwares) and AOSP (Android Open Source Project) based ROM's it is possible that this isn't integrated (Androids own toolbox will be used instead). 
+So you can use the BusyBox Pro app (the name is a bit 'wrong/confusing' since it isn't a BusyBox app - it's more an app which integrates a binary (called _busybox_) that will be installed/integrated in your system) or you can just use your own (or pre) compiled binary explained over [here](https://github.com/ukanth/afwall/wiki/HOWTO-Compiling-busybox). 
+
+So if you use the BusyBox app make sure all symlinks are proper set to /xbin (system/xbin) this will automatically set. 
+If you use any external or own compiled binary, you can simple use the following commands via adb:
+```bash
+mount -o remount,rw /system
+cp /sdcard/busybox /system/xbin/busybox
+chmod 755 /system/xbin/busybox
+```
+
+All BusyBox binarys also provide a simply install setup if you binary was already copied into _xbin_ you can simply use <code>busybox --install /system/xbin</code>. On older ROM's like 2.3 or 3.x this needs to be changed to _bin_ instead xbin.
+
+On the recovery TWRP you can do this via (CWM does not include any file manager!):
+Go to 'Mount'-> tick 'system'
+Go back, then enter the 'File Manager' under 'Advanced' -> 'File Manager'
+Go to '_/sdcard/_' (internal sometimes also called sdcard0), tap on the 'busybox' file 
+Tap 'copy'
+Navigate to '_/system/xbin_'
+Tap 'Select'
+Navigate again to '_/system/xbin_'
+Tap on your 'busybox' binary
+Tap "chmod 755" (this will change the permissions to the correct one)
+Done
+
+Some binary's are also flashable (means you can select your .zip under CWM/TWRP and flash that, sometimes that can be problematically if the permissions are not proper set or the system shows the wrong symlinks (means you will see strange and cryptographic chars in the SU log. 
 
 How do I configure Busybox?
 ---------------------------
