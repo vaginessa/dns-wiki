@@ -11,7 +11,7 @@ Description
 -----------
 
 **BusyBox combines tiny versions of many common UNIX utilities into a single small executable.**  
-It provides minimalist replacements for most of the utilities you usually find in bzip2, coreutils, dhcp, diffutils, e2fsprogs, file, findutils, gawk, grep, inetutils, less, modutils, net-tools, procps, sed, shadow, sysklogd, sysvinit, tar, util-linux, and vim.  The utilities in BusyBox often have fewer options than their full-featured cousins; however, the options that are included provide the expected functionality and behave very much like their larger counterparts.
+It provides minimalist replacements for most of the utilities you usually find in _bzip2_, _coreutils_, _dhcp_, _dhcpv6_, _diffutils_, _e2fsprogs_, _file_, _findutils_, _gawk_, _grep_, _inetutils_, _less_, _modutils_, _net-tools_, _procps_, _sed_, _shadow_, _sysklogd_, _sysvinit_, _tar_, _util-linux_ and _vim_.  The utilities in BusyBox often have fewer options than their full-featured cousins; however, the options that are included provide the expected functionality and behave very much like their larger counterparts.
 
 BusyBox has been written with size-optimization and limited resources in mind, both to produce small binaries and to reduce run-time memory usage. Busybox is also extremely modular so you can easily include or exclude commands (or features) at compile time.  This makes it easy to customize embedded systems; to create a working system, just add /dev, /etc, and a Linux kernel. Busybox (usually together with uClibc) has also been used as a component of "thin client" desktop systems, live-CD distributions, rescue disks, installers, Android, and so on.
 
@@ -47,6 +47,7 @@ chmod 755 /system/xbin/busybox
 All BusyBox binarys also provide a simply install setup if you binary was already copied into _xbin_ you can simply use <code>busybox --install /system/xbin</code>. On older ROM's like 2.3 or 3.x this needs to be changed to _bin_ instead _xbin_ directory.
 
 On the recovery TWRP you can do this via (CWM does not include any file manager!):
+```
 Go to 'Mount'-> tick 'system'
 Go back, then enter the 'File Manager' under 'Advanced' -> 'File Manager'
 Go to '_/sdcard/_' (internal sometimes also called sdcard0), tap on the 'busybox' file 
@@ -57,6 +58,7 @@ Navigate again to '_/system/xbin_'
 Tap on your 'busybox' binary
 Tap "chmod 755" (this will change the permissions to the correct one)
 Done
+```
 
 Some binary's are also flashable (means you can select your .zip under CWM/TWRP and flash that, sometimes that can be problematically if the permissions are not proper set or the system shows the wrong symlinks (means you will see strange and cryptographic chars in the SuperSU log. 
 
