@@ -69,7 +69,7 @@ AFWall+ need this to run at his best:
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
 - The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leak fix)!
-- The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (<code>adb pull /proc/config.gz</code> - Once you unzip it, you can search for e.g. _NETFILTER_). AFWall+ also can check it automatically if your Kernel does have support for it. 
+- The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (<code>adb pull /proc/config.gz</code> - Once you unzip it, you can search for e.g. _NETFILTER_). AFWall+ normally check it automatically if your Kernel does have support for it or not.
 
 Installation
 -------------
@@ -150,7 +150,9 @@ Making Donations
 -------
 
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation.
-It can be Done via F-Droid, Google Play Store or directly on PayPal <code>devipriyapu[at]gmail.com</code>
+It can be done directly on F-Droid, Google Play Store or via PayPal (Donation email: <code>devipriyapu [at] gmail.com</code>.
+
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9KKEUVYEY6BN" target="_blank"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" /></a>
 
 License
 -------
