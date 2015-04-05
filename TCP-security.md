@@ -4,6 +4,7 @@ Index
 * [Introduction](#introduction)
 * [Known attacks](known-attacks)
 * [Requirements](#requirements)
+* [IP Rules](#ip-rules)
 * [Useful links](#useful-links)
 
 Introduction
@@ -42,7 +43,7 @@ A very good explanation of all the attacks listed above are on [Peters Smith fan
 Requirements
 ------------
 
-As described over [here](http://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) this should be blacklisted by default for any vulnerability scanner.
+As described over [here](http://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) this should be blacklisted by default for any vulnerability scanner (and only for them).
 
 | Address | RFC | Description |
 | :--- | :--: | ---: |
@@ -127,10 +128,39 @@ For [Multicast](http://www.iana.org/assignments/multicast-addresses/multicast-ad
 | Misc | net.ipv4.tcp_fack=1 |  |
 | Misc | net.ipv4.tcp_window_scaling=1 | Turn on the tcp_window_scaling |
 
-Then to have the settings take effect immediately, run:
-<code>#sysctl -p</code>
-
 I should point out that there are many other options/settings that are available in _/proc/sys/net_, some of  which are not there unless you compiled them into your kernel (all the ones I mentioned above “should” be in most distro’s stock kernel). I only went over, and set, the ones that have a direct impact on broadband performance–and left out some other settings that can improve security, but at the _cost of speed_.
+
+IP Rules
+------------
+Most of the mentioned port's are already supported by AFWall+ and can be controlled directly with the interface (to allow/reject them) but these are normally open (and should be open to avoiding some troubles):
+
+| Rule Name | Status | Range | Protocol | Remote Port | Local Port |
+| :--- | :--: | :---: | :--: | :---: | :--: |
+| Allow DNS | Allow | All IP packets | UDP | 53 | Any Port |
+| Allow dynamic IP| Allow* | All IP packets | UDP| 67-68 | 67-68 |
+| Allow SNMP | Allow* | All IP packets | UDP | Any Port | 162, + ?* |
+| Allow Secure Shell/File Transfer Protocl (SSH)| Block* (default disabled) | All IP packets | UDP | 22 | 22 |
+| Allow VPN (GRE) | Allow | All IP packets | GRE |  |  |
+| Allow VPN (AH) | Allow | All IP packets | AH | | |
+| Allow IKE VPN | Allow | All IP packets | UDP | 500, + ?* | 500, + ?* |
+| Allow PPTP VPN | Allow | All IP packets | TCP | 1024-65535 | 1723 |
+| Allow L2TP VPN | Allow | All IP packets | TCP | 1024-65535 | 1701 |
+| Allow FTP Data | Allow | All IP packets | TCP | 20 | Any Port |
+| Allow BT Download| Allow | All IP packets | TCP | Any Port | 6881-6890 |
+| Allow outbound ping (ICMP Echo Reply) | Allow | Got IP packets | ICMP | depending if it's a trusted signature 0 |  |
+| Allow outbound ping (ICMP Echo Requests) | Allow | Sent IP packets | ICMP | depending if it's a trusted signature 0 |  |
+| Deny inbound ping | Block | Got IP packets | ICMP | depending if it's a trusted signature 0 |  |
+| Allow Destination Unreachable | Allow | All IP packets | ICMP | depending if it's a trusted signature 0 |  |
+| Allow all ICMP | Allow | All IP packets | ICMP | Any Port|  |
+| Deny 135 and 445 (TCP)| Block* | All IP packets | TCP | Any Port | 135, 445 |
+| Allow IGMP | Allow | All IP packets | IGMP | System only | |
+| Allow VPN ESP | Allow | All IP packets | ESP | | |
+
+* Depending on which configuration you're use
+
+-> AFWall+ doesn't currently supports ESP, IKE, L2TP, AH and GRE protocols via a gui switch but you can control this via custom scripts. 
+-> Depending which kernel you use and which configuration it was compiled with, you will see or not see with external tools and commands traffic like IGMP, but you don't need to worry about such stuff. On some configuration it's really necessary, like on [IPv6 systems](https://github.com/ukanth/afwall/wiki/CustomScripts#important-notes-about-ipv4-and-ipv6-differences). 
+-> It's not worth to touch any of the mentioned port, because it doesn't have any notable effect (also no security plus). There are rare situations, mostly only on servers which are compromised by brute force and other attacks (Port 22) but a normal Android client is mostly not affected by this and remember that the port will be automatically closed after the connection is lost/dropped, [it's also a bad idea to put such port to another place](https://www.adayinthelifeof.nl/2012/03/12/why-putting-ssh-on-another-port-than-22-is-bad-idea/). Generally in AFWall+ the whole inbound traffic is by default disabled, means you need to enable the "Allow inbound" option first.
 
 Useful links
 ------------
