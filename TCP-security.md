@@ -60,7 +60,7 @@ As described over [here](http://www.iana.org/assignments/iana-ipv4-special-regis
 | 192.0.2.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | Documentation (TEST-NET-1) |
 | 192.88.99.0/24 | [RFC3068](https://tools.ietf.org/html/rfc3068) | 6to4 Relay Anycast |
 | 192.168.0.0/16 | [RFC1918](https://tools.ietf.org/html/rfc1918) | Private-Use |
-| 198.18.0.0/15 | [RFC2544](https://tools.ietf.org/html/rfc2544) | Benchmarking (nmap) |
+| 198.18.0.0/15 | [RFC2544](https://tools.ietf.org/html/rfc2544) | Benchmarking (Nmap) |
 | 198.51.100.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | ? |
 | 203.0.113.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | ? |
 | 240.0.0.0/4 | [RFC1112](https://tools.ietf.org/html/rfc1112) | Reserved |
@@ -141,6 +141,7 @@ Most of the mentioned port's are already supported by AFWall+ and can be control
 | Rule Name | Status | Range | Protocol | Remote Port | Local Port |
 | :--- | :--: | :---: | :--: | :---: | :--: |
 | Allow DNS | Allow | All IP packets | UDP | 53 | Any Port |
+| Allow Hypertext Transfer | Allow | All IP packets | TCP | 80 | 80 |
 | Allow dynamic IP| Allow* | All IP packets | UDP| 67-68 | 67-68 |
 | Allow SNMP | Allow* | All IP packets | UDP | Any Port | 162, + ?* |
 | Allow Secure Shell/File Transfer Protocl (SSH)| Block* (default disabled) | All IP packets | UDP | 22 | 22 |
@@ -159,10 +160,12 @@ Most of the mentioned port's are already supported by AFWall+ and can be control
 | Deny 135 and 445 (TCP)| Block* | All IP packets | TCP | Any Port | 135, 445 |
 | Allow IGMP | Allow | All IP packets | IGMP | System only | |
 | Allow VPN ESP | Allow | All IP packets | ESP | | |
+| | | | | | |
+| A complete | port list| is available  | over | [here](http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers) on  | Wikipedia |
 
 * Depending on which configuration you're on
 
--> AFWall+ doesn't currently supports ESP, IKE, L2TP, AH and GRE protocols via a gui switch but you can control this via custom scripts.
+-> AFWall+ doesn't currently supports ESP, IKE, L2TP, AH and GRE protocols (or any exotic port such QUIC/QOTD) via a gui switch but you can control this via custom scripts/iptables itself.
 
 -> Depending which kernel you use and which configuration it was compiled with, you will see or not see with external tools and commands traffic like IGMP, but you don't need to worry about such stuff. On some configuration it's really necessary, like on [IPv6 systems](https://github.com/ukanth/afwall/wiki/CustomScripts#important-notes-about-ipv4-and-ipv6-differences).
 
@@ -175,27 +178,27 @@ The term 'security' tools are a bit misleading, the tools doesn't secure anythin
 
 There are mostly all **for advances users**, because it need a lot of time, knowledge and tests to really understand them, but since most of them are well documented it shouldn't be a problem to crow from a beginner to an expert. 
 
-[Whireshark](http://www.wireshark.org/)
-[Burp Suite](http://portswigger.net/burp/)
-[Metasploit](http://www.metasploit.com/)
-[Netcat](http://en.wikipedia.org/wiki/Netcat)
-[tcpdump](http://www.tcpdump.org/) - sometimes already shipped with Android as standalone binary
-[Kismet](http://www.kismetwireless.net/)
-[Nikto](http://www.cirt.net/nikto2)
-[Hping](http://www.hping.org/)
-[Ettercap](http://ettercap.sourceforge.net/)
-[Sysinternals](http://technet.microsoft.com/en-us/sysinternals/default.aspx)
-[w3af](http://w3af.sourceforge.net/)
-[OpenVAS](http://www.openvas.org/)
-[Scapy](http://www.secdev.org/projects/scapy/)
-Ping/telnet/dig/traceroute/whois/netstat sometimes already shipped with Android/Windows/Unix/Linux/Mac OS as standalone binaries (on some system the names are different but they do all the same)
-[Paros Proxy](http://www.parosproxy.org/)
-[Maltego](http://www.paterva.com/web4/index.php/maltego)
-[The Sleuth Kit](http://www.sleuthkit.org/sleuthkit/)
-[EnCase](http://www.guidancesoftware.com/)
-[Unicornscan](http://www.unicornscan.org/)
-[SAINT](http://www.saintcorporation.com/saint/)
-[Core Impact](http://www.coresecurity.com/content/core-impact-overview)
+* [Whireshark](http://www.wireshark.org/)
+* [Burp Suite](http://portswigger.net/burp/)
+* [Metasploit](http://www.metasploit.com/)
+* [Netcat](http://en.wikipedia.org/wiki/Netcat)
+* [tcpdump](http://www.tcpdump.org/) - sometimes already shipped with Android as standalone binary
+* [Kismet](http://www.kismetwireless.net/)
+* [Nikto](http://www.cirt.net/nikto2)
+* [Hping](http://www.hping.org/)
+* [Ettercap](http://ettercap.sourceforge.net/)
+* [Sysinternals](http://technet.microsoft.com/en-us/sysinternals/default.aspx)
+* [w3af](http://w3af.sourceforge.net/)
+* [OpenVAS](http://www.openvas.org/)
+* [Scapy](http://www.secdev.org/projects/scapy/)
+* Ping/telnet/dig/traceroute/whois/netstat sometimes already shipped with Android/Windows/Unix/Linux/Mac OS as standalone binaries (on some system the names are different but they do all the same)
+* [Paros Proxy](http://www.parosproxy.org/)
+* [Maltego](http://www.paterva.com/web4/index.php/maltego)
+* [The Sleuth Kit](http://www.sleuthkit.org/sleuthkit/)
+* [EnCase](http://www.guidancesoftware.com/)
+* [Unicornscan](http://www.unicornscan.org/)
+* [SAINT](http://www.saintcorporation.com/saint/)
+* [Core Impact](http://www.coresecurity.com/content/core-impact-overview)
 
 
 Some other free bootable LIVE CD's like BackTrack (or his successor Kali), Tails, Helix,... are Linux distributions that claiming to be more secure and hardened against the known attacks compared to other systems like Windows. They often already included a huge collection of scanning tools. It's always worth to keep on eye on this, since you don't even need to installing them. 
@@ -215,5 +218,5 @@ Useful links
 * [Whitepaper - Android Security Hardening (33799.pdf file) | Sans.org](http://www.sans.org/reading-room/whitepapers/sysadmin/securely-deploying-android-devices-33799)
 * [Ipsysctl-tutorial | Frozentux.net](https://www.frozentux.net/documents/ipsysctl-tutorial/)
 * [Clock Skew Fingerprinting (fingerprinting-by-tcp-timestamps.pdf) | Anonymous-Proxy-Servers.net](https://anonymous-proxy-servers.net/paper/fingerprinting-by-tcp-timestamps.pdf)
-* [Nmap | nmap.org](http://nmap.org/) and for Android exclusive there is an [anmap app](http://code.google.com/p/anmap/)
-* [Nmap/Android | Secwiki.org](https://secwiki.org/w/Nmap/Android)
+* [Nmap | nmap.org](http://nmap.org/) and for Android exclusive there is an [anmap app](http://code.google.com/p/anmap/) and the [Nmap binary](https://github.com/kost/nmap-android)
+* [Nmap/Android quick guide | Secwiki.org](https://secwiki.org/w/Nmap/Android)
