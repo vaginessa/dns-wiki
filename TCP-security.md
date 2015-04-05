@@ -10,7 +10,7 @@ Index
 Introduction
 -----------
 
-This guide has nothing much todo with AFWall+ itself but it can help to protect against known _problems_ and attacks (e.g. DOS/UDP flooding) and are tested with Linux kernels 2-2 up to 3.2, so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the [useful links](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
+This guide has nothing much todo with AFWall+ itself or it's configuration, but it can help to protect against known _problems_ and attacks (e.g. DOS/UDP flooding) and are well tested with Linux kernels 2.4 up to 3.2, so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the ['Useful Links'](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
 
 Please make a **backup first**, and of course there is **no support** or **guarantee that it works on your system**. If you unsure, simply don't use it, ask your ROM/Kernel developer if it's useful to integrate/use it.
 
@@ -18,6 +18,8 @@ You can use it directly via ADB/Terminal Emulator (busybox sysctl -e -w [_your_p
 
 Known attacks
 ------------
+
+These are all (or mostly all) of known possible attacks which is TCP affected by. Most off all kernels and configuration are already hardened by this, but you need to check it manually in the source, via ADB or simply ask your developer if it's included. 
 
 * Desynchronization during connection establishment
 * Desynchronization in the middle of a connection
@@ -38,12 +40,12 @@ Known attacks
 * Man-in-the-Middle Attacks
 * .... Authentication and encryption problems due lack of protocol itself.
 
-A very good explanation of all the attacks listed above are on [Peters Smith fantastic article](http://linuxbox.co.uk/linux-network-security/) about common Linux security.
+A very good explanation of all the attacks listed above are on [Peters Smith fantastic article/book](http://linuxbox.co.uk/linux-network-security/) about common Linux security. It's highly recommend to read it, since it's very detailed and good to understand. 
 
 Requirements
 ------------
 
-As described over [here](http://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) this should be blacklisted by default for any vulnerability scanner (and only for them).
+As described over [here](http://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) the following stuff should be blacklisted by default for any vulnerability scanner (and only for them). These is necessary if you scan your network security against known port scanners like _Nmap_ to get an better result, since it may can display stuff which more confuse you as this shows useful stuff. 
 
 | Address | RFC | Description |
 | :--- | :--: | ---: |
@@ -69,8 +71,9 @@ For [Multicast](http://www.iana.org/assignments/multicast-addresses/multicast-ad
 | :--- | :--: | ---: |
 | 224.0.0.0/4 | [RFC5771](https://tools.ietf.org/html/rfc5771) | Multicast/Reserved |
 
-* Time to read the articles + to backup (show current settings via _#sysctl -a_) your existent configuration (just in case something goes wrong - shit happens!) 
-* ADB/Terminal Emulator/Busybox & a **rooted device**
+* All of the hardening stuff mentioned on this page should be used from advanced users only!
+* Time to read this little article + to backup (display current configuration via _sysctl -a_) your existent configuration (just in case something goes wrong) 
+* ADB/Terminal Emulator/BusyBox & a **rooted device**
 * Kernel/ROM that support these kind of tweaks (if not it doesn't work or is useless)
 * init.d support if you like to store these tweaks into a .sh script and apply them at boot (once)
 
@@ -156,11 +159,12 @@ Most of the mentioned port's are already supported by AFWall+ and can be control
 | Allow IGMP | Allow | All IP packets | IGMP | System only | |
 | Allow VPN ESP | Allow | All IP packets | ESP | | |
 
-* Depending on which configuration you're use
+* Depending on which configuration you're on
 
 -> AFWall+ doesn't currently supports ESP, IKE, L2TP, AH and GRE protocols via a gui switch but you can control this via custom scripts. 
--> Depending which kernel you use and which configuration it was compiled with, you will see or not see with external tools and commands traffic like IGMP, but you don't need to worry about such stuff. On some configuration it's really necessary, like on [IPv6 systems](https://github.com/ukanth/afwall/wiki/CustomScripts#important-notes-about-ipv4-and-ipv6-differences). 
--> It's not worth to touch any of the mentioned port, because it doesn't have any notable effect (also no security plus). There are rare situations, mostly only on servers which are compromised by brute force and other attacks (Port 22) but a normal Android client is mostly not affected by this and remember that the port will be automatically closed after the connection is lost/dropped, [it's also a bad idea to put such port to another place](https://www.adayinthelifeof.nl/2012/03/12/why-putting-ssh-on-another-port-than-22-is-bad-idea/). Generally in AFWall+ the whole inbound traffic is by default disabled, means you need to enable the "Allow inbound" option first.
+-> Depending which kernel you use and which configuration it was compiled with, you will see or not see with external tools and commands traffic like IGMP, but you don't need to worry about such stuff. On some configuration it's really necessary, like on [IPv6 systems](https://github.com/ukanth/afwall/wiki/CustomScripts#important-notes-about-ipv4-and-ipv6-differences).
+
+-> It's not worth to touch any of the mentioned ports, because it doesn't have any notable effect (also no security plus). There are rare situations, mostly only on servers which are compromised by brute force and other attacks (Port 22) but a normal Android client is mostly not affected by this and remember that the port will be automatically closed after the connection is lost/dropped, [it's also a bad idea to put such port to another place](https://www.adayinthelifeof.nl/2012/03/12/why-putting-ssh-on-another-port-than-22-is-bad-idea/). In AFWall+ the whole inbound traffic is by default disabled, means you need to enable the "Allow inbound" option first.
 
 Useful links
 ------------
@@ -177,3 +181,5 @@ Useful links
 * [Whitepaper - Android Security Hardening (33799.pdf file) | Sans.org](http://www.sans.org/reading-room/whitepapers/sysadmin/securely-deploying-android-devices-33799)
 * [Ipsysctl-tutorial | Frozentux.net](https://www.frozentux.net/documents/ipsysctl-tutorial/)
 * [Clock Skew Fingerprinting (fingerprinting-by-tcp-timestamps.pdf) | Anonymous-Proxy-Servers.net](https://anonymous-proxy-servers.net/paper/fingerprinting-by-tcp-timestamps.pdf)
+* [Nmap | nmap.org](http://nmap.org/) and for Android exclusive there is an [anmap app](http://code.google.com/p/anmap/)
+* [Nmap/Android | Secwiki.org](https://secwiki.org/w/Nmap/Android)
