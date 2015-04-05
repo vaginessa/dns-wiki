@@ -61,8 +61,9 @@ As described over [here](http://www.iana.org/assignments/iana-ipv4-special-regis
 | 192.88.99.0/24 | [RFC3068](https://tools.ietf.org/html/rfc3068) | 6to4 Relay Anycast |
 | 192.168.0.0/16 | [RFC1918](https://tools.ietf.org/html/rfc1918) | Private-Use |
 | 198.18.0.0/15 | [RFC2544](https://tools.ietf.org/html/rfc2544) | Benchmarking (Nmap) |
-| 198.51.100.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | ? |
-| 203.0.113.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | ? |
+| 192.0.2.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | TEST-NET-1 (non puplic) |
+| 198.51.100.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | TEST-NET-2 (non puplic) |
+| 203.0.113.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | TEST-NET-3 (non puplic) |
 | 240.0.0.0/4 | [RFC1112](https://tools.ietf.org/html/rfc1112) | Reserved |
 | 255.255.255.255/32 | [RFC0919](https://tools.ietf.org/html/rfc0919) | Limited Broadcast |
 
@@ -208,7 +209,7 @@ Useful links
 
 * [TCP vs UDP by Erik Rodriguez | Skullbox.net](http://www.skullbox.net/tcpudp.php)
 * [/proc file system | Wikipedia.org](http://en.wikipedia.org/wiki/Procfs)
-* [Ieft.org](http://www.ietf.org/)
+* [Internet Engineering Task Force (IETF) | ieft.org](https://www.ietf.org/)
 * [Linux tweaking | SpeedGuide.net](http://www.speedguide.net/articles/linux-tweaking-121)
 * [Linux TCP Tune | PSC.edu ](http://www.psc.edu/networking/projects/tcptune/#Linux)
 * [Linux TCP Tuning | Cyberciti.biz](http://www.cyberciti.biz/faq/linux-tcp-tuning)
