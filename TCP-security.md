@@ -5,6 +5,7 @@ Index
 * [Known attacks](known-attacks)
 * [Requirements](#requirements)
 * [IP Rules](#ip-rules)
+* [Security tools](#security-tools)
 * [Useful links](#useful-links)
 
 Introduction
@@ -161,10 +162,43 @@ Most of the mentioned port's are already supported by AFWall+ and can be control
 
 * Depending on which configuration you're on
 
--> AFWall+ doesn't currently supports ESP, IKE, L2TP, AH and GRE protocols via a gui switch but you can control this via custom scripts. 
+-> AFWall+ doesn't currently supports ESP, IKE, L2TP, AH and GRE protocols via a gui switch but you can control this via custom scripts.
+
 -> Depending which kernel you use and which configuration it was compiled with, you will see or not see with external tools and commands traffic like IGMP, but you don't need to worry about such stuff. On some configuration it's really necessary, like on [IPv6 systems](https://github.com/ukanth/afwall/wiki/CustomScripts#important-notes-about-ipv4-and-ipv6-differences).
 
 -> It's not worth to touch any of the mentioned ports, because it doesn't have any notable effect (also no security plus). There are rare situations, mostly only on servers which are compromised by brute force and other attacks (Port 22) but a normal Android client is mostly not affected by this and remember that the port will be automatically closed after the connection is lost/dropped, [it's also a bad idea to put such port to another place](https://www.adayinthelifeof.nl/2012/03/12/why-putting-ssh-on-another-port-than-22-is-bad-idea/). In AFWall+ the whole inbound traffic is by default disabled, means you need to enable the "Allow inbound" option first.
+
+Security tools
+------------
+
+The term 'security' tools are a bit misleading, the tools doesn't secure anything by itself, but they can display open ports, possible vulnerability's and other threads. Often there are called 'scanners'/'network intrusion detection'/'preventation' or penetration testing tools. 
+
+There are mostly all **for advances users**, because it need a lot of time, knowledge and tests to really understand them, but since most of them are well documented it shouldn't be a problem to crow from a beginner to an expert. 
+
+[Whireshark](http://www.wireshark.org/)
+[Burp Suite](http://portswigger.net/burp/)
+[Metasploit](http://www.metasploit.com/)
+[Netcat](http://en.wikipedia.org/wiki/Netcat)
+[tcpdump](http://www.tcpdump.org/) - sometimes already shipped with Android as standalone binary
+[Kismet](http://www.kismetwireless.net/)
+[Nikto](http://www.cirt.net/nikto2)
+[Hping](http://www.hping.org/)
+[Ettercap](http://ettercap.sourceforge.net/)
+[Sysinternals](http://technet.microsoft.com/en-us/sysinternals/default.aspx)
+[w3af](http://w3af.sourceforge.net/)
+[OpenVAS](http://www.openvas.org/)
+[Scapy](http://www.secdev.org/projects/scapy/)
+Ping/telnet/dig/traceroute/whois/netstat sometimes already shipped with Android/Windows/Unix/Linux/Mac OS as standalone binaries (on some system the names are different but they do all the same)
+[Paros Proxy](http://www.parosproxy.org/)
+[Maltego](http://www.paterva.com/web4/index.php/maltego)
+[The Sleuth Kit](http://www.sleuthkit.org/sleuthkit/)
+[EnCase](http://www.guidancesoftware.com/)
+[Unicornscan](http://www.unicornscan.org/)
+[SAINT](http://www.saintcorporation.com/saint/)
+[Core Impact](http://www.coresecurity.com/content/core-impact-overview)
+
+
+Some other free bootable LIVE CD's like BackTrack (or his successor Kali), Tails, Helix,... are Linux distributions that claiming to be more secure and hardened against the known attacks compared to other systems like Windows. They often already included a huge collection of scanning tools. It's always worth to keep on eye on this, since you don't even need to installing them. 
 
 Useful links
 ------------
