@@ -6,6 +6,7 @@ Index
 * [Requirements](#requirements)
 * [IP Rules](#ip-rules)
 * [Security tools](#security-tools)
+* [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns?)
 * [Useful links](#useful-links)
 
 Introduction
@@ -203,6 +204,40 @@ There are mostly all **for advances users**, because it need a lot of time, know
 
 
 Some other free bootable LIVE CD's like BackTrack (or his successor Kali), Tails, Helix,... are Linux distributions that claiming to be more secure and hardened against the known attacks compared to other systems like Windows. They often already included a huge collection of scanning tools. It's always worth to keep on eye on this, since you don't even need to installing them. 
+
+How do I know if my applications are leaking DNS?
+------------
+
+A very detailed answer what DNS (Domain Name System) is can be found over [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver).
+
+There are several ways, the most easiest way is to visit some webpages that automatically detect what is your current DNS.
+* https://www.dnsleaktest.com/
+* http://ipleak.net/
+
+If you Browser shows a wrong DNS according to what you settings telling you, this usually means something is wrong. 
+
+* On Firefox / Firefox Mobile (about:config): network.dns.disablePrefetch needs to be set to true 
+* On Google Chrome disable the DNS pre-fetching. 
+
+On the OS level you can:
+* Use 3rd Party Local DNS Servers/Resolvers, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Local_DNS_Resolvers).
+* Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers 4 hours is enouth.
+* Apply MacOS Tweaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_MacOS).
+* Configure Firewall as Failsafe To Prevent Leaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
+
+Sometimes these messages may be false alarms. To find out, you should run a packet sniffer on your network interface. The basic command to do this is <code>tcpdump -pni eth0 'port domain'</code>.
+
+If you are using an VPN this also can "fix" the DNS problem, but sometimes even this isn't enouth, especially on Android and OpenVPN, some older versions and provider still suffering from this issue, a workaround can be found over [here](https://gist.github.com/CHEF-KOCH/52fe5cd9a5aa7721fe74).
+
+Another possible problem is that you ISP mitm and manipulate the DNS traffic (mostly due censorship or to spoof)! There are only a few methods to bypass this:
+* Use TOR + setup it 
+* Use a SSH tunnel
+* Choose an VPN which doesn't censorship
+* Use JonDo (the proxy) [but browser is also good]
+* Use [DNSCrypt](https://www.opendns.com/about/innovations/dnscrypt/) or httpsdnsd (HTTPSDNS daemon is already running if you use JonDo)
+* For general implementation info about DNS Transport over TCP take a look at [here](https://www.ietf.org/rfc/rfc5966.txt)
+
+There are also several tips, tricks and guides directly with a lot of examples over the official Tor Wiki page, see [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver) & [here](https://trac.torproject.org/projects/tor/wiki/doc/Preventing_Tor_DNS_Leaks). Remember that the given tricks on this pages are optimized for TOR/I2P, so you may need to adjust some example configuration given from there.
 
 Useful links
 ------------
