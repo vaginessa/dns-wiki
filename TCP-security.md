@@ -229,11 +229,11 @@ Sometimes these messages may be false alarms. To find out, you should run a pack
 
 If you are using an VPN this also can "fix" the DNS problem, but sometimes even this isn't enouth, especially on Android and OpenVPN, some older versions and provider still suffering from this issue, a workaround can be found over [here](https://gist.github.com/CHEF-KOCH/52fe5cd9a5aa7721fe74).
 
-Another possible problem is that you ISP mitm and manipulate the DNS traffic (mostly due censorship or to spoof)! There are only a few methods to bypass this:
-* Use TOR + setup it 
+Another possible problem is that you [ISP](http://en.wikipedia.org/wiki/Internet_service_provider) [mitm](http://en.wikipedia.org/wiki/Man-in-the-middle_attack) and manipulate the DNS traffic (mostly due censorship or to spoof)! There are only a few methods to bypass this:
+* Use [TOR](https://www.torproject.org/) + setup it (simply use the setup wizard if you don't know how)
 * Use a SSH tunnel
 * Choose an VPN which doesn't censorship
-* Use JonDo (the proxy) [but browser is also good]
+* Use [JonDo](https://anonymous-proxy-servers.net/en/jondo.html) (the proxy) [but browser is also good]
 * Use [DNSCrypt](https://www.opendns.com/about/innovations/dnscrypt/) or httpsdnsd (HTTPSDNS daemon is already running if you use JonDo)
 * For general implementation info about DNS Transport over TCP take a look at [here](https://www.ietf.org/rfc/rfc5966.txt)
 
@@ -256,3 +256,4 @@ Useful links
 * [Clock Skew Fingerprinting (fingerprinting-by-tcp-timestamps.pdf) | Anonymous-Proxy-Servers.net](https://anonymous-proxy-servers.net/paper/fingerprinting-by-tcp-timestamps.pdf)
 * [Nmap | nmap.org](http://nmap.org/) and for Android exclusive there is an [anmap app](http://code.google.com/p/anmap/) and the [Nmap binary](https://github.com/kost/nmap-android)
 * [Nmap/Android quick guide | Secwiki.org](https://secwiki.org/w/Nmap/Android)
+* [DNScrypt build instructions + binaries | forum-xda.developers.com](http://forum.xda-developers.com/showpost.php?p=56068030&postcount=20)
