@@ -3,6 +3,7 @@ Index
 
 * [Description](#description)
 * [Explanation](#explanation)
+* [Extensions](#extensions)
 * [Important](#important)
 * [Basics](#basics)
 * [Useful links](#useful-links)
@@ -32,6 +33,11 @@ Please have a look at this most excellent scheme: Netfilter components & Netfilt
 ![Netfilter components](http://upload.wikimedia.org/wikipedia/commons/d/dd/Netfilter-components.svg)
 
 ![Packet flow in Netfilter and General Networking](http://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg)
+
+Extensions
+---------
+
+All available iptables-extensions can be found over [here](http://ipset.netfilter.org/iptables-extensions.man.html)
 
 Important
 ---------
@@ -112,7 +118,9 @@ Useful links
 * [iptables developer page | netfilter.org](https://git.netfilter.org/iptables/)
 * [iptables tutorial by Oskar Andreasson | Frozentux.net](http://www.frozentux.net/iptables-tutorial/iptables-tutorial.html)
 * [Quick HOWTO : Ch14 : Linux Firewalls Using iptables | Linuxhomenetworking.com](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)
-* [IptablesHowTo | Help.Ubuntu.com](https://help.ubuntu.com/community/IptablesHowTo)
+* [Iptables HowTo | Help.Ubuntu.com](https://help.ubuntu.com/community/IptablesHowTo)
 * [Connection Tracking | Rigacci.org](http://www.rigacci.org/wiki/lib/exe/fetch.php/doc/appunti/linux/sa/iptables/conntrack.html)
 * [How to Setup a Linux Firewall with PPPoE/NAT/iptables | akadia.com](http://www.akadia.com/services/pppoe_iptables.html)
 * [German introduction: Private Feuerwände | Linux-Community.de](http://www.linux-community.de/Internal/Artikel/Print-Artikel/LinuxUser/2002/05/Paketfilter-Firewall)
+* [What is the difference between AVM Firewall and Netfilter? | Freetz.org](http://freetz.org/wiki/packages/iptables.en)
+* [Wlan traffic seems to bypass iptables | Forum OpenWRT.org](https://forum.openwrt.org/viewtopic.php?pid=143700#p143700)
