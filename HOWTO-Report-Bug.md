@@ -102,34 +102,34 @@ Template for GitHub
 This is a small template you can use to provide a useful bug report. Make sure you filled in all nessary information we need. AFWall+ must be running (Green AFWall+ shield activated!), if not we can't say if it's a AFWall+ related problem or something else.
  
 >* **AFWall+ Mode (whitelist [default enabled]/blacklist)**
->* [your text]
+>* [your text/file or link]
 >* **Android ROM + exactly versions number**
->* [your text]
+>* [your text/file or link]
 >* **What steps will reproduce the problem?**
->* [your text]
+>* [your text/file or link]
 >* **Additional security software installed (like XPrivacy/Avast)? Is it really deactivated?!**
->* [your text]
+>* [your text/file or link]
 >* **What is the expected output? What do you see instead?**
->* [your text]
+>* [your text/file or link]
 >* **Attach your rules.log (IPv4 + IPv6)** 
->* [your rules]
+>* [your text/file or link]
 >* **iptables -v -n -L** 
->* [List current rules]
+>* [your text/file or link]
 >* **ip rule list** 
->* [List current rules]
+>* [your text/file or link]
 >* **ip route show table (number)** 
->* [ ]
+>* [your text/file or link]
 >* **iptables -L -t mangle (only on VPN)** 
->* [your rules]
+>* [your text/file or link]
 >* **Type 'adb bugreport' via ADB (only necessary if there is a crash)** 
->* [Whole Bugreport output provided by your ROM]
+>* [your text/file or link]
 >* **Please provide any additional information below (e.g. logcat).**
 >* [your text/file or link]
 >* **Which binaries are used for BusyBox/IPTables?**
 >* [your text/file or link]
 >* **Which DNS-proxy option is in usage?**
 >* [your text/file or link]
->* **Are the experimental options enabled/disabled**
+>* **Are the experimental options enabled/disabled?!**
 >* [your text/file or link]
 
 More details always means more and faster/better help! 
@@ -144,6 +144,8 @@ Custom ROMs
 -----------
 
 Some custom ROMs come with their own shells and utilities. If you are using a custom ROM, check its documentation to find out what's available and what's not. For security reasons some binary's are not present e.g. on the Guardian ROM.
+
+:warning: We generally do not support nighty's/alpha's/rc's/beta's ROMs - due the mass of updates we not monitoring all changes that was possible included by them. First try a stable version and see if it works. :warning:
 
 Useful Links
 ------------
