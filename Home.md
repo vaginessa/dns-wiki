@@ -110,8 +110,12 @@ Some useful things:
 * [[WhatsApp blocking|HOWTO blocking WhatsApp]]
 * [[Orwall and AFWall+|HOWTO OrWall together with AFWall+]]
 
+**(optional and not AFWall+ specific)**
 TCP security under Linux:
-* [[TCP security]] may help to protect you against some known attacks. 
+* [[TCP security]] may help to protect you against some known attacks.
+
+Kernel Security under Linux:
+* [[Kernel security]] hardening the Kernel to maximum security (POC + WIP).
 
 Similar solutions
 -----------------
