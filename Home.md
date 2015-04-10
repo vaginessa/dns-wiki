@@ -124,8 +124,8 @@ Similar solutions
 -----------------
 
 IPTables based:
-* _Builtin_ linux iptables/toolbox (there is no GUI)
-* [Android Firewall](https://github.com/skullone/android_firewall)
+* _Builtin_ linux iptables/toolbox (there is no GUI but van be controlled via scripts/Terminal/ADB)
+* [Android Firewall](https://github.com/skullone/android_firewall) (mostly a AFWall+ clone)
 * [3C Toolbox aka Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
 * ~~[DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free)~~ _deprecated_ 
 * [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
@@ -137,7 +137,7 @@ Anti IMSI-Catcher (protection against IMSI-Catchers, StingRay and Silent/Stealth
 Bluetooth Firewall:
 * [Bluetooth Firewall](https://play.google.com/store/apps/details?id=com.fruitmobile.android.bluetooth.firewall)
 
-Browser based:
+Browser based Firewall (takes control over JavaScript,...):
 * [Firefox NSA NoScript Anywhere](https://noscript.net/nsa/#download)
 
 VPN/Proxy based:
@@ -147,6 +147,9 @@ VPN/Proxy based:
 
 [Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
+
+IP blocking (needs XPosed):
+* [PeerBlock](https://play.google.com/store/apps/details?id=com.peerblock) [Source](https://apeerblock.codeplex.com/)
 
 A word about non-root Firewalls
 ---------------------
