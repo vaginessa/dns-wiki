@@ -1,6 +1,6 @@
 :warning: This article is in a early beta stage and could contain _false information_ until all is done. This article is based on the Stock Android 4.0 OS (Kernel 2.6.x), this means newer Kernel or/and network changes could be differ a little bit.
 
-:warning: On Windows I highly recommend to use Burp/HTTP Scoop/Fiddler instead of Whireshark for several reasons, one of them is that it's low-level and overpowered for quickly looking through HTTP traces [but you're the boss].
+:warning: On Windows I highly recommend to use Burp/HTTP Scoop/Fiddler for the [deep packet inspection](http://en.wikipedia.org/wiki/Deep_packet_inspection) instead of Whireshark for several reasons, one of them is that it's low-level and overpowered for quickly looking through HTTP(s) traces [but you're the boss].
 
 As you might know, Android's kernel is based on the Linux kernel so the output could be similar. This article will clear some questions about the Android Kernel and his data usage and also may answer some addition questions like why is there traffic under _Android OS_ (UID=1000).
 
@@ -21,6 +21,7 @@ Index
 * [How do I use this information?](#how-do-i-use-this-information?)
 * [Capture all network traffic](#capture-all-network-traffic)
 * [Tethering data](#tethering-data)
+* [Modem traffic](#modem-traffic)
 * [Closing words](#closing-words)
 * [Useful links](#useful-links)
 
@@ -156,6 +157,14 @@ Because:
 Tethering does NAT internally and assigns you an IP in a 192.168.* private range via a DHCP daemon running on our phone. There's no way we can see pure WiFi traffic only this way.
 The only workaround is a custom firmware we can install on our device and do a tcpdump (see above) on the phone itself, but only if it supports both types, promisc mode and tcpdump [raw 802.11 frames -> "Monitor mode"]).
 
+Modem traffic
+-------
+
+:warning: Also, cell phones have [RTOS code](http://www.androidauthority.com/smartphones-have-a-second-os-317800/) running on a second processor in the baseband (modem) unit which is independent of the primary OS. - On IOS there is [hardware tracking](https://en.wikipedia.org/wiki/IPhone#Secret_tracking) :warning:
+
+The problem is that like all software there are bugs in the operating systems used by the baseband modem makers. If there are bugs then there are security vulnerabilities. If there are security vulnerabilities then there is a doorway for hackers to get in.
+
+Iptables or any other low-level binary/tool can't block modem traffic! IPtables wasn't designed for Computers and not for mobile devices + the fact that this sector can't be that easily touched without destroying his function. AFWall+ blocks only the UID's per-app-basis which means everything what hits the traffic behind it is not visible.
 
 Capture all network traffic
 -------
@@ -231,6 +240,7 @@ Tutorials:
 * [Whireshark WLAN capturing on 802.11 | Wiki Whireskark](http://wiki.wireshark.org/CaptureSetup/WLAN)
 * [Bluetooth packet capture on Android 4.4 | Nowsecure](https://www.nowsecure.com/blog/2014/02/07/bluetooth-packet-capture-android/)
 * [How to sniffing Android Application with Wireshark (VirtualBox) | talat](http://talat.uyarer.com/post/68706747099/how-to-sniffing-android-application-with-wireshark)
+* [Ralf-Philipp Weinmann presented some finding at a security conference | Readwrite](http://readwrite.com/2011/01/18/baseband_hacking_a_new_frontier_for_smartphone_break_ins#awesm=~onynAS4WgTRdXI)
 
 ```bash
  _________       ______            
