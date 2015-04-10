@@ -87,7 +87,7 @@ Enjoy and profit. Contribute to the project with pull requests!
 Important Information
 ---------------------
 
-:exclamation: Before you ask anything please take a look first into our [[FAQ]].
+:exclamation: Before you ask anything please take a look first into our [[FAQ]]. :exclamation:
 
 * [Changelog](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each version of AFWall+.
 * [[CustomScripts]] contains the beginnings of a user manual. Some questions about working with iptables might be answered here, it also contains some predefined scripts you can use (Copy into a .txt file, rename .txt extension to .sh).
@@ -106,16 +106,19 @@ Want compile AFWall+ yourself?
 * [[All you need to know about compiling iptables|HOWTO Compiling iptable]]
 
 Some useful things:
-* [[Phone codes secrets]] contain some useful codes for viewing e. g. MAC address.
 * [[WhatsApp blocking|HOWTO blocking WhatsApp]]
 * [[Orwall and AFWall+|HOWTO OrWall together with AFWall+]]
 
 **(optional and not AFWall+ specific)**
+
 TCP security under Linux:
 * [[TCP security]] may help to protect you against some known attacks.
 
 Kernel Security under Linux:
 * [[Kernel security]] hardening the Kernel to maximum security (POC + WIP).
+
+Phone "cheats":
+* [[Phone codes secrets]] contain some useful codes for viewing e.g. MAC address.
 
 Similar solutions
 -----------------
@@ -148,14 +151,13 @@ VPN/Proxy based:
 A word about non-root Firewalls
 ---------------------
 
-All of these firewalls working with a Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size and _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest con is that such VPN services not works with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN service and VPN/Proxy apps at the same time. 
+All of these firewalls working with a Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size which _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest problem is that such VPN services not work with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN services and VPN/Proxy's apps at the same time together. 
 
 Making Donations
 -------
 
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation.
 It can be done directly via [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate). 
-
 
 License
 -------
