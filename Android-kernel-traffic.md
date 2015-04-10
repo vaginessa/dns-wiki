@@ -9,6 +9,7 @@ Most Internet applications are using TCP as their protocol of choice, and TCP ma
 **Important**:
 * [NetworkConnectivityListener](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob;f=core/java/android/net/NetworkConnectivityListener.java)
 * [ConnectivityService.java](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob;f=services/java/com/android/server/ConnectivityService.java)
+* [android_filesystem_config.h](https://android.googlesource.com/platform/system/core.git/+/master/include/private/android_filesystem_config.h)
 
 
 Index
@@ -107,42 +108,85 @@ Protocol statistics
 
 
 UIDs stats
-providing traffic usage per application
+providing traffic usage per application.
 
 
-UID stats (this ones never change):
+UID stats (this ones may never change):
 ```
-0 - Root
-1000 - System
-1001 - Radio
-1002 - Bluetooth
-1003 - Graphics
-1004 - Input
-1005 - Audio
-1006 - Camera
-1007 - Log
-1008 - Compass
-1009 - Mount
-1010 - WiFi
-1011 - ADB
-1012 - Install
-1013 - Media
-1014 - DHCP
-1015 - External Storage
-1016 - VPN
-1017 - Keystore
-1018 - USB Devices
-1019 - DRM
-1020 - Available
-1021 - GPS
-1022 - deprecated
-1023 - Internal Media Storage
-1024 - MTP USB
-1025 - NFC
-1026 - DRM RPC
-2000 - Shell (User) for example ddms (generates traffic for txt/png and such)
-<10000 = system reserved 
-10000(and higher) = applications UIDs
+AID_ROOT             0  /* traditional unix root user */
+
+AID_SYSTEM        1000  /* system server */
+
+AID_RADIO         1001  /* telephony subsystem, RIL */
+AID_BLUETOOTH     1002  /* bluetooth subsystem */
+AID_GRAPHICS      1003  /* graphics devices */
+AID_INPUT         1004  /* input devices */
+AID_AUDIO         1005  /* audio devices */
+AID_CAMERA        1006  /* camera devices */
+AID_LOG           1007  /* log devices */
+AID_COMPASS       1008  /* compass device */
+AID_MOUNT         1009  /* mountd socket */
+AID_WIFI          1010  /* wifi subsystem */
+AID_ADB           1011  /* android debug bridge (adbd) */
+AID_INSTALL       1012  /* group for installing packages */
+AID_MEDIA         1013  /* mediaserver process */
+AID_DHCP          1014  /* dhcp client */
+AID_SDCARD_RW     1015  /* external storage write access */
+AID_VPN           1016  /* vpn system */
+AID_KEYSTORE      1017  /* keystore subsystem */
+AID_USB           1018  /* USB devices */
+AID_DRM           1019  /* DRM server */
+AID_MDNSR         1020  /* MulticastDNSResponder (service discovery) */
+AID_GPS           1021  /* GPS daemon */
+AID_UNUSED1       1022  /* deprecated, DO NOT USE */
+AID_MEDIA_RW      1023  /* internal media storage write access */
+AID_MTP           1024  /* MTP USB driver access */
+AID_UNUSED2       1025  /* deprecated, DO NOT USE */
+AID_DRMRPC        1026  /* group for drm rpc */
+AID_NFC           1027  /* nfc subsystem */
+AID_SDCARD_R      1028  /* external storage read access */
+AID_CLAT          1029  /* clat part of nat464 */
+AID_LOOP_RADIO    1030  /* loop radio devices */
+AID_MEDIA_DRM     1031  /* MediaDrm plugins */
+AID_PACKAGE_INFO  1032  /* access to installed package details */
+AID_SDCARD_PICS   1033  /* external storage photos access */
+AID_SDCARD_AV     1034  /* external storage audio/video access */
+AID_SDCARD_ALL    1035  /* access all users external storage */
+AID_LOGD          1036  /* log daemon */
+AID_SHARED_RELRO  1037  /* creator of shared GNU RELRO files */
+
+AID_SHELL         2000  /* adb and debug shell user (below >4.3 .txt,.png and such may "create" traffic */
+AID_CACHE         2001  /* cache access */
+AID_DIAG          2002  /* access to diagnostic resources */
+
+The range 2900-2999 is reserved for OEM, and must never be used here
+AID_OEM_RESERVED_START 2900
+AID_OEM_RESERVED_END   2999
+
+The 3000 series are intended for use as supplemental group id's only.
+They indicate special Android capabilities that the kernel is aware of.
+AID_NET_BT_ADMIN  3001  /* bluetooth: create any socket */
+AID_NET_BT        3002  /* bluetooth: create sco, rfcomm or l2cap sockets */
+AID_INET          3003  /* can create AF_INET and AF_INET6 sockets */
+AID_NET_RAW       3004  /* can create raw INET sockets */
+AID_NET_ADMIN     3005  /* can configure interfaces and routing tables. */
+AID_NET_BW_STATS  3006  /* read bandwidth statistics */
+AID_NET_BW_ACCT   3007  /* change bandwidth statistics accounting */
+AID_NET_BT_STACK  3008  /* bluetooth: access config files */
+
+AID_EVERYBODY     9997  /* shared between all apps in the same profile */
+AID_MISC          9998  /* access to misc storage */
+AID_NOBODY        9999
+
+AID_APP          10000  /* first app user */
+
+AID_ISOLATED_START 99000 /* start of uids for fully isolated sandboxed processes */
+AID_ISOLATED_END   99999 /* end of uids for fully isolated sandboxed processes */
+
+AID_USER        100000  /* offset for uid ranges for each user */
+
+AID_SHARED_GID_START 50000 /* start of gids for apps in each user to share */
+AID_SHARED_GID_END   59999 /* start of gids for apps in each user to share */
 ```
 
 
