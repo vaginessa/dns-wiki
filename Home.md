@@ -125,11 +125,11 @@ Similar solutions
 
 _IPTables based:_
 * _Builtin_ Linux iptables (there is no GUI but van be controlled via scripts/Terminal/ADB)
-* [Android Firewall](https://github.com/skullone/android_firewall) (AFWall+ clone)
+* [Android Firewall](https://play.google.com/store/apps/details?id=com.jtschohl.androidfirewall) & [Source](https://github.com/skullone/android_firewall) [removed from Google Play Store!]
 * [3C Toolbox aka Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
 * ~~[DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free)~~ _deprecated_ 
 * [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
-* [LBE Privacy Guard/Master](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
+* [LBE Privacy Master](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
 
 _Anti IMSI-Catcher (protects against IMSI/StingRay-Catchers and Silent/Stealth SMS):_
 * [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/)
@@ -145,11 +145,11 @@ _VPN/Proxy based:_
 * [Grey Shirts NoRoot Firewall](https://play.google.com/store/apps/details?id=app.greyshirts.firewall)
 * [Netspark Firewall](https://play.google.com/store/apps/details?id=com.netspark.firewall&hl=en)
 
-[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:
+_[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:_
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
 
 _IP blocking (needs Xposed):_
-* [PeerBlock](https://play.google.com/store/apps/details?id=com.peerblock) [Source](https://apeerblock.codeplex.com/)
+* [PeerBlock](https://play.google.com/store/apps/details?id=com.peerblock) & [Source](https://apeerblock.codeplex.com/)
 
 _Real-time iptables logging:_
 * [Network Log](https://play.google.com/store/apps/details?id=com.googlecode.networklog&hl=en)
@@ -158,6 +158,9 @@ A word about non-root Firewalls
 ---------------------
 
 All of these firewalls working with a Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size which _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest problem is that such VPN services not work with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN services and VPN/Proxy's apps at the same time together. 
+
+We not suggest to use any no-root firewall for above reasons and others, e.g. see [an German article](http://www.kuketz-blog.de/android-firewall-ohne-root-%E2%80%A2-noroot-firewall/):
+* [NoRoot](https://play.google.com/store/apps/details?id=com.netspark.firewall&hl=en)
 
 Making Donations
 -------
