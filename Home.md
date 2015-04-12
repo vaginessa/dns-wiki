@@ -123,24 +123,24 @@ Phone "cheats":
 Similar solutions
 -----------------
 
-IPTables based:
-* _Builtin_ linux iptables/toolbox (there is no GUI but van be controlled via scripts/Terminal/ADB)
-* [Android Firewall](https://github.com/skullone/android_firewall) (mostly a AFWall+ clone)
+_IPTables based:_
+* _Builtin_ Linux iptables (there is no GUI but van be controlled via scripts/Terminal/ADB)
+* [Android Firewall](https://github.com/skullone/android_firewall) (AFWall+ clone)
 * [3C Toolbox aka Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
 * ~~[DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free)~~ _deprecated_ 
 * [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
 * [LBE Privacy Guard/Master](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
 
-Anti IMSI-Catcher (protection against IMSI-Catchers, StingRay and Silent/Stealth SMS):
+_Anti IMSI-Catcher (protects against IMSI/StingRay-Catchers and Silent/Stealth SMS):_
 * [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/)
 
-Bluetooth Firewall:
+_Bluetooth Firewall:_
 * [Bluetooth Firewall](https://play.google.com/store/apps/details?id=com.fruitmobile.android.bluetooth.firewall)
 
-Browser based Firewall (takes control over JavaScript,...):
+_Browser based Firewall (takes control over JavaScript,...):_
 * [Firefox NSA NoScript Anywhere](https://noscript.net/nsa/#download)
 
-VPN/Proxy based:
+_VPN/Proxy based:_
 * [LostNet Firewall](https://play.google.com/store/apps/details?id=com.lostnet.fw.pro)
 * [Grey Shirts NoRoot Firewall](https://play.google.com/store/apps/details?id=app.greyshirts.firewall)
 * [Netspark Firewall](https://play.google.com/store/apps/details?id=com.netspark.firewall&hl=en)
@@ -148,8 +148,11 @@ VPN/Proxy based:
 [Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
 
-IP blocking (needs XPosed):
+_IP blocking (needs Xposed):_
 * [PeerBlock](https://play.google.com/store/apps/details?id=com.peerblock) [Source](https://apeerblock.codeplex.com/)
+
+_Real-time iptables logging:_
+* [Network Log](https://play.google.com/store/apps/details?id=com.googlecode.networklog&hl=en)
 
 A word about non-root Firewalls
 ---------------------
