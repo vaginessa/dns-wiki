@@ -74,13 +74,15 @@ AFWall+ need this to run at his best:
 Installation
 -------------
 
-A general discussion platform can be found [here on XDA](http://forum.xda-developers.com/showthread.php?t=1957231). Use the GitHub platform for issue reports.
+A general discussion platform can be found [here on XDA](http://forum.xda-developers.com/showthread.php?t=1957231). Use the GitHub platform only for issue reports, [see here how-to do this](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug). 
 
-* Temporarily enable "Unknown sources" in your settings.
+* Temporarily enable "Unknown sources" in your settings if it's disabled.
+* Make a backup (if needed) - it will be saved under <code>/sdcard0/afwall/</code>
 * Download the latest release from [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall), [GitHub](https://github.com/ukanth/afwall/releases) or [F-Droid](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall).
 * Delete any previous version of the AFWall+ app, an upgrade from an existent installation is also possible.
-* Delete any remnant application directory from <code>/sdcard0/afwall/</code> or similar.
+* Delete/Restore any remnant application/setting(s) directory from <code>/sdcard0/afwall/</code> or similar.
 * Install the newest version.
+* Restore the backup.
 
 Enjoy and profit. Contribute to the project with pull requests!
 
@@ -166,7 +168,7 @@ Making Donations
 -------
 
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation.
-It can be done directly via [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate). 
+It can be done directly on [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate) or just look at [F-Droid repository](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall) for more donations options.
 
 License
 -------
