@@ -86,14 +86,21 @@ For [Multicast](http://www.iana.org/assignments/multicast-addresses/multicast-ad
 sysctl
 ------------
 
-To apply all security settings, you need a Kernel which handles sysctl and applies them to <code>/proc</code>. Normally all kernels use that ability by default. If there is no _/etc/sysct.conf_ you can just create them and use a init.d script to apply all included parameters.
+Sysctl is an interface that allows you to make changes to a running Linux kernel. With _/etc/sysctl.conf_ you can configure various Linux networking and system settings.
+
+To load existent settings run:
+<code># sysctl -p</code> or better <code>#adb shell su sysctl -p</code> (to avoid some trouble like access denied or xyz is an unknown key [except if your kernel does not support it]). 
+
+To apply all security settings, you need a Kernel which handles sysctl and applies them to <code>/proc</code>. Normally all kernels use that ability by default. If there is no _/etc/sysct.conf_ you can just create them and use a init.d script to apply all included parameters. Or just ask your kernel developer to enable it.
 
 Since the list is huge, here is an [default sysctl on my gist](https://gist.github.com/CHEF-KOCH/0001e66a8c10b1177abe#file-sysctl-conf). 
 
 And a tweaked one with preferred security over seep is also available [here](https://gist.github.com/CHEF-KOCH/0001e66a8c10b1177abe#file-tweaked-sysctl-conf) (needs to be renamed to _sysctl.conf_).
 
 
-**It's not recommend to apply any debug or other 'performance' tweaks into the sysctl file (use init.d for it) sice this could be end-up in a boot-loop. So here are only entries which never cause any problems that can't be fixed very easy by editing the lines as per needs. **
+**It's not recommend to apply any debug/memory or other 'performance' tweaks into the sysctl file (use init.d for it) since this could be end-up in a boot-loop. So here are only entries which never cause any problems that can't be fixed very easy by editing the lines as per needs.**
+
+:warning: Do not add any non listed entries in your sysctl.conf - there are a lot of false/myth entries explained on the wild which not work anymore with newer kernels above 2.6+! So, all is already very well explained and which settings are deprecated too - just read the comments! :warning:
 
 IP Rules
 ------------
@@ -183,7 +190,7 @@ On the OS level you can:
 * Use 3rd Party Local DNS Servers/Resolvers, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Local_DNS_Resolvers).
 * Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers 4 hours is enouth.
 * Apply MacOS Tweaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_MacOS).
-* Configure Firewall as Failsafe To Prevent Leaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
+* Configure Firewall as Fail-safe To Prevent Leaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
 
 Sometimes these messages may be false alarms. To find out, you should run a packet sniffer on your network interface. The basic command to do this is <code>tcpdump -pni eth0 'port domain'</code>.
 
@@ -210,6 +217,7 @@ Useful links
 * [Linux TCP Tuning | Cyberciti.biz](http://www.cyberciti.biz/faq/linux-tcp-tuning)
 * [IP sysctl documentation (.txt file) | Cyberciti.biz](http://www.cyberciti.biz/files/linux-kernel/Documentation/networking/ip-sysctl.txt)
 * [Linux Kernel etcsysctl conf security hardening | Cyberciti.biz](http://www.cyberciti.biz/faq/linux-kernel-etcsysctl-conf-security-hardening)
+* [sysctl | ArchWiki](https://wiki.archlinux.org/index.php/Sysctl)
 * [Hardening TCP/IP Stack Syn Attacks | Symantec.com](http://www.symantec.com/connect/articles/hardening-tcpip-stack-syn-attacks)
 * [Whitepaper - Android Security Hardening (33799.pdf file) | Sans.org](http://www.sans.org/reading-room/whitepapers/sysadmin/securely-deploying-android-devices-33799)
 * [Ipsysctl-tutorial | Frozentux.net](https://www.frozentux.net/documents/ipsysctl-tutorial/)
