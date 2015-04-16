@@ -4,6 +4,7 @@ Index
 * [Introduction](#introduction)
 * [Known attacks](known-attacks)
 * [Requirements](#requirements)
+* [sysctl](#sysctl)
 * [IP Rules](#ip-rules)
 * [Security tools](#security-tools)
 * [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns?)
@@ -79,65 +80,24 @@ For [Multicast](http://www.iana.org/assignments/multicast-addresses/multicast-ad
 * ADB/Terminal Emulator/BusyBox & a **rooted device**
 * Kernel/ROM that support these kind of tweaks (if not it doesn't work or is useless)
 * init.d support if you like to store these tweaks into a .sh script and apply them at boot (once)
+* sysctl support
+* A compiled Kernel based on 2.6 up to 4.0
 
-| Category| Value to be set | Description |
-| :--- | :--: | :---: |
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_syncookies=1 | Enable TCP SYN Cookie Protection |
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_synack_retries=2 | Tells the kernel how many times to try to retransmit the initial SYN packet for an active TCP connection attempt |
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_syn_retries=2 |  |
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_max_syn_backlog=1280 | TCP syn half-opened |
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_max_tw_buckets=16384 | Bump up tw_buckets in case we get DoS'd|
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.icmp_echo_ignore_all=1 | Ignore Directed pings |
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.icmp_echo_ignore_broadcasts=1 | Don't reply to broadcasts (prevents joining a smurf attack) |
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.icmp_ignore_bogus_error_responses=1 | Enable bad error message protection (should be enabled by default)|
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_no_metrics_save=1 | Don't cache connection metrics from previous connection|
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_fin_timeout=15 |  |
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_keepalive_intvl=30 |  |
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_keepalive_probes=5 |  |
-| Hardening the TCP/IP stack to SYN attacks | net.ipv4.tcp_keepalive_time=1800|  |
-| Don't pass traffic between networks or act as a router | net.ipv4.ip_forward=0 | Disable IP Packet forwarding (default disabled)|
-| Don't pass traffic between networks or act as a router | net.ipv4.conf.all.send_redirects=0| No ICMP redirects |
-| Don't pass traffic between networks or act as a router | net.ipv4.conf.default.send_redirects=0 |  |
-| IP Spoofing protection | net.ipv4.conf.all.rp_filter=1 |  |
-| IP Spoofing protection | net.ipv4.conf.default.rp_filter=1 |  |
-| Enable spoofing protection (turn on reverse packet filtering) | net.ipv4.conf.all.log_martians=1 | Filter martians |
-| Enable spoofing protection (turn on reverse packet filtering) | net.ipv4.conf.all.forwarding=1 | Forwarding traffic |
-| Don't accept source routing | net.ipv4.conf.all.accept_source_route=0 | Source routing disable |
-| Don't accept source routing | net.ipv4.conf.default.accept_source_route=0 |  |
-| Don't accept redirects | net.ipv4.conf.all.accept_redirects=0 | Ignore ICMP redirects ipv4 |
-| Don't accept redirects | net.ipv6.conf.all.accept_redirects=0 | Ignore ICMP redirects ipv6 |
-| Don't accept redirects | net.ipv4.conf.default.accept_redirects=0 | Ignore ICMP redirects |
-| Don't accept redirects | net.ipv4.conf.all.secure_redirects=0 | Ignore ICMP redirects |
-| Don't accept redirects | net.ipv6.conf.all.secure_redirects=0 | Ignore ICMP redirects |
-| Don't accept redirects | net.ipv4.conf.default.secure_redirects=0 | Ignore ICMP redirects |
-| Don't accept redirects | net.ipv6.conf.default.accept_redirects=0 | Ignore ICMP redirects |
-| Re-use sockets in time-wait state | net.ipv4.tcp_tw_recycle=1 |  |
-| Re-use sockets in time-wait state | net.ipv4.tcp_tw_reuse=1 |  |
-| Queue size modifications | net.core.wmem_max=1048576 |  |
-| Queue size modifications | net.core.rmem_max=1048576 |  |
-| Queue size modifications | net.core.rmem_default=262144 | Be careful, better leave device default! |
-| Queue size modifications | net.core.wmem_default=262144 | Be careful, better leave device default! |
-| Queue size modifications | net.core.optmem_max=20480 |  |
-| Queue size modifications | net.unix.max_dgram_qlen=50 |  |
-| Misc | net.ipv4.tcp_congestion_control=cubic | Change network congestion algorithm to CUBIC |
-| Misc | net.ipv4.tcp_moderate_rcvbuf=1 |  |
-| Misc | net.ipv4.route.flush=1 |  |
-| Misc | net.ipv4.udp_rmem_min=6144 |  |
-| Misc | net.ipv4.udp_wmem_min=6144 |  |
-| Misc | net.ipv4.tcp_rfc1337=1 |  |
-| Misc | net.ipv4.ip_no_pmtu_disc=0 |  |
-| Misc | net.ipv4.tcp_ecn=0 |  |
-| Misc | net.ipv4.tcp_rmem='6144 87380 1048576' |  |
-| Misc | net.ipv4.tcp_wmem='6144 87380 1048576' |  |
-| Misc | net.ipv4.tcp_timestamps=0 |  |
-| Misc | net.ipv4.tcp_sack=1 |  |
-| Misc | net.ipv4.tcp_fack=1 |  |
-| Misc | net.ipv4.tcp_window_scaling=1 | Turn on the tcp_window_scaling |
+sysctl
+------------
 
-I should point out that there are many other options/settings that are available in _/proc/sys/net_, some of  which are not there unless you compiled them into your kernel (all the ones I mentioned above “should” be in most distro’s stock kernel). I only went over, and set, the ones that have a direct impact on broadband performance–and left out some other settings that can improve security, but at the _cost of speed_.
+To apply all security settings, you need a Kernel which handles sysctl and applies them to <code>/proc</code>. Normally all kernels use that ability by default. If there is no _/etc/sysct.conf_ you can just create them and use a init.d script to apply all included parameters.
+
+Since the list is huge, here is an [default sysctl on my gist](https://gist.github.com/CHEF-KOCH/0001e66a8c10b1177abe#file-sysctl-conf). 
+
+And a tweaked one with preferred security over seep is also available [here](https://gist.github.com/CHEF-KOCH/0001e66a8c10b1177abe#file-tweaked-sysctl-conf) (needs to be renamed to _sysctl.conf_).
+
+
+**It's not recommend to apply any debug or other 'performance' tweaks into the sysctl file (use init.d for it) sice this could be end-up in a boot-loop. So here are only entries which never cause any problems that can't be fixed very easy by editing the lines as per needs. **
 
 IP Rules
 ------------
+
 Most of the mentioned port's are already supported by AFWall+ and can be controlled directly with the interface (to allow/reject them) but these are normally open (and should be open to avoiding some troubles):
 
 | Rule Name | Status | Range | Protocol | Remote Port | Local Port |
