@@ -7,13 +7,14 @@ Index
 * [sysctl](#sysctl)
 * [IP Rules](#ip-rules)
 * [Security tools](#security-tools)
+* [IPSec](#ipset)
 * [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns?)
-* [Useful links](#useful-links)
+* [External links](#external-links)
 
 Introduction
 -----------
 
-This guide has nothing much todo with AFWall+ itself or it's configuration, but it can help to protect against known _problems_ and attacks (e.g. DOS/UDP flooding) and are well tested with Linux kernels 2.4 up to 3.2, so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the ['Useful Links'](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
+This guide has nothing much todo with AFWall+ itself or it's configuration, but it can help to protect against known _problems_ and _attacks_ like DNS/DOS/UDP flooding - and they're well tested with Linux Kernels 2.6 up to 4.0, so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the ['Useful Links'](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
 
 Please make a **backup first**, and of course there is **no support** or **guarantee that it works on your system**. If you unsure, simply don't use it, ask your ROM/Kernel developer if it's useful to integrate/use it.
 
@@ -41,6 +42,7 @@ These are all (or mostly all) of known possible attacks which is TCP affected by
 * IP spoofing
 * Smurf attacks
 * Man-in-the-Middle Attacks
+* Backdoors and side channel attacks
 * .... Authentication and encryption problems due lack of protocol itself.
 
 A very good explanation of all the attacks listed above are on [Peters Smith fantastic article/book](http://linuxbox.co.uk/linux-network-security/) about common Linux security. It's highly recommend to read it, since it's very detailed and good to understand. 
@@ -95,7 +97,7 @@ To apply all security settings, you need a Kernel which handles sysctl and appli
 
 Since the list is huge, here is an [default sysctl on my gist](https://gist.github.com/CHEF-KOCH/0001e66a8c10b1177abe#file-sysctl-conf). 
 
-And a tweaked one with preferred security over seep is also available [here](https://gist.github.com/CHEF-KOCH/0001e66a8c10b1177abe#file-tweaked-sysctl-conf) (needs to be renamed to _sysctl.conf_).
+And a tweaked one with preferred security over speed is also available [here](https://gist.github.com/CHEF-KOCH/0001e66a8c10b1177abe#file-tweaked-sysctl-conf) (needs to be renamed to _sysctl.conf_).
 
 
 **It's not recommend to apply any debug/memory or other 'performance' tweaks into the sysctl file (use init.d for it) since this could be end-up in a boot-loop. So here are only entries which never cause any problems that can't be fixed very easy by editing the lines as per needs.**
@@ -170,21 +172,94 @@ There are mostly all **for advances users**, because it need a lot of time, know
 * [Core Impact](http://www.coresecurity.com/content/core-impact-overview)
 
 
-Some other free bootable LIVE CD's like BackTrack (or his successor Kali), Tails, Helix,... are Linux distributions that claiming to be more secure and hardened against the known attacks compared to other systems like Windows. They often already included a huge collection of scanning tools. It's always worth to keep on eye on this, since you don't even need to installing them. 
+Some other free bootable LIVE CD's like Kali, Tails, Helix,[...] are Linux distributions that claiming to be more secure and hardened against the known attacks compared to other systems like on Windows (general there is no proof except there words since nobody really can compare Windows <-> Linux on a seriously way). They often already included a huge collection of scanning tools. It's always worth to keep on eye on this, since you don't even need to installing them. 
+
+IPSec
+------------
+
+Internet Security (IPsec) was builded as a result of the current IP weaknesses - basically it's a own internet layer which claims to be more secure compared to e.g. IPv4 - in fact it was developed around IPv6 (from Internet Engineering Task Force [IETF]), but was engineered to provide security for both IPv4/IPv6. There are some differences in the datagram formats used for AH and ESP depending on whether IPSec is used in IPv4 and IPv6, since the two versions have different datagram formats and addressing. I highlight these differences where appropriate.
+
+Without going deeper these are the main-cores - you often hear:
+* Security Parameter Index (SPI)
+* Authentication Header (AH)
+* Encapsulating Security Payload (ESP)
+* Internet Key Exchange (IKE)
+* Security Policy Database (SPD)
+* Security Association Database (SAD)
+* Security Associations (SA)
+* Key Management Protocol (ISAKMP)
+* ... and [others](http://tcpipguide.com/free/t_IPSecurityIPSecProtocols.htm)
+* A full documentation which is quite "easy" to understand for beginners can be found [here](http://www.tech-faq.com/ipsec.html)
+
+Since this is more secure as the good old IPv4 and you maybe have the ability to use it, this should be preferred. AFWall+ does not have any interface to control it (yet), so the only chance is to work with a custom script. See also [#255](https://github.com/ukanth/afwall/issues/255) and the official [issue tracker](https://code.google.com/p/android/issues/list?can=2&q=IPSEC&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles) before you report anything which is already known.
+
+Here is a quick guide:
+
+```
+1. Open the Main-Menu
+2. Go to "Settings".
+3. Open "Wireless & Networks" or "Wireless Controls" depending on your version of Android
+4. Select "VPN Settings"
+5. Select "Add VPN"
+6. Select "Add L2TP/IPSEC PSK VPN" Make sure to select the correct one out of the 4 listed. (NOT L2TP VPN and NOT L2TP/IPSEC CRT VPN)
+7. Select "VPN Name" and enter "<yourownstuff>" (without quotes) or anything else you want.
+8. Select "Set VPN Server" and enter the given server IP Address from your provider.
+9. Select Set IPSec pre-shared key and enter the pre-shared key provided to you in the welcome email.
+10. L2TP secret & IPSEC identifier remain blank if it's given fill in.
+11. Use the 'Menu' button and save the connection.
+12. You may be asked to confirm operation with storage password. This is your Android device password!!! Not the VPN password!
+
+13. How to Connect using L2TP IPSEC PSK VPN once configured on Android
+- Open the menu and select Settings.
+- Select Wireless and Network or Wireless Controls
+(depends on your version of Android.)
+- Select the VPN configuration you created from the list.
+- Enter your username and password.
+- Select Remember username and Select Connect
+
+14. How to disconnect using L2TP IPSEC PSK VPN once configured on Android
+- Open the menu and choose Settings.
+- Select Wireless and Network or Wireless Controls
+(depends on your version of Android.)
+- Select the VPN configuration from the list.
+- Select Disconnect
+```
+
+An example IPsec configuration for Windows, Android and Linux can be found over [here](https://help.ubuntu.com/community/L2TPServer).
+
+The main goal from using IPsec:
+* Prevent man-in-the-middle attacks from possible attackers attempting your network
+* Encryption, to obfuscate your data packets against [most packet sniffers](https://wiki.wireshark.org/IPsec)
+* Protection against data corruption
+* Theft of user credentials 
+* Denial-of-service (Dos) attacks
+* ...
+
+Of course since nothing is perfect there is currently no protection against:
+* [Decrypting ESP packets](https://ask.wireshark.org/questions/13022/decrypting-esp-packets-verifying-ipsec-settings) (only with ESP tunnel mode)
+* IPsec Replay Attack
+* Bypassing Firewall Defenses (well, this affects any OS and any configuration)
+* Trusted Man-in-the-Middle Attack
+* Stealth DOS Attack (Today usually stronger algorithms are used like TripleDES, AES and HMAC-SHA1)
+* ....
+
+Overall there are some weaknesses with the IPsec extensions too but it's still preferred over standard  "non" protected connections even if [NSA's Bullrun](https://en.wikipedia.org/wiki/Bullrun_(code_name)) may break it.
 
 How do I know if my applications are leaking DNS?
 ------------
 
 A very detailed answer what DNS (Domain Name System) is can be found over [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver).
 
-There are several ways, the most easiest way is to visit some webpages that automatically detect what is your current DNS.
-* https://www.dnsleaktest.com/
-* http://ipleak.net/
+There are several ways, the most easiest way is to visit some webpages that automatically detect what is your current DNS, like:
+* [DNS Leak Test | dnsleaktest.com](https://www.dnsleaktest.com/)
+* [IP Leak Test | ipleak.net](http://ipleak.net/)
 
-If you Browser shows a wrong DNS according to what you settings telling you, this usually means something is wrong. 
+If you Browser shows a wrong DNS according to what your own settings telling you, this usually means something is wrong or maybe compromised.
 
+Per-Browser this must be set to get a correct behavior, because they using there own DNS internal settings:
 * On Firefox / Firefox Mobile (about:config): network.dns.disablePrefetch needs to be set to true 
 * On Google Chrome disable the DNS pre-fetching. 
+
 
 On the OS level you can:
 * Use 3rd Party Local DNS Servers/Resolvers, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Local_DNS_Resolvers).
@@ -206,13 +281,14 @@ Another possible problem is that you [ISP](http://en.wikipedia.org/wiki/Internet
 
 There are also several tips, tricks and guides directly with a lot of examples over the official Tor Wiki page, see [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver) & [here](https://trac.torproject.org/projects/tor/wiki/doc/Preventing_Tor_DNS_Leaks). Remember that the given tricks on this pages are optimized for TOR/I2P, so you may need to adjust some example configuration given from there.
 
-Useful links
+External links
 ------------
 
-* [TCP vs UDP by Erik Rodriguez | Skullbox.net](http://www.skullbox.net/tcpudp.php)
+* [Internet Engineering Task Force (IETF) | IETF.org](https://www.ietf.org/)
+* [IPsec | Wikipedia.org](https://en.wikipedia.org/wiki/IPsec)
 * [/proc file system | Wikipedia.org](http://en.wikipedia.org/wiki/Procfs)
-* [Internet Engineering Task Force (IETF) | ieft.org](https://www.ietf.org/)
-* [Linux tweaking | SpeedGuide.net](http://www.speedguide.net/articles/linux-tweaking-121)
+* [TCP Vs. UDP by Erik Rodriguez | Skullbox.net](http://www.skullbox.net/tcpudp.php)
+* [TCP/IP Security by CHRIS CHAMBERS | LinuxSecurity.com](http://www.linuxsecurity.com/resource_files/documentation/tcpip-security.html)
 * [Linux TCP Tune | PSC.edu ](http://www.psc.edu/networking/projects/tcptune/#Linux)
 * [Linux TCP Tuning | Cyberciti.biz](http://www.cyberciti.biz/faq/linux-tcp-tuning)
 * [IP sysctl documentation (.txt file) | Cyberciti.biz](http://www.cyberciti.biz/files/linux-kernel/Documentation/networking/ip-sysctl.txt)
