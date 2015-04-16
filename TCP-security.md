@@ -8,6 +8,7 @@ Index
 * [IP Rules](#ip-rules)
 * [Security tools](#security-tools)
 * [IPSec](#ipset)
+* [Tcpcrypt](#tcpcrypt)
 * [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns?)
 * [External links](#external-links)
 
@@ -245,6 +246,14 @@ Of course since nothing is perfect there is currently no protection against:
 
 Overall there are some weaknesses with the IPsec extensions too but it's still preferred over standard  "non" protected connections even if [NSA's Bullrun](https://en.wikipedia.org/wiki/Bullrun_(code_name)) may break it.
 
+Tcpcrypt
+------------
+
+The benefit of Tcpcrypt compared to IPsec and others is that this doesn't need any special configuration and the remote end does not need to support any Tcpcrypt extension (ends up with clear text TCP). Like IPsec it supports most common used OS like Windows, Linux, Mac OSX, ... and another benefit [it's overall a bit faster (.pdf)](http://tcpcrypt.org/tcpcrypt-slides.pdf).
+
+Please [see here for an example configuration](https://github.com/scslab/tcpcrypt/blob/master/INSTALL-Linux.markdown) and requirements.
+
+
 How do I know if my applications are leaking DNS?
 ------------
 
@@ -301,3 +310,4 @@ External links
 * [Nmap | nmap.org](http://nmap.org/) and for Android exclusive there is an [anmap app](http://code.google.com/p/anmap/) and the [Nmap binary](https://github.com/kost/nmap-android)
 * [Nmap/Android quick guide | Secwiki.org](https://secwiki.org/w/Nmap/Android)
 * [DNScrypt build instructions + binaries | forum-xda.developers.com](http://forum.xda-developers.com/showpost.php?p=56068030&postcount=20)
+* [Tcpcrypt | Tcpcrypt.org](http://www.tcpcrypt.org)
