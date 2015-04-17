@@ -24,6 +24,7 @@ Contact
 | **Umakanthan Chandan** | | | cumakt [at] gmail.com |
 | Kevin Cernekee |  | | cernekee [at] gmail.com |
 | | CHEF-KOCH |  | Nvinside [at] gmail.com |
+| | PdtS for Icons | | [Website](http://pdts.net/) |
 | | Hush66 | | [Devianart](http://www.hush66.devianart.com) |
 | | | tianchaoren | Crowdin |
 | | | wuwufei | Crowdin |
