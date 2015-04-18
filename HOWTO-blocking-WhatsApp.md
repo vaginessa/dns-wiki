@@ -11,22 +11,37 @@ Index
 Intro
 --------
 
-Since WhatsApp, Telegram, Threema, WeChat and other chat clients are very popular this is an example how to "block" such messenger connections. 
+Since WhatsApp, Telegram, Threema, WeChat and other chat clients are very popular this article is an example how to block such messenger connections. 
 
-Please do not ask for any illegal WhatsApp Mod or how to block the Ads in there, the article focus is only on the official client. Due the DCMA, it's illegal to share or make such modifications without WhatsApp.Inc permission (and no, it's not because there was once a hide online feature which coasts money ... it's general against the DMCA).
+**Please do not ask for any illegal WhatsApp Mods or how to block the Ads there**, the article focus is only on the official client. Due the DMCA, it's illegal to share or make such modifications without WhatsApp.Inc permission!
 
-First of all, this is not a guarantee that it totally blocks all connections, because it's not easy, since there are a bunch of IP's and domains that may connected to WhatsApp.Inc but it may helps to block the most important parts.
+This is not a guarantee that it totally blocks all connections, because it's not easy, since there are a bunch of IP's and domains that may connected to WhatsApp.Inc but it may helps to block the most important parts. All was captured via Wireshark. 
 
 
 ```bash
-s.whatsapp.net
 c.whatsapp.net
 c1.whatsapp.net
 c2.whatsapp.net
+c3.whatsapp.net
+c4.whatsapp.net
+c5.whatsapp.net
+c1.whatsapp.net
+c2.whatsapp.net
 c3.whatsapp.net (all c. stuff are for the handshakes -> ^^ over 443 or 5222)
+c4.whatsapp.net
+c5.whatsapp.net
 e1.whatsapp.net
 e2.whatsapp.net
+...
+..
+.
 e20.whatsapp.net
+s.whatsapp.net
+s1.whatsapp.net
+s2.whatsapp.net
+s3.whatsapp.net
+s4.whatsapp.net
+s5.whatsapp.net
 https://sro.whatsapp.net/client/iphone/iq.php (<- for post-request -> sro.whatsapp.net)
 https://sro.whatsapp.net/client/android/iq.php (^^)
 static.reverse.softlayer.com (main/status/auth/..)
@@ -584,6 +599,6 @@ External Links
 * [Unofficial WhatsApp API by venomous0x | GitHub.com](https://github.com/ukanth/afwall/wiki)
 * [Unofficial WhatsApp Purple API by davidgfnet | GitHub.com](https://github.com/davidgfnet/whatsapp-purple)
 * [Whatsapp abused the DMCA to censor related projects from GitHub | boingboing.net](http://boingboing.net/2014/02/21/whatsapp-abused-the-dmca-to-ce.html)
-* [All WhatsApp.Inc IP's only (no proof) | ipdb.at]https://ipdb.at/org/WhatsApp_Inc)
+* [All WhatsApp.Inc IP's only (no proof!) | ipdb.at](https://ipdb.at/org/WhatsApp_Inc)
 * [All DNS Records + additional Domain Info | Robtex.com](https://www.robtex.com/q/x1?q=whatsapp.com&l=go)
 * [Unofficial WhatsAPp Beta Updater | Aptoide (javiersantos Store)](http://m.apps.store.aptoide.com/app/market/com.javiersantos.whatsappbetaupdater/6/9014714/Beta%20Updater%20for%20WhatsApp)
