@@ -175,14 +175,13 @@ IP's
 Ports
 --------
 
-```
+```bash
 80
 443
 5222
 5223
 5228
-```bash
-
+```
 
 iptables
 --------
@@ -551,7 +550,7 @@ iptables -I FORWARD -s 208.43.117.136/32 -j DROP
 iptables -I FORWARD -s 208.43.122.128/27 -j DROP
 iptables -I FORWARD -s 208.43.244.168/29 -j DROP
 
-#Outgoing
+#Block Outgoing
 iptables -A "afwall" -d 208.43.244.168/29 -j REJECT
 ....
 ....
@@ -560,8 +559,12 @@ iptables -A "afwall" -d 208.43.244.168/29 -j REJECT
 #Range 
 iptables -I FORWARD -m iprange --src-range 192.168.1.110-192.168.1.110 -j ACCEPT
 iptables -I FORWARD -m iprange --dst-range 192.168.1.110-192.168.1.110 -j ACCEPT
-```
 
+#Per Domain (change rmnet0 to your interface wifi0 or whatever)
+iptables -A INPUT -i rmnet0 -m string --algo bm --string "whatsapp.com" -j DROP
+iptables -A OUTPUT -m string --algo bm --string "whatsapp.com" -j DROP
+iptables -A FORWARD -i rmnet0 -m string --algo bm --string "whatsapp.com" -j DROP
+```
 
 ToDo
 -----------
@@ -570,9 +573,9 @@ ToDo
 + add more DNS records
 * add more proof/confirmation that IP's / DNS are okay 
 + sort the IP's - really?
-+ add fireall syntax for blocking (to copy & paste it) -> 50.22.210.155,50.22.198.205,...
-+ add Ipset instead of all the whatsapp lines (more speed/less memory)
-+ add missing parts
++ add firewall syntax for blocking (to copy & paste it) -> 50.22.210.155,50.22.198.205,...
++ add IPset instead of all the WhatsApp lines (more speed/less memory)
++ add missing parts (IPv6, ...)
 + ...
 ```
 
@@ -585,7 +588,7 @@ External Links
 * [Unofficial WhatsApp API by perezdidac | GitHub.com](https://github.com/perezdidac/WhatsAPINet)
 * [Unofficial WhatsApp API by venomous0x | GitHub.com](https://github.com/ukanth/afwall/wiki)
 * [Unofficial WhatsApp Purple API by davidgfnet | GitHub.com](https://github.com/davidgfnet/whatsapp-purple)
-* [Whatsapp abused the DMCA to censor related projects from Github | boingboing.net](http://boingboing.net/2014/02/21/whatsapp-abused-the-dmca-to-ce.html)
+* [Whatsapp abused the DMCA to censor related projects from GitHub | boingboing.net](http://boingboing.net/2014/02/21/whatsapp-abused-the-dmca-to-ce.html)
 * [All WhatsApp.Inc IP's only (no proof) | ipdb.at]https://ipdb.at/org/WhatsApp_Inc)
 * [All DNS Records + additional Domain Info | Robtex.com](https://www.robtex.com/q/x1?q=whatsapp.com&l=go)
 * [Unofficial WhatsAPp Beta Updater | Aptoide (javiersantos Store)](http://m.apps.store.aptoide.com/app/market/com.javiersantos.whatsappbetaupdater/6/9014714/Beta%20Updater%20for%20WhatsApp)
