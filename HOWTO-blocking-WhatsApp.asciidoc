@@ -15,7 +15,7 @@ Since WhatsApp, Telegram, Threema, WeChat and other chat clients are very popula
 
 Please do not ask for any illegal WhatsApp Mod or how to block the Ads in there, the article focus is only on the official client. Due the DCMA, it's illegal to share or make such modifications without WhatsApp.Inc permission (and no, it's not because there was once a hide online feature which coasts money ... it's general against the DMCA).
 
-First of all, this is not a guarantee that it totally blocks all connections, because it's not easy, since there are a bunch of IP's and domains that may connected to WhatsApp.Inc[1] but it may helps to block the most important parts.
+First of all, this is not a guarantee that it totally blocks all connections, because it's not easy, since there are a bunch of IP's and domains that may connected to WhatsApp.Inc but it may helps to block the most important parts.
 
 
 ```bash
@@ -26,7 +26,6 @@ c2.whatsapp.net
 c3.whatsapp.net (all c. stuff are for the handshakes -> ^^ over 443 or 5222)
 e1.whatsapp.net
 e2.whatsapp.net
-....
 e20.whatsapp.net
 https://sro.whatsapp.net/client/iphone/iq.php (<- for post-request -> sro.whatsapp.net)
 https://sro.whatsapp.net/client/android/iq.php (^^)
@@ -175,7 +174,7 @@ IP's
 Ports
 --------
 
-```bash
+```
 80
 443
 5222
@@ -552,9 +551,6 @@ iptables -I FORWARD -s 208.43.244.168/29 -j DROP
 
 #Block Outgoing
 iptables -A "afwall" -d 208.43.244.168/29 -j REJECT
-....
-....
-....
 
 #Range 
 iptables -I FORWARD -m iprange --src-range 192.168.1.110-192.168.1.110 -j ACCEPT
@@ -569,14 +565,13 @@ iptables -A FORWARD -i rmnet0 -m string --algo bm --string "whatsapp.com" -j DRO
 ToDo
 -----------
 
-```bash
+```
 + add more DNS records
 * add more proof/confirmation that IP's / DNS are okay 
 + sort the IP's - really?
 + add firewall syntax for blocking (to copy & paste it) -> 50.22.210.155,50.22.198.205,...
 + add IPset instead of all the WhatsApp lines (more speed/less memory)
 + add missing parts (IPv6, ...)
-+ ...
 ```
 
 External Links
