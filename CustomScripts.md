@@ -3,6 +3,7 @@ Index
 
 * [Introduction](#introduction)
 * [Important notes about IPv4 and IPv6 differences](#important-notes-about-ipv4-and-ipv6-differences)
+* [Important notes about 3G and WiFi](#important-notes-about-3g-and-wifi)
 * [Loading scripts from files](#loading-scripts-from-files)
 * [Adding custom rules](#adding-custom-rules)
 * [Some examples](#some-examples)
@@ -18,15 +19,13 @@ Index
 Introduction
 ------------
 
-Advanced AFWall+ users may wish to define a custom script to be executed by AFWall+.
+_Advanced AFWall+ users_ may wish to define a custom script to be executed by AFWall+.
+
+**WARNING**: This functionality should be used only by **experienced users that know what they are doing!** These examples may block your internet connection if not executed with proper care. So be careful when applying these settings, especially on remote device 'servers' with an ssh session! If you have any trouble with it an want to report an error first make sure you deleted/disabled all custom script first - we won't accept issue reports which are custom script related!
 
 Once a custom script is defined, it will be automatically executed every time that the AFWall+ rules are applied (inclusive on startup/shutdown if the firewall is enabled).
 
 To define a custom script, just choose <code>Set custom script</code> from the menu (right corner) on the main menu. 
-
-**WARNING**: This functionality should be used only by **experienced users that know what they are doing!** These examples may block your internet connection if not executed with proper care. So be careful when applying these settings, especially on remote device 'servers' with an ssh session! 
-
-An example IPv6 only script can be found [here](https://gist.github.com/CHEF-KOCH/e43246690da6906fa516).
 
 
 Important notes about IPv4 and IPv6 differences
@@ -40,6 +39,13 @@ IPTables only filters IPv4 traffic ([RFC 1918](https://tools.ietf.org/html/rfc19
 **IPv6 uses ICMP a lot more than IPv4**, and not letting ICMP packets ingoing can severely cripple your traffic because you won't receive error messages related to that traffic. This can cause long delays + timeouts. Allowing ICMPv6 traffic in usually doesn't hurt, so we can can add this to our firewall rules <code>ip6tables -A INPUT -p icmpv6 -j ACCEPT</code>. There are some guys out there which want really block ping6 (for unknown reasons), so here we are <code>ip6tables -A INPUT -p icmpv6 --icmpv6-type 128 -j DROP</code>.
 
 The available ICMPv6 [error codes](http://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml) are listed in [RFC 4443](https://tools.ietf.org/html/rfc4443#section-3.1), which specifies connection attempts blocked by a firewall rule. 
+
+An example IPv6 only script can be found [here](https://gist.github.com/CHEF-KOCH/e43246690da6906fa516).
+
+Important notes about 3G and WiFi
+------------
+
+Some of the examples maybe not working on 2G/3G/4G because DHCP/DHCPv6 reasons. Normally the IP addresses are negotiated over PPP there. So it could be handled a bit different in your ROM but you can just use Wireshark/Burp and make a 3G connection to see what's going on, feel free to send us an email if something is incorrect. 
 
 Loading scripts from files
 ------------
@@ -81,7 +87,7 @@ The following iptables chains can be used to add custom rules:
 >
 >**afwall-3g** - This chain will only receive OUTPUT packets for the cellular network interface (no matter >if it is 2G, 3G, 4G, etc).
 >
->**afwall-wifi** - This chain will only receive OUTPUT packets for the Wi-Fi interface.
+>**afwall-wifi** - This chain will only receive OUTPUT packets for the WiFi interface.
 >
 >**afwall-reject** - This chain should be used as a **target** when you want to reject and log a >packet. >When the logging is disabled, this is exactly the same as the built-in **REJECT** target 
 
@@ -145,13 +151,13 @@ $IP6TABLES -A OUTPUT -m state –state ESTABLISHED,RELATED -j ACCEPT</pre>
 $IPTABLES -A INPUT -m string --algo bm --hex-string '|28 29 20 7B|' -j DROP
 $IP6TABLES -A INPUT -m string --algo bm --hex-string '|28 29 20 7B|' -j DROP</pre>
 
-<pre># Anti-Spoofing on loopback ::1 & the unique local address FC00::/7 
+<pre># Anti-Spoofing on loopback ::1 & the unique local address fe80::/1 
 $IP6TABLES -A INPUT ! -i lo -s ::1/128 -j DROP
-$IP6TABLES -A INPUT -i $WAN_IF -s FC00::/7 -j DROP
+$IP6TABLES -A INPUT -i $WAN_IF -s fe80::/1 -j DROP
 $IP6TABLES -A FORWARD -s ::1/128 -j DROP
-$IP6TABLES -A FORWARD -i $WAN_IF -s FC00::/7 -j DROP</pre>
+$IP6TABLES -A FORWARD -i $WAN_IF -s fe80::/1 -j DROP</pre>
 
-<pre># SSH for eth0 only 
+<pre># Allow SSH for eth0 only 
 $IPTABLES -A TCP -i eth0 -p tcp --dport ssh -j ACCEPT</pre>
 
 <pre># Prevent SYN attacks
@@ -231,11 +237,19 @@ $IPTABLES -A "afwall" --destination "192.168.0.1" -j RETURN || exit</pre>
 $IPTABLES -A "afwall" -p TCP --destination-port 80 -j "afwall-reject"</pre>
 
 <pre># Connect Wifi-Tethered Clients to VPN
-#!/system/bin/sh 
 $IPTABLES -t filter -F FORWARD
 $IPTABLES -t nat -F POSTROUTING
 $IPTABLES -t filter -A FORWARD -j ACCEPT
 $IPTABLES -t nat -A POSTROUTING -j MASQUERADE</pre>
+
+<pre># Force all traffic over VPN (on Wifi only) and drop them if there is no VPN connection anymore
+$IPTABLES -A INPUT  -i tun0 -j ACCEPT
+$IPTABLES -A INPUT  -s 10.10.10.10 -j ACCEPT
+$IPTABLES -A OUTPUT -i tun0 -j ACCEPT
+$IPTABLES -A OUTPUT -d 10.10.10.10 -j ACCEPT
+# For DNS whitelistening (if not already done)
+$IPTABLES -A OUTPUT -p udp --dport 53 -j ACCEPT
+$IPTABLES -A INPUT  -p udp --sport 53 -j ACCEPT</pre>
 
 <pre># Possible Tethering + OpenVPN issues on KitKat 4.x devices
 # iptables --flush
@@ -322,7 +336,7 @@ $IP6TABLES -A OUTPUT -o $WAN_IF -m state --state NEW,ESTABLISHED,RELATED -j ACCE
 $IP6TABLES -A INPUT -i $WAN_IF -p ipv6-icmp -j ACCEPT
 $IP6TABLES -A OUTPUT -o $WAN_IF -p ipv6-icmp -j ACCEPT</pre>
 
-<pre># Drop normal Multicast-adresses 
+<pre># Drop normal Multicast-addresses 
 $IPTABLES -A INPUT -s 224.0.0.0/4 -j DROP
 $IPTABLES -A INPUT -d 224.0.0.0/4 -j DROP
 $IPTABLES -A INPUT -s 240.0.0.0/5 -j DROP
