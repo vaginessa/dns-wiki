@@ -24,7 +24,7 @@ Considered a faster and more secure alternative to [ipchains](http://en.wikipedi
 
 [Nftables](http://www.netfilter.org/projects/nftables/index.html) will replace it some day, but is not merged with AFWall+ at the moment.
 
-Netfilter is generally a part of the [Linux kernel](https://kernel.org/). The IP packet filter rules in the Linux kernel are being configured by the user space command line tools of netfilter: iptables, ip6tables, ebtables, arptables and ipset.
+Netfilter is generally a part of the [Linux kernel](https://kernel.org/). The IP packet filter rules in the Linux kernel are being configured by the user space command line tools of netfilter: iptables, ip6tables, ebtables, arptables and ipset (optional).
 
 Explanation
 -----------
@@ -37,7 +37,7 @@ Please have a look at this most excellent scheme: Netfilter components & Netfilt
 Extensions
 ---------
 
-All available iptables-extensions can be found over [here](http://ipset.netfilter.org/iptables-extensions.man.html)
+All available iptables-extensions can be found over [here](http://ipset.netfilter.org/iptables-extensions.man.html).
 
 Important
 ---------
@@ -48,11 +48,38 @@ If you like to working with [[custom scripts|CustomScripts]] you definitely need
 Basics
 ------
 
-Working with the basics can be useful if you having troubles getting something to work. So please compare your problems with the [stock source](https://android.googlesource.com/platform/system/netd/+/master/SecondaryTableController.cpp) (VpnService.java, ConnectivityService.java, NetworkManagementService.java, NativeDaemonConnector.java, [CommandListener.cpp](https://android.googlesource.com/platform/system/netd/+/refs/heads/kitkat-release/CommandListener.cpp), [NetdConstants.cpp](https://android.googlesource.com/platform/system/netd/+/refs/heads/kitkat-release/NetdConstants.cpp), etc.) and look if your configuration is different from it. You also need to know that the result from the output that was given may can differ, decency which os version, kernel (iptables) and config you are using.
+Working with the basics can be useful if you having troubles getting something to work. So please compare your problems with the [stock source](https://android.googlesource.com/) (VpnService.java, ConnectivityService.java, NetworkManagementService.java, NativeDaemonConnector.java, CommandListener.cpp, NetdConstants.cpp, etc.) and look if your configuration is different from it. You also need to know that the result from the output that was given may can differ, decency which OS version, kernel (iptables) and config you are using.
+
+The most important source stuff for AFWall+ or general networking seems:
+* [netd](https://android.googlesource.com/platform/system/netd/+/master)
+* [bluetooth](https://android.googlesource.com/platform/system/bluetooth/)
+* [iptables](https://android.googlesource.com/platform/external/iptables/)
+* [dhcpcd](https://android.googlesource.com/platform/external/dhcpcd/)
+* [dnsmasq](https://android.googlesource.com/platform/external/dnsmasq/)
+* [iputils](https://android.googlesource.com/platform/external/iputils/) [optional]
+* [ipsec-tools](https://android.googlesource.com/platform/external/ipsec-tools/) [optional]
+* [iproute2](https://android.googlesource.com/platform/external/iproute2/)
+* [jmdns](https://android.googlesource.com/platform/external/jmdns/)
+* [mdnsresponder](https://android.googlesource.com/platform/external/mdnsresponder/) [optional]
+* [netcat](https://android.googlesource.com/platform/external/netcat/) [optional]
+* [netperf](https://android.googlesource.com/platform/external/netperf/) [optional]
+* [openvpn](https://android.googlesource.com/platform/external/openvpn/)
+* [openssh](https://android.googlesource.com/platform/external/openssh/)
+* [ping](https://android.googlesource.com/platform/external/ping/)
+* [ping6](https://android.googlesource.com/platform/external/ping6/) [optional because IPv6]
+* [ppp](https://android.googlesource.com/platform/external/ppp/)
+* [okhttp](https://android.googlesource.com/platform/external/okhttp/)
+* [tcpdump](https://android.googlesource.com/platform/external/tcpdump/) [optional, but most ROMs including this already]
+* [wpa_supplicant](https://android.googlesource.com/platform/external/wpa_supplicant/) [there is also _6 and _8 depending which device]
+* [Ims](https://android.googlesource.com/platform/frameworks/opt/net/ims/)
+* [VoIP](https://android.googlesource.com/platform/frameworks/opt/net/voip/)
+* [WiFi](https://android.googlesource.com/platform/frameworks/opt/net/wifi/)
+* [Performing Network Operations Overview](https://developer.android.com/training/basics/network-ops/index.html)
+* ... all other stuff isn't network related and _unimportant_ to us.
 
 <code>ip rule list</code> or <code>iptables -t nat --list-rules</code>
 
-root@Android: / | # iptables -t nat --list-rules
+root@Android:/ | # iptables -t nat --list-rules
 ------------ | -------------
 -P | PREROUTING ACCEPT
 -P | INPUT ACCEPT
@@ -64,6 +91,7 @@ root@Android: / | # iptables -t nat --list-rules
 -A | PREROUTING -j oem_nat_pre
 -A | POSTROUTING -j natctrl_nat_POSTROUTING
 -A | POSTROUTING -j st_nat_POSTROUTING
+-A | natctrl_nat_POSTROUTING -o _<interface_name>_ -j MASQUERADE
 
 
 
@@ -87,7 +115,7 @@ Option | Description | Valid states are
 --ctstate | Define the list of states for the rule to match on. | NEW, RELATED, ESTABLISHED or INVALID
 -m limit | Require the rule to match only a limited number of times. Allows the use of the --limit option. Useful for limiting logging rules. | 
 --limit | The maximum matching rate, given as a number followed by "/second", "/minute", "/hour", or "/day" depending on how often you want the rule to match. | If this option is not used and -m limit is used, the default is "3/hour". | 
--p | The connection protocol used. | etho, tun0, ppp0, etc. As a special case, an interface name ending with a `+`' will match all interfaces. The interface name can be preceded by a `!`' with spaces around it, to match a packet which does not match the specified interface(s), eg -i ! ppp+.
+-p | The connection protocol used. | eth0, tun0, ppp0, etc. As a special case, an interface name ending with a `+`' will match all interfaces. The interface name can be preceded by a `!`' with spaces around it, to match a packet which does not match the specified interface(s), eg -i ! ppp+.
 --dport | The destination port(s) required for this rule. A single port may be given, or a range may be given as start:end, which will match all ports from start to end, inclusive. | 
 -j | Jump to the specified target. By default, iptables allows four targets | ACCEPT, REJECT, DROP or LOG
 --log-prefix | When logging, put this text before the log message. Use double quotes around the text to use. | 
@@ -112,12 +140,12 @@ INVALID | A packet which could not be identified for some reason: this includes 
 Useful links
 ------------
 
-* [iptables | Wikipedia](http://en.wikipedia.org/wiki/iptables)
+* [iptables | Wikipedia.org](http://en.wikipedia.org/wiki/iptables)
 * [netfilter/iptables project homepage | The netfilter.org project](http://netfilter.org/)
 * [netfilter/iptables documentation | The netfilter.org project](http://www.netfilter.org/documentation/)
 * [iptables developer page | netfilter.org](https://git.netfilter.org/iptables/)
 * [iptables tutorial by Oskar Andreasson | Frozentux.net](http://www.frozentux.net/iptables-tutorial/iptables-tutorial.html)
-* [Quick HOWTO : Ch14 : Linux Firewalls Using iptables | Linuxhomenetworking.com](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)
+* [Quick HOWTO : Ch14 : Linux Firewalls Using iptables | LinuxHomeNetworking.com](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)
 * [Iptables HowTo | Help.Ubuntu.com](https://help.ubuntu.com/community/IptablesHowTo)
 * [Connection Tracking | Rigacci.org](http://www.rigacci.org/wiki/lib/exe/fetch.php/doc/appunti/linux/sa/iptables/conntrack.html)
 * [How to Setup a Linux Firewall with PPPoE/NAT/iptables | akadia.com](http://www.akadia.com/services/pppoe_iptables.html)
