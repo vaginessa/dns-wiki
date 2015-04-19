@@ -1,6 +1,6 @@
 ## Welcome to the AFWall+ Wiki!
 
-AFWall+ is an open source firewall user interface client focused on making it easy to work with [iptables](https://en.wikipedia.org/wiki/Iptables) on Android OS.
+AFWall+ is an open source firewall user interface client focused on making it easier to work with [iptables](https://en.wikipedia.org/wiki/Iptables) on Android OS.
 
 :warning: We are not responsible for any external content mentioned here in this Wiki! :warning:
 
@@ -25,7 +25,7 @@ Contact
 | Kevin Cernekee |  | | cernekee [at] gmail.com |
 | | CHEF-KOCH |  | Nvinside [at] gmail.com |
 | | PdtS for Icons | | [Website](http://pdts.net/) |
-| | Hush66 | | [Devianart](http://www.hush66.devianart.com) |
+| | Hush66 | | [Devianart](http://www.hush66.devianart.com/) |
 | | | tianchaoren | Crowdin |
 | | | wuwufei | Crowdin |
 | | | yinfugang | Crowdin |
@@ -33,10 +33,10 @@ Contact
 | | | Syk3s | Crowdin |
 | | | ondra | Crowdin |
 | | | DutchWaG | Crowdin |
-| | | GermainZ | XDA |
+| | | GermainZ (German) | XDA |
 | | | Looki75 | XDA |
 | | | La_Globule | Crowdin |
-| | | CHEF-KOCH | XDA/Crowdin |
+| | | CHEF-KOCH (German) | XDA/Crowdin |
 | | | user_99 | XDA |
 | | | Gronkdalonka | XDA |
 | | | mpqo | Crowdin |
@@ -60,6 +60,11 @@ Contact
 | | | myasa | Crowdin |
 | | | ozgurahmet95 | Crowdin |
 | | | andriykopanytsia | Crowdin |
+| | | Osoitz (Basque) | Crowdin |
+| | | alruwaile1234 (Persian/Arabic) | Crowdin |
+| | | softiceup (Vietnamese) | Crowdin |
+| | | slsimic (Serbian) | Crowdin |
+| | | testxyz009 (Korean) | Crowdin |
 
 Requirements
 -------------
