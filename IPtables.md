@@ -2,6 +2,7 @@ Index
 -----
 
 * [Description](#description)
+* [Changelog](#changelog)
 * [Explanation](#explanation)
 * [Extensions](#extensions)
 * [Important](#important)
@@ -25,6 +26,16 @@ Considered a faster and more secure alternative to [ipchains](http://en.wikipedi
 [Nftables](http://www.netfilter.org/projects/nftables/index.html) will replace it some day, but is not merged with AFWall+ at the moment.
 
 Netfilter is generally a part of the [Linux kernel](https://kernel.org/). The IP packet filter rules in the Linux kernel are being configured by the user space command line tools of netfilter: iptables, ip6tables, ebtables, arptables and ipset (optional).
+
+Changelog
+-----------
+
+Latest iptables official release: **iptables-1.4.21** -> 22-Nov-2013 13:11
+
+The official iptables changelogs, patches and binaries can always be found [here](http://www.netfilter.org/projects/iptables/files/). _These binaries are not optimized for Android!_
+
+**Remember**: Some apps are bundled with there own iptables (SandroProxy, Orbot, OrWall,[...]) and some have no option to toggle between the system ones and there own (AFWall+ does have this option!) so it's necessary if you using one of this apps, to ensure it does not interference with AFWall+. The best solution to handle such problematic things is to replace (if outdated) the system ones and only use these to avoid conflicts between two or more separate iptables.
+
 
 Explanation
 -----------
