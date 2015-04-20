@@ -74,7 +74,7 @@ AFWall+ need this to run at his best:
 - An Android OS device with at least the 4.0 (ICS/API level 14, NDK 10) or a higher version.
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
-- The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leak fix)!
+- The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leakage fix)!
 - The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (<code>adb pull /proc/config.gz</code> - Once you unzip it, you can search for e.g. _NETFILTER_). AFWall+ normally check it automatically if your Kernel does have support for it or not.
 
 Installation
@@ -132,7 +132,7 @@ Similar solutions
 -----------------
 
 _IPTables based:_
-* _Builtin_ Linux iptables (there is no GUI but van be controlled via scripts/Terminal/ADB)
+* _Builtin_ Linux iptables (no GUI, but it can be controlled via scripts/Terminal/ADB)
 * [Android Firewall](https://play.google.com/store/apps/details?id=com.jtschohl.androidfirewall) & [Source](https://github.com/skullone/android_firewall) [removed from Google Play Store!]
 * [3C Toolbox aka Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
 * ~~[DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free)~~ _deprecated_ 
