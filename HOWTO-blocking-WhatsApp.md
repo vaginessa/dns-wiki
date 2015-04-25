@@ -21,8 +21,8 @@ This is not a guarantee that it totally blocks all connections, because it's not
 ```bash
 c.whatsapp.net
 c1.whatsapp.net
-c2.whatsapp.net
-c3.whatsapp.net
+c2.whatsapp.net //phone number check
+c3.whatsapp.net //initial login, this only used port 5222
 c4.whatsapp.net
 c5.whatsapp.net
 c1.whatsapp.net
@@ -30,11 +30,31 @@ c2.whatsapp.net
 c3.whatsapp.net (all c. stuff are for the handshakes -> ^^ over 443 or 5222)
 c4.whatsapp.net
 c5.whatsapp.net
+c6.whatsapp.net
+c7.whatsapp.net
+c8.whatsapp.net
+c9.whatsapp.net
+c10.whatsapp.net
+e.whatsapp.net
 e1.whatsapp.net
 e2.whatsapp.net
-...
-..
-.
+e3.whatsapp.net //initial
+e4.whatsapp.net //initial
+e5.whatsapp.net //initial
+e6.whatsapp.net //initial
+e7.whatsapp.net
+e8.whatsapp.net
+e9.whatsapp.net
+e10.whatsapp.net
+e11.whatsapp.net
+e12.whatsapp.net
+e13.whatsapp.net
+e14.whatsapp.net
+e15.whatsapp.net
+e16.whatsapp.net
+e17.whatsapp.net
+e18.whatsapp.net
+e19.whatsapp.net
 e20.whatsapp.net
 s.whatsapp.net
 s1.whatsapp.net
@@ -42,9 +62,35 @@ s2.whatsapp.net
 s3.whatsapp.net
 s4.whatsapp.net
 s5.whatsapp.net
+s6.whatsapp.net
 https://sro.whatsapp.net/client/iphone/iq.php (<- for post-request -> sro.whatsapp.net)
 https://sro.whatsapp.net/client/android/iq.php (^^)
 static.reverse.softlayer.com (main/status/auth/..)
+
+WhatsApp.com site only (A record):
+192.155.212.203
+184.173.147.38
+184.173.147.39
+192.155.212.202
+
+NS records:
+ns2.p13.dynect.net 204.13.250.13
+ns1.p13.dynect.net 208.78.70.13
+ns3.p13.dynect.net 208.78.71.13
+ns4.p13.dynect.net 204.13.251.13
+
+Webchat (web.whatsapp.com):
+158.85.224.171
+158.85.224.176
+158.85.224.179
+158.85.224.180
+158.85.224.175
+158.85.224.178
+158.85.224.172
+158.85.224.173
+158.85.224.177
+158.85.224.174
+
 ```
 
 IP's
@@ -113,6 +159,7 @@ IP's
 184.173.136.94
 184.173.136.95
 184.173.147.38
+184.173.147.53
 184.173.147.39
 174.123.168.2
 174.37.240.116
@@ -122,6 +169,7 @@ IP's
 50.22.198.205
 50.22.199.44
 50.22.203.212
+50.22.225.69
 50.22.210.128
 50.22.210.129
 50.22.210.130
@@ -593,6 +641,7 @@ External Links
 --------------
 
 * [WhatsApp | Whatsapp.com](https://www.whatsapp.com/)
+* [WHOIS WhatsApp | whois.com](http://www.whois.com/whois/whatsapp.com)
 * [Open WhatsApp | openwhatsapp.org](http://www.openwhatsapp.org/)
 * [Mass DMCA takedowns by WhatsApp | openwhatsapp.org](http://www.openwhatsapp.org/blog/2014/02/13/mass-dmca-takedowns-whatsapp/)
 * [Unofficial WhatsApp API by perezdidac | GitHub.com](https://github.com/perezdidac/WhatsAPINet)
@@ -601,4 +650,8 @@ External Links
 * [Whatsapp abused the DMCA to censor related projects from GitHub | boingboing.net](http://boingboing.net/2014/02/21/whatsapp-abused-the-dmca-to-ce.html)
 * [All WhatsApp.Inc IP's only (no proof!) | ipdb.at](https://ipdb.at/org/WhatsApp_Inc)
 * [All DNS Records + additional Domain Info | Robtex.com](https://www.robtex.com/q/x1?q=whatsapp.com&l=go)
-* [Unofficial WhatsAPp Beta Updater | Aptoide (javiersantos Store)](http://m.apps.store.aptoide.com/app/market/com.javiersantos.whatsappbetaupdater/6/9014714/Beta%20Updater%20for%20WhatsApp)
+* [Unofficial WhatsApp Beta Updater | Aptoide (javiersantos Store)](http://m.apps.store.aptoide.com/app/market/com.javiersantos.whatsappbetaupdater/6/9014714/Beta%20Updater%20for%20WhatsApp)
+* [Is WhatsApp Down Right Now? Check | isitdownrightnow.com](http://www.isitdownrightnow.com/whatsapp.com.html)
+* [WhatsApp IntoDNS | IntoDNS.com](http://www.intodns.com/whatsapp.com)
+* [Extracting password from device | Chat-API by mgp25 on GitHub](https://github.com/mgp25/Chat-API/wiki/Extracting-password-from-device)
+* [WhatsApp web wiki | dixiwiki](http://wiki.dequis.org/notes/whatsapp_web/)
