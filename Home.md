@@ -131,6 +131,12 @@ Phone "cheats":
 Similar solutions
 -----------------
 
+Generally there are four categories of Android Firewalls:
+* Firewalls which uses a _local VPN_ for traffic filtering (NoRoot, Dr. Web Anti-Virus,...)
+* Firewalls which use a _separate own VPN_ (Android doesn't allow to use two VPNs together the same time) like Opera Max for compressing the traffic (if it's enabled the firewall may not work)
+* Firewalls which using _iptables_, like AFwall+, Droidwall, Avast,...
+* Firewalls which using a _local HTTP proxy_ (or integrate it in Android's VPN) like AdAway, AdGuard,...
+
 _IPTables based:_
 * _Builtin_ Linux iptables (no GUI, but it can be controlled via scripts/Terminal/ADB)
 * [Android Firewall](https://play.google.com/store/apps/details?id=com.jtschohl.androidfirewall) & [Source](https://github.com/skullone/android_firewall) [removed from Google Play Store!]
@@ -151,7 +157,8 @@ _Browser based Firewall (takes control over JavaScript,...):_
 _VPN/Proxy based:_
 * [LostNet Firewall](https://play.google.com/store/apps/details?id=com.lostnet.fw.pro)
 * [Grey Shirts NoRoot Firewall](https://play.google.com/store/apps/details?id=app.greyshirts.firewall)
-* [Netspark Firewall](https://play.google.com/store/apps/details?id=com.netspark.firewall&hl=en)
+* Dr. Web AntiVirus
+* Kaspersky
 
 _[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:_
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
@@ -168,7 +175,7 @@ A word about non-root Firewalls
 All of these firewalls working with a Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size which _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest problem is that such VPN services not work with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN services and VPN/Proxy's apps at the same time together. 
 
 We not suggest to use any no-root firewall for above reasons and others, e.g. see [an German article](http://www.kuketz-blog.de/android-firewall-ohne-root-%E2%80%A2-noroot-firewall/):
-* [NoRoot](https://play.google.com/store/apps/details?id=com.netspark.firewall&hl=en)
+* NetSpark/Mobiwol [NoRoot](https://play.google.com/store/apps/details?id=com.netspark.firewall&hl=en)
 
 Making Donations
 -------
