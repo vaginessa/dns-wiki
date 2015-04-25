@@ -376,7 +376,7 @@ A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-
 <a name="FAQ42"></a>
 ##### (42) How to change the DNS Settings on Android? (optional)
 
-> On Android <4.4 we can use the command <code>getprop | grep dns</code> to know all the dns properties being used. This command requires BusyBox! 
+> On Android <4.4 we can use the command <code>getprop | grep dns</code> to know all the DNS properties being used. This command requires BusyBox! 
 > 'rmnet0’ is the interface name for the 3G connection. net.rmnet0.dns1 and net.rmnet0.dns2 are the properties to be changed to point to OpenDNS server (the settings are still present in CM/AOSP code). Since, these properties are changed after the connection is established, net.dns1 and net.dns2 also have to be changed.
 Execute these commands as root user: <code>setprop net.rmnet0.dns1 208.67.222.222.</code> <code>setprop net.rmnet0.dns2 208.67.220.220</code>. <code>setprop net.dns1 208.67.222.222</code>. <code>setprop net.dns2 208.67.220.220</code>.
 > Remember, the settings will be applicable only for the current session! You will have to repeat it when you are re-connecting to the network.
@@ -546,3 +546,13 @@ mount -o remount,ro /system
 ##### (51) I get "Unable to parse package." if I try to install AFWall+?
 
 > This means AFWalls's .apk file seems to be corrupt. Try disabling your popup blocker, check your internet connection and re-download the whole apk.
+
+<a name="FAQ52"></a>
+##### (52) I use Opera Max as Browser with "Turbo Mode" enabled, why does Ad-blocking/Firewalls seems to not working anymore?
+
+> For debugging and error reporting just disable the "Turbo Mode" option, this is mostly only another term for VPN/Proxy which works behind this option. No Firewall, iptables, Proxy or any external app works with this option enabled, since it's not possible to use two VPNs the same time. It's not possible for any app to look behind this traffic (local). Other Browser may have a similar function or add-ons (like Firefox Janus-Proxy or Chrome's bandwidth safer), make sure it's disabled.
+
+<a name="FAQ53"></a>
+##### (53) How can I gather DNS (A/AAA/...) requests?
+
+> Mostly, if not all AOSP based ROMs coming with TCPdump as binary included. So you can just use this, there are several [Tutorial](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
