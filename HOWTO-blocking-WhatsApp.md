@@ -91,6 +91,8 @@ Webchat (web.whatsapp.com):
 158.85.224.177
 158.85.224.174
 
+Crash Log
+android-crashlog.whatsapp.net
 ```
 
 IP's
@@ -232,6 +234,9 @@ IP's
 50.23.142.190
 50.23.142.191
 50.97.57.148
+
+IP's v6
+WhatsApp does not support IPv6 only yet
 ```
 
 Ports
