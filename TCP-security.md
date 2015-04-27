@@ -10,6 +10,7 @@ Index
 * [IPSec](#ipset)
 * [Tcpcrypt](#tcpcrypt)
 * [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns?)
+* [Fingerprinting](#fingerprinting)
 * [External links](#external-links)
 
 Introduction
@@ -289,6 +290,36 @@ Another possible problem is that you [ISP](http://en.wikipedia.org/wiki/Internet
 * For general implementation info about DNS Transport over TCP take a look at [here](https://www.ietf.org/rfc/rfc5966.txt)
 
 There are also several tips, tricks and guides directly with a lot of examples over the official Tor Wiki page, see [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver) & [here](https://trac.torproject.org/projects/tor/wiki/doc/Preventing_Tor_DNS_Leaks). Remember that the given tricks on this pages are optimized for TOR/I2P, so you may need to adjust some example configuration given from there.
+
+Fingerprinting
+------------
+
+AFWall+ or any other Firewall does not protect against the following fingerprint detection mechanism:
+* Javascript link rewriting  / Javascript Performance Fingerprinting 
+* Window Name detection (DCOM identifier storage)
+* Headers (referer, http, agent,... + Timestamp + Timezone leaks)
+* LXC-specific leaks
+* Operating System Type Fingerprinting
+* Keystroke Fingerprinting
+* Super Cookies (Master/Ever Cookies/HSTS supercookies/Flash) [this is a result because of third-party cookies blocking]
+* WebGL / WebRTC
+* Display Media information
+* Monitor, Widget, and OS Desktop Resolution + Fonts 
+* USB Device ID Enumeration
+* Invasive Authentication Mechanisms
+* Open TCP Port Fingerprinting 
+* HTML5 Canvas Image Extraction
+* Flash (Since Android 4.x removed official in Android -> HTML5)
+* Plugins intended to be good, but leaking sensitive data (meta,big/small,...) 
+* SSL+TLS session resumption, HTTP Keep-Alive and SPDY
+* DOM Storage and Auth
+* Several bypass xyz settings (like Proxy/VPN/physically access/records,...)
+
+A full overview can be found over [here](https://www.torproject.org/projects/torbrowser/design/#fingerprinting-linkability). A fingerprint test can be found over [here](https://panopticlick.eff.org/about.php).
+
+It's highly recommend to use Tor/Orbot + NoScript (NSA NoScript) + Ref Control and Random Agent Spoofer.
+[HTTPS-Everywhere isn't necessary with the correct Firefox and Tor settings](https://gist.github.com/CHEF-KOCH/b730d9511761e999c9ba) (since HTTPS-Everywhere may break some sites and is already implemented in NoScript [Desktop Version only] or can be managed by the Browser itself).
+
 
 External links
 ------------
