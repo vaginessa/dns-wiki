@@ -16,7 +16,7 @@ Index
 Introduction
 -----------
 
-This guide has nothing much todo with AFWall+ itself or it's configuration, but it can help to protect against known _problems_ and _attacks_ like DNS/DOS/UDP flooding - and they're well tested with Linux Kernels 2.6 up to 4.0, so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the ['Useful Links'](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
+This guide has nothing much todo with AFWall+ itself or it's own configuration, but it can help to protect against known _problems_ and _attacks_ like DNS/DOS/UDP flooding - and they're well tested with Linux Kernels 2.6 up to 4.0, so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the ['Useful Links'](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
 
 Please make a **backup first**, and of course there is **no support** or **guarantee that it works on your system**. If you unsure, simply don't use it, ask your ROM/Kernel developer if it's useful to integrate/use it.
 
@@ -45,6 +45,7 @@ These are all (or mostly all) of known possible attacks which is TCP affected by
 * Smurf attacks
 * Man-in-the-Middle Attacks
 * Backdoors and side channel attacks
+* 0-day
 * .... Authentication and encryption problems due lack of protocol itself.
 
 A very good explanation of all the attacks listed above are on [Peters Smith fantastic article/book](http://linuxbox.co.uk/linux-network-security/) about common Linux security. It's highly recommend to read it, since it's very detailed and good to understand. 
@@ -342,3 +343,4 @@ External links
 * [Nmap/Android quick guide | Secwiki.org](https://secwiki.org/w/Nmap/Android)
 * [DNScrypt build instructions + binaries | forum-xda.developers.com](http://forum.xda-developers.com/showpost.php?p=56068030&postcount=20)
 * [Tcpcrypt | Tcpcrypt.org](http://www.tcpcrypt.org)
+* [privacytools.io | privacytools.io](https://www.privacytools.io/)
