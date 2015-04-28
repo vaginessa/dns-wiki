@@ -344,3 +344,4 @@ External links
 * [DNScrypt build instructions + binaries | forum-xda.developers.com](http://forum.xda-developers.com/showpost.php?p=56068030&postcount=20)
 * [Tcpcrypt | Tcpcrypt.org](http://www.tcpcrypt.org)
 * [privacytools.io | privacytools.io](https://www.privacytools.io/)
+* [Firefox list of TCP ports open on 127.0.0.1 (HTML5 based) | AndLabs.orp Port-Scanner](http://www.andlabs.org/tools/jsrecon.html)
