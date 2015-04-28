@@ -4,6 +4,8 @@ AFWall+ is an open source firewall user interface client focused on making it ea
 
 :warning: We are not responsible for any external content mentioned here in this Wiki! :warning:
 
+:warning: [Due the mass of Chrome security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs), this Wiki is only focused on browsing with Firefox (+ mobile), please do not ask anything how to secure or harden Chrome/Chromium or any Mod of this Browser which use the same engine! :warning:
+
 Index
 -----
 
@@ -157,8 +159,9 @@ _Browser based Firewall (takes control over JavaScript,...):_
 _VPN/Proxy based:_
 * [LostNet Firewall](https://play.google.com/store/apps/details?id=com.lostnet.fw.pro)
 * [Grey Shirts NoRoot Firewall](https://play.google.com/store/apps/details?id=app.greyshirts.firewall)
-* Dr. Web AntiVirus
-* Kaspersky
+* Dr. Web AntiVirus + Firewall
+* Kaspersky Internet Security
+* ...
 
 _[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:_
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
@@ -169,10 +172,13 @@ _IP blocking (needs Xposed):_
 _Real-time iptables logging:_
 * [Network Log](https://play.google.com/store/apps/details?id=com.googlecode.networklog&hl=en)
 
+_Internet Diagnostic Tool_:
+* [Network Monitor](http://fossdroid.com/a/network-monitor.html)
+
 A word about non-root Firewalls
 ---------------------
 
-All of these firewalls working with a Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size which _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest problem is that such VPN services not work with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN services and VPN/Proxy's apps at the same time together. 
+All of these firewalls working with a local Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size which _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest problem is that such VPN services not work with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN services and VPN/Proxy's apps at the same time together. 
 
 We not suggest to use any no-root firewall for above reasons and others, e.g. see [an German article](http://www.kuketz-blog.de/android-firewall-ohne-root-%E2%80%A2-noroot-firewall/):
 * NetSpark/Mobiwol [NoRoot](https://play.google.com/store/apps/details?id=com.netspark.firewall&hl=en)
