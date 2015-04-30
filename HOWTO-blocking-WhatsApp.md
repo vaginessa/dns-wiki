@@ -5,6 +5,7 @@ Index
 * [IP's](#ip's)
 * [Ports](#ports)
 * [iptables](#iptables)
+* [Encryption](#encryption)
 * [ToDo](#todo)
 * [External Links](#external-links)
 
@@ -630,16 +631,48 @@ iptables -A OUTPUT -m string --algo bm --string "whatsapp.com" -j DROP
 iptables -A FORWARD -i rmnet0 -m string --algo bm --string "whatsapp.com" -j DROP
 ```
 
+Encryption
+-----------
+
+WhatsApp use the following encryption:
+* Prosperity RC4 algorithm ([RFC 7465](https://tools.ietf.org/html/rfc7465))
+* [Axolotl port](https://github.com/tgalal/python-axolotl) for the encryption itself like the one from TextSecure 
+
+Pro:
+* Mass surveillance isn't possible via Internet-Backbones since the key "never leave the device" (according to WhatsApp). But there is no proof.
+* Needs some debugging/logging stuff to see what's going on, see [here](https://gist.github.com/fabsh/723240acce6916367865) Good for normal users, bad for advanced users or attackers.
+
+Negative:
+* Mass surveillance -> the Wa messages itself can be analyzed on the WhatsApp servers, since they can read the transport-secured messages (if no E2E!).
+* RC4 is [known as vulnerable](https://community.qualys.com/blogs/securitylabs/2013/10/09/ssl-pulse-now-tracking-forward-secrecy-and-rc4) 
+* Moxie Marlinspike implemented end-to-end encryption is not possible to analyze since there is no proof or source, so we must trust him if there is really a E2E encryption. It's possible that the encryption is not every time used (persistent). It's not possible to debug. 
+* It's not possible to show or debug if the secret key is uploaded to any cloud like the Server.
+It's not possible to see if the message is encrypted or in plain text since there is no indicator or a warning. 
+* There are hidden APIs, unknown functions and _strange_ functions implemented and no one really knows why.
+* Depending on the Status WhatsSpy and other _tools_ are able to track others if you know there numbers.
+
+
+Alternatives:
+* [Threema](https://threema.ch/en/) (closed source but no one found any problem atm)
+* [Surespot](https://surespot.me/) - [Source](https://github.com/surespot)
+* [TextSecure](https://whispersystems.org/) - [Source](https://github.com/WhisperSystems/TextSecure)
+* [Heml.is](https://heml.is/) - [Source?](https://twitter.com/HemlisMessenger/status/425250256293732352) 
+* [Cryptocat](https://crypto.cat/) - [Source](https://github.com/cryptocat)
+* [ChatSecure](https://chatsecure.org/) - [Source/FAQ](https://chatsecure.org/faq/)
+* [Sicher](http://www.sicherapp.com/) - closed source
+*  Against some rumors, [Telegram isn't secure](http://kiledjian.com/main/2014/3/17/telegram-messenger-isnt-secure) and other _mistakes_ like the [Math thing](http://unhandledexpression.com/2013/12/17/telegram-stand-back-we-know-maths/) - well it's [more secure compared to WhatsApp](https://github.com/overtake/telegram), but I would never trust someone with touch known _secure_ algorithm to "improve" the possible (theoretically) problems - this never ends up good!
+
+Security research and tests:
+* [Overview](https://missingm.co/2014/02/fighting-dishfire-the-state-of-mobile-cross-platform-encrypted-messaging/)and a scoreboard from EFF (the guys from HTTPS-Everywhere addon,[..]) is available over [here](https://www.eff.org/secure-messaging-scorecard).
+
 ToDo
 -----------
 
 ```
-+ add more DNS records
 * add more proof/confirmation that IP's / DNS are okay 
 + sort the IP's - really?
 + add firewall syntax for blocking (to copy & paste it) -> 50.22.210.155,50.22.198.205,...
-+ add IPset instead of all the WhatsApp lines (more speed/less memory)
-+ add missing parts (IPv6, ...)
++ add IPset instead of all the WhatsApp lines (more speed/less memory) [only if someone except me use IPset]
 ```
 
 External Links
@@ -660,3 +693,6 @@ External Links
 * [WhatsApp IntoDNS | IntoDNS.com](http://www.intodns.com/whatsapp.com)
 * [Extracting password from device | Chat-API by mgp25 on GitHub](https://github.com/mgp25/Chat-API/wiki/Extracting-password-from-device)
 * [WhatsApp web wiki | dixiwiki](http://wiki.dequis.org/notes/whatsapp_web/)
+* [German Article "WhatsApp durchleuchtet: Vorbildliche Verschlüsselung weitgehend nutzlos" | heise.de](http://www.heise.de/newsticker/meldung/WhatsApp-durchleuchtet-Vorbildliche-Verschluesselung-weitgehend-nutzlos-2629081.html)
+* [WhatsApp Wireshark plugin | GitHub](https://github.com/davidgfnet/wireshark-whatsapp)
+* [Unofficial WhatsApp-Client yowsup | GitHub](https://github.com/tgalal/yowsup)
