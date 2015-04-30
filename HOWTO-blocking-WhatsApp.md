@@ -20,6 +20,7 @@ This is not a guarantee that it totally blocks all connections, because it's not
 
 
 ```bash
+//iOS
 c.whatsapp.net
 c1.whatsapp.net
 c2.whatsapp.net //phone number check
@@ -28,7 +29,7 @@ c4.whatsapp.net
 c5.whatsapp.net
 c1.whatsapp.net
 c2.whatsapp.net
-c3.whatsapp.net (all c. stuff are for the handshakes -> ^^ over 443 or 5222)
+c3.whatsapp.net //(all con. stuff are for the handshakes -> ^^ over 443 or 5222)
 c4.whatsapp.net
 c5.whatsapp.net
 c6.whatsapp.net
@@ -36,10 +37,11 @@ c7.whatsapp.net
 c8.whatsapp.net
 c9.whatsapp.net
 c10.whatsapp.net
+//Android OS
 e.whatsapp.net
 e1.whatsapp.net
 e2.whatsapp.net
-e3.whatsapp.net //initial
+e3.whatsapp.net //(all c. stuff are for the handshakes -> ^^ over 443 or 5222)
 e4.whatsapp.net //initial
 e5.whatsapp.net //initial
 e6.whatsapp.net //initial
@@ -57,13 +59,18 @@ e17.whatsapp.net
 e18.whatsapp.net
 e19.whatsapp.net
 e20.whatsapp.net
+//Web <-> Client
 s.whatsapp.net
 s1.whatsapp.net
 s2.whatsapp.net
-s3.whatsapp.net
+s3.whatsapp.net //(all c. stuff are for the handshakes -> ^^ over 443 or 5222)
 s4.whatsapp.net
 s5.whatsapp.net
 s6.whatsapp.net
+s7.whatsapp.net
+s8.whatsapp.net
+s9.whatsapp.net
+s10.whatsapp.net
 https://sro.whatsapp.net/client/iphone/iq.php (<- for post-request -> sro.whatsapp.net)
 https://sro.whatsapp.net/client/android/iq.php (^^)
 static.reverse.softlayer.com (main/status/auth/..)
@@ -663,7 +670,7 @@ Alternatives:
 *  Against some rumors, [Telegram isn't secure](http://kiledjian.com/main/2014/3/17/telegram-messenger-isnt-secure) and other _mistakes_ like the [Math thing](http://unhandledexpression.com/2013/12/17/telegram-stand-back-we-know-maths/) - well it's [more secure compared to WhatsApp](https://github.com/overtake/telegram), but I would never trust someone with touch known _secure_ algorithm to "improve" the possible (theoretically) problems - this never ends up good!
 
 Security research and tests:
-* [Overview](https://missingm.co/2014/02/fighting-dishfire-the-state-of-mobile-cross-platform-encrypted-messaging/)and a scoreboard from EFF (the guys from HTTPS-Everywhere addon,[..]) is available over [here](https://www.eff.org/secure-messaging-scorecard).
+* [Overview](https://missingm.co/2014/02/fighting-dishfire-the-state-of-mobile-cross-platform-encrypted-messaging/) and a scoreboard from EFF (The developer guys from HTTPS-Everywhere addon,[..]) is available over [here](https://www.eff.org/secure-messaging-scorecard).
 
 ToDo
 -----------
@@ -692,7 +699,7 @@ External Links
 * [Is WhatsApp Down Right Now? Check | isitdownrightnow.com](http://www.isitdownrightnow.com/whatsapp.com.html)
 * [WhatsApp IntoDNS | IntoDNS.com](http://www.intodns.com/whatsapp.com)
 * [Extracting password from device | Chat-API by mgp25 on GitHub](https://github.com/mgp25/Chat-API/wiki/Extracting-password-from-device)
-* [WhatsApp web wiki | dixiwiki](http://wiki.dequis.org/notes/whatsapp_web/)
-* [German Article "WhatsApp durchleuchtet: Vorbildliche Verschlüsselung weitgehend nutzlos" | heise.de](http://www.heise.de/newsticker/meldung/WhatsApp-durchleuchtet-Vorbildliche-Verschluesselung-weitgehend-nutzlos-2629081.html)
+* [WhatsApp Web Wiki | dixiwiki](http://wiki.dequis.org/notes/whatsapp_web/)
+* [Keeping Tabs on WhatsApp's Encryption | heise.de](http://www.heise.de/ct/artikel/Keeping-Tabs-on-WhatsApp-s-Encryption-2630361.html)
 * [WhatsApp Wireshark plugin | GitHub](https://github.com/davidgfnet/wireshark-whatsapp)
 * [Unofficial WhatsApp-Client yowsup | GitHub](https://github.com/tgalal/yowsup)
