@@ -131,8 +131,12 @@ This is a small template you can use to provide a useful bug report. Make sure y
 >* [your text/file or link]
 >* **Are the experimental options enabled/disabled?!**
 >* [your text/file or link]
+>* **On DNS related problems please provide 'adb shell dumpsys connectivity | grep DnsAddresses' + 'nslookup google.com' + 'getprop | grep dns'**
+>* [your text/file or link]
+>* **For general connectivity problems please provide 'adb shell dumpsys connectivity'**
+>* [your text/file or link]
 
-More details always means more and faster/better help! 
+:warning: More details always means more and faster/better help! :warning:
 
 After sending the report
 ------------------------
