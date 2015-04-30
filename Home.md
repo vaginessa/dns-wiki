@@ -1,10 +1,9 @@
 ## Welcome to the AFWall+ Wiki!
 
-AFWall+ is an open source firewall user interface client focused on making it easier to work with [iptables](https://en.wikipedia.org/wiki/Iptables) on Android OS.
+AFWall+ is an open source firewall user interface client focused on making it easier to work with [iptables](https://en.wikipedia.org/wiki/Iptables) on Android OS. Keep track of your mobile broadband usage and block internet access to selected apps to avoid exceeding your data usage.
 
-:warning: We are not responsible for any external content mentioned here in this Wiki! :warning:
-
-:warning: [Due the mass of Chrome security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs), this Wiki is only focused on browsing with Firefox (+ mobile), please do not ask anything how to secure or harden Chrome/Chromium or any Mod of this Browser which use the same engine! :warning:
+:warning: We are not responsible for any external content mentioned here in this Wiki! 
+[Due the mass of Chrome/Chromium security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs), this Wiki is only focused on browsing with Firefox (+ mobile), please do not ask anything how to secure or harden Chrome/Chromium or any Mod of this Browser which use the same engine! :warning:
 
 Index
 -----
@@ -119,7 +118,7 @@ Some useful things:
 * [[WhatsApp blocking|HOWTO blocking WhatsApp]]
 * [[Orwall and AFWall+|HOWTO OrWall together with AFWall+]]
 
-**(optional and not AFWall+ specific)**
+**(Optional and not 100% AFWall+ specific)**
 
 TCP security under Linux:
 * [[TCP security]] may help to protect you against some known attacks.
@@ -133,11 +132,12 @@ Phone "cheats":
 Similar solutions
 -----------------
 
-Generally there are four categories of Android Firewalls:
-* Firewalls which uses a _local VPN_ for traffic filtering (NoRoot, Dr. Web Anti-Virus,...)
+Generally there are five categories of Android Firewalls:
+* Firewalls which uses a _local VPN_ for traffic filtering (Dr. Web Anti-Virus,[...])
 * Firewalls which use a _separate own VPN_ (Android doesn't allow to use two VPNs together the same time) like Opera Max for compressing the traffic (if it's enabled the firewall may not work)
-* Firewalls which using _iptables_, like AFwall+, Droidwall, Avast,...
+* Firewalls which using _iptables_, like AFWall+, Droidwall, Avast, Comodo,[...]
 * Firewalls which using a _local HTTP proxy_ (or integrate it in Android's VPN) like AdAway, AdGuard,...
+* Browser or app related firewalls, like NoScript, Bluetooth Firewalls and such, which basically only blocking specific functions and not the traffic itself.
 
 _IPTables based:_
 * _Builtin_ Linux iptables (no GUI, but it can be controlled via scripts/Terminal/ADB)
@@ -186,7 +186,7 @@ We not suggest to use any no-root firewall for above reasons and others, e.g. se
 Making Donations
 -------
 
-Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation.
+Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation!
 It can be done directly on [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate) or just look at [F-Droid repository](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall) for more donations options.
 
 License
