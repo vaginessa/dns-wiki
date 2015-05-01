@@ -11,12 +11,12 @@ Index
 * [Tcpcrypt](#tcpcrypt)
 * [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns?)
 * [Fingerprinting](#fingerprinting)
-* [External links](#external-links)
+* [External Links](#external-links)
 
 Introduction
 -----------
 
-This guide has nothing much todo with AFWall+ itself or it's own configuration, but it can help to protect against known _problems_ and _attacks_ like DNS/DOS/UDP flooding - and they're well tested with Linux Kernels 2.6 up to 4.0, so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the ['Useful Links'](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
+This guide has nothing much todo with AFWall+ itself or it's own configuration, but it can help to protect against known _problems_ and _attacks_ like DNS/DOS/UDP flooding - and they're well tested with Linux Kernels 2.6 up to 4.0, so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the ['External Links'](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
 
 Please make a **backup first**, and of course there is **no support** or **guarantee that it works on your system**. If you unsure, simply don't use it, ask your ROM/Kernel developer if it's useful to integrate/use it.
 
@@ -29,24 +29,25 @@ These are all (or mostly all) of known possible attacks which is TCP affected by
 
 * Desynchronization during connection establishment
 * Desynchronization in the middle of a connection
+* Fingerprinting
 * ICMP attacks
 * Nonblind Spoofing
 * Routing (RIP) attacks
 * DNS attacks such DNS Poisoning and BIND attacks
-* Hijacking/Injection of the connection
+* Hijacking/Injection of the connection 
 * Sequence Guessing
-* Dsniff attacks
-* Replay attacks
-* LAN Sniffing (general Packet's Sniffing)
-* Denial of Service (DoS)
+* Replay attacks / Dsniff attacks
+* LAN Sniffing (or general packets sniffing)
 * Unique Identifiers attacks
 * TCP SYN attacks (flooding)
+* Denial of Service (DoS)
 * IP spoofing
 * Smurf attacks
-* Man-in-the-Middle Attacks
-* Backdoors and side channel attacks
-* 0-day
-* .... Authentication and encryption problems due lack of protocol itself.
+* Man-in-the-Middle Attacks via faked SSL/TLS certificates ([example apps](https://docs.google.com/spreadsheets/d/1t5GXwjw82SyunALVJb2w0zi3FoLRIkfGPc7AMjRF0r4/edit#gid=1053404143) that are still affected)
+* Backdoors and side channel attacks on protocol layer or software layer
+* 0day
+* Authentication and encryption problems
+* ....
 
 A very good explanation of all the attacks listed above are on [Peters Smith fantastic article/book](http://linuxbox.co.uk/linux-network-security/) about common Linux security. It's highly recommend to read it, since it's very detailed and good to understand. 
 
@@ -58,11 +59,10 @@ As described over [here](http://www.iana.org/assignments/iana-ipv4-special-regis
 | Address | RFC | Description |
 | :--- | :--: | ---: |
 | 0.0.0.0/8 | [RFC1122](https://tools.ietf.org/html/rfc1122) | Host Network |
-| 10.0.0.0/8 | [RFC1918](https://tools.ietf.org/html/rfc1918) | Private-Use |
 | 100.64.0.0/10 | [RFC6598](https://tools.ietf.org/html/rfc6598)| Shared Address Space |
 | 127.0.0.0/8 | [RFC1122](https://tools.ietf.org/html/rfc1122) | Loopback|
 | 169.254.0.0/16 | [RFC3927](https://tools.ietf.org/html/rfc3927) | Link Local |
-| 172.16.0.0/12 | [RFC1918](https://tools.ietf.org/html/rfc1918) | Private-Use |
+| 172.16.0.0/12 + 10.0.0.0/8 | [RFC1918](https://tools.ietf.org/html/rfc1918) | Private-Use |
 | 192.0.0.0/24 | [RFC6890](https://tools.ietf.org/html/rfc6890) | IETF Protocol Assignments |
 | 192.0.2.0/24 | [RFC5737](https://tools.ietf.org/html/rfc5737) | Documentation (TEST-NET-1) |
 | 192.88.99.0/24 | [RFC3068](https://tools.ietf.org/html/rfc3068) | 6to4 Relay Anycast |
@@ -86,7 +86,7 @@ For [Multicast](http://www.iana.org/assignments/multicast-addresses/multicast-ad
 * Kernel/ROM that support these kind of tweaks (if not it doesn't work or is useless)
 * init.d support if you like to store these tweaks into a .sh script and apply them at boot (once)
 * sysctl support
-* A compiled Kernel based on 2.6 up to 4.0
+* A compiled Kernel based on 2.6 up to 4.0+
 
 sysctl
 ------------
@@ -205,7 +205,7 @@ Here is a quick guide:
 4. Select "VPN Settings"
 5. Select "Add VPN"
 6. Select "Add L2TP/IPSEC PSK VPN" Make sure to select the correct one out of the 4 listed. (NOT L2TP VPN and NOT L2TP/IPSEC CRT VPN)
-7. Select "VPN Name" and enter "<yourownstuff>" (without quotes) or anything else you want.
+7. Select "VPN Name" and enter "_<yourownstuff>_" (without quotes) or anything else you want.
 8. Select "Set VPN Server" and enter the given server IP Address from your provider.
 9. Select Set IPSec pre-shared key and enter the pre-shared key provided to you in the welcome email.
 10. L2TP secret & IPSEC identifier remain blank if it's given fill in.
@@ -268,8 +268,7 @@ There are several ways, the most easiest way is to visit some webpages that auto
 If you Browser shows a wrong DNS according to what your own settings telling you, this usually means something is wrong or maybe compromised.
 
 Per-Browser this must be set to get a correct behavior, because they using there own DNS internal settings:
-* On Firefox / Firefox Mobile (about:config): network.dns.disablePrefetch needs to be set to true 
-* On Google Chrome disable the DNS pre-fetching. 
+* On Firefox / Firefox Mobile (about:config): _network.dns.disablePrefetch_ needs to be set to _true_.
 
 
 On the OS level you can:
@@ -296,13 +295,13 @@ Fingerprinting
 ------------
 
 AFWall+ or any other Firewall does not protect against the following fingerprint detection mechanism:
-* Javascript link rewriting  / Javascript Performance Fingerprinting 
+* JavaScript link rewriting  / JavaScript Performance Fingerprinting 
 * Window Name detection (DCOM identifier storage)
-* Headers (referer, http, agent,... + Timestamp + Timezone leaks)
+* Headers (referrer, HTTP, agent,... + Timestamps + Timezone leaks)
 * LXC-specific leaks
 * Operating System Type Fingerprinting
 * Keystroke Fingerprinting
-* Super Cookies (Master/Ever Cookies/HSTS supercookies/Flash) [this is a result because of third-party cookies blocking]
+* Super Cookies (Master/Ever Cookies/HSTS super-cookies/Flash) [this is a result because of third-party cookies blocking]
 * WebGL / WebRTC
 * Display Media information
 * Monitor, Widget, and OS Desktop Resolution + Fonts 
@@ -312,7 +311,7 @@ AFWall+ or any other Firewall does not protect against the following fingerprint
 * HTML5 Canvas Image Extraction
 * Flash (Since Android 4.x removed official in Android -> HTML5)
 * Plugins intended to be good, but leaking sensitive data (meta,big/small,...) 
-* SSL+TLS session resumption, HTTP Keep-Alive and SPDY
+* SSL/TLS session resumption, HTTP Keep-Alive and SPDY
 * DOM Storage and Auth
 * Several bypass xyz settings (like Proxy/VPN/physically access/records,...)
 
@@ -322,7 +321,7 @@ It's highly recommend to use Tor/Orbot + NoScript (NSA NoScript) + Ref Control a
 [HTTPS-Everywhere isn't necessary with the correct Firefox and Tor settings](https://gist.github.com/CHEF-KOCH/b730d9511761e999c9ba) (since HTTPS-Everywhere may break some sites and is already implemented in NoScript [Desktop Version only] or can be managed by the Browser itself).
 
 
-External links
+External Links
 ------------
 
 * [Internet Engineering Task Force (IETF) | IETF.org](https://www.ietf.org/)
@@ -345,3 +344,4 @@ External links
 * [Tcpcrypt | Tcpcrypt.org](http://www.tcpcrypt.org)
 * [privacytools.io | privacytools.io](https://www.privacytools.io/)
 * [Firefox list of TCP ports open on 127.0.0.1 (HTML5 based) | AndLabs.orp Port-Scanner](http://www.andlabs.org/tools/jsrecon.html)
+* [Sam Bowne and Students about SSL MITM holes on Android | SamClass.info](https://samsclass.info/128/proj/popular-ssl.htm)
