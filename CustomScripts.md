@@ -14,7 +14,7 @@ Index
 * [Block outgoing request from LAN](#block-outgoing-request-from-lan)
 * [Orbot transparent proxy](#orbot-transparent-proxy)
 * [How can I use a whitelist or blacklist?](#how-can-i-use-a-whitelist-or-blacklist?)
-* [Useful links](#useful-links)
+* [External Links](#external-links)
 
 Introduction
 ------------
@@ -648,11 +648,10 @@ done
 ````
 
 
-Useful links
+External Links
 ------------
 
 * [Simple Iptables Script Generator | Mista.nu](http://www.mista.nu/iptables/) (On some devices $IPT not working, try to replace with $IPTABLES or update your kernel!)
-* [Simple Iptables Test | Myresolver.info](http://myresolver.info)
 * [25 Most Frequently Used Linux IPTables Rules Examples | thegeekstuff.com](http://www.thegeekstuff.com/2011/06/iptables-rules-examples/)
 * [Collection of basic Linux Firewall iptables rules | linuxconfig.org](http://linuxconfig.org/collection-of-basic-linux-firewall-iptables-rules)
 * [AFWall+/Droidwall permissions vulnerability | torproject.org](https://lists.torproject.org/pipermail/tor-talk/2014-March/032503.html) - [Original Issue 260 @ Droidwall](https://code.google.com/p/droidwall/issues/detail?id=260)
