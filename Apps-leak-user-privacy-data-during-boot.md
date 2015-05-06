@@ -4,7 +4,7 @@ Index
 * [Many Android apps leak user privacy data](#many-android-apps-leak-user-privacy-data)
 * [What's the issue?](#what's-the-issue?)
 * [What's the risk?](#what's-the-risk?)
-* [Do I have such problem?](#do-i-have-such-problem?)
+* [Do I have such problem?](#do-i-have-such-problem)
 * [Temporally workarounds](#temporally-workarounds)
 * [Default IPtables Chain Policy](#default-iptables-chain-policy)
 * [Useful links](#useful-links)
