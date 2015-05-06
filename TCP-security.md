@@ -9,6 +9,7 @@ Index
 * [Security tools](#security-tools)
 * [IPSec](#ipset)
 * [Tcpcrypt](#tcpcrypt)
+* [DNS](#dns)
 * [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns?)
 * [Fingerprinting](#fingerprinting)
 * [External Links](#external-links)
@@ -255,6 +256,34 @@ The benefit of Tcpcrypt compared to IPsec and others is that this doesn't need a
 
 Please [see here for an example configuration](https://github.com/scslab/tcpcrypt/blob/master/INSTALL-Linux.markdown) and requirements.
 
+DNS
+------------
+
+DNS is known as  not secure anymore for several reasons. Like most "secure" communications protocols, it is susceptible to undetectable public-key substitution MITM-attacks an populate examples was the [Apple iMessages security problem](https://www.taoeffect.com/blog/2014/11/update-on-imessages-security/). 
+
+The main problem is the protocol insecurity by [DNS](https://en.wikipedia.org/wiki/Domain_Name_System) and [X.509](https://en.wikipedia.org/wiki/X.509). See also [Certificate Transparency](https://blog.okturtles.com/2015/03/certificate-transparency-on-blockchains/).
+
+The core problems are always:
+* [MITM](http://en.wikipedia.org/wiki/Man-in-the-middle_attack) (Man-In-The-Middle)
+* DNS-based censorship circumvention
+* [Domain theft's](https://www.techdirt.com/articles/20141006/02561228743/5000-domains-seized-based-sealed-court-filing-confused-domain-owners-have-no-idea-why.shtml) ("seizures")
+* Certificate revocation
+* DOS (Denial-Of-Service) attacks
+
+Blocking generally DNS isn't possible since this is needed on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less less/more complicated and depending on your knowledge about how to change that. 
+
+There are alternatives like:
+* DNSSEC
+* OpenDNS (or other providers which claiming to not log/censorship anything)
+* DNSCrypt / _TCPCrypt_
+* [TACK](https://lwn.net/Articles/499134/) / [HPKP](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning)
+* [Perspective](http://perspectives-project.org/) + available as [Firefox addon](http://perspectives-project.org/firefox/) - Please read the _Known Issues_ on the page before installing it!
+
+But even with such popular alternatives there are several problems, e.g. DNSSEC suffering from miscellaneous leaks mentioned over [here](http://ianix.com/pub/dnssec-outages.html) or [here](http://sockpuppet.org/blog/2015/01/15/against-dnssec/) + it [doesn't prevent MITM attacks](http://www.thoughtcrime.org/blog/ssl-and-the-future-of-authenticity/).
+
+ToDo:
+- Find an easier solution especially on Android since no app or config respect both Firefox mobile AND the OS. Sad but true, to install just another app + addon shouldn't be always the goal since that always ends up with possible conflicts or security problems (such as mime type detection on some security scanning sites like panopticklick,...). 
+
 
 How do I know if my applications are leaking DNS?
 ------------
@@ -276,6 +305,7 @@ On the OS level you can:
 * Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers 4 hours is enouth.
 * Apply MacOS Tweaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_MacOS).
 * Configure Firewall as Fail-safe To Prevent Leaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
+* Generally use [secure alternatives](https://github.com/okTurtles/dnschain)
 
 Sometimes these messages may be false alarms. To find out, you should run a packet sniffer on your network interface. The basic command to do this is <code>tcpdump -pni eth0 'port domain'</code>.
 
