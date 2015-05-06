@@ -4,7 +4,7 @@ Index
 * [Many Android apps leak user privacy data](#many-android-apps-leak-user-privacy-data)
 * [What's the issue?](#whats-the-issue)
 * [What's the risk?](#whats-the-risk)
-* [Do I have such problem?](#do-i-have-such-problem)
+* [Do I have such a problem?](#do-i-have-such-a-problem)
 * [Temporally workarounds](#temporally-workarounds)
 * [Default IPtables Chain Policy](#default-iptables-chain-policy)
 * [Useful links](#useful-links)
@@ -26,8 +26,8 @@ The main problem with mobile data connection is that most data plan from mobile 
 
 Think of it like accessing your online banking service via a website that isn't secure. Theoretically, anyone could intercept that unencrypted data as it travels between your computer and the bank's server, stealing your password details or initiating false transactions.
 
-Do I have such problem?
------------------------
+Do I have such a problem?
+-------------------------
 
 You can check this with any [Monitoring Data App](https://play.google.com/store/apps/developer?id=Onavo). Traffic at start shows you that you already have this data leak.
 
