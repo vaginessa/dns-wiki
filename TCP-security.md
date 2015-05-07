@@ -6,11 +6,11 @@ Index
 * [Requirements](#requirements)
 * [sysctl](#sysctl)
 * [IP Rules](#ip-rules)
-* [Security tools](#security-tools)
+* [Security testing tools](#security-testing-tools)
 * [IPSec](#ipset)
 * [Tcpcrypt](#tcpcrypt)
 * [DNS](#dns)
-* [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns?)
+* [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns)
 * [Fingerprinting](#fingerprinting)
 * [External Links](#external-links)
 
@@ -146,17 +146,19 @@ Most of the mentioned port's are already supported by AFWall+ and can be control
 
 -> It's not worth to touch any of the mentioned ports, because it doesn't have any notable effect (also no security plus). There are rare situations, mostly only on servers which are compromised by brute force and other attacks (Port 22) but a normal Android client is mostly not affected by this and remember that the port will be automatically closed after the connection is lost/dropped, [it's also a bad idea to put such port to another place](https://www.adayinthelifeof.nl/2012/03/12/why-putting-ssh-on-another-port-than-22-is-bad-idea/). In AFWall+ the whole inbound traffic is by default disabled, means you need to enable the "Allow inbound" option first.
 
-Security tools
+Security testing tools
 ------------
 
-The term 'security' tools are a bit misleading, the tools doesn't secure anything by itself, but they can display open ports, possible vulnerability's and other threads. Often there are called 'scanners'/'network intrusion detection'/'preventation' or penetration testing tools. 
+The term _security tools_ are a bit misleading, the tools doesn't secure anything by itself, but they can display open ports, possible vulnerability's and other threads. Often there are called 'scanners'/'network intrusion detection'/'preventation' or penetration/auditing testing tools which scanning the OS against known security holes or reveal other potential weaknesses. 
 
-There are mostly all **for advances users**, because it need a lot of time, knowledge and tests to really understand them, but since most of them are well documented it shouldn't be a problem to crow from a beginner to an expert. 
+There are mostly all **for advances users**, because it need a lot of time, knowledge and tests to really understand them - of course reading is always necessary - but since most of them are well documented it shouldn't be a problem to crow from a beginner to an expert. 
+
+The following list is unsorted and for Windows/Linux/Mac OS/Android systems and may list tools that coasts (_a lot of_) money! Your Av may detect the sites or the tools as insecure/malware in fact they can be used for good/evil!
 
 * [Whireshark](http://www.wireshark.org/)
 * [Burp Suite](http://portswigger.net/burp/)
 * [Metasploit](http://www.metasploit.com/)
-* [Netcat](http://en.wikipedia.org/wiki/Netcat)
+* [Ncat](http://nmap.org/ncat/)
 * [tcpdump](http://www.tcpdump.org/) - sometimes already shipped with Android as standalone binary
 * [Kismet](http://www.kismetwireless.net/)
 * [Nikto](http://www.cirt.net/nikto2)
@@ -166,7 +168,7 @@ There are mostly all **for advances users**, because it need a lot of time, know
 * [w3af](http://w3af.sourceforge.net/)
 * [OpenVAS](http://www.openvas.org/)
 * [Scapy](http://www.secdev.org/projects/scapy/)
-* Ping/telnet/dig/traceroute/whois/netstat sometimes already shipped with Android/Windows/Unix/Linux/Mac OS as standalone binaries (on some system the names are different but they do all the same)
+* Ping/telnet/dig/traceroute/whois/netstat (sometimes already shipped with Android/Windows/Unix/Linux/Mac OS as standalone binaries) - On some systems the names are different but the function should be the same!
 * [Paros Proxy](http://www.parosproxy.org/)
 * [Maltego](http://www.paterva.com/web4/index.php/maltego)
 * [The Sleuth Kit](http://www.sleuthkit.org/sleuthkit/)
@@ -174,6 +176,52 @@ There are mostly all **for advances users**, because it need a lot of time, know
 * [Unicornscan](http://www.unicornscan.org/)
 * [SAINT](http://www.saintcorporation.com/saint/)
 * [Core Impact](http://www.coresecurity.com/content/core-impact-overview)
+* [PWDDump](http://www.tarasco.org/security/pwdump_7/)
+* [Lucy](http://gtta.net/PS/lucy.html#blog)
+* [SSLsniff](http://www.thoughtcrime.org/software/sslsniff/)
+* [SSLstrip](http://www.thoughtcrime.org/software/sslstrip/)
+* [Stunnel](https://www.stunnel.org/index.html)
+* [Fwknop](http://www.cipherdyne.org/fwknop/)
+* [aircrack-ng](http://www.aircrack-ng.org/)
+* [ettercap](http://ettercap.github.io/ettercap/)
+* [p0f](http://lcamtuf.coredump.cx/p0f.shtml)
+* [Nessus](http://www.nessus.org/)
+* [cowpatty](http://www.willhackforsushi.com/?page_id=50)
+* [Zed Attack Proxy (ZAPP)](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)
+* [Snort](http://www.snort.org/)
+* [Yersinia](http://www.yersinia.net/download.htm)
+* [Skipfish](http://code.google.com/p/skipfish/)
+* [RFIDiot](http://rfidiot.org/)
+* [John the Ripper](http://www.openwall.com/john/)
+* [ophcrack](http://ophcrack.sourceforge.net/)
+* [hrPING](http://www.cfos.de/en/ping/ping.htm)
+* [SQLiX](https://www.owasp.org/index.php/Category:OWASP_SQLiX_Project)
+* [btscanner](http://www.pentest.co.uk/downloads.html)
+* [raw2vmdk](https://github.com/Zapotek/raw2vmdk)
+* [Paros Proxy](http://sourceforge.net/projects/paros/)
+* [sqlmap](http://sqlmap.org/)
+* [UCSniff](http://ucsniff.sourceforge.net/)
+* [sipproxy](http://siproxd.sourceforge.net/)
+* [SWFIntruder](http://code.google.com/p/swfintruder/)
+* [Lorcon](http://code.google.com/p/lorcon/)
+* [ICMP tools](http://gont.com.ar/tools/icmp-attacks/)
+* [bt_audit](http://www.betaversion.net/btdsd/)
+* [dnsmap](http://code.google.com/p/dnsmap/)
+* [chaosreader](http://www.brendangregg.com/chaosreader.html)
+* [Firekeeper](http://firekeeper.mozdev.org/) (outdated)
+* [Malzilla](http://malzilla.sourceforge.net/)
+* [Packetyzer](http://sourceforge.net/projects/packetyzer/)
+* [Airsnort](http://sourceforge.net/projects/airsnort/)
+* [ATK - Attack Tool Kit](http://www.computec.ch/projekte/atk/)
+* [ike-scan](https://github.com/royhills/ike-scan)
+* [WebScarab](http://sourceforge.net/projects/owasp/files/WebScarab/)
+* [DHCPing](http://c3rb3r.openwall.net/dhcping/)
+* [UDPFlood](http://www.mcafee.com/us/downloads/free-tools/udpflood.aspx)
+* [IKEProbe](http://www.ernw.de/)
+* [fragroute](http://www.monkey.org/~dugsong/fragroute/)
+* [TCP Wrapper](ftp://ftp.porcupine.org/pub/security/index.html)
+* [SARA](http://www-arc.com/sara/)
+
 
 Online/Web-server test tools/pages:
 * [Check current Webserver version | urlm.de](http://urlm.de/)
@@ -207,6 +255,10 @@ Without going deeper these are the main-cores - you often hear:
 * A full documentation which is quite "easy" to understand for beginners can be found [here](http://www.tech-faq.com/ipsec.html)
 
 Since this is more secure as the good old IPv4 and you maybe have the ability to use it, this should be preferred. AFWall+ does not have any interface to control it (yet), so the only chance is to work with a custom script. See also [#255](https://github.com/ukanth/afwall/issues/255) and the official [issue tracker](https://code.google.com/p/android/issues/list?can=2&q=IPSEC&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles) before you report anything which is already known.
+
+Remember that there is no guarantee since even [IPSec have some weaknesses](http://etutorials.org/Networking/network+security+assessment/Chapter+11.+Assessing+IP+VPN+Services/11.2+Attacking+IPsec+VPNs/).
+
+[OpenSwan](http://www.openswan.org/) is an example implementation of IPSec under Linux. [StrongSwan](http://www.strongswan.org/) does the same and includes support of X.509.
 
 Here is a quick guide:
 
@@ -288,8 +340,9 @@ There are alternatives like:
 * OpenDNS (or other providers which claiming to not log/censorship anything)
 * DNSCrypt / _TCPCrypt_
 * [TACK](https://lwn.net/Articles/499134/) / [HPKP](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning)
-* [Perspective](http://perspectives-project.org/) + available as [Firefox addon](http://perspectives-project.org/firefox/) - Please read the _Known Issues_ on the page before installing it!
-* 
+* [Perspective](http://perspectives-project.org/) available as [Firefox addon](http://perspectives-project.org/firefox/) - Please read the _Known Issues_ on the page before installing it!
+* [Convergence[(http://convergence.io/) available as [Firefox addon](http://convergence.io/releases/firefox/convergence-current.xpi) or as forked _improved_ version over [here](https://github.com/mk-fg/convergence)
+* [Certificate Patrol](http://patrol.psyced.org/) available as [Firefox addon](https://addons.mozilla.org/de/firefox/addon/certificate-patrol/)
 
 But even with such popular alternatives there are several problems, e.g. DNSSEC suffering from miscellaneous leaks mentioned over [here](http://ianix.com/pub/dnssec-outages.html) or [here](http://sockpuppet.org/blog/2015/01/15/against-dnssec/) + it [doesn't prevent MITM attacks](http://www.thoughtcrime.org/blog/ssl-and-the-future-of-authenticity/).
 
@@ -361,7 +414,7 @@ AFWall+ or any other Firewall does not protect against the following fingerprint
 
 A full overview can be found over [here](https://www.torproject.org/projects/torbrowser/design/#fingerprinting-linkability). A fingerprint test can be found over [here](https://panopticlick.eff.org/about.php).
 
-It's highly recommend to use Tor/Orbot + NoScript (NSA NoScript) + Ref Control and Random Agent Spoofer.
+It's highly recommend to use Tor/Orbot + NoScript (NSA NoScript) + Certificate Control and (if no special about:config is in use) Random Agent Spoofer.
 [HTTPS-Everywhere isn't necessary with the correct Firefox and Tor settings](https://gist.github.com/CHEF-KOCH/b730d9511761e999c9ba) (since HTTPS-Everywhere may break some sites and is already implemented in NoScript [Desktop Version only] or can be managed by the Browser itself).
 
 
