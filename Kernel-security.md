@@ -3,6 +3,8 @@ Index
 
 * [Introduction](#introduction)
 * [Implementations](#implementations)
+* [Android Logging System](#android-logging-system)
+* [GMS](#gsm-security)
 * [Disable binaries](#disable-binaries)
 * [Useful links](#useful-links)
 
@@ -47,12 +49,13 @@ The following examples show what can be integrated (of is already integrated) in
 * CIS Benchmark (optional)
 * Pentests (optional - Penetrations tests are only for experts and can be used to find known holes, like Metasploit)
 * Bastille Linux (not available for Android yet)
-* IPTables (if not present AFWall+ brings them to your device)
-* LIDS (not available for Android yet)
+* [IPTables](http://www.netfilter.org/projects/iptables/) (if not present AFWall+ brings them to your device!)
+* [LIDS](http://sourceforge.net/projects/lids/) (not available for Android yet!)
 * Linux Security Modules (LSMs)
-* Cryptography, AES, RSA, DSA, and SHA + API's for SSL/TLS and HTTPS (since 3.0 but weak) 
+* OpenSSL (integrated)
+* Cryptography, AES, RSA, DSA, and SHA + API's for SSL/TLS and HTTPS (since Android 3.0 but weak) 
 * [Encryption](https://source.android.com/devices/tech/security/encryption/index.html) (since 3.0 but weak)
-* -> Known attacks can be found [here](https://source.android.com/devices/tech/security/overview/acknowledgements.html) [no direct links since they are mostly POCs and they of course will be fixed with next Android versions - so it's more for historical reasons]
+* -> Known attacks can be found [here](https://source.android.com/devices/tech/security/overview/acknowledgements.html) [no direct links since they are mostly POC's and they of course will be fixed with next Android versions - so it's more for historical reasons]
 
 Already implemented in every Android OS:
 * Basic Password protection
@@ -124,6 +127,44 @@ Application-level security
 Android also uses a user-space level security system to regulate communication and interaction among applications and system components.
 
 
+Android Logging System
+------------
+
+The Android system has a logging facility that allows system wide logging of information, from applications and system components. This is separate from the Linux kernel's own logging system, which is accessed using 'dmesg' or '/proc/kmsg'. However, the logging system does store messages in kernel buffers. 
+
+- The Kernel driver is called logger
+- Application Log is used by [android.util.Log class](http://developer.android.com/reference/android/util/Log.html)
+- System log is used to keep their messages separate from the application log messages system
+- Event log are created by using [android.util.EventLog class](http://developer.android.com/reference/android/util/EventLog.html)
+- ADB (Android Debug Bridge) reference page is available over [here](http://developer.android.com/guide/developing/tools/adb.html) (if ADB is not global wide disabled it's the easiest way to _logcat_ the necessary stuff you want to see)
+
+We have four log buffers:
+- events : System event related information <code>/dev/log/main</code>
+- main : The main application log
+- radio : Phone/radio related information
+- system : Low-level system messages (for e.g. debugging reasons) 
+
+GSM security
+------------
+
+Android use the following Global System for Mobile Communications specifications - quick facts:
+* Encryption is based on [A5/1](http://en.wikipedia.org/wiki/A5/1) ([known as vulnerable](http://cryptome.org/a51-bsw.htm) + [Security](http://en.wikipedia.org/wiki/A5/1#Security)) The key length is 128 bit
+* UMTS-Communication use [Signalling System 7](http://en.wikipedia.org/wiki/Signalling_System_No._7) (SS7) which can be bypassed via side-channel attacks
+* NSA and others are able to [crack it](http://yro.slashdot.org/story/13/12/14/0148251/nsa-able-to-crack-a51-cellphone-crypto) + [Full Story](http://www.washingtonpost.com/business/technology/by-cracking-cellphone-code-nsa-has-capacity-for-decoding-private-conversations/2013/12/13/e119b598-612f-11e3-bf45-61f69f54fc5f_story.html)
+* An [Wiki is available by SRLabs](https://opensource.srlabs.de/projects/a51-decrypt)
+* Handy-Jammer are _often_ used to block UTMS signals, so that the lower bandwith e.g. over GPRS will be used instead - because the basic station force the connectivity. After that it's possible to enable the _bull-encryption_ option. 
+* Some provider claim to use a more secure A5/3 instead of [A5/1](http://www.scard.org/gsm/a51.html) or A5/3.
+* A basic whitepaper and overview of GSM, UMTS and LTE security can be found over [here](https://eprint.iacr.org/2013/227.pdf)
+* The full specifications for all networks can be found over [here](http://www.gsma.com/technicalprojects/fraud-security/security-algorithms)
+
+
+LTE Vs. [GSM](http://www.gsmworld.com/)
+
+
+In fact the new LTE is less secure since there is no common used standard which makes it possible to get the data via e.g. Ethernet-Uplink. Some providers saying that they use a strong encryption via digital signatures, the problem is that there is no proof if they really use such security gateway (because the LTE standard does not require such gateway).
+
+:warning: Actually there is no tool/app which protects against this known weaknesses! :warning:
+
 Disable binaries
 ------------
 
@@ -183,6 +224,11 @@ Useful links
 * [Android Security - Black Hat 2011 (.pdf)](https://www.blackhat.com/docs/webcast/bhwebcast30_anderson.pdf)
 * [AUSA secure android kernel technology | GCN](http://gcn.com/Articles/2011/10/11/AUSA-secure-andriod-kernel-technology.aspx?Page=1)
 * [Security Enhancements for Android™ quick overview | selinuxproject.org](http://selinuxproject.org/page/NB_SEforAndroid_1)
+* [Validate SElinux | Source.Android.com](https://source.android.com/devices/tech/security/selinux/validate.html)
 * [HowTo: Linux Hard Disk Encryption With LUKS | cyberciti.biz](http://www.cyberciti.biz/hardware/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/)
 * [Android security maximized by Samsung KNOX (.pdf) | SamsungKnox.com](https://www.samsungknox.com/ru/system/files/whitepaper/files/Android%20security%20maximized%20by%20Samsung%20KNOX_2.pdf)
 * [Effective Android Security to build a secure Android app| GitHub](https://github.com/orhanobut/effective-android-security)
+* [A Look Inside the Android Kernel with Automated Tools by Coverity (.pdf) |Coverity.com](http://www.coverity.com/library/pdf/a-look-inside-the-android-kernel.pdf)
+* [Cellular encryption article | blog.cryptographyengineering.com](http://blog.cryptographyengineering.com/2013/05/a-few-thoughts-on-cellular-encryption.html)
+* [OpenBTS open source tool | Wikipedia.org](http://en.wikipedia.org/wiki/OpenBTS)
+* [eLinux Android category | eLinux.org Wiki](http://elinux.org/Category:Android)
