@@ -175,8 +175,19 @@ There are mostly all **for advances users**, because it need a lot of time, know
 * [SAINT](http://www.saintcorporation.com/saint/)
 * [Core Impact](http://www.coresecurity.com/content/core-impact-overview)
 
+Online/Web-server test tools/pages:
+* [Check current Webserver version | urlm.de](http://urlm.de/)
+* [SSL quality check by Qualys SSL Labs | ssllabs.com](https://www.ssllabs.com/ssltest/)
+* [SSL Mailserver check by CheckTLS | Checktls.com](http://checktls.com/perl/TestReceiver.pl)
+* [PFS Mailserver check by SSL-Tools | De.SSL-Tools.net](https://de.ssl-tools.net/mailservers)
+* [SSL analysis via Burp Proxy under Linux | portswigger.net](http://portswigger.net/burp/help/proxy.html)
+* [SSL analysis via Fiddler under Windows | Fiddler.com](http://fiddler2.com/)
+* [Heartbleed attack test page | possible.lv](http://possible.lv/tools/hb/)
+* [Another Heartbleed attack by filippo.io | filippo.io](http://filippo.io/Heartbleed/)
+* [Decrypt browser SSL (Firefox/Chrome) via SSLKEYLOGFILE | Developer.Mozilla.org](https://developer.mozilla.org/en-US/docs/NSS_Key_Log_Format)
+* [FREAK attack test page | freakattack.com](https://freakattack.com/clienttest.html)
 
-Some other free bootable LIVE CD's like Kali, Tails, Helix,[...] are Linux distributions that claiming to be more secure and hardened against the known attacks compared to other systems like on Windows (general there is no proof except there words since nobody really can compare Windows <-> Linux on a seriously way). They often already included a huge collection of scanning tools. It's always worth to keep on eye on this, since you don't even need to installing them. 
+Some other free boot able LIVE CD's like Kali, Tails, Helix,[...] are Linux distributions that claiming to be more secure and hardened against the known attacks compared to other systems like on Windows (general there is no proof except there words since nobody really can compare Windows <-> Linux on a seriously way). They often already included a huge collection of scanning tools. It's always worth to keep on eye on this, since you don't even need to installing them. 
 
 IPSec
 ------------
@@ -273,11 +284,12 @@ The core problems are always:
 Blocking generally DNS isn't possible since this is needed on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less less/more complicated and depending on your knowledge about how to change that. 
 
 There are alternatives like:
-* DNSSEC
+* DNSSEC/DANE
 * OpenDNS (or other providers which claiming to not log/censorship anything)
 * DNSCrypt / _TCPCrypt_
 * [TACK](https://lwn.net/Articles/499134/) / [HPKP](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning)
 * [Perspective](http://perspectives-project.org/) + available as [Firefox addon](http://perspectives-project.org/firefox/) - Please read the _Known Issues_ on the page before installing it!
+* 
 
 But even with such popular alternatives there are several problems, e.g. DNSSEC suffering from miscellaneous leaks mentioned over [here](http://ianix.com/pub/dnssec-outages.html) or [here](http://sockpuppet.org/blog/2015/01/15/against-dnssec/) + it [doesn't prevent MITM attacks](http://www.thoughtcrime.org/blog/ssl-and-the-future-of-authenticity/).
 
@@ -305,7 +317,9 @@ On the OS level you can:
 * Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers 4 hours is enouth.
 * Apply MacOS Tweaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_MacOS).
 * Configure Firewall as Fail-safe To Prevent Leaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
-* Generally use [secure alternatives](https://github.com/okTurtles/dnschain)
+* Generally use [secure alternatives](https://github.com/okTurtles/dnschain) + use a [online browser check](https://www.botfrei.de/en/index.html)
+* Use always the latest software to ensure possible bugs and security holes are fixed tools like sumo
+* Use a secure, user/privacy friendly search engine like DuckDuck, Disconnect or Ixquick. Even better would be an decentralized search like YaCy, FAROO or any other based on P2P/...
 
 Sometimes these messages may be false alarms. To find out, you should run a packet sniffer on your network interface. The basic command to do this is <code>tcpdump -pni eth0 'port domain'</code>.
 
