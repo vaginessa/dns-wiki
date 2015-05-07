@@ -3,7 +3,7 @@
 AFWall+ is an open source firewall user interface client focused on making it easier to work with [iptables](https://en.wikipedia.org/wiki/Iptables) on Android OS. Keep track of your mobile broadband usage and block internet access to selected apps to avoid exceeding your data usage.
 
 :warning: We are not responsible for any external content mentioned here in this Wiki! 
-[Due the mass of Chrome/Chromium security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs), this Wiki is only focused on browsing with Firefox (+ mobile), please do not ask anything how to secure or harden Chrome/Chromium or any Mod of this Browser which use the same engine! :warning:
+[Due the mass of Chrome/Chromium security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs), this Wiki is focused on browsing with Firefox/STOCK (+ mobile), please do not ask anything how to secure or harden Chrome/Chromium or any Mod of this Browser which use the same engine! :warning:
 
 Index
 -----
@@ -15,6 +15,7 @@ Index
 * [Similar solutions](#similar-solutions)
 * [A word about non-root Firewalls](#a-word-about-non-root-firewalls)
 * [Making Donations](#making-donations)
+* [Clone the Wiki](#clone-the-wiki)
 * [License](#license)
 
 Contact
@@ -188,6 +189,17 @@ Making Donations
 
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation!
 It can be done directly on [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate) or just look at [F-Droid repository](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall) for more donations options.
+
+Clone the Wiki
+-------
+
+Feel free to fork/clone our Wiki, but remember to give proper credits where it belongs. 
+
+
+Via: <code>git clone https://github.com/ukanth/afwall.wiki.git</code>.
+
+
+To stay on sync, here is an [example](https://gist.github.com/larrybotha/10650410) how to do this. An API reference can be found over [here](https://github.com/mbostock/d3/wiki/API-Reference) or on the [official Docs](https://help.github.com/).
 
 License
 -------
