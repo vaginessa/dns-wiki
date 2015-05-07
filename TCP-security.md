@@ -7,6 +7,7 @@ Index
 * [sysctl](#sysctl)
 * [IP Rules](#ip-rules)
 * [Security testing tools](#security-testing-tools)
+* [Protocols](#protocols)
 * [IPSec](#ipset)
 * [Tcpcrypt](#tcpcrypt)
 * [DNS](#dns)
@@ -237,6 +238,139 @@ Online/Web-server test tools/pages:
 
 Some other free boot able LIVE CD's like Kali, Tails, Helix,[...] are Linux distributions that claiming to be more secure and hardened against the known attacks compared to other systems like on Windows (general there is no proof except there words since nobody really can compare Windows <-> Linux on a seriously way). They often already included a huge collection of scanning tools. It's always worth to keep on eye on this, since you don't even need to installing them. 
 
+Protocols
+---------
+
+Here is a quick list showing the important protocols and their status.
+
+| Protocol | Status | Link |
+| :--:| :--: | :--: | 
+| HTTP/1.1 | insecure| [RFC 2616](http://www.ietf.org/rfc/rfc2616.txt) / [RFC 2068](http://tools.ietf.org/html/rfc2068) |
+| HTTP/2| secure? | [NO! RFC yet](https://tools.ietf.org/html/draft-ietf-httpbis-http2-17) + [this](https://http2.github.io/http2-spec/) |
+| SSL 3.0 | insecure | [RFC 6101](https://tools.ietf.org/html/rfc6101) |
+| TLS 1.0 | insecure| [RFC 2246](http://www.ietf.org/rfc/rfc2246.txt) |
+| TLS 1.1 | insecure | [RFC 4346](http://www.ietf.org/rfc/rfc4346.txt) |
+| TLS 1.2 | secure | [RFC 5246](http://www.ietf.org/rfc/rfc5246.txt) |
+| SPDY | secure? (alternative for HTTP/1.1 | [Framing layer + RFC 2616](https://tools.ietf.org/html/draft-mbelshe-httpbis-spdy-00) |
+| SSH | _possible insecure_ | [RFC 4253](https://tools.ietf.org/html/rfc4253) |
+| IPSec | _possible insecure_ (Bullrun) | [RFC 4301](https://tools.ietf.org/html/rfc4301) and the old [RFC 2401](https://www.ietf.org/rfc/rfc2401.txt) |
+
+
+TLS Handshake example
+```bash
+Client                                             Server
+
+ClientHello                -------->
+                                              ServerHello
+                                              Certificate
+                                        ServerKeyExchange
+                           <--------      ServerHelloDone
+ClientKeyExchange
+ChangeCipherSpec
+Finished                   -------->
+                                         ChangeCipherSpec
+                           <--------             Finished
+Application Data           <------->     Application Data
+```
+
+TLS Handshake with Proxy example
+```bash
+Client                   Proxy                    Server
+
+ClientHello        -->  ------>   -->
+                   <--  <------   <--        ServerHello
+                          /--     <--        Certificate
+                          |
+                   verify(certificate)
+                          |
+                   <--  --/
+                   <--  <-----    <--   ServerKeyExchange
+                   <--  <-----    <--     ServerHelloDone
+ClientKeyExchange
+ChangeCipherSpec
+Finished           -->  ----->    -->
+                                         ChangeCipherSpec
+                   <--  <-----    <--            Finished
+Application Data   <->  <---->    <->    Application Data
+```
+
+TLS CAs Theories:
+* Root Certification Authority (CA) are based on trust, they promising to e.g. protect against MITM attacks and offering authentications 
+* All Browsers and OS by default trust over 100+ organizations, see [here](https://www.eff.org/observatory) and a detailed map is available as .pdf over [here](https://www.eff.org/files/colour_map_of_CAs.pdf)
+* If one CA is compromised you get a huge problem since it have access to everything
+* 
+
+
+
+Addons for Firefox which claim to fix the situation:
+* [Perspective](http://perspectives-project.org/) - [Firefox addon](http://perspectives-project.org/firefox/) - Please read the _Known Issues_ on the page before installing it!
+* [Convergence[(http://convergence.io/) - [Firefox addon](http://convergence.io/releases/firefox/convergence-current.xpi) or as forked _improved_ version over [here](https://github.com/mk-fg/convergence)
+* [Certificate Patrol](http://patrol.psyced.org/) - [Firefox addon](https://addons.mozilla.org/de/firefox/addon/certificate-patrol/) or as alternative [Dane Patrol](https://github.com/hiviah/DanePatrol)
+
+
+Perspectives:
+* Use/search for alternatives auths via PKI
+* It's based on _trust on first use_ principle (TOFU)
+* Use an SSH trust model
+* Unknown keys must be accepted manually by the user
+* Keys/Host pairs are cached which doesn't need any interaction (like other addons)
+* With every new key the user needs to apply/agree it again 
+* Possible MITM - because first use (if it's not from the beginning installed you may already trust a MITM)
+* A lot of manual interaction and it's not easy for beginners to see what's secure and what's not
+* Compromised Notary-Server is not as bad as a compromised CA
+* You can set-up your own Notary-Server, see [here](http://perspectives-project.org/get-involved/)
+* [Video](https://www.youtube.com/watch?v=Z7Wl2FW2TcA) _BlackHat USA 2011: SSL And The Future Of Authenticity_ 
+
+
+Convergence:
+* Claims to replace completely usage of any external CA
+* Personally I would not use this - because it communicate with an external source 
+* Based on the _Perspectives_ idea
+* Notary are not only limit to certificates, which makes it possible to allow DNSSEC, Content,...
+* Notary can interact like a proxy
+* User can choose what he trust and what not - _Trust Agility_
+* It installs a local CA 
+* Unknown (Port, Host names, certificates) are verified by Notary
+* Local CA sig. + Cache 
+* Browser only see certificates that are marked as trusted by your own local CA 
+* [Notary-Protocol explained](https://github.com/moxie0/Convergence/wiki/Notary-Protocol)
+* API problem which means it only works on Firefox - a port to other systems is not _easily_ possible
+
+
+Certificate Patrol / Dane Patrol (or RequestPolicy):
+* Certificate Patrol only monitors certificates that have already been accepted by the browser
+* Tools like CertPatrol constantly watching for certificate changes by the browser, depending on what was changed you get different warnings
+* MITM is still possible because _Trust on first usage_ 
+* Possible annoying due the huge effort which is needed to take control over the CAs since e.g. Google and other big ones have different certificates on different servers on their own network - In fact you often gets routed to a different one 
+* Tor Browser Bundle have problems with it and [it's not needed](https://trac.torproject.org/projects/tor/ticket/4064) since it use HTTPS-everywhere observatory 
+* Reject the certificate during the handshake of SSL/TLS through POST is a problem especially on banking sites, e.g. if a bank main site is under test.com and the login is posted to anotherpage.com.
+* IDN domains are not supported?!
+* Possible no autoupdate function (RequestPolicy does offer such function)
+* HTTPS-Everywhere works with Cert Patrol / Dane Patrol / RequestPolicy (but it's not necessary)
+
+
+On Firefox:
+```bash
+security.OCSP.enabled;0 or Options-> Advanced -> Certificates -> uncheck -> Query OSCP responder servers to confirm the current validity of certificates
+```
+
+Tor Browser Bundle / Orbot:
+* Just read the note about Tor and addons, [here](https://www.torproject.org/docs/faq.html.en#TBBOtherExtensions) - or just [visit the Tor Forum](https://tor.stackexchange.com/) to talk about the necessary.
+
+
+
+An fantastic article about the Certificates and Public Key pinning is available at [OWASP](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning) - for certificate transparency information take a ride over [here](http://www.certificate-transparency.org/). Mozilla itself also have special programs and a huge [overview](https://wiki.mozilla.org/CA:Overview) how they handle the policy and included CAs. 
+
+An article which explains a _Life without a CA_ is available over the official [torproject blog](https://blog.torproject.org/blog/life-without-ca) - [but this doesn't solve all the problems and possible attacks](http://newschoolsecurity.com/2010/03/life-without-certificate-authorities/).
+
+Other _solutions_:
+* DNS Certification Authority Authorization ([CAA](http://tools.ietf.org/html/draft-hallambaker-donotissue-03))
+* [DANE](https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities)
+* [HASTLS](http://tools.ietf.org/html/draft-hoffman-server-has-tls-04)
+* [The Monkeysphere Project](http://web.monkeysphere.info/)
+* Use alternatives to [Public Key Pinning Exstention](https://tools.ietf.org/html/draft-ietf-websec-key-pinning-21) or just alternatives like [Track](http://tack.io/)
+
+
 IPSec
 ------------
 
@@ -322,7 +456,7 @@ Please [see here for an example configuration](https://github.com/scslab/tcpcryp
 DNS
 ------------
 
-DNS is known as  not secure anymore for several reasons. Like most "secure" communications protocols, it is susceptible to undetectable public-key substitution MITM-attacks an populate examples was the [Apple iMessages security problem](https://www.taoeffect.com/blog/2014/11/update-on-imessages-security/). 
+DNS is known as not secure anymore for several reasons. Like most "secure" communications protocols, it is susceptible to undetectable public-key substitution MITM-attacks an populate examples was the [Apple iMessages security problem](https://www.taoeffect.com/blog/2014/11/update-on-imessages-security/). 
 
 The main problem is the protocol insecurity by [DNS](https://en.wikipedia.org/wiki/Domain_Name_System) and [X.509](https://en.wikipedia.org/wiki/X.509). See also [Certificate Transparency](https://blog.okturtles.com/2015/03/certificate-transparency-on-blockchains/).
 
@@ -332,17 +466,16 @@ The core problems are always:
 * [Domain theft's](https://www.techdirt.com/articles/20141006/02561228743/5000-domains-seized-based-sealed-court-filing-confused-domain-owners-have-no-idea-why.shtml) ("seizures")
 * Certificate revocation
 * DOS (Denial-Of-Service) attacks
+* Logging 
 
 Blocking generally DNS isn't possible since this is needed on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less less/more complicated and depending on your knowledge about how to change that. 
 
 There are alternatives like:
+* Choosing a log free DNS resolver e.g [OpenNIC](https://www.opennicproject.org/)
 * DNSSEC/DANE
 * OpenDNS (or other providers which claiming to not log/censorship anything)
 * DNSCrypt / _TCPCrypt_
 * [TACK](https://lwn.net/Articles/499134/) / [HPKP](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning)
-* [Perspective](http://perspectives-project.org/) available as [Firefox addon](http://perspectives-project.org/firefox/) - Please read the _Known Issues_ on the page before installing it!
-* [Convergence[(http://convergence.io/) available as [Firefox addon](http://convergence.io/releases/firefox/convergence-current.xpi) or as forked _improved_ version over [here](https://github.com/mk-fg/convergence)
-* [Certificate Patrol](http://patrol.psyced.org/) available as [Firefox addon](https://addons.mozilla.org/de/firefox/addon/certificate-patrol/)
 
 But even with such popular alternatives there are several problems, e.g. DNSSEC suffering from miscellaneous leaks mentioned over [here](http://ianix.com/pub/dnssec-outages.html) or [here](http://sockpuppet.org/blog/2015/01/15/against-dnssec/) + it [doesn't prevent MITM attacks](http://www.thoughtcrime.org/blog/ssl-and-the-future-of-authenticity/).
 
@@ -373,6 +506,10 @@ On the OS level you can:
 * Generally use [secure alternatives](https://github.com/okTurtles/dnschain) + use a [online browser check](https://www.botfrei.de/en/index.html)
 * Use always the latest software to ensure possible bugs and security holes are fixed tools like sumo
 * Use a secure, user/privacy friendly search engine like DuckDuck, Disconnect or Ixquick. Even better would be an decentralized search like YaCy, FAROO or any other based on P2P/...
+* Verify no external addons/software/app leaks something
+
+On Tor your can:
+* Read the _Advanced Tor usage_ FAQ section, the two important ones are [this](https://www.torproject.org/docs/faq.html.en#WarningsAboutSOCKSandDNSInformationLeaks) and [this](https://www.torproject.org/docs/faq.html.en#SocksAndDNS)
 
 Sometimes these messages may be false alarms. To find out, you should run a packet sniffer on your network interface. The basic command to do this is <code>tcpdump -pni eth0 'port domain'</code>.
 
@@ -442,3 +579,8 @@ External Links
 * [privacytools.io | privacytools.io](https://www.privacytools.io/)
 * [Firefox list of TCP ports open on 127.0.0.1 (HTML5 based) | AndLabs.orp Port-Scanner](http://www.andlabs.org/tools/jsrecon.html)
 * [Sam Bowne and Students about SSL MITM holes on Android | SamClass.info](https://samsclass.info/128/proj/popular-ssl.htm)
+* [Google Analytics Opt-out Browser Add-on | Tools.google.com](http://tools.google.com/dlpage/gaoptout)
+* ["Google Analytics Opt Out? Not really." | Unrest.ca](http://www.unrest.ca/Net-Neutrality-and-The-Internet/google-analytics-opt-out-not-really)
+* [Google Analytics talk | AdBlockPlus.org](https://adblockplus.org/forum/viewtopic.php?p=27886#p27886)
+* [Detecting Certificate Authority compromises and web browser collusion | TorProject Blog.org](https://blog.torproject.org/blog/detecting-certificate-authority-compromises-and-web-browser-collusion)
+* [Tutorials by the hidden wiki | TheHiddenWiki](https://ev3h5yxkjz4hin75.torstorm.org/wiki/index.php/Tutorials)
