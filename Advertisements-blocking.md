@@ -1,7 +1,13 @@
 **Please do not send any email/ask here on GitHub how to block the Android advertisements!** 
 
 
-It's mentioned in our official FAQ that AFWall+ or iptables itself _wasn't designed to blocking ads_, yes iptables can block it - but there is no fine control/GUI/filter for it - to really monitor and take control for each new single http/ip request. Google official decided to remove all Adblockers from the Google Play Store for [several reasons](https://adblockplus.org/blog/adblock-plus-for-android-removed-from-google-play-store) - same like any app that may need to change the SELinux policy which are against there terms - which overall means there is no official support!
+It's mentioned in our official FAQ that AFWall+ or iptables itself _wasn't designed to blocking ads_, yes iptables can block it - but there is no fine control/GUI/filter for it - to really monitor and take control for each new single HTTP(s)/IP/GET/.. request. 
+
+
+Google official decided to remove all Adblockers from the Google Play Store for [several reasons](https://adblockplus.org/blog/adblock-plus-for-android-removed-from-google-play-store) - same like any app that may need to change the SELinux policy to get working, which are against there own Play Store terms - which overall means ad-blocking on Android doesn't exists _official_.
+
+
+But since blocking ads is our good right the following apps solutions still makes it possible to block most stuff we need. 
 
 
 We have several ad-blocking techniques:
@@ -40,4 +46,7 @@ _XPosed based_:
 
 _To answer the question which is the best one_?
 
-It's depending on user needs, if you want to support app developers which promiting there stuff via in-app ads - but you hate browser web ads, feel free to start with uBlock. If you want to block everything, just use an HOSTS based solution. If you really want to block everything AND fine control per-site ads just use AdAway and NoScript + uBlock/uMatrix. 
+It's depending on user needs:
+* If you want to support app developers which promoting there stuff via in-app ads - but you hate browser web ads, feel free to start with uBlock. 
+* If you want to block everything, just use an HOSTS based solution. 
+* If you really entirely block everything AND fine control per-site ads just use AdAway and NoScript + uBlock/uMatrix which also makes it quite easy for use to work with black-/whitelists (Useful if you like to support you favorite website - e.g. like GitHub).
