@@ -13,7 +13,6 @@ Index
 * [Installation](#installation)
 * [Important Information](#important-information)
 * [Similar solutions](#similar-solutions)
-* [Blocking advertisements](#blocking-advertisements)
 * [A word about non-root Firewalls](#a-word-about-non-root-firewalls)
 * [Making Donations](#making-donations)
 * [Clone the Wiki](#clone-the-wiki)
@@ -74,9 +73,10 @@ Want compile AFWall+ yourself?
 * [[All you need to know about compiling busybox|HOWTO Compiling busybox]]
 * [[All you need to know about compiling iptables|HOWTO Compiling iptable]]
 
-Some useful things:
+Some useful stuff:
 * [[WhatsApp blocking|HOWTO blocking WhatsApp]]
 * [[Orwall and AFWall+|HOWTO OrWall together with AFWall+]]
+* [[Advertisements blocking]]
 
 **(Optional and not 100% AFWall+ specific)**
 
@@ -132,45 +132,6 @@ _Real-time iptables logging:_
 
 _Internet Diagnostic Tool_:
 * [Network Monitor](http://fossdroid.com/a/network-monitor.html)
-
-
-Blocking advertisements
----------------------
-
-**Please do not send any email/ask here on GitHub how to block the Android advertisements!** It's mentioned in the official FAQ that AFWall+ or iptables itself _isn't designed to block ads_, yes iptables can block ads - but there is no fine control/GUI/filter for it to really monitor and take control for each new single request. Google decided to remove all Adblockers from the Google Play Store for [several reasons](https://adblockplus.org/blog/adblock-plus-for-android-removed-from-google-play-store) - which means official there is no support!
-
-There are several ad-blocking techniques:
-- via iptables (which truly works on everything VPN/Proxy,...)
-- via [HOSTS](http://en.wikipedia.org/wiki/Hosts_%28file%29) (most solutions) - also [can be edited manually without any apps](http://www.techrepublic.com/article/edit-your-rooted-android-hosts-file-to-block-ad-servers/)
-- a mix: Hosts + iptables (which often creates a local proxy/vpn tunnel)
-- Xposed based (nothing special, HOSTS file too)
-- Browser based (works only in the browser and not blocks app/in-app ads - they mostly combine a cached hosts + a filter engine e.g. pattern-based to fine control ads per site basis)
-
-
-Iptables:
-* This is only for expert users.
-
-
-Browser based Firefox (mobile) addons:
-* [uBlock](https://github.com/gorhill/uBlock/releases) also called [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/) which use a browser HOSTS + a pattern-based filtering engine (similar to NoScript / RequestsPolicy/Policeman ones)
-* [uMatrix](https://github.com/gorhill/uMatrix/releases) - [the difference](https://github.com/gorhill/uMatrix/issues/32) here is that it really can control everything and should be used by advanced users which really want to control every request.
-* AdBlock Edge (a fork of AdBlock Plus) are [discontinued](http://www.ghacks.net/2015/04/13/popular-adblock-plus-fork-adblock-edge-to-be-discontinued/)
-
-
-Mixed ones (which are designed to work on Android + Browser):
-* [AdGuard](http://adguard.com/en/adguard-android/overview.html) - free version available but the important ones need a _Premium license_
-
-
-Hosts only:
-* [AdBlock Plus](https://adblockplus.org/de/android-install)
-* [AdAway](https://f-droid.org/repository/browse/?fdid=org.adaway) - should be preferred by root users, since AdBlock Plus have some limitations on Android (proxy/vpn ones)
-
-
-XPosed based:
-* [UnbelovedHosts](http://unbelovedhosts.apk.defim.de/) more or less the same as AdBlock Plus and others, but is an Xposed module which updates/manage the internal HOSTS file
-
-
-_To answer the question which is the best one?_ It's depending on user needs, if you want to support app developers but hate web ads, feel free to start with uBlock. If you want to block everything, just use an HOSTS based solution. If you really want to block everything AND fine control per-site ads just use AdAway and NoScript + uBlock/uMatrix. 
 
 
 A word about non-root Firewalls
