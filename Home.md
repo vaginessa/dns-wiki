@@ -1,6 +1,8 @@
 ## Welcome to the AFWall+ Wiki!
 
-AFWall+ is an open source firewall user interface client focused on making it easier to work with [iptables](https://en.wikipedia.org/wiki/Iptables) on Android OS. Keep track of your mobile broadband usage and block internet access to selected apps to avoid exceeding your data usage.
+AFWall+ is an Android open source firewall user interface client focused on making it easier to work with [iptables](https://en.wikipedia.org/wiki/Iptables). Keep track of your mobile broadband usage and block internet access to selected apps to avoid exceeding your data usage.
+
+:exclamation: Before you ask anything please take a look first into our official [[FAQ]]. A general discussion platform can be found [here on XDA](http://forum.xda-developers.com/showthread.php?t=1957231). Use our GitHub platform only for issue reports, [see here how-to do this](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug) or pull requests. :exclamation: 
 
 :warning: We are not responsible for any external content mentioned here in this Wiki! 
 [Due the mass of Chrome/Chromium security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs), this Wiki is focused on browsing with Firefox/STOCK (+ mobile), please do not ask anything how to secure or harden Chrome/Chromium or any Mod of this Browser which use the same engine! :warning:
@@ -12,10 +14,9 @@ Index
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Important Information](#important-information)
-* [Similar solutions](#similar-solutions)
-* [A word about non-root Firewalls](#a-word-about-non-root-firewalls)
+* [Similar firewall solutions](#similar-firewall-solutions)
 * [Making Donations](#making-donations)
-* [Clone the Wiki](#clone-the-wiki)
+* [Cloning our Wiki](#cloning-our-wiki)
 * [License](#license)
 
 Contact and contributors
@@ -40,9 +41,7 @@ AFWall+ need this to run at his best:
 Installation
 -------------
 
-A general discussion platform can be found [here on XDA](http://forum.xda-developers.com/showthread.php?t=1957231). Use the GitHub platform only for issue reports, [see here how-to do this](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug). 
-
-* Temporarily enable "Unknown sources" in your settings if it's disabled.
+* If you not installed AFWall+ from the official locations like F-Droid or Google Play Store you may need to temporarily enable "Unknown sources" in your settings if it's disabled.
 * Make a backup (if needed) - it will be saved under <code>/sdcard0/afwall/</code>
 * Download the latest release from [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall), [GitHub](https://github.com/ukanth/afwall/releases) or [F-Droid](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall).
 * Delete any previous version of the AFWall+ app, an upgrade from an existent installation is also possible.
@@ -89,58 +88,11 @@ Kernel Security under Linux:
 Phone "cheats":
 * [[Phone codes secrets]] contain some useful codes for viewing e.g. MAC address.
 
-Similar solutions
+Similar firewall solutions
 -----------------
 
-Generally there are five categories of Android Firewalls:
-* Firewalls which uses a _local VPN_ for traffic filtering (Dr. Web Anti-Virus,[...])
-* Firewalls which use a _separate own VPN_ (Android doesn't allow to use two VPNs together the same time) like Opera Max for compressing the traffic (if it's enabled the firewall may not work)
-* Firewalls which using _iptables_, like AFWall+, Droidwall, Avast, Comodo,[...]
-* Firewalls which using a _local HTTP proxy_ (or integrate it in Android's VPN) like AdAway, AdGuard,...
-* Browser or app related firewalls, like NoScript, Bluetooth Firewalls and such, which basically only blocking specific functions and not the traffic itself.
+An quick overview of other Android firewalls and a short explanation how they're working is explained over our [[Similar Firewall solutions]] page. 
 
-_IPTables based:_
-* _Builtin_ Linux iptables (no GUI, but it can be controlled via scripts/Terminal/ADB)
-* [Android Firewall](https://play.google.com/store/apps/details?id=com.jtschohl.androidfirewall) & [Source](https://github.com/skullone/android_firewall) [removed from Google Play Store!]
-* [3C Toolbox aka Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
-* ~~[DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free)~~ _deprecated_ 
-* [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
-* [LBE Privacy Master](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
-
-_Anti IMSI-Catcher (protects against IMSI/StingRay-Catchers and Silent/Stealth SMS):_
-* [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/)
-
-_Bluetooth Firewall:_
-* [Bluetooth Firewall](https://play.google.com/store/apps/details?id=com.fruitmobile.android.bluetooth.firewall)
-
-_Browser based Firewall (takes control over JavaScript,...):_
-* [Firefox NSA NoScript Anywhere](https://noscript.net/nsa/#download)
-
-_VPN/Proxy based:_
-* [LostNet Firewall](https://play.google.com/store/apps/details?id=com.lostnet.fw.pro)
-* [Grey Shirts NoRoot Firewall](https://play.google.com/store/apps/details?id=app.greyshirts.firewall)
-* Dr. Web AntiVirus + Firewall
-* Kaspersky Internet Security
-* ...
-
-_[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:_
-* [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
-* [PeerBlock](https://play.google.com/store/apps/details?id=com.peerblock) & [Source](https://apeerblock.codeplex.com/) + [trusted blocklist's](http://list.iblocklist.com)
-
-_Real-time iptables logging:_
-* [Network Log](https://play.google.com/store/apps/details?id=com.googlecode.networklog&hl=en)
-
-_Internet Diagnostic Tool_:
-* [Network Monitor](http://fossdroid.com/a/network-monitor.html)
-
-
-A word about non-root Firewalls
----------------------
-
-All of these firewalls working with a local Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with iptables like AFWall+. They only work on a app-layer size which _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest problem is that such VPN services not work with WiFi tethering or WiFi hotspots. And another con is that you can't run other VPN services and VPN/Proxy's apps at the same time together. 
-
-We not suggest to use any no-root firewall for above reasons and others, e.g. see [an German article](http://www.kuketz-blog.de/android-firewall-ohne-root-%E2%80%A2-noroot-firewall/):
-* NetSpark/Mobiwol [NoRoot](https://play.google.com/store/apps/details?id=com.netspark.firewall&hl=en)
 
 Making Donations
 -------
@@ -148,7 +100,7 @@ Making Donations
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation!
 It can be done directly on [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate) or just look at [F-Droid repository](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall) for more donations options.
 
-Clone the Wiki
+Cloning our Wiki
 -------
 
 Feel free to fork/clone our Wiki, but remember to give proper credits where it belongs. 
