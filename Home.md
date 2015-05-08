@@ -1,11 +1,11 @@
 ## Welcome to the AFWall+ Wiki!
 
-AFWall+ is an Android open source firewall user interface client focused on making it easier to work with [iptables](https://en.wikipedia.org/wiki/Iptables). Keep track of your mobile broadband usage and block internet access to selected apps to avoid exceeding your data usage.
+AFWall+ is an Android open source firewall user interface client focused on making it easier to work with [iptables](https://en.wikipedia.org/wiki/Iptables). It keep track of your mobile broadband usage and can block internet access to selected apps to avoid exceeding your data usage.
 
-:exclamation: Before you ask anything please take a look first into our official [[FAQ]]. A general discussion platform can be found [here on XDA](http://forum.xda-developers.com/showthread.php?t=1957231). Use our GitHub platform only for issue reports, [see here how-to do this](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug) or pull requests. :exclamation: 
+:exclamation: Before you ask anything please take a look first into our official [[FAQ]]. A general discussion platform can be found [here on XDA](http://forum.xda-developers.com/showthread.php?t=1957231). Use our GitHub platform only for issue reports, [see here how-to do this](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug) or [pull requests](https://github.com/ukanth/afwall/pulls). :exclamation: 
 
 :warning: We are not responsible for any external content mentioned here in this Wiki! 
-[Due the mass of Chrome/Chromium security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs), this Wiki is focused on browsing with Firefox/STOCK (+ mobile), please do not ask anything how to secure or harden Chrome/Chromium or any Mod of this Browser which use the same engine! :warning:
+[Due the mass of Chrome/Chromium security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs), this Wiki is focused on browsing with Firefox mobile, please do not ask anything how to secure or harden Chrome/Chromium or any mod of this Browser which use the same engine! :warning:
 
 Index
 -----
@@ -25,7 +25,7 @@ Contact and contributors
 Thanks to all who have contributed to the AFWall+ project!
 
  
-Additional thanks and contact options goes out to our top contributors & developers, listed over [[here|Contributors]]. 
+Additional thanks goes out to our top contributors & developers, listed over [[here|Contributors]]. 
 
 Requirements
 -------------
@@ -41,24 +41,23 @@ AFWall+ need this to run at his best:
 Installation
 -------------
 
-* If you not installed AFWall+ from the official locations like F-Droid or Google Play Store you may need to temporarily enable "Unknown sources" in your settings if it's disabled.
-* Make a backup (if needed) - it will be saved under <code>/sdcard0/afwall/</code>
+* If you've not installed AFWall+ from the official stores like F-Droid or Google Play Store you may need to temporarily enable "Unknown sources" in your settings if that's disabled.
+* Make a current settings backup (optional) - it will be saved under <code>/sdcard0/afwall/</code>
 * Download the latest release from [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall), [GitHub](https://github.com/ukanth/afwall/releases) or [F-Droid](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall).
 * Delete any previous version of the AFWall+ app, an upgrade from an existent installation is also possible.
 * Delete/Restore any remnant application/setting(s) directory from <code>/sdcard0/afwall/</code> or similar.
-* Install the newest version.
-* Restore the backup.
+* Install the latest available version.
+* Restore your settings backup.
 
 Enjoy and profit. Contribute to the project with pull requests!
 
 Important Information
 ---------------------
 
-:exclamation: Before you ask anything please take a look first into our [[FAQ]]. :exclamation:
-
-* [Changelog](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each version of AFWall+.
+* Our official [[FAQ]] helps to solve the most known problems and questions.
+* [Changelog](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each new version of AFWall+.
 * [[CustomScripts]] contains the beginnings of a user manual. Some questions about working with iptables might be answered here, it also contains some predefined scripts you can use (Copy into a .txt file, rename .txt extension to .sh).
-* [[Apps leak user privacy data during boot]] contains background information about the 'Data leak' during boot.
+* [[Apps leak user privacy data during boot]] contains background information about how to solve the 'Data leakage' during boot problem.
 * [[Android kernel traffic]] contains background information about the Android OS & Kernel generated traffic.
 
 Got an error message?
@@ -72,12 +71,13 @@ Want compile AFWall+ yourself?
 * [[All you need to know about compiling busybox|HOWTO Compiling busybox]]
 * [[All you need to know about compiling iptables|HOWTO Compiling iptable]]
 
-Some useful stuff:
+Some useful tricks:
 * [[WhatsApp blocking|HOWTO blocking WhatsApp]]
 * [[Orwall and AFWall+|HOWTO OrWall together with AFWall+]]
 * [[Advertisements blocking]]
 
-**(Optional and not 100% AFWall+ specific)**
+
+**(Optional and not only AFWall+ specific)**
 
 TCP security under Linux:
 * [[TCP security]] may help to protect you against some known attacks.
@@ -85,13 +85,13 @@ TCP security under Linux:
 Kernel Security under Linux:
 * [[Kernel security]] hardening the Kernel to maximum security (POC + WIP).
 
-Phone "cheats":
+Phone code "cheats":
 * [[Phone codes secrets]] contain some useful codes for viewing e.g. MAC address.
 
 Similar firewall solutions
 -----------------
 
-An quick overview of other Android firewalls and a short explanation how they're working is explained over our [[Similar Firewall solutions]] page. 
+A quick overview of other Android firewalls and a short explanation how they're working is explained over our [[Similar Firewall solutions]] page. 
 
 
 Making Donations
