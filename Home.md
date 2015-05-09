@@ -1,8 +1,8 @@
 ## Welcome to the AFWall+ Wiki!
 
-AFWall+ is an Android open source firewall user interface client focused on making it easier to work with [iptables](https://en.wikipedia.org/wiki/Iptables). It keep track of your mobile broadband usage and can block internet access to selected apps to avoid exceeding your data usage.
+AFWall+ is an Android open source firewall client, focused on making it easier to work with [iptables](https://en.wikipedia.org/wiki/Iptables). It keeps track of your mobile broadband usage and can block internet access to selected apps to avoid exceeding your data usage.
 
-:exclamation: Before you ask anything please take a look first into our official [[FAQ]]. A general discussion platform can be found [here on XDA](http://forum.xda-developers.com/showthread.php?t=1957231). Use our GitHub platform only for issue reports, [see here how-to do this](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug) or [pull requests](https://github.com/ukanth/afwall/pulls). :exclamation: 
+:exclamation: Before you ask anything please take a look first into our official [[FAQ]]. A general discussion platform can be found [here on XDA-Developers](http://forum.xda-developers.com/showthread.php?t=1957231). Use our GitHub platform only for [issue reports](https://github.com/ukanth/afwall/issues), [see here how-to do this](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug) - or [pull requests](https://github.com/ukanth/afwall/pulls). :exclamation: 
 
 :warning: We are not responsible for any external content mentioned here in this Wiki! 
 [Due the mass of Chrome/Chromium security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs), this Wiki is focused on browsing with Firefox mobile, please do not ask anything how to secure or harden Chrome/Chromium or any mod of this Browser which use the same engine! :warning:
@@ -35,8 +35,8 @@ AFWall+ need this to run at his best:
 - An Android OS device with at least the 4.0 (ICS/API level 14, NDK 10) or a higher version.
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
-- The Kernel/ROM must have [[init.d support|init.d]] (for external custom script and data leakage fix)!
-- The Kernel must have NETFILTER/CONFIG_NETFILTER enabled (<code>adb pull /proc/config.gz</code> - Once you unzip it, you can search for e.g. _NETFILTER_). AFWall+ normally check it automatically if your Kernel does have support for it or not.
+- The Kernel/ROM _must have_ [[init.d support|init.d]] (for external custom script and data leakage fix)!
+- The Kernel _must have_ NETFILTER/CONFIG_NETFILTER enabled (<code>adb pull /proc/config.gz</code> - Once you unzip it, you can search for e.g. _NETFILTER_). AFWall+ normally check's it automatically if your Kernel does have support for it or not.
 
 Installation
 -------------
@@ -54,9 +54,12 @@ Enjoy and profit. Contribute to the project with pull requests!
 Important Information
 ---------------------
 
+Before you submit any issue report via the integrated AFWall+ option - or here on our GitHub page, you maybe first read the following stuff which may solve already solve your problems or questions.
+
 * Our official [[FAQ]] helps to solve the most known problems and questions.
+* Our [official issue tracker](https://github.com/ukanth/afwall/issues) here on GitHub, please always make a search before you open another ticket.
 * [Changelog](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each new version of AFWall+.
-* [[CustomScripts]] contains the beginnings of a user manual. Some questions about working with iptables might be answered here, it also contains some predefined scripts you can use (Copy into a .txt file, rename .txt extension to .sh).
+* [[CustomScripts]] for advanced users only. Some questions about working with iptables scripts might be answered over there, it also contains some predefined scripts templates and examples you can use.
 * [[Apps leak user privacy data during boot]] contains background information about how to solve the 'Data leakage' during boot problem.
 * [[Android kernel traffic]] contains background information about the Android OS & Kernel generated traffic.
 
