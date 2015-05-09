@@ -1,4 +1,4 @@
-**Please do not send any email or ask here on GitHub how to block the Android advertisements!** 
+:exclamation: **Please do not send any email or ask here on GitHub how to block the Android advertisements!** :exclamation: 
 
 Index
 ---------
@@ -8,8 +8,8 @@ Index
 * [Ad-blocking techniques and tools](#ad-blocking-techniques-an-tools)
 * [Example lists](#example-lists)
 * [The best solution?](#the-best-solution)
-* [Does I need Ghostery?(#does-i-need-ghostery)
-* 
+* [Does I need Ghostery?](#does-i-need-ghostery)
+* [Final words](#final-words)
 
 Overview
 ---------
@@ -183,3 +183,11 @@ General it's smart to use as less as possible addons/extensions/tools because to
 * More extensions/addons means it's easier to track you due the risk of e.g. [mime type detection](https://developer.mozilla.org/en-US/docs/How_Mozilla_determines_MIME_Types), fingerprinting or possible data leaks which ends up with less privacy (e.g. [Ghost Rank](http://lifehacker.com/ad-blocking-extension-ghostery-actually-sells-data-to-a-514417864) which must be disabled [FAQ](https://www.ghostery.com/en/faq#q5-general)).
 * Browser addons like uBlock/uMatrix use there own pattern/filter/logging systems (and other stuff) to monitor all browser/ads requests, Disconnect/Ghostery doesn't have such filter/monitor features since it only merge there own lists. You're able to see a lot of more _behind the scene_ stuff with such addons. 
 * _Open source project's should be preferred_ since it's very easy to making pull requests or submit feedback (I'm not saying it's impossible for closed source projects to also do that but it's possible harder because not all company's like to communicate with you) - and of course to see the source code -> to understand what the tools/apps/addons/extensions really does in the background.
+
+Final words
+---------
+
+Don't believe in myths that more tools and blocking always ends up with more privacy or less problems, the hole grail should be to use as less as possible addons + as less filtering as possible which does block stuff you hate or possible compromise you're security. In fact more from everything always means that you need more time to manage it to stay secure and up-2-date. If you really want to hear my _recommendation_ (I normally not often give one) is that for a normal root user AdAway (to not manually update Android's hosts) + uBlock (for the Browser) should be enouth handle all above given reasons. 
+
+
+_ Final version 09.05.2015_
