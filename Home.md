@@ -5,7 +5,7 @@ AFWall+ is an Android open source firewall client, focused on making it easier t
 :exclamation: Before you ask anything please take a look first into our official [[FAQ]]. A general discussion platform can be found [here on XDA-Developers](http://forum.xda-developers.com/showthread.php?t=1957231). Use our GitHub platform only for [issue reports](https://github.com/ukanth/afwall/issues), [see here how-to do this](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug) - or [pull requests](https://github.com/ukanth/afwall/pulls). :exclamation: 
 
 :warning: We are not responsible for any external content mentioned here in this Wiki! 
-[Due the mass of Chrome/Chromium security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs), this Wiki is focused on browsing with Firefox mobile, please do not ask anything how to secure or harden Chrome/Chromium or any mod of this Browser which use the same engine! :warning:
+[Due the mass of Chrome/Chromium security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs) read also [this](https://blog.torproject.org/blog/isec-partners-conducts-tor-browser-hardening-study) and [this](https://blog.torproject.org/blog/google-chrome-incognito-mode-tor-and-fingerprinting), our Wiki is focused on browsing with Firefox (mobile), please do not ask anything how to secure/harden Chrome/Chromium or any mod of this Browser which use the same engine. Thanks! :warning:
 
 Index
 -----
@@ -32,7 +32,8 @@ Requirements
 
 AFWall+ need this to run at his best:
 
-- An Android OS device with at least the 4.0 (ICS/API level 14, NDK 10) or a higher version.
+- Without Windows or iOS. :laughing: 
+- The Android OS device with at least a 4.0 (ICS/API level 14, NDK 10) or higher version.
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
 - The Kernel/ROM _must have_ [[init.d support|init.d]] (for external custom script and data leakage fix)!
