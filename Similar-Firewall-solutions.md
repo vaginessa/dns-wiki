@@ -8,12 +8,13 @@ Index
 Similar Android Firewall solutions
 -----------------
 
-Generally there are five categories of Android Firewalls:
+Generally there are six categories of Android Firewalls:
 * Firewalls which uses a _local VPN_ for traffic filtering (Dr. Web Anti-Virus,[...])
 * Firewalls which use a _separate own VPN_ (Android doesn't allow to use two VPNs together the same time) like Opera Max for compressing the traffic (if it's enabled the firewall may not work)
 * Firewalls which using _iptables_, like AFWall+, Droidwall, Avast, Comodo,[...]
 * Firewalls which using a _local HTTP proxy_ (or integrate it in Android's VPN) like AdAway, AdGuard,...
 * Browser or app related firewalls, like NoScript, Bluetooth Firewalls and such, which basically only blocking specific functions and not the traffic itself.
+* Dynamic egress filtering: Monitors all outbound network traffic and issue dynamic promts (on-demand) in order to determine egrees filter rules. The rules are defined per application. 
 
 _IPTables based:_
 * _Builtin_ Linux iptables (no GUI, but it can be controlled via scripts/Terminal/ADB)
@@ -49,6 +50,10 @@ _Real-time iptables logging:_
 
 _Internet Diagnostic Tool_:
 * [Network Monitor](http://fossdroid.com/a/network-monitor.html)
+
+_Dynamic egress filtering_ (links not working - it's only for historical reasons):
+* ~~[WhisperMonitor](http://www.whispersys.com/whispermonitor.html) ~~ _deprecated_
+* ~~[SnoopWall](https://play.google.com/store/apps/details?id=com.snoopwall.android)~~ _deprecated_
 
 
 Non-root Android Firewalls
