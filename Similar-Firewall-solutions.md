@@ -10,14 +10,14 @@ Similar Android Firewall solutions
 
 Generally there are six categories of Android Firewalls:
 * Firewalls which uses a _local VPN_ for traffic filtering (Dr. Web Anti-Virus,[...])
-* Firewalls which use a _separate own VPN_ (Android doesn't allow to use two VPNs together the same time) like Opera Max for compressing the traffic (if it's enabled the firewall may not work)
+* Firewalls which use a _separate own VPN_ (Android doesn't allow to use two VPNs together the same time) like Opera's _Max/Turbo_ feature to compress/reduce the web traffic (if it's enabled the firewall may not work)
 * Firewalls which using _iptables_, like AFWall+, Droidwall, Avast, Comodo,[...]
 * Firewalls which using a _local HTTP proxy_ (or integrate it in Android's VPN) like AdAway, AdGuard,...
 * Browser or app related firewalls, like NoScript, Bluetooth Firewalls and such, which basically only blocking specific functions and not the traffic itself.
-* Dynamic egress filtering: Monitors all outbound network traffic and issue dynamic promts (on-demand) in order to determine egrees filter rules. The rules are defined per application. 
+* Dynamic egress filtering: Monitors all outbound network traffic and issue dynamic prompts (on-demand) in order to determine egrees filter rules. The rules are defined per application. 
 
 _IPTables based:_
-* _Builtin_ Linux iptables (no GUI, but it can be controlled via scripts/Terminal/ADB)
+* _Builtin_ [iptables](http://www.netfilter.org/projects/iptables/) (no GUI, but it can be controlled via external scripts any Terminal app or ADB)
 * [Android Firewall](https://play.google.com/store/apps/details?id=com.jtschohl.androidfirewall) & [Source](https://github.com/skullone/android_firewall) [removed from Google Play Store!]
 * [3C Toolbox aka Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
 * ~~[DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free)~~ _deprecated_ 
@@ -52,7 +52,7 @@ _Internet Diagnostic Tool_:
 * [Network Monitor](http://fossdroid.com/a/network-monitor.html)
 
 _Dynamic egress filtering_ (links not working - it's only for historical reasons):
-* ~~[WhisperMonitor](http://www.whispersys.com/whispermonitor.html) ~~ _deprecated_
+* ~~[WhisperMonitor](http://www.whispersys.com/whispermonitor.html)~~ _deprecated_
 * ~~[SnoopWall](https://play.google.com/store/apps/details?id=com.snoopwall.android)~~ _deprecated_
 
 
