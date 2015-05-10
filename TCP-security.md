@@ -2,6 +2,7 @@ Index
 -----
 
 * [Introduction](#introduction)
+* [Ports](#ports)
 * [Known attacks](known-attacks)
 * [Requirements](#requirements)
 * [sysctl](#sysctl)
@@ -23,6 +24,14 @@ This guide has nothing much todo with AFWall+ itself or it's own configuration, 
 Please make a **backup first**, and of course there is **no support** or **guarantee that it works on your system**. If you unsure, simply don't use it, ask your ROM/Kernel developer if it's useful to integrate/use it.
 
 You can use it directly via ADB/Terminal Emulator (busybox sysctl -e -w [_your_param_] script or edit the _/proc/sys/net/ipv4/[param_script]_ directly and native under _system/etc/sysctl.conf_ (same like e.g. FreeBSD) with e.g. EsExplorer.
+
+
+Ports
+------------
+
+On Unix based systems all [well-known ports](http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports) below 1024 (0 - 1023) are protected by the root user account. A full list is (sometimes) available under <code>/etc/services</code> or <code>/system/etc/.*</code>. 
+
+Browsers like Firefox introducing an integrated [blocking](https://www.mozilla.org/projects/netlib/PortBanning.html) mechanism that already blocks all (most) suspect ports by default. Due security reasons it isn't suggest to adjust the <code>network.security.ports.banned</code> function, which allow us to disable a banned port (for whatever reasons e.g. port 87 that unlock the security warning). 
 
 Known attacks
 ------------
@@ -361,7 +370,7 @@ Tor Browser Bundle / Orbot:
 
 An fantastic article about the Certificates and Public Key pinning is available at [OWASP](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning) - for certificate transparency information take a ride over [here](http://www.certificate-transparency.org/). Mozilla itself also have special programs and a huge [overview](https://wiki.mozilla.org/CA:Overview) how they handle the policy and included CAs. 
 
-An article which explains a _Life without a CA_ is available over the official [torproject blog](https://blog.torproject.org/blog/life-without-ca) - [but this doesn't solve all the problems and possible attacks](http://newschoolsecurity.com/2010/03/life-without-certificate-authorities/).
+An article which explains a _Life without a CA_ is available over the official [tor project blog](https://blog.torproject.org/blog/life-without-ca) - [but this doesn't solve all the problems and possible attacks](http://newschoolsecurity.com/2010/03/life-without-certificate-authorities/).
 
 Other _solutions_:
 * DNS Certification Authority Authorization ([CAA](http://tools.ietf.org/html/draft-hallambaker-donotissue-03))
@@ -374,7 +383,7 @@ Other _solutions_:
 IPSec
 ------------
 
-Internet Security (IPsec) was builded as a result of the current IP weaknesses - basically it's a own internet layer which claims to be more secure compared to e.g. IPv4 - in fact it was developed around IPv6 (from Internet Engineering Task Force [IETF]), but was engineered to provide security for both IPv4/IPv6. There are some differences in the datagram formats used for AH and ESP depending on whether IPSec is used in IPv4 and IPv6, since the two versions have different datagram formats and addressing. I highlight these differences where appropriate.
+Internet Security (IPsec) was build as a result of the current IP weaknesses - basically it's a own internet layer which claims to be more secure compared to e.g. IPv4 - in fact it was developed around IPv6 (from Internet Engineering Task Force [IETF]), but was engineered to provide security for both IPv4/IPv6. There are some differences in the datagram formats used for AH and ESP depending on whether IPSec is used in IPv4 and IPv6, since the two versions have different datagram formats and addressing. I highlight these differences where appropriate.
 
 Without going deeper these are the main-cores - you often hear:
 * Security Parameter Index (SPI)
@@ -535,7 +544,7 @@ AFWall+ or any other Firewall does not protect against the following fingerprint
 * LXC-specific leaks
 * Operating System Type Fingerprinting
 * Keystroke Fingerprinting
-* Super Cookies (Master/Ever Cookies/HSTS super-cookies/Flash) [this is a result because of third-party cookies blocking]
+* Supercookies (Master/evercookies/HSTS supercookies/Flash) [this is a result because of third-party cookies blocking]
 * WebGL / WebRTC
 * Display Media information
 * Monitor, Widget, and OS Desktop Resolution + Fonts 
@@ -546,7 +555,7 @@ AFWall+ or any other Firewall does not protect against the following fingerprint
 * Flash (Since Android 4.x removed official in Android -> HTML5)
 * Plugins intended to be good, but leaking sensitive data (meta,big/small,...) 
 * SSL/TLS session resumption, HTTP Keep-Alive and SPDY
-* DOM Storage and Auth
+* DOM Storage and auth
 * Several bypass xyz settings (like Proxy/VPN/physically access/records,...)
 
 A full overview can be found over [here](https://www.torproject.org/projects/torbrowser/design/#fingerprinting-linkability). A fingerprint test can be found over [here](https://panopticlick.eff.org/about.php).
