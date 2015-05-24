@@ -233,7 +233,7 @@ The following list is unsorted and for Windows/Linux/Mac OS/Android systems and 
 * [SARA](http://www-arc.com/sara/)
 
 
-Online/Web-server test tools/pages:
+###  Online/Web-server test tools/pages:
 * [Check current Webserver version | urlm.de](http://urlm.de/)
 * [SSL quality check by Qualys SSL Labs | ssllabs.com](https://www.ssllabs.com/ssltest/)
 * [SSL Mailserver check by CheckTLS | Checktls.com](http://checktls.com/perl/TestReceiver.pl)
@@ -243,7 +243,48 @@ Online/Web-server test tools/pages:
 * [Heartbleed attack test page | possible.lv](http://possible.lv/tools/hb/)
 * [Another Heartbleed attack by filippo.io | filippo.io](http://filippo.io/Heartbleed/)
 * [Decrypt browser SSL (Firefox/Chrome) via SSLKEYLOGFILE | Developer.Mozilla.org](https://developer.mozilla.org/en-US/docs/NSS_Key_Log_Format)
-* [FREAK attack test page | freakattack.com](https://freakattack.com/clienttest.html)
+
+
+### Information Security Conferences
+* [DEF CON](https://www.defcon.org/) - An annual hacker convention in Las Vegas
+* [Black Hat](http://www.blackhat.com/) - An annual security conference in Las Vegas
+* [BSides](http://www.securitybsides.com/) - A framework for organising and holding security conferences
+* [CCC](http://events.ccc.de/congress/) - An annual meeting of the international hacker scene in Germany
+* [DerbyCon](https://www.derbycon.com/) - An annual hacker conference based in Louisville
+* [PhreakNIC](http://phreaknic.info/) - A technology conference held annually in middle Tennessee
+* [ShmooCon](http://www.shmoocon.org/) - An annual US east coast hacker convention
+* [CarolinaCon](http://www.carolinacon.org/) - An infosec conference, held annually in North Carolina
+* [HOPE](http://hope.net/) - A conference series sponsored by the hacker magazine 2600
+* [SummerCon](http://www.summercon.org/) - One of the oldest hacker conventions, held during Summer
+* [Hack.lu](http://hack.lu/) - An annual conference held in Luxembourg
+* [HITB](http://conference.hitb.org/) - Deep-knowledge security conference held in Malaysia and The Netherlands
+* [Troopers](https://www.troopers.de) - Annual international IT Security event with workshops held in Heidelberg, Germany
+* [Hack3rCon](http://hack3rcon.org/) - An annual US hacker conference
+* [ThotCon](http://thotcon.org/) - An annual US hacker conference held in Chicago
+* [LayerOne](http://www.layerone.org/) - An annual US security conerence held every spring in Los Angeles
+* [DeepSec](https://deepsec.net/) - Security Conference in Vienna, Austria
+* [SkyDogCon](http://www.skydogcon.com/) - A technology conference in Nashville
+* [SECUINSIDE](http://secuinside.com) - Security Conference in [Seoul](http://en.wikipedia.org/wiki/Seoul)
+* [DefCamp](http://defcamp.ro) - Largest Security Conference in Eastern Europe, held anually in Bucharest, Romania
+
+
+### Vulnerability Databases
+* [NVD](http://nvd.nist.gov/) - US National Vulnerability Database
+* [CERT](http://www.us-cert.gov/) - US Computer Emergency Readiness Team
+* [OSVDB](http://osvdb.org/) - Open Sourced Vulnerability Database
+* [Bugtraq](http://www.securityfocus.com/) - Symantec SecurityFocus
+* [Exploit-DB](http://www.exploit-db.com/) - Offensive Security Exploit Database
+* [Fulldisclosure](http://seclists.org/fulldisclosure/) - Full Disclosure Mailing List
+* [MS Bulletin](https://technet.microsoft.com/security/bulletin/) - Microsoft Security Bulletin
+* [MS Advisory](https://technet.microsoft.com/security/advisory/) - Microsoft Security Advisories
+* [Inj3ct0r](http://1337day.com/) - Inj3ct0r Exploit Database
+* [Packet Storm](http://packetstormsecurity.com/) - Packet Storm Global Security Resource
+* [SecuriTeam](http://www.securiteam.com/) - Securiteam Vulnerability Information
+* [CXSecurity](http://cxsecurity.com/) - CSSecurity Bugtraq List
+* [Vulnerability Laboratory](http://www.vulnerability-lab.com/) - Vulnerability Research Laboratory
+* [ZDI](http://www.zerodayinitiative.com/) - Zero Day Initiative
+* [FREAK attack test page | freakattack.com](https://freakattack.com/clienttest.html) - FREAK Vulnerability Test
+
 
 Some other free boot able LIVE CD's like Kali, Tails, Helix,[...] are Linux distributions that claiming to be more secure and hardened against the known attacks compared to other systems like on Windows (general there is no proof except there words since nobody really can compare Windows <-> Linux on a seriously way). They often already included a huge collection of scanning tools. It's always worth to keep on eye on this, since you don't even need to installing them. 
 
@@ -313,7 +354,7 @@ TLS CAs Theories:
 
 Addons for Firefox which claim to fix the situation:
 * [Perspective](http://perspectives-project.org/) - [Firefox addon](http://perspectives-project.org/firefox/) - Please read the _Known Issues_ on the page before installing it!
-* [Convergence[(http://convergence.io/) - [Firefox addon](http://convergence.io/releases/firefox/convergence-current.xpi) or as forked _improved_ version over [here](https://github.com/mk-fg/convergence)
+* [Convergence](http://convergence.io/) - [Firefox addon](http://convergence.io/releases/firefox/convergence-current.xpi) or as forked _improved_ version over [here](https://github.com/mk-fg/convergence)
 * [Certificate Patrol](http://patrol.psyced.org/) - [Firefox addon](https://addons.mozilla.org/de/firefox/addon/certificate-patrol/) or as alternative [Dane Patrol](https://github.com/hiviah/DanePatrol)
 
 
