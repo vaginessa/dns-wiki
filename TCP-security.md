@@ -33,6 +33,35 @@ On Unix based systems all [well-known ports](http://en.wikipedia.org/wiki/List_o
 
 Browsers like Firefox introducing an integrated [blocking](https://www.mozilla.org/projects/netlib/PortBanning.html) mechanism that already blocks all (most) suspect ports by default. Due security reasons it isn't suggest to adjust the <code>network.security.ports.banned</code> function, which allow us to disable a banned port (for whatever reasons e.g. port 87 that unlock the security warning). 
 
+
+#### Interfaces
+Android use the following interfaces:
+
+Default Route - The special address ::/0 denotes default route in IPv6.
+Prefix Documentation - This starts with 2001:0DB8::. It's a /32 range that has been reserved for use in documentation and illustrative examples.
+Global Multicast - This starts with FF0E::. It's a /8 range reserved for global multicast's. The _E_ (scope) in FF0E distinguishes global multicast from other types of multicast addresses. 
+Global Unicast - This starts with 2000::. It's a /3 range. ISP's normally get /32 assigned to them out of these ranges and they in turn out /48, /56 and /64 sub-ranges to their customers. These addresses are globally routable.
+IPv4 Compatible - These are special addresses assigned to Ipv6-capable devices, such as 'dual stack' devices that speak both IPv4 and IPv6. They have all zeroes for the middle 16bits - thus, they start off with a string of 96 zeroes, followed by the IPv4 addresses. An example of such an address would be 0:0:0:0:0:0:8.8.4.4 in mixed notation, or in short form, ::A.B.C.D where A.B.C.D is an IPv4 adress. The IPv4 portion may be represented in HEX notation e.g. STUV:WXYZ instead of the quad octet notation (A.B.C.D). These are now deprecated in favor of IPv4 mapped addresses. 
+IPv4 Mapped - These are IPv6 addresses that contain embedded IPv4 addresses (basically IPv4 addresses mapped into the IPv6 address space) and are used for devices that are only IPv4-capable. They have a set of 16 ones, after the initial string of 80 zeroes, and then the IPv4 address. So, if an IPv4 device has the address A.B.C.D, it will be represented as 0:0:0:0:FFFF:A.B.C.D, or in short form as ::FFFF:A.B.C.D. The IPv4 portion may be represented in HEX notation, e.g. STUV:WXYZ instead of the quad octet notation (A.B.C.D). This one if the SIIT (stateless IP / ICMP translation) techniques to enable IPv4 and IPv6 hosts to communicate with each other. 
+IPv4 Translated - These are IPv6 addresses that contain embedded IPv4 addresses which have been temporarily assigned to IPv6-only hosts to allow them to communicate with IPv4 hosts. This is another SIIT (Stateless IP/ICMP translation) technique which allows IPv6 and IPv4 hosts to talk each other without having to assign both type of addresses to all hosts. These addresses can be represented  by the form ::FFFF:A.B.C.D. The IPv4 portion may be represented in HEX notation, e.g. STUV:WXYZ instead of the quad octet notation (A.B.C.D). This one if the SIIT (stateless IP / ICMP translation) techniques to enable IPv4 and IPv6 hosts to communicate with each other. 
+ISATAP - Intra-Site Automatic Tunnel Addressing Protocol is an IPv6 transition mechanism meant to transmit IPv6 packets between 'dual-stack' devices on top of an IPv4 network. The addresses have the form ::0:5EFE:A.B.C.D. where A.B.C.D. is the embedded IPv4 address. The IPv4 portion may be represented in HEX notation like STUV:WXYZ instead of the quad octet A.B.C.D. Depending on the prefix, the ISATAP address can be a link-local, site-local, global or global-6to4 address.
+Link Local Multicast - These are a type of multicast IPv6 addresses matching the format FFx2::/16. Here 'FF' denotes a multicast address, '2' gives it Link-Local scope (i.e. nodes on the sane subnet so packets may not be routed) and the 'x' can be zero (denotation that the address is permanently  assigned by IANA and well known) or non-zero denoting a transient multicast address.
+Link Local - These addresses match the format FE80:://10 with the tenth bit (scope bit) set to 0 which denotes local scope i.e. they will not be routed outside the local subnet. The possible prefixes are FE8x::, FE9x::, FEAx:: and FEBx::. They are analogous to the IPv4 automatic private IP address or auto-IP range of 169.254.1.ß-169.254.254.255. They are assigned using stateless addresses auto-configuration procedure and are required for internal functioning of various protocol components before any other mechanism like DHCP is available. These are intended only for communications within the local sub-network and are not routed.
+Loopback - The special address ::1/128 in IPv6 is the loopback address which is analogous to 127.0.0.1 in IPv4. The loopback address is an unicast localhost addresses. If an application in a host sends packets to this addresses, the IPv6 stack will loop these packets back on the same virtual interface. 
+Multicast - There is no broadcast address in IPv6 but there are various types of multicast address matches the format FFxx::/8. The 'FF' prefix denotes a multicast address (i.e. all bits in bit position 1-8 are ones). There are various sub-types of multicast addresses denotes by their flag bits (bits 9-12) and scope bits (bits 13-16). Flag bits (9-12) denote the nature of the multicast address. If a bit position 12 (Transient  Bit) is 0, then its a well-known address, otherwise it's a transient assignment. Bit positions 9, 10, 11 are unused for now.
+NAT64 - Is a mechanism to allow IPv6 hosts to communicate with IPv4 server. The NAT64 server is the endpoint for at least one IPv4 address and an IPv6 network segment of 32-bits (64:FF9B::/96). The IPv6 client embeds the IPv4 addresss it wishes to communicate with using these bits, and sends it's packets to the resulting address. The NAT64 server then creates a NAT-mapping between the IPv6 and the IPv4 address, allowing them to communicate. 
+Node Local Multicast - Starts with FF01::. It's a /8 range reserved for Node Local Multicast. The '1' (scope) in FF01 distinguishes node local multicast from other types of multicast addresses.
+ORCHID - Addresses identified by a prefix of 2001:10::/28 are Overlay Routable Cryptographic Hash IDentifies addresses. These addresses are used as identifies and are not routable at the IP layer. Addresses within this block should not appear on the public internet. RFC 4843 provides more information about their purpose and generation. 
+OSI NSAP mapped - is another IPv6 transition mechanism which has been deprecated. The address block 0200::/7 was defined as an OSI NSAP-mapped prefix set in 1996, but was deprecated in Dec. 2004.
+Organization Local Multicast - Starts with FF08::. It's a /8 range reserved for Organization Local multicast. The '8' (scope) in FF08 distinguishes organization local multicast from other types of multicast addresses. 
+Reserved - These addresses generally start with 00xx::. These belong to a portion of the address space set aside as reserved for various uses by the IEFT, both present and future. Unlike IPv4, which has many small reserved blocks in various locations in the address space, in IPv6 the reserved block is at the top of the address space first 8 bits are zeroes. This represents 1/256 of the total address space. 
+Site Local Multicast - ?????
+Site Local - These addresses start with FECx::, FEDx::, FEEEx:: or FEFx::. They have their tenth bit set to 1 which denotes scope over the entire site, i.e. they can be routed thought the entire site but not outside. The scope distinguishes them from Link Local addresses. 
+Terredo - 
+
+
+
+
 Known attacks
 ------------
 
@@ -165,16 +194,13 @@ There are mostly all **for advances users**, because it need a lot of time, know
 
 The following list is unsorted and for Windows/Linux/Mac OS/Android systems and may list tools that coasts (_a lot of_) money! Your Av may detect the sites or the tools as insecure/malware in fact they can be used for good/evil!
 
-* [Whireshark](http://www.wireshark.org/)
-* [Burp Suite](http://portswigger.net/burp/)
-* [Metasploit](http://www.metasploit.com/)
+### Unsorted
 * [Ncat](http://nmap.org/ncat/)
 * [tcpdump](http://www.tcpdump.org/) - sometimes already shipped with Android as standalone binary
 * [Kismet](http://www.kismetwireless.net/)
 * [Nikto](http://www.cirt.net/nikto2)
 * [Hping](http://www.hping.org/)
 * [Ettercap](http://ettercap.sourceforge.net/)
-* [Sysinternals](http://technet.microsoft.com/en-us/sysinternals/default.aspx)
 * [w3af](http://w3af.sourceforge.net/)
 * [OpenVAS](http://www.openvas.org/)
 * [Scapy](http://www.secdev.org/projects/scapy/)
@@ -188,8 +214,6 @@ The following list is unsorted and for Windows/Linux/Mac OS/Android systems and 
 * [Core Impact](http://www.coresecurity.com/content/core-impact-overview)
 * [PWDDump](http://www.tarasco.org/security/pwdump_7/)
 * [Lucy](http://gtta.net/PS/lucy.html#blog)
-* [SSLsniff](http://www.thoughtcrime.org/software/sslsniff/)
-* [SSLstrip](http://www.thoughtcrime.org/software/sslstrip/)
 * [Stunnel](https://www.stunnel.org/index.html)
 * [Fwknop](http://www.cipherdyne.org/fwknop/)
 * [aircrack-ng](http://www.aircrack-ng.org/)
@@ -232,6 +256,10 @@ The following list is unsorted and for Windows/Linux/Mac OS/Android systems and 
 * [TCP Wrapper](ftp://ftp.porcupine.org/pub/security/index.html)
 * [SARA](http://www-arc.com/sara/)
 
+#### Windows Tools
+* [Sysinternals Suite](http://technet.microsoft.com/en-us/sysinternals/bb842062) - The Sysinternals Troubleshooting Utilities
+* [Windows Credentials Editor](http://www.ampliasecurity.com/research/windows-credentials-editor/) - security tool to list logon sessions and add, change, list and delete associated credentials
+* [mimikatz](http://blog.gentilkiwi.com/mimikatz) - Credentials extraction tool for Windows OS
 
 ###  Online/Web-server test tools/pages:
 * [Check current Webserver version | urlm.de](http://urlm.de/)
@@ -243,6 +271,11 @@ The following list is unsorted and for Windows/Linux/Mac OS/Android systems and 
 * [Heartbleed attack test page | possible.lv](http://possible.lv/tools/hb/)
 * [Another Heartbleed attack by filippo.io | filippo.io](http://filippo.io/Heartbleed/)
 * [Decrypt browser SSL (Firefox/Chrome) via SSLKEYLOGFILE | Developer.Mozilla.org](https://developer.mozilla.org/en-US/docs/NSS_Key_Log_Format)
+
+
+#### DDoS Tools
+* [LOIC](https://github.com/NewEraCracker/LOIC/) - An open source network stress tool for Windows
+* [JS LOIC](http://metacortexsecurity.com/tools/anon/LOIC/LOICv1.html) - JavaScript based in-browser version of LOIC
 
 
 ### Information Security Conferences
@@ -284,6 +317,23 @@ The following list is unsorted and for Windows/Linux/Mac OS/Android systems and 
 * [Vulnerability Laboratory](http://www.vulnerability-lab.com/) - Vulnerability Research Laboratory
 * [ZDI](http://www.zerodayinitiative.com/) - Zero Day Initiative
 * [FREAK attack test page | freakattack.com](https://freakattack.com/clienttest.html) - FREAK Vulnerability Test
+
+
+#### SSL Analysis Tools
+* [SSLyze](https://github.com/nabla-c0d3/sslyze) - SSL configuration scanner
+* [sslstrip](http://www.thoughtcrime.org/software/sslstrip/) - a demonstration of the HTTPS stripping attacks
+* [SSLsniff](http://www.thoughtcrime.org/software/sslsniff/) - a demonstration of the HTTPS sniffing attacks
+
+
+#### Network Tools
+* [nmap](http://nmap.org/) - Free Security Scanner For Network Exploration & Security Audits
+* [tcpdump/libpcap](http://www.tcpdump.org/) - A common packet analyzer that runs under the command line
+* [Burp Suite](http://portswigger.net/burp/) - A network protocol analyzer for Unix and Windows
+* [Wireshark](http://www.wireshark.org/) - A network protocol analyzer for Unix and Windows
+* [Network Tools](http://network-tools.com/) - Different network tools: ping, lookup, whois, etc
+* [netsniff-ng](https://github.com/netsniff-ng/netsniff-ng) - A Swiss army knife for for network sniffing
+* [Intercepter-NG](http://intercepter.nerf.ru/) - a multifunctional network toolkit
+* [SPARTA](http://sparta.secforce.com/) - Network Infrastructure Penetration Testing Tool
 
 
 Some other free boot able LIVE CD's like Kali, Tails, Helix,[...] are Linux distributions that claiming to be more secure and hardened against the known attacks compared to other systems like on Windows (general there is no proof except there words since nobody really can compare Windows <-> Linux on a seriously way). They often already included a huge collection of scanning tools. It's always worth to keep on eye on this, since you don't even need to installing them. 
@@ -395,13 +445,15 @@ Certificate Patrol / Dane Patrol (or RequestPolicy):
 * Tor Browser Bundle have problems with it and [it's not needed](https://trac.torproject.org/projects/tor/ticket/4064) since it use HTTPS-everywhere observatory 
 * Reject the certificate during the handshake of SSL/TLS through POST is a problem especially on banking sites, e.g. if a bank main site is under test.com and the login is posted to anotherpage.com.
 * IDN domains are not supported?!
-* Possible no autoupdate function (RequestPolicy does offer such function)
+* Possible no autoupdate function (but RequestPolicy does offer such function)
 * HTTPS-Everywhere works with Cert Patrol / Dane Patrol / RequestPolicy (but it's not necessary)
 
 
 On Firefox:
-```bash
-security.OCSP.enabled;0 or Options-> Advanced -> Certificates -> uncheck -> Query OSCP responder servers to confirm the current validity of certificates
+```
+security.OCSP.enabled;0 
+or under:
+Options-> Advanced -> Certificates -> uncheck -> Query OSCP responder servers to confirm the current validity of certificates
 ```
 
 Tor Browser Bundle / Orbot:
@@ -531,6 +583,7 @@ But even with such popular alternatives there are several problems, e.g. DNSSEC 
 
 ToDo:
 - Find an easier solution especially on Android since no app or config respect both Firefox mobile AND the OS. Sad but true, to install just another app + addon shouldn't be always the goal since that always ends up with possible conflicts or security problems (such as mime type detection on some security scanning sites like panopticklick,...). 
+- Fix all the rest,...
 
 
 How do I know if my applications are leaking DNS?
