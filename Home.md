@@ -10,29 +10,32 @@ AFWall+ is an Android open source firewall client, focused on making it easier t
 Index
 -----
 
-* [Contact and contributors](#contact-and-contributors)
+* [Contribution](#contribution)
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Important Information](#important-information)
 * [Similar firewall solutions](#similar-firewall-solutions)
 * [Making Donations](#making-donations)
-* [Cloning our Wiki](#cloning-our-wiki)
+* [Wiki cloning](#wiki-cloning)
 * [License](#license)
 
-Contact and contributors
+Contribution
 -------
 
-Thanks to all who have contributed to the AFWall+ project!
+Your contributions and suggestions are heartily♥ welcome. (✿◕‿◕)
 
- 
-Additional thanks goes out to our top contributors & developers, listed over [[here|Contributors]]. 
+
+Additional thanks goes out to our top contributors & developers, listed over [[here|Contributors]].
+
+
+Enjoy and profit. Contribute to the project with pull requests!
 
 Requirements
 -------------
 
 AFWall+ need this to run at his best:
 
-- Without Windows or iOS. :laughing: 
+- No Windows or iOS. :laughing: 
 - The Android OS device with at least a 4.0 (ICS/API level 14, NDK 10) or higher version.
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
@@ -49,8 +52,6 @@ Installation
 * Delete/Restore any remnant application/setting(s) directory from <code>/sdcard0/afwall/</code> or similar.
 * Install the latest available version.
 * Restore your settings backup.
-
-Enjoy and profit. Contribute to the project with pull requests!
 
 Important Information
 ---------------------
@@ -104,7 +105,7 @@ Making Donations
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation!
 It can be done directly on [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate) or just look at [F-Droid repository](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall) for more donations options.
 
-Cloning our Wiki
+Wiki cloning
 -------
 
 Feel free to fork/clone our Wiki, but remember to give proper credits where it belongs. 
@@ -118,4 +119,6 @@ To stay on sync, here is an [example](https://gist.github.com/larrybotha/1065041
 License
 -------
 
-AFWall+ is open source software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+[![Creative Commons License](https://licensebuttons.net/l/by/3.0/88x31.png)](http://creativecommons.org/licenses/by/3.0/).
+
+AFWall+ and all of this work such as source, wiki, icons,[...] is licensed under a [GNU General Public License v3](https://www.gnu.org/copyleft/gpl.html).
