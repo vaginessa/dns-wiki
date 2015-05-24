@@ -79,7 +79,7 @@ Android use the following important interfaces:
 
 <code>Terredo</code> - This is an transition technology that gives full IPv4 connectivity for IPv6-capable hosts which are on the IPv4 Internet but which have no direct native connection to an Ipv6 network. Compared to other similar protocols it's distinguishing feature is that it is able to perform it's function even from behind network address translation (NAT) devices such as home routers. Teredo client IPv6 addressees start with the Teredo prefix 2001:0::/32. The Teredo IPv6 address contains IPv4 server address, obfuscated UDP port number occupying different bit position. This helps Teredo traverse NAT routers.
 
-<code>Transport Relay Translator</code> - This is another IPv4-IPv6 translation mechanism working on the transport layer. A TRT system is installed between IPv6-only hosts and IPv4 hosts and it translates TCP, UDP/IPv6 to TCP,UDP/IPv4 and vice versa. A dummy address prefix of C6::/64 is proposed in RFC 3142 for use in the TRT system. The addresses contain embedded IPv4 address in the last 32 bits.
+<code>Transport Relay Translator</code> - This is another IPv4-IPv6 translation mechanism working on the transport layer. A TRT system is installed between IPv6-only hosts and IPv4 hosts and it translates TCP, UDP/IPv6 to TCP, UDP/IPv4 and vice versa. A dummy address prefix of C6::/64 is proposed in RFC 3142 for use in the TRT system. The addresses contain embedded IPv4 address in the last 32 bits.
 
 <code>Unique Local Unicast</code> - These are analogues to private IPv4 address ranges described in RFC 1918. These address prefix is FC00::/7 and the addresses starts with FD00 since the 8th bit or the 'L' bit is always 1 in these addresses (RFC 4193). The algorithmically-derived 48-bit 'Global ID' in bits 9 through 48 is what gives 'uniqueness' to the addresses for a particular site.
 
@@ -87,7 +87,7 @@ Android use the following important interfaces:
 
 <code>6bone</code> - 6bone was once an experimental project used as testbed for IPv6 deployment and testing. It has been decommissioned since 2006 and addresses have been returned to the IANA. 6bone addresses had a orefix of 3FFE::/16.
 
-<code>6in4<code> - This is another transition mechanism for migrating from Internet Protocol version 4 (IPv4) to IPv6. 6in4 uses tunneling to encapsulate IPv6  traffic over explicitly-configured IPv4 links as defined in RFC 4213. The 6in4 traffic is sent over the IPv4 Internet inside IPv4  packets whose IP headers have the IP protocol number set to 41. This protocol number is specifically designed for IPv6 encapsulation. There are no special IPv6 addresses associated with 6in4. The RFC specifies discarding of invalid 6in4 packets, i.e. those containing IPv4-mapped., IPv4-compatible, loopback and multicast addresses as their source address. 
+<code>6in4</code> - This is another transition mechanism for migrating from Internet Protocol version 4 (IPv4) to IPv6. 6in4 uses tunneling to encapsulate IPv6  traffic over explicitly-configured IPv4 links as defined in RFC 4213. The 6in4 traffic is sent over the IPv4 Internet inside IPv4  packets whose IP headers have the IP protocol number set to 41. This protocol number is specifically designed for IPv6 encapsulation. There are no special IPv6 addresses associated with 6in4. The RFC specifies discarding of invalid 6in4 packets, i.e. those containing IPv4-mapped., IPv4-compatible, loopback and multicast addresses as their source address. 
 
 <code>6rd</code> - This is a mechanism to facilitate Ipv6 rapid deployment across IPv4 infrastructures of Internet service providers (ISPs). This is improved form of the 6to4 transition mechanism which aims to encourage ISPs to deploy IPv6 to their customers without placing substantial network upgrade requirement on the ISP. RFC 5569 describes 6rd in detail and does not specific a specific address prefix.
 
@@ -108,7 +108,7 @@ These are all (or mostly all) of known possible attacks which is TCP affected by
 * DNS attacks such DNS Poisoning and BIND attacks
 * Hijacking/Injection of the connection 
 * Sequence Guessing
-* Replay attacks / Dsniff attacks
+* Replay attacks + Dsniff attacks
 * LAN Sniffing (or general packets sniffing)
 * Unique Identifiers attacks
 * TCP SYN attacks (flooding)
@@ -126,7 +126,7 @@ A very good explanation of all the attacks listed above are on [Peters Smith fan
 Requirements
 ------------
 
-As described over [here](http://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) the following stuff should be blacklisted by default for any vulnerability scanner (and only for them). These is necessary if you scan your network security against known port scanners like _Nmap_ to get an better result, since it may can display stuff which more confuse you as this shows useful stuff. 
+As described over [here](http://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) the following stuff should be _blacklisted_ by default for any vulnerability scanner (and only for them!). These is necessary if you scan your network security against known port scanners like _Nmap_ to get an better result, since it may can display stuff which more confuse you as this shows useful stuff. 
 
 | Address | RFC | Description |
 | :--- | :--: | ---: |
@@ -326,11 +326,11 @@ The following list is unsorted and for Windows/Linux/Mac OS/Android systems and 
 * [Troopers](https://www.troopers.de) - Annual international IT Security event with workshops held in Heidelberg, Germany
 * [Hack3rCon](http://hack3rcon.org/) - An annual US hacker conference
 * [ThotCon](http://thotcon.org/) - An annual US hacker conference held in Chicago
-* [LayerOne](http://www.layerone.org/) - An annual US security conerence held every spring in Los Angeles
+* [LayerOne](http://www.layerone.org/) - An annual US security conference held every spring in Los Angeles
 * [DeepSec](https://deepsec.net/) - Security Conference in Vienna, Austria
 * [SkyDogCon](http://www.skydogcon.com/) - A technology conference in Nashville
-* [SECUINSIDE](http://secuinside.com) - Security Conference in [Seoul](http://en.wikipedia.org/wiki/Seoul)
-* [DefCamp](http://defcamp.ro) - Largest Security Conference in Eastern Europe, held anually in Bucharest, Romania
+* [SECUINSIDE](http://secuinside.com) - Security Conference in Seoul
+* [DefCamp](http://defcamp.ro) - Largest Security Conference in Eastern Europe, (Bucharest, Romania)
 
 
 ### Vulnerability Databases
@@ -364,7 +364,7 @@ The following list is unsorted and for Windows/Linux/Mac OS/Android systems and 
 * [Wireshark](http://www.wireshark.org/) - A network protocol analyzer for Unix and Windows
 * [Network Tools](http://network-tools.com/) - Different network tools: ping, lookup, whois, etc
 * [netsniff-ng](https://github.com/netsniff-ng/netsniff-ng) - A Swiss army knife for for network sniffing
-* [Intercepter-NG](http://intercepter.nerf.ru/) - a multifunctional network toolkit
+* [Intercepter-NG](http://intercepter.nerf.ru/) - A multifunctional network toolkit
 * [SPARTA](http://sparta.secforce.com/) - Network Infrastructure Penetration Testing Tool
 
 
