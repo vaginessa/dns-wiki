@@ -52,6 +52,7 @@ _Real-time iptables logging:_
 
 _Internet Diagnostic Tool_:
 * [Network Monitor](http://fossdroid.com/a/network-monitor.html)
+* [RouterCheck](https://play.google.com/store/apps/details?id=com.Sericon.RouterCheck.client.android&hl=en)
 
 _Dynamic egress filtering_ (links not working - it's only for historical reasons):
 * ~~[WhisperMonitor](http://www.whispersys.com/whispermonitor.html)~~ _deprecated_
