@@ -3,7 +3,6 @@ Index
 
 * [Description](#description)
 * [Error Codes](#error-codes)
-* [Useful links](#useful-links)
 
 Description
 -----------
@@ -35,6 +34,7 @@ But, there are some workarounds for this. First try to change the iptables binar
 
 > IPTables can exit with status 4 if two or more processes tries to update the same table again and again. 
 
-Useful links
-------------
-* [AFWall+ Issue Tracker | GitHub.com](https://github.com/ukanth/afwall/issues)
+<a name="Code4"></a>
+**(4) Error applying iptables rules. Exit code: 6**
+
+> Index of insertion too big - This mostly comes from custom ROM's (non CM). A workaround seems to play with the SuperSU settings (also try to update to latest first) and contact your ROM developer. 
