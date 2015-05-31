@@ -11,7 +11,7 @@ Similar Android Firewall solutions
 Generally there are six categories of Android Firewalls:
 * Firewalls which uses a _local VPN_ for traffic filtering (Dr. Web Anti-Virus,[...])
 * Firewalls which use a _separate own VPN_ (Android doesn't allow to use two VPNs together the same time) like Opera's _Max/Turbo_ feature to compress/reduce the web traffic (if it's enabled the firewall may not work)
-* Firewalls which using _iptables_, like AFWall+, Droidwall, Avast, Comodo,[...]
+* Firewalls which using _iptables_, like AFWall+, Droidwall, Avast,[...]
 * Firewalls which using a _local HTTP proxy_ (or integrate it in Android's VPN) like AdAway, AdGuard,...
 * Browser or app related firewalls, like NoScript, Bluetooth Firewalls and such, which basically only blocking specific functions and not the traffic itself.
 * Dynamic egress filtering: Monitors all outbound network traffic and issue dynamic prompts (on-demand) in order to determine egrees filter rules. The rules are defined per application. 
@@ -22,7 +22,7 @@ _IPTables based:_
 * [FireWall Plus](https://play.google.com/store/apps/details?id=com.sethcottle.firewallplus) & [Source](https://github.com/Squario/Firewall-Plus) [_removed from Google Play Store!_]
 * [3C Toolbox aka Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
 * ~~[DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free)~~ _deprecated_ 
-* [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity)
+* [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity) & [Forum](https://forum.avast.com/index.php?board=37.0)
 * [LBE Privacy Master](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
 
 _Anti IMSI-Catcher (protects against IMSI/StingRay-Catchers and Silent/Stealth SMS):_
