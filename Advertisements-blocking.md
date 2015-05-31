@@ -90,6 +90,8 @@ A uMatrix/uBlock/AdBlock/AdBlock Plus/AdGuard blocking list which includes the m
 
 ! Privacy related
 !
+! Basic tracking list by Disconnect‎
+https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
 ! EasyPrivacy by adblock.org
 ! easylist-downloads.adblockplus.org/easyprivacy.txt
 ! Fanboy’s Enhanced Tracking List by fanboy.co.nz
@@ -100,7 +102,11 @@ http://gnuzilla.gnu.org/filters/blacklist.txt
 
 
 ! Blocks Malware domains
-! 
+!
+! Malvertising filter list by Disconnect‎
+https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt
+! Malware filter list by Disconnect‎
+https://s3.amazonaws.com/lists.disconnect.me/simple_malware.txt
 ! Malware Domain list
 ! http://www.malwaredomainlist.com/hostslist/hosts.txt
 ! Malware Domain (just Domains) [mirror from mailwaredomainlist.com]
@@ -158,6 +164,7 @@ https://easylist-downloads.adblockplus.org/yt_annoyances_comments.txt
 ```
 
 Remember that a bigger list always means that it takes a bit longer to parse all the visiting list which maybe reduce the loading speed (if it's not cached). And it isn't necessary to really use all lists due the fact that it mostly ends up with troubles, duplicates or other problems.
+Since _uBlock 0.9.8.2_ Disconnect.me Malware and Tracking list(s) was merged, this means you can remove (if installed) the Disconnect.me addon + disable Firefox safe-browsing feature, this is now redundant and definitely safes bandwidth. 
 
 
 The best solution?
