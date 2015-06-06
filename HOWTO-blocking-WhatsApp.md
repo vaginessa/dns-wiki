@@ -6,6 +6,7 @@ Index
 * [Ports](#ports)
 * [iptables](#iptables)
 * [Encryption](#encryption)
+* [Important](#important)
 * [ToDo](#todo)
 * [External Links](#external-links)
 
@@ -672,12 +673,16 @@ Alternatives:
 Security research and tests:
 * [Overview](https://missingm.co/2014/02/fighting-dishfire-the-state-of-mobile-cross-platform-encrypted-messaging/) and a scoreboard from EFF (The developer guys from HTTPS-Everywhere addon,[..]) is available over [here](https://www.eff.org/secure-messaging-scorecard).
 
+Important
+-----------
+
+It's normally more then enouth to block <code>e.whatsapp.net - e5.whatsapp.net</code>, because this is for the initial handshake which means if that fails you can't receive/send any message.
+
 ToDo
 -----------
 
 ```
-* add more proof/confirmation that IP's / DNS are okay 
-+ sort the IP's - really?
+* add more proof/confirmation that IP's / DNS are okay / WCIM
 + add firewall syntax for blocking (to copy & paste it) -> 50.22.210.155,50.22.198.205,...
 + add IPset instead of all the WhatsApp lines (more speed/less memory) [only if someone except me use IPset]
 ```
