@@ -608,7 +608,7 @@ There are alternatives like:
 * Choosing a log free DNS resolver e.g [OpenNIC](https://www.opennicproject.org/)
 * DNSSEC/DANE
 * OpenDNS (or other providers which claiming to not log/censorship anything)
-* DNSCrypt / _TCPCrypt_
+* DNSCrypt / _TCPCrypt_ /DNSCrypt is now part of [CM 12.1](http://review.cyanogenmod.org/#/q/status:open+project:CyanogenMod/android_external_dnscrypt_dnscrypt-proxy+branch:cm-12.1+topic:dnscrypt))
 * [TACK](https://lwn.net/Articles/499134/) / [HPKP](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning)
 
 But even with such popular alternatives there are several problems, e.g. DNSSEC suffering from miscellaneous leaks mentioned over [here](http://ianix.com/pub/dnssec-outages.html) or [here](http://sockpuppet.org/blog/2015/01/15/against-dnssec/) + it [doesn't prevent MITM attacks](http://www.thoughtcrime.org/blog/ssl-and-the-future-of-authenticity/).
@@ -677,18 +677,17 @@ AFWall+ or any other Firewall does not protect against the following fingerprint
 * USB Device ID Enumeration
 * Invasive Authentication Mechanisms
 * Open TCP Port Fingerprinting 
-* HTML5 Canvas Image Extraction
+* HTML5 Canvas and Image Extraction
 * Flash (Since Android 4.x removed official in Android -> HTML5)
 * Plugins intended to be good, but leaking sensitive data (meta,big/small,...) 
 * SSL/TLS session resumption, HTTP Keep-Alive and SPDY
-* DOM Storage and auth
+* DOM Storage and auth.
 * Several bypass xyz settings (like Proxy/VPN/physically access/records,...)
 
 A full overview can be found over [here](https://www.torproject.org/projects/torbrowser/design/#fingerprinting-linkability). A fingerprint test can be found over [here](https://panopticlick.eff.org/about.php).
 
-It's highly recommend to use Tor/Orbot + NoScript (NSA NoScript) + Certificate Control and (if no special about:config is in use) Random Agent Spoofer.
+It's highly recommend to use Tor/Orbot + NoScript (NSA NoScript) + Certificate Control and (if no special about:config is in use) [Random Agent Spoofer](https://github.com/dillbyrne/random-agent-spoofer/).
 [HTTPS-Everywhere isn't necessary with the correct Firefox and Tor settings](https://gist.github.com/CHEF-KOCH/b730d9511761e999c9ba) (since HTTPS-Everywhere may break some sites and is already implemented in NoScript [Desktop Version only] or can be managed by the Browser itself).
-
 
 External Links
 ------------
@@ -719,3 +718,4 @@ External Links
 * [Google Analytics talk | AdBlockPlus.org](https://adblockplus.org/forum/viewtopic.php?p=27886#p27886)
 * [Detecting Certificate Authority compromises and web browser collusion | TorProject Blog.org](https://blog.torproject.org/blog/detecting-certificate-authority-compromises-and-web-browser-collusion)
 * [Tutorials by the hidden wiki | TheHiddenWiki](https://ev3h5yxkjz4hin75.torstorm.org/wiki/index.php/Tutorials)
+* [DNSCrypt binary mirror for Android | forum.xda-developers.com](http://forum.xda-developers.com/showthread.php?t=2793092)
