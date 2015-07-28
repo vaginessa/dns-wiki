@@ -32,7 +32,7 @@ Netfilter is generally a part of the [Linux kernel](https://kernel.org/). The IP
 Changelog
 -----------
 
-Latest iptables official release: **iptables-1.4.21** -> 22-Nov-2013 13:11
+Latest iptables official release: **iptables-1.4.21** -> [22-Nov-2013 13:11](http://www.netfilter.org/projects/iptables/downloads.html#iptables-1.4.21)
 
 The official iptables changelogs, patches and binaries can always be found [here](http://www.netfilter.org/projects/iptables/files/). _These binaries are not optimized for Android!_
 
