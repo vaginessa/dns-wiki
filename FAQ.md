@@ -1,9 +1,7 @@
 Frequently Asked Questions (FAQ)
 ========
 
-This FAQ is designed to answer the most common questions, please take your time to read it before you ask anything.
-
-:warning: We are not responsible for external content! :warning:
+:warning This FAQ is designed to answer the most common questions, please take your :watch: to read it before you ask anything. :warning
 
 Index
 -----
@@ -113,7 +111,7 @@ which ip6tables
 > AFWall+ logs are depend on dmesg (kernel logs). Either your kernel disabled dmesg or it's getting overwritten quickly. Please check if you kernel does have an option like "Android logger Control" or something like that an enable this service.
 
 <a name="FAQ10"></a>
-##### (10) Does AFWall+ support Android 4.3, 4.4 or higher?
+##### (10) Does AFWall+ support Android 4.4.4 or higher?
 
 > Yes, it works with newer Android OS versions too!
 * UID 0 (root) needs 53/udp open for DNS on Android 4.3. - Enable DNS from application list!
@@ -374,7 +372,7 @@ A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-
 > We can override this behavior with [android:sharedUserId](http://developer.android.com/guide/topics/manifest/manifest-element.html#uid), but it has some [drawbacks](http://stackoverflow.com/questions/5529846/androidprocess-and-process-name/5530160#5530160).
 
 <a name="FAQ42"></a>
-##### (42) How to change the DNS Settings on Android? (optional)
+##### (42) How to change the DNS settings on Android? (optional)
 
 > On Android <4.4 we can use the command <code>getprop | grep dns</code> to know all the DNS properties being used. This command requires BusyBox! 
 > 'rmnet0’ is the interface name for the 3G connection. net.rmnet0.dns1 and net.rmnet0.dns2 are the properties to be changed to point to OpenDNS server (the settings are still present in CM/AOSP code). Since, these properties are changed after the connection is established, net.dns1 and net.dns2 also have to be changed.
@@ -403,12 +401,13 @@ setprop net.pdpbr1.dns2=208.67.220.220</pre>
 Or via init.d script (won't reapply after connectivity change):
 <pre>
 #!/system/bin/sh
+setprop net.dns1 208.67.222.222
+setprop net.dns2 208.67.220.220
+# Optional
 setprop dhcp.tiwlan0.dns1 208.67.222.222
 setprop dhcp.tiwlan0.dns2 208.67.220.220
 setprop net.ppp0.dns1 208.67.222.222
 setprop net.ppp0.dns2 208.67.220.220
-setprop net.dns1 208.67.222.222
-setprop net.dns2 208.67.220.220
 setprop net.rmnet0.dns1 208.67.222.222
 setprop net.rmnet0.dns2 208.67.220.220
 setprop net.pdpbr1.dns1 208.67.222.222
@@ -418,7 +417,7 @@ To check against it (on e.g. wlan) use
 <pre>
 tcpdump -ns0 -i wlan0 'port 53'</pre>
 
-> [MyResolver](http://myresolver.info/) is a secure proof if DNS is working or not. Please remember that there are some problems generally with the DNS security protocol, there are several known attacks, like DOS, Cache poisoning, ghost domain names & [others](http://ianix.com/pub/dnssec-outages.html). For more information take a look over [here](http://www.theregister.co.uk/2015/03/18/is_the_dns_security_protocol_a_waste_of_everyones_time_and_money/#)
+> [DNS check tool](http://dnscheck.pingdom.com/) is a secure proof if DNS is working or not, alternative you can use nslookup via command line. Please remember that there are some problems generally with the DNS security protocol, there are several known attacks, like DOS, Cache poisoning, ghost domain names & [others](http://ianix.com/pub/dnssec-outages.html). For more information take a look over [here](http://www.theregister.co.uk/2015/03/18/is_the_dns_security_protocol_a_waste_of_everyones_time_and_money/#)
 
 > If there is no setprop you can write the values before the <code>unset_dns_props()</code> begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
 
@@ -426,7 +425,7 @@ tcpdump -ns0 -i wlan0 'port 53'</pre>
 
 On 4.3 or 4.4 KitKat (#su):
 <pre>
-ndc resolver setifdns eth0 "" 208.67.222.222  208.67.220.220 192.168.1.1
+ndc resolver setifdns eth0 "" 208.67.222.222 208.67.220.220 192.168.1.1
 ndc resolver setdefaultif eth0</pre>
 
 Or via AFWall+ custom script:
@@ -447,9 +446,9 @@ IPTABLES=/system/bin/iptables
 $IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
 $IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53</pre>
 
-> Only _Google Puplic DNS_ supports native IPv6 atm! So uncheck IPv6 in your kernel (if checked!) or disable it via custom script.
+> Only _Google Puplic DNS_ supports native IPv6! So uncheck IPv6 in your Kernel (if checked!) or just disable it via an external custom script.
 
-> If you still like external apps, you should take a look at DNS Forwarder and Override DNS [tested, working on 4.4.4] which does more or less the same. That may solve some problems on Android 4.4/L but there is no guarantee, some ROM's may handle it different (still buggy/limitation).
+> If you still like external apps, you should take a look at Override DNS [tested, working on 4.4.4/5.1] which does more or less the same. That may solve some problems on Android 4.4/Lollipop/M but there is no guarantee, some ROM's may handle it different.
 
 <a name="FAQ43"></a>
 ##### (43) Will there a "Connection confirm dialog" (on-demand) feature implemented soon?
