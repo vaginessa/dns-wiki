@@ -602,21 +602,16 @@ The core problems are always:
 * DOS (Denial-Of-Service) attacks
 * Logging 
 
-Blocking generally DNS isn't possible since this is needed on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less less/more complicated and depending on your knowledge about how to change that. 
+Blocking DNS isn't possible since this is needed on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less less/more complicated and depending on your knowledge about how to change that. 
 
 There are alternatives like:
 * Choosing a log free DNS resolver e.g [OpenNIC](https://www.opennicproject.org/)
 * DNSSEC/DANE
 * OpenDNS (or other providers which claiming to not log/censorship anything)
-* DNSCrypt / _TCPCrypt_ /DNSCrypt is now part of [CM 12.1](http://review.cyanogenmod.org/#/q/status:open+project:CyanogenMod/android_external_dnscrypt_dnscrypt-proxy+branch:cm-12.1+topic:dnscrypt))
+* DNSCrypt / _TCPCrypt_ (DNSCrypt is now part of [CM 12.1](http://review.cyanogenmod.org/#/q/status:open+project:CyanogenMod/android_external_dnscrypt_dnscrypt-proxy+branch:cm-12.1+topic:dnscrypt))
 * [TACK](https://lwn.net/Articles/499134/) / [HPKP](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning)
 
 But even with such popular alternatives there are several problems, e.g. DNSSEC suffering from miscellaneous leaks mentioned over [here](http://ianix.com/pub/dnssec-outages.html) or [here](http://sockpuppet.org/blog/2015/01/15/against-dnssec/) + it [doesn't prevent MITM attacks](http://www.thoughtcrime.org/blog/ssl-and-the-future-of-authenticity/).
-
-ToDo:
-- Find an easier solution especially on Android since no app or config respect both Firefox mobile AND the OS. Sad but true, to install just another app + addon shouldn't be always the goal since that always ends up with possible conflicts or security problems (such as mime type detection on some security scanning sites like panopticklick,...). 
-- Fix all the rest,...
-
 
 How do I know if my applications are leaking DNS?
 ------------
