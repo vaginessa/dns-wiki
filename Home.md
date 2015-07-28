@@ -17,6 +17,7 @@ Index
 * [Similar firewall solutions](#similar-firewall-solutions)
 * [Making Donations](#making-donations)
 * [Wiki cloning](#wiki-cloning)
+* [Feeds](#feeds)
 * [License](#license)
 
 Contribution
@@ -36,7 +37,7 @@ Requirements
 AFWall+ need this to run at his best:
 
 - No Windows or iOS. :laughing: 
-- The Android OS device with at least a 4.0 (ICS/API level 14, NDK 10) or higher version.
+- The Android OS device with at least a 4.0 (ICS/API level 14, NDK 10) or a higher version.
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
 - The Kernel/ROM _must have_ [[init.d support|init.d]] (for external custom script and data leakage fix)!
@@ -115,6 +116,23 @@ Via: <code>git clone https://github.com/ukanth/afwall.wiki.git</code>.
 
 
 To stay on sync, here is an [example](https://gist.github.com/larrybotha/10650410) how to do this. An API reference can be found over [here](https://github.com/mbostock/d3/wiki/API-Reference) or on the [official Docs](https://help.github.com/).
+
+Feeds
+-------
+
+It's now very easy to stay up-to-date by subscribing latest changes via Browser live [feeds](https://atom.io/docs/latest/), via:
+
+```bash
+# The available feeds are:
+https://github.com/ukanth/afwall/commits/beta.atom (latest)
+https://github.com/ukanth/afwall/commits/HEAD.atom
+https://github.com/ukanth/afwall/commits/donate.atom
+https://github.com/ukanth/afwall/commits/master.atom
+
+or 
+https://github.com/ukanth/afwall/commits/<TAG or BRANCHES>.atom
+
+```
 
 License
 -------
