@@ -71,7 +71,7 @@ _XPosed based_:
 Example lists
 ---------
 
-A uMatrix/uBlock/AdBlock/AdBlock Plus/AdGuard blocking list which includes the most important stuff is this one:
+A uMatrix/uBlock/AdBlock/AdBlock Plus/AdGuard blocking list which includes the [most important lists](https://github.com/gorhill/uBlock/wiki/Filter-lists-from-around-the-web) is this one:
 ```bash
 ! Ads related
 !
@@ -197,4 +197,4 @@ Final words
 Don't believe in myths that more tools and blocking always ends up with more privacy or less problems, the hole grail should be to use as less as possible addons + as less filtering as possible which does block stuff you hate or possible compromise you're security. In fact more from everything always means that you need more time to manage it to stay secure and up-2-date. If you really want to hear my _recommendation_ (I normally not often give one) is that for a normal root user AdAway (to not manually update Android's hosts) + uBlock (for the Browser) should be enouth handle all above given reasons. 
 
 
-_ Final version 09.05.2015_
+_ Final version 29.07.2015_
