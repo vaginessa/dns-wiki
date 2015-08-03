@@ -64,34 +64,34 @@ On GitHub:
 
 Current translations:
 
-(af)
-(ar)
-(ast-rES)
-Czech (cs)
-German (de)
-Greek (el)
-(es)
-(eu)
-(fa)
-France (fr)
-Hungarian (hu)
-Indonesian (in)
-Italian (it)
-Japanese (ja)
-Korean (ko)
-(nl)
-Polish (pl)
-Portuguese (pt)
-Romanian (ro)
-Russian (ru)
-Slovak (sk)
-Slovenian (sl)
-(sr)
-(sr-rCS)
-Swedish (sv)
-(th)
-Turkish (tr)
-(uk)
-(ur-rPK)
-Vietnamese (vi)
-(zh)
+(af) <br>
+(ar) <br>
+(ast-rES) <br>
+Czech (cs) <br>
+German (de) <br>
+Greek (el) <br>
+(es) <br>
+(eu) <br>
+(fa) <br>
+France (fr) <br>
+Hungarian (hu) <br>
+Indonesian (in) <br>
+Italian (it) <br>
+Japanese (ja) <br>
+Korean (ko) <br>
+(nl) <br>
+Polish (pl) <br>
+Portuguese (pt) <br>
+Romanian (ro) <br>
+Russian (ru) <br>
+Slovak (sk) <br>
+Slovenian (sl) <br>
+(sr) <br>
+(sr-rCS) <br>
+Swedish (sv) <br>
+(th) <br>
+Turkish (tr) <br>
+(uk) <br>
+(ur-rPK) <br>
+Vietnamese (vi) <br>
+(zh) <br>
