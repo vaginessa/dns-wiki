@@ -32,13 +32,13 @@ Known ports
 This is a small list which ports are open on every Linux/Android system, this is normally not critical as long there is no high traffic on it but you may need to understand what they do and how they should work. Remember: Closing all port's isn't a good idea (and in fact you not close the port you only disabling the application listening on it) since this will break most of internet stuff, but as long there are no suspect activity's all is good. For example one of a hacker goal is to send large volumes of network traffic at a host in order to cause legitimate traffic to be dropped, normally this behavior exists if the attacker doesn't control enouth bandwidth himself to exceed the target's bandwidth. As a result you'll see that your sever or address is unreasonable over the network. 
 
 * Port 53 (tcp/udp) - Port 53 is used by well known DNS (Domain Name System). DNS takes care of resolving human readable 'host names' into numeric IP addresses. A commonly used DNS server called BIND has had a rich history of security problems. As a result, [BIND](http://bindguard.activezone.de/) and port 53 are frequent targets and a couple worms used BIND exploits to propagate. There are [several attacks](https://www.dns-oarc.net/wiki/mitigating-dns-denial-of-service-attacks), like DNS resolver/recursive, poisoning, DOS, worms, ...
-* Port 80 - Hypertext Transfer Protocol (HTTP)
+* Port 80 - Hypertext Transfer Protocol (HTTP) - BOOTP (for Android OS + MEID detection) 
 * Port 443 - Hypertext Transfer Protocol over SSL/TLS (HTTPS)
 * Port 5552 - Often used by messenger like WhatsApp, GTalk (Jabber)
 * Anything what cause SYNC_SENT/BIND (which shows traffic on some roms/apps on the notification bar) in fact that does not cause any real traffic and your provider does not log such traffic (no traffic lost).
 * These are known ports which "cause/show" traffic even if nothing is started or have any active internet connection.
-* You will need tools like tcpdump/wireshark/burf to really see what's going on behind the scenes since you only see symptoms on your device.
-* Standard Ports ([list](http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers))
+* You will need tools like tcpdump/wireshark/burf to really see what's going on behind the scenes since you mostly see symptoms on your device.
+* Standard Ports ([list](http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)), Android mostly use the mentioned ports.
 
 **Remember**: Some Messenger, services and apps need root (0) enabled in AFWall+. _The question is why?_ - _Answer_: E.g. Threema use GCM (Google Cloud Messaging) or ( if no Google Play Services is installed as alternative polling), which working both via external services like Google Play Services (or there own implemented polling) so if root is blocked this means GCM/polling can connect via netd (you'll see a red icon in Threema). WhatsApp fix such behavior with external ports and services (so in this case root 0 isn't necessary) - and this is the reasons why root 0 (Android OS/Play Services) sometimes shows huge traffic, in fact it does not generate any traffic itself, it's called by external apps like Threema.
 
@@ -101,7 +101,7 @@ Routing and ARP tables
 
 * Destination - In combination with the Mark field, this specifies which data grams will match this route
 * Iface - The network interface that data grams matching this route will leave
-* 
+ 
 
 
 Protocol statistics
