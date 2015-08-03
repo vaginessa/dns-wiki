@@ -1,4 +1,4 @@
-:warning: You normally does not need to use both products the same time and it's not recommend! 
+:warning: You normally does not need to use both products at the same time - it's not recommend! 
 But you're the boss, if you need it, here are some quick tips.
 
 Index
@@ -7,7 +7,8 @@ Index
 * [Requirements](#requirements)
 * [First Method](#first-method-using-orbot-without-orwall)
 * [Second Method](#second-method-using-orbot-together-with-afWall+)
-* [Tor or Orxy?](#tor-or-orxy)
+* [Tor or Orxy?](#tor-or-orxy-?)
+* [Notice][#notice]
 * [Useful Links](#useful-links)
 
 
@@ -48,18 +49,13 @@ Orbot will now send all app network requests trough the local Tor ports 9050 and
 Second method using Orbot together with AFWall+
 ------------
 
-1)
+1) Select the apps that can communicate via Tor (outgoing)
 
 
-2) Select the apps that can communicate via Tor (outgoing)
-
-* Go into Orbot and make sure _Transparent_ _Proxying_ is **disabled**!
-* Select your apps e.g. Firefox,[...]
+2) Go into Orbot and make sure _Transparent_ _Proxying_ is **disabled**!
 
 
-3) 
-
-... soon
+3) Select your apps e.g. Firefox,[...]
 
 
 Using Tor with Firefox Browser (desktop/mobile)
@@ -86,18 +82,24 @@ Tor or Orxy?
 Orxy is an Orbot alternative that supports devices running the latest Android OS, and also supports the add-on which is called Orxify, it enables a per app protection, technically it's just a Tor VPN based app (which is able to _understand_ .onion addresses).
 
 Here are some little facts (because there are a lot of false info available):
-* Orbot uses iptables to proxy all apps through Tor, which requires root access.
+* Orbot uses IPTables to proxy all apps through Tor, which requires root access.
 * Apps that use the built-in Android VPN interface do not require root access. This is the primary advantage of Orxify over Orbot.
 * On Android 4.x (or higher) apps can create a native VPN connection without root access to send and receive all network traffic. Orxify app creates a VPN connection to Tor and routes the internet traffic through the VPN.
 * The Orxify add-on is not open source and not free (Orxy itself is free but comes with in-app billing).
-* AFWall (iptables) works with it but it's also not recommend to use both the same time.
+* AFWall (IPTables) works with it but it's also not recommend to use both the same time.
 * On some ROM's like Lollipop it may not work due internal changes and other apps may not respect the Android OS proxy settings, please take a look [here](https://code.google.com/p/android-developer-preview/issues/detail?id=346).
 
 There are also some other free and open source apps like Drony, it also uses a VPN but redirect them all to the Orbot app.
 
 
+Notice
+------------
+
+With newer Orbot (15.0.1 RC-3) (Tor binary 0.2.6.10+) and Firefox (39+) releases, most of the mentioned steps are obsolete since most of all problems was fixed. Orbot does allow Brides which possible can bypass provider censorship and other blocking mechanism - together with the new implemented VPN configuration (both are not enabled by default) really all traffic goes trough the Tor network. The mentioned interface (see second method) allows the root user to select or deselected specific apps that goes through the entire network - that normally means we do not need any other external apps like OrWall/Orxy. The rest can be controlled via AFWall+ itself (behind the firewall must be enabled for this). NFlog or Orbots own logging system will show the rest. 
+
+
 Useful Links
 ------------
 
-* [TorCheck | Check.torproject.org](https://check.torproject.org/)
-* [Tor FAQ | TorProject.org](https://www.torproject.org/docs/faq.html.en)
+* [Tor Security Check | Check.torproject.org](https://check.torproject.org/)
+* [Official Tor FAQ | TorProject.org](https://www.torproject.org/docs/faq.html.en)
