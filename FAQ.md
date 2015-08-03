@@ -1,7 +1,7 @@
 Frequently Asked Questions (FAQ)
 ========
 
-:warning: This FAQ is designed to answer the most common questions, please take your :watch: to read it before you ask anything. :warning
+:warning: This FAQ is designed to answer the most common questions, please take your :watch: to read it before you ask anything. :warning:
 
 Index
 -----
@@ -556,3 +556,13 @@ mount -o remount,ro /system
 ##### (53) How can I gather DNS (A/AAA/...) requests?
 
 > Mostly, if not all AOSP based ROMs coming with TCPdump as binary included. So you can just use this, there are several [Tutorial](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
+
+<a name="FAQ54"></a>
+##### (54) Since AFWall+ 2.x I don't see any reload applications button
+
+> This was removed, just touch on the main screen and swipe down, this feature is called swipe to pull.
+
+<a name="FAQ55"></a>
+##### (55) How can I sort the application(s) view in the main screen?
+
+> Under 'Preferences -> Experimental Preferences' is a new option called 'Sort Application' that allows to sort your apps via 'Name (default enabled)', by 'Install/Upgrade time' or by the app UID.
