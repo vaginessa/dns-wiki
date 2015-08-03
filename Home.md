@@ -34,10 +34,10 @@ Enjoy and profit. Contribute to the project with pull requests!
 Requirements
 -------------
 
-AFWall+ need this to run at his best:
+AFWall+ needs the following to run at his best:
 
 - No Windows or iOS. :laughing: 
-- The Android OS device with at least a 4.0 (ICS/API level 14, NDK 10) or a higher version.
+- The Android 4.0 OS (ICS/API level 14, NDK 10) or a higher version.
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
 - The Kernel/ROM _must have_ [[init.d support|init.d]] (for external custom script and data leakage fix)!
@@ -57,12 +57,12 @@ Installation
 Important Information
 ---------------------
 
-Before you submit any issue report via the integrated AFWall+ option - or here on our GitHub page, you maybe first read the following stuff which may solve already solve your problems or questions.
+Before you submit any issue report via the integrated AFWall+ option - or here on our GitHub page, you maybe first read the following stuff which may solve your problems or common questions.
 
 * Our official [[FAQ]] helps to solve the most known problems and questions.
 * Our [official issue tracker](https://github.com/ukanth/afwall/issues) here on GitHub, please always make a search before you open another ticket.
 * [Changelog](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each new version of AFWall+.
-* [[CustomScripts]] for advanced users only. Some questions about working with iptables scripts might be answered over there, it also contains some predefined scripts templates and examples you can use.
+* [[CustomScripts]] for advanced users only. Some questions about working with IPTables script(s) might be answered over there, it also contains some predefined scripts templates and examples you can use.
 * [[Apps leak user privacy data during boot]] contains background information about how to solve the 'Data leakage' during boot problem.
 * [[Android kernel traffic]] contains background information about the Android OS & Kernel generated traffic.
 
@@ -76,6 +76,7 @@ Want compile AFWall+ yourself?
 * [[All you need to know about compiling AFWall+|HOWTO Compile AFWall]]
 * [[All you need to know about compiling busybox|HOWTO Compiling busybox]]
 * [[All you need to know about compiling iptables|HOWTO Compiling iptable]]
+* [[All you need to know about debugging|HOWTO debugging]]
 
 Some useful tricks:
 * [[WhatsApp blocking|HOWTO blocking WhatsApp]]
@@ -105,6 +106,10 @@ Making Donations
 
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation!
 It can be done directly on [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate) or just look at [F-Droid repository](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall) for more donations options.
+
+If you like to donate something without getting extra candy like the donating apk, you can simply do this over here:
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6E4VZTULRB8GU) (official PayPal account)
 
 Wiki cloning
 -------
