@@ -1,4 +1,4 @@
-Special thanks to our top contributors and developers which helped to make AFWall+ more awesome! 
+Special thanks to our top contributors and developers which helped to make AFWall+ more awesome!
 
 | Developer| Misc (Wiki/Patches/Icons) | Translator | Web/eMail |
 | :--- | :--: | :---: | :---: |
@@ -51,7 +51,7 @@ Special thanks to our top contributors and developers which helped to make AFWal
 Translations quick guide:
 ------------
 
-* We use Crowdin as our main platform! 
+* We use [Crowdin](https://crowdin.com/project/afwall) as our main platform! 
 * Check if the language [is supported by Android](http://stackoverflow.com/questions/7973023/what-is-the-list-of-supported-languages-locales-on-android) and find its locale.
 * Copy [this file](https://github.com/ukanth/afwall/blob/master/aFWall/src/main/res/values/strings.xml) to the correct locale folder.
 * Translate the untranslated texts.
@@ -59,7 +59,7 @@ Translations quick guide:
 
 On GitHub:
 * Create a [pull request](https://help.github.com/articles/using-pull-requests) for the new/updated translation
-* If you really don't know how to create a pull request, you can send the translated file XDA or via eMail but normally the Crowdin system is already the easiest one.
+* If you really don't know how to create a pull request, you can send the translated file [XDA](http://forum.xda-developers.com/showthread.php?t=1957231) or via eMail but normally the Crowdin system is already the easiest one.
 
 
 Current translations:
@@ -95,3 +95,5 @@ Turkish (tr) <br>
 (ur-rPK) <br>
 Vietnamese (vi) <br>
 (zh) <br>
+<br>
+The translation status can be checked on Crowdin.
