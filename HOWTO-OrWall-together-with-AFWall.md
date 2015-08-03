@@ -8,14 +8,14 @@ Index
 * [First Method](#first-method-using-orbot-without-orwall)
 * [Second Method](#second-method-using-orbot-together-with-afWall+)
 * [Tor or Orxy?](#tor-or-orxy-?)
-* [Notice][#notice]
+* [Notice](#notice)
 * [Useful Links](#useful-links)
 
 
 Requirements
 ------------
 
-* Root access
+* Root access, well most magic needs it 
 * Kernel compiled with _CONFIG_IP_NF_MATCH_OWNE_ (to allow or reject packets on a per-command basis)
 * [Orbot](https://guardianproject.info/apps/orbot/) (ensure Orbot has no Transparent Proxy **enabled** or **disabled**!)
 * [OrWall](https://orwall.org/) 
@@ -87,7 +87,7 @@ Here are some little facts (because there are a lot of false info available):
 * On Android 4.x (or higher) apps can create a native VPN connection without root access to send and receive all network traffic. Orxify app creates a VPN connection to Tor and routes the internet traffic through the VPN.
 * The Orxify add-on is not open source and not free (Orxy itself is free but comes with in-app billing).
 * AFWall (IPTables) works with it but it's also not recommend to use both the same time.
-* On some ROM's like Lollipop it may not work due internal changes and other apps may not respect the Android OS proxy settings, please take a look [here](https://code.google.com/p/android-developer-preview/issues/detail?id=346).
+* On some ROMs like Lollipop it may not work due internal changes and other apps may not respect the Android OS proxy settings, please take a look [here](https://code.google.com/p/android-developer-preview/issues/detail?id=346).
 
 There are also some other free and open source apps like Drony, it also uses a VPN but redirect them all to the Orbot app.
 
