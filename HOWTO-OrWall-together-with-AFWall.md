@@ -1,12 +1,12 @@
-:warning: You normally does not need to use both products at the same time - it's not recommend! 
+:warning: You normally does not need to use both apps at the same time - it's not recommend! 
 But you're the boss, if you need it, here are some quick tips.
 
 Index
 -----
 
 * [Requirements](#requirements)
-* [First Method](#first-method-using-orbot-without-orwall)
-* [Second Method](#second-method-using-orbot-together-with-afWall+)
+* [First Method](#first-method)
+* [Second Method](#second-method)
 * [Tor or Orxy?](#tor-or-orxy-?)
 * [Notice](#notice)
 * [Useful Links](#useful-links)
@@ -103,3 +103,4 @@ Useful Links
 
 * [Tor Security Check | Check.torproject.org](https://check.torproject.org/)
 * [Official Tor FAQ | TorProject.org](https://www.torproject.org/docs/faq.html.en)
+* [How to use Orbot on Android | guardianproject.info](https://guardianproject.info/howto/browsefreely/)
