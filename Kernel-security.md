@@ -24,7 +24,7 @@ The reason why Android (Kernel is based on Linux) and open source will _always_ 
 Introduction
 ------------
 
-Since AFWall+ is a GUI for iptables, people may started to want to know more about how they can generally more secure the lowest-level (like iptables) - the Kernel itself. As the kernel controls your computer's networking, it is important that it be very secure, and not be compromised. 
+AFWall+ is a only a GUI for iptables and people may want to know more about how they can generally hardening the lowest-security-level on there devices (Kernel/ROM). As the kernel controls your device networking, it is important that it be very secure, and could not be compromised. If the kernel is already compromised most of all security related features could be bypassed without any notification or log entry.
 
 The config file of your currently running kernel is also always available in your file system at <code>/proc/config.gz</code>.
 
@@ -169,10 +169,10 @@ In fact the new LTE is less secure since there is no common used standard which 
 Disable binaries
 ------------
 
-Each application is given its own Linux user ID (UID) and group ID, besides this indication some apps need the following binaries to work, so removing them blocks possible attacks direct on the device (Offline). 
+Each application is given its own Linux User ID (UID) and group ID, besides this indication some apps need the following binaries to work, so removing them blocks possible attacks direct on the device (Offline). 
 
 * irsii
-* bash
+* bash (optional, default removed)
 * SQL 
 * nano
 * nc (net cat)
@@ -190,6 +190,7 @@ Each application is given its own Linux user ID (UID) and group ID, besides this
 * ping (needs root)
 * pm (needs root)
 * adbd  (needs root -> adb deamon)
+* ...
 
 
 Security Tricks
@@ -198,7 +199,7 @@ Security Tricks
 Some applications request more permissions (e.g. Flashlight) than they really need. You can alter the set of permissions granted to an application by editing /data/system/pacakges.xml.
 After editing you need to reboot the device, because it gets overwritten by the system again. All changes will be read at system boot.
 
-On some external ROMs, there is also an GUI for this, it's called [Privacy Guard](https://www.julianevansblog.com/2014/06/how-to-use-android-privacy-guard-on-cyanogenmod-11.html) which first was introduced in CyanogenMod 11. This makes it easier for users to disable critical permissions on an app-by-app basis. 
+On some external ROMs, there is also an GUI for this, it's called [Privacy Guard](https://www.julianevansblog.com/2014/06/how-to-use-android-privacy-guard-on-cyanogenmod-11.html) which first was introduced in CyanogenMod 11. This makes it easier for users to disable critical permissions on an app-by-app basis. An alternative on newer system seems XPrivacy (includes a basic _firewall_) or AppOps.
 
 
 SMS:
@@ -212,18 +213,26 @@ Never ever forget your keystore. Send it via email to yourself to keep it. If yo
 Android M
 --------------
 
-With Android M (Kernel 4.1+) (API level 23) a lot of _under the hood_ changes are coming to the user including a new [permission controlling system](http://www.androidpolice.com/2015/05/28/io-2015-android-m-will-include-a-new-enhanced-permission-management-scheme-with-fine-control-over-apps/) that works similar compared to AppOps and integrates an user interface that allow to control most of all permission. Compared to Android 4/Lollipop that means you don't have only two options (take it and accept it or simply do not install it) - now you now can just install everything and change e.g. the camera permission to avoid that your new installed application (or existent) [can take control over that](https://en.wikipedia.org/wiki/Android_M). See, also the [Google I/O 2015 Video](http://www.youtube.com/watch?v=f17qe9vZ8RM).
+With Android M (Kernel 4.1+) (API level 23) a lot of _under the hood_ changes are coming to the user including a new [permission controlling system](http://www.androidpolice.com/2015/05/28/io-2015-android-m-will-include-a-new-enhanced-permission-management-scheme-with-fine-control-over-apps/) that works similar compared to AppOps and integrates an user interface that allow to control most of all [permissions](https://developer.android.com/preview/features/runtime-permissions.html). Compared to Android 4/Lollipop that means you don't have only two options (take it and accept it or simply do not install it) - now you now can just install everything and change e.g. the camera permission to avoid that your new installed application (or existent) [can take control over that](https://en.wikipedia.org/wiki/Android_M). See, also the [Google I/O 2015 Video](http://www.youtube.com/watch?v=f17qe9vZ8RM).
 
 In fact that makes more or less most of _security apps_ obsolete since the user can control what permission which app can really use. Except the internet stuff (since Google simply never wants it, because ads reasons,[...]) which overall means firewalls have still a solid standing. 
 
 The same principle as a firewall can be used to control the permission (whitelist/revoke access), which possible fc some apps first that are not updated. For malware reasons that means using AFWall+ & the new system it would be a lot harder to bypass all of these protections (of course the existent apps need a small update to support that feature).
 
+Firewall specific:
+Under Android M, app data will be automatically [backed-up](http://developer.android.com/preview/backup/index.html) onto Google Drive on a daily basis, when the phone is connected to Wi-Fi and power (opt-out option), that may lead in more traffic if the user forgets to disable it, so it's highly recommend to check this setting. 
+See also Network Security Policy, over [here](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/security/NetworkSecurityPolicy.java?ref=driverlayer.com%2Fweb%2F%2F%2F%2F%2F%2F%2F).
+
+HTTPS:
+<code><application android:usesCleartextTraffic = "false” /></code> will prevent any component in the app from performing any network I/O over unencrypted socket connections (supports HTTP, FTP, WebSockets, IMAP, SMTP & XMPP). This was designed for third party libraries that use insecure channels of communication. In fact that could be bypassed. 
+
+
 
 Useful links
 ------------
 
-* [Android (operating system) | Wikipedia.org](https://en.wikipedia.org/wiki/Android_(operating_system))
-* [Building Kernels | Android Developers](https://source.android.com/source/building-kernels.html) an on [XDA](http://www.xda-developers.com/compile-kernel-tutorial/)
+* [Android (Operating System) overview | Wikipedia.org](https://en.wikipedia.org/wiki/Android_(operating_system))
+* [Building Kernels | Android Developers](https://source.android.com/source/building-kernels.html) and on [XDA](http://www.xda-developers.com/compile-kernel-tutorial/)
 * [System and kernel security | Android Developers](https://source.android.com/devices/tech/security/overview/kernel-security.html)
 * [Documentation/android.txt](http://android.git.kernel.org/?p=kernel/common.git;a=blob_plain;f=Documentation/android.txt;hb=HEAD)
 * [Kernel analyzed | The Register](http://www.theregister.co.uk/2010/11/02/android_security/)
@@ -231,14 +240,23 @@ Useful links
 * [Linux Linux Kernel:List of security vulnerabilities | CVE Details](http://www.cvedetails.com/vulnerability-list/vendor_id-33/product_id-47/cvssscoremin-7/cvssscoremax-7.99/Linux-Linux-Kernel.html) 
 * [How does Android's security model differ from UNIX's | Security.StackExchange](http://security.stackexchange.com/questions/72733/how-does-androids-security-model-differ-from-unixs)
 * [Tutorial: Building Secure Android Applications by William Enck and Patrick McDaniel | SIIS](http://siis.cse.psu.edu/android-tutorial.html)
-* [Android Security - Black Hat 2011 (.pdf)](https://www.blackhat.com/docs/webcast/bhwebcast30_anderson.pdf)
-* [AUSA secure android kernel technology | GCN](http://gcn.com/Articles/2011/10/11/AUSA-secure-andriod-kernel-technology.aspx?Page=1)
+* [AUSA secure android kernel technology | GCN.com](http://gcn.com/Articles/2011/10/11/AUSA-secure-andriod-kernel-technology.aspx?Page=1)
 * [Security Enhancements for Android quick overview | selinuxproject.org](http://selinuxproject.org/page/NB_SEforAndroid_1)
 * [Validate SElinux | Source.Android.com](https://source.android.com/devices/tech/security/selinux/validate.html)
 * [HowTo: Linux Hard Disk Encryption With LUKS | cyberciti.biz](http://www.cyberciti.biz/hardware/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/)
 * [Android security maximized by Samsung KNOX (.pdf) | SamsungKnox.com](https://www.samsungknox.com/ru/system/files/whitepaper/files/Android%20security%20maximized%20by%20Samsung%20KNOX_2.pdf)
 * [Effective Android Security to build a secure Android app| GitHub](https://github.com/orhanobut/effective-android-security)
-* [A Look Inside the Android Kernel with Automated Tools by Coverity (.pdf) |Coverity.com](http://www.coverity.com/library/pdf/a-look-inside-the-android-kernel.pdf)
 * [Cellular encryption article | blog.cryptographyengineering.com](http://blog.cryptographyengineering.com/2013/05/a-few-thoughts-on-cellular-encryption.html)
 * [OpenBTS open source tool | Wikipedia.org](http://en.wikipedia.org/wiki/OpenBTS)
 * [eLinux Android category | eLinux.org Wiki](http://elinux.org/Category:Android)
+
+Feed:
+[Black Hat media feed for audio and video stuff](http://www.blackhat.com/BlackHatRSS.xml)
+
+PDF:
+[Android Hacker protection | DefCon.orh](https://www.defcon.org/images/defcon-22/dc-22-presentations/Strazzere-Sawyer/DEFCON-22-Strazzere-and-Sawyer-Android-Hacker-Protection-Level-UPDATED.pdf)
+* [Android Security Hide Android Applications in Images | BlackHat.com](https://www.blackhat.com/docs/eu-14/materials/eu-14-Apvrille-Hide-Android-Applications-In-Images-wp.pdf)
+* [Android Security overview at Black Hat 2011 | BlackHat.com](https://www.blackhat.com/docs/webcast/bhwebcast30_anderson.pdf)
+* [Android Fake ID hole | BlackHat.com](https://www.blackhat.com/docs/us-14/materials/us-14-Forristal-Android-FakeID-Vulnerability-Walkthrough.pdf)
+* [Android: One Root to Own Them All | media.blackhat.com](https://media.blackhat.com/us-13/US-13-Forristal-Android-One-Root-to-Own-Them-All-Slides.pdf)
+* [A Look Inside the Android Kernel with Automated Tools by Coverity | Coverity.com](http://www.coverity.com/library/pdf/a-look-inside-the-android-kernel.pdf)
