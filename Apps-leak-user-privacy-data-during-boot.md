@@ -2,9 +2,9 @@ Index
 -----
 
 * [Many Android apps leak user privacy data](#many-android-apps-leak-user-privacy-data)
-* [What's the issue?](#whats-the-issue)
-* [What's the risk?](#whats-the-risk)
-* [Do I have such a problem?](#do-i-have-such-a-problem)
+* [What's the issue?](#whats-the-issue-?)
+* [What's the risk?](#whats-the-risk-?)
+* [Do I have such a problem?](#do-i-have-such-a-problem-?)
 * [Temporally workarounds](#temporally-workarounds)
 * [Default IPtables Chain Policy](#default-iptables-chain-policy)
 * [Useful links](#useful-links)
@@ -12,7 +12,7 @@ Index
 Many Android apps leak user privacy data
 ----------------------------------------
 
-First this bug is a design hole by Android OS itself and have nothing to do with AFWall+ or any other Firewall itself. 
+First this bug is a design hole by Android OS itself and have nothing to do with AFWall+ or any other Firewall. 
 
 What's the issue?
 -----------------
@@ -80,20 +80,20 @@ Method 3: **APNDroid to Turn Off Data Connection**
 
 Method 4: **XPrivacy**
 
-There are a lot of difficult patches like Openpdroid, Pdroid 2.0 or PDroid which allow to prevent applications from leaking privacy sensitive data but this patches need to be integrate into the ROM you are using. It's maybe to complicated for some users and not work with all Apps without an FC (force close).
-[XPrivacy](https://github.com/M66B/XPrivacy#installation) is the only solution that works an almost every device without patching everything after you upgrade your ROM like CM 11 and do almost the same.
+There are a lot of difficult patches/apps like Openpdroid, Pdroid 2.0 or PDroid, XPrivacy which allow to prevent applications from leaking privacy sensitive data but this patches need to be integrate into the ROM (except XPrivacy which needs XPosed) you are using. It's possible to complicated for some users and may not work with all Apps without an FC (force close).
+[XPrivacy](https://github.com/M66B/XPrivacy#installation) is the only solution that works an almost every device without patching everything after you upgrade your ROM like CM 11-12 and do almost the same.
 
 
 Default IPtables Chain Policy
 -----------------------------
 
-The Default Android OS iptables chain policy is ACCEPT for all INPUT, FORWARD and OUTPUT policies. We can easily change this default policy to DROP with below listed commands.
+The Default Android OS IPTables chain policy is ACCEPT for all INPUT, FORWARD and OUTPUT policies. We can easily change this default policy to DROP with below listed commands.
 
 >* iptables -P INPUT DROP
 >* iptables -P FORWARD DROP
 >* iptables -P OUTPUT DROP
 
-After changing the INPUT, FORWARD, OUTPUT policies to DROP, all the incoming/outgoing/forwarding connections are dropped by AFWall+. So we need to open every INPUT, FORWARD and OUTPUT connections in firewall/iptables with rules. If you change the default OUTPUT policy to DROP you cannot communicate with other systems/networks.
+After changing the INPUT, FORWARD, OUTPUT policies to DROP, all the incoming/outgoing/forwarding connections are dropped by AFWall+. So we need to open every INPUT, FORWARD and OUTPUT connections in firewall/IPTables with rules. If you change the default OUTPUT policy to DROP you cannot communicate with other systems/networks.
 
 Useful links
 ------------
@@ -102,6 +102,8 @@ Useful links
 * [Disabling Mobile Data at First Boot | XDA-Forum](http://forum.xda-developers.com/showthread.php?p=7196260)
 * [How to Minimize Your Android Data Usage and Avoid Overage Charges | How-To Geek](http://www.howtogeek.com/140261/how-to-minimize-your-android-data-usage-and-avoid-overage-charges/)
 * [The Android boot process from power on | Xdin Android Blog](http://www.androidenea.com/2009/06/android-boot-process-from-power-on.html)
-* [Android Community | Android Source] (http://source.android.com/source/community/index.html)
-* [iptables4n1 workaround for Android Froyo (Nexus One) | Google Code]  (http://code.google.com/p/iptables4n1/)
+* [Android Community | Android Source](http://source.android.com/source/community/index.html)
+* [iptables4n1 workaround for Android Froyo (Nexus One) | Google Code](http://code.google.com/p/iptables4n1/)
 * [Possible userinit.sh & Orbot leak fix](https://github.com/ukanth/afwall/wiki/CustomScripts#some-examples)
+
+_ Final version 04.08.2015_
