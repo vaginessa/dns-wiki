@@ -4,14 +4,15 @@ Index
 * [Introduction](#introduction)
 * [Implementations](#implementations)
 * [Android Logging System](#android-logging-system)
-* [GMS](#gsm-security)
+* [GMS](#gsm)
 * [Disable binaries](#disable-binaries)
+* [Android M](#android-m)
 * [Useful links](#useful-links)
 
 
 An fantastic explanation and overview about Android's security can be found at the [TheNewCircle](https://thenewcircle.com/s/post/1473/Android_Security_Underpinnings.htm) [05.2013] or directly on [source.android.com](https://source.android.com/devices/tech/security/).
 
-:warning: This is a POC (Proof-of-Concept) and WIP (Work-in-process) article, it's not designed (and never will be) to explain everything or show every possible configuration (it's simply impossible) and is more designed to quickly show the most important configurations! 
+:warning: This is a POC (Proof-of-Concept) and WIP (Work-in-process) article, it's not designed (and never will be) to explain everything or show every possible configuration (it's simply impossible) and is more designed to quickly show the most important configurations! :warning:
 
 Due the lack of security of the consumer devices is not necessarily Android's problem. So far, most problems come from OEM's customization, and third party malicious apps pretending to be good citizen. Hardening the kernel won't fix all of these problems.
 
@@ -152,7 +153,7 @@ Android use the following Global System for Mobile Communications specifications
 * UMTS-Communication use [Signalling System 7](http://en.wikipedia.org/wiki/Signalling_System_No._7) (SS7) which can be bypassed via side-channel attacks
 * NSA and others are able to [crack it](http://yro.slashdot.org/story/13/12/14/0148251/nsa-able-to-crack-a51-cellphone-crypto) + [Full Story](http://www.washingtonpost.com/business/technology/by-cracking-cellphone-code-nsa-has-capacity-for-decoding-private-conversations/2013/12/13/e119b598-612f-11e3-bf45-61f69f54fc5f_story.html)
 * An [Wiki is available by SRLabs](https://opensource.srlabs.de/projects/a51-decrypt)
-* Handy-Jammer are _often_ used to block UTMS signals, so that the lower bandwith e.g. over GPRS will be used instead - because the basic station force the connectivity. After that it's possible to enable the _bull-encryption_ option. 
+* Handy-Jammer are _often_ used to block UTMS signals, so that the lower bandwidth e.g. over GPRS will be used instead - because the basic station force the connectivity. After that it's possible to enable the _bull-encryption_ option. 
 * Some provider claim to use a more secure A5/3 instead of [A5/1](http://www.scard.org/gsm/a51.html) or A5/3.
 * A basic whitepaper and overview of GSM, UMTS and LTE security can be found over [here](https://eprint.iacr.org/2013/227.pdf)
 * The full specifications for all networks can be found over [here](http://www.gsma.com/technicalprojects/fraud-security/security-algorithms)
@@ -208,6 +209,15 @@ Application Signing:
 Never ever forget your keystore. Send it via email to yourself to keep it. If you lose your keystore, you won't be able to get it back and you cannot update your application anymore.
 
 
+Android M
+--------------
+
+With Android M (Kernel 4.1+) (API level 23) a lot of _under the hood_ changes are coming to the user including a new [permission controlling system](http://www.androidpolice.com/2015/05/28/io-2015-android-m-will-include-a-new-enhanced-permission-management-scheme-with-fine-control-over-apps/) that works similar compared to AppOps and integrates an user interface that allow to control most of all permission. Compared to Android 4/Lollipop that means you don't have only two options (take it and accept it or simply do not install it) - now you now can just install everything and change e.g. the camera permission to avoid that your new installed application (or existent) [can take control over that](https://en.wikipedia.org/wiki/Android_M). See, also the [Google I/O 2015 Video](http://www.youtube.com/watch?v=f17qe9vZ8RM).
+
+In fact that makes more or less most of _security apps_ obsolete since the user can control what permission which app can really use. Except the internet stuff (since Google simply never wants it, because ads reasons,[...]) which overall means firewalls have still a solid standing. 
+
+The same principle as a firewall can be used to control the permission (whitelist/revoke access), which possible fc some apps first that are not updated. For malware reasons that means using AFWall+ & the new system it would be a lot harder to bypass all of these protections (of course the existent apps need a small update to support that feature).
+
 
 Useful links
 ------------
@@ -223,7 +233,7 @@ Useful links
 * [Tutorial: Building Secure Android Applications by William Enck and Patrick McDaniel | SIIS](http://siis.cse.psu.edu/android-tutorial.html)
 * [Android Security - Black Hat 2011 (.pdf)](https://www.blackhat.com/docs/webcast/bhwebcast30_anderson.pdf)
 * [AUSA secure android kernel technology | GCN](http://gcn.com/Articles/2011/10/11/AUSA-secure-andriod-kernel-technology.aspx?Page=1)
-* [Security Enhancements for Android™ quick overview | selinuxproject.org](http://selinuxproject.org/page/NB_SEforAndroid_1)
+* [Security Enhancements for Android quick overview | selinuxproject.org](http://selinuxproject.org/page/NB_SEforAndroid_1)
 * [Validate SElinux | Source.Android.com](https://source.android.com/devices/tech/security/selinux/validate.html)
 * [HowTo: Linux Hard Disk Encryption With LUKS | cyberciti.biz](http://www.cyberciti.biz/hardware/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/)
 * [Android security maximized by Samsung KNOX (.pdf) | SamsungKnox.com](https://www.samsungknox.com/ru/system/files/whitepaper/files/Android%20security%20maximized%20by%20Samsung%20KNOX_2.pdf)
