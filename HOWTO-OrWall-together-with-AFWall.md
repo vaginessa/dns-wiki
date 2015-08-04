@@ -1,4 +1,4 @@
-:warning: You normally does not need to use both apps at the same time - it's not recommend! 
+:warning: You normally do not need to use both apps at the same time - it's not recommend! 
 But you're the boss, if you need it, here are some quick tips.
 
 Index
