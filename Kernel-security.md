@@ -3,7 +3,7 @@ Index
 
 * [Introduction](#introduction)
 * [Implementations](#implementations)
-* [Android Logging System](#android-logging-system)
+* [Android logging system](#android-logging-system)
 * [GMS](#gsm)
 * [Disable binaries](#disable-binaries)
 * [Android M](#android-m)
@@ -224,7 +224,7 @@ Under Android M, app data will be automatically [backed-up](http://developer.and
 See also Network Security Policy, over [here](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/security/NetworkSecurityPolicy.java?ref=driverlayer.com%2Fweb%2F%2F%2F%2F%2F%2F%2F).
 
 HTTPS:
-<code><application android:usesCleartextTraffic = "false” /></code> will prevent any component in the app from performing any network I/O over unencrypted socket connections (supports HTTP, FTP, WebSockets, IMAP, SMTP & XMPP). This was designed for third party libraries that use insecure channels of communication. In fact that could be bypassed. 
+<code><application android:usesCleartextTraffic = "false” /></code> will prevent any component in the app from performing any network I/O over unencrypted socket connections (supports HTTP, FTP, WebSockets, IMAP, SMTP & XMPP). This was designed for third party libraries that use insecure channels of communication. In fact that could be bypassed in the future.  
 
 
 
@@ -232,7 +232,7 @@ Useful links
 ------------
 
 * [Android (Operating System) overview | Wikipedia.org](https://en.wikipedia.org/wiki/Android_(operating_system))
-* [Building Kernels | Android Developers](https://source.android.com/source/building-kernels.html) and on [XDA](http://www.xda-developers.com/compile-kernel-tutorial/)
+* [Building Kernels | Android Developers](https://source.android.com/source/building-kernels.html) and a tutorial on [XDA](http://www.xda-developers.com/compile-kernel-tutorial/)
 * [System and kernel security | Android Developers](https://source.android.com/devices/tech/security/overview/kernel-security.html)
 * [Documentation/android.txt](http://android.git.kernel.org/?p=kernel/common.git;a=blob_plain;f=Documentation/android.txt;hb=HEAD)
 * [Kernel analyzed | The Register](http://www.theregister.co.uk/2010/11/02/android_security/)
@@ -244,19 +244,20 @@ Useful links
 * [Security Enhancements for Android quick overview | selinuxproject.org](http://selinuxproject.org/page/NB_SEforAndroid_1)
 * [Validate SElinux | Source.Android.com](https://source.android.com/devices/tech/security/selinux/validate.html)
 * [HowTo: Linux Hard Disk Encryption With LUKS | cyberciti.biz](http://www.cyberciti.biz/hardware/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/)
-* [Android security maximized by Samsung KNOX (.pdf) | SamsungKnox.com](https://www.samsungknox.com/ru/system/files/whitepaper/files/Android%20security%20maximized%20by%20Samsung%20KNOX_2.pdf)
-* [Effective Android Security to build a secure Android app| GitHub](https://github.com/orhanobut/effective-android-security)
+* [Effective Android Security to build a secure Android app| GitHub.com](https://github.com/orhanobut/effective-android-security)
 * [Cellular encryption article | blog.cryptographyengineering.com](http://blog.cryptographyengineering.com/2013/05/a-few-thoughts-on-cellular-encryption.html)
 * [OpenBTS open source tool | Wikipedia.org](http://en.wikipedia.org/wiki/OpenBTS)
 * [eLinux Android category | eLinux.org Wiki](http://elinux.org/Category:Android)
+* [Linux Security Summit 2015/Abstracts/Smalley | kernsec.org](http://kernsec.org/wiki/index.php/Linux_Security_Summit_2015/Abstracts/Smalley)
 
 Feed:
-[Black Hat media feed for audio and video stuff](http://www.blackhat.com/BlackHatRSS.xml)
+* [Black Hat media feed for audio and video stuff](http://www.blackhat.com/BlackHatRSS.xml)
 
 PDF:
-[Android Hacker protection | DefCon.orh](https://www.defcon.org/images/defcon-22/dc-22-presentations/Strazzere-Sawyer/DEFCON-22-Strazzere-and-Sawyer-Android-Hacker-Protection-Level-UPDATED.pdf)
+* [Android Hacker protection | DefCon.org](https://www.defcon.org/images/defcon-22/dc-22-presentations/Strazzere-Sawyer/DEFCON-22-Strazzere-and-Sawyer-Android-Hacker-Protection-Level-UPDATED.pdf)
 * [Android Security Hide Android Applications in Images | BlackHat.com](https://www.blackhat.com/docs/eu-14/materials/eu-14-Apvrille-Hide-Android-Applications-In-Images-wp.pdf)
 * [Android Security overview at Black Hat 2011 | BlackHat.com](https://www.blackhat.com/docs/webcast/bhwebcast30_anderson.pdf)
 * [Android Fake ID hole | BlackHat.com](https://www.blackhat.com/docs/us-14/materials/us-14-Forristal-Android-FakeID-Vulnerability-Walkthrough.pdf)
 * [Android: One Root to Own Them All | media.blackhat.com](https://media.blackhat.com/us-13/US-13-Forristal-Android-One-Root-to-Own-Them-All-Slides.pdf)
 * [A Look Inside the Android Kernel with Automated Tools by Coverity | Coverity.com](http://www.coverity.com/library/pdf/a-look-inside-the-android-kernel.pdf)
+* [Android security maximized by Samsung KNOX (.pdf) | SamsungKnox.com](https://www.samsungknox.com/ru/system/files/whitepaper/files/Android%20security%20maximized%20by%20Samsung%20KNOX_2.pdf)
