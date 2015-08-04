@@ -221,12 +221,10 @@ The same principle as a firewall can be used to control the permission (whitelis
 
 Firewall specific:
 Under Android M, app data will be automatically [backed-up](http://developer.android.com/preview/backup/index.html) onto Google Drive on a daily basis, when the phone is connected to Wi-Fi and power (opt-out option), that may lead in more traffic if the user forgets to disable it, so it's highly recommend to check this setting. 
-See also Network Security Policy, over [here](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/security/NetworkSecurityPolicy.java?ref=driverlayer.com%2Fweb%2F%2F%2F%2F%2F%2F%2F).
+See also AOSP Network Security Policy, over [here](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/security/NetworkSecurityPolicy.java?ref=driverlayer.com%2Fweb%2F%2F%2F%2F%2F%2F%2F).
 
 HTTPS:
-<code><application android:usesCleartextTraffic = "false” /></code> will prevent any component in the app from performing any network I/O over unencrypted socket connections (supports HTTP, FTP, WebSockets, IMAP, SMTP & XMPP). This was designed for third party libraries that use insecure channels of communication. In fact that could be bypassed in the future.  
-
-
+<code>application android:usesCleartextTraffic = "false” /</code> will prevent any component in the app from performing any network I/O over unencrypted socket connections (supports HTTP, FTP, WebSockets, IMAP, SMTP & XMPP). This was designed for third party libraries that use insecure channels of communication. In fact that could be bypassed in the future.
 
 Useful links
 ------------
@@ -234,12 +232,12 @@ Useful links
 * [Android (Operating System) overview | Wikipedia.org](https://en.wikipedia.org/wiki/Android_(operating_system))
 * [Building Kernels | Android Developers](https://source.android.com/source/building-kernels.html) and a tutorial on [XDA](http://www.xda-developers.com/compile-kernel-tutorial/)
 * [System and kernel security | Android Developers](https://source.android.com/devices/tech/security/overview/kernel-security.html)
-* [Documentation/android.txt](http://android.git.kernel.org/?p=kernel/common.git;a=blob_plain;f=Documentation/android.txt;hb=HEAD)
+* [Kernel Documentation/android.txt](http://android.git.kernel.org/?p=kernel/common.git;a=blob_plain;f=Documentation/android.txt;hb=HEAD)
 * [Kernel analyzed | The Register](http://www.theregister.co.uk/2010/11/02/android_security/)
 * [Android Kernel Features | eLinux.org](http://elinux.org/Android_Kernel_Features)
-* [Linux Linux Kernel:List of security vulnerabilities | CVE Details](http://www.cvedetails.com/vulnerability-list/vendor_id-33/product_id-47/cvssscoremin-7/cvssscoremax-7.99/Linux-Linux-Kernel.html) 
-* [How does Android's security model differ from UNIX's | Security.StackExchange](http://security.stackexchange.com/questions/72733/how-does-androids-security-model-differ-from-unixs)
-* [Tutorial: Building Secure Android Applications by William Enck and Patrick McDaniel | SIIS](http://siis.cse.psu.edu/android-tutorial.html)
+* [Linux Linux Kernel:List of security vulnerabilities | CVEDetails.com](http://www.cvedetails.com/vulnerability-list/vendor_id-33/product_id-47/cvssscoremin-7/cvssscoremax-7.99/Linux-Linux-Kernel.html) 
+* [How does Android's security model differ from UNIX's | Security.StackExchange.com](http://security.stackexchange.com/questions/72733/how-does-androids-security-model-differ-from-unixs)
+* [Tutorial: Building Secure Android Applications by William Enck and Patrick McDaniel | SIIScse.psu.edu](http://siis.cse.psu.edu/android-tutorial.html)
 * [AUSA secure android kernel technology | GCN.com](http://gcn.com/Articles/2011/10/11/AUSA-secure-andriod-kernel-technology.aspx?Page=1)
 * [Security Enhancements for Android quick overview | selinuxproject.org](http://selinuxproject.org/page/NB_SEforAndroid_1)
 * [Validate SElinux | Source.Android.com](https://source.android.com/devices/tech/security/selinux/validate.html)
@@ -249,6 +247,7 @@ Useful links
 * [OpenBTS open source tool | Wikipedia.org](http://en.wikipedia.org/wiki/OpenBTS)
 * [eLinux Android category | eLinux.org Wiki](http://elinux.org/Category:Android)
 * [Linux Security Summit 2015/Abstracts/Smalley | kernsec.org](http://kernsec.org/wiki/index.php/Linux_Security_Summit_2015/Abstracts/Smalley)
+* [Kernel Planet | Planet.Kernel.org](http://planet.kernel.org/)
 
 Feed:
 * [Black Hat media feed for audio and video stuff](http://www.blackhat.com/BlackHatRSS.xml)
