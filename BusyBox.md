@@ -3,7 +3,7 @@ Index
 
 * [Description](#description)
 * [Installation instructions](#install-instructions)
-* [How do I configure BusyBox?](#config-busybox)
+* [How do I configure BusyBox?](#how-do-i-configure-busybox-?)
 * [Difference between SELinux and non-SELinux BusyBox](#difference-between-selinux-and-non-selinux-busybox)
 * [Useful links](#useful-links)
 
@@ -25,7 +25,7 @@ __Short description__
 Installation instructions
 ---------------------------
 
-Normally BusyBox is included in your ROM and AFWall+ also comes with his own, but on some Stock (OEM Firmwares) and AOSP (Android Open Source Project) based ROM's it is possible that this isn't integrated (Androids own toolbox will be used instead). 
+Normally BusyBox is included in your ROM and AFWall+ also comes with his own, but on some Stock (OEM Firmwares) and AOSP (Android Open Source Project) based ROMs it is possible that this isn't integrated (Androids own toolbox will be used instead). 
 
 In this case:
 1) Open AFWall+ 
@@ -33,7 +33,7 @@ In this case:
 3) Now tap on 'Binaries' 
 4) Tap on 'BusyBox Binary' and select '_Build-in BusyBox_'
 
-If you like to manually update your system own binarie, because it getting an update or for other reasons, you can use the external BusyBox app (the name is a bit 'wrong/confusing' since it isn't a BusyBox app - it's more an app which integrates a binary (called _busybox_) that will be installed/integrated in your system) or you can just use your own (or pre) compiled binary explained over [here](https://github.com/ukanth/afwall/wiki/HOWTO-Compiling-busybox).
+If you like to manually update your system own binary, because it getting an update or for other reasons, you can use the external BusyBox app (the name is a bit 'wrong/confusing' since it isn't a BusyBox app - it's more an app which integrates a binary (called _busybox_) that will be installed/integrated in your system) or you can just use your own (or pre) compiled binary explained over [here](https://github.com/ukanth/afwall/wiki/HOWTO-Compiling-busybox).
 
 With the BusyBox app make sure all symlinks are proper set to /xbin (system/xbin) this will normally automatically set by this app (all shows green and you see small check marks).
 
@@ -44,7 +44,7 @@ cp /sdcard/busybox /system/xbin/busybox
 chmod 755 /system/xbin/busybox
 ```
 
-All BusyBox binarys also provide a simply install setup if you binary was already copied into _xbin_ you can simply use <code>busybox --install /system/xbin</code>. On older ROM's like 2.3 or 3.x this needs to be changed to _bin_ instead _xbin_ directory.
+All BusyBox binaries also provide a simply install setup if you binary was already copied into _xbin_ you can simply use <code>busybox --install /system/xbin</code>. On older ROMs like 2.3 or 3.x this needs to be changed to _bin_ instead _xbin_ directory.
 
 On the recovery TWRP you can do this via (CWM does not include any file manager!):
 ```
@@ -60,7 +60,7 @@ Tap "chmod 755" (this will change the permissions to the correct one)
 Done
 ```
 
-Some binary's are also flashable (means you can select your .zip under CWM/TWRP and flash that, sometimes that can be problematically if the permissions are not proper set or the system shows the wrong symlinks (means you will see strange and cryptographic chars in the SuperSU log. 
+Some binaries are also flashable (means you can select your .zip under TWRP and flash that, sometimes that can be problematically if the permissions are not proper set or the system shows the wrong symlinks (means you will see strange and cryptographic chars in the SuperSU log. 
 
 How do I configure BusyBox?
 ---------------------------
@@ -94,8 +94,9 @@ Useful links
 * [Official BusyBox Download Documentation Page | BusyBox.net](http://busybox.net/downloads/)
 * [Official BusyBox FAQ | BusyBox.net](http://www.busybox.net/FAQ.html)
 * [BusyBox Download on F-Droid | F-Droid](https://f-droid.org/wiki/page/stericson.busybox)
-* [Browse the source code |git.busybox.net](http://git.busybox.net/busybox/)
+* [BusyBox NDK | GitHub.com](https://github.com/tias/android-busybox-ndk)
+* [Browse the git source code | git.busybox.net](http://git.busybox.net/busybox/)
 * [Anonymous GIT access | BusyBox.net](http://www.busybox.net/source.html)
 * [Bug Tracker | Bugs.BusyBox.net](https://bugs.busybox.net)
 * [Official BusyBox Installer | Google Play Store](https://play.google.com/store/apps/details?id=com.jrummy.busybox.installer)
-* [Busybox Free | Stericson on GitHub](https://github.com/Stericson/busybox-free)
+* [Free Busybox | Stericson on GitHub](https://github.com/Stericson/busybox-free)
