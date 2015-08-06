@@ -55,45 +55,48 @@ Translations quick guide:
 * Check if the language [is supported by Android](http://stackoverflow.com/questions/7973023/what-is-the-list-of-supported-languages-locales-on-android) and find its locale.
 * Copy [this file](https://github.com/ukanth/afwall/blob/master/aFWall/src/main/res/values/strings.xml) to the correct locale folder.
 * Translate the untranslated texts.
-* Submit to Crowdin (or simply edit it directly on the platform - above steps not necessary)
+* Submit it to Crowdin (or simply edit it directly on the platform - above steps not necessary!)
 
-On GitHub:
-* Create a [pull request](https://help.github.com/articles/using-pull-requests) for the new/updated translation
-* If you really don't know how to create a pull request, you can send the translated file [XDA](http://forum.xda-developers.com/showthread.php?t=1957231) or via eMail but normally the Crowdin system is already the easiest one.
+Via GitHub:
+* Create a [pull request](https://help.github.com/articles/using-pull-requests) for the new or updated translation
+* If you really don't know how to create a pull request, you can send the translated file [XDA](http://forum.xda-developers.com/showthread.php?t=1957231) or via eMail (see above) but normally the Crowdin system is the easiest method.
 
 
-Current translations:
+Current translations ([ISO 639-1](http://developer.android.com/reference/java/util/Locale.html)):
 
-(af) <br>
-(ar) <br>
-(ast-rES) <br>
+Afrikaans (af) <br>
+Arabic (ar) <br>
+Astres (ast-rES) <br>
 Czech (cs) <br>
 German (de) <br>
 Greek (el) <br>
-(es) <br>
-(eu) <br>
-(fa) <br>
+Spanish (es) <br>
+Basque (eu) <br>
+Farsi (fa) <br>
 France (fr) <br>
 Hungarian (hu) <br>
 Indonesian (in) <br>
 Italian (it) <br>
 Japanese (ja) <br>
 Korean (ko) <br>
-(nl) <br>
+Dutch (nl) <br>
 Polish (pl) <br>
 Portuguese (pt) <br>
 Romanian (ro) <br>
 Russian (ru) <br>
 Slovak (sk) <br>
 Slovenian (sl) <br>
-(sr) <br>
-(sr-rCS) <br>
+Serbian (sr) <br>
+Serbian (Cyrillic) (sr-rCS) <br>
 Swedish (sv) <br>
-(th) <br>
+Thai (th) <br>
 Turkish (tr) <br>
-(uk) <br>
-(ur-rPK) <br>
+Ukrainian (uk) <br>
+Urdu (ur-rPK) <br>
 Vietnamese (vi) <br>
-(zh) <br>
+Chinese (zh) <br>
 <br>
-The translation status can be checked on Crowdin.
+
+The current translation status can be checked on [Crowdin](https://crowdin.com/project/afwall).
+
+_Final version 06.08.2015_
