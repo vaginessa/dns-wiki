@@ -7,6 +7,7 @@ Index
 * [Resolver commands](#resolver-commands)
 * [Commands to check if DNS is working](#commands-to-check-if-dns-is-working)
 * [Browser](#browser)
+* [Apps to change the current DNS](apps-to.change-the-current-dns)
 * [Useful links](#useful links)
 
 Description
@@ -24,19 +25,19 @@ By default the Google DNS server is set (8.8.8.8/8.8.4.4), currently the DNS ser
 Already reported DNS problems
 -----------
 
-An easy method to look at opened or closed threads is to search via <code>is:issue is:open dns</code> / <code>is:issue is:closed dns</code> which shows the important threads (if the topic/thread content was correct labaled).
+An easy method to look at opened or closed threads is to search via <code>is:issue is:open dns</code> / <code>is:issue is:closed dns</code> which shows the important threads (if the topic/thread content was correct labaled), alternative just click on the follow links (or copy/paste the issue number in the search e.g. <code>https://github.com/ukanth/afwall/issues/<insert-number-here>).
 
 
 Already reported DNS related topics:
-* #377 DNS (port 53) is blocked for Wifi tethering 
-* #344 Wi-Fi-Hotspot not working while AFWall+ is enabled 
-* #326 Add mDNS support for local networks
-* #318 Show host names in log view
-* #257 USB/Bluetooth Tethering fails on CM11 mako
-* #209 Bluetooth tethering borked as well
-* #206 DNS Requests fail
-* #178 Tethering
-* #18 UDP 53 bypass because logging & whitelisting are enabled
+* #377 [DNS (port 53) is blocked for Wifi tethering](https://github.com/ukanth/afwall/issues/377)
+* #344 [Wi-Fi-Hotspot not working while AFWall+ is enabled](https://github.com/ukanth/afwall/issues/344)
+* #326 [Add mDNS support for local networks](https://github.com/ukanth/afwall/issues/326)
+* #318 [Show host names in log view](https://github.com/ukanth/afwall/issues/318)
+* #257 [USB/Bluetooth Tethering fails on CM11 mako](https://github.com/ukanth/afwall/issues/257)
+* #209 [Bluetooth tethering borked as well](https://github.com/ukanth/afwall/issues/209)
+* #206 [DNS Requests fail](https://github.com/ukanth/afwall/issues/206)
+* #178 [Tethering](https://github.com/ukanth/afwall/issues/178)
+* #18  [UDP 53 bypass because logging & whitelisting are enabled](https://github.com/ukanth/afwall/issues/18)
 
 
 **Important**: Please always use the search function here on AFWall's/AOSP issue tracker (second link), to search already known existent problems to avoid duplicate threads. 
@@ -178,6 +179,14 @@ Needs changes in the settings:
 * Firefox -> for Tor/Orbot ....
 * ...
 
+Apps to change the current DNS
+-----------
+
+The following apps are success tested on all systems to work:
+* OverrideDNS (paid)
+* ... add more, remember they must work on all systems (even 5.1.1/M)
+
+
 Useful links
 -----------
 * [Latest AOSP netd version (source code) | Android.GoogleSource.com](https://android.googlesource.com/platform/system/netd/+/master/)
@@ -185,6 +194,7 @@ Useful links
 * [DNS (local) resolution on Android Lollipop #79504 | Android Open Source Project - Issue Tracker](https://code.google.com/p/android/issues/detail?id=79504)
 * [Android 5 broke tethering (DNS REFUSED) #82545 | Android Open Source Project - Issue Tracker](https://code.google.com/p/android/issues/detail?id=82545)
 * [NsdManager | Android Developers.com](http://developer.android.com/reference/android/net/nsd/NsdManager.html)
+* [Microsoft KB99686 – Enabling IP Routing | Support.Microsoft.com](https://support.microsoft.com/en-us/kb/99686)
 
 
 
