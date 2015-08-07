@@ -3,21 +3,46 @@ Index
 
 * [Description](#description)
 * [DNS under Android](#dns-under-android)
+* [Already reported DNS problems](#already-reported-DNS-problems)
 * [Resolver commands](#resolver-commands)
+* [Commands to check if DNS is working](#commands-to-check-if-dns-is-working)
 * [Browser](#browser)
-* [Notice](#notice)
 * [Useful links](#useful links)
 
 Description
 -----------
 
-<NOTHING> .. really?
+Nothing yet, will be imported soon,... 
 
 
 DNS under Android
 -----------
 
-more nothing .... 
+By default the Google DNS server is set (8.8.8.8/8.8.4.4), currently the DNS servers gets overridden after each reboot, IP change or reconnection (connectivity changes -> RIL via e.g. ndc resolver setifdns rmnet0 x.x.x.x y.y.y.y). 
+
+
+Already reported DNS problems
+-----------
+
+An easy method to look at opened or closed threads is to search via <code>is:issue is:open dns</code> / <code>is:issue is:closed dns</code> which shows the important threads (if the topic/thread content was correct labaled).
+
+
+Already reported DNS related topics:
+#377 DNS (port 53) is blocked for Wifi tethering 
+#344 Wi-Fi-Hotspot not working while AFWall+ is enabled 
+#326 Add mDNS support for local networks
+#318 Show host names in log view
+#257 USB/Bluetooth Tethering fails on CM11 mako
+#209 Bluetooth tethering borked as well
+#206 DNS Requests fail
+#178 Tethering
+#18 UDP 53 bypass because logging & whitelisting are enabled
+
+
+
+
+
+**Important**: Please always use the search function here on AFWalls/AOSP issue tracker (second link), to search already known existent problems to avoid duplicate threads. 
 
 
 Resolver commands
@@ -122,32 +147,54 @@ http://androidxref.com/5.1.0_r1/xref/system/netd/server/CommandListener.cpp#791
 * `ndc resolver clearnetdns <netId>`
 * `ndc resolver flushnet <netId>`
 
-## Master (latest versions [08.07.2015](https://android.googlesource.com/platform/system/netd/+/master/server/CommandListener.cpp#805) checked)
+## Master tree (latest versions [08.07.2015](https://android.googlesource.com/platform/system/netd/+/master/server/CommandListener.cpp#805) checked)
 * `ndc resolver setnetdns <netId> <domains> <dns1> <dns2> ...` 
 * `ndc resolver clearnetdns <netId>`
 * `ndc resolver flushnet <netId>`
 
+Commands to check if DNS is working
+---------
+
+
+The following may are nessary to indicate if all is working (dhcp/nameserver/dnsmasq,...), may needs to be changed for your interfaces you want to check: cellular, tethered, ...
+
+* Grep the dns settings <code>adb shell getprop | grep dns</code>
+* Initial check via <code>adb shell dumpsys connectivity</code> or <code>adb shell dumpsys connectivity | grep DnsAddresses</code>
+* Via nslookup <code>nslookup google.com</code>
+* See the current dhcp info <code>cat /system/etc/dhcpcd/dhcpcd.conf</code>
+* List the tethered dns configuration <code>adb logcat | egrep '(TetherController|dnsmasq)'</code>
+* Check routing via <code>ip ru</code> + <code>ip route ls</code>
+* On Bluetooth tethering <code>ip addr show bt-pan<code> (optional)
+* 
+
 Browser
 ---------
 
-List/explain all top browsers that working out-of-the-box (without flushing the cache/changing the about:config), Dolphin browser should work out-of-the-box.
+Working without any manual adjustments:
+* Dolphin 
+* NakedBrowser
+* ....
 
-Notice
----------
-
-Currently the DNS servers gets overridden after each reboot, IP change or reconnection (connectivity changes -> RIL via e.g. ndc resolver setifdns rmnet0 x.x.x.x y.y.y.y). 
+Needs changes in the settings:
+* Chrome -> 
+* Firefox -> 
+* ...
 
 Useful links
 -----------
-* [Latest AOSP netd version | Android.Googlesource.com](https://android.googlesource.com/platform/system/netd/+/master/)
-* 
+* [Latest AOSP netd version (source code) | Android.GoogleSource.com](https://android.googlesource.com/platform/system/netd/+/master/)
+* [List common DNS issues (read-only) | Google Issue Tracker](https://code.google.com/p/android/issues/list?can=2&q=DNS&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles)
+* [DNS (local) resolution on Android Lollipop #79504 | Android Open Source Project - Issue Tracker](https://code.google.com/p/android/issues/detail?id=79504)
+* [Android 5 broke tethering (DNS REFUSED) #82545 | Android Open Source Project - Issue Tracker](https://code.google.com/p/android/issues/detail?id=82545)
+* [NsdManager | Android Developers.com](http://developer.android.com/reference/android/net/nsd/NsdManager.html)
 
 
 
 Todo:
-* Complete the missing parts 
+* <s>Complete the missing parts </s>
 * Link all dns related stuff in this thread (e.g. from the faq)
-* Add several workarounds since newer systems ignoring the etc/resolver.conf or dhcpcd/dhcpcd-hooks/20-dns.conf files
+* <s>Add several workarounds since newer systems ignoring the etc/resolver.conf or dhcpcd/dhcpcd-hooks/20-dns.conf files</s>, explained with given links
 * Add AFWall+ workarounds via custom scripts or separate tips
-* possible explain why Android 4.4.+ wants to call the RIL with RIL_REQUEST_SETUP_DATA_CALL <netcfg dhcp iface>
-* .... 
+* Possible explain why Android 4.4.+/5+ wants to call the RIL with RIL_REQUEST_SETUP_DATA_CALL <netcfg dhcp iface>
+* Add example output how it should looks like, really?
+* Explain the broken MTU (saw this on so many roms) and list this bug (see ConnectivityService), since Android 5.1.x always seems to use 1500 regardless of what value has dhcp daemon set in option 26 (call interface_mtu).
