@@ -28,21 +28,18 @@ An easy method to look at opened or closed threads is to search via <code>is:iss
 
 
 Already reported DNS related topics:
-#377 DNS (port 53) is blocked for Wifi tethering 
-#344 Wi-Fi-Hotspot not working while AFWall+ is enabled 
-#326 Add mDNS support for local networks
-#318 Show host names in log view
-#257 USB/Bluetooth Tethering fails on CM11 mako
-#209 Bluetooth tethering borked as well
-#206 DNS Requests fail
-#178 Tethering
-#18 UDP 53 bypass because logging & whitelisting are enabled
+* #377 DNS (port 53) is blocked for Wifi tethering 
+* #344 Wi-Fi-Hotspot not working while AFWall+ is enabled 
+* #326 Add mDNS support for local networks
+* #318 Show host names in log view
+* #257 USB/Bluetooth Tethering fails on CM11 mako
+* #209 Bluetooth tethering borked as well
+* #206 DNS Requests fail
+* #178 Tethering
+* #18 UDP 53 bypass because logging & whitelisting are enabled
 
 
-
-
-
-**Important**: Please always use the search function here on AFWalls/AOSP issue tracker (second link), to search already known existent problems to avoid duplicate threads. 
+**Important**: Please always use the search function here on AFWall's/AOSP issue tracker (second link), to search already known existent problems to avoid duplicate threads. 
 
 
 Resolver commands
@@ -158,7 +155,7 @@ Commands to check if DNS is working
 
 The following may are nessary to indicate if all is working (dhcp/nameserver/dnsmasq,...), may needs to be changed for your interfaces you want to check: cellular, tethered, ...
 
-* Grep the dns settings <code>adb shell getprop | grep dns</code>
+* Grep the current DNS resolver/settings, reads them via: <code>adb shell getprop | grep dns</code>
 * Initial check via <code>adb shell dumpsys connectivity</code> or <code>adb shell dumpsys connectivity | grep DnsAddresses</code>
 * Via nslookup <code>nslookup google.com</code>
 * See the current dhcp info <code>cat /system/etc/dhcpcd/dhcpcd.conf</code>
@@ -172,12 +169,13 @@ Browser
 
 Working without any manual adjustments:
 * Dolphin 
-* NakedBrowser
+* Naked Browser
+* Firefox
 * ....
 
 Needs changes in the settings:
-* Chrome -> 
-* Firefox -> 
+* Chrome -> Clean DNS cache ....
+* Firefox -> for Tor/Orbot ....
 * ...
 
 Useful links
@@ -192,7 +190,7 @@ Useful links
 
 Todo:
 * <s>Complete the missing parts </s>
-* Link all dns related stuff in this thread (e.g. from the faq)
+* Link all dns related stuff in this thread (e.g. from the FAQ)
 * <s>Add several workarounds since newer systems ignoring the etc/resolver.conf or dhcpcd/dhcpcd-hooks/20-dns.conf files</s>, explained with given links
 * Add AFWall+ workarounds via custom scripts or separate tips
 * Possible explain why Android 4.4.+/5+ wants to call the RIL with RIL_REQUEST_SETUP_DATA_CALL <netcfg dhcp iface>
