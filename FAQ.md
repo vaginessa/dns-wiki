@@ -106,17 +106,17 @@ which ip6tables
 > **VPN** = All Virtual Private Network traffic e.g. from the Tor Network, OpenVPN or other providers (default disabled, needs to be enabled in the options)
 
 <a name="FAQ9"></a>
-##### (9) My Logs (logcat) are not displaying anything or are always empty, why?
+##### (9) My logs (logcat) are not displaying anything or are always empty, why?
 
 > AFWall+ logs are depend on dmesg (kernel logs). Either your kernel disabled dmesg or it's getting overwritten quickly. Please check if you kernel does have an option like "Android logger Control" or something like that an enable this service.
 
 <a name="FAQ10"></a>
-##### (10) Does AFWall+ support Android 4.4.4 or higher?
+##### (10) Does AFWall+ supports Android 4.4.4 or higher?
 
 > Yes, it works with newer Android OS versions too!
-* UID 0 (root) needs 53/UDP open for DNS on Android 4.3. - Enable DNS from application list!
+* UID 0 (root) needs 53/UDP open for DNS on Android 4.3. - Enable DNS/DHCP from within the application(s) list!
 * UID 1000 (system) needs 123/udp open for NTP. - Enable NTP from application list!
-* Android L need a little configuration change and a external BusyBox app to get the rules apply.
+* Android L/M possible need a little configuration change and a external BusyBox app to get the rules apply, try to play with the binaries option.
 
 <a name="FAQ11"></a>   
 ##### (11) Can I block incoming SMS/MMS? - Premium SMS Warning
@@ -136,10 +136,10 @@ which ip6tables
 > Tasker/Locale apps working together with AFWall+ (1.0.4a or higher).
 
 <a name="FAQ14"></a>
-##### (14) UDP Port 53 is blocked if whitelisting mode is enabled, why?
+##### (14) UDP Port 53 (DNS) is blocked if whitelisting mode is enabled, why?
 
 > Please read [this](https://github.com/ukanth/afwall/issues/18). It's **disabled by default**.
-Enable DNS from application list will unlock it.
+Enable DNS/DHCP from the application(s) list will unlock it.
 
 <a name="FAQ15"></a>
 ##### (15) How can I show actually used IPTables rules?
@@ -184,7 +184,7 @@ Or
     eth0
 
 <a name="FAQ18"></a>
-##### (18) How can I purge the IPTables rules?
+##### (18) How can I purge IPTables rules?
 
 > Open adb shell or Android Terminal Emulator and type this:
 
@@ -201,7 +201,7 @@ Or
 > Only apps are listed that have **internet permissions** in the AndroidManifest.xml. If it's not listed this means that this app [don't use any internet permission](http://developer.android.com/reference/android/Manifest.permission.html). 
 
 <a name="FAQ20"></a>
-##### (20) AFWall+ does not work under CM 7.x - 12.x, how can i fix this?
+##### (20) AFWall+ does not work under CM 7.x - 12.x, how can I fix this?
 
 > CM 7.x uses an old version of IPTables which has maybe conflicts with AFWall+ own built-in IPTables. As a workaround you can try to update your IPTables to the latest version. But it should work without it. 
 CM 11 users may need to change the BusyBox version from _builtin_ to _system BusyBox_. Of course you need to install it first.
@@ -257,7 +257,7 @@ Or via an external script:
     iptables -P OUTPUT ACCEPT
     exit 0
 
-Or within the app itself or via the AFWall+ widget.
+Or within AFWall+ itself, via the available widget(s).
 
 <a name="FAQ25"></a>
 ##### (25) Can you help me with rooting my device?
@@ -272,12 +272,12 @@ Or within the app itself or via the AFWall+ widget.
 <a name="FAQ27"></a>
 ##### (27) How safe is AFWall+?
 
-> Nothing is really safe, see the [limitations](https://github.com/ukanth/afwall#limitations) in the README.md for more details, but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. If the app may crash sometimes than feel free to submit a error log report via eMail or here on our GitHub Issue tracker, we are always motivated to fix problems and answer your questions as soon as possible.
+> Nothing is really secure, see the [limitations](https://github.com/ukanth/afwall#limitations) in the README.md for more details, but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. If the app may crash sometimes than feel free to submit a error log report via eMail or here on our GitHub Issue tracker, we are always motivated to fix problems and answer your questions as soon as possible.
 
 <a name="FAQ28"></a>
 ##### (28) How can I make a logcat to indicate which case the crash?
 
-> Please take a deeper look at our [[Howto report a bug|HOWTO Report Bug]] page for additional details. 
+> Please take a deeper look at our [[Howto report a bug|HOWTO Report Bug]] + [HOWTO debugging](https://github.com/ukanth/afwall/wiki/HOWTO-debugging) articles for additional help. 
 
 <a name="FAQ29"></a>
 ##### (29) Will there be an iOS or Windows version?
@@ -331,7 +331,7 @@ One problem with using policy routing based on fwmark with locally generated tra
 <a name="FAQ36"></a>
 ##### (36) Does AFWall+ support nftables?
 
-> No, AFWall+ does not support [nftables](https://github.com/ukanth/afwall/issues/293) yet. There is currently no Android nftables firewall available on the whole www.
+> No, AFWall+ does not support [nftables](https://github.com/ukanth/afwall/issues/293) yet. There is currently no Android nftables firewall available on the entire www.
 
 <a name="FAQ37"></a>
 ##### (37) Can I use XPrivacy, Lightning Wall, or any other Firewalls/Security apps together with AFWall+?
@@ -343,14 +343,15 @@ One problem with using policy routing based on fwmark with locally generated tra
 * DonkeyGuard: It can't control IPTables, but Android's permission, so generally it work but don't restrict some important functions like _write_external_storage_, or AFWall+ log can't be created on your sdcard. 
 * OrWall: OrWall is not compatible with AFWall+. Please disable it and enable the _Transparent Proxy_ option in Orbot.
 * Adblock Plus: Comes with there own IPTables, but it should be no problem to use it together with AFWall+. If something went wrong and you like to report a bug, please disabled it first and try to reproduce the problem, if you manually created/enabled a proxy, shut it down first.
+* An overview of similar solutions is available over [here](https://github.com/ukanth/afwall/wiki/Similar-Firewall-solutions).
 
 > Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball:
 
 <a name="FAQ38"></a>
-##### (38) Will you integrate any HOSTS blocking option?
+##### (38) Will you integrate an HOSTS blocking option?
 
 > No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control IPTables with some gimmicks such as custom scripts - which is already implemented.
-A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-down non high end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like MoaAB or and Xposed module called UnbelovedHosts. For additional question take a look over [here](https://github.com/ukanth/afwall/wiki/Advertisements-blocking).
+A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-down non high-end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like MoaAB or and Xposed module called UnbelovedHosts. For additional question take a look over [here](https://github.com/ukanth/afwall/wiki/Advertisements-blocking).
 
 <a name="FAQ39"></a>
 ##### (39) Can I ask xyz that was not written down here?
@@ -372,83 +373,9 @@ A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-
 > We can override this behavior with [android:sharedUserId](http://developer.android.com/guide/topics/manifest/manifest-element.html#uid), but it has some [drawbacks](http://stackoverflow.com/questions/5529846/androidprocess-and-process-name/5530160#5530160).
 
 <a name="FAQ42"></a>
-##### (42) How to change the DNS settings on Android? (optional)
+##### (42) How to change the DNS settings under Android? (optional, normally not necessary)
 
-> On Android <4.4 we can use the command <code>getprop | grep dns</code> to know all the DNS properties being used. This command requires BusyBox! 
-> 'rmnet0’ is the interface name for the 3G connection. net.rmnet0.dns1 and net.rmnet0.dns2 are the properties to be changed to point to OpenDNS server (the settings are still present in CM/AOSP code). Since, these properties are changed after the connection is established, net.dns1 and net.dns2 also have to be changed.
-Execute these commands as root user: <code>setprop net.rmnet0.dns1 208.67.222.222.</code> <code>setprop net.rmnet0.dns2 208.67.220.220</code>. <code>setprop net.dns1 208.67.222.222</code>. <code>setprop net.dns2 208.67.220.220</code>.
-> Remember, the settings will be applicable only for the current session! You will have to repeat it when you are re-connecting to the network.
-
-> Android system chooses the DNS servers using the script located at _/system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf_
-
-<code>20-dns.conf</code>
-
-To change the DNS servers, use the command _setprop property name_
-<pre>
-setprop net.dns1=208.67.222.222
-setprop net.dns2=208.67.220.220
-setprop net.eth0.dns1=208.67.222.222
-setprop net.eth0.dns2=208.67.220.220 
-setprop net.rmnet0.dns1=208.67.222.222
-setprop net.rmnet0.dns2=208.67.220.220
-setprop dhcp.tiwlan0.dns1=208.67.222.222
-setprop dhcp.tiwlan0.dns2=208.67.220.220
-setprop net.ppp0.dns1=208.67.222.222
-setprop net.ppp0.dns2=208.67.220.220
-setprop net.pdpbr1.dns1=208.67.222.222
-setprop net.pdpbr1.dns2=208.67.220.220</pre>
-
-Or via init.d script (won't reapply after connectivity change):
-<pre>
-#!/system/bin/sh
-setprop net.dns1 208.67.222.222
-setprop net.dns2 208.67.220.220
-# Optional
-setprop dhcp.tiwlan0.dns1 208.67.222.222
-setprop dhcp.tiwlan0.dns2 208.67.220.220
-setprop net.ppp0.dns1 208.67.222.222
-setprop net.ppp0.dns2 208.67.220.220
-setprop net.rmnet0.dns1 208.67.222.222
-setprop net.rmnet0.dns2 208.67.220.220
-setprop net.pdpbr1.dns1 208.67.222.222
-setprop net.pdpbr1.dns2 208.67.220.220</pre>
-
-To check against it (on e.g. wlan) use
-<pre>
-tcpdump -ns0 -i wlan0 'port 53'</pre>
-
-> [DNS check tool](http://dnscheck.pingdom.com/) is a secure proof if DNS is working or not, alternative you can use nslookup via command line. Please remember that there are some problems generally with the DNS security protocol, there are several known attacks, like DOS, Cache poisoning, ghost domain names & [others](http://ianix.com/pub/dnssec-outages.html). For more information take a look over [here](http://www.theregister.co.uk/2015/03/18/is_the_dns_security_protocol_a_waste_of_everyones_time_and_money/#)
-
-> If there is no setprop you can write the values before the <code>unset_dns_props()</code> begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
-
-> The <code>getprop</code> or <code>setprop</code> method **does not work on Android versions >4.4+** anymore. Those values, when changed, get simply ignored by the _netd_ daemon. It's necessary to communicate directly to the daemon via the <code>/dev/socket/netd socket</code>. In Android it's now present a tool called <code>ndc</code> which does exactly this job.
-
-On 4.3 or 4.4 KitKat (#su):
-<pre>
-ndc resolver setifdns eth0 "" 208.67.222.222 208.67.220.220 192.168.1.1
-ndc resolver setdefaultif eth0</pre>
-
-Or via AFWall+ custom script:
-<pre>
-$IPTABLES -t nat -D OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
-$IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
-</pre>
-
-Or via init.d:
-<pre>
-#!/system/bin/sh
-# File without file extension
-
-IP6TABLES=/system/bin/ip6tables
-IPTABLES=/system/bin/iptables
-
-# Maybe need to change $IPTABLES to iptables (if there are troubles applying them)
-$IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
-$IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53</pre>
-
-> Only _Google Puplic DNS_ supports native IPv6! So uncheck IPv6 in your Kernel (if checked!) or just disable it via an external custom script.
-
-> If you still like external apps, you should take a look at Override DNS [tested, working on 4.4.4/5.1] which does more or less the same. That may solve some problems on Android 4.4/Lollipop/M but there is no guarantee, some ROMs may handle it different.
+> Please read [this](https://github.com/ukanth/afwall/wiki/DNS) article to answer most DNS related questions.
 
 <a name="FAQ43"></a>
 ##### (43) Will there a "Connection confirm dialog" (on-demand) feature implemented soon?
@@ -500,7 +427,6 @@ reboot</pre>
 cat <<EOF
 etc/init.d/afwallstart
 etc/gps.conf
-etc/resolv.conf
 EOF
 ...
 ```
@@ -521,7 +447,7 @@ EOF
 # We want to write to the system partition
 mount -o remount,rw /system
 
-# Take care that (OTA) updates do not break AFWall firewall security 
+# Take care that (OTA) updates do not break AFWall's firewall security 
 cp /data/local/afwallstart /system/etc/init.d/afwallstart
 chown root:root /system/etc/init.d/afwallstart
 chmod 555 /system/etc/init.d/afwallstart
@@ -538,31 +464,26 @@ mount -o remount,ro /system
 ````
 
 <a name="FAQ50"></a>
-##### (50) Where are AFWall's settings stored?
+##### (50) Where are they AFWall's settings stored?
 
 > Exported content like profiles are stored under your internal sdcard /sdcard0/afwall all other stuff is stored under /data/data/dec.ukanth.ufirewall/. 
 
 <a name="FAQ51"></a>
 ##### (51) I get "Unable to parse package." if I try to install AFWall+, what can I do?
 
-> This means AFWalls's .apk file seems to be corrupt. Try disabling your popup blocker, check your internet connection and re-download the whole apk.
+> This means AFWalls's .apk file seems to be corrupt. Try disabling your popup-/ad-blocker, re-check your internet connection and re-download the entire apk.
 
 <a name="FAQ52"></a>
 ##### (52) I use Opera Max as Browser with "Turbo Mode" enabled, why does adblocking/firewalls seems to not working anymore?
 
-> For debugging and error reporting just disable the "Turbo Mode" option, this is mostly only another term for VPN/Proxy which works behind this option. No Firewall, IPTables, Proxy or any external app works with this option enabled, since it's not possible to use two VPNs the same time. It's not possible for any app to look behind this traffic (local). Other Browser may have a similar function or add-ons (like Firefox Janus-Proxy or Chrome's bandwidth safer), make sure it's disabled.
+> For debugging and error reporting just disable the "Turbo Mode" option, this is mostly only another term for VPN/Proxy which works behind this option. No Firewall, IPTables, Proxy or any external app works with this option enabled, since it's not possible to use two VPNs the same time. It's not possible for any app to look behind this traffic (local). Other Browser may have a similar function or add-ons (like Firefox Janus-Proxy or Chrome's bandwidth safer feature), ensure it's disabled.
 
 <a name="FAQ53"></a>
-##### (53) How can I gather DNS (A/AAA/...) requests?
-
-> Mostly, if not all AOSP based ROMs coming with TCPdump as binary included. So you can just use this, there are several [Tutorial](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
-
-<a name="FAQ54"></a>
-##### (54) Since AFWall+ 2.x I don't see any reload applications button
+##### (53) Since AFWall+ 2.x I don't see any reload applications button
 
 > This was removed, just touch on the main screen and swipe down, this feature is called swipe to pull.
 
 <a name="FAQ55"></a>
-##### (55) How can I sort the application(s) view in the main screen?
+##### (54) How can I sort the application(s) view in the main screen?
 
 > Under 'Preferences -> Experimental Preferences' is a new option called 'Sort Application' that allows to sort your apps via 'Name (default enabled)', by 'Install/Upgrade time' or by the app UID.
