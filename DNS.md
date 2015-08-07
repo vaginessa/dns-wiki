@@ -25,7 +25,7 @@ By default the Google DNS server is set (8.8.8.8/8.8.4.4), currently the DNS ser
 Already reported DNS problems
 -----------
 
-An easy method to look at opened or closed threads is to search via <code>is:issue is:open dns</code> / <code>is:issue is:closed dns</code> which shows the important threads (if the topic/thread content was correct labaled), alternative just click on the follow links (or copy/paste the issue number in the search e.g. <code>https://github.com/ukanth/afwall/issues/<insert-number-here>).
+An easy method to look at opened or closed threads is to search via <code>is:issue is:open dns</code> / <code>is:issue is:closed dns</code> which shows the important threads (if the topic/thread content was correct labaled), alternative just click on the follow links (or copy/paste the issue number in the search e.g. <code>https://github.com/ukanth/afwall/issues/<insert-issue-number-here>.
 
 
 Already reported DNS related topics:
@@ -40,7 +40,7 @@ Already reported DNS related topics:
 * #18  [UDP 53 bypass because logging & whitelisting are enabled](https://github.com/ukanth/afwall/issues/18)
 
 
-**Important**: Please always use the search function here on AFWall's/AOSP issue tracker (second link), to search already known existent problems to avoid duplicate threads. 
+**Important**: Please always use the search function here on AFWall's/AOSP issue tracker (2. under useful link), to search already known existent problems to avoid duplicate threads. 
 
 
 Resolver commands
@@ -157,13 +157,13 @@ Commands to check if DNS is working
 The following may are nessary to indicate if all is working (dhcp/nameserver/dnsmasq,...), may needs to be changed for your interfaces you want to check: cellular, tethered, ...
 
 * Grep the current DNS resolver/settings, reads them via: <code>adb shell getprop | grep dns</code>
-* Initial check via <code>adb shell dumpsys connectivity</code> or <code>adb shell dumpsys connectivity | grep DnsAddresses</code>
+* The actual DNS servers used are the ones listed in the output of: <code>adb shell dumpsys connectivity</code> or <code>adb shell dumpsys connectivity | grep DnsAddresses</code>
 * Via nslookup <code>nslookup google.com</code>
 * See the current dhcp info <code>cat /system/etc/dhcpcd/dhcpcd.conf</code>
 * List the tethered dns configuration <code>adb logcat | egrep '(TetherController|dnsmasq)'</code>
 * Check routing via <code>ip ru</code> + <code>ip route ls</code>
 * On Bluetooth tethering <code>ip addr show bt-pan<code> (optional)
-* 
+* TCPDump check state and export them: <code>tcpdump -ni any -s0 -U -w /sdcard/icmp4.pcap icmp4</code> or <code>adb shell /data/tcpdump -ni wlan0 "icmp6 or port 67 or port 68"
 
 Browser
 ---------
@@ -206,3 +206,4 @@ Todo:
 * Possible explain why Android 4.4.+/5+ wants to call the RIL with RIL_REQUEST_SETUP_DATA_CALL <netcfg dhcp iface>
 * Add example output how it should looks like, really?
 * Explain the broken MTU (saw this on so many roms) and list this bug (see ConnectivityService), since Android 5.1.x always seems to use 1500 regardless of what value has dhcp daemon set in option 26 (call interface_mtu).
+* On DNS problems on Android 5.x try to disable IPv6
