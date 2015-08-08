@@ -18,7 +18,7 @@ Index
 Introduction
 -----------
 
-This guide has nothing much todo with AFWall+ itself or it's own configuration, but it can help to protect against known _problems_ and _attacks_ like DNS/DOS/UDP flooding - and they're well tested with Linux Kernels 2.6 up to 4.0, so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the ['External Links'](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
+This guide has nothing much to do with AFWall+ itself or it's own configuration, but it can help to protect against known _problems_ and _attacks_ like DNS/DOS/UDP flooding - and they're well tested with Linux Kernels 2.6 up to 4.0, so that's the reason why it's written down here (security everywhere!). These _tweaks_ are based on the articles (designed for a faster broadband) that you can find on the bottom under the ['External Links'](https://github.com/ukanth/afwall/wiki/TCP-security#useful-links) category. 
 
 Please make a **backup first**, and of course there is **no support** or **guarantee that it works on your system**. If you unsure, simply don't use it, ask your ROM/Kernel developer if it's useful to integrate/use it.
 
@@ -40,7 +40,7 @@ Android use the following important interfaces:
 
 <code>Prefix Documentation</code> - This starts with 2001:0DB8::. It's a /32 range that has been reserved for use in documentation and illustrative examples.
 
-<code>Global Multicast</code> - This starts with FF0E::. It's a /8 range reserved for global multicast's. The _E_ (scope) in FF0E distinguishes global multicast from other types of multicast addresses.
+<code>Global Multicast</code> - This starts with FF0E::. It's a /8 range reserved for global multicasts. The _E_ (scope) in FF0E distinguishes global multicast from other types of multicast addresses.
 
 <code>Global Unicast</code> - This starts with 2000::. It's a /3 range. ISPs normally get /32 assigned to them out of these ranges and they in turn out /48, /56 and /64 sub-ranges to their customers. These addresses are globally routable.
 
@@ -90,7 +90,7 @@ Android use the following important interfaces:
 
 <code>6rd</code> - This is a mechanism to facilitate Ipv6 rapid deployment across IPv4 infrastructures of Internet service providers (ISPs). This is improved form of the 6to4 transition mechanism which aims to encourage ISPs to deploy IPv6 to their customers without placing substantial network upgrade requirement on the ISP. RFC 5569 describes 6rd in detail and does not specific a specific address prefix.
 
-<code>6to4</code> - This is another transition mechanism to facilitate migration from IPv4 to IPv6. It allows IPv6 packets to be transmitted over an IPv4 network (generally the IPv4 Internet) without the need to configure explicit tunnels. Special relay servers are also in place that allow 6to4 network to communicate with native IPv6 networks. Most IPv6 networks use autoconfiguration, which requires the last 64 bits for the host.The first 64 bits are the IPv6 prefix. The first 16 bits of the prefix are always 2002:; the next 32 bits are the IPv4 address, and the last 16 bits of the prefix are arbitrarily chosen by the router. Any IPv6 address that begins with the 2002::/16 prefix is known as a 6to4 address. 6to4 does not facilitate interoperation between IPv4-only hosts and IPv6-only hosts. 6to4 is simply a transparent mechanism used as a transport layer between IPv6 nodes. 
+<code>6to4</code> - This is another transition mechanism to facilitate migration from IPv4 to IPv6. It allows IPv6 packets to be transmitted over an IPv4 network (generally the IPv4 Internet) without the need to configure explicit tunnels. Special relay servers are also in place that allow 6to4 network to communicate with native IPv6 networks. Most IPv6 networks use auto-configuration (should not be used if possible), which requires the last 64 bits for the host.The first 64 bits are the IPv6 prefix. The first 16 bits of the prefix are always 2002:; the next 32 bits are the IPv4 address, and the last 16 bits of the prefix are arbitrarily chosen by the router. Any IPv6 address that begins with the 2002::/16 prefix is known as a 6to4 address. 6to4 does not facilitate interoperation between IPv4-only hosts and IPv6-only hosts. 6to4 is simply a transparent mechanism used as a transport layer between IPv6 nodes. 
 
 
 Known attacks
@@ -100,14 +100,14 @@ These are all (or mostly all) of known possible attacks which is TCP affected by
 
 * Desynchronization during connection establishment
 * Desynchronization in the middle of a connection
-* Fingerprinting
 * ICMP attacks
 * Nonblind Spoofing
 * Routing (RIP) attacks
 * DNS attacks such DNS Poisoning and BIND attacks
 * Hijacking/Injection of the connection 
 * Sequence Guessing
-* Replay attacks + Dsniff attacks
+* Replay attacks
+* Dsniff attacks
 * LAN Sniffing (or general packets sniffing)
 * Unique Identifiers attacks
 * TCP SYN attacks (flooding)
@@ -116,8 +116,9 @@ These are all (or mostly all) of known possible attacks which is TCP affected by
 * Smurf attacks
 * Man-in-the-Middle Attacks via faked SSL/TLS certificates ([example apps](https://docs.google.com/spreadsheets/d/1t5GXwjw82SyunALVJb2w0zi3FoLRIkfGPc7AMjRF0r4/edit#gid=1053404143) that are still affected)
 * Backdoors and side channel attacks on protocol layer or software layer
-* 0day
-* Authentication and encryption problems
+* Authentication and encryption problems (headers)
+* Fingerprinting
+* 0day (zero-day)
 * ....
 
 A very good explanation of all the attacks listed above are on [Peters Smith fantastic article/book](http://linuxbox.co.uk/linux-network-security/) about common Linux security. It's highly recommend to read it, since it's very detailed and good to understand. 
@@ -591,49 +592,49 @@ IPv6 hardening
 
 If you're not on any nativ IPv6 environment you can simply skip this step and disable IPv6 global. To avoid slow Wifi connections and other problems it could also be useful to use IPv4, since this seems to be problematic on some ROMs.
 
-Known IPv6 specific attacks:
-• Router Advertisement related attacks (MiTM, router redirection, DoS, etc)
-• MITM or DoS attacks during the Neighbor Discovery process
-• DoS during the DAD/IN process
-• IPv6 Extension Headers related attacks
-• Smurf-like attacks at the local link
-• Reconnaissance by exploiting various ICMPv6 messages
-• Packet Too Big Attacks
-• ....
+Known IPv6 specific attacks: <br>
+• Router Advertisement related attacks (MiTM, router redirection, DoS, etc) <br>
+• MITM or DoS attacks during the Neighbor Discovery process <br>
+• DoS during the DAD/IN process <br>
+• IPv6 Extension Headers related attacks <br>
+• Smurf-like attacks at the local link <br>
+• Reconnaissance by exploiting various ICMPv6 messages <br>
+• Packet Too Big Attacks <br>
+• .... <br>
 
 
-The following needs to be changed manually:
-• MTU from 1500 to ≥1280 bytes, this should be used by default, broken in most Android ROM's
-• The IPv6 host address
-• Gateway
-• Default DNS server
-• Neighbor Cache (obsolete in Android, use this only on servers)
-• Hop Limit (current)
-• ...
+The following needs to be changed manually: <br>
+• MTU from 1500 to ≥1280 bytes, this should be used by default, broken in most Android ROM's <br>
+• The IPv6 host address <br>
+• Gateway <br>
+• Default DNS server <br>
+• Neighbor Cache (obsolete in Android, use this only on servers) <br>
+• Hop Limit (current) <br>
+• ... <br>
 
 
-The following needs to be changed disabled in the name of security (see RFC3849):
-• Router Advertisements (see resolv.conf/dnsmasq)
-• DAD and MLD process
-• Generally IPv6 Extension Headers needs to be blocked
-• Unwanted ICMPv6 messages
-• ...
+The following needs to be changed disabled in the name of security (see RFC3849): <br>
+• Router Advertisements (see resolv.conf/dnsmasq) <br>
+• DAD and MLD process <br>
+• Generally IPv6 Extension Headers needs to be blocked <br>
+• Unwanted ICMPv6 messages <br>
+• ... <br>
 
 
-Outgoing allowed (all the rest needs to be blocked):
-• Packet Too Big
-• Echo Replies
-• Echo Requests
+Outgoing allowed (all the rest needs to be blocked): <br>
+• Packet Too Big <br>
+• Echo Replies <br>
+• Echo Requests <br>
+<br>
 
-
-Incoming (allowed):
-• Destination Unreachable
-• Packet Too Big
-• Echo Replies
-• Time Exceeded (Type 3 Code 0, Error msg)
-• Parameter Problem (Type 4 Codes 1 and 2) (obsolete?)
-• For network troubleshooting purposes, you can allow Echo Requests messages from very specific(s) hosts.
-
+Incoming (allowed): <br>
+• Destination Unreachable <br>
+• Packet Too Big <br>
+• Echo Replies <br>
+• Time Exceeded (Type 3 Code 0, Error msg) <br>
+• Parameter Problem (Type 4 Codes 1 and 2) (obsolete?) <br>
+• For network troubleshooting purposes, you can allow Echo Requests messages from very specific(s) hosts. <br>
+<br>
 
 Unfortunately AFWall+ does not support this via UI, an alternative could be to use custom scripts.
 
