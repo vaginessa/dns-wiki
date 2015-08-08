@@ -11,9 +11,8 @@ Index
 * [Protocols](#protocols)
 * [IPSec](#ipset)
 * [Tcpcrypt](#tcpcrypt)
-* [DNS](#dns)
-* [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns)
 * [Fingerprinting](#fingerprinting)
+* [IPv6 hardening](#ipv6-hardening)
 * [External Links](#external-links)
 
 Introduction
@@ -587,73 +586,57 @@ The benefit of Tcpcrypt compared to IPsec and others is that this doesn't need a
 
 Please [see here for an example configuration](https://github.com/scslab/tcpcrypt/blob/master/INSTALL-Linux.markdown) and requirements.
 
-DNS
+IPv6 hardening
 ------------
 
-DNS is known as not secure anymore for several reasons. Like most "secure" communications protocols, it is susceptible to undetectable public-key substitution MITM-attacks an populate examples was the [Apple iMessages security problem](https://www.taoeffect.com/blog/2014/11/update-on-imessages-security/). 
+If you're not on any nativ IPv6 environment you can simply skip this step and disable IPv6 global. To avoid slow Wifi connections and other problems it could also be useful to use IPv4, since this seems to be problematic on some ROMs.
 
-The main problem is the protocol insecurity by [DNS](https://en.wikipedia.org/wiki/Domain_Name_System) and [X.509](https://en.wikipedia.org/wiki/X.509). See also [Certificate Transparency](https://blog.okturtles.com/2015/03/certificate-transparency-on-blockchains/).
-
-The core problems are always:
-* [MITM](http://en.wikipedia.org/wiki/Man-in-the-middle_attack) (Man-In-The-Middle)
-* DNS-based censorship circumvention
-* [Domain theft's](https://www.techdirt.com/articles/20141006/02561228743/5000-domains-seized-based-sealed-court-filing-confused-domain-owners-have-no-idea-why.shtml) ("seizures")
-* Certificate revocation
-* DOS (Denial-Of-Service) attacks
-* Logging 
-
-Blocking DNS isn't possible since this is needed on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less less/more complicated and depending on your knowledge about how to change that. 
-
-There are alternatives like:
-* Choosing a log free DNS resolver e.g [OpenNIC](https://www.opennicproject.org/)
-* DNSSEC/DANE
-* OpenDNS (or other providers which claiming to not log/censorship anything)
-* DNSCrypt / _TCPCrypt_ (DNSCrypt is now part of [CM 12.1](http://review.cyanogenmod.org/#/q/status:open+project:CyanogenMod/android_external_dnscrypt_dnscrypt-proxy+branch:cm-12.1+topic:dnscrypt))
-* [TACK](https://lwn.net/Articles/499134/) / [HPKP](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning)
-
-But even with such popular alternatives there are several problems, e.g. DNSSEC suffering from miscellaneous leaks mentioned over [here](http://ianix.com/pub/dnssec-outages.html) or [here](http://sockpuppet.org/blog/2015/01/15/against-dnssec/) + it [doesn't prevent MITM attacks](http://www.thoughtcrime.org/blog/ssl-and-the-future-of-authenticity/).
-
-How do I know if my applications are leaking DNS?
-------------
-
-A very detailed answer what DNS (Domain Name System) is can be found over [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver).
-
-There are several ways, the most easiest way is to visit some webpages that automatically detect what is your current DNS, like:
-* [DNS Leak Test | dnsleaktest.com](https://www.dnsleaktest.com/)
-* [IP Leak Test | ipleak.net](http://ipleak.net/)
-
-If you Browser shows a wrong DNS according to what your own settings telling you, this usually means something is wrong or maybe compromised.
-
-Per-Browser this must be set to get a correct behavior, because they using there own DNS internal settings:
-* On Firefox / Firefox Mobile (about:config): _network.dns.disablePrefetch_ needs to be set to _true_.
+Known IPv6 specific attacks:
+• Router Advertisement related attacks (MiTM, router redirection, DoS, etc)
+• MITM or DoS attacks during the Neighbor Discovery process
+• DoS during the DAD/IN process
+• IPv6 Extension Headers related attacks
+• Smurf-like attacks at the local link
+• Reconnaissance by exploiting various ICMPv6 messages
+• Packet Too Big Attacks
+• ....
 
 
-On the OS level you can:
-* Use 3rd Party Local DNS Servers/Resolvers, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Local_DNS_Resolvers).
-* Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers 4 hours is enouth.
-* Apply MacOS Tweaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_MacOS).
-* Configure Firewall as Fail-safe To Prevent Leaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
-* Generally use [secure alternatives](https://github.com/okTurtles/dnschain) + use a [online browser check](https://www.botfrei.de/en/index.html)
-* Use always the latest software to ensure possible bugs and security holes are fixed tools like sumo
-* Use a secure, user/privacy friendly search engine like DuckDuck, Disconnect or Ixquick. Even better would be an decentralized search like YaCy, FAROO or any other based on P2P/...
-* Verify no external addons/software/app leaks something
+The following needs to be changed manually:
+• MTU from 1500 to ≥1280 bytes, this should be used by default, broken in most Android ROM's
+• The IPv6 host address
+• Gateway
+• Default DNS server
+• Neighbor Cache (obsolete in Android, use this only on servers)
+• Hop Limit (current)
+• ...
 
-On Tor your can:
-* Read the _Advanced Tor usage_ FAQ section, the two important ones are [this](https://www.torproject.org/docs/faq.html.en#WarningsAboutSOCKSandDNSInformationLeaks) and [this](https://www.torproject.org/docs/faq.html.en#SocksAndDNS)
 
-Sometimes these messages may be false alarms. To find out, you should run a packet sniffer on your network interface. The basic command to do this is <code>tcpdump -pni eth0 'port domain'</code>.
+The following needs to be changed disabled in the name of security (see RFC3849):
+• Router Advertisements (see resolv.conf/dnsmasq)
+• DAD and MLD process
+• Generally IPv6 Extension Headers needs to be blocked
+• Unwanted ICMPv6 messages
+• ...
 
-If you are using an VPN this also can "fix" the DNS problem, but sometimes even this isn't enouth, especially on Android and OpenVPN, some older versions and provider still suffering from this issue, a workaround can be found over [here](https://gist.github.com/CHEF-KOCH/52fe5cd9a5aa7721fe74).
 
-Another possible problem is that you [ISP](http://en.wikipedia.org/wiki/Internet_service_provider) [mitm](http://en.wikipedia.org/wiki/Man-in-the-middle_attack) and manipulate the DNS traffic (mostly due censorship or to spoof)! There are only a few methods to bypass this:
-* Use [TOR](https://www.torproject.org/) + setup it (simply use the setup wizard if you don't know how)
-* Use a SSH tunnel
-* Choose an VPN which doesn't censorship
-* Use [JonDo](https://anonymous-proxy-servers.net/en/jondo.html) (the proxy) [but browser is also good]
-* Use [DNSCrypt](https://www.opendns.com/about/innovations/dnscrypt/) or httpsdnsd (HTTPSDNS daemon is already running if you use JonDo)
-* For general implementation info about DNS Transport over TCP take a look at [here](https://www.ietf.org/rfc/rfc5966.txt)
+Outgoing allowed (all the rest needs to be blocked):
+• Packet Too Big
+• Echo Replies
+• Echo Requests
 
-There are also several tips, tricks and guides directly with a lot of examples over the official Tor Wiki page, see [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver) & [here](https://trac.torproject.org/projects/tor/wiki/doc/Preventing_Tor_DNS_Leaks). Remember that the given tricks on this pages are optimized for TOR/I2P, so you may need to adjust some example configuration given from there.
+
+Incoming (allowed):
+• Destination Unreachable
+• Packet Too Big
+• Echo Replies
+• Time Exceeded (Type 3 Code 0, Error msg)
+• Parameter Problem (Type 4 Codes 1 and 2) (obsolete?)
+• For network troubleshooting purposes, you can allow Echo Requests messages from very specific(s) hosts.
+
+
+Unfortunately AFWall+ does not support this via UI, an alternative could be to use custom scripts.
+
 
 Fingerprinting
 ------------
@@ -713,4 +696,3 @@ External Links
 * [Google Analytics talk | AdBlockPlus.org](https://adblockplus.org/forum/viewtopic.php?p=27886#p27886)
 * [Detecting Certificate Authority compromises and web browser collusion | TorProject Blog.org](https://blog.torproject.org/blog/detecting-certificate-authority-compromises-and-web-browser-collusion)
 * [Tutorials by the hidden wiki | TheHiddenWiki](https://ev3h5yxkjz4hin75.torstorm.org/wiki/index.php/Tutorials)
-* [DNSCrypt binary mirror for Android | forum.xda-developers.com](http://forum.xda-developers.com/showthread.php?t=2793092)
