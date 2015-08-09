@@ -16,26 +16,32 @@ Index
 Description
 -----------
 
-[DNS](https://en.wikipedia.org/wiki/Domain_Name_System) is known as not to be secure anymore for several reasons. Like most "secure" communications protocols, it is susceptible to undetectable public-key substitution MITM-attacks an populate examples was the [Apple iMessages security problem](https://www.taoeffect.com/blog/2014/11/update-on-imessages-security/). 
+[DNS](https://en.wikipedia.org/wiki/Domain_Name_System) primarily uses User Datagram Protocol (UDP) on port number 53 to serve the requests, TCP (Transmission Control Protocol) is only in usage if data size exceeds >512 bytes or for special tasks, some resolvers implementing an TCP for all queries option (mostly optional by default).
+
+DNS is known as not to be secure anymore for several reasons. Like most "secure" communications protocols, it is susceptible to undetectable public-key substitution MITM-attacks an populate examples was the [Apple iMessages security problem](https://www.taoeffect.com/blog/2014/11/update-on-imessages-security/). 
 
 The main problem is the protocol insecurity by [DNS](https://en.wikipedia.org/wiki/Domain_Name_System) and [X.509](https://en.wikipedia.org/wiki/X.509). See also [Certificate Transparency](https://blog.okturtles.com/2015/03/certificate-transparency-on-blockchains/).
 
-The core problems are always:
+The core problems are:
 * [MITM](http://en.wikipedia.org/wiki/Man-in-the-middle_attack) (Man-In-The-Middle)
 * DNS-based censorship circumvention
 * [Domain theft's](https://www.techdirt.com/articles/20141006/02561228743/5000-domains-seized-based-sealed-court-filing-confused-domain-owners-have-no-idea-why.shtml) ("seizures")
 * Certificate revocation
-* DOS (Denial-Of-Service) attacks
-* Logging 
+* DOS (Denial-Of-Service) attacks, even DNSSEC doesn't protect against this
+* Logging on exit notes
+* DNS cache poisoning
+* Other exploits that are used for e.g. phishing
+* DNS hijacking
+* ...
 
 Blocking DNS isn't possible since this is needed on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less less/more complicated and depending on your knowledge about how to change that. 
 
 There are alternatives like:
-* Choosing a log free DNS resolver e.g [OpenNIC](https://www.opennicproject.org/)
-* DNSSEC/DANE
+* Choosing a logging free DNS resolver e.g [OpenNIC](https://www.opennicproject.org/) 
+* [DNSSEC](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions) / DNS-based Authentication of Named Entities ([DANE](https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities))
 * OpenDNS (or other providers which claiming to not log/censorship anything)
-* DNSCrypt / _TCPCrypt_ (DNSCrypt is now part of [CM 12.1](http://review.cyanogenmod.org/#/q/status:open+project:CyanogenMod/android_external_dnscrypt_dnscrypt-proxy+branch:cm-12.1+topic:dnscrypt))
-* [TACK](https://lwn.net/Articles/499134/) / [HPKP](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning)
+* [DNSCrypt](http://dnscrypt.org/) / _TCPCrypt_ (DNSCrypt will be a part of the final [CM 12.1](http://review.cyanogenmod.org/#/q/status:open+project:CyanogenMod/android_external_dnscrypt_dnscrypt-proxy+branch:cm-12.1+topic:dnscrypt))
+* [TACK](https://lwn.net/Articles/499134/) / [HPKP](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning) implementations within the apps 
 
 But even with such popular alternatives there are several problems, e.g. DNSSEC suffering from miscellaneous leaks mentioned over [here](http://ianix.com/pub/dnssec-outages.html) or [here](http://sockpuppet.org/blog/2015/01/15/against-dnssec/) + it [doesn't prevent MITM attacks](http://www.thoughtcrime.org/blog/ssl-and-the-future-of-authenticity/).
 
@@ -43,12 +49,18 @@ But even with such popular alternatives there are several problems, e.g. DNSSEC 
 DNS under Android
 -----------
 
-By default the Google DNS server is set (8.8.8.8/8.8.4.4), currently the DNS servers gets overridden after each reboot even with [setprop](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=object;h=6d626d41e9db62a0eadb61ccb2aa4081a8b9f6d0), IP change or reconnection (connectivity changes -> RIL via e.g. ndc resolver setifdns rmnet0 x.x.x.x y.y.y.y). 
+Android use a a dynamic DNS ([DDNS](https://en.wikipedia.org/wiki/Dynamic_DNS)) by default, which updates the DNS every time when the IP address changes ISP <-> wifi.
+
+By default the Google DNS server (since 2009) is set (8.8.8.8/8.8.4.4), currently the DNS servers gets overridden after each reboot even with [setprop](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=object;h=6d626d41e9db62a0eadb61ccb2aa4081a8b9f6d0). Googles public DNS supports DNSSEC validation since 2013 by default unless you do not want this (via opt-out), which means that this server is secured and nothing speaks against using it (except the Google paranoia of course).
+
+// IP change or reconnection (connectivity changes -> RIL via e.g. ndc resolver setifdns rmnet0 x.x.x.x y.y.y.y). 
 
 How can I gather DNS (A/AAA/...) requests?
 -----------
 
 > All AOSP based ROMs coming with TCPdump as binary included. So you can just use this to show what's going on, there are several [Tutorial](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
+
+// Android use a kind of BIND (which inclused "dig").
 
 How do I know if my applications are leaking DNS?](#
 -----------
@@ -320,11 +332,11 @@ Browser
 Working without any manual adjustments:
 * Dolphin 
 * Naked Browser
-* Firefox
+* Firefox (supports DANE via [addon](http://www.dnssec-validator.cz/))
 * ....
 
 Needs changes in the settings:
-* Chrome -> Clean DNS cache ....
+* Chrome -> Clean DNS cache .... (doesn't support DANE (official), [addon](https://chrome.google.com/webstore/detail/dnssec-validator/feijekkdahhnjbhpiffgejphmokchdbo?hl=en) is available)
 * Firefox -> for Tor/Orbot ....
 * ...
 
@@ -344,12 +356,15 @@ Useful links
 * [Android 5 broke tethering (DNS REFUSED) #82545 | Android Open Source Project - Issue Tracker](https://code.google.com/p/android/issues/detail?id=82545)
 * [NsdManager | Android Developers.com](http://developer.android.com/reference/android/net/nsd/NsdManager.html)
 * [Microsoft KB99686 – Enabling IP Routing | Support.Microsoft.com](https://support.microsoft.com/en-us/kb/99686)
+* [Net_DNS2 v1.2.5 DANE TLSA Support | netdns2.com](http://netdns2.com/2012/12/net_dns2-version-1-2-5-released/)
+* [DNSSEC-Tools | dnssec-tools.org](http://www.dnssec-tools.org/)
+* [Unbound | unbound.net](http://www.unbound.net/) (name server)
 
 
 
 Todo:
 * <s>Complete the missing parts </s>
-* Link all dns related stuff in this thread (e.g. from the FAQ)
+* <s>Link all dns related stuff in this thread (e.g. from the FAQ)</s>
 * <s>Add several workarounds since newer systems ignoring the etc/resolver.conf or dhcpcd/dhcpcd-hooks/20-dns.conf files</s>, explained with given links
 * <s>Add AFWall+ workarounds via custom scripts or separate tips</s>
 * Possible explain why Android 4.4.+/5+ wants to call the RIL with RIL_REQUEST_SETUP_DATA_CALL <netcfg dhcp iface>
