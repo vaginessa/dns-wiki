@@ -3,14 +3,14 @@ Index
 
 * [Description](#description)
 * [DNS under Android](#dns-under-android)
-* [Already reported DNS problems](#already-reported-DNS-problems)
-* [How can I gather DNS (A/AAA/...) requests?](#how-can-i-gather-dns--(a/aaa/...)-requests-?)
+* [Already reported DNS problems](#already-reported-dns-problems)
+* [How can I gather DNS (A/AAA/...) requests?](#how-can-i-gather-dns--(-a-/-aaa-/-...)-requests-?)
 * [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns-?)
 * [Resolver commands](#resolver-commands)
 * [Changing the default DNS](#changing-the-default-dns)
 * [Commands to check if DNS is working](#commands-to-check-if-dns-is-working)
 * [Browser](#browser)
-* [Apps to change the default DNS](apps-to.change-the-default-dns)
+* [Apps to change the default DNS](#apps-to-change-the-default-dns)
 * [Useful links](#useful links)
 
 Description
@@ -51,14 +51,14 @@ DNS under Android
 
 Android use a a dynamic DNS ([DDNS](https://en.wikipedia.org/wiki/Dynamic_DNS)) by default, which updates the DNS every time when the IP address changes ISP <-> wifi.
 
-By default the Google DNS server (since 2009) is set (8.8.8.8/8.8.4.4), currently the DNS servers gets overridden after each reboot even with [setprop](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=object;h=6d626d41e9db62a0eadb61ccb2aa4081a8b9f6d0). Googles public DNS supports DNSSEC validation since 2013 by default unless you do not want this (via opt-out), which means that this server is secured and nothing speaks against using it (except the Google paranoia of course).
+By default the Google DNS server (since 2009) is set (8.8.8.8/8.8.4.4), currently the DNS servers gets overridden after each reboot even with [setprop](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=object;h=6d626d41e9db62a0eadb61ccb2aa4081a8b9f6d0). Googles public DNS supports DNSSEC validation since 2013 by default unless you do not want this (via opt-out), which means that this server is secured and nothing speaks against using it (except the anti-Google paranoia of course).
 
 // IP change or reconnection (connectivity changes -> RIL via e.g. ndc resolver setifdns rmnet0 x.x.x.x y.y.y.y). 
 
 How can I gather DNS (A/AAA/...) requests?
 -----------
 
-> All AOSP based ROMs coming with TCPdump as binary included. So we can just use this to show what's going on behind, there are several [Tutorials](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available to handling TCPdump. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
+All AOSP based ROMs coming with TCPdump as binary included. So we can just use this to show what's going on behind, there are several [Tutorials](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available to handling TCPdump. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
 
 // Android use a kind of BIND (which includes "dig").
 
@@ -75,7 +75,7 @@ Per-Browser this must be set to get a correct behavior, because they using there
 * On Firefox / Firefox Mobile (about:config): _network.dns.disablePrefetch_ needs to be set to _true_.
 
 
-On the OS level you can:
+On the OS level we can:
 * Use 3rd Party Local DNS Servers/Resolvers, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Local_DNS_Resolvers).
 * Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers 4 hours is enouth.
 * Apply MacOS Tweaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_MacOS).
@@ -234,12 +234,16 @@ http://androidxref.com/5.1.0_r1/xref/system/netd/server/CommandListener.cpp#791
 Changing the default DNS
 ---------
 
-> On Android <4.4 we can use the command <code>getprop | grep dns</code> to know all the DNS properties being used. This command requires BusyBox! 
-> 'rmnet0’ is the interface name for the 3G connection. net.rmnet0.dns1 and net.rmnet0.dns2 are the properties to be changed to point to OpenDNS server (the settings are still present in CM/AOSP code). Since, these properties are changed after the connection is established, net.dns1 and net.dns2 also have to be changed.
-Execute these commands as root user: <code>setprop net.rmnet0.dns1 208.67.222.222.</code> <code>setprop net.rmnet0.dns2 208.67.220.220</code>. <code>setprop net.dns1 208.67.222.222</code>. <code>setprop net.dns2 208.67.220.220</code>.
-> Remember, the settings will be applicable only for the current session! You will have to repeat it when you are re-connecting to the network.
+On Android < 4.3 we can use the command <code>getprop | grep dns</code> to know all the DNS properties being used. This command requires BusyBox! 
 
-> Android system chooses the DNS servers using the script located at _/system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf_
+
+'rmnet0’ is the interface name for the 3G connection. net.rmnet0.dns1 and net.rmnet0.dns2 are the properties to be changed to point to OpenDNS server (the settings are still present in CM/AOSP code). Since, these properties are changed after the connection is established, net.dns1 and net.dns2 also have to be changed.
+Execute these commands as root user: <code>setprop net.rmnet0.dns1 208.67.222.222.</code> <code>setprop net.rmnet0.dns2 208.67.220.220</code>. <code>setprop net.dns1 208.67.222.222</code>. <code>setprop net.dns2 208.67.220.220</code>.
+
+
+Remember, the settings will be applicable only for the current session! You will have to repeat it when you are re-connecting to the network.
+
+Android system chooses the DNS servers using the script located at _/system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf_
 
 <code>20-dns.conf</code>
 
@@ -263,6 +267,7 @@ Or via init.d script (won't reapply after connectivity change):
 #!/system/bin/sh
 setprop net.dns1 208.67.222.222
 setprop net.dns2 208.67.220.220
+
 # Optional
 setprop dhcp.tiwlan0.dns1 208.67.222.222
 setprop dhcp.tiwlan0.dns2 208.67.220.220
@@ -273,15 +278,17 @@ setprop net.rmnet0.dns2 208.67.220.220
 setprop net.pdpbr1.dns1 208.67.222.222
 setprop net.pdpbr1.dns2 208.67.220.220</pre>
 
-To check against it (on e.g. wlan) use
+To check against it (on e.g. wlan) we use:
 <pre>
 tcpdump -ns0 -i wlan0 'port 53'</pre>
 
-> [DNS check tool](http://dnscheck.pingdom.com/) is a secure proof if DNS is working or not, alternative you can use nslookup via command line. Please remember that there are some problems generally with the DNS security protocol, there are several known attacks, like DOS, Cache poisoning, ghost domain names & [others](http://ianix.com/pub/dnssec-outages.html). For more information take a look over [here](http://www.theregister.co.uk/2015/03/18/is_the_dns_security_protocol_a_waste_of_everyones_time_and_money/#)
+[DNS check tool](http://dnscheck.pingdom.com/) is a secure proof if DNS is working or not, alternative you can use nslookup via command line. Please remember that there are some problems generally with the DNS security protocol, there are several known attacks, like DOS, Cache poisoning, ghost domain names & [others](http://ianix.com/pub/dnssec-outages.html). For more information take a look over [here](http://www.theregister.co.uk/2015/03/18/is_the_dns_security_protocol_a_waste_of_everyones_time_and_money/#)
 
-> If there is no setprop you can write the values before the <code>unset_dns_props()</code> begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
 
-> The <code>getprop</code> or <code>setprop</code> method **does not work on Android versions >4.4+** anymore. Those values, when changed, get simply ignored by the _netd_ daemon. It's necessary to communicate directly to the daemon via the <code>/dev/socket/netd socket</code>. In Android it's now present a tool called <code>ndc</code> which does exactly this job.
+If there is no setprop you can write the values before the <code>unset_dns_props()</code> begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
+
+
+The <code>getprop</code> or <code>setprop</code> method **does not work on Android versions >4.4+** anymore. Those values, when changed, get simply ignored by the _netd_ daemon. It's necessary to communicate directly to the daemon via the <code>/dev/socket/netd socket</code>. In Android it's now present a tool called <code>ndc</code> which does exactly this job.
 
 On 4.3 or 4.4 KitKat (#su):
 <pre>
@@ -306,9 +313,7 @@ IPTABLES=/system/bin/iptables
 $IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
 $IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53</pre>
 
-> Only _Google Puplic DNS_ supports native IPv6! So uncheck IPv6 in your Kernel (if checked!) or just disable it via an external custom script.
-
-> If you still like external apps, you should take a look at Override DNS [tested, working on 4.4.4/5.1] which does more or less the same. That may solve some problems on Android 4.4/Lollipop/M but there is no guarantee, some ROMs may handle it different.
+If you still like external apps, you should take a look at Override DNS [tested, working on 4.4.4/5.0.1] which does more or less the same. That may solve some problems on Android 4.4/Lollipop/M but there is no guarantee, some ROMs may handle it different.
 
 Commands to check if DNS is working
 ---------
@@ -340,7 +345,7 @@ Working without any manual adjustments:
 
 Needs changes in the settings:
 * Chrome -> Clean DNS cache .... (doesn't support DANE (official), [addon](https://chrome.google.com/webstore/detail/dnssec-validator/feijekkdahhnjbhpiffgejphmokchdbo?hl=en) is available)
-* Firefox -> for Tor/Orbot ....
+* Firefox -> for Tor/Orbot .... (disable internal via network.dnsCacheExpiration;0)
 * ...
 
 Apps to change the default DNS
@@ -375,4 +380,5 @@ Todo:
 * How can I gather DNS (A/AAA/...) requests? must be re-written 
 * Add example output how it should looks like, really? (low-prio)
 * Add traceroute, whois, and dig commands to work with (low-prio)
-* On DNS problems on Android 5.x try to [disable IPv6](https://en.m.wikipedia.org/wiki/Comparison_of_IPv6_support_in_operating_systems), since Android 5.0.1/5.x doesn't like DHCPv6 (maybe next android version will be called N for next bullshit) :)
+* On Android 5.x DNS problems try to [disable IPv6](https://en.m.wikipedia.org/wiki/Comparison_of_IPv6_support_in_operating_systems), since Android 5.0.1/5.x doesn't like DHCPv6
+* Is there a decentralized search for Android as app available (similar to yacy)? Mail me if there is one. (low-prio) + add them in the article
