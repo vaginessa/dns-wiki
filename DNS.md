@@ -4,7 +4,10 @@ Index
 * [Description](#description)
 * [DNS under Android](#dns-under-android)
 * [Already reported DNS problems](#already-reported-DNS-problems)
+* [How can I gather DNS (A/AAA/...) requests?](#how-can-i-gather-dns--(a/aaa/...)-requests-?)
+* [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns-?)
 * [Resolver commands](#resolver-commands)
+* [Changing the default DNS](#changing-the-default-dns)
 * [Commands to check if DNS is working](#commands-to-check-if-dns-is-working)
 * [Browser](#browser)
 * [Apps to change the current DNS](apps-to.change-the-current-dns)
@@ -13,14 +16,81 @@ Index
 Description
 -----------
 
-Nothing yet, will be imported soon,... 
+[DNS](https://en.wikipedia.org/wiki/Domain_Name_System) is known as not to be secure anymore for several reasons. Like most "secure" communications protocols, it is susceptible to undetectable public-key substitution MITM-attacks an populate examples was the [Apple iMessages security problem](https://www.taoeffect.com/blog/2014/11/update-on-imessages-security/). 
+
+The main problem is the protocol insecurity by [DNS](https://en.wikipedia.org/wiki/Domain_Name_System) and [X.509](https://en.wikipedia.org/wiki/X.509). See also [Certificate Transparency](https://blog.okturtles.com/2015/03/certificate-transparency-on-blockchains/).
+
+The core problems are always:
+* [MITM](http://en.wikipedia.org/wiki/Man-in-the-middle_attack) (Man-In-The-Middle)
+* DNS-based censorship circumvention
+* [Domain theft's](https://www.techdirt.com/articles/20141006/02561228743/5000-domains-seized-based-sealed-court-filing-confused-domain-owners-have-no-idea-why.shtml) ("seizures")
+* Certificate revocation
+* DOS (Denial-Of-Service) attacks
+* Logging 
+
+Blocking DNS isn't possible since this is needed on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less less/more complicated and depending on your knowledge about how to change that. 
+
+There are alternatives like:
+* Choosing a log free DNS resolver e.g [OpenNIC](https://www.opennicproject.org/)
+* DNSSEC/DANE
+* OpenDNS (or other providers which claiming to not log/censorship anything)
+* DNSCrypt / _TCPCrypt_ (DNSCrypt is now part of [CM 12.1](http://review.cyanogenmod.org/#/q/status:open+project:CyanogenMod/android_external_dnscrypt_dnscrypt-proxy+branch:cm-12.1+topic:dnscrypt))
+* [TACK](https://lwn.net/Articles/499134/) / [HPKP](https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning)
+
+But even with such popular alternatives there are several problems, e.g. DNSSEC suffering from miscellaneous leaks mentioned over [here](http://ianix.com/pub/dnssec-outages.html) or [here](http://sockpuppet.org/blog/2015/01/15/against-dnssec/) + it [doesn't prevent MITM attacks](http://www.thoughtcrime.org/blog/ssl-and-the-future-of-authenticity/).
 
 
 DNS under Android
 -----------
 
-By default the Google DNS server is set (8.8.8.8/8.8.4.4), currently the DNS servers gets overridden after each reboot, IP change or reconnection (connectivity changes -> RIL via e.g. ndc resolver setifdns rmnet0 x.x.x.x y.y.y.y). 
+By default the Google DNS server is set (8.8.8.8/8.8.4.4), currently the DNS servers gets overridden after each reboot even with [setprop](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=object;h=6d626d41e9db62a0eadb61ccb2aa4081a8b9f6d0), IP change or reconnection (connectivity changes -> RIL via e.g. ndc resolver setifdns rmnet0 x.x.x.x y.y.y.y). 
 
+How can I gather DNS (A/AAA/...) requests?
+-----------
+
+> All AOSP based ROMs coming with TCPdump as binary included. So you can just use this to show what's going on, there are several [Tutorial](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
+
+How do I know if my applications are leaking DNS?](#
+-----------
+
+A very detailed answer what DNS (Domain Name System) is can be found over [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver).
+
+There are several ways, the most easiest way is to visit some webpages that automatically detect what is your current DNS, like:
+* [DNS Leak Test | dnsleaktest.com](https://www.dnsleaktest.com/)
+* [IP Leak Test | ipleak.net](http://ipleak.net/)
+
+If you Browser shows a wrong DNS according to what your own settings telling you, this usually means something is wrong or maybe compromised.
+
+Per-Browser this must be set to get a correct behavior, because they using there own DNS internal settings:
+* On Firefox / Firefox Mobile (about:config): _network.dns.disablePrefetch_ needs to be set to _true_.
+
+
+On the OS level you can:
+* Use 3rd Party Local DNS Servers/Resolvers, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Local_DNS_Resolvers).
+* Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers 4 hours is enouth.
+* Apply MacOS Tweaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_MacOS).
+* Configure Firewall as Fail-safe To Prevent Leaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
+* Generally use [secure alternatives](https://github.com/okTurtles/dnschain) + use a [online browser check](https://www.botfrei.de/en/index.html)
+* Use always the latest software to ensure possible bugs and security holes are fixed tools like sumo
+* Use a secure, user/privacy friendly search engine like DuckDuck, Disconnect or Ixquick. Even better would be an decentralized search like YaCy, FAROO or any other based on P2P/...
+* Verify no external addons/software/app leaks something
+
+On Tor your can:
+* Read the _Advanced Tor usage_ FAQ section, the two important ones are [this](https://www.torproject.org/docs/faq.html.en#WarningsAboutSOCKSandDNSInformationLeaks) and [this](https://www.torproject.org/docs/faq.html.en#SocksAndDNS)
+
+Sometimes these messages may be false alarms. To find out, you should run a packet sniffer on your network interface. The basic command to do this is <code>tcpdump -pni eth0 'port domain'</code>.
+
+If you are using an VPN this also can "fix" the DNS problem, but sometimes even this isn't enouth, especially on Android and OpenVPN, some older versions and provider still suffering from this issue, a workaround can be found over [here](https://gist.github.com/CHEF-KOCH/52fe5cd9a5aa7721fe74).
+
+Another possible problem is that you [ISP](http://en.wikipedia.org/wiki/Internet_service_provider) [mitm](http://en.wikipedia.org/wiki/Man-in-the-middle_attack) and manipulate the DNS traffic (mostly due censorship or to spoof)! There are only a few methods to bypass this:
+* Use [TOR](https://www.torproject.org/) + setup it (simply use the setup wizard if you don't know how)
+* Use a SSH tunnel
+* Choose an VPN which doesn't censorship
+* Use [JonDo](https://anonymous-proxy-servers.net/en/jondo.html) (the proxy) [but browser is also good]
+* Use [DNSCrypt](https://www.opendns.com/about/innovations/dnscrypt/) or httpsdnsd (HTTPSDNS daemon is already running if you use JonDo)
+* For general implementation info about DNS Transport over TCP take a look at [here](https://www.ietf.org/rfc/rfc5966.txt)
+
+There are also several tips, tricks and guides directly with a lot of examples over the official Tor Wiki page, see [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver) & [here](https://trac.torproject.org/projects/tor/wiki/doc/Preventing_Tor_DNS_Leaks). Remember that the given tricks on this pages are optimized for TOR/I2P, so you may need to adjust some example configuration given from there.
 
 Already reported DNS problems
 -----------
@@ -150,11 +220,90 @@ http://androidxref.com/5.1.0_r1/xref/system/netd/server/CommandListener.cpp#791
 * `ndc resolver clearnetdns <netId>`
 * `ndc resolver flushnet <netId>`
 
+
+Changing the default DNS
+---------
+
+> On Android <4.4 we can use the command <code>getprop | grep dns</code> to know all the DNS properties being used. This command requires BusyBox! 
+> 'rmnet0’ is the interface name for the 3G connection. net.rmnet0.dns1 and net.rmnet0.dns2 are the properties to be changed to point to OpenDNS server (the settings are still present in CM/AOSP code). Since, these properties are changed after the connection is established, net.dns1 and net.dns2 also have to be changed.
+Execute these commands as root user: <code>setprop net.rmnet0.dns1 208.67.222.222.</code> <code>setprop net.rmnet0.dns2 208.67.220.220</code>. <code>setprop net.dns1 208.67.222.222</code>. <code>setprop net.dns2 208.67.220.220</code>.
+> Remember, the settings will be applicable only for the current session! You will have to repeat it when you are re-connecting to the network.
+
+> Android system chooses the DNS servers using the script located at _/system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf_
+
+<code>20-dns.conf</code>
+
+To change the DNS servers, use the command _setprop property name_
+<pre>
+setprop net.dns1=208.67.222.222
+setprop net.dns2=208.67.220.220
+setprop net.eth0.dns1=208.67.222.222
+setprop net.eth0.dns2=208.67.220.220 
+setprop net.rmnet0.dns1=208.67.222.222
+setprop net.rmnet0.dns2=208.67.220.220
+setprop dhcp.tiwlan0.dns1=208.67.222.222
+setprop dhcp.tiwlan0.dns2=208.67.220.220
+setprop net.ppp0.dns1=208.67.222.222
+setprop net.ppp0.dns2=208.67.220.220
+setprop net.pdpbr1.dns1=208.67.222.222
+setprop net.pdpbr1.dns2=208.67.220.220</pre>
+
+Or via init.d script (won't reapply after connectivity change):
+<pre>
+#!/system/bin/sh
+setprop net.dns1 208.67.222.222
+setprop net.dns2 208.67.220.220
+# Optional
+setprop dhcp.tiwlan0.dns1 208.67.222.222
+setprop dhcp.tiwlan0.dns2 208.67.220.220
+setprop net.ppp0.dns1 208.67.222.222
+setprop net.ppp0.dns2 208.67.220.220
+setprop net.rmnet0.dns1 208.67.222.222
+setprop net.rmnet0.dns2 208.67.220.220
+setprop net.pdpbr1.dns1 208.67.222.222
+setprop net.pdpbr1.dns2 208.67.220.220</pre>
+
+To check against it (on e.g. wlan) use
+<pre>
+tcpdump -ns0 -i wlan0 'port 53'</pre>
+
+> [DNS check tool](http://dnscheck.pingdom.com/) is a secure proof if DNS is working or not, alternative you can use nslookup via command line. Please remember that there are some problems generally with the DNS security protocol, there are several known attacks, like DOS, Cache poisoning, ghost domain names & [others](http://ianix.com/pub/dnssec-outages.html). For more information take a look over [here](http://www.theregister.co.uk/2015/03/18/is_the_dns_security_protocol_a_waste_of_everyones_time_and_money/#)
+
+> If there is no setprop you can write the values before the <code>unset_dns_props()</code> begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
+
+> The <code>getprop</code> or <code>setprop</code> method **does not work on Android versions >4.4+** anymore. Those values, when changed, get simply ignored by the _netd_ daemon. It's necessary to communicate directly to the daemon via the <code>/dev/socket/netd socket</code>. In Android it's now present a tool called <code>ndc</code> which does exactly this job.
+
+On 4.3 or 4.4 KitKat (#su):
+<pre>
+ndc resolver setifdns eth0 "" 208.67.222.222 208.67.220.220 192.168.1.1
+ndc resolver setdefaultif eth0</pre>
+
+Or via AFWall+ custom script:
+<pre>
+$IPTABLES -t nat -D OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
+$IPTABLES -t nat -D OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53 || true
+</pre>
+
+Or via init.d:
+<pre>
+#!/system/bin/sh
+# File without file extension
+
+IP6TABLES=/system/bin/ip6tables
+IPTABLES=/system/bin/iptables
+
+# Maybe need to change $IPTABLES to iptables (if there are troubles applying them)
+$IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
+$IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53</pre>
+
+> Only _Google Puplic DNS_ supports native IPv6! So uncheck IPv6 in your Kernel (if checked!) or just disable it via an external custom script.
+
+> If you still like external apps, you should take a look at Override DNS [tested, working on 4.4.4/5.1] which does more or less the same. That may solve some problems on Android 4.4/Lollipop/M but there is no guarantee, some ROMs may handle it different.
+
 Commands to check if DNS is working
 ---------
 
-
-The following may are nessary to indicate if all is working (dhcp/nameserver/dnsmasq,...), may needs to be changed for your interfaces you want to check: cellular, tethered, ...
+The following may are necessary to indicate if all is working (dhcp/nameserver/dnsmasq,...), may needs to be changed for your interfaces you want to check: cellular, tethered, ...
 
 * Grep the current DNS resolver/settings, reads them via: <code>adb shell getprop | grep dns</code>
 * The actual DNS servers used are the ones listed in the output of: <code>adb shell dumpsys connectivity</code> or <code>adb shell dumpsys connectivity | grep DnsAddresses</code>
@@ -202,8 +351,9 @@ Todo:
 * <s>Complete the missing parts </s>
 * Link all dns related stuff in this thread (e.g. from the FAQ)
 * <s>Add several workarounds since newer systems ignoring the etc/resolver.conf or dhcpcd/dhcpcd-hooks/20-dns.conf files</s>, explained with given links
-* Add AFWall+ workarounds via custom scripts or separate tips
+* <s>Add AFWall+ workarounds via custom scripts or separate tips</s>
 * Possible explain why Android 4.4.+/5+ wants to call the RIL with RIL_REQUEST_SETUP_DATA_CALL <netcfg dhcp iface>
-* Add example output how it should looks like, really?
 * Explain the broken MTU (saw this on so many roms) and list this bug (see ConnectivityService), since Android 5.1.x always seems to use 1500 regardless of what value has dhcp daemon set in option 26 (call interface_mtu).
-* On DNS problems on Android 5.x try to disable IPv6
+* How can I gather DNS (A/AAA/...) requests? must be re-written 
+* Add example output how it should looks like, really? (low-prio)
+* On DNS problems on Android 5.x try to [disable IPv6](https://en.m.wikipedia.org/wiki/Comparison_of_IPv6_support_in_operating_systems), since Android 5.0.1/5.x doesn't like DHCPv6 (maybe next android version will be called N for next bullshit) :)
