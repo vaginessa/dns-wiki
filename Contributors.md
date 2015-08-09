@@ -1,4 +1,4 @@
-Special thanks to our top contributors and developers which helped to make AFWall+ more awesome!
+Special thanks to our top contributors, developers and donators which helped to make AFWall+ more awesome!
 
 | Developer| Misc (Wiki/Patches/Icons) | Translator | Web/eMail |
 | :--- | :--: | :---: | :---: |
@@ -14,10 +14,10 @@ Special thanks to our top contributors and developers which helped to make AFWal
 | | | Syk3s | Crowdin |
 | | | ondra | Crowdin |
 | | | DutchWaG | Crowdin |
-| | | GermainZ (German) | XDA |
+| | | GermainZ  | XDA |
 | | | Looki75 | XDA |
 | | | La_Globule | Crowdin |
-| | | CHEF-KOCH (Ger/Ru) | XDA/Crowdin |
+| | | CHEF-KOCH | XDA/Crowdin |
 | | | user_99 | XDA |
 | | | Gronkdalonka | XDA |
 | | | mpqo | Crowdin |
@@ -41,11 +41,17 @@ Special thanks to our top contributors and developers which helped to make AFWal
 | | | myasa | Crowdin |
 | | | ozgurahmet95 | Crowdin |
 | | | andriykopanytsia | Crowdin |
-| | | Osoitz (Basque) | Crowdin |
-| | | alruwaile1234 (Persian/Arabic) | Crowdin |
-| | | softiceup (Vietnamese) | Crowdin |
-| | | slsimic (Serbian) | Crowdin |
-| | | testxyz009 (Korean) | Crowdin |
+| | | Osoitz | Crowdin |
+| | | alruwaile1234 | Crowdin |
+| | | softiceup | Crowdin |
+| | | slsimic | Crowdin |
+| | | testxyz009 | Crowdin |
+
+
+Making donations
+------------
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6E4VZTULRB8GU)
 
 
 Translations quick guide:
@@ -62,7 +68,8 @@ Via GitHub:
 * If you really don't know how to create a pull request, you can send the translated file [XDA](http://forum.xda-developers.com/showthread.php?t=1957231) or via eMail (see above) but normally the Crowdin system is the easiest method.
 
 
-Current translations ([ISO 639-1](http://developer.android.com/reference/java/util/Locale.html)):
+Current translations (as per [ISO 639-1](http://developer.android.com/reference/java/util/Locale.html)):
+------------
 
 Afrikaans (af) <br>
 Arabic (ar) <br>
@@ -97,6 +104,6 @@ Vietnamese (vi) <br>
 Chinese (zh) <br>
 <br>
 
-The current translation status can be checked on [Crowdin](https://crowdin.com/project/afwall).
+Current translations status: [![Crowdin](https://d322cqt584bo4o.cloudfront.net/afwall/localized.png)](https://crowdin.net/project/afwall)
 
-_Final version 06.08.2015_
+_Final version 08.10.2015_
