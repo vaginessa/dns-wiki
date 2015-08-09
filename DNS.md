@@ -10,7 +10,7 @@ Index
 * [Changing the default DNS](#changing-the-default-dns)
 * [Commands to check if DNS is working](#commands-to-check-if-dns-is-working)
 * [Browser](#browser)
-* [Apps to change the current DNS](apps-to.change-the-current-dns)
+* [Apps to change the default DNS](apps-to.change-the-default-dns)
 * [Useful links](#useful links)
 
 Description
@@ -58,14 +58,12 @@ By default the Google DNS server (since 2009) is set (8.8.8.8/8.8.4.4), currentl
 How can I gather DNS (A/AAA/...) requests?
 -----------
 
-> All AOSP based ROMs coming with TCPdump as binary included. So you can just use this to show what's going on, there are several [Tutorial](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
+> All AOSP based ROMs coming with TCPdump as binary included. So we can just use this to show what's going on behind, there are several [Tutorials](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available to handling TCPdump. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
 
-// Android use a kind of BIND (which inclused "dig").
+// Android use a kind of BIND (which includes "dig").
 
-How do I know if my applications are leaking DNS?](#
+How do I know if my applications are leaking DNS?
 -----------
-
-A very detailed answer what DNS (Domain Name System) is can be found over [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver).
 
 There are several ways, the most easiest way is to visit some webpages that automatically detect what is your current DNS, like:
 * [DNS Leak Test | dnsleaktest.com](https://www.dnsleaktest.com/)
@@ -329,10 +327,15 @@ The following may are necessary to indicate if all is working (dhcp/nameserver/d
 Browser
 ---------
 
+The normal mobile browser (even stock yes) working out-of-the-box without need any manual adjustment to work with the default DNS.
+
+But some browsers are hardcoding them (so that it isn't possible to override this) and on some systems it may needs configurations changes to get theme proper working e.g. if you changed the DNS system widely. 
+
 Working without any manual adjustments:
 * Dolphin 
 * Naked Browser
 * Firefox (supports DANE via [addon](http://www.dnssec-validator.cz/))
+* TOR (Orweb), see [this article](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver) ~deprecated~
 * ....
 
 Needs changes in the settings:
@@ -340,7 +343,7 @@ Needs changes in the settings:
 * Firefox -> for Tor/Orbot ....
 * ...
 
-Apps to change the current DNS
+Apps to change the default DNS
 -----------
 
 The following apps are success tested on all systems to work:
@@ -368,7 +371,8 @@ Todo:
 * <s>Add several workarounds since newer systems ignoring the etc/resolver.conf or dhcpcd/dhcpcd-hooks/20-dns.conf files</s>, explained with given links
 * <s>Add AFWall+ workarounds via custom scripts or separate tips</s>
 * Possible explain why Android 4.4.+/5+ wants to call the RIL with RIL_REQUEST_SETUP_DATA_CALL <netcfg dhcp iface>
-* Explain the broken MTU (saw this on so many roms) and list this bug (see ConnectivityService), since Android 5.1.x always seems to use 1500 regardless of what value has dhcp daemon set in option 26 (call interface_mtu).
+* Explain the broken MTU (saw this on so many roms) and list this bug (see ConnectivityService.cpp), since Android 5.1.x always seems to use 1500 regardless of what value has dhcp daemon set in option 26 (call interface_mtu).
 * How can I gather DNS (A/AAA/...) requests? must be re-written 
 * Add example output how it should looks like, really? (low-prio)
+* Add traceroute, whois, and dig commands to work with (low-prio)
 * On DNS problems on Android 5.x try to [disable IPv6](https://en.m.wikipedia.org/wiki/Comparison_of_IPv6_support_in_operating_systems), since Android 5.0.1/5.x doesn't like DHCPv6 (maybe next android version will be called N for next bullshit) :)
