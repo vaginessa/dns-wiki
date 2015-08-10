@@ -2,15 +2,17 @@ Index
 -----
 
 * [Introduction](#introduction)
-* [Implementations](#implementations)
+* [Overview](#overview)
+* [Permissions](#permissions)
+* [Feature implementations](#feature-implementations)
 * [Android logging system](#android-logging-system)
-* [GMS](#gsm)
+* [GMS](#gms)
 * [Disable binaries](#disable-binaries)
 * [Android M](#android-m)
 * [Useful links](#useful-links)
 
 
-An fantastic explanation and overview about Android's security can be found at the [TheNewCircle](https://thenewcircle.com/s/post/1473/Android_Security_Underpinnings.htm) [05.2013] or directly on [source.android.com](https://source.android.com/devices/tech/security/).
+An fantastic explanation and overview about Android's security can be found at the [TheNewCircle](https://thenewcircle.com/s/post/1473/Android_Security_Underpinnings.htm) [05.2013] or directly on [source.android.com](http://source.android.com/tech/security/index.html).
 
 :warning: This is a POC (Proof-of-Concept) and WIP (Work-in-process) article, it's not designed (and never will be) to explain everything or show every possible configuration (it's simply impossible) and is more designed to quickly show the most important configurations! :warning:
 
@@ -24,7 +26,7 @@ The reason why Android (Kernel is based on Linux) and open source will _always_ 
 Introduction
 ------------
 
-AFWall+ is a only a GUI for iptables and people may want to know more about how they can generally hardening the lowest-security-level on there devices (Kernel/ROM). As the kernel controls your device networking, it is important that it be very secure, and could not be compromised. If the kernel is already compromised most of all security related features could be bypassed without any notification or log entry.
+AFWall+ is a only a GUI for IPTables and people may want to know more about how they can generally hardening the lowest-security-level on there devices (Kernel/ROM). As the kernel controls your device networking, it is important that it be very secure, and could not be compromised. If the kernel is already compromised most of all security related features could be bypassed without any notification or log entry.
 
 The config file of your currently running kernel is also always available in your file system at <code>/proc/config.gz</code>.
 
@@ -40,7 +42,40 @@ Kind of attacks:
 * On Android 5+ the user password is now protected against ordinary [brute-force](http://en.wikipedia.org/wiki/Brute_force) attacks using [scrypt](http://en.wikipedia.org/wiki/Scrypt) and, if available, the key is bound to the hardware keystore to prevent off-device attacks (i.e. brute-force). As always, the Android screen lock secret and the device encryption key are not sent off the device or exposed to any application. 
 * TLSv1.1 + 1.2 are now enabled by default. Look, [here](https://developer.android.com/reference/javax/net/ssl/SSLSocket.html) that also means that Forward secrecy is enabled too which is used in AES-GCM (needs Services 7.x+ installed). The weak and vulnerably cipher suites like MD5, 3DES are by default disabled. 
 
-Implementations
+Overview
+------------
+
+Android use the standard process isolation to split application it therefore performs fork or exec when starting application. At the Unix level application are also, by default, run as different Unix users. This isolates application and protects applications from reading each-others data. By requesting permissions in the apk's AndroidManifest.xml it is possible to get those granted by the PackageManager. Such permissions can result in applications being run under the same user id as a other package or run with additional unix groups. Some group will give the application access to devices nodes or other files. Other Unix groups are mapped to Linux process capabilities being granted.
+
+Binder:
+As packages by default are running as separate user + process when they need to communicate the need to use some form of Inter process communication. In Android the preferred communication mechanism is called "binder". When processes communicate with each-other using binder Android will allow the service side code code to check if package manager was granted certain permissions by calling _checkCallingOrSelfPermission()_ of the context class. The implementation of this is done in the (native) service manager class. This class uses the service called “permission” that is implemented by the ActivityManagerService.java in the checkComponentPermission(permission, pid, uid, req-Uid) method and follow the following logic:
+
+* The root and system user will always be granted all permissions
+* If the permissions == NULL the permission will be granted
+* In the other situation a request is sent to the package manager to check the permission based on the user id of the package.
+
+
+Permissions
+---------------
+
+They are located at <code>frameworks/base/core/res/AndroidManifest.xml</code> and they're also can be declared in other manifest files (malware use this in order to bypass this mechanism). Pre-defined rules are depending with the OS version under <code>/etc/permissions/*.xml</code> or <code>frameworks/base/data/etc/platform.xml</code>, all other .xml files are read during the runtime. 
+
+There are different Permission levels:
+* Level 0 protection normal (A lower-risk permission that gives an application access to isolated application-level features)
+* Level 1 protection dangerous (A higher-risk permission that would give a requesting application access to private user data or control over the device that can negatively impact the user)
+* Level 2 protection signature (A permission that the system is to grant only if the requesting application is signed with the same certificate as the application that declared the permission.)
+* Level 3 protection signature or system (A permission that the system is to grant only to packages in the Android system image or that are signed with the same certificates.)
+
+
+Scheme:
+
+* A permission definition is declared in a manifest file. The manifest frameworks/base/core/res/AndroidManifest.xml)
+* A permission defines it’s own security level.
+ contains many if not all of the platform permissions.
+* A permission belongs to a group of permissions (this is mostly used by the UI to tag permissions).
+* A permission belongs to a package and it has it’s certificate associated to it.
+
+Feature implementations
 ---------------
 
 The following examples show what can be integrated (of is already integrated) into the Kernel for security reasons:
