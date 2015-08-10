@@ -267,10 +267,11 @@ Useful links
 ------------
 
 * [Android (Operating System) overview | Wikipedia.org](https://en.wikipedia.org/wiki/Android_(operating_system))
+* [OpenBTS open source tool | Wikipedia.org](http://en.wikipedia.org/wiki/OpenBTS)
 * [Building Kernels | Android Developers](https://source.android.com/source/building-kernels.html) and a tutorial on [XDA](http://www.xda-developers.com/compile-kernel-tutorial/)
 * [System and kernel security | Android Developers](https://source.android.com/devices/tech/security/overview/kernel-security.html)
 * [Kernel Documentation/android.txt](http://android.git.kernel.org/?p=kernel/common.git;a=blob_plain;f=Documentation/android.txt;hb=HEAD)
-* [Kernel analyzed | The Register](http://www.theregister.co.uk/2010/11/02/android_security/)
+* [Kernel analyzed (2010) | The Register](http://www.theregister.co.uk/2010/11/02/android_security/)
 * [Android Kernel Features | eLinux.org](http://elinux.org/Android_Kernel_Features)
 * [Linux Linux Kernel:List of security vulnerabilities | CVEDetails.com](http://www.cvedetails.com/vulnerability-list/vendor_id-33/product_id-47/cvssscoremin-7/cvssscoremax-7.99/Linux-Linux-Kernel.html) 
 * [How does Android's security model differ from UNIX's | Security.StackExchange.com](http://security.stackexchange.com/questions/72733/how-does-androids-security-model-differ-from-unixs)
@@ -281,7 +282,6 @@ Useful links
 * [HowTo: Linux Hard Disk Encryption With LUKS | cyberciti.biz](http://www.cyberciti.biz/hardware/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/)
 * [Effective Android Security to build a secure Android app| GitHub.com](https://github.com/orhanobut/effective-android-security)
 * [Cellular encryption article | blog.cryptographyengineering.com](http://blog.cryptographyengineering.com/2013/05/a-few-thoughts-on-cellular-encryption.html)
-* [OpenBTS open source tool | Wikipedia.org](http://en.wikipedia.org/wiki/OpenBTS)
 * [eLinux Android category | eLinux.org Wiki](http://elinux.org/Category:Android)
 * [Linux Security Summit 2015/Abstracts/Smalley | kernsec.org](http://kernsec.org/wiki/index.php/Linux_Security_Summit_2015/Abstracts/Smalley)
 * [Kernel Planet | Planet.Kernel.org](http://planet.kernel.org/)
@@ -290,10 +290,12 @@ Feed:
 * [Black Hat media feed for audio and video stuff](http://www.blackhat.com/BlackHatRSS.xml)
 
 PDF:
-* [Android Hacker protection | DefCon.org](https://www.defcon.org/images/defcon-22/dc-22-presentations/Strazzere-Sawyer/DEFCON-22-Strazzere-and-Sawyer-Android-Hacker-Protection-Level-UPDATED.pdf)
 * [Android Security Hide Android Applications in Images | BlackHat.com](https://www.blackhat.com/docs/eu-14/materials/eu-14-Apvrille-Hide-Android-Applications-In-Images-wp.pdf)
 * [Android Security overview at Black Hat 2011 | BlackHat.com](https://www.blackhat.com/docs/webcast/bhwebcast30_anderson.pdf)
 * [Android Fake ID hole | BlackHat.com](https://www.blackhat.com/docs/us-14/materials/us-14-Forristal-Android-FakeID-Vulnerability-Walkthrough.pdf)
 * [Android: One Root to Own Them All | media.blackhat.com](https://media.blackhat.com/us-13/US-13-Forristal-Android-One-Root-to-Own-Them-All-Slides.pdf)
 * [A Look Inside the Android Kernel with Automated Tools by Coverity | Coverity.com](http://www.coverity.com/library/pdf/a-look-inside-the-android-kernel.pdf)
-* [Android security maximized by Samsung KNOX (.pdf) | SamsungKnox.com](https://www.samsungknox.com/ru/system/files/whitepaper/files/Android%20security%20maximized%20by%20Samsung%20KNOX_2.pdf)
+* [Android security maximized by Samsung KNOX | SamsungKnox.com](https://www.samsungknox.com/ru/system/files/whitepaper/files/Android%20security%20maximized%20by%20Samsung%20KNOX_2.pdf)
+* [Android Hacker protection | DefCon.org](https://www.defcon.org/images/defcon-22/dc-22-presentations/Strazzere-Sawyer/DEFCON-22-Strazzere-and-Sawyer-Android-Hacker-Protection-Level-UPDATED.pdf)
+* [DefCon 23 Material | media.defcon.org](https://media.defcon.org/DEF%20CON%2023/DEF%20CON%2023%20presentations/Speaker%20&%20Workshop%20Materials/)
+* [One Class to Rule Them All: Deserialization Vulnerabilities in Android (CVE-2015-3825) and SDKs | usenix.org](https://www.usenix.org/system/files/conference/woot15/woot15-paper-peles.pdf)
