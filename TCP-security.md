@@ -590,7 +590,9 @@ Please [see here for an example configuration](https://github.com/scslab/tcpcryp
 IPv6 hardening
 ------------
 
-If you're not on any nativ IPv6 environment you can simply skip this step and disable IPv6 global. To avoid slow Wifi connections and other problems it could also be useful to use IPv4, since this seems to be problematic on some ROMs.
+:exclamation: If you're not on any nativ IPv6 environment you can simply skip this step and disable IPv6 global. To avoid slow Wifi connections and other problems it could also be useful to use IPv4, since this seems to be problematic on some ROMs. :exclamation: 
+
+IPv6 does not use [ARP](http://en.wikipedia.org/wiki/ARP_spoofing) but [neighbor discovery protocols](http://tools.ietf.org/html/rfc4861) implemented over [ICMPv6](http://tools.ietf.org/html/rfc4443), which allow machine hosts to discover the physical address of other members on the local link.
 
 Known IPv6 specific attacks: <br>
 • Router Advertisement related attacks (MiTM, router redirection, DoS, etc) <br>
@@ -600,6 +602,7 @@ Known IPv6 specific attacks: <br>
 • Smurf-like attacks at the local link <br>
 • Reconnaissance by exploiting various ICMPv6 messages <br>
 • Packet Too Big Attacks <br>
+• All Windows machines because default configuration flaw in IPv6 (obsolete on Android) [SLAAC Attack] <br>
 • .... <br>
 
 
