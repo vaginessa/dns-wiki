@@ -5,6 +5,7 @@ Index
 * [Overview](#overview)
 * [Permissions](#permissions)
 * [Feature implementations](#feature-implementations)
+* [SELinux](#selinux)
 * [Android logging system](#android-logging-system)
 * [GMS](#gms)
 * [Disable binaries](#disable-binaries)
@@ -151,16 +152,17 @@ The full list can be found [here](https://github.com/ukanth/afwall/wiki/Android-
 Kernel Compiling:
 * CONFIG_FILTER
 
-Kernel-level security
+
+SELinux
 ------------
 
-An overview which permission an application use can be done via terminal <code>find /data/data -type f | xargs ls -l | sort -k3 -n</code>. To get the an sample process list we just can use <code>ps</code>.
+Read the following pages to better understand and possible solve SELinux related problems (scripts, binaries,..):
+* [Customize SELinux](https://source.android.com/devices/tech/security/selinux/customize.html)
+* [Deeper look into the source code](https://android.googlesource.com/platform/external/sepolicy/+/master)
+* [Commands](https://github.com/xmikos/setools-android/tree/master/jni/sepolicy-inject)
 
 
-Application-level security
-------------
-
-Android also uses a user-space level security system to regulate communication and interaction among applications and system components.
+The IPTables/scripts should run at <code>u:r:init:s0</code> to avoid possible security problems, since this is the only authorization we need.
 
 
 Android Logging System
