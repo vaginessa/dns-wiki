@@ -115,7 +115,7 @@ UIDs stats
 providing traffic usage per application.
 
 
-UID stats (this ones may never change):
+
 ```
 AID_ROOT             0  /* traditional unix root user */
 
@@ -158,12 +158,13 @@ AID_SDCARD_AV     1034  /* external storage audio/video access */
 AID_SDCARD_ALL    1035  /* access all users external storage */
 AID_LOGD          1036  /* log daemon */
 AID_SHARED_RELRO  1037  /* creator of shared GNU RELRO files */
+AID_DBUS          1038  /* dbus-daemon IPC broker process */
 
 AID_SHELL         2000  /* adb and debug shell user (below >4.3 .txt,.png and such may "create" traffic */
 AID_CACHE         2001  /* cache access */
 AID_DIAG          2002  /* access to diagnostic resources */
 
-The range 2900-2999 is reserved for OEM, and must never be used here
+//The range 2900-2999 is reserved for OEM, and must never be used here
 AID_OEM_RESERVED_START 2900
 AID_OEM_RESERVED_END   2999
 
@@ -178,9 +179,13 @@ AID_NET_BW_STATS  3006  /* read bandwidth statistics */
 AID_NET_BW_ACCT   3007  /* change bandwidth statistics accounting */
 AID_NET_BT_STACK  3008  /* bluetooth: access config files */
 
+// The range 5000-5999 is also reserved for OEM, and must never be used here
+AID_OEM_RESERVED_2_START 5000
+AID_OEM_RESERVED_2_END   5999
+
 AID_EVERYBODY     9997  /* shared between all apps in the same profile */
 AID_MISC          9998  /* access to misc storage */
-AID_NOBODY        9999
+AID_NOBODY        9999  /* Nobody */
 
 AID_APP          10000  /* first app user */
 
@@ -191,6 +196,8 @@ AID_USER        100000  /* offset for uid ranges for each user */
 
 AID_SHARED_GID_START 50000 /* start of gids for apps in each user to share */
 AID_SHARED_GID_END   59999 /* start of gids for apps in each user to share */
+
+// https://android.googlesource.com/platform/system/core/+/master/include/private/android_filesystem_config.h
 ```
 
 Tethering data
@@ -231,8 +238,6 @@ Capture HTTP traffic over port 80 (change iface name if it's different):
 * tcpdump -i eth0 -s 0 -w [name].cap port 80
 * tcptrace -n /tmp/[name].cap | grep :80 (only on a emulator for some tests)
 * tcptrace -n /tmp/[name].cap | awk '{print $4}' | sort -g | uniq | awk -F":" '{print $1}' (same but it sorts the ip's)
-* 
-
 
 
 About DNS traffic:
