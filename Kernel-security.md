@@ -185,23 +185,46 @@ We have four log buffers:
 GSM security
 ------------
 
-Android use the following Global System for Mobile Communications specifications - quick facts:
-* Encryption is based on [A5/1](http://en.wikipedia.org/wiki/A5/1) ([known as vulnerable](http://cryptome.org/a51-bsw.htm) + [Security](http://en.wikipedia.org/wiki/A5/1#Security)) The key length is 128 bit
+Android use the following Global System for Mobile Communications specifications:
+* A5/0 was disabled in Europe by most providers 
+* Encryption is based on [A5/1](http://en.wikipedia.org/wiki/A5/1) ([known as vulnerable](http://cryptome.org/a51-bsw.htm) + [Security](http://en.wikipedia.org/wiki/A5/1#Security)) The key length is 128 bit, it's widly used in North America
+* [A5/2](https://en.wikipedia.org/wiki/A5/2) seems also deprecated
+* [A5/3](https://en.wikipedia.org/wiki/A5/3) is mostly used 
 * UMTS-Communication use [Signalling System 7](http://en.wikipedia.org/wiki/Signalling_System_No._7) (SS7) which can be bypassed via side-channel attacks
 * NSA and others are able to [crack it](http://yro.slashdot.org/story/13/12/14/0148251/nsa-able-to-crack-a51-cellphone-crypto) + [Full Story](http://www.washingtonpost.com/business/technology/by-cracking-cellphone-code-nsa-has-capacity-for-decoding-private-conversations/2013/12/13/e119b598-612f-11e3-bf45-61f69f54fc5f_story.html)
-* An [Wiki is available by SRLabs](https://opensource.srlabs.de/projects/a51-decrypt)
 * Handy-Jammer are _often_ used to block UTMS signals, so that the lower bandwidth e.g. over GPRS will be used instead - because the basic station force the connectivity. After that it's possible to enable the _bull-encryption_ option. 
-* Some provider claim to use a more secure A5/3 instead of [A5/1](http://www.scard.org/gsm/a51.html) or A5/3.
-* A basic whitepaper and overview of GSM, UMTS and LTE security can be found over [here](https://eprint.iacr.org/2013/227.pdf)
+* Some provider claim to use a more secure A5/3 instead of [A5/1](http://www.scard.org/gsm/a51.html) or A5/2, needs confirmation (country specific).
 * The full specifications for all networks can be found over [here](http://www.gsma.com/technicalprojects/fraud-security/security-algorithms)
 
 
 LTE Vs. [GSM](http://www.gsmworld.com/)
 
-
 In fact the new LTE is less secure since there is no common used standard which makes it possible to get the data via e.g. Ethernet-Uplink. Some providers saying that they use a strong encryption via digital signatures, the problem is that there is no proof if they really use such security gateway (because the LTE standard does not require such gateway).
 
-:warning: Actually there is no tool/app which protects against this known weaknesses! :warning:
+
+How the NSA/GCHQ crack it?
+* [How the NSA Hacks Cellphone Networks Worldwide](https://firstlook.org/theintercept/2014/12/04/nsa-auroragold-hack-cellphones/)
+* Attacks on A5/3 are "[OPULENT PUP](https://firstlook.org/theintercept/document/2014/12/04/opulent-pup-encryption-attack/)" and "[WOLFRAMITE](https://firstlook.org/theintercept/document/2014/12/04/wolframite-encryption-attack)"
+* An example is available as pdf over [here](http://cryptome.org/gsm-crack-bbk.pdf).
+* [How Spies Stole the Keys to the Encryption Castle](https://firstlook.org/theintercept/2015/02/19/great-sim-heist/)
+
+
+Research:
+* An [Wiki is available by SRLabs](https://opensource.srlabs.de/projects/a51-decrypt) which shows A5/1 weaknesses
+* [Ciphering Indicator - Android Issue #5353](https://code.google.com/p/android/issues/detail?id=5353)
+* [GSM 02.07 specification (Version 7.1.0 Released in 1998)](http://www.3gpp.org/ftp/Specs/archive/02_series/02.07/0207-710.zip)
+* A basic whitepaper and overview of GSM, UMTS and LTE security can be found over [here](https://eprint.iacr.org/2013/227.pdf)
+* [Network bugs](https://bugs.launchpad.net/telephony-service/+bug/1276208/+attachment/3968775/+files/ts_122101v110900p.pdf)
+
+
+Detectors:
+* [Android IMSI-Catcher Detector](https://secupwn.github.io/Android-IMSI-Catcher-Detector/)
+* [darkshark](https://play.google.com/store/apps/details?id=com.darshak&hl=en) - [Source](https://github.com/darshakframework/darshak)
+* [SnoopSnitch](https://opensource.srlabs.de/projects/snoopsnitch)
+
+
+:warning: Actually there is no tool/app/API which protects against this known weaknesses, all apps only warn about possible problems but they're not able to fix them! :warning:
+
 
 Disable binaries
 ------------
