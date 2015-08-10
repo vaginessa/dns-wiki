@@ -13,11 +13,9 @@ Index
 Intro
 --------
 
-Since WhatsApp, Telegram, Threema, WeChat and other chat clients are very popular this article is an example how to block such messenger connections. 
+Since WhatsApp, Telegram, Threema, WeChat and other chat clients are very popular this article is an example how to block such messenger connections. Besides the ISP aspect WhatsApp or other _insecure_ clients are already blocked by default in some countries (but not because of security reasons, more to block outgoing communications to others e.g. journalists). 
 
-**Please do not ask for any illegal WhatsApp Mods or how to block the Ads there**, the article focus is only on the official client. Due the DMCA, it's illegal to share or make such modifications without WhatsApp.Inc permission!
-
-This is not a guarantee that it totally blocks all connections, because it's not easy, since there are a bunch of IP's and domains that may connected to WhatsApp.Inc but it may helps to block the most important parts. All was captured via Wireshark. 
+This is not a guarantee that it totally blocks all connections, because it's not that easy, since there are a bunch of IP's and domains that may connected to WhatsApp.Inc but it may helps to block the most important parts. All was captured via Wireshark. 
 
 
 ```bash
@@ -27,7 +25,7 @@ c1.whatsapp.net
 c2.whatsapp.net //phone number check
 c3.whatsapp.net //initial login, this only used port 5222
 c4.whatsapp.net
-c5.whatsapp.net
+c5.whatsapp.net // Backup
 c1.whatsapp.net
 c2.whatsapp.net
 c3.whatsapp.net //(all con. stuff are for the handshakes -> ^^ over 443 or 5222)
@@ -251,15 +249,17 @@ WhatsApp does not support IPv6 only yet
 Ports
 --------
 
-```
+The following ports are involved: 
+```bash
 80
 443
 5222
 5223
 5228
+Proxy to redirect from 80 to 8080 (optional)
 ```
 
-iptables
+IPTables
 --------
 
 ```bash
@@ -626,14 +626,14 @@ iptables -I FORWARD -s 208.43.117.136/32 -j DROP
 iptables -I FORWARD -s 208.43.122.128/27 -j DROP
 iptables -I FORWARD -s 208.43.244.168/29 -j DROP
 
-#Block Outgoing
+# Block Outgoing IP's
 iptables -A "afwall" -d 208.43.244.168/29 -j REJECT
 
-#Range 
+# Port-Range's
 iptables -I FORWARD -m iprange --src-range 192.168.1.110-192.168.1.110 -j ACCEPT
 iptables -I FORWARD -m iprange --dst-range 192.168.1.110-192.168.1.110 -j ACCEPT
 
-#Per Domain (change rmnet0 to your interface wifi0 or whatever)
+# Per Domain (change rmnet0 to your interface wifi0 or whatever)
 iptables -A INPUT -i rmnet0 -m string --algo bm --string "whatsapp.com" -j DROP
 iptables -A OUTPUT -m string --algo bm --string "whatsapp.com" -j DROP
 iptables -A FORWARD -i rmnet0 -m string --algo bm --string "whatsapp.com" -j DROP
@@ -642,7 +642,7 @@ iptables -A FORWARD -i rmnet0 -m string --algo bm --string "whatsapp.com" -j DRO
 Encryption
 -----------
 
-WhatsApp use the following encryption:
+WhatsApp use the following encryption standard:
 * Prosperity RC4 algorithm ([RFC 7465](https://tools.ietf.org/html/rfc7465))
 * [Axolotl port](https://github.com/tgalal/python-axolotl) for the encryption itself like the one from TextSecure 
 
@@ -660,7 +660,7 @@ It's not possible to see if the message is encrypted or in plain text since ther
 * Depending on the Status WhatsSpy and other _tools_ are able to track others if you know there numbers.
 
 
-Alternatives:
+Some Alternatives:
 * [Threema](https://threema.ch/en/) (closed source but no one found any problem atm)
 * [Surespot](https://surespot.me/) - [Source](https://github.com/surespot)
 * [TextSecure](https://whispersystems.org/) - [Source](https://github.com/WhisperSystems/TextSecure)
@@ -676,7 +676,7 @@ Security research and tests:
 Important
 -----------
 
-It's normally more then enouth to block <code>e.whatsapp.net - e5.whatsapp.net</code>, because this is for the initial handshake which means if that fails you can't receive/send any message.
+It's normally more then enough to block <code>e.whatsapp.net - e5.whatsapp.net</code>, because this is for the initial handshake which means if that fails you can't receive/send any message. You should try this first.
 
 ToDo
 -----------
@@ -697,6 +697,7 @@ External Links
 * [Unofficial WhatsApp API by perezdidac | GitHub.com](https://github.com/perezdidac/WhatsAPINet)
 * [Unofficial WhatsApp API by venomous0x | GitHub.com](https://github.com/ukanth/afwall/wiki)
 * [Unofficial WhatsApp Purple API by davidgfnet | GitHub.com](https://github.com/davidgfnet/whatsapp-purple)
+* [Unofficial WhatsApp-Client yowsup | GitHub.com](https://github.com/tgalal/yowsup)
 * [Whatsapp abused the DMCA to censor related projects from GitHub | boingboing.net](http://boingboing.net/2014/02/21/whatsapp-abused-the-dmca-to-ce.html)
 * [All WhatsApp.Inc IP's only (no proof!) | ipdb.at](https://ipdb.at/org/WhatsApp_Inc)
 * [All DNS Records + additional Domain Info | Robtex.com](https://www.robtex.com/q/x1?q=whatsapp.com&l=go)
@@ -704,7 +705,9 @@ External Links
 * [Is WhatsApp Down Right Now? Check | isitdownrightnow.com](http://www.isitdownrightnow.com/whatsapp.com.html)
 * [WhatsApp IntoDNS | IntoDNS.com](http://www.intodns.com/whatsapp.com)
 * [Extracting password from device | Chat-API by mgp25 on GitHub](https://github.com/mgp25/Chat-API/wiki/Extracting-password-from-device)
-* [WhatsApp Web Wiki | dixiwiki](http://wiki.dequis.org/notes/whatsapp_web/)
-* [Keeping Tabs on WhatsApp's Encryption | heise.de](http://www.heise.de/ct/artikel/Keeping-Tabs-on-WhatsApp-s-Encryption-2630361.html)
-* [WhatsApp Wireshark plugin | GitHub](https://github.com/davidgfnet/wireshark-whatsapp)
-* [Unofficial WhatsApp-Client yowsup | GitHub](https://github.com/tgalal/yowsup)
+* [WhatsApp Web Wiki | wiki.dequis.org](http://wiki.dequis.org/notes/whatsapp_web/)
+* [Keeping Tabs on WhatsApp's Encryption (Ger)| heise.de](http://www.heise.de/ct/artikel/Keeping-Tabs-on-WhatsApp-s-Encryption-2630361.html)
+* [WhatsApp Wireshark plugin | GitHub.com](https://github.com/davidgfnet/wireshark-whatsapp)
+* [Intercepting WhatsApp Messages led to Belgian Terror Arrest | arstechnica.com](http://arstechnica.com/tech-policy/2015/06/intercepted-whatsapp-messages-led-to-belgian-terror-arrests/)
+* [WhatsApp exposed (2015) (.pdf) | webrtchacks.com](https://webrtchacks.com/wp-content/uploads/2015/04/WhatsappReport.pdf)
+* [Iran's Judiciary Blocks WhatsApp, Other Communication Apps | ctvnews.ca](http://www.ctvnews.ca/sci-tech/iran-blocks-communication-apps-line-whatsapp-tango-1.2176978)
