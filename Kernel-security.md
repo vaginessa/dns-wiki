@@ -13,16 +13,14 @@ Index
 * [Useful links](#useful-links)
 
 
-An fantastic explanation and overview about Android's security can be found at the [TheNewCircle](https://thenewcircle.com/s/post/1473/Android_Security_Underpinnings.htm) [05.2013] or directly on [source.android.com](http://source.android.com/tech/security/index.html).
+An fantastic explanation and overview about Android's security mechanism can be found at the [TheNewCircle](https://thenewcircle.com/s/post/1473/Android_Security_Underpinnings.htm) [05.2013] or directly on [source.android.com](http://source.android.com/tech/security/index.html).
 
-:warning: This is a POC (Proof-of-Concept) and WIP (Work-in-process) article, it's not designed (and never will be) to explain everything or show every possible configuration (it's simply impossible) and is more designed to quickly show the most important configurations! :warning:
+:warning: This is a POC (Proof-of-Concept) and WIP (Work-in-process) article, it's not designed (and never will be) to explain everything or show every possible configuration (it's simply impossible) and is more designed to quickly show the most important configurations, tricks or researches.
 
-Due the lack of security of the consumer devices is not necessarily Android's problem. So far, most problems come from OEM's customization, and third party malicious apps pretending to be good citizen. Hardening the kernel won't fix all of these problems.
+Due the lack of security of the consumer devices is not necessarily Android's problem. So far, most problems come from OEM's customization, and third party malicious apps pretending to be good citizen. Hardening the kernel won't fix all of these problems. :warning:
 
 
-To prevent some of the latest networking attacks, you should try to keep your kernel version current as soon as possible.
-
-The reason why Android (Kernel is based on Linux) and open source will _always_ be more secure compared than Windows is because you can build advanced security right in.
+To prevent some of the latest networking attacks, you should try to keep your Kernel version current as soon as possible! This is the first and easiest step since a lot of modded/custom kernels are ready to download and flashable (.zip).
 
 Introduction
 ------------
@@ -41,7 +39,7 @@ Kind of attacks:
 * Online attacks (on the network stack against malware, dos, ...)
 (optional - [OS specific](https://source.android.com/devices/tech/security/enhancements/enhancements50.html))
 * On Android 5+ the user password is now protected against ordinary [brute-force](http://en.wikipedia.org/wiki/Brute_force) attacks using [scrypt](http://en.wikipedia.org/wiki/Scrypt) and, if available, the key is bound to the hardware keystore to prevent off-device attacks (i.e. brute-force). As always, the Android screen lock secret and the device encryption key are not sent off the device or exposed to any application. 
-* TLSv1.1 + 1.2 are now enabled by default. Look, [here](https://developer.android.com/reference/javax/net/ssl/SSLSocket.html) that also means that Forward secrecy is enabled too which is used in AES-GCM (needs Services 7.x+ installed). The weak and vulnerably cipher suites like MD5, 3DES are by default disabled. 
+* TLSv1.2 are now enabled by default. Look, [here](https://developer.android.com/reference/javax/net/ssl/SSLSocket.html) that also means that Forward secrecy is enabled too which is used in AES-GCM (needs Play-services 7.x+ installed). The weak and vulnerably cipher suites like MD5, 3DES are by default disabled. Some pages are still using vulnerable RC4 ciphers, you should avoid visiting them especially if you care about security.
 
 Overview
 ------------
@@ -187,7 +185,7 @@ GSM security
 
 Android use the following Global System for Mobile Communications specifications:
 * A5/0 was disabled in Europe by most providers 
-* Encryption is based on [A5/1](http://en.wikipedia.org/wiki/A5/1) ([known as vulnerable](http://cryptome.org/a51-bsw.htm) + [Security](http://en.wikipedia.org/wiki/A5/1#Security)) The key length is 128 bit, it's widly used in North America
+* Encryption is based on [A5/1](http://en.wikipedia.org/wiki/A5/1) ([known as vulnerable](http://cryptome.org/a51-bsw.htm) + [Security](http://en.wikipedia.org/wiki/A5/1#Security)) The key length is 128 bit, it's widely used in North America.
 * [A5/2](https://en.wikipedia.org/wiki/A5/2) seems also deprecated
 * [A5/3](https://en.wikipedia.org/wiki/A5/3) is mostly used 
 * UMTS-Communication use [Signalling System 7](http://en.wikipedia.org/wiki/Signalling_System_No._7) (SS7) which can be bypassed via side-channel attacks
@@ -205,7 +203,7 @@ In fact the new LTE is less secure since there is no common used standard which 
 How the NSA/GCHQ crack it?
 * [How the NSA Hacks Cellphone Networks Worldwide](https://firstlook.org/theintercept/2014/12/04/nsa-auroragold-hack-cellphones/)
 * Attacks on A5/3 are "[OPULENT PUP](https://firstlook.org/theintercept/document/2014/12/04/opulent-pup-encryption-attack/)" and "[WOLFRAMITE](https://firstlook.org/theintercept/document/2014/12/04/wolframite-encryption-attack)"
-* An example is available as pdf over [here](http://cryptome.org/gsm-crack-bbk.pdf).
+* An cracking example is available as .pdf over [here](http://cryptome.org/gsm-crack-bbk.pdf).
 * [How Spies Stole the Keys to the Encryption Castle](https://firstlook.org/theintercept/2015/02/19/great-sim-heist/)
 
 
@@ -312,6 +310,12 @@ Useful links
 Feed:
 * [Black Hat media feed for audio and video stuff](http://www.blackhat.com/BlackHatRSS.xml)
 
+
+Security focused forums and discussions:
+* [Mobile Security Wiki | mobilesecuritywiki.com](https://mobilesecuritywiki.com/) - [Source](https://github.com/exploitprotocol/mobile-security-wiki)
+* [/r/Netsec | reddit.com](https://www.reddit.com/r/netsec) - [/r/AndSec](http://www.reddit.com/r/andsec)
+
+
 PDF:
 * [Android Security Hide Android Applications in Images | BlackHat.com](https://www.blackhat.com/docs/eu-14/materials/eu-14-Apvrille-Hide-Android-Applications-In-Images-wp.pdf)
 * [Android Security overview at Black Hat 2011 | BlackHat.com](https://www.blackhat.com/docs/webcast/bhwebcast30_anderson.pdf)
@@ -322,3 +326,7 @@ PDF:
 * [Android Hacker protection | DefCon.org](https://www.defcon.org/images/defcon-22/dc-22-presentations/Strazzere-Sawyer/DEFCON-22-Strazzere-and-Sawyer-Android-Hacker-Protection-Level-UPDATED.pdf)
 * [DefCon 23 Material | media.defcon.org](https://media.defcon.org/DEF%20CON%2023/DEF%20CON%2023%20presentations/Speaker%20&%20Workshop%20Materials/)
 * [One Class to Rule Them All: Deserialization Vulnerabilities in Android (CVE-2015-3825) and SDKs | usenix.org](https://www.usenix.org/system/files/conference/woot15/woot15-paper-peles.pdf)
+
+
+Todo:
+* add example malware app on android to show possible holes (low-prio)
