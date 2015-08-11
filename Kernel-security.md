@@ -44,6 +44,15 @@ Kind of attacks:
 Overview
 ------------
 
+* [Security Enhancements in Android 5.0](https://source.android.com/devices/tech/security/enhancements/enhancements50.html)
+* [Security Enhancements in Android 4.4](https://source.android.com/devices/tech/security/enhancements/enhancements44.html)
+* [Security Enhancements in Android 4.3](https://source.android.com/devices/tech/security/enhancements/enhancements43.html)
+* [Security Enhancements in Android 4.2](https://source.android.com/devices/tech/security/enhancements/enhancements42.html)
+* [Security Enhancements in Android 1.5 through Android 4.1](https://source.android.com/devices/tech/security/enhancements/enhancements41.html)
+* [Android Security Enhancements](https://androidtamer.com/android-security-enhancements/)
+* [Android Browsers Static Security Analysis](http://opensecurity.in/research/security-analysis-of-android-browsers.html)
+
+
 Android use the standard process isolation to split application it therefore performs fork or exec when starting application. At the Unix level application are also, by default, run as different Unix users. This isolates application and protects applications from reading each-others data. By requesting permissions in the apk's AndroidManifest.xml it is possible to get those granted by the PackageManager. Such permissions can result in applications being run under the same user id as a other package or run with additional unix groups. Some group will give the application access to devices nodes or other files. Other Unix groups are mapped to Linux process capabilities being granted.
 
 Binder:
@@ -219,6 +228,7 @@ Detectors:
 * [Android IMSI-Catcher Detector](https://secupwn.github.io/Android-IMSI-Catcher-Detector/)
 * [darkshark](https://play.google.com/store/apps/details?id=com.darshak&hl=en) - [Source](https://github.com/darshakframework/darshak)
 * [SnoopSnitch](https://opensource.srlabs.de/projects/snoopsnitch)
+* [Am I Vulnerable](http://delhi.securitycompass.com/) - Scans for known security holes (no 0day only public).
 
 
 :warning: Actually there is no tool/app/API which protects against this known weaknesses, all apps only warn about possible problems but they're not able to fix them! :warning:
@@ -254,7 +264,7 @@ Each application is given its own Linux User ID (UID) and group ID, besides this
 Security Tricks
 --------------
 
-Some applications request more permissions (e.g. Flashlight) than they really need. You can alter the set of permissions granted to an application by editing /data/system/pacakges.xml.
+Some applications require more permissions (e.g. Flashlight) than they really need. You can alter the set of permissions granted to an application by editing /data/system/pacakges.xml.
 After editing you need to reboot the device, because it gets overwritten by the system again. All changes will be read at system boot.
 
 On some external ROMs, there is also an GUI for this, it's called [Privacy Guard](https://www.julianevansblog.com/2014/06/how-to-use-android-privacy-guard-on-cyanogenmod-11.html) which first was introduced in CyanogenMod 11. This makes it easier for users to disable critical permissions on an app-by-app basis. An alternative on newer system seems XPrivacy (includes a basic _firewall_) or AppOps.
@@ -266,6 +276,11 @@ With Android 4.2, the user gets a notification when the SMS feature is used, the
 
 Application Signing:
 Never ever forget your keystore. Send it via email to yourself to keep it. If you lose your keystore, you won't be able to get it back and you cannot update your application anymore.
+
+General Security tips:
+* Can be found over [here](http://developer.android.com/training/articles/security-tips.html)
+* [Projects/OWASP Mobile Security Project - Top Ten Mobile Controls](https://www.owasp.org/index.php/Projects/OWASP_Mobile_Security_Project_-_Top_Ten_Mobile_Controls)
+* [Secure coding under Android](https://www.securecoding.cert.org/confluence/pages/viewpage.action?pageId=111509535)
 
 
 Android M
@@ -307,8 +322,10 @@ Useful links
 * [Linux Security Summit 2015/Abstracts/Smalley | kernsec.org](http://kernsec.org/wiki/index.php/Linux_Security_Summit_2015/Abstracts/Smalley)
 * [Kernel Planet | Planet.Kernel.org](http://planet.kernel.org/)
 
+
 Feed:
 * [Black Hat media feed for audio and video stuff](http://www.blackhat.com/BlackHatRSS.xml)
+
 
 
 Security focused forums and discussions:
@@ -317,6 +334,7 @@ Security focused forums and discussions:
 
 
 PDF:
+* [PCI Mobile Payment Acceptance Security Guidelines for Developers](https://www.pcisecuritystandards.org/documents/Mobile%20Payment%20Security%20Guidelines%20v1%200.pdf)
 * [Android Security Hide Android Applications in Images | BlackHat.com](https://www.blackhat.com/docs/eu-14/materials/eu-14-Apvrille-Hide-Android-Applications-In-Images-wp.pdf)
 * [Android Security overview at Black Hat 2011 | BlackHat.com](https://www.blackhat.com/docs/webcast/bhwebcast30_anderson.pdf)
 * [Android Fake ID hole | BlackHat.com](https://www.blackhat.com/docs/us-14/materials/us-14-Forristal-Android-FakeID-Vulnerability-Walkthrough.pdf)
@@ -326,7 +344,52 @@ PDF:
 * [Android Hacker protection | DefCon.org](https://www.defcon.org/images/defcon-22/dc-22-presentations/Strazzere-Sawyer/DEFCON-22-Strazzere-and-Sawyer-Android-Hacker-Protection-Level-UPDATED.pdf)
 * [DefCon 23 Material | media.defcon.org](https://media.defcon.org/DEF%20CON%2023/DEF%20CON%2023%20presentations/Speaker%20&%20Workshop%20Materials/)
 * [One Class to Rule Them All: Deserialization Vulnerabilities in Android (CVE-2015-3825) and SDKs | usenix.org](https://www.usenix.org/system/files/conference/woot15/woot15-paper-peles.pdf)
+* [ATTACKING THE LINUX PRNG ON ANDROID](https://www.usenix.org/system/files/conference/woot14/woot14-kaplan.pdf)
+* [Attacks on Android Clipboard](http://www.cis.syr.edu/~wedu/Research/paper/clipboard_attack_dimva2014.pdf)
+* [A Study of Android Application Security](http://www.cs.rice.edu/~sc40/pubs/enck-sec11.pdf)
+* [Why Eve and Mallory Love Android: An Analysis of Android SSL (In)Security](http://www2.dcsec.uni-hannover.de/files/android/p50-fahl.pdf)
+* [PowerSpy: Location Tracking using Mobile Device Power Analysis](http://arxiv.org/pdf/1502.03182v2)
+* [Leaving our ZIP undone: how to abuse ZIP to deliver malware apps](https://www.virusbtn.com/pdf/conference/vb2014/VB2014-Panakkal.pdf)
+* [Hey, You, Get off of My Market: Detecting Malicious Apps in Official and Alternative Android Markets](http://www.csc.ncsu.edu/faculty/jiang/pubs/NDSS12_DROIDRANGER.pdf)
+* [Evaluations of Security Solutions for Android Systems](http://arxiv.org/ftp/arxiv/papers/1502/1502.04870.pdf)
+
+
+Android Vulnerability List:
+* [Android CVE Details | cvedetails.com](http://www.cvedetails.com/vulnerability-list/vendor_id-1224/product_id-19997/Google-Android.html)
+* [Android Vulnerability/Exploit List | Google Docs](https://docs.google.com/spreadsheet/pub?key=0Am5hHW4ATym7dGhFU1A4X2lqbUJtRm1QSWNRc3E0UlE&single=true&gid=0&output=html)
+
+
+Online Analyzers:
+* [Android Observatory](https://androidobservatory.org/)
+* [Android APK Decompiler](http://www.decompileandroid.com/)
+* [Virus Total](https://www.virustotal.com/)
+* [Mobile Sandbox](http://mobilesandbox.org/)
+
+
+Android Testing:
+* [Appie](https://manifestsecurity.com/appie)
+* [AppUse](https://appsec-labs.com/AppUse/)
+* [Android Tamer](https://androidtamer.com/)
+* [Mobisec](http://sourceforge.net/projects/mobisec/)
+* [Vezir Project Vm](https://github.com/oguzhantopgul/Vezir-Project)
+
+
+Hooks (may unstable, all of them requires root):
+* [ADBI](https://github.com/crmulliner/ddi)
+* [Xposed](http://forum.xda-developers.com/xposed/xposed-installer-versions-changelog-t2714053)
+* [Frida](http://www.frida.re/)
+* [Cydia](http://www.cydiasubstrate.com/)
+
+
+Forensics tools:
+* [Android Forensics](https://github.com/viaforensics/android-forensics)
+* [Open Source Android Forensics](http://www.osaf-community.org/)
+* [Android Data Extractor Lite](https://github.com/mspreitz/ADEL)
+* [BitPim](http://www.bitpim.org/)
+* [pySimReader](https://www.isecpartners.com/tools/mobile-security/pysimreader.aspx)
+* [P2P-ADB](https://github.com/kosborn/p2p-adb/)
 
 
 Todo:
-* add example malware app on android to show possible holes (low-prio)
+* add example malware app on android to show possible holes (low-prio), most known and popular vulnerable app seems [InsecureBank V2](https://github.com/dineshshetty/Android-InsecureBankv2)
+* Sort vuln. via own categories 
