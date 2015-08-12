@@ -6,6 +6,7 @@ Index
 * [What's the risk?](#whats-the-risk-?)
 * [Do I have such a problem?](#do-i-have-such-a-problem-?)
 * [Temporally workarounds](#temporally-workarounds)
+* [IPtables specific problem](#iptables-specific-problem)
 * [Default IPtables Chain Policy](#default-iptables-chain-policy)
 * [Useful links](#useful-links)
 
@@ -83,6 +84,14 @@ Method 4: **XPrivacy**
 There are a lot of difficult patches/apps like Openpdroid, Pdroid 2.0 or PDroid, XPrivacy which allow to prevent applications from leaking privacy sensitive data but this patches need to be integrate into the ROM (except XPrivacy which needs XPosed) you are using. It's possible to complicated for some users and may not work with all Apps without an FC (force close).
 [XPrivacy](https://github.com/M66B/XPrivacy#installation) is the only solution that works an almost every device without patching everything after you upgrade your ROM like CM 11-12 and do almost the same.
 
+IPtables specific problem
+-----------------------------
+
+* You should avoid complex scripts especially if you not know what you're doing. Such complex scripts are often lead in security complications.
+* IPTables suffering possible from an _Race Conditions_ exception. On each IPtables request, the host must switch between the user application layer (the one apps running from) and the kernel layer, that usually coasts time and can end up with the mentioned problem.
+
+An Race Condition example could be that the firewall rules aren't loaded completely/success, while the Kernel is already working on the network traffic (Output-Chain rules missing at this time) - This is an hole and answers the questions why there is still network traffic right after switch to the new rules. Closing this hole isn't possible, since iptables can't use the same ruleset for everything, only nftables not suffering from this. 
+
 
 Default IPtables Chain Policy
 -----------------------------
@@ -106,4 +115,4 @@ Useful links
 * [iptables4n1 workaround for Android Froyo (Nexus One) | Google Code](http://code.google.com/p/iptables4n1/)
 * [Possible userinit.sh & Orbot leak fix](https://github.com/ukanth/afwall/wiki/CustomScripts#some-examples)
 
-_ Final version 04.08.2015_
+_ Final version 08.12.2015_
