@@ -18,13 +18,13 @@ Software
 
 Android Studio:
 * [AndroidSDK](http://developer.android.com/sdk/index.html)
-* [Java Develop Kit (JDK) 1.7](http://java.sun.com/javase/downloads/index.jsp)
+* [Java Develop Kit (JDK) 1.7](http://java.sun.com/javase/downloads/index.jsp) or JDK 1.8
 * [7-Zip](http://7-zip.org/) to extract Eclipse/Android SDK packages [**optional**]
 * Basic cmd/terminal knowledge [**optional**]
 
 Eclipse (old):
 * [Eclipse Classic](http://www.eclipse.org/downloads/)
-* [ADT for Eclipse](http://developer.android.com/sdk/installing/installing-adt.html) or get the Plugin via <code>https://dl-ssl.google.com/android/eclipse/</code> in Eclipse "Install New Software"
+* [ADT for Eclipse](http://developer.android.com/sdk/installing/installing-adt.html) or get the plugin via <code>https://dl-ssl.google.com/android/eclipse/</code> in Eclipse "Install New Software"
 
 
 Advanced users can build the latest AFWall+.APK from the [Command Line](https://developer.android.com/tools/building/building-cmdline.html) or see the next steps.
@@ -39,13 +39,13 @@ General procedure using Android Studio
 ----------------------
 
 * Download and install some GitHub sync-tool like [SmartGit](http://www.syntevo.com/smartgit/) or [GitHub for Win/Mac](https://github.com/).
-* Download and install the JAVA SE Development Kit 7 (JDK7) from [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html).
+* Download and install the JAVA SE Development Kit 8 (JDK8) from [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html).
 * Install the latest Android Studio from [here](http://developer.android.com/sdk/installing/studio.html).
-* When you start Android Studio, you'll see "Welcome to Android Studio" with several options. Here you choose to Open Project and then navigate to your GitHub synchronization directory where you have added AFWAll+, from your GitHub sync-tool.
+* When you start Android Studio, you'll see "Welcome to Android Studio" with several options. Here you choose to Open Project and then navigate to your GitHub synchronization directory where you have added AFWall+, from your GitHub sync-tool.
 
-The project will open immediately, but now you want to close it, so that you can return to the _Welcome screen_, this time you choose Configure >> SDK Manager. Here you select all API's related to API 14 (or higher), which is our lowest supported API.
+The project will open immediately, but now you want to close it, so that you can return to the _Welcome screen_, this time you choose Configure >> SDK Manager. Here you select all APIs related to API 14 (or higher), which is our lowest supported API.
 For more details follow the setup instructions [here](http://developer.android.com/sdk/installing/index.html?pkg=studio).
-Now click on the sideways Gradle tab, on the right side of the IDE. This will open a new window, once in it, double click on _Release_ (_assembleRelease_). Check for build errors in the lower screen log window.
+Now click on the sideways Gradle tab, on the right side of the IDE. This will open a new window, once in it, double click on _Debug_ (_assembleDebug_). Check for build errors in the lower screen log window.
 If it compiles without errors, you can now build your own APK by clicking on the menu items: Build >> Generate Signed APK. This will ask you for 3 new passwords to be used in your "KeyStore" (1 master, 1 file, 1 APK alias). You may also add your credentials in signing.properties to enable automatic signing.
 
 Example:
@@ -60,11 +60,6 @@ Example:
 
 If all of the above succeeded, push the AFWall+ .apk to your device and run.
 
----
-
-:exclamation: **JAVA 8 is not yet supported.** Use a supported JavaVersion (`class -> dex` conversion can't handle 1.8 right now). VERSION is unrelated to your JDK. The JDK has to be >= VERSION.
-
----
 
 After repository refactoring and cleanup
 ----------------------
@@ -78,17 +73,17 @@ Selecting "Open an existing Android Studio Project" doesn't work, as it doesn't 
 Build via Command Line 
 ----------------------
 
-Use the Android SDK Manager to install API 19 (or higher) and select it.
+Use the Android SDK Manager to install API 21 (or higher) and select it.
 To list all of available targets, type
 
 ```
 $ android list targets
 ```
 
-Then, you will see like
+Then, you will see something like
 
 ```
-"id: 4 or "Google Inc.:Google APIs:19"
+"id: 4 or "Google Inc.:Google APIs:21"
 Name: Google APIs
 Type: Add-On
 Vendor: Google Inc. .... "
@@ -103,11 +98,12 @@ $ android update project -p . -s -t 4
 After this we set our JAVA_HOME path and go into building:
 
 ```
-$ export ANDROID_JAVA_HOME="/opt/sun-jdk-1.9.0__22" 
+$ export ANDROID_JAVA_HOME="/opt/sun-jdk-1.8.600__27" 
 $ mkdir afwall_build
 $ cd afwall_build
 $ git clone git://github.com/ukanth/afwall.git 
 $ cd afwall
+$ ./gradlew clean assembleDebug
 $ git submodule init
 $ git submodule update
 $ android update project -p . -s
@@ -121,18 +117,18 @@ Compiling native binaries
 
 On the host side you'll need to install:
 
-* NDK r9, nominally under /opt/android-ndk-r9
-* Host-side gcc, make, etc. (Red Hat "Development Tools" group or Debian build-essential)
+* NDK r10, nominally under /opt/android-ndk-r10
+* Host-side gcc 4.7 (or higher), make, etc. 
 * autoconf, automake, and libtool
 
 This command will build the Android binaries and copy them into <code>res/raw/</code>
 
-> make -C external NDK=/opt/android-ndk-r9
+> make -C external NDK=/opt/android-ndk-r10
 
 Compiling via graphical user interface
 --------------------------------------
 
-* [Here](https://www.xda-developers.com/xda-tv-2/how-to-build-an-android-app-part-1-setting-up-eclipse-and-android-sdk-xda-tv/) is a Video Tutorial from a xda member for those users who want to use the graphical user interface (GUI) method. 
+* [Here](https://www.xda-developers.com/xda-tv-2/how-to-build-an-android-app-part-1-setting-up-eclipse-and-android-sdk-xda-tv/) is a Video Tutorial from a XDA member for those users who want to use the graphical user interface (GUI) method. 
 The tutorial is based on the needed software explained above. 
 * [Here](https://developer.android.com/training/basics/firstapp/index.html) you get the official build instructions.
 
@@ -164,3 +160,5 @@ Useful links
 * [How to build .APK file? | Stack Overflow](http://stackoverflow.com/questions/4600891/how-to-build-apk-file)
 * [How-To: Decompile/Recompile APK's with ApkTool | AndroidForums](http://androidforums.com/esteem-all-things-root/520917-guide-how-properly-decompile-recompile-apks-apktool.html)
 * [How to Create Android Apps - Eclipse Export .APK Market Ready Files Step-by-Step Guide | YouTube](http://www.youtube.com/watch?v=DvBI16jv7xs)
+
+_Final version 08.13.2015_
