@@ -58,14 +58,16 @@ By default the Google DNS server (since 2009) is set (8.8.8.8/8.8.4.4), currentl
 How can I gather DNS (A/AAA/...) requests?
 -----------
 
-All AOSP based ROMs coming with TCPdump as binary included. So we can just use this to show what's going on behind, there are several [Tutorials](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available to handling TCPdump. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
+All AOSP based ROMs coming with TCPdump as binary included, so we can just use this to show what's going on behind, there are several [Tutorials](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available to handling TCPdump. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
 
-// Android use a kind of BIND (which includes "dig").
+// Android use a kind of BIND (which includes "dig"). 
+// See, [#37668](https://code.google.com/p/android/issues/detail?id=37668)
+// Workaround, just use external apps like [DNS Lookup](https://play.google.com/store/apps/details?id=com.kodholken.dnslookup)
 
 How do I know if my applications are leaking DNS?
 -----------
 
-There are several ways, the most easiest way is to visit some webpages that automatically detect what is your current DNS, like:
+There are several ways, the most easiest way is to visit some web pages that automatically detect what is your current DNS, like:
 * [DNS Leak Test | dnsleaktest.com](https://www.dnsleaktest.com/)
 * [IP Leak Test | ipleak.net](http://ipleak.net/)
 
@@ -120,7 +122,7 @@ Already reported DNS related topics:
 * #18  [UDP 53 bypass because logging & whitelisting are enabled](https://github.com/ukanth/afwall/issues/18)
 
 
-**Important**: Please always use the search function here on AFWall's/AOSP issue tracker (2. under useful link), to search already known existent problems to avoid duplicate threads. 
+**Important**: Please always use the search function here on AFWall's/[AOSP issue tracker](https://code.google.com/p/android/issues/list?can=2&q=DNS&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles) to search already known existent problems to avoid duplicate threads. 
 
 
 Resolver commands
@@ -376,9 +378,10 @@ Todo:
 * <s>Add several workarounds since newer systems ignoring the etc/resolver.conf or dhcpcd/dhcpcd-hooks/20-dns.conf files</s>, explained with given links
 * <s>Add AFWall+ workarounds via custom scripts or separate tips</s>
 * Possible explain why Android 4.4.+/5+ wants to call the RIL with RIL_REQUEST_SETUP_DATA_CALL <netcfg dhcp iface>
-* Explain the broken MTU (saw this on so many roms) and list this bug (see ConnectivityService.cpp), since Android 5.1.x always seems to use 1500 regardless of what value has dhcp daemon set in option 26 (call interface_mtu).
-* How can I gather DNS (A/AAA/...) requests? must be re-written 
+* Explain the [broken MTU](https://code.google.com/p/android/issues/detail?id=152819) (saw this on so many roms) and list this bug (see ConnectivityService.cpp), since Android 5.1.x always seems to use 1500 regardless of what value has dhcp daemon set in option 26 (call interface_mtu).
+* How can I gather DNS (A/AAA/...) requests? -> must be re-written 
 * Add example output how it should looks like, really? (low-prio)
 * Add traceroute, whois, and dig commands to work with (low-prio)
 * On Android 5.x DNS problems try to [disable IPv6](https://en.m.wikipedia.org/wiki/Comparison_of_IPv6_support_in_operating_systems), since Android 5.0.1/5.x doesn't like DHCPv6
 * Is there a decentralized search for Android as app available (similar to yacy)? Mail me if there is one. (low-prio) + add them in the article
+* Android auto config compatibility (not yet), e.g. [test network fails](https://code.google.com/p/android/issues/detail?id=93753)
