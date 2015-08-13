@@ -9,7 +9,7 @@ Index
 Description
 -----------
 
-This section was designed to advanced user, developers or users that having _Special_ problems e.g. on connectivity related things or simply want to debug AFWall+ quick. 
+This section was designed only for advanced user, developers or users that having _special_ problems e.g. on connectivity related things or simply want to debug AFWall+ very quick. 
 
 Debugging
 ---------
@@ -27,9 +27,10 @@ for more details, including how to use Android Studio to run tests (which provid
 ADB
 ---------
 
-Of course the following commands can be changed per needs, the interfaces or paths could be different. 
+Of course the following commands must be changed per needs, the interfaces or paths could be named different. 
 
 ```bash
+# TCPDUMP Related
 # Example PCap a TCPDump wlan0 interface to external sdcard (e.g. DNS, 443 or ICMPv6)
 adb shell tcpdump -ni wlan0 -U -w /sdcard/dump.pcap port 53 or port 443 or icmp6"
 
@@ -38,14 +39,21 @@ tcpdump -i br-lan -s0 -U -w /data/local/etherhost.pcap "ether host 34:xx:xx:xx:1
 
 # Example TCPDump that capture everything on ICMP6 
 tcpdump -ni any -s0 -U -w /sdcard/icmp6.pcap icmp6
+```
 
+```bash
+# DNS related (see also DNS thread!)
+# NDC sets an dns resolver (100) to a specific host
+ndc resolver setnetdns 100 "" 192.168.1.1
+```
+
+```bash 
+# Ping and Connectivity related
 # Dumpsys connectivity tracker (shows a general overview of all connected devices and advanced network output)
 adb shell dumpsys connectivity 
 #or - does the same except the --diag tag which identify things for error resolving reasons
 adb shell dumpsys connectivity --diag
 
-# NDC sets an dns resolver (100) to a specific host
-ndc resolver setnetdns 100 "" 192.168.1.1
 
 # Greps on the wlan0 interface the current connection status 
 ip a | grep "wlan0" -A10
@@ -55,7 +63,7 @@ https://ipv6.google.com/
 # or IPv4
 https://ipv4.google.com/
 
-# Ping (two times) the IPv4 Alphabet/Google 
+# Ping (two times) the IPv4 Alphabet (alias Google)
 adb shell ping6 -c2 ipv4.google.com
 ```
 
@@ -66,5 +74,5 @@ Useful links
 
 
 ToDO: 
-* Explain all commands, really? 
-* Sort the commands - meh! Maybe own sections for TCPDUmp, dumpsys, ping, whatever ...
+* <s>Explain all commands, really?</s> + add more commands 
+* Sort the commands - meh! Maybe own sections for TCPDUmp, dumpsys, ping, dns, ...
