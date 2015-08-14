@@ -5,10 +5,10 @@ Index
 
 * [Overview](#overview)
 * [Reasons to block ads](#reasons-to-block-ads)
-* [Ad-blocking techniques and tools](#ad-blocking-techniques-an-tools)
+* [Ad-blocking techniques and tools](#ad--blocking-techniques-and-tools)
 * [Example lists](#example-lists)
-* [The best solution?](#the-best-solution)
-* [Does I need Ghostery?](#does-i-need-ghostery)
+* [The best solution?](#the-best-solution-?)
+* [Does I need Ghostery?](#does-i-need-ghostery-?)
 * [Final words](#final-words)
 
 Overview
@@ -97,7 +97,9 @@ https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
 ! Fanboy’s Enhanced Tracking List by fanboy.co.nz
 ! http://www.fanboy.co.nz/enhancedstats.txt
 ! GNU privacy filter
-http://gnuzilla.gnu.org/filters/blacklist.txt
+! http://gnuzilla.gnu.org/filters/blacklist.txt
+! CHEF-KOCH's NSA blocklist
+! https://github.com/CHEF-KOCH/NSABlocklist/HOSTS.txt
 
 
 
@@ -114,7 +116,7 @@ https://s3.amazonaws.com/lists.disconnect.me/simple_malware.txt
 ! Immortal Domains (also called long-lived)
 ! mirror1.malwaredomains.com/files/immortal_domains.txt
 ! Spam404 by spam404bl.com
-! spam404scamlist.txt
+! http://spam404bl.com/blacklist.txt
 
 
 
