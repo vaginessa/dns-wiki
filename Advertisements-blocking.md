@@ -99,7 +99,7 @@ https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
 ! GNU privacy filter
 ! http://gnuzilla.gnu.org/filters/blacklist.txt
 ! CHEF-KOCH's NSA blocklist
-! https://github.com/CHEF-KOCH/NSABlocklist/HOSTS.txt
+! https://github.com/CHEF-KOCH/NSABlocklist/blob/master/HOSTS.txt
 
 
 
@@ -196,7 +196,7 @@ General it's smart to use as less as possible addons/extensions/tools because to
 Final words
 ---------
 
-Don't believe in myths that more tools and blocking always ends up with more privacy or less problems, the hole grail should be to use as less as possible addons + as less filtering as possible which does block stuff you hate or possible compromise you're security. In fact more from everything always means that you need more time to manage it to stay secure and up-2-date. If you really want to hear my _recommendation_ (I normally not often give one) is that for a normal root user AdAway (to not manually update Android's hosts) + uBlock (for the Browser) should be enouth handle all above given reasons. 
+Don't believe in myths that more tools and blocking always ends up with more privacy or less problems, the hole grail should be to use as less as possible addons + as less filtering as possible which does block stuff you hate or possible compromise you're security. In fact more from everything always means that you need more time to manage it to stay secure and up-2-date. If you really want to hear my _recommendation_ (I normally not often give one) is that for a normal root user AdAway (to not manually update Android's hosts) + uBlock (for the Browser) should be enough handle all above given reasons. 
 
 
-_ Final version 29.07.2015_
+_ Final version 08.14.2015_
