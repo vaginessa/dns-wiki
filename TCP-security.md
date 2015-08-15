@@ -5,6 +5,7 @@ Index
 * [Ports](#ports)
 * [Known attacks](known-attacks)
 * [Requirements](#requirements)
+* [Kernel params](#kernel-params)
 * [sysctl](#sysctl)
 * [IP Rules](#ip-rules)
 * [Security testing tools](#security-testing-tools)
@@ -158,7 +159,16 @@ For [Multicast](http://www.iana.org/assignments/multicast-addresses/multicast-ad
 * Kernel/ROM that support these kind of tweaks (if not it doesn't work or is useless)
 * init.d support if you like to store these tweaks into a .sh script and apply them at boot (once)
 * sysctl support
-* A compiled Kernel based on 2.6 up to 4.0+
+* A compiled Kernel based on 2.6 up to 4.2+
+
+Kernel params
+------------
+
+An overview of all TCP related Kernel parameters can be found well documented over the [man7 page](http://man7.org/linux/man-pages/man7/tcp.7.html). This also answers most questions (if not all) which _traffic_ the Kernel really needs. 
+
+Another overview of IPv4 Kernel only params can be found directly on [kernel.org](https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt).
+
+More info can be found over the two given links. 
 
 sysctl
 ------------
