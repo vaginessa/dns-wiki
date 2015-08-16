@@ -37,7 +37,7 @@ The core problems are:
 * DNS hijacking
 * ...
 
-Blocking DNS isn't possible since this is needed on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less less/more complicated and depending on your knowledge about how to change that. 
+Blocking the DNS (port 53) isn't possible (without problems) since this is necessary on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less complicated and depending on your knowledge about how to change that. But don't worry we are here to explain all stuff in easy steps!
 
 There are alternatives like:
 * Choosing a logging free DNS resolver e.g [OpenNIC](https://www.opennicproject.org/) 
@@ -61,7 +61,7 @@ By default the Google DNS server (since 2009) is set (8.8.8.8/8.8.4.4), currentl
 How can I gather DNS (A/AAA/...) requests?
 -----------
 
-All AOSP based ROMs coming with TCPdump as binary included, so we can just use this to show what's going on behind, there are several [Tutorials](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available to handling TCPdump. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
+<s>All AOSP based ROMs coming with TCPdump as binary included, so we can just use this to show what's going on behind, there are several [Tutorials](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available to handling TCPdump. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.</s>
 
 // Android use a kind of BIND (which includes "dig"). <code>dig github.com | grep "Query time"</code>
 // See, [#37668](https://code.google.com/p/android/issues/detail?id=37668)
@@ -79,9 +79,9 @@ Allows a  maximum of three nameserver lines. In order to overcome this limitatio
 dnsmasq
 -----------
 
-Dnsmasq provides services as a DNS cacher and a DHCP server. As a Domain Name Server (DNS) it can cache DNS queries to improve connection speeds to previously visited sites, and as a DHCP server dnsmasq can be used to provide internal IP addresses and routes to computers on a LAN. 
+Dnsmasq provides services as a DNS forwarder cacher and a DHCP server. As a Domain Name Server (DNS) it can cache DNS queries to improve connection speeds to previously visited sites, and as a DHCP server dnsmasq can be used to provide internal IP addresses and routes to computers on a LAN. 
 
-:expressionless:  dnsmasq only allows three nameservers as a workaround we can create <code>resolv.dnsmasq.conf</code> and at this list into <code>/etc/dnsmasq.conf</code> via _resolv-file=/etc/resolv.dnsmasq.conf_ :expressionless:
+:exclamation: :  dnsmasq only allows three nameservers as a workaround we can create <code>resolv.dnsmasq.conf</code> and add this list into our <code>/etc/dnsmasq.conf</code> -> _resolv-file=/etc/resolv.dnsmasq.conf_ 
 
 
 // listen-address=127.0.0.1 needs to be set for local DNS cache ... because DNSCrypt isn't an DNS Cache (so we use dnsmasq)
@@ -151,6 +151,7 @@ Already reported DNS related topics:
 * #206 [DNS Requests fail](https://github.com/ukanth/afwall/issues/206)
 * #178 [Tethering](https://github.com/ukanth/afwall/issues/178)
 * #18  [UDP 53 bypass because logging & whitelisting are enabled](https://github.com/ukanth/afwall/issues/18)
+* [#511506](http://code.google.com/p/chromium/issues/detail?id=511506)
 
 
 **Important**: Please always use the search function here on AFWall's/[AOSP issue tracker](https://code.google.com/p/android/issues/list?can=2&q=DNS&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles) to search already known existent problems to avoid duplicate threads. 
@@ -343,10 +344,10 @@ IP6TABLES=/system/bin/ip6tables
 IPTABLES=/system/bin/iptables
 
 # Maybe need to change $IPTABLES to iptables (if there are troubles applying them)
-$IPTABLES -t nat -I OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
-$IPTABLES -t nat -I OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53</pre>
+$IPTABLES -t nat -A OUTPUT -p tcp --dport 53 -j DNAT --to-destination 208.67.222.222:53
+$IPTABLES -t nat -A OUTPUT -p udp --dport 53 -j DNAT --to-destination 208.67.222.222:53</pre>
 
-If you still like external apps, you should take a look at Override DNS [tested, working on 4.4.4/5.0.1] which does more or less the same. That may solve some problems on Android 4.4/Lollipop/M but there is no guarantee, some ROMs may handle it different.
+If you still like external apps, you should take a look at Override DNS [tested, working on 4.4.4/5.x] which does more or less the same. That may solve some problems on Android 4.4/Lollipop/M but there is no guarantee, some ROMs may handle it different.
 
 Commands to check if DNS is working
 ---------
