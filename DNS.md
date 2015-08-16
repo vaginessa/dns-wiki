@@ -96,6 +96,27 @@ DNSCrypt
 
 // Unbound, dnsmasq (Android default) or pdnsd are working with DNSCrypt but may needs configuration changes to work proper together 
 
+Ensure that DNSCrypt itself is running:
+```
+ps w | grep dnscrypt
+dnscrypt enable - Enable dnscrypt
+dnscrypt disable - Disable dnscrypt
+// Also add the --test string after --daemonize (background process) to test the server-side proxy config!
+
+// An example could be looks like this, the .zip package normally contains an init.d but this is just in case
+# DNSCrypt config 
+dnscrypt-proxy \
+  --resolver-name=<INSERT-YOUR-DNS-RESOLVER-NAME-HER> \
+  --resolvers-list=/system/etc/dnscrypt-proxy/dnscrypt-resolvers.csv \
+  --provider-key=<OPTIONAL-ONLY-NESSARY-IF YOU-ARE-NOT-USING-ONE-FROM-the-resolvers.csv-list!> \
+  --provider-name=<OPTIONAL-ONLY-NESSARY-IF YOU-ARE-NOT-USING-ONE-FROM-the-resolvers.csv-list!>  \
+  --resolver-address=<OPTIONAL-IF-THIS-is-different!> \
+  --max-active-requests=100 \
+  --edns-payload-size=4096 \
+  --test=3600 \
+  --daemonize \
+  --loglevel=3
+```
 
 How do I know if my applications are leaking DNS?
 -----------
