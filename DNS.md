@@ -85,6 +85,8 @@ Dnsmasq provides services as a DNS forwarder cacher and a DHCP server. As a Doma
 
 
 // listen-address=127.0.0.1 needs to be set for local DNS cache ... because DNSCrypt isn't an DNS Cache (so we use dnsmasq)
+// Empty example [dnsmasq](https://github.com/Android-Apps/dnsmasq/blob/master/dnsmasq.conf.example)
+// start it via service dhcpsrv  /system/bin/logwrapper  /system/bin/dnsmasq -k -C /system/etc/dnsmasq.conf
 
 
 DNSCrypt
@@ -108,9 +110,9 @@ Per-Browser this must be set to get a correct behavior, because they using there
 * On Firefox Mobile (about:config): _network.dns.disablePrefetch_ needs to be set to _true_.
 
 
-On the OS level we can:
+On the OS level:
 * Use 3rd Party Local DNS Servers/Resolvers, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Local_DNS_Resolvers).
-* Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers 4 hours is enouth.
+* Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers 4 hours is enough.
 * Apply MacOS Tweaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_MacOS).
 * Configure Firewall as Fail-safe To Prevent Leaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
 * Generally use [secure alternatives](https://github.com/okTurtles/dnschain) + use a [online browser check](https://www.botfrei.de/en/index.html)
@@ -123,7 +125,7 @@ On Tor your can:
 
 Sometimes these messages may be false alarms. To find out, you should run a packet sniffer on your network interface. The basic command to do this is <code>tcpdump -pni eth0 'port domain'</code>.
 
-If you are using an VPN this also can "fix" the DNS problem, but sometimes even this isn't enouth, especially on Android and OpenVPN, some older versions and provider still suffering from this issue, a workaround can be found over [here](https://gist.github.com/CHEF-KOCH/52fe5cd9a5aa7721fe74).
+If you are using an VPN this also can "fix" the DNS problem, but sometimes even this isn't enough, especially on Android and OpenVPN, some older versions and provider still suffering from this issue, a workaround can be found over [here](https://gist.github.com/CHEF-KOCH/52fe5cd9a5aa7721fe74).
 
 Another possible problem is that you [ISP](http://en.wikipedia.org/wiki/Internet_service_provider) [mitm](http://en.wikipedia.org/wiki/Man-in-the-middle_attack) and manipulate the DNS traffic (mostly due censorship or to spoof)! There are only a few methods to bypass this:
 * Use [TOR](https://www.torproject.org/) + setup it (simply use the setup wizard if you don't know how)
@@ -150,8 +152,9 @@ Already reported DNS related topics:
 * #209 [Bluetooth tethering borked as well](https://github.com/ukanth/afwall/issues/209)
 * #206 [DNS Requests fail](https://github.com/ukanth/afwall/issues/206)
 * #178 [Tethering](https://github.com/ukanth/afwall/issues/178)
-* #18  [UDP 53 bypass because logging & whitelisting are enabled](https://github.com/ukanth/afwall/issues/18)
-* [#511506](http://code.google.com/p/chromium/issues/detail?id=511506)
+* #18 [UDP 53 bypass because logging & whitelisting are enabled](https://github.com/ukanth/afwall/issues/18)
+* #511506 [Investigate horrible DNS performance on Android when running dualstack](http://code.google.com/p/chromium/issues/detail?id=511506)
+* #79504 [DNS (local) resolution on Android Lollipop](https://code.google.com/p/android/issues/detail?id=79504)
 
 
 **Important**: Please always use the search function here on AFWall's/[AOSP issue tracker](https://code.google.com/p/android/issues/list?can=2&q=DNS&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles) to search already known existent problems to avoid duplicate threads. 
