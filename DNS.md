@@ -3,6 +3,9 @@ Index
 
 * [Description](#description)
 * [DNS under Android](#dns-under-android)
+* [resolv.conf](#resolv.conf)
+* [dnsmasq](#dnsmasq)
+* [DNSCrypt](#dnscrypt)
 * [Already reported DNS problems](#already-reported-dns-problems)
 * [How can I gather DNS (A/AAA/...) requests?](#how-can-i-gather-dns--(-a-/-aaa-/-...)-requests-?)
 * [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns-?)
@@ -63,6 +66,32 @@ All AOSP based ROMs coming with TCPdump as binary included, so we can just use t
 // Android use a kind of BIND (which includes "dig"). 
 // See, [#37668](https://code.google.com/p/android/issues/detail?id=37668)
 // Workaround, just use external apps like [DNS Lookup](https://play.google.com/store/apps/details?id=com.kodholken.dnslookup)
+
+
+resolv.conf
+-----------
+
+The configuration file for DNS resolvers is <code>/etc/resolv.conf</code> take a look at the [man page](http://www.kernel.org/doc/man-pages/online/pages/man5/resolv.conf.5.html). 
+
+// add more stuff here, example, whatever 
+
+dnsmasq
+-----------
+
+Dnsmasq provides services as a DNS cacher and a DHCP server. As a Domain Name Server (DNS) it can cache DNS queries to improve connection speeds to previously visited sites, and as a DHCP server dnsmasq can be used to provide internal IP addresses and routes to computers on a LAN. 
+
+// dnsmasq only allows three nameservers as a workaround we can create <code>resolv.dnsmasq.conf</code> and at this list into <code>/etc/dnsmasq.conf</code> via _resolv-file=/etc/resolv.dnsmasq.conf_
+
+// add more stuff here, example, whatever 
+
+
+DNSCrypt
+-----------
+
+[DNSCrypt](http://dnscrypt.org/) encrypts and authenticates DNS traffic between user and DNS resolver.
+
+// add more stuff here, example, whatever 
+
 
 How do I know if my applications are leaking DNS?
 -----------
@@ -385,3 +414,4 @@ Todo:
 * On Android 5.x DNS problems try to [disable IPv6](https://en.m.wikipedia.org/wiki/Comparison_of_IPv6_support_in_operating_systems), since Android 5.0.1/5.x doesn't like DHCPv6
 * Is there a decentralized search for Android as app available (similar to yacy)? Mail me if there is one. (low-prio) + add them in the article
 * Android auto config compatibility (not yet), e.g. [test network fails](https://code.google.com/p/android/issues/detail?id=93753)
+* DNSCrypt, dnsmasq & resolv.conf should be mentioned + example configuration should be given (I need confirmation if that works or not) 
