@@ -63,7 +63,7 @@ How can I gather DNS (A/AAA/...) requests?
 
 All AOSP based ROMs coming with TCPdump as binary included, so we can just use this to show what's going on behind, there are several [Tutorials](http://www.kandroid.org/online-pdk/guide/tcpdump.html) and [documents](http://inst.eecs.berkeley.edu/~ee122/fa06/projects/tcpdump-2up.pdf) available to handling TCPdump. If this is to complicated for you, you can just grab AdAway (needs root) and use there own TCPDump/dnsmasq/libpcap interface to list all requests - it also provides an interface to add them to your hosts or to an separate white-/blacklist.
 
-// Android use a kind of BIND (which includes "dig"). 
+// Android use a kind of BIND (which includes "dig"). <code>dig github.com | grep "Query time"</code>
 // See, [#37668](https://code.google.com/p/android/issues/detail?id=37668)
 // Workaround, just use external apps like [DNS Lookup](https://play.google.com/store/apps/details?id=com.kodholken.dnslookup)
 
@@ -73,24 +73,26 @@ resolv.conf
 
 The configuration file for DNS resolvers is <code>/etc/resolv.conf</code> take a look at the [man page](http://www.kernel.org/doc/man-pages/online/pages/man5/resolv.conf.5.html). 
 
-// add more stuff here, example, whatever 
+Allows a  maximum of three nameserver lines. In order to overcome this limitation, you can use a locally caching nameserver like dnsmasq (see below). Changes made to /etc/resolv.conf take effect immediately (needs confirmation?). 
+
 
 dnsmasq
 -----------
 
 Dnsmasq provides services as a DNS cacher and a DHCP server. As a Domain Name Server (DNS) it can cache DNS queries to improve connection speeds to previously visited sites, and as a DHCP server dnsmasq can be used to provide internal IP addresses and routes to computers on a LAN. 
 
-// dnsmasq only allows three nameservers as a workaround we can create <code>resolv.dnsmasq.conf</code> and at this list into <code>/etc/dnsmasq.conf</code> via _resolv-file=/etc/resolv.dnsmasq.conf_
+:expressionless:  dnsmasq only allows three nameservers as a workaround we can create <code>resolv.dnsmasq.conf</code> and at this list into <code>/etc/dnsmasq.conf</code> via _resolv-file=/etc/resolv.dnsmasq.conf_ :expressionless:
 
-// add more stuff here, example, whatever 
+
+// listen-address=127.0.0.1 needs to be set for local DNS cache ... because DNSCrypt isn't an DNS Cache (so we use dnsmasq)
 
 
 DNSCrypt
 -----------
 
-[DNSCrypt](http://dnscrypt.org/) encrypts and authenticates DNS traffic between user and DNS resolver.
+[DNSCrypt](http://dnscrypt.org/) encrypts and authenticates DNS traffic between user and DNS resolver the latest flashable .zip is available over [here](). When DNSCrypt is enabled, _dnscrypt-proxy_ accepts incoming requests on 127.0.0.1:53 to one chosen OpenDNS resolver. Compatible resolver names are visible under <code>/etc/dnscrypt-proxy/dnscrypt-resolvers.csv</code> (dnscrypt-resolvers.csv).
 
-// add more stuff here, example, whatever 
+// Unbound, dnsmasq (Android default) or pdnsd are working with DNSCrypt but may needs configuration changes to work proper together 
 
 
 How do I know if my applications are leaking DNS?
@@ -103,7 +105,7 @@ There are several ways, the most easiest way is to visit some web pages that aut
 If you Browser shows a wrong DNS according to what your own settings telling you, this usually means something is wrong or maybe compromised.
 
 Per-Browser this must be set to get a correct behavior, because they using there own DNS internal settings:
-* On Firefox / Firefox Mobile (about:config): _network.dns.disablePrefetch_ needs to be set to _true_.
+* On Firefox Mobile (about:config): _network.dns.disablePrefetch_ needs to be set to _true_.
 
 
 On the OS level we can:
@@ -365,7 +367,7 @@ Browser
 
 The normal mobile browser (even stock yes) working out-of-the-box without need any manual adjustment to work with the default DNS.
 
-But some browsers are hardcoding them (so that it isn't possible to override this) and on some systems it may needs configurations changes to get theme proper working e.g. if you changed the DNS system widely. 
+But some browsers are hard-coding them (so that it isn't possible to override this) and on some systems it may needs configurations changes to get theme proper working e.g. if you changed the DNS system widely. 
 
 Working without any manual adjustments:
 * Dolphin 
@@ -398,7 +400,9 @@ Useful links
 * [Net_DNS2 v1.2.5 DANE TLSA Support | netdns2.com](http://netdns2.com/2012/12/net_dns2-version-1-2-5-released/)
 * [DNSSEC-Tools | dnssec-tools.org](http://www.dnssec-tools.org/)
 * [Unbound | unbound.net](http://www.unbound.net/) (name server)
-
+* [OpenNIC nameserver list](http://wiki.opennicproject.org/Tier2) + [nearest nameserver](http://www.opennicproject.org/nearest-servers/)
+* [Extension Mechanisms for DNS (EDNS0) | Wikipedia](http://en.wikipedia.org/wiki/Extension_mechanisms_for_DNS)
+* [DNS Reply Size Test Server | DNS-OARC.net](https://www.dns-oarc.net/oarc/services/replysizetest)
 
 
 Todo:
