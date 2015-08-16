@@ -6,7 +6,7 @@ Index
 * [resolv.conf](#resolv.conf)
 * [dnsmasq](#dnsmasq)
 * [DNSCrypt](#dnscrypt)
-* [Already reported DNS problems](#already-reported-dns-problems)
+* [DNS problems](#dns-problems)
 * [How can I gather DNS (A/AAA/...) requests?](#how-can-i-gather-dns--(-a-/-aaa-/-...)-requests-?)
 * [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns-?)
 * [Resolver commands](#resolver-commands)
@@ -73,7 +73,7 @@ resolv.conf
 
 The configuration file for DNS resolvers is <code>/etc/resolv.conf</code> take a look at the [man page](http://www.kernel.org/doc/man-pages/online/pages/man5/resolv.conf.5.html). 
 
-Allows a  maximum of three nameserver lines. In order to overcome this limitation, you can use a locally caching nameserver like dnsmasq (see below). Changes made to /etc/resolv.conf take effect immediately (needs confirmation?). 
+Allows a maximum of three nameserver lines. In order to overcome this limitation, you can use a locally caching nameserver like dnsmasq (see below). Changes made to /etc/resolv.conf take effect immediately (needs confirmation?). 
 
 
 dnsmasq
@@ -81,7 +81,7 @@ dnsmasq
 
 Dnsmasq provides services as a DNS forwarder cacher and a DHCP server. As a Domain Name Server (DNS) it can cache DNS queries to improve connection speeds to previously visited sites, and as a DHCP server dnsmasq can be used to provide internal IP addresses and routes to computers on a LAN. 
 
-:exclamation: :  dnsmasq only allows three nameservers as a workaround we can create <code>resolv.dnsmasq.conf</code> and add this list into our <code>/etc/dnsmasq.conf</code> -> _resolv-file=/etc/resolv.dnsmasq.conf_ 
+:exclamation: dnsmasq only allows three nameservers as a workaround we can create <code>resolv.dnsmasq.conf</code> and add this list into our <code>/etc/dnsmasq.conf</code> -> _resolv-file=/etc/resolv.dnsmasq.conf_ 
 
 
 // listen-address=127.0.0.1 needs to be set for local DNS cache ... because DNSCrypt isn't an DNS Cache (so we use dnsmasq)
@@ -92,30 +92,34 @@ Dnsmasq provides services as a DNS forwarder cacher and a DHCP server. As a Doma
 DNSCrypt
 -----------
 
-[DNSCrypt](http://dnscrypt.org/) encrypts and authenticates DNS traffic between user and DNS resolver the latest flashable .zip is available over [here](). When DNSCrypt is enabled, _dnscrypt-proxy_ accepts incoming requests on 127.0.0.1:53 to one chosen OpenDNS resolver. Compatible resolver names are visible under <code>/etc/dnscrypt-proxy/dnscrypt-resolvers.csv</code> (dnscrypt-resolvers.csv).
+[DNSCrypt](http://dnscrypt.org/) encrypts and authenticates DNS traffic between user and DNS resolver, the latest flashable .zip for Android is available over [here](https://download.dnscrypt.org/dnscrypt-proxy/). When DNSCrypt is enabled, _dnscrypt-proxy_ accepts incoming requests on <code>127.0.0.1:53</code> to one chosen OpenDNS resolver. Compatible resolver names are visible under <code>/etc/dnscrypt-proxy/dnscrypt-resolvers.csv</code> (always latest [dnscrypt-resolvers.csv](https://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-resolvers.csv)).
 
 // Unbound, dnsmasq (Android default) or pdnsd are working with DNSCrypt but may needs configuration changes to work proper together 
 
-Ensure that DNSCrypt itself is running:
 ```
+// Ensure that DNSCrypt itself is running
 ps w | grep dnscrypt
-dnscrypt enable - Enable dnscrypt
-dnscrypt disable - Disable dnscrypt
-// Also add the --test string after --daemonize (background process) to test the server-side proxy config!
+dnscrypt enable  #Enable dnscrypt
+dnscrypt disable #Disable dnscrypt
+```
 
+```
 // An example could be looks like this, the .zip package normally contains an init.d but this is just in case
-# DNSCrypt config 
+# DNSCrypt copy & paste example config for init.d
 dnscrypt-proxy \
   --resolver-name=<INSERT-YOUR-DNS-RESOLVER-NAME-HER> \
   --resolvers-list=/system/etc/dnscrypt-proxy/dnscrypt-resolvers.csv \
   --provider-key=<OPTIONAL-ONLY-NESSARY-IF YOU-ARE-NOT-USING-ONE-FROM-the-resolvers.csv-list!> \
   --provider-name=<OPTIONAL-ONLY-NESSARY-IF YOU-ARE-NOT-USING-ONE-FROM-the-resolvers.csv-list!>  \
   --resolver-address=<OPTIONAL-IF-THIS-is-different!> \
-  --max-active-requests=100 \
+  --max-active-requests=150 \
+  --ephemeral-keys \ 
   --edns-payload-size=4096 \
   --test=3600 \
   --daemonize \
   --loglevel=3
+
+// All other command-line switches can be found on the official homepage and of course within the documents. 
 ```
 
 How do I know if my applications are leaking DNS?
@@ -133,15 +137,15 @@ Per-Browser this must be set to get a correct behavior, because they using there
 
 On the OS level:
 * Use 3rd Party Local DNS Servers/Resolvers, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Local_DNS_Resolvers).
-* Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers 4 hours is enough.
+* Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers max 4 hours is enough.
 * Apply MacOS Tweaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_MacOS).
 * Configure Firewall as Fail-safe To Prevent Leaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
 * Generally use [secure alternatives](https://github.com/okTurtles/dnschain) + use a [online browser check](https://www.botfrei.de/en/index.html)
 * Use always the latest software to ensure possible bugs and security holes are fixed tools like sumo
 * Use a secure, user/privacy friendly search engine like DuckDuck, Disconnect or Ixquick. Even better would be an decentralized search like YaCy, FAROO or any other based on P2P/...
-* Verify no external addons/software/app leaks something
+* Verify no external addons/software/app leaks something (speaking about external metadata and protocol headers from going in .plaintxt out!)
 
-On Tor your can:
+On Tor:
 * Read the _Advanced Tor usage_ FAQ section, the two important ones are [this](https://www.torproject.org/docs/faq.html.en#WarningsAboutSOCKSandDNSInformationLeaks) and [this](https://www.torproject.org/docs/faq.html.en#SocksAndDNS)
 
 Sometimes these messages may be false alarms. To find out, you should run a packet sniffer on your network interface. The basic command to do this is <code>tcpdump -pni eth0 'port domain'</code>.
@@ -158,7 +162,7 @@ Another possible problem is that you [ISP](http://en.wikipedia.org/wiki/Internet
 
 There are also several tips, tricks and guides directly with a lot of examples over the official Tor Wiki page, see [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver) & [here](https://trac.torproject.org/projects/tor/wiki/doc/Preventing_Tor_DNS_Leaks). Remember that the given tricks on this pages are optimized for TOR/I2P, so you may need to adjust some example configuration given from there.
 
-Already reported DNS problems
+DNS problems 
 -----------
 
 An easy method to look at opened or closed threads is to search via <code>is:issue is:open dns</code> / <code>is:issue is:closed dns</code> which shows the important threads (if the topic/thread content was correct labaled), alternative just click on the follow links (or copy/paste the issue number in the search e.g. <code>https://github.com/ukanth/afwall/issues/<insert-issue-number-here>.
@@ -176,7 +180,7 @@ Already reported DNS related topics:
 * #18 [UDP 53 bypass because logging & whitelisting are enabled](https://github.com/ukanth/afwall/issues/18)
 * #511506 [Investigate horrible DNS performance on Android when running dualstack](http://code.google.com/p/chromium/issues/detail?id=511506)
 * #79504 [DNS (local) resolution on Android Lollipop](https://code.google.com/p/android/issues/detail?id=79504)
-
+* On AFWAll+ in whitelisting mode root/DNS+DHCP options needs to be checked to allow DNS traffic (netd runs as root that why you also need root checked too)
 
 **Important**: Please always use the search function here on AFWall's/[AOSP issue tracker](https://code.google.com/p/android/issues/list?can=2&q=DNS&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles) to search already known existent problems to avoid duplicate threads. 
 
