@@ -92,7 +92,7 @@ Dnsmasq provides services as a DNS forwarder cacher and a DHCP server. As a Doma
 DNSCrypt
 -----------
 
-[DNSCrypt](http://dnscrypt.org/) encrypts and authenticates DNS traffic between user and DNS resolver, the latest flashable .zip for Android is available over [here](https://download.dnscrypt.org/dnscrypt-proxy/). When DNSCrypt is enabled, _dnscrypt-proxy_ accepts incoming requests on <code>127.0.0.1:53</code> to one chosen OpenDNS resolver. Compatible resolver names are visible under <code>/etc/dnscrypt-proxy/dnscrypt-resolvers.csv</code> (always latest [dnscrypt-resolvers.csv](https://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-resolvers.csv)).
+[DNSCrypt](http://dnscrypt.org/) encrypts and authenticates DNS traffic between user and DNS resolver, the latest flashable .zip for Android is available over [here](https://download.dnscrypt.org/dnscrypt-proxy/). When DNSCrypt is enabled, _dnscrypt-proxy_ accepts incoming requests on <code>127.0.0.1:53</code> to one chosen DNS resolver. Compatible resolver names are visible under <code>/etc/dnscrypt-proxy/dnscrypt-resolvers.csv</code> (always latest [dnscrypt-resolvers.csv](https://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-resolvers.csv)).
 
 // Unbound, dnsmasq (Android default) or pdnsd are working with DNSCrypt but may needs configuration changes to work proper together 
 
@@ -307,10 +307,11 @@ Remember, the settings will be applicable only for the current session! You will
 
 Android system chooses the DNS servers using the script located at _/system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf_
 
-<code>20-dns.conf</code>
+```bash
+20-dns.conf
 
-To change the DNS servers, use the command _setprop property name_
-<pre>
+To change the DNS servers, use the command: 'setprop property name'
+
 setprop net.dns1=208.67.222.222
 setprop net.dns2=208.67.220.220
 setprop net.eth0.dns1=208.67.222.222
@@ -322,10 +323,11 @@ setprop dhcp.tiwlan0.dns2=208.67.220.220
 setprop net.ppp0.dns1=208.67.222.222
 setprop net.ppp0.dns2=208.67.220.220
 setprop net.pdpbr1.dns1=208.67.222.222
-setprop net.pdpbr1.dns2=208.67.220.220</pre>
+setprop net.pdpbr1.dns2=208.67.220.220
+```
 
 Or via init.d script (won't reapply after connectivity change):
-<pre>
+```bash
 #!/system/bin/sh
 setprop net.dns1 208.67.222.222
 setprop net.dns2 208.67.220.220
@@ -338,13 +340,14 @@ setprop net.ppp0.dns2 208.67.220.220
 setprop net.rmnet0.dns1 208.67.222.222
 setprop net.rmnet0.dns2 208.67.220.220
 setprop net.pdpbr1.dns1 208.67.222.222
-setprop net.pdpbr1.dns2 208.67.220.220</pre>
+setprop net.pdpbr1.dns2 208.67.220.220
+```
 
 To check against it (on e.g. wlan) we use:
-<pre>
-tcpdump -ns0 -i wlan0 'port 53'</pre>
+<code>tcpdump -ns0 -i wlan0 'port 53'</code>
 
-[DNS check tool](http://dnscheck.pingdom.com/) is a secure proof if DNS is working or not, alternative you can use nslookup via command line. Please remember that there are some problems generally with the DNS security protocol, there are several known attacks, like DOS, Cache poisoning, ghost domain names & [others](http://ianix.com/pub/dnssec-outages.html). For more information take a look over [here](http://www.theregister.co.uk/2015/03/18/is_the_dns_security_protocol_a_waste_of_everyones_time_and_money/#)
+
+[DNS check tool](http://dnscheck.pingdom.com) is a secure proof if DNS is working or not, alternative you can use nslookup via command line. Please remember that there are some problems generally with the DNS security protocol, there are several known attacks, like DOS, Cache poisoning, ghost domain names & [others](http://ianix.com/pub/dnssec-outages.html). For more information take a look over [here](http://www.theregister.co.uk/2015/03/18/is_the_dns_security_protocol_a_waste_of_everyones_time_and_money/#)
 
 
 If there is no setprop you can write the values before the <code>unset_dns_props()</code> begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
@@ -435,8 +438,9 @@ Useful links
 
 
 Todo:
-* <s>Complete the missing parts </s>
-* <s>Link all dns related stuff in this thread (e.g. from the FAQ)</s>
+* <s>I won't explain router side configuration, just use OpenWRT or any other mod (documented very well)</s>
+* <s>Complete the missing parts</s>
+* <s>Link all DNS related stuff in this thread (e.g. from the FAQ)</s>
 * <s>Add several workarounds since newer systems ignoring the etc/resolver.conf or dhcpcd/dhcpcd-hooks/20-dns.conf files</s>, explained with given links
 * <s>Add AFWall+ workarounds via custom scripts or separate tips</s>
 * Possible explain why Android 4.4.+/5+ wants to call the RIL with RIL_REQUEST_SETUP_DATA_CALL <netcfg dhcp iface>
