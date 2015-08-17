@@ -30,7 +30,7 @@ The core problems are:
 * DNS-based censorship circumvention
 * [Domain theft's](https://www.techdirt.com/articles/20141006/02561228743/5000-domains-seized-based-sealed-court-filing-confused-domain-owners-have-no-idea-why.shtml) ("seizures")
 * Certificate revocation
-* DOS (Denial-Of-Service) attacks, even DNSSEC doesn't protect against this
+* DOS (Denial-Of-Service) attacks, not even DNSSEC protect against such attacks
 * Logging on exit notes
 * DNS cache poisoning
 * Other exploits that are used for e.g. phishing
@@ -114,8 +114,7 @@ dnscrypt-proxy \
   --provider-key=<OPTIONAL-ONLY-NESSARY-IF YOU-ARE-NOT-USING-ONE-FROM-the-resolvers.csv-list!> \
   --provider-name=<OPTIONAL-ONLY-NESSARY-IF YOU-ARE-NOT-USING-ONE-FROM-the-resolvers.csv-list!>  \
   --resolver-address=<OPTIONAL-IF-THIS-is-different!> \
-  --max-active-requests=150 \
-  --ephemeral-keys \ 
+  --max-active-requests=100 \
   --edns-payload-size=4096 \
   --test=3600 \
   --daemonize \
@@ -131,9 +130,8 @@ There are several ways, the most easiest way is to visit some web pages that aut
 * [DNS Leak Test | dnsleaktest.com](https://www.dnsleaktest.com/)
 * [IP Leak Test | ipleak.net](http://ipleak.net/)
 
-If you Browser shows a wrong DNS according to what your own settings telling you, this usually means something is wrong or maybe compromised.
+If your Browser shows a wrong DNS according to what your own settings telling you, this usually means something is wrong or maybe compromised. On Firefox below 39.0.2 try to disable the internal DNS system.
 
-Per-Browser this must be set to get a correct behavior, because they using there own DNS internal settings:
 * On Firefox Mobile (about:config): _network.dns.disablePrefetch_ needs to be set to _true_.
 
 
@@ -182,10 +180,9 @@ Already reported DNS related topics:
 * #18 [UDP 53 bypass because logging & whitelisting are enabled](https://github.com/ukanth/afwall/issues/18)
 * #511506 [Investigate horrible DNS performance on Android when running dualstack](http://code.google.com/p/chromium/issues/detail?id=511506)
 * #79504 [DNS (local) resolution on Android Lollipop](https://code.google.com/p/android/issues/detail?id=79504)
-* On AFWAll+ in whitelisting mode root/DNS+DHCP options needs to be checked to allow DNS traffic (netd runs as root that why you also need root checked too)
+* On AFWall+ in whitelisting mode root/DNS+DHCP options needs to be checked to allow DNS traffic (netd runs as root that why you also need root checked too)
 
 **Important**: Please always use the search function here on AFWall's/[AOSP issue tracker](https://code.google.com/p/android/issues/list?can=2&q=DNS&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles) to search already known existent problems to avoid duplicate threads. 
-
 
 Resolver commands
 -----------
@@ -289,7 +286,9 @@ http://androidxref.com/5.1.0_r1/xref/system/netd/server/CommandListener.cpp#791
 * `ndc resolver clearnetdns <netId>`
 * `ndc resolver flushnet <netId>`
 
-## Master tree (latest versions [08.07.2015](https://android.googlesource.com/platform/system/netd/+/master/server/CommandListener.cpp#805) checked)
+## Master tree (latest version 08.07.2015 checked)
+https://android.googlesource.com/platform/system/netd/+/master/server/CommandListener.cpp#805
+
 * `ndc resolver setnetdns <netId> <domains> <dns1> <dns2> ...` 
 * `ndc resolver clearnetdns <netId>`
 * `ndc resolver flushnet <netId>`
@@ -352,7 +351,7 @@ To check against it (on e.g. wlan) we use:
 [DNS check tool](http://dnscheck.pingdom.com) is a secure proof if DNS is working or not, alternative you can use nslookup via command line. Please remember that there are some problems generally with the DNS security protocol, there are several known attacks, like DOS, Cache poisoning, ghost domain names & [others](http://ianix.com/pub/dnssec-outages.html). For more information take a look over [here](http://www.theregister.co.uk/2015/03/18/is_the_dns_security_protocol_a_waste_of_everyones_time_and_money/#)
 
 
-If there is no setprop you can write the values before the <code>unset_dns_props()</code> begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the _getprop | grep dns_ command but this will only work for Android <4.3 devices. 
+If there is no setprop you can write the values before the <code>unset_dns_props()</code> begins. Here is an [example 20-dns.conf file](https://gist.github.com/CHEF-KOCH/b054c88d8ba7975a1517). You can get the dns information by using the <code>getprop | grep dns</code> command but this will only work for Android < 4.3 devices. 
 
 
 The <code>getprop</code> or <code>setprop</code> method **does not work on Android versions >4.4+** anymore. Those values, when changed, get simply ignored by the _netd_ daemon. It's necessary to communicate directly to the daemon via the <code>/dev/socket/netd socket</code>. In Android it's now present a tool called <code>ndc</code> which does exactly this job.
@@ -373,7 +372,7 @@ Or via init.d:
 #!/system/bin/sh
 # File without file extension
 
-IP6TABLES=/system/bin/ip6tables
+#IP6TABLES=/system/bin/ip6tables
 IPTABLES=/system/bin/iptables
 
 # Maybe need to change $IPTABLES to iptables (if there are troubles applying them)
@@ -401,7 +400,7 @@ Browser
 
 The normal mobile browser (even stock yes) working out-of-the-box without need any manual adjustment to work with the default DNS.
 
-But some browsers are hard-coding them (so that it isn't possible to override this) and on some systems it may needs configurations changes to get theme proper working e.g. if you changed the DNS system widely. 
+But some browsers are hardcode them (so that it isn't possible to overriding them) and on some systems it may needs configurations changes to get theme proper working e.g. if you changed the DNS system widely. 
 
 Working without any manual adjustments:
 * Dolphin 
