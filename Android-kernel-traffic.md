@@ -1,12 +1,14 @@
-:warning: This article is in a early beta stage and could contain _false information_ until all is done. This article is based on the Stock Android 4.0 OS (Kernel 2.6.x), this means newer Kernel or/and network changes could be differ a little bit.
-
 :warning: On Windows I highly recommend to use Burp/HTTP Scoop/Fiddler for the [deep packet inspection](http://en.wikipedia.org/wiki/Deep_packet_inspection) instead of Wireshark for several reasons, one of them is that it's low-level and overpowered for quickly looking through HTTP(s) traces [but you're the boss].
 
-As you might know, Android's kernel is based on the Linux kernel so the output could be similar. This article will clear some questions about the Android Kernel and his data usage and also may answer some addition questions like why is there traffic under _Android OS_ (UID = 1000).
+As you might know, Android's Kernel is based on the Linux Kernel so the output could be similar. This article will clear some questions about the Android Kernel and his data usage and also may answer some addition questions like why is there traffic under _Android OS_ (UID = 1000).
 
 Most Internet applications are using TCP as their protocol of choice, and TCP maintains a connection bound to an IP address. Whenever you change your Internet access, you switch IP addresses and all existing TCP connections vanish. Your downloads are aborted, your SSH connections are closed,[...]
 
 **Important**:
+* [WifiManager](http://developer.android.com/reference/android/net/wifi/WifiManager.html)
+* [Network Interface](http://developer.android.com/reference/java/net/NetworkInterface.html)
+* [Java SE NetworkInterface](http://docs.oracle.com/javase/6/docs/api/java/net/NetworkInterface.html)
+* To get list of available interfaces use NetworkInterface#getNetworkInterfaces: <code>NetworkInterface.getNetworkInterfaces()</code>
 * [NetworkConnectivityListener](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob;f=core/java/android/net/NetworkConnectivityListener.java)
 * [ConnectivityService.java](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob;f=services/java/com/android/server/ConnectivityService.java)
 * [android_filesystem_config.h](https://android.googlesource.com/platform/system/core.git/+/master/include/private/android_filesystem_config.h)
@@ -275,14 +277,15 @@ Internet security is hard. Let's go bake some cookies!
 Useful links
 -------
 
+* [ifconfig |Wikipedia](http://en.wikipedia.org/wiki/Ifconfig) (or if not present use <code>netcfg</code> - but's limited!)
 * [Domain Name System (DNS) | Wikipedia](http://en.wikipedia.org/wiki/Domain_Name_System)
 * [Android Data Usage | Source Android](https://source.android.com/devices/tech/datausage/index.html)
-* [Android Git repositories | Android GoogleSource](https://android.googlesource.com/) (iptables, kernel,[...])
+* [Android Git repositories | Android Google Source](https://android.googlesource.com/) (iptables, kernel,[...])
 * [Android Traffic Stats | Android Developer] (http://developer.android.com/reference/android/net/TrafficStats.html)
 * [sysctl | kernel.org](https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt)
 * [[MOD]Any phone, any ROM: Wi-Fi only mode (disable cell radio) | RootWiki.com](http://rootzwiki.com/topic/25016-modany-phone-any-rom-wi-fi-only-mode-disable-cell-radio/)
 * [Connectivitymanager in Android SDK | MSDN Blogs](http://blogs.msdn.com/zhengpei/archive/2009/09/22/connectivitymanager-in-android-sdk.aspx)
-* [Robtex Swiss Army Knife Internet Tool | Robtex.com](https://www.robtex.com/#faq)
+* [Robtex Swiss Army Knife Internet Tool | Robtex.com](https://www.robtex.com/)
 
 Tutorials:
 * [Sniffing Network Traffic on Android | Infosec](http://resources.infosecinstitute.com/sniffing-network-traffic-android/)
@@ -310,5 +313,3 @@ Tutorials:
 * Maybe a quick guide to show howto debug traffic on the emulator (via DDMS) or with fiddler (on ssl)
 * Stuff/tools which make life easier to inspect Android OS traffic directly on the device (most tools are way outdated/deprecated, like OS Monitor, Shark, ... or they simply not work on Android 5 because it needs to be recompiled with the Position Indipendent Executables (-pie or on libs -fPIC) flag
 ```
-
--> Since I don't have any real motivation I'm always open minded what I should show/explain over here...
