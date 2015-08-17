@@ -79,7 +79,8 @@ Allows a maximum of three nameserver lines. In order to overcome this limitation
 dnsmasq
 -----------
 
-Dnsmasq provides services as a DNS forwarder cacher and a DHCP server. As a Domain Name Server (DNS) it can cache DNS queries to improve connection speeds to previously visited sites, and as a DHCP server dnsmasq can be used to provide internal IP addresses and routes to computers on a LAN. 
+Dnsmasq provides services as a DNS forwarder cacher and a DHCP server. As a Domain Name Server (DNS) it can cache DNS queries to improve connection speeds to previously visited sites, and as a DHCP server dnsmasq can be used to provide internal IP addresses and routes to computers on a LAN. A list for discussion about the dnsmasq DNS and DHCP server, configuration, bugs and development can be found [here](http://lists.thekelleys.org.uk/mailman/listinfo/dnsmasq-discuss).
+
 
 :exclamation: dnsmasq only allows three nameservers as a workaround we can create <code>resolv.dnsmasq.conf</code> and add this list into our <code>/etc/dnsmasq.conf</code> -> _resolv-file=/etc/resolv.dnsmasq.conf_ 
 
@@ -87,6 +88,7 @@ Dnsmasq provides services as a DNS forwarder cacher and a DHCP server. As a Doma
 // listen-address=127.0.0.1 needs to be set for local DNS cache ... because DNSCrypt isn't an DNS Cache (so we use dnsmasq)
 // Empty example [dnsmasq](https://github.com/Android-Apps/dnsmasq/blob/master/dnsmasq.conf.example)
 // start it via service dhcpsrv  /system/bin/logwrapper  /system/bin/dnsmasq -k -C /system/etc/dnsmasq.conf
+// Behind a firewall (like AFWall+) try: iptables -A INPUT -i $iface -p udp -s 0.0.0.0 --sport 68 -d 255.255.255.255 --dport 67 -j ACCEPT if the firewall precenting dnsmasq from working as LAN DHCP server 
 
 
 DNSCrypt
@@ -97,10 +99,10 @@ DNSCrypt
 // Unbound, dnsmasq (Android default) or pdnsd are working with DNSCrypt but may needs configuration changes to work proper together 
 
 ```
-// Ensure that DNSCrypt itself is running
+// Ensure that DNSCrypt is running
+dnscrypt-proxy enable
+dnscrypt-proxy disable
 ps w | grep dnscrypt
-dnscrypt enable  #Enable dnscrypt
-dnscrypt disable #Disable dnscrypt
 ```
 
 ```
@@ -435,11 +437,13 @@ Useful links
 * [OpenNIC nameserver list](http://wiki.opennicproject.org/Tier2) + [nearest nameserver](http://www.opennicproject.org/nearest-servers/)
 * [Extension Mechanisms for DNS (EDNS0) | Wikipedia](http://en.wikipedia.org/wiki/Extension_mechanisms_for_DNS)
 * [DNS Reply Size Test Server | DNS-OARC.net](https://www.dns-oarc.net/oarc/services/replysizetest)
+* [dnsmasq FAQ | GitHub](https://github.com/Android-Apps/dnsmasq/blob/master/FAQ)
 
 
 Todo:
 * <s>I won't explain router side configuration, just use OpenWRT or any other mod (documented very well)</s>
 * <s>Complete the missing parts</s>
+* <s>Android 5.x doesn't support WPAD,....</s>
 * <s>Link all DNS related stuff in this thread (e.g. from the FAQ)</s>
 * <s>Add several workarounds since newer systems ignoring the etc/resolver.conf or dhcpcd/dhcpcd-hooks/20-dns.conf files</s>, explained with given links
 * <s>Add AFWall+ workarounds via custom scripts or separate tips</s>
@@ -451,4 +455,4 @@ Todo:
 * On Android 5.x DNS problems try to [disable IPv6](https://en.m.wikipedia.org/wiki/Comparison_of_IPv6_support_in_operating_systems), since Android 5.0.1/5.x doesn't like DHCPv6
 * Is there a decentralized search for Android as app available (similar to yacy)? Mail me if there is one. (low-prio) + add them in the article
 * Android auto config compatibility (not yet), e.g. [test network fails](https://code.google.com/p/android/issues/detail?id=93753)
-* DNSCrypt, dnsmasq & resolv.conf should be mentioned + example configuration should be given (I need confirmation if that works or not) 
+* DNSCrypt, dnsmasq & resolv.conf should be mentioned + example configuration should be given (I need confirmation if that works or not)
