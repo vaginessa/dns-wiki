@@ -102,23 +102,30 @@ DNSCrypt
 // Ensure that DNSCrypt is running
 dnscrypt-proxy enable
 dnscrypt-proxy disable
-ps w | grep dnscrypt
+ps w | grep dnscrypt-proxy
 ```
 
 ```
 // An example could be looks like this, the .zip package normally contains an init.d but this is just in case
 # DNSCrypt copy & paste example config for init.d
+
+RESOLVER_NAME=dnscrypt.org-fr
+
 dnscrypt-proxy \
-  --resolver-name=<INSERT-YOUR-DNS-RESOLVER-NAME-HER> \
   --resolvers-list=/system/etc/dnscrypt-proxy/dnscrypt-resolvers.csv \
+  --resolver-name=<INSERT-YOUR-DNS-RESOLVER-NAME-HER> \
   --provider-key=<OPTIONAL-ONLY-NESSARY-IF YOU-ARE-NOT-USING-ONE-FROM-the-resolvers.csv-list!> \
   --provider-name=<OPTIONAL-ONLY-NESSARY-IF YOU-ARE-NOT-USING-ONE-FROM-the-resolvers.csv-list!>  \
   --resolver-address=<OPTIONAL-IF-THIS-is-different!> \
   --max-active-requests=100 \
-  --edns-payload-size=4096 \
-  --test=3600 \
+  --edns-payload-size=1252\
+  --test=3600 && \
+dnscrypt-proxy \
   --daemonize \
   --loglevel=3
+  --resolver-name="$RESOLVER_NAME" \
+  --resolvers-list=/system/etc/dnscrypt-proxy/dnscrypt-resolvers.csv
+```
 
 // All other command-line switches can be found on the official homepage and of course within the documents. 
 ```
