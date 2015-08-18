@@ -9,7 +9,7 @@ Index
 * [Android logging system](#android-logging-system)
 * [GMS](#gms)
 * [Disable binaries](#disable-binaries)
-* [Android M](#android-m)
+* [Android Marshmallow](#android-marshmallow)
 * [Useful links](#useful-links)
 
 
@@ -283,10 +283,10 @@ General Security tips:
 * [Secure coding under Android](https://www.securecoding.cert.org/confluence/pages/viewpage.action?pageId=111509535)
 
 
-Android M
+Android Marshmallow
 --------------
 
-With Android M (Kernel 4.1+) (API level 23) a lot of _under the hood_ changes are coming to the user including a new [permission controlling system](http://www.androidpolice.com/2015/05/28/io-2015-android-m-will-include-a-new-enhanced-permission-management-scheme-with-fine-control-over-apps/) that works similar compared to AppOps and integrates an user interface that allow to control most of all [permissions](https://developer.android.com/preview/features/runtime-permissions.html). Compared to Android 4/Lollipop that means you don't have only two options (take it and accept it or simply do not install it) - now you now can just install everything and change e.g. the camera permission to avoid that your new installed application (or existent) [can take control over that](https://en.wikipedia.org/wiki/Android_M). See, also the [Google I/O 2015 Video](http://www.youtube.com/watch?v=f17qe9vZ8RM).
+With Android Marshmallow (Kernel 4.1+) (API level 23) a lot of _under the hood_ changes are coming to the user including a new [permission controlling system](http://www.androidpolice.com/2015/05/28/io-2015-android-m-will-include-a-new-enhanced-permission-management-scheme-with-fine-control-over-apps/) that works similar compared to AppOps and integrates an user interface that allow to control most of all [permissions](https://developer.android.com/preview/features/runtime-permissions.html). Compared to Android 4/Lollipop that means you don't have only two options (take it and accept it or simply do not install it) - now you now can just install everything and change e.g. the camera permission to avoid that your new installed application (or existent) [can take control over that](https://en.wikipedia.org/wiki/Android_M). See, also the [https://developer.android.com/preview/overview.html).
 
 In fact that makes more or less most of _security apps_ obsolete since the user can control what permission which app can really use. Except the internet stuff (since Google simply never wants it, because ads reasons,[...]) which overall means firewalls have still a solid standing. 
 
