@@ -128,7 +128,7 @@ dnscrypt-proxy \
 ```
 
 // All other command-line switches can be found on the official homepage and of course within the documents. 
-```
+
 
 How do I know if my applications are leaking DNS?
 -----------
@@ -186,6 +186,7 @@ Already reported DNS related topics:
 * #178 [Tethering](https://github.com/ukanth/afwall/issues/178)
 * #18 [UDP 53 bypass because logging & whitelisting are enabled](https://github.com/ukanth/afwall/issues/18)
 * #511506 [Investigate horrible DNS performance on Android when running dualstack](http://code.google.com/p/chromium/issues/detail?id=511506)
+* [Android 5 broke tethering (DNS REFUSED)](http://code.google.com/p/android/issues/detail?id=82545)
 * #79504 [DNS (local) resolution on Android Lollipop](https://code.google.com/p/android/issues/detail?id=79504)
 * On AFWall+ in whitelisting mode root/DNS+DHCP options needs to be checked to allow DNS traffic (netd runs as root that why you also need root checked too)
 
@@ -443,7 +444,8 @@ Useful links
 * [OpenNIC nameserver list](http://wiki.opennicproject.org/Tier2) + [nearest nameserver](http://www.opennicproject.org/nearest-servers/)
 * [Extension Mechanisms for DNS (EDNS0) | Wikipedia](http://en.wikipedia.org/wiki/Extension_mechanisms_for_DNS)
 * [DNS Reply Size Test Server | DNS-OARC.net](https://www.dns-oarc.net/oarc/services/replysizetest)
-* [dnsmasq FAQ | GitHub](https://github.com/Android-Apps/dnsmasq/blob/master/FAQ)
+* [Unofficial Android dnsmasq FAQ | GitHub](https://github.com/Android-Apps/dnsmasq/blob/master/FAQ)
+* [Official dnsmasq binary and docs | thekelleys](http://www.thekelleys.org.uk/dnsmasq/)
 
 
 Todo:
@@ -455,7 +457,7 @@ Todo:
 * <s>Add AFWall+ workarounds via custom scripts or separate tips</s>
 * Possible explain why Android 4.4.+/5+ wants to call the RIL with RIL_REQUEST_SETUP_DATA_CALL <netcfg dhcp iface>
 * Explain the [broken MTU](https://code.google.com/p/android/issues/detail?id=152819) (saw this on so many roms) and list this bug (see ConnectivityService.cpp), since Android 5.1.x always seems to use 1500 regardless of what value has dhcp daemon set in option 26 (call interface_mtu).
-* How can I gather DNS (A/AAA/...) requests? -> must be re-written 
+* How can I gather DNS (A/AAA/...) requests? -> must be re-written (high-prio)
 * Add example output how it should looks like, really? (low-prio)
 * Add traceroute, whois, and dig commands to work with (low-prio)
 * On Android 5.x DNS problems try to [disable IPv6](https://en.m.wikipedia.org/wiki/Comparison_of_IPv6_support_in_operating_systems), since Android 5.0.1/5.x doesn't like DHCPv6
