@@ -256,6 +256,7 @@ The following ports are involved:
 5222
 5223
 5228
+5060 and alternative 5064 for SIP/Voip
 Proxy to redirect from 80 to 8080 (optional)
 ```
 
