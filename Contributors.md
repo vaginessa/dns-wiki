@@ -1,10 +1,10 @@
-Special thanks to our top contributors, developers and donators which helped to make AFWall+ more awesome!
+Special thanks goes to our top contributors, developers and donators which helped to make AFWall+ more awesome!
 
 | Developer| Misc (Wiki/Patches/Icons) | Translator | Web/eMail |
 | :--- | :--: | :---: | :---: |
 | **Umakanthan Chandan** | | | cumakt [at] gmail.com |
-| Kevin Cernekee |  | | cernekee [at] gmail.com |
-| | CHEF-KOCH |  | Nvinside [at] gmail.com |
+| <s>Kevin Cernekee</s> |  | | <s>cernekee [at] gmail.com</s> |
+| | CHEF-KOCH |  | CHEF-KOCH [at] draugr.de |
 | | PdtS for Icons | | [Website](http://pdts.net/) |
 | | Hush66 | | [Devianart](http://www.hush66.devianart.com/) |
 | | | tianchaoren | Crowdin |
@@ -107,4 +107,4 @@ Chinese (zh) <br>
 
 Current translations status: [![Crowdin](https://d322cqt584bo4o.cloudfront.net/afwall/localized.png)](https://crowdin.net/project/afwall)
 
-_Final version 08.10.2015_
+_Final version 08.20.2015_
