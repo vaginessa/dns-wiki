@@ -72,5 +72,6 @@ All of these firewalls working with a local Proxy/[VPN](https://developer.androi
 
 We not recommend to use any no-root firewall for above reasons, there are others too e.g. see [an German article](http://www.kuketz-blog.de/android-firewall-ohne-root-%E2%80%A2-noroot-firewall/):
 * NetSpark/Mobiwol [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.netspark.firewall)
+* [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.jianjia.firewall)
 
 _Final version 08.22.2015_
