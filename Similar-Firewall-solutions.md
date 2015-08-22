@@ -28,8 +28,9 @@ _IPTables based:_
 * [Advanced Firewall](https://play.google.com/store/apps/details?id=advancedfirewall.educational.ae)
 
 _Anti IMSI-Catcher (protects against IMSI/StingRay-Catchers and Silent/Stealth SMS):_
-* [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/)
+* [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/) & Source (same link)
 * [SnoopSnitch](https://play.google.com/store/apps/details?id=de.srlabs.snoopsnitch) + [F-Droid](https://f-droid.org/repository/browse/?fdid=de.srlabs.snoopsnitch) + [GSMMap Global Database](http://gsmmap.org/)
+* [Darshak](https://play.google.com/store/apps/details?id=com.darshak) & [Source](https://github.com/darshakframework/darshak)
 
 _Bluetooth Firewall:_
 * [Bluetooth Firewall](https://play.google.com/store/apps/details?id=com.fruitmobile.android.bluetooth.firewall)
@@ -52,13 +53,16 @@ _[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based
 _Real-time iptables logging:_
 * [Network Log](https://play.google.com/store/apps/details?id=com.googlecode.networklog&hl=en)
 
-_Internet Diagnostic Tool_:
+_Internet Diagnostic_:
 * [Network Monitor](http://fossdroid.com/a/network-monitor.html)
 * [RouterCheck](https://play.google.com/store/apps/details?id=com.Sericon.RouterCheck.client.android&hl=en)
 
 _Dynamic egress filtering_ (links not working - it's only for historical reasons):
 * ~~[WhisperMonitor](http://www.whispersys.com/whispermonitor.html)~~ _deprecated_
 * ~~[SnoopWall](https://play.google.com/store/apps/details?id=com.snoopwall.android)~~ _deprecated_
+
+_USB_ (not really a firewall but monitors the usb host):
+* ~~[Android USB Serial Monitor Lite](https://play.google.com/store/apps/details?id=jp.ksksue.app.terminal)~~ _deprecated_
 
 
 Non-root Android Firewalls
@@ -67,6 +71,6 @@ Non-root Android Firewalls
 All of these firewalls working with a local Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with IPtables like AFWall+. They only work on a app-layer size which _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest problem is that such VPN services not work with WiFi tethering or hotspots. And another con is that you can't run other VPN services and VPN/Proxy's apps at the same time together. 
 
 We not recommend to use any no-root firewall for above reasons, there are others too e.g. see [an German article](http://www.kuketz-blog.de/android-firewall-ohne-root-%E2%80%A2-noroot-firewall/):
-* NetSpark/Mobiwol [NoRoot](https://play.google.com/store/apps/details?id=com.netspark.firewall&hl=en)
+* NetSpark/Mobiwol [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.netspark.firewall)
 
-_Final version 08.08.2015_
+_Final version 08.22.2015_
