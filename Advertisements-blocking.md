@@ -33,7 +33,7 @@ Most people use the following reasons if it comes to the ad blocking question:
 * Enabling <code>acceptable ads</code> to <code>help and support you're favorite site</code> is always possible. Popular and small pages like [Ghacks are dying](http://www.ghacks.net/2015/02/27/ghacks-is-dying-and-needs-your-help/) because blocking everything, but just supporting by [making exclusions may help them](http://www.ghacks.net/2015/04/18/2-months-later-ghacks-is-still-dying-but-there-is-hope/) - which is a good compromise. 
 * <code>It's always up2you</code> what you doing with the given information. _Personally I think as long you're daily visiting pages documents and list there own ads (including there sources) - so that everyone can read what they collect it should be okay - in fact most pages place there ads very well, to not disturb the user - It's a matter of communication from the Webmaster to the community_
 * <code>Other reasons</code>?!
-* ... the rest is _FUD_ (fear, uncertainty, and doubt) and possible wrong myths e.g. _blocking ads doesn't prevent the government to not watching you're activities you if you already under their microscope.  
+* ... <code>the rest is FUD</code> (fear, uncertainty, and doubt) and possible wrong myths e.g. _blocking ads doesn't prevent the government to not watching you're activities you if you already under their microscope.  
 
 Ad-blocking techniques and tools
 ---------
@@ -59,9 +59,10 @@ _Mixed ones (which are designed to work on Android + Browser)_:
 * [AdGuard](http://adguard.com/en/adguard-android/overview.html) - free version available but the important ones need a _Premium license_
 
 
-_Hosts_:
+_Hosts_ (_/system/etc/hosts_):
 * [AdBlock Plus](https://adblockplus.org/de/android-install)
-* [AdAway](https://f-droid.org/repository/browse/?fdid=org.adaway) - should be preferred by root users, since AdBlock Plus have some limitations on Android (proxy/vpn ones)
+* [AdAway](https://f-droid.org/repository/browse/?fdid=org.adaway) - should be preferred by root users, since AdBlock Plus have some limitations on Android (proxy/vpn ones). Please note that AdAway isn't anymore under active development (only pull requests and pre-compiled builds are supported).
+* AdFree - [See AdAway vs. AdFree](http://forum.xda-developers.com/showthread.php?t=1247853)
 
 
 _XPosed based_:
@@ -196,7 +197,7 @@ General it's smart to use as less as possible addons/extensions/tools because to
 Final words
 ---------
 
-Don't believe in myths that more tools and blocking always ends up with more privacy or less problems, the hole grail should be to use as less as possible addons + as less filtering as possible which does block stuff you hate or possible compromise you're security. In fact more from everything always means that you need more time to manage it to stay secure and up-2-date. If you really want to hear my _recommendation_ (I normally not often give one) is that for a normal root user AdAway (to not manually update Android's hosts) + uBlock (for the Browser) should be enough handle all above given reasons. 
+Don't believe in myths that more tools and blocking always ends up with more privacy or less problems, the hole grail should be to use as less as possible addons + as less filtering as possible which does block stuff you hate or possible compromise you're security. In fact more from everything always means that you need more time to manage it to stay secure and up-2-date. If you really want to hear my _recommendation_ (I normally not often give one) is that for a normal root user AdAway (to not manually update Android's hosts) + uBlock (for Browsers) should be enough to handle all above given reasons. 
 
 
-_ Final version 08.14.2015_
+_ Final version 08.24.2015_
