@@ -13,6 +13,7 @@ Index
 * [Disable binaries](#disable-binaries)
 * [Protection against other attacks](#protection-against-other-attacks)
 * [Android Marshmallow](#android-marshmallow)
+* [Physical security](physical-security)
 * [Useful links](#useful-links)
 
 
@@ -333,7 +334,7 @@ This was original taken from [here](http://compilefailure.blogspot.com/2011/04/b
 Android Marshmallow
 --------------
 
-With Android Marshmallow (Kernel 4.1+) (API level 23) a lot of _under the hood_ changes are coming to the user including a new [permission controlling system](http://www.androidpolice.com/2015/05/28/io-2015-android-m-will-include-a-new-enhanced-permission-management-scheme-with-fine-control-over-apps/) that works similar compared to AppOps and integrates an user interface that allow to control most of all [permissions](https://developer.android.com/preview/features/runtime-permissions.html). Compared to Android 4/Lollipop that means you don't have only two options (take it and accept it or simply do not install it) - now you now can just install everything and change e.g. the camera permission to avoid that your new installed application (or existent) [can take control over that](https://en.wikipedia.org/wiki/Android_M). See, also the [https://developer.android.com/preview/overview.html).
+With Android Marshmallow (Kernel 4.1+) (API level 23) a lot of _under the hood_ changes are coming to the user including a new [permission controlling system](http://www.androidpolice.com/2015/05/28/io-2015-android-m-will-include-a-new-enhanced-permission-management-scheme-with-fine-control-over-apps/) that works similar compared to AppOps and integrates an user interface that allow to control most of all [permissions](https://developer.android.com/preview/features/runtime-permissions.html). Compared to Android 4/Lollipop that means you don't have only two options (take it and accept it or simply do not install it) - now you now can just install everything and change e.g. the camera permission to avoid that your new installed application (or existent) [can take control over that](https://en.wikipedia.org/wiki/Android_M). See, also the [Preview Overview article](https://developer.android.com/preview/overview.html).
 
 In fact that makes more or less most of _security apps_ obsolete since the user can control what permission which app can really use. Except the internet stuff (since Google simply never wants it, because ads reasons,[...]) which overall means firewalls have still a solid standing. 
 
@@ -346,6 +347,14 @@ See also AOSP Network Security Policy, over [here](https://android.googlesource.
 HTTPS:
 <code>application android:usesCleartextTraffic = "false” /</code> will prevent any component in the app from performing any network I/O over unencrypted socket connections (supports HTTP, FTP, WebSockets, IMAP, SMTP & XMPP). This was designed for third party libraries that use insecure channels of communication. In fact that could be bypassed in the future.
 
+Physical security
+------------
+
+* Strong disk encryption (but also comes with major weaknesses, speed/memory or lockdown problems)
+* Bootloaders (by default coming with a signature), see also magic boot 
+* <s>Syslinux</s> to protect the bootloader with a password, this is obsolete since Android 5.x (as also only experimental because no official Android support)
+* Apps like Cerberus to find your device in case it gets stolen (must be running all the time in the background and not protects against bootload attacks). I doubt that any attack is that stupid to not remove the battery or replace the app under CWM/TWRP or simply flash another Kernel/ROM to bypass it. 
+ 
 
 Useful links
 ------------
