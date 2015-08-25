@@ -40,14 +40,14 @@ To reduce the client side keepalive time is a bad idea, this will course trouble
 See also:
 * [Optimizing Downloads for Efficient Network Access | Android Developers](http://developer.android.com/training/efficient-downloads/efficient-network-access.html)
 * [Understanding the Android "Radio State Machine" for better life | Stackoverflow](http://stackoverflow.com/questions/19141050/understanding-the-android-radio-state-machine-for-better-battery-life)
-* [Why TCP Over TCP Is A Bad Idea](http://sites.inka.de/bigred/devel/tcp-tcp.html | sites.inka)
+* [Why TCP Over TCP Is A Bad Idea | sites.inka](http://sites.inka.de/bigred/devel/tcp-tcp.html)
 * [networking - Under what circumstances is TCP-over-TCP performing significantly worse than tcp | Serverfault](http://serverfault.com/questions/630837/under-what-circumstances-is-tcp-over-tcp-performing-significantly-worse-than-tcp)
 
 
 Known ports
 -------
 
-This is a small list which ports are open on every Linux/Android system, this is normally not critical as long there is no high traffic on it but you may need to understand what they do and how they should work. Remember: Closing all port's isn't a good idea (and in fact you not close the port you only disabling the application listening on it) since this will break most of internet stuff, but as long there are no suspect activity's all is good. For example one of a hacker goal is to send large volumes of network traffic at a host in order to cause legitimate traffic to be dropped, normally this behavior exists if the attacker doesn't control enouth bandwidth himself to exceed the target's bandwidth. As a result you'll see that your sever or address is unreasonable over the network. 
+This is a small list which ports are open on every Linux/Android system, this is normally not critical as long there is no high traffic on it but you may need to understand what they do and how they should work. Remember: Closing all port's isn't a good idea (and in fact you not close the port you only disabling the application listening on it) since this will break most of internet stuff, but as long there are no suspect activity's all is good. For example one of a hacker goal is to send large volumes of network traffic at a host in order to cause legitimate traffic to be dropped, normally this behavior exists if the attacker doesn't control enough bandwidth himself to exceed the target's bandwidth. As a result you'll see that your sever or address is unreasonable over the network. 
 
 * Port 53 (tcp/udp) - Port 53 is used by well known DNS (Domain Name System). DNS takes care of resolving human readable 'host names' into numeric IP addresses. A commonly used DNS server called BIND has had a rich history of security problems. As a result, [BIND](http://bindguard.activezone.de/) and port 53 are frequent targets and a couple worms used BIND exploits to propagate. There are [several attacks](https://www.dns-oarc.net/wiki/mitigating-dns-denial-of-service-attacks), like DNS resolver/recursive, poisoning, DOS, worms, ...
 * Port 80 - Hypertext Transfer Protocol (HTTP) - BOOTP (for Android OS + MEID detection) 
