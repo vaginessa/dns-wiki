@@ -28,7 +28,7 @@ _IPTables based:_
 * [Advanced Firewall](https://play.google.com/store/apps/details?id=advancedfirewall.educational.ae)
 
 _Anti IMSI-Catcher (protects against IMSI/StingRay-Catchers and Silent/Stealth SMS):_
-* [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/) & Source (same link)
+* [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/) & Source (same link) + [stingraymappingproject.org](http://stingraymappingproject.org) (site to show which information are collected by AIMSICD)
 * [SnoopSnitch](https://play.google.com/store/apps/details?id=de.srlabs.snoopsnitch) + [F-Droid](https://f-droid.org/repository/browse/?fdid=de.srlabs.snoopsnitch) + [GSMMap Global Database](http://gsmmap.org/)
 * [Darshak](https://play.google.com/store/apps/details?id=com.darshak) & [Source](https://github.com/darshakframework/darshak)
 
