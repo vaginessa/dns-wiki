@@ -4,6 +4,7 @@ Index
 * [Introduction](#introduction)
 * [Important notes about IPv4 and IPv6 differences](#important-notes-about-ipv4-and-ipv6-differences)
 * [Important notes about 3G and WiFi](#important-notes-about-3g-and-wifi)
+* [DROP vs REJECT](#drop-vs-reject)
 * [Loading scripts from files](#loading-scripts-from-files)
 * [Adding custom rules](#adding-custom-rules)
 * [Some examples](#some-examples)
@@ -46,6 +47,15 @@ Important notes about 3G and WiFi
 ------------
 
 Some of the examples maybe not working on 2G/3G/4G because DHCP/DHCPv6 reasons. Normally the IP addresses are negotiated over PPP there. So it could be handled a bit different in your ROM but you can just use Wireshark/Burp and make a 3G connection to see what's going on, feel free to send us an email if something is incorrect. 
+
+
+DROP vs REJECT
+------------
+
+Nothing much to say about this, I'm just leaving some links here:
+* [RFC 1122 3.3.8](https://tools.ietf.org/html/rfc1122#page-69)
+* [DROP vs REJECT explanation](http://www.chiark.greenend.org.uk/~peterb/network/drop-vs-reject)
+
 
 Loading scripts from files
 ------------
