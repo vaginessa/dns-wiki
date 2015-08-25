@@ -1,3 +1,5 @@
+_Advanced AFWall+ users_ may wish to define a custom script to be executed by AFWall+ this section explains the most common questions and shows some examples. 
+
 Index
 -----
 
@@ -19,8 +21,6 @@ Index
 
 Introduction
 ------------
-
-_Advanced AFWall+ users_ may wish to define a custom script to be executed by AFWall+.
 
 **WARNING**: This functionality should be used only by **experienced users that know what they are doing!** These examples may block your internet connection if not executed with proper care. So be careful when applying these settings, especially on remote device 'servers' with an ssh session! If you have any trouble with it an want to report an error first make sure you deleted/disabled all custom script first - we won't accept issue reports which are custom script related!
 
@@ -620,21 +620,6 @@ Block outgoing request from LAN
 
 Block outgoing request from LAN IP 192.168.1.200? Here is the solution:
 <pre>iptables -A OUTPUT -s 192.168.1.200 -j DROP</pre>
-
-Orbot transparent proxy
------------------------
-
-1. Turn off transparent proxying in Orbot.
-2. The app that should be redirected through Orbot still needs be allowed normally in AFWall+ for the desired networks.
-3. Do not grant Orbot superuser access! It still opens the transproxy ports you need without root, and AFWall+ is managing installation of the transproxy rules, not Orbot.
-4. The following lines need to be added to custom script rules in AFWall+ for each app (the app uid needs to be adjusted in each line to represent the uid of your app, in the example the uid is '10001'):
-
-<pre>$IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 -o lo -j ACCEPT
-$IPTABLES -t nat -A OUTPUT -p tcp ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -m owner --uid-owner 10001 -m tcp --syn -j REDIRECT --to-ports 9040
-$IPTABLES -t nat -A OUTPUT -p udp -m owner --uid-owner 10001 -m udp --dport 53 -j REDIRECT --to-ports 5400
-$IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -j REJECT</pre>
-
-Thanks to an0n981, original posted [here on XDA](http://forum.xda-developers.com/showpost.php?p=54134521&postcount=2126) and modded by [CHEF-KOCH](https://github.com/CHEF-KOCH).
 
 How can I use a whitelist or blacklist?
 ------------
