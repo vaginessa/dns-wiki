@@ -140,13 +140,21 @@ $IP6TABLES -F FORWARD
 $IP6TABLES -t nat -F
 $IP6TABLES -t mangle -F</pre>
 
-<pre># Flush/Purge all chains
+<pre># Flush/Purge/resetting all rules
+$IPTABLES -F
 $IPTABLES -X
+$IPTABLES -t nat -F
 $IPTABLES -t nat -X
+$IPTABLES -t mangle -F
 $IPTABLES -t mangle -X
-$IP6TABLES -X
-$IP6TABLES -t nat -X
-$IP6TABLES -t mangle -X</pre>
+$IPTABLES -t raw -F
+$IPTABLES -t raw -X
+$IPTABLES -t security -F
+$IPTABLES -t security -X
+$IPTABLES -P INPUT ACCEPT
+$IPTABLES -P FORWARD ACCEPT
+$IPTABLES -P OUTPUT ACCEPT
+$IP6TABLES .....^^</pre>
 
 <pre># Allow loopback communication (necessary on IPv6)
 $IP6TABLES -A INPUT -i lo -j ACCEPT
