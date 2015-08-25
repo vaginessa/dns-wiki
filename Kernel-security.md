@@ -90,7 +90,7 @@ Feature implementations
 ---------------
 
 The following examples show what can be integrated (of is already integrated) into the Kernel for security reasons:
-* grsecurity (not available for Android yet)
+* grsecurity (not available for Android yet?!) 
 * [SELinux](http://source.android.com/devices/tech/security/selinux/index.html) (introduced in Android 4.3.x -> Kernel 2.6+) [up-to-date info is always available here](http://seandroid.bitbucket.org/)
 * ~SecDroid~ (optional - deprecated)
 * CIS Benchmark (optional)
@@ -111,7 +111,7 @@ Already implemented in every Android OS:
 * A permission model for each user like on UNIX
 * IPC security apps can explicitly share resources and data via Intents, ContentProviders, IPC and Binder and of course via the file system and local declared sockets)
 * (optional) The ability to remove apps/system related kernel parts which may be insecure by design (depending on needs)
-* Root ability (but restricted to the Kernel + a view core applications)
+* Root ability (but restricted to the Kernel e.g netd + a view core applications)
 * (optional) [Security Tips | Android Developers](https://developer.android.com/training/articles/security-tips.html)
 * Android supports many cryptographic and encryption tools and algorithms such as AES, RSA, DSA, SHA, CBC, and ESSIV:SHA256. See also [here](http://developer.android.com/training/articles/security-tips.html#Crypto), [here](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard), [here](http://en.wikipedia.org/wiki/RSA_%28cryptosystem%29) and [here](http://docs.oracle.com/javase/7/docs/api/java/security/MessageDigest.html).
 * Another powerful security measure is that fact that the Android operating system (Linux kernel, libraries, app runtime + framework, etc.) is on its own partition that is read-only. Also, Android uses Unix-style file permissions (except for FAT32 filesystems). Due performance and security reasons it's recommend to use ext4 (because the integrated encryption works only with this and on Samsung devices it must be vfat).
@@ -159,9 +159,9 @@ For app developer:
 The full list can be found [here](https://github.com/ukanth/afwall/wiki/Android-kernel-traffic#protocol-statistics
 
 
-Kernel Compiling:
-* CONFIG_FILTER
-
+Kernel Compiling hardening:
+* CONFIG_FILTER 1
+* net.core.bpf_jit_enable 0
 
 SELinux
 ------------
