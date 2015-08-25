@@ -269,6 +269,15 @@ After editing you need to reboot the device, because it gets overwritten by the 
 
 On some external ROMs, there is also an GUI for this, it's called [Privacy Guard](https://www.julianevansblog.com/2014/06/how-to-use-android-privacy-guard-on-cyanogenmod-11.html) which first was introduced in CyanogenMod 11. This makes it easier for users to disable critical permissions on an app-by-app basis. An alternative on newer system seems XPrivacy (includes a basic _firewall_) or AppOps.
 
+Protection against spoofing attacks
+```
+#Global via sysctl
+net.ipv4.conf.all.rp_filter=1
+#net.ipv6.conf.all.rp_filter=1
+
+#Via iptables (for e.g. logging) [this solution is better]
+iptables -t raw -I PREROUTING -m rpfilter --invert -j DROP
+````
 
 SMS:
 With Android 4.2, the user gets a notification when the SMS feature is used, then user decides to whether send the message or not.
