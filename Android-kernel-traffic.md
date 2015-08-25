@@ -17,16 +17,32 @@ Most Internet applications are using TCP as their protocol of choice, and TCP ma
 Index
 -----
 
+* [Battery](#battery)
 * [Known ports](#known-ports)
 * [Interface statistics](#interface-statistics)
 * [Routing and ARP tables](#routing-and-arp-tables)
 * [Protocol statistics](#protocol-statistics)
-* [How do I use this information?](#how-do-i-use-this-information?)
+* [How do I use this information?](#how-do-i-use-this-information-?)
 * [Capture all network traffic](#capture-all-network-traffic)
 * [Tethering data](#tethering-data)
 * [Modem traffic](#modem-traffic)
 * [Closing words](#closing-words)
 * [Useful links](#useful-links)
+
+
+Battery
+-------
+
+The battery draining aspect is a widely known myth. The kernel doesn't need much energy since this is very well development and optimized for Android - **the main question is why VPN/Firewall/OS apps _drain_ your battery without much running background processes if internet is on**. Well, I'm not explaining everything but the most important reason is the _keepalive_ problem (this is only one thing!). This is a server <-> client problem. The server sends every x seconds a package to the client, mostly every 10 or 15 seconds. The packages are very small and consuming not much traffic BUT that always means that there is traffic which coasts overall in a month a lot of bandwidth (even with that small packages due the mass of it!).
+
+To reduce the client side keepalive time is a bad idea, this will course troubles on e.g. UDP (because the packages are bigger and they also need more time). Because of the same reason you should also not reduce this on the server, using 60 seconds as interval (default) works without bigger problems and not break something.
+
+See also:
+* [Optimizing Downloads for Efficient Network Access | Android Developers](http://developer.android.com/training/efficient-downloads/efficient-network-access.html)
+* [Understanding the Android "Radio State Machine" for better life | Stackoverflow](http://stackoverflow.com/questions/19141050/understanding-the-android-radio-state-machine-for-better-battery-life)
+* [Why TCP Over TCP Is A Bad Idea](http://sites.inka.de/bigred/devel/tcp-tcp.html | sites.inka)
+* [networking - Under what circumstances is TCP-over-TCP performing significantly worse than tcp | Serverfault](http://serverfault.com/questions/630837/under-what-circumstances-is-tcp-over-tcp-performing-significantly-worse-than-tcp)
+
 
 Known ports
 -------
