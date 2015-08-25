@@ -9,7 +9,7 @@ Index
 * [Adding custom rules](#adding-custom-rules)
 * [Some examples](#some-examples)
 * [Droidwall only examples](#droidwall-only-examples)
-* [How do I view blocked IP address?](#how-do-i-view-blocked-ip-address?)
+* [How do I view blocked IP address?](#how-do-i-view-blocked-ip-address-?)
 * [How do I block subnet?](#how-do-i-block-subnet?)
 * [Block incoming request from IP](#block-incoming-request-from-ip)
 * [Block outgoing request from LAN](#block-outgoing-request-from-lan)
@@ -130,7 +130,7 @@ DMZ_IF="eth2"
 LAN_NET="2001:db8:1::/64"
 DMZ_NET="2001:db8:2::/64"</pre>
 
-<pre># Flush/Purge all rules expect OUTPUT
+<pre># Flush/Purge all rules except OUTPUT
 $IPTABLES -F INPUT
 $IPTABLES -F FORWARD
 $IPTABLES -t nat -F
