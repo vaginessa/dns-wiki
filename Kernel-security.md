@@ -149,14 +149,14 @@ For app developer:
 * CONFIG_IP_ALWAYS_DEFRAG
 * CONFIG_NCPFS_PACKET_SIGNING
 * CONFIG_IP_FIREWALL_NETLINK
-
+# AID
 * AID_NET_BT
 * AID_NET_BT_ADMIN
 * AID_INET 
 * AID_NET_RAW 
 * AID_NET_ADMIN
 
-The full list can be found [here](https://github.com/ukanth/afwall/wiki/Android-kernel-traffic#protocol-statistics
+The full list can be found over [here](https://github.com/ukanth/afwall/wiki/Android-kernel-traffic#protocol-statistics).
 
 
 Kernel Compiling hardening:
@@ -173,6 +173,18 @@ Read the following pages to better understand and possible solve SELinux related
 
 
 The IPTables/scripts should run at <code>u:r:init:s0</code> to avoid possible security problems, since this is the only authorization we need.
+
+
+Alternatives to SELinux [(MAC)](http://en.wikipedia.org/wiki/Mandatory_Access_Control) / [DAC](http://en.wikipedia.org/wiki/Discretionary_Access_Control).
+
+
+Role-based control:
+* Grsecurity RBAC which does not have that much metadata compared to SELinux and is around 30% faster.
+
+MAC (pathname based access control)
+* APPAmor (not yet for Android?) but a similar function is introduced in Android 6.0 (see below).
+* Tomoyo (not yet for Android?)
+
 
 
 Android Logging System
