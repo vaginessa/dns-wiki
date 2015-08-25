@@ -9,6 +9,7 @@ Index
 * [Android logging system](#android-logging-system)
 * [GMS](#gms)
 * [Disable binaries](#disable-binaries)
+* [Protection against other attacks](#protection-against-other-attacks)
 * [Android Marshmallow](#android-marshmallow)
 * [Useful links](#useful-links)
 
@@ -290,6 +291,28 @@ General Security tips:
 * Can be found over [here](http://developer.android.com/training/articles/security-tips.html)
 * [Projects/OWASP Mobile Security Project - Top Ten Mobile Controls](https://www.owasp.org/index.php/Projects/OWASP_Mobile_Security_Project_-_Top_Ten_Mobile_Controls)
 * [Secure coding under Android](https://www.securecoding.cert.org/confluence/pages/viewpage.action?pageId=111509535)
+
+
+Protection against other attacks
+--------------
+
+Bruteforce
+A lot of wrong statements are on the internet to _stop_ e.g. bruteforce by simply using a blacklist. In fact if you use iptables as a blacklist you will suffering from the following problems:
+*  /var may become full because everything will be logged in here (e.g. in the attacker is pounding our server)
+* The attack may already got your IP address which allows to send packets with a spoofed source header, overall that would mean you get locked out of the server
+* Higher memory usage 
+
+
+To solve this you can work with SSH keys, which are not affected by the above two mentioned problems. To do so we can use:
+```
+iptables -N SSH_IN
+iptables -A INPUT -p tcp --dport ssh -m conntrack --ctstate NEW -j SSH_IN
+iptables -A SSH_IN -m recent --name ssh --rttl --rcheck --hitcount 5 --seconds 15 -j DROP
+iptables -A SSH_IN -m recent --name ssh --rttl --rcheck --hitcount 6 --seconds 1200 -j DROP 
+iptables -A SSH_IN -m recent --name ssh --set -j ACCEPT
+```
+
+This was original taken from [here](http://compilefailure.blogspot.com/2011/04/better-ssh-brute-force-prevention-with.html).
 
 
 Android Marshmallow
