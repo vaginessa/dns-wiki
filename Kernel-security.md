@@ -1,3 +1,5 @@
+:exclamation: This article is far away from a final version. :exclamation: 
+
 Index
 -----
 
@@ -296,14 +298,15 @@ General Security tips:
 Protection against other attacks
 --------------
 
-Bruteforce
+**Bruteforce**
+
 A lot of wrong statements are on the internet to _stop_ e.g. bruteforce by simply using a blacklist. In fact if you use iptables as a blacklist you will suffering from the following problems:
 *  /var may become full because everything will be logged in here (e.g. in the attacker is pounding our server)
 * The attack may already got your IP address which allows to send packets with a spoofed source header, overall that would mean you get locked out of the server
 * Higher memory usage 
 
 
-To solve this you can work with SSH keys, which are not affected by the above two mentioned problems. To do so we can use:
+To solve this you can work with SSH keys, which are not affected by the above two mentioned problems. So we can use:
 ```
 iptables -N SSH_IN
 iptables -A INPUT -p tcp --dport ssh -m conntrack --ctstate NEW -j SSH_IN
@@ -322,14 +325,15 @@ With Android Marshmallow (Kernel 4.1+) (API level 23) a lot of _under the hood_ 
 
 In fact that makes more or less most of _security apps_ obsolete since the user can control what permission which app can really use. Except the internet stuff (since Google simply never wants it, because ads reasons,[...]) which overall means firewalls have still a solid standing. 
 
-The same principle as a firewall can be used to control the permission (whitelist/revoke access), which possible fc some apps first that are not updated. For malware reasons that means using AFWall+ & the new system it would be a lot harder to bypass all of these protections (of course the existent apps need a small update to support that feature).
+The same principle as a firewall can be used to control the permission (whitelist/revoke access), which possible FC some apps first that are not updated. For malware reasons that means using AFWall+ & the new system it would be a lot harder to bypass all of these protections (of course the existent apps need a small update to support that feature).
 
 Firewall specific:
-Under Android M, app data will be automatically [backed-up](http://developer.android.com/preview/backup/index.html) onto Google Drive on a daily basis, when the phone is connected to Wi-Fi and power (opt-out option), that may lead in more traffic if the user forgets to disable it, so it's highly recommend to check this setting. 
+Under Android M, app data will be automatically [backed-up](http://developer.android.com/preview/backup/index.html) onto Google Drive on a daily basis, when the phone is connected to WiFi and power (opt-out option), that may lead in more traffic if the user forgets to disable it, so it's highly recommend to check this setting. 
 See also AOSP Network Security Policy, over [here](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/security/NetworkSecurityPolicy.java?ref=driverlayer.com%2Fweb%2F%2F%2F%2F%2F%2F%2F).
 
 HTTPS:
 <code>application android:usesCleartextTraffic = "false” /</code> will prevent any component in the app from performing any network I/O over unencrypted socket connections (supports HTTP, FTP, WebSockets, IMAP, SMTP & XMPP). This was designed for third party libraries that use insecure channels of communication. In fact that could be bypassed in the future.
+
 
 Useful links
 ------------
@@ -425,3 +429,5 @@ Forensics tools:
 Todo:
 * add example malware app on android to show possible holes (low-prio), most known and popular vulnerable app seems [InsecureBank V2](https://github.com/dineshshetty/Android-InsecureBankv2)
 * Sort vuln. via own categories 
+* Complete the article somehow 
+* add things user report via eMail 
