@@ -32,6 +32,32 @@ To define a custom script, just choose <code>Set custom script</code> from the m
 Important notes about IPv4 and IPv6 differences
 ------------
 
+```
+IPv4 vs IPv6
+IPv4 = 2^32
+  4,290,000,000
+  |   |   |   Hundreds
+  |   |   Thousands
+  |   Millions
+  Billions
+
+IPv6 = 2^128
+340,000,000,000,000,000,000,000,000,000,000,000,000
+  |   |   |   |   |   |   |   |   |   |   |   |   Hundreds
+  |   |   |   |   |   |   |   |   |   |   |   Thousands
+  |   |   |   |   |   |   |   |   |   |   Millions
+  |   |   |   |   |   |   |   |   |   Billions
+  |   |   |   |   |   |   |   |   Trillions
+  |   |   |   |   |   |   |   Quadrillions
+  |   |   |   |   |   |   Quintillions
+  |   |   |   |   |   Sextillion
+  |   |   |   |   Septillions
+  |   |   |   Octillion
+  |   |   Nonillion
+  |   Decillion
+  Undecillion
+```
+
 If you do not need IPv6 or your provider does not support it ([native](http://test-ipv6.com/faq.html)) you can just disable it via <code>net.ipv6.conf.all.disable_ipv6=1</code> in your build.prop or _better_ in your sysctl.conf file which will be applied right after the boot.  
 
 IPTables only filters IPv4 traffic ([RFC 1918](https://tools.ietf.org/html/rfc1918)). Rules setup in iptables will not touch ipv6 traffic so we need our ip6tables. 
