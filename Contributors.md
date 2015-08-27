@@ -5,8 +5,9 @@ Special thanks goes to our top contributors, developers and donators which helpe
 | **Umakanthan Chandan** | | | cumakt [at] gmail.com |
 | <s>Kevin Cernekee</s> |  | | <s>cernekee [at] gmail.com</s> |
 | | CHEF-KOCH |  | CHEF-KOCH [at] draugr.de |
-| | PdtS for Icons | | [Website](http://pdts.net/) |
-| | Hush66 | | [Devianart](http://www.hush66.devianart.com/) |
+| | PdtS (Icons) | | [Website](http://pdts.net/) |
+| | Hush66 (Icons) | | [Devianart](http://www.hush66.devianart.com/) |
+| | shenm233 (Icons) | | some taken from [MaterialDesignIcons](https://materialdesignicons.com) |
 | | | tianchaoren | Crowdin |
 | | | wuwufei | Crowdin |
 | | | yinfugang | Crowdin |
@@ -107,4 +108,4 @@ Chinese (zh) <br>
 
 Current translations status: [![Crowdin](https://d322cqt584bo4o.cloudfront.net/afwall/localized.png)](https://crowdin.net/project/afwall)
 
-_Final version 08.20.2015_
+_Final version 08.27.2015_
