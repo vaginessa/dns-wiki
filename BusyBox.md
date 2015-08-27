@@ -2,7 +2,7 @@ Index
 -----
 
 * [Description](#description)
-* [Installation instructions](#install-instructions)
+* [Installation instructions](#installation-instructions)
 * [How do I configure BusyBox?](#how-do-i-configure-busybox-?)
 * [Difference between SELinux and non-SELinux BusyBox](#difference-between-selinux-and-non-selinux-busybox)
 * [Useful links](#useful-links)
