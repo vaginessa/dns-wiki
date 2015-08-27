@@ -1,4 +1,4 @@
-:exclamation: **Please do not send any email or ask here on GitHub how to block the Android advertisements!** :exclamation: 
+:exclamation: **Please do not send any eMail or ask here on GitHub how to block the Android advertisements!** :exclamation: 
 
 Index
 ---------
@@ -32,6 +32,7 @@ Most people use the following reasons if it comes to the ad blocking question:
 * <code>Speed reasons</code> (in fact if you use a HUGE list it also can be negative, because more always means more to load [_at start_]).
 * Enabling <code>acceptable ads</code> to <code>help and support you're favorite site</code> is always possible. Popular and small pages like [Ghacks are dying](http://www.ghacks.net/2015/02/27/ghacks-is-dying-and-needs-your-help/) because blocking everything, but just supporting by [making exclusions may help them](http://www.ghacks.net/2015/04/18/2-months-later-ghacks-is-still-dying-but-there-is-hope/) - which is a good compromise. 
 * <code>It's always up2you</code> what you doing with the given information. _Personally I think as long you're daily visiting pages documents and list there own ads (including there sources) - so that everyone can read what they collect it should be okay - in fact most pages place there ads very well, to not disturb the user - It's a matter of communication from the Webmaster to the community_
+* For reasons to hide from _illegal_ sites (like warez, drugs, ...), see example over [here](https://torrentfreak.com/uk-police-hijack-ads-on-251-pirate-sites-150825/).
 * <code>Other reasons</code>?!
 * ... <code>the rest is FUD</code> (fear, uncertainty, and doubt) and possible wrong myths e.g. blocking ads doesn't prevent the government to not watching you're activities you if you already under their microscope.  
 
