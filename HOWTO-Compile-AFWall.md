@@ -117,13 +117,10 @@ Compiling native binaries
 
 On the host side you'll need to install:
 
-* NDK r10, nominally under /opt/android-ndk-r10
-* Host-side gcc 4.7 (or higher), make, etc. 
-* autoconf, automake, and libtool
-
-This command will build the Android binaries and copy them into <code>res/raw/</code>
-
-> make -C external NDK=/opt/android-ndk-r10
+* Android Studio 1.3.1 or higher (If you used the above steps you're mostly done).
+* Ensure _Makefile_ are on the correct place.
+* Ensure you use _allDebug_ or _allRelease_ (since Android Studio may have problems with other flags).
+* Edit and compile the binaries as per needs, the debbuger shows the important stuff within the output.txt file.
 
 Compiling via graphical user interface
 --------------------------------------
@@ -161,4 +158,4 @@ Useful links
 * [How-To: Decompile/Recompile APK's with ApkTool | AndroidForums](http://androidforums.com/esteem-all-things-root/520917-guide-how-properly-decompile-recompile-apks-apktool.html)
 * [How to Create Android Apps - Eclipse Export .APK Market Ready Files Step-by-Step Guide | YouTube](http://www.youtube.com/watch?v=DvBI16jv7xs)
 
-_Final version 08.13.2015_
+_Final version 08.28.2015_
