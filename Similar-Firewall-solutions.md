@@ -62,13 +62,13 @@ _Dynamic egress filtering_ (links not working - it's only for historical reasons
 * ~~[SnoopWall](https://play.google.com/store/apps/details?id=com.snoopwall.android)~~ _deprecated_
 
 _USB_ (not really a firewall but monitors the usb host):
-* ~~[Android USB Serial Monitor Lite](https://play.google.com/store/apps/details?id=jp.ksksue.app.terminal)~~ _deprecated_
+* ~~[Android USB Serial Monitor Lite](https://play.google.com/store/apps/details?id=jp.ksksue.app.terminal)~~ & [Source](https://github.com/felHR85/UsbSerial) _deprecated_
 
 
 Non-root Android Firewalls
 ---------------------
 
-All of these firewalls working with a local Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with IPtables like AFWall+. They only work on a app-layer size which _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest problem is that such VPN services not work with WiFi tethering or hotspots. And another con is that you can't run other VPN services and VPN/Proxy's apps at the same time together. 
+All of these firewalls working with a local Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with IPtables like AFWall+. They only work on a app-layer size which _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest problem is that such VPN services not work with WiFi tethering or hotspot's. And another con is that you can't run other VPN services and VPN/Proxy's apps at the same time together. 
 
 We not recommend to use any no-root firewall for above reasons, there are others too e.g. see [an German article](http://www.kuketz-blog.de/android-firewall-ohne-root-%E2%80%A2-noroot-firewall/):
 * NetSpark/Mobiwol [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.netspark.firewall)
