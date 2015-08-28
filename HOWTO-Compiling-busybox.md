@@ -3,10 +3,11 @@ Index
 
 * [Description](#description)
 * [Requirements](#requirements)
-* [Compile](#Compile)
+* [Compile](#compile)
 * [Steps for SELinux-enabled busybox](#steps-for-selinux-enabled-busybox)
 * [Example .config for non-SELinux](#example-config-for-non-selinux)
 * [Example .config for SELinux](#example-config-for-selinux)
+* [Android Studio](#android-studio)
 * [Useful links](#useful-links)
 
 Description
@@ -19,6 +20,7 @@ This guide is for compiling BusyBox directly on your Android.
 Requirements
 -----------
  
+* Android Studio 1.3.2 or higher
 * Android Terminal app (latest .apk is available [here](http://jackpal.github.com/Android-Terminal-Emulator/downloads/Term.apk))
 * [Complete Linux Installer](http://sourceforge.net/projects/linuxonandroid/?source=typ_redirect) or Linux Deploy
 * [Latest BusyBox source](http://www.busybox.net/downloads/busybox-snapshot.tar.bz2)
@@ -2229,9 +2231,14 @@ CONFIG_LOGGER=y
 
 ```
 
+Android Studio
+-------------
+
+The above example config also can be used for Android Studio (1.3.2+). Simple use the Makefile to start from, withing the scripts folder there are gcc and gen shell scripts to compile. 
+
+
 Useful links
 -------------
 
 * [Official BusyBox FAQ | BusyBox.net](http://www.busybox.net/FAQ.html)
-* [ CWM pre-compiled binaries | forum.xda-developers.com](http://forum.xda-developers.com/android/software-hacking/guide-busybox-snapshot-building-android-t2857650)
-
+* [CWM pre-compiled binaries | forum.xda-developers.com](http://forum.xda-developers.com/android/software-hacking/guide-busybox-snapshot-building-android-t2857650)
