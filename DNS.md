@@ -130,6 +130,8 @@ dnscrypt-proxy \
 // All other command-line switches can be found on the official homepage and of course within the documents. 
 
 
+Currently DNSCrypt is far away from been stable and daily usage, since there are several troubles. If you're not use special cases like tethering/paring or other features you can us it, but as long the problems are not fixed it can't be recommend for the mass. 
+
 How do I know if my applications are leaking DNS?
 -----------
 
@@ -185,10 +187,20 @@ Already reported DNS related topics:
 * #206 [DNS Requests fail](https://github.com/ukanth/afwall/issues/206)
 * #178 [Tethering](https://github.com/ukanth/afwall/issues/178)
 * #18 [UDP 53 bypass because logging & whitelisting are enabled](https://github.com/ukanth/afwall/issues/18)
+* On AFWall+ in whitelisting mode root/DNS+DHCP options needs to be checked to allow DNS traffic (netd runs as root that why you also need root checked too)
+
+
+AOSP based reported problems:
+* #159406 [Local DNS names are resolved to external IP](https://code.google.com/p/android/issues/detail?id=159406)
+* #178654 [DNS query for type A record is not sent to DNS IPV4 server](DNS query for type A record is not sent to DNS IPV4 server)
 * #511506 [Investigate horrible DNS performance on Android when running dualstack](http://code.google.com/p/chromium/issues/detail?id=511506)
 * [Android 5 broke tethering (DNS REFUSED)](http://code.google.com/p/android/issues/detail?id=82545)
+* #183489 [Consult dnsmasq when hotspot is enabled in order to resolve local hostnames](https://code.google.com/p/android/issues/detail?id=183489)
 * #79504 [DNS (local) resolution on Android Lollipop](https://code.google.com/p/android/issues/detail?id=79504)
-* On AFWall+ in whitelisting mode root/DNS+DHCP options needs to be checked to allow DNS traffic (netd runs as root that why you also need root checked too)
+* #177536 [Android 5.0 VPN: DNS not being updated in system properties](https://code.google.com/p/android/issues/detail?id=177536)
+* 152819 [Android ignores DHCP option 26 (MTU)](https://code.google.com/p/android/issues/detail?id=152819)
+* .. and [others](https://code.google.com/p/android/issues/list?can=2&q=dns&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles)
+
 
 **Important**: Please always use the search function here on AFWall's/[AOSP issue tracker](https://code.google.com/p/android/issues/list?can=2&q=DNS&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles) to search already known existent problems to avoid duplicate threads. 
 
