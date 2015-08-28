@@ -50,6 +50,9 @@ _[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
 * [PeerBlock](https://play.google.com/store/apps/details?id=com.peerblock) & [Source](https://apeerblock.codeplex.com/) + [trusted blocklist's](http://list.iblocklist.com)
 
+_Proxy based (incl. iptables)_ : 
+* ~~[Shadowsocks](https://github.com/shadowsocks/shadowsocks) + [Source](https://github.com/shadowsocks/shadowsocks)~~ _deprecated due censorship_ + [Story](https://www.reddit.com/r/programming/comments/3hy6f8/shadowsocks_a_socks5_proxy_with_9000_star_was/)
+
 _Real-time iptables logging:_
 * [Network Log](https://play.google.com/store/apps/details?id=com.googlecode.networklog&hl=en)
 
