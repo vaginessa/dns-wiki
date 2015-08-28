@@ -51,7 +51,7 @@ Frequently asked questions
 
 <code>iptables -h</code>
 
-It doesn't matter in which folder iptables are stored als long they have the correct ownership and permissions 755:root:shell (-rwxr-xr-x). To check on which place IPTables are stored simply use:
+It doesn't matter in which folder iptables are stored (/system/bin/ or /system/xbin/) als long they have the correct ownership and permissions 755:root:shell (-rwxr-xr-x). To check on which place IPTables are stored simply use:
 ```
 which iptables
 which ip6tables
@@ -251,17 +251,22 @@ Or
 
 Or via an external script:
 
-    echo "Stopping firewall and allowing everything..."
+    echo "Stopping the firewall and allow everything..."
     iptables -F
     iptables -X
     iptables -t nat -F
     iptables -t nat -X
     iptables -t mangle -F
     iptables -t mangle -X
+    iptables -t raw -F
+    iptables -t raw -X
+    iptables -t security -F
+    iptables -t security -X
+    # Apply and allow now your rules from here ...
     iptables -P INPUT ACCEPT
     iptables -P FORWARD ACCEPT
     iptables -P OUTPUT ACCEPT
-    exit 0
+    
 
 Or within AFWall+ itself, via the available widget(s).
 
@@ -299,7 +304,7 @@ Or within AFWall+ itself, via the available widget(s).
 ```
 # 1 = enforcing mode / 0 = permissive 
 adb shell su 0 setenforce 1
-# On an emulator use
+# On an emulator simply use
 emulator -selinux permissive
 ```
 
@@ -332,7 +337,7 @@ One problem with using policy routing based on fwmark with locally generated tra
 
 > Things like ***It doesn't work* or *it crashes* is insufficient**. So, please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help you. 
 
-> It's also possible your issue is a duplicate, or is already fixed. Please watch the Changelog.md and TODO.md files carefully.
+> It's also possible your issue is a duplicate, or is already fixed. Please watch the [Changelog.md](https://github.com/ukanth/afwall/blob/beta/Changelog.md) and [TODO.md](https://github.com/ukanth/afwall/blob/beta/TODO.md) files carefully.
 
 <a name="FAQ36"></a>
 ##### (36) Does AFWall+ support nftables?
@@ -360,16 +365,16 @@ One problem with using policy routing based on fwmark with locally generated tra
 A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-down non high-end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like MoaAB or and Xposed module called UnbelovedHosts. For additional question take a look over [here](https://github.com/ukanth/afwall/wiki/Advertisements-blocking).
 
 <a name="FAQ39"></a>
-##### (39) Can I ask xyz that was not written down here?
+##### (39) Can I ask xyz that was not written down over here?
 
 > If you have any question, please leave a message in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
 
-**If possible please do not ask questions using GitHub issues report!** Because GitHub issues are designed for bug reports and feature requests.
+**If possible please do not ask questions using GitHub issues report!** Because GitHub issues are designed for [bug reports](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug) and feature requests.
 
 <a name="FAQ40"></a>
 ##### (40) Is there a BusyBox solution that doesn't need root?
 
-> Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows) but it doesn't provide all extra binaries, the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly from Google Play Store. We not recommend to use it!
+> Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows) but it doesn't provide all extra binaries, the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly from Google Play Store. We not recommend to use it due several problems that package might contains.
 
 <a name="FAQ41"></a>
 ##### (41) What does UID mean?
@@ -381,12 +386,12 @@ A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-
 <a name="FAQ42"></a>
 ##### (42) How to change the DNS settings under Android? (optional, normally not necessary)
 
-> Please read [this](https://github.com/ukanth/afwall/wiki/DNS) article to answer most DNS related questions.
+> Please read [this](https://github.com/ukanth/afwall/wiki/DNS) article to answer most DNS related questions. By default [Googles DNS server](https://developers.google.com/speed/public-dns/) will be used.
 
 <a name="FAQ43"></a>
 ##### (43) Will there a "Connection confirm dialog" (on-demand) feature implemented soon?
 
-> It's already been asked [#269](https://github.com/ukanth/afwall/issues/269), there is currently no Android firewall which include such feature yet. There is no on-demand firewall based on IPTables available on Google Play Store or F-Droid. 
+> It's already been asked [#269](https://github.com/ukanth/afwall/issues/269), there is currently _no_ Android firewall which include such feature yet. There is also no on-demand firewall based on IPTables available on Google Play Store or F-Droid. 
 
 <a name="FAQ44"></a>
 ##### (44) Will you implement an AdBlock function, and why are some Ads are still visible if I try to block them via IPTables?
@@ -482,7 +487,7 @@ mount -o remount,ro /system
 <a name="FAQ52"></a>
 ##### (52) I use Opera Max as Browser with "Turbo Mode" enabled, why does adblocking/firewalls seems to not working anymore?
 
-> For debugging and error reporting just disable the "Turbo Mode" option, this is mostly only another term for VPN/Proxy which works behind this option. No Firewall, IPTables, Proxy or any external app works with this option enabled, since it's not possible to use two VPNs the same time. It's not possible for any app to look behind this traffic (local). Other Browser may have a similar function or add-ons (like Firefox Janus-Proxy or Chrome's bandwidth safer feature), ensure it's disabled.
+> For debugging and error reporting just disable the "Turbo Mode" option, this is mostly only another term for VPN/Proxy which works behind this option. No Firewall, IPTables, Proxy or any external app works with this option enabled, since it's not possible to use two VPNs the same time (ie local/inet). It's not possible for any app to look behind this traffic (local). Other Browser may have a similar function or add-ons (like Firefox Janus-Proxy or Chrome's bandwidth safer feature), ensure it's disabled.
 
 <a name="FAQ53"></a>
 ##### (53) Since AFWall+ 2.x I don't see any reload applications button
