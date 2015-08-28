@@ -6,11 +6,9 @@ Index
 * [Software](#software)
 * [IDE Requirements](#ide-requirements)
 * [General procedure using Android Studio](#general-procedure-using-android-studio)
-* [After repository refactoring and cleanup](after-repository-refactoring-and-cleanup)
+* [After repository refactoring and cleanup](#after-repository-refactoring-and-cleanup)
 * [Build via Command Line](#build-via-command-line)
 * [Compiling native binaries](#compiling-native-binaries)
-* [Compiling via graphical user interface](#compiling-via-graphical-user-interface)
-* [For experts user only!](#for-experts-user-only!)
 * [Useful links](#useful-links)
 
 Software
@@ -115,37 +113,12 @@ This build the afwall-debug.apk and place it into <code>/bin</code> folder.
 Compiling native binaries
 -------------------------
 
-On the host side you'll need to install:
+On the host side you'll need to install (for compiling e.g. iptables):
 
 * Android Studio 1.3.1 or higher (If you used the above steps you're mostly done).
 * Ensure _Makefile_ are on the correct place.
 * Ensure you use _allDebug_ or _allRelease_ (since Android Studio may have problems with other flags).
-* Edit and compile the binaries as per needs, the debbuger shows the important stuff within the output.txt file.
-
-Compiling via graphical user interface
---------------------------------------
-
-* [Here](https://www.xda-developers.com/xda-tv-2/how-to-build-an-android-app-part-1-setting-up-eclipse-and-android-sdk-xda-tv/) is a Video Tutorial from a XDA member for those users who want to use the graphical user interface (GUI) method. 
-The tutorial is based on the needed software explained above. 
-* [Here](https://developer.android.com/training/basics/firstapp/index.html) you get the official build instructions.
-
-For experts user only!
-----------------------
-
-######  Create an unsigned .APK file with apkbuilder
-Use <code>apkbuilder</code> (included in the Android Develop Kit)
-
-> apkbuilder  ${output.apk.file} -u -z  ${packagedresource.file} -f  ${dex.file}
-
-
-######  Sign an .APK file via jarsigner
-Use [jarsigner](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/jarsigner.html)
-
-> jarsigner  -keystore ${keystore} -storepass  ${keystore.password} -keypass ${keypass} -signedjar ${signed.apkfile} ${unsigned.apkfile} ${keyalias}
-
-
-######  Publish the latest .APK file
-> adb -d install -r ${signed.apk}
+* Edit and compile the binaries as per needs, the debugger shows the important stuff within the output.txt file.
 
 Useful links
 ------------
