@@ -7,13 +7,12 @@ Index
 * [iptables](#iptables)
 * [Encryption](#encryption)
 * [Important](#important)
-* [ToDo](#todo)
-* [External Links](#external-links)
+* [Useful Links](#useful-links)
 
 Intro
 --------
 
-Since WhatsApp, Telegram, Threema, WeChat and other chat clients are very popular this article is an example how to block such messenger connections. Besides the ISP aspect WhatsApp or other _insecure_ clients are already blocked by default in some countries (but not because of security reasons, more to block outgoing communications to others e.g. journalists). 
+Since WhatsApp, Telegram, Threema, WeChat and other chat clients are very popular this article is an example how to block such messenger connections. Besides the ISP aspect - WhatsApp or other _insecure_ clients are already blocked by default in some countries (but not because of security reasons, more to block outgoing communications to others e.g. journalists). 
 
 This is not a guarantee that it totally blocks all connections, because it's not that easy, since there are a bunch of IP's and domains that may connected to WhatsApp.Inc but it may helps to block the most important parts. All was captured via Wireshark. 
 
@@ -663,6 +662,7 @@ It's not possible to see if the message is encrypted or in plain text since ther
 
 Some Alternatives:
 * [Threema](https://threema.ch/en/) (closed source but no one found any problem atm)
+* [Hoccer](http://hoccer.com/) (closed source but no one found any problem atm)
 * [Surespot](https://surespot.me/) - [Source](https://github.com/surespot)
 * [TextSecure](https://whispersystems.org/) - [Source](https://github.com/WhisperSystems/TextSecure)
 * [Heml.is](https://heml.is/) - [Source?](https://twitter.com/HemlisMessenger/status/425250256293732352) 
@@ -679,16 +679,8 @@ Important
 
 It's normally more then enough to block <code>e.whatsapp.net - e5.whatsapp.net</code>, because this is for the initial handshake which means if that fails you can't receive/send any message. You should try this first.
 
-ToDo
------------
 
-```
-* add more proof/confirmation that IP's / DNS are okay / WCIM
-+ add firewall syntax for blocking (to copy & paste it) -> 50.22.210.155,50.22.198.205,...
-+ add IPset instead of all the WhatsApp lines (more speed/less memory) [only if someone except me use IPset]
-```
-
-External Links
+Useful Links
 --------------
 
 * [WhatsApp | Whatsapp.com](https://www.whatsapp.com/)
@@ -712,3 +704,5 @@ External Links
 * [Intercepting WhatsApp Messages led to Belgian Terror Arrest | arstechnica.com](http://arstechnica.com/tech-policy/2015/06/intercepted-whatsapp-messages-led-to-belgian-terror-arrests/)
 * [WhatsApp exposed (2015) (.pdf) | webrtchacks.com](https://webrtchacks.com/wp-content/uploads/2015/04/WhatsappReport.pdf)
 * [Iran's Judiciary Blocks WhatsApp, Other Communication Apps | ctvnews.ca](http://www.ctvnews.ca/sci-tech/iran-blocks-communication-apps-line-whatsapp-tango-1.2176978)
+
+_Final Version 08.28.2015_
