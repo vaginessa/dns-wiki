@@ -204,6 +204,12 @@ AOSP based reported problems:
 
 **Important**: Please always use the search function here on AFWall's/[AOSP issue tracker](https://code.google.com/p/android/issues/list?can=2&q=DNS&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles) to search already known existent problems to avoid duplicate threads. 
 
+The following systems/apps are suffering from DNS leakages:
+* Windows 8 and 8.1, [fix](https://medium.com/@ValdikSS/beware-of-windows-10-dns-resolver-and-dns-leaks-5bc5bfb4e3f1)
+* Windows 10 [no fix available]
+* OpenVPN (you need some scripts to disable all DNS in external interfaces)
+
+
 Resolver commands
 -----------
 
