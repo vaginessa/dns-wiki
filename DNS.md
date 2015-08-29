@@ -10,7 +10,7 @@ Index
 * [How can I gather DNS (A/AAA/...) requests?](#how-can-i-gather-dns--(-a-/-aaa-/-...)-requests-?)
 * [How do I know if my applications are leaking DNS?](#how-do-i-know-if-my-applications-are-leaking-dns-?)
 * [Resolver commands](#resolver-commands)
-* [Changing the default DNS](#changing-the-default-dns)
+* [Changing default DNS](#changing-default-dns)
 * [Commands to check if DNS is working](#commands-to-check-if-dns-is-working)
 * [Browser](#browser)
 * [Apps to change the default DNS](#apps-to-change-the-default-dns)
@@ -208,6 +208,7 @@ The following systems/apps are suffering from DNS leakages:
 * Windows 8 and 8.1, [fix](https://medium.com/@ValdikSS/beware-of-windows-10-dns-resolver-and-dns-leaks-5bc5bfb4e3f1)
 * Windows 10 [no fix available]
 * OpenVPN (you need some scripts to disable all DNS in external interfaces)
+* All Android versions below 3.x
 
 
 Resolver commands
@@ -320,7 +321,7 @@ https://android.googlesource.com/platform/system/netd/+/master/server/CommandLis
 * `ndc resolver flushnet <netId>`
 
 
-Changing the default DNS
+Changing default DNS
 ---------
 
 On Android < 4.3 we can use the command <code>getprop | grep dns</code> to know all the DNS properties being used. This command requires BusyBox! 
@@ -353,7 +354,7 @@ setprop net.pdpbr1.dns1=208.67.222.222
 setprop net.pdpbr1.dns2=208.67.220.220
 ```
 
-Or via init.d script (won't reapply after connectivity change):
+Or via init.d script (won't survive connectivity changes):
 ```bash
 #!/system/bin/sh
 setprop net.dns1 208.67.222.222
@@ -414,7 +415,7 @@ The following may are necessary to indicate if all is working (dhcp/nameserver/d
 
 * Grep the current DNS resolver/settings, reads them via: <code>adb shell getprop | grep dns</code>
 * The actual DNS servers used are the ones listed in the output of: <code>adb shell dumpsys connectivity</code> or <code>adb shell dumpsys connectivity | grep DnsAddresses</code>
-* Via nslookup <code>nslookup google.com</code>
+* <s>Via nslookup</s> <code>nslookup google.com</code>
 * See the current dhcp info <code>cat /system/etc/dhcpcd/dhcpcd.conf</code>
 * List the tethered dns configuration <code>adb logcat | egrep '(TetherController|dnsmasq)'</code>
 * Check routing via <code>ip ru</code> + <code>ip route ls</code>
@@ -482,3 +483,4 @@ Todo:
 * Is there a decentralized search for Android as app available (similar to yacy)? Mail me if there is one. (low-prio) + add them in the article
 * Android auto config compatibility (not yet), e.g. [test network fails](https://code.google.com/p/android/issues/detail?id=93753)
 * DNSCrypt, dnsmasq & resolv.conf should be mentioned + example configuration should be given (I need confirmation if that works or not)
+* <a>nslookup shouldn't be used (outdated)</s>
