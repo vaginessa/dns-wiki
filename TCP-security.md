@@ -3,7 +3,7 @@ Index
 
 * [Introduction](#introduction)
 * [Ports](#ports)
-* [Known attacks](known-attacks)
+* [Known attacks](#known-attacks)
 * [Requirements](#requirements)
 * [Kernel params](#kernel-params)
 * [sysctl](#sysctl)
@@ -678,8 +678,13 @@ AFWall+ or any other Firewall does not protect against the following fingerprint
 
 A full overview can be found over [here](https://www.torproject.org/projects/torbrowser/design/#fingerprinting-linkability). A fingerprint test can be found over [here](https://panopticlick.eff.org/about.php).
 
-It's highly recommend to use Tor/Orbot + NoScript (NSA NoScript) + Certificate Control and (if no special about:config is in use) [Random Agent Spoofer](https://github.com/dillbyrne/random-agent-spoofer/).
-[HTTPS-Everywhere isn't necessary with the correct Firefox and Tor settings](https://gist.github.com/CHEF-KOCH/b730d9511761e999c9ba) (since HTTPS-Everywhere may break some sites and is already implemented in NoScript [Desktop Version only] or can be managed by the Browser itself).
+A good base is:
+* [Orbot](https://f-droid.org/repository/browse/?fdid=org.torproject.android)
+* [Orfox](https://github.com/guardianproject/orfoxfennec) (which includes NoScript / HTTPS-Everywhere) it's based on FireFox and the successor of [OrWeb](https://f-droid.org/repository/browse/?fdfilter=orweb&fdid=info.guardianproject.browser)
+* F-Droid to get updates via <code>https://dev.guardianproject.info/debug/info.guardianproject.orfox/fdroid/repo</code>
+* Check if Tor (+ Browser) is running and [proper configured](https://check.torproject.org/?lang=en_US)
+* As always check the [FAQ](https://dev.guardianproject.info/projects/orfox-private-browser/wiki/Orfox_vs_Tor_Browser_FAQ) and [documents](https://www.torproject.org/projects/torbrowser.html.en)
+ 
 
 External Links
 ------------
