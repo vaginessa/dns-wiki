@@ -31,6 +31,7 @@ The core problems are:
 * [Domain theft's](https://www.techdirt.com/articles/20141006/02561228743/5000-domains-seized-based-sealed-court-filing-confused-domain-owners-have-no-idea-why.shtml) ("seizures")
 * Certificate revocation
 * DOS (Denial-Of-Service) attacks, not even DNSSEC protect against such attacks
+* DRDoS (UDP prot. based attacks)
 * Logging on exit notes
 * DNS cache poisoning
 * Other exploits that are used for e.g. phishing
@@ -135,6 +136,12 @@ Currently DNSCrypt is far away from been stable and daily usage, since there are
 How do I know if my applications are leaking DNS?
 -----------
 
+The following systems or apps are suffering from DNS leakages:
+* Windows 8 and 8.1, [fix](https://medium.com/@ValdikSS/beware-of-windows-10-dns-resolver-and-dns-leaks-5bc5bfb4e3f1)
+* Windows 10 [no fix available]
+* OpenVPN (you need some scripts to disable all DNS in external interfaces)
+* All Android versions below 3.x
+
 There are several ways, the most easiest way is to visit some web pages that automatically detect what is your current DNS, like:
 * [DNS Leak Test | dnsleaktest.com](https://www.dnsleaktest.com/)
 * [IP Leak Test | ipleak.net](http://ipleak.net/)
@@ -151,7 +158,7 @@ On the OS level:
 * Configure Firewall as Fail-safe To Prevent Leaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
 * Generally use [secure alternatives](https://github.com/okTurtles/dnschain) + use a [online browser check](https://www.botfrei.de/en/index.html)
 * Use always the latest software to ensure possible bugs and security holes are fixed tools like sumo
-* Use a secure, user/privacy friendly search engine like DuckDuck, Disconnect or Ixquick. Even better would be an decentralized search like YaCy, FAROO or any other based on P2P/...
+* Use a secure, user/privacy friendly search engine like DuckDuckGo, Disconnect or Ixquick. Even better would be an decentralized search like YaCy, FAROO or any other based on P2P/...
 * Verify no external addons/software/app leaks something (speaking about external metadata and protocol headers from going in .plaintxt out!)
 
 On Tor:
@@ -203,12 +210,6 @@ AOSP based reported problems:
 
 
 **Important**: Please always use the search function here on AFWall's/[AOSP issue tracker](https://code.google.com/p/android/issues/list?can=2&q=DNS&colspec=ID+Type+Status+Owner+Summary+Stars&cells=tiles) to search already known existent problems to avoid duplicate threads. 
-
-The following systems/apps are suffering from DNS leakages:
-* Windows 8 and 8.1, [fix](https://medium.com/@ValdikSS/beware-of-windows-10-dns-resolver-and-dns-leaks-5bc5bfb4e3f1)
-* Windows 10 [no fix available]
-* OpenVPN (you need some scripts to disable all DNS in external interfaces)
-* All Android versions below 3.x
 
 
 Resolver commands
@@ -465,6 +466,7 @@ Useful links
 * [DNS Reply Size Test Server | DNS-OARC.net](https://www.dns-oarc.net/oarc/services/replysizetest)
 * [Unofficial Android dnsmasq FAQ | GitHub](https://github.com/Android-Apps/dnsmasq/blob/master/FAQ)
 * [Official dnsmasq binary and docs | thekelleys](http://www.thekelleys.org.uk/dnsmasq/)
+* [Reverse Whois Lookup | ViewDNS.info](http://viewdns.info/reversewhois/)
 
 
 Todo:
