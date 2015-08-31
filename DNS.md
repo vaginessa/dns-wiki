@@ -25,20 +25,21 @@ DNS is known as not to be secure anymore for several reasons. Like most "secure"
 
 The main problem is the protocol insecurity by [DNS](https://en.wikipedia.org/wiki/Domain_Name_System) and [X.509](https://en.wikipedia.org/wiki/X.509). See also [Certificate Transparency](https://blog.okturtles.com/2015/03/certificate-transparency-on-blockchains/).
 
-The core problems are:
+The problems are:
 * [MITM](http://en.wikipedia.org/wiki/Man-in-the-middle_attack) (Man-In-The-Middle)
 * DNS-based censorship circumvention
 * [Domain theft's](https://www.techdirt.com/articles/20141006/02561228743/5000-domains-seized-based-sealed-court-filing-confused-domain-owners-have-no-idea-why.shtml) ("seizures")
 * Certificate revocation
-* DOS (Denial-Of-Service) attacks, not even DNSSEC protect against such attacks
+* DOS (Denial-Of-Service) attacks
 * DRDoS (UDP prot. based attacks)
 * Logging on exit notes
 * DNS cache poisoning
 * Other exploits that are used for e.g. phishing
 * DNS hijacking
+* Pre-defined DNS resolvers (hardcoded)
 * ...
 
-Blocking the DNS (port 53) isn't possible (without problems) since this is necessary on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less complicated and depending on your knowledge about how to change that. But don't worry we are here to explain all stuff in easy steps!
+Blocking the DNS (Port 53) isn't possible (without problems) since this is necessary on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less complicated and depending on your knowledge about how to change that. But don't worry we are here to explain all stuff in easy steps!
 
 There are alternatives like:
 * Choosing a logging free DNS resolver e.g [OpenNIC](https://www.opennicproject.org/) 
@@ -66,7 +67,7 @@ How can I gather DNS (A/AAA/...) requests?
 
 // Android use a kind of BIND (which includes "dig"). <code>dig github.com | grep "Query time"</code>
 // See, [#37668](https://code.google.com/p/android/issues/detail?id=37668)
-// Workaround, just use external apps like [DNS Lookup](https://play.google.com/store/apps/details?id=com.kodholken.dnslookup)
+// Workaround, just use external apps like [DNS Lookup](https://play.google.com/store/apps/details?id=com.kodholken.dnslookup) (it use nslookup)
 
 
 resolv.conf
@@ -155,7 +156,7 @@ On the OS level:
 * Use 3rd Party Local DNS Servers/Resolvers, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Local_DNS_Resolvers).
 * Apply Windows Tweak and Registry Hacks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Windows) - on non servers max 4 hours is enough.
 * Apply MacOS Tweaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_MacOS).
-* Configure Firewall as Fail-safe To Prevent Leaks, [here](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
+* Configure Firewall as _Fail-safe_ to prevent leaks, [see here how](https://trac.torproject.org/projects/tor/wiki/doc/DnsResolver#Tweak_Firewalls)
 * Generally use [secure alternatives](https://github.com/okTurtles/dnschain) + use a [online browser check](https://www.botfrei.de/en/index.html)
 * Use always the latest software to ensure possible bugs and security holes are fixed tools like sumo
 * Use a secure, user/privacy friendly search engine like DuckDuckGo, Disconnect or Ixquick. Even better would be an decentralized search like YaCy, FAROO or any other based on P2P/...
@@ -467,6 +468,9 @@ Useful links
 * [Unofficial Android dnsmasq FAQ | GitHub](https://github.com/Android-Apps/dnsmasq/blob/master/FAQ)
 * [Official dnsmasq binary and docs | thekelleys](http://www.thekelleys.org.uk/dnsmasq/)
 * [Reverse Whois Lookup | ViewDNS.info](http://viewdns.info/reversewhois/)
+* [Google Caching Overview](https://peering.google.com/about/ggc.html)
+* [
+Linux workstation security checklist | GitHub (lfit)](https://github.com/lfit/itpol/blob/master/linux-workstation-security.md)
 
 
 Todo:
