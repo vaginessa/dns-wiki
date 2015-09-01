@@ -45,7 +45,38 @@ tcpdump -i br-lan -s0 -U -w /data/local/etherhost.pcap "ether host 34:xx:xx:xx:1
 tcpdump -ni any -s0 -U -w /sdcard/icmp6.pcap icmp6
 ```
 
-DNS related (see also DNS thread!)
+See if your Kernel does support e.g. the LOG/NFLOG target
+---------
+
+```bash
+#su -c 'cat /proc/net/ip_tables_targets'
+TRACE
+NFQUEUE
+NFQUEUE
+NFQUEUE
+NFLOG             <-- 
+CLASSIFY
+DNAT
+SNAT
+CONNMARK
+MARK
+REJECT
+MASQUERADE
+ERROR
+TCPMSS
+TPROXY
+TPROXY
+REDIRECT
+NETMAP
+LOG             <-- if the LOG-target is not supported by your kernel, it's not listed over here
+DNAT
+SNAT
+...
+..
+.
+```
+
+DNS related (see also [DNS thread](https://github.com/ukanth/afwall/wiki/DNS)!)
 ---------
 
 ```bash
@@ -106,22 +137,16 @@ usb0: inet addr:169.254.0.1  Bcast:169.254.15.255  Mask:255.255.240.0
 usb1: inet addr:169.254.16.1  Bcast:169.254.31.255  Mask:255.255.240.0
 usb0 169.254.0.2/20 -> Default Gateway is 169.254.0.1 (host's usb0 iface)
 Internal: usb0 169.254.16.2/20
-Default GateWay 169.254.16.1 (host's usb1 iface)
+Default Gateway 169.254.16.1 (host's usb1 iface)
 ```
 
 Useful links
 ---------
 
 * [Wiki Home](https://github.com/ukanth/afwall/wiki)
-* [How a good bugreport should looks like](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug)
+* [How a good bug report should looks like](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug)
 * [AFWAll+ Error codes](https://github.com/ukanth/afwall/wiki/Error-codes)
 * [Compiling AFWall+](https://github.com/ukanth/afwall/wiki/HOWTO-Compile-AFWall)
 * [Compiling BusyBox](https://github.com/ukanth/afwall/wiki/HOWTO-Compiling-busybox)
 * [Compiling iptables](https://github.com/ukanth/afwall/wiki/HOWTO-Compiling-iptables-*under-construction!*)
 * [Some phone codes](https://github.com/ukanth/afwall/wiki/Phone-codes-secrets)
-
-
-
-ToDO: 
-* <s>Explain all commands, really?</s> + add more commands 
-* Sort the commands - meh! Maybe own sections for TCPDUmp, dumpsys, ping, dns, ...
