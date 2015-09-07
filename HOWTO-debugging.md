@@ -4,6 +4,8 @@ Index
 * [Description](#description)
 * [Debugging](#debugging)
 * [ADB](#adb)
+* [iptables](#iptables)
+* [VPN](#VPN)
 * [Useful links](#useful-links)
 
 Description
@@ -99,7 +101,7 @@ adb shell dumpsys connectivity --diag
 # Greps on the wlan0 interface the current connection status 
 ip a | grep "wlan0" -A10
 
-# Check IPv6 (99,99% uptime)
+# Check IPv6 (99,99% up-time according to Google)
 https://ipv6.google.com/
 # or IPv4
 https://ipv4.google.com/
@@ -109,6 +111,9 @@ adb shell ping6 -c2 ipv4.google.com
 
 # nslookup on e.g. Google
 nslookup google.com
+
+# Shows current netstat stats, sorts them and print the ID
+netstat -an | awk '{print $6}' | sort | uniq -c | sort -rn
 
 ```
 
@@ -138,6 +143,22 @@ usb1: inet addr:169.254.16.1  Bcast:169.254.31.255  Mask:255.255.240.0
 usb0 169.254.0.2/20 -> Default Gateway is 169.254.0.1 (host's usb0 iface)
 Internal: usb0 169.254.16.2/20
 Default Gateway 169.254.16.1 (host's usb1 iface)
+```
+
+iptables
+---------
+
+```bash
+# Show which rules are supported to check e.g. if MASQUERADE is supported
+iptables -t nat --list-rules
+```
+
+VPN
+---------
+
+```bash
+# Shows route 
+cat /proc/net/route
 ```
 
 Useful links
