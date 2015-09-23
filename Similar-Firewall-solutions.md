@@ -73,7 +73,7 @@ _Application-Layer Firewalls_:
 * ~~[DroidGuard](https://code.google.com/p/droidguardian/)~~ _deprecated_
 * ~~[Lavender-Firewall](https://code.google.com/p/lavender-firewall/)~~, it's an hybrid that works on Linux and Android _deprecated_
 * ~~[AndFire](https://code.google.com/p/andfire/)~~ _deprecated_
-* ~~[FireBlocker](https://code.google.com/p/fire-blocker/)~~
+* ~~[FireBlocker](https://code.google.com/p/fire-blocker/)~~ _deprecated_
 
 
 
