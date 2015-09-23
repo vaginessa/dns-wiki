@@ -14,7 +14,8 @@ Generally there are six categories of Android Firewalls:
 * Firewalls which using _iptables_, like AFWall+, Droidwall, Avast,[...]
 * Firewalls which using a _local HTTP proxy_ (or integrate it in Android's VPN) like AdAway, AdGuard,...
 * Browser or app related firewalls, like NoScript, Bluetooth Firewalls and such, which basically only blocking specific functions and not the traffic itself.
-* Dynamic egress filtering: Monitors all outbound network traffic and issue dynamic prompts (on-demand) in order to determine egrees filter rules. The rules are defined per application. 
+* Dynamic egress filtering: Monitors all outbound network traffic and issue dynamic prompts (on-demand) in order to determine egrees filter rules. The rules are defined per application.
+* Application-Layer Firewalls (all outdated), they using the Android Framework to block app requests.
 
 _IPTables based:_
 * _Builtin_ [iptables](http://www.netfilter.org/projects/iptables/) (no GUI, but can be controlled via external scripts any Terminal Emulator app or ADB)
@@ -67,6 +68,14 @@ _Dynamic egress filtering_ (links not working - it's only for historical reasons
 _USB_ (not really a firewall but monitors the usb host):
 * ~~[Android USB Serial Monitor Lite](https://play.google.com/store/apps/details?id=jp.ksksue.app.terminal)~~ & [Source](https://github.com/felHR85/UsbSerial) _deprecated_
 
+_Application-Layer Firewalls_:
+* [NullWall](https://code.google.com/p/nullwall/) _deprecated_
+* [DroidGuard](https://code.google.com/p/droidguardian/) _deprecated_
+* [Lavender-Firewall](https://code.google.com/p/lavender-firewall/), it's an hybrid that works on Linux and Android _deprecated_
+* [AndFire](https://code.google.com/p/andfire/) _deprecated_
+* [FireBlocker](https://code.google.com/p/fire-blocker/)
+
+
 
 Non-root Android Firewalls
 ---------------------
@@ -77,4 +86,4 @@ We not recommend to use any no-root firewall for above reasons, there are others
 * NetSpark/Mobiwol [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.netspark.firewall)
 * [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.jianjia.firewall)
 
-_Final version 08.22.2015_
+_Final version 09.23.2015_
