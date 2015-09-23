@@ -37,7 +37,11 @@ The problems are:
 * Other exploits that are used for e.g. phishing
 * DNS hijacking
 * Pre-defined DNS resolvers (hardcoded)
-* ...
+* Typosquatting
+* Zone File Compromise / Zone Information Leakage/DNS Footprinting
+* DNS Amplification Attack
+* DNS Vulnerabilities in Shared Host Environments
+* DNS Client flooding
 
 Blocking the DNS (Port 53) isn't possible (without problems) since this is necessary on Android/Windows/Linux/Mac OS or any other OS, but we simply can use secure and proofed alternatives. - Which is more or less complicated and depending on your knowledge about how to change that. But don't worry we are here to explain all stuff in easy steps!
 
