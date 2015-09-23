@@ -1,5 +1,7 @@
 :warning: On Windows I highly recommend to use Burp/HTTP Scoop/Fiddler for the [deep packet inspection](http://en.wikipedia.org/wiki/Deep_packet_inspection) instead of Wireshark for several reasons, one of them is that it's low-level and overpowered for quickly looking through HTTP(s) traces [but you're the boss].
 
+![This is a typical Kernel request](http://i.imgur.com/yYjfyuLl.png)
+
 As you might know, Android's Kernel is based on the Linux Kernel so the output could be similar. This article will clear some questions about the Android Kernel and his data usage and also may answer some addition questions like why is there traffic under _Android OS_ (UID = 1000) or other UID's.
 
 Most Internet applications are using TCP as their protocol of choice, and TCP maintains a connection bound to an IP address. Whenever you change your Internet access, you switch IP addresses all existing TCP connections will be vanish. Your downloads are aborted, your SSH connections are closed,[...].
