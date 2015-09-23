@@ -676,6 +676,19 @@ for x in `grep -v ^# $BLACKLIST | awk '{print $1}'`; do
 done
 ````
 
+Block traffic from secondary users
+------------
+
+AFwall doesn't support multi users on some Android version, to workaround this you can base rules on this example
+
+<pre>$IPTABLES -A OUTPUT -m owner --uid-owner $APPLICATION_UID  -j DROP</pre>
+
+This example will drop application outgoing traffic on each connectivity without logging, if you want to apply the rule to a specific connectivity, replace OUTPUT by the corresponding chain (afwall-wifi for example)
+
+If you wish to log blocked packets, you should redirect to afwall-reject instead of dropping.
+This solution is tedious but allow a tighter control.
+
+Another solution would be to parse iptables rules, copy all rules using --uid-owner and recreate them adding a number after the first digit, for example 10234 would become 100234 or 110234 depending on the Android account ID you want to affect, downside of this solution is the rule list will become very big if you have too many users or too many applications. You will have to base your script on iptables -L as iptables-save isn't available
 
 External Links
 ------------
