@@ -17,6 +17,7 @@ Index
 * [Block outgoing request from LAN](#block-outgoing-request-from-lan)
 * [Orbot transparent proxy](#orbot-transparent-proxy)
 * [How can I use a whitelist or blacklist?](#how-can-i-use-a-whitelist-or-blacklist?)
+* [Block traffic from secondary users](#block-traffic-from-secondary-users)
 * [External Links](#external-links)
 
 Introduction
