@@ -69,11 +69,11 @@ _USB_ (not really a firewall but monitors the usb host):
 * ~~[Android USB Serial Monitor Lite](https://play.google.com/store/apps/details?id=jp.ksksue.app.terminal)~~ & [Source](https://github.com/felHR85/UsbSerial) _deprecated_
 
 _Application-Layer Firewalls_:
-* [NullWall](https://code.google.com/p/nullwall/) _deprecated_
-* [DroidGuard](https://code.google.com/p/droidguardian/) _deprecated_
-* [Lavender-Firewall](https://code.google.com/p/lavender-firewall/), it's an hybrid that works on Linux and Android _deprecated_
-* [AndFire](https://code.google.com/p/andfire/) _deprecated_
-* [FireBlocker](https://code.google.com/p/fire-blocker/)
+* ~~[NullWall](https://code.google.com/p/nullwall/)~~ _deprecated_
+* ~~[DroidGuard](https://code.google.com/p/droidguardian/)~~ _deprecated_
+* ~~[Lavender-Firewall](https://code.google.com/p/lavender-firewall/)~~, it's an hybrid that works on Linux and Android _deprecated_
+* ~~[AndFire](https://code.google.com/p/andfire/)~~ _deprecated_
+* ~~[FireBlocker](https://code.google.com/p/fire-blocker/)~~
 
 
 
