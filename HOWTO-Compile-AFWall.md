@@ -1,4 +1,4 @@
-If you don't know anything about compiling Android apps (apk's), you should better read this [article here](http://www.vogella.com/articles/Android/article.html) first.
+:warning: If you don't know anything about compiling Android apps (apk's), you should better read this [article here](http://www.vogella.com/articles/Android/article.html) first. :warning:
 
 Index
 -----
@@ -36,7 +36,7 @@ AFWall+ can be built using any IDE that supports the [Gradle](https://www.gradle
 General procedure using Android Studio
 ----------------------
 
-* Download and install some GitHub sync-tool like [SmartGit](http://www.syntevo.com/smartgit/) or [GitHub for Win/Mac](https://github.com/).
+* Download and install your favorite GitHub sync-tool like [SmartGit](http://www.syntevo.com/smartgit/) or [GitHub for Win/Mac](https://github.com/).
 * Download and install the JAVA SE Development Kit 8 (JDK8) from [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html).
 * Install the latest Android Studio from [here](http://developer.android.com/sdk/installing/studio.html).
 * When you start Android Studio, you'll see "Welcome to Android Studio" with several options. Here you choose to Open Project and then navigate to your GitHub synchronization directory where you have added AFWall+, from your GitHub sync-tool.
@@ -131,4 +131,4 @@ Useful links
 * [How-To: Decompile/Recompile APK's with ApkTool | AndroidForums](http://androidforums.com/esteem-all-things-root/520917-guide-how-properly-decompile-recompile-apks-apktool.html)
 * [How to Create Android Apps - Eclipse Export .APK Market Ready Files Step-by-Step Guide | YouTube](http://www.youtube.com/watch?v=DvBI16jv7xs)
 
-_Final version 08.28.2015_
+_ Final version 08.24.2015_
