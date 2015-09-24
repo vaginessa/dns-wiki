@@ -12,7 +12,7 @@ Index
 Quick Guide
 -----------
 
-Using AFWall+ the first time:
+Using AFWall+ the first time
 
 1. Click on _Mode_ to switch between whitelist- (default enabled) and blacklist-mode.
 2. Mark the applications that you want to block or allow (depending on the selected mode), for each interface.
@@ -24,11 +24,11 @@ Widget(s)
 
 To quickly enable or disable the firewall, add the AFWall+ widget to your home screen. 
 There is no Widget description, the green shield means that the firewall is running, red means it's disabled. 
-AFWall+ comes with three widgets, an settings widget, and two to toggle the firewall between enabled/disabled.
+AFWall+ comes with three widgets, an settings widget, and two to toggle the firewall between enabled/disabled with profile(s) support and some basic options. 
 
 Firewall logs
 
-If you want to see which applications have been blocked by AFWall+, open the menu and enable the Log.
+If you want to see which applications have been blocked via AFWall+, open the menu and enable 'Log'.
 AFWall+ will then log each application blocked. You can check the log by opening the menu and selecting _More_ -> _Show log_.
 
 Password lock/unlock
