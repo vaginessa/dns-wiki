@@ -100,3 +100,5 @@ Useful links
 * [Bug Tracker | Bugs.BusyBox.net](https://bugs.busybox.net)
 * [Official BusyBox Installer | Google Play Store](https://play.google.com/store/apps/details?id=com.jrummy.busybox.installer)
 * [Free Busybox | Stericson on GitHub](https://github.com/Stericson/busybox-free)
+
+_ Final version 08.24.2015_
