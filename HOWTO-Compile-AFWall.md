@@ -9,6 +9,7 @@ Index
 * [After repository refactoring and cleanup](#after-repository-refactoring-and-cleanup)
 * [Build via Command Line](#build-via-command-line)
 * [Compiling native binaries](#compiling-native-binaries)
+* [After Repository Refactoring](#after-repository-refactoring)
 * [Useful links](#useful-links)
 
 Software
@@ -119,6 +120,15 @@ On the host side you'll need to install (for compiling e.g. iptables):
 * Ensure _Makefile_ are on the correct place.
 * Ensure you use _allDebug_ or _allRelease_ (since Android Studio may have problems with other flags).
 * Edit and compile the binaries as per needs, the debugger shows the important stuff within the output.txt file.
+
+After Repository Refactoring
+-------------------------
+
+After the first time you have added our AFWall+ repo using the GitHub app, or deleted a previous version from Android Studio, you may need to import it into Android Studio again/by:
+
+    Selecting "Import Non-Android Studio Project"
+
+Selecting "Open an existing Android Studio Project" doesn't work, as it doesn't seem to setup the .gradle and .idea files etc. This is due a bug within Android Studio. 
 
 Useful links
 ------------
