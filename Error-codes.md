@@ -7,7 +7,7 @@ Index
 Description
 -----------
 
-This page should explain some details about some error codes that AFWall+ may gave you.
+This page explains details about some error codes that AFWall+ may gave you during the normal or custom script usage. 
 
 Error Codes
 -----------
@@ -37,4 +37,6 @@ But, there are some workarounds for this. First try to change the iptables binar
 <a name="Code4"></a>
 **(4) Error applying iptables rules. Exit code: 6**
 
-> Index of insertion too big - This mostly comes from custom ROM's (non CM). A workaround seems to play with the SuperSU settings (also try to update to latest first) and contact your ROM developer. 
+> Index of insertion too big - This mostly comes from custom ROM's (non CM). A workaround seems to play with the SuperSU settings (also try to update to latest first) and contact your ROM developer. In some situations it might help to play with AFWall+ internal binary options or to re-install busybox.
+
+_ Final version 09.24.2015_
