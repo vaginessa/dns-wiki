@@ -17,7 +17,7 @@ Software
 
 Android Studio:
 * [AndroidSDK](http://developer.android.com/sdk/index.html)
-* [Java Develop Kit (JDK) 1.7](http://java.sun.com/javase/downloads/index.jsp) or JDK 1.8
+* [Java Develop Kit (JDK) 1.8](http://java.sun.com/javase/downloads/index.jsp)
 * [7-Zip](http://7-zip.org/) to extract Eclipse/Android SDK packages [**optional**]
 * Basic cmd/terminal knowledge [**optional**]
 
