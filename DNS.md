@@ -451,7 +451,8 @@ Apps to change the default DNS
 -----------
 
 The following apps are success tested on all systems to work:
-* OverrideDNS (paid)
+* [OverrideDNS](https://play.google.com/store/apps/details?id=net.mx17.overridedns#) (paid)
+* [DNS Server](https://play.google.com/store/apps/details?id=com.icecoldapps.dnsserver) (free)
 * ... add more, remember they must work on all systems (even 5.1.1/M)
 
 
