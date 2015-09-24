@@ -79,7 +79,7 @@ Some of the examples maybe not working on 2G/3G/4G because DHCP/DHCPv6 reasons. 
 DROP vs REJECT
 ------------
 
-Nothing much to say about this, I'm just leaving some links here:
+DROP isn't more _secure_ compared to REJECT, this is a wrong myth on the internet, see here for more details:
 * [RFC 1122 3.3.8](https://tools.ietf.org/html/rfc1122#page-69)
 * [DROP vs REJECT explanation](http://www.chiark.greenend.org.uk/~peterb/network/drop-vs-reject)
 
@@ -181,7 +181,9 @@ $IPTABLES -t security -X
 $IPTABLES -P INPUT ACCEPT
 $IPTABLES -P FORWARD ACCEPT
 $IPTABLES -P OUTPUT ACCEPT
-$IP6TABLES .....^^</pre>
+
+$IP6TABLES .....
+.. your stuff belongs in here</pre>
 
 <pre># Allow loopback communication (necessary on IPv6)
 $IP6TABLES -A INPUT -i lo -j ACCEPT
@@ -217,7 +219,7 @@ $IPTABLES -A INPUT -p icmp -m icmp --icmp-type timestamp-request -j DROP
 $IPTABLES -A INPUT -p icmp -m limit --limit 2/second --limit-burst 2 -j ACCEPT
 $IP6TABLES -A INPUT -p icmpv6 -m limit --limit 2/second --limit-burst 2 -j ACCEPT</pre>
 
-<pre># Set IPtables to masquerade
+<pre># Set iptables to masquerade
 $IPTABLES -t nat -A POSTROUTING -j MASQUERADE</pre>
 
 <pre># Tunnel traffic (for native IPv6 connections only! -> 6to4: 2002::/16 & Teredo: 2001:0::/32) 
@@ -680,16 +682,16 @@ done
 Block traffic from secondary users
 ------------
 
-AFwall doesn't support multi users on some Android version, to workaround this you can base rules on this example
+AFWall+ doesn't support multi-users on some Android versions, to workaround this you can base rules on the following example:
 
-<pre>$IPTABLES -A OUTPUT -m owner --uid-owner $APPLICATION_UID  -j DROP</pre>
+<pre>$IPTABLES -A OUTPUT -m owner --uid-owner $APPLICATION_UID  -j REJECT</pre>
 
-This example will drop application outgoing traffic on each connectivity without logging, if you want to apply the rule to a specific connectivity, replace OUTPUT by the corresponding chain (afwall-wifi for example)
+This example will REJECT application outgoing traffic on each connectivity without logging, if you want to apply the rule to a specific connectivity, replace OUTPUT by the corresponding chain (e.g. <code>afwall-wifi</code>).
 
-If you wish to log blocked packets, you should redirect to afwall-reject instead of dropping.
-This solution is tedious but allow a tighter control.
+If you wish to log blocked packets, you should redirect to <code>afwall-reject</code> instead of dropping/rejecting. This solution is tedious but allow a tighter control.
 
-Another solution would be to parse iptables rules, copy all rules using --uid-owner and recreate them adding a number after the first digit, for example 10234 would become 100234 or 110234 depending on the Android account ID you want to affect, downside of this solution is the rule list will become very big if you have too many users or too many applications. You will have to base your script on iptables -L as iptables-save isn't available
+
+Another solution would be to parse iptables rules and copy all rules using --uid-owner and recreate them adding a number after the first digit, for example 10234 would become 100234 or 110234 depending on the Android account ID you want to affect, downside of this solution is the rule list will become very big if you have too many users or too many applications.
 
 External Links
 ------------
