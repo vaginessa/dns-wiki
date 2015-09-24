@@ -650,6 +650,23 @@ Block outgoing request from LAN
 Block outgoing request from LAN IP 192.168.1.200? Here is the solution:
 <pre>iptables -A OUTPUT -s 192.168.1.200 -j DROP</pre>
 
+
+Orbot transparent proxy
+-------------------------------
+
+Please ensure that you only use ONE !! iptables binary (orbot comes with it's one, so you have three to handle: system, AFWall's and Orbots!). To not szffering from iptables related problems, it's recommend to only use the system ones or AFWall+ to not override Orbot rules. 
+
+```bash
+IPTABLES=/system/bin/iptables
+
+$IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 -o lo -j ACCEPT
+$IPTABLES -t nat -A OUTPUT -p tcp ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -m owner --uid-owner 10001 -m tcp --syn -j REDIRECT --to-ports 9040
+$IPTABLES -t nat -A OUTPUT -p udp -m owner --uid-owner 10001 -m udp --dport 53 -j REDIRECT --to-ports 5400
+$IPTABLES -t filter -A OUTPUT -m owner --uid-owner 10001 ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -j REJECT
+```
+
+After Orbot is shutdown, please re-flush all rules from AFWall+, if not you may get common connection problems. 
+
 How can I use a whitelist or blacklist?
 ------------
 
