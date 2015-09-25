@@ -5,7 +5,7 @@ Index
 * [What's the issue?](#whats-the-issue-?)
 * [What's the risk?](#whats-the-risk-?)
 * [Do I have such a problem?](#do-i-have-such-a-problem-?)
-* [Temporally workarounds](#temporally-workarounds)
+* [Workarounds](#workarounds)
 * [IPtables specific problem](#iptables-specific-problem)
 * [Default IPtables Chain Policy](#default-iptables-chain-policy)
 * [Useful links](#useful-links)
@@ -44,12 +44,13 @@ For received UID traffic stats take a look at here:
 On older versions procfs is mounted at boot time, which means that every time your device is rebooted there are 0 traffic values for all UIDs (except lan0).
 You can list <code>/proc/uid_stat/</code> dir right now to see which UIDs have been spending traffic since last reboot.
 
-Temporally workarounds
+Workarounds
 ----------------------
-**Maybe not working on all devices!**
+
+**Maybe not working on all devices/ROM's!**
 
 Method 1: **Disable Data Connection on Android Core**
-- Open dialer
+- Open the 'Dialer'
 - Dial _'*#*#4636#*#*'_ or _'*#*#6436#*#*'_ (also take a look at the [[Phone codes secrets]] article)
 - Tap _'Phone Information'_
 - Press Menu button
@@ -61,7 +62,7 @@ Method 1: **Disable Data Connection on Android Core**
 
 Method 2: **Disable Data Connection through AFWall+**
 
-For the second workaround you need [[init.d]] support. Ask you ROM/Kernel Developer or check the README if you have init.d support or not. Do **NOT** ask on this Github repository!
+For the second workaround you need [[init.d]] support. Ask you ROM/Kernel Developer or check the README.md if you have init.d support or not. Do **NOT** ask on this Github repository!
 - Open AFWall+ Settings
 - Scroll down until you see _'Experimental Preferences'_
 - Enable _'Fix Startup Data Leak'_
@@ -82,7 +83,14 @@ Method 3: **APNDroid to Turn Off Data Connection**
 Method 4: **XPrivacy**
 
 There are a lot of difficult patches/apps like Openpdroid, Pdroid 2.0 or PDroid, XPrivacy which allow to prevent applications from leaking privacy sensitive data but this patches need to be integrate into the ROM (except XPrivacy which needs XPosed) you are using. It's possible to complicated for some users and may not work with all Apps without an FC (force close).
-[XPrivacy](https://github.com/M66B/XPrivacy#installation) is the only solution that works an almost every device without patching everything after you upgrade your ROM like CM 11-12 and do almost the same.
+[XPrivacy](https://github.com/M66B/XPrivacy#installation) is the only solution that works an almost every device/OS without patching everything (needs only the Xposed framework to be installed) after you upgrade your ROM like from CM 11 to 12 and do almost the same as PDroid.
+
+
+
+Method 5: **Xposed based**
+
+Similar to the Xprivacy xposed depended app the Xposed framework allows to manipulate the OS level. This means Xposed will start directly right on the boot and before any app will be started - in this case no traffic will bypass the OS. An example app is LightningWall which use such a hack. Compared to XPrivacy is use a finer app configuration system to change stuff as per-app and connection basics, XPrivacy is more 'eat or die'. 
+
 
 IPtables specific problem
 -----------------------------
