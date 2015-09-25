@@ -8,14 +8,16 @@ Index
 Similar Android Firewall solutions
 -----------------
 
-Generally there are six categories of Android Firewalls:
+Generally there are seven categories of Android firewalls available:
 * Firewalls which uses a _local VPN_ for traffic filtering (Dr. Web Anti-Virus,[...])
 * Firewalls which use a _separate own VPN_ (Android doesn't allow to use two VPNs together the same time) like Opera's _Max/Turbo_ feature to compress/reduce the web traffic (if it's enabled the firewall may not work)
-* Firewalls which using _iptables_, like AFWall+, Droidwall, Avast,[...]
+* Firewalls which using _iptables_, like AFWall+, Droidwall, Avast,[...]. Iptables (netfilter) will be called to execute e.g. the NAT table. 
 * Firewalls which using a _local HTTP proxy_ (or integrate it in Android's VPN) like AdAway, AdGuard,...
 * Browser or app related firewalls, like NoScript, Bluetooth Firewalls and such, which basically only blocking specific functions and not the traffic itself.
 * Dynamic egress filtering: Monitors all outbound network traffic and issue dynamic prompts (on-demand) in order to determine egrees filter rules. The rules are defined per application.
 * Application-Layer Firewalls (all outdated), they using the Android Framework to block app requests.
+* XPosed hacks to intercept directly on the OS layer (e.g. LightningWall). This doesn't need any iptables or additional scripts since the xposed framework provides the _hacking_ ability's. 
+
 
 _IPTables based:_
 * _Builtin_ [iptables](http://www.netfilter.org/projects/iptables/) (no GUI, but can be controlled via external scripts any Terminal Emulator app or ADB)
@@ -86,4 +88,4 @@ We not recommend to use any no-root firewall for above reasons, there are others
 * NetSpark/Mobiwol [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.netspark.firewall)
 * [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.jianjia.firewall)
 
-_Final version 09.23.2015_
+_Final version 09.25.2015_
