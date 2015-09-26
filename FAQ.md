@@ -494,7 +494,12 @@ mount -o remount,ro /system
 
 > This was removed, just touch on the main screen and swipe down, this feature is called swipe to pull.
 
-<a name="FAQ55"></a>
+<a name="FAQ54"></a>
 ##### (54) How can I sort the application(s) view in the main screen?
 
 > Under 'Preferences -> Experimental Preferences' is a new option called 'Sort Application' that allows to sort your apps via 'Name (default enabled)', by 'Install/Upgrade time' or by the app UID.
+
+<a name="FAQ55"></a>
+##### (55) What's the difference between installing AFWall+ and AFWall+ Key and installing AFWall+ Donate?
+
+> AFWall+ (Donate) is the 'Donate' version of AFWall+ which includes 'donate features' (often called 'Pro')  like import/export most preferences enabled. The AFWall+ Key is the enabler to unlock 'Donate features'. So you need both AFWall+ Free version and the key apk.
