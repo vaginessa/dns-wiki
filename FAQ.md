@@ -503,3 +503,8 @@ mount -o remount,ro /system
 ##### (55) What's the difference between installing AFWall+ and AFWall+ Key and installing AFWall+ Donate?
 
 > AFWall+ (Donate) is the 'Donate' version of AFWall+ which includes 'donate features' (often called 'Pro')  like import/export most preferences enabled. The AFWall+ Key is the enabler to unlock 'Donate features'. So you need both AFWall+ Free version and the key apk.
+
+<a name="FAQ56"></a>
+##### (56) Will AFWall+ work together with Android M 'verify boot' protection enabled?
+
+> This must be disabled since it will break SU, it checks every start if the firmware was manipulated (STOCK). An solution would be to disable it within the ROM or switch to another ROM like CM which will get an option to take control over it. 
