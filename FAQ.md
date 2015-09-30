@@ -507,4 +507,4 @@ mount -o remount,ro /system
 <a name="FAQ56"></a>
 ##### (56) Will AFWall+ work together with Android M 'verify boot' protection enabled?
 
-> This must be disabled since it will break SU, it checks every start if the firmware was manipulated (STOCK). An solution would be to disable it within the ROM or switch to another ROM like CM which will get an option to take control over it. 
+> This must be disabled since it will break SU, it checks every start if the firmware was manipulated (STOCK). An solution would be to disable it within the ROM or switch to another ROM like CM which will get an option to take control over it. See also, chainfire's statement [about the future of SU](https://plus.google.com/+Chainfire/posts/XJYJFPtS9Qb).
