@@ -334,6 +334,8 @@ This was original taken from [here](http://compilefailure.blogspot.com/2011/04/b
 Android Marshmallow
 --------------
 
+![Official supported devices](http://fs5.directupload.net/images/151005/i5ygxd5w.png)
+
 With Android Marshmallow (Kernel 4.1+) (API level 23) a lot of _under the hood_ changes are coming to the user including a new [permission controlling system](http://www.androidpolice.com/2015/05/28/io-2015-android-m-will-include-a-new-enhanced-permission-management-scheme-with-fine-control-over-apps/) that works similar compared to AppOps and integrates an user interface that allow to control most of all [permissions](https://developer.android.com/preview/features/runtime-permissions.html). Compared to Android 4/Lollipop that means you don't have only two options (take it and accept it or simply do not install it) - now you now can just install everything and change e.g. the camera permission to avoid that your new installed application (or existent) [can take control over that](https://en.wikipedia.org/wiki/Android_M). See, also the [Preview Overview article](https://developer.android.com/preview/overview.html).
 
 In fact that makes more or less most of _security apps_ obsolete since the user can control what permission which app can really use. Except the internet stuff (since Google simply never wants it, because ads reasons,[...]) which overall means firewalls have still a solid standing. 
