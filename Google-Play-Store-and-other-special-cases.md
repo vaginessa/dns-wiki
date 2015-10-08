@@ -1,0 +1,1 @@
+Guru meditation until all is done :expressionless: 
