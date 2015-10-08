@@ -1,4 +1,4 @@
-:exclamation: :warning: There is no official/unofficial support for Win 10 or iOS, we don't change this in order to make it compatible because IPtables are for a Linux/Android environment only!! :warning: :exclamation: 
+:exclamation:There is no official/unofficial support for Win 10 or iOS, we don't change this in order to make it compatible because IPtables are for a Linux/Android environment only!!:exclamation: 
 
 Requirements
 -------------
