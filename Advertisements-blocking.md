@@ -26,7 +26,7 @@ Reasons to block ads
 Since _blocking ads is our good right_, the following app(s) solution(s) still makes it possible to block most annoying ads we simply does not want to see.
 
 Most people use the following reasons if it comes to the ad blocking question:
-* For <code>security reasons</code>, example story shown over [here](http://www.bbc.com/news/technology-26447423), [here](http://us.norton.com/yoursecurityresource/detail.jsp?aid=banner) or [here](https://news.ncsu.edu/2012/03/wms-jiang-app-ads/) + an article from theguardian if you should use it or not over [here](http://www.theguardian.com/technology/pda/2010/mar/09/adblock)
+* For [security reasons](https://www.fireeye.com/blog/threat-research/2015/10/kemoge_another_mobi.html), example story shown over [here](http://www.bbc.com/news/technology-26447423), [here](http://us.norton.com/yoursecurityresource/detail.jsp?aid=banner) or [here](https://news.ncsu.edu/2012/03/wms-jiang-app-ads/) + an article from theguardian if you should use it or not over [here](http://www.theguardian.com/technology/pda/2010/mar/09/adblock)
 * It's _important_ in areas with limited <code>bandwidth</code> like 3G or models without unlimited data plans
 * It's just <code>annoying</code> to watch videos with in-ads (it never can block hard-coded watermarks!)
 * <code>Speed reasons</code> (in fact if you use a HUGE list it also can be negative, because more always means more to load [_at start_]).
