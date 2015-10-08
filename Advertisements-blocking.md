@@ -8,7 +8,7 @@ Index
 * [Ad-blocking techniques and tools](#ad--blocking-techniques-and-tools)
 * [Example lists](#example-lists)
 * [The best solution?](#the-best-solution-?)
-* [Does I need Ghostery?](#does-i-need-ghostery-?)
+* [Do I need Ghostery?](#do-i-need-ghostery-?)
 * [Final words](#final-words)
 
 Overview
@@ -180,7 +180,7 @@ It's depending on your needs:
 * If you really entirely block everything AND want fine control per-site ads just start with AdAway and NoScript (for JavaScript, XSS,[..]) + uBlock or uMatrix which also makes it quite easy for you to work with black-/whitelists that are useful if we want like to support our favorite website like e.g. GitHub.com (www.GitHub.com).
 
 
-Does I need Ghostery / Disconnect.me if I use an Ads blocker - or can I combine them?
+Do I need Ghostery / Disconnect.me if I use an Ads blocker - or can I combine them?
 ---------
 
 Some say this and some say this but the truth somehow lies in the middle and is depending what background knowledge you might have. 
