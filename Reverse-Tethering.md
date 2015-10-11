@@ -1,7 +1,7 @@
 ```bash
 # Tested working on Android 4.4.4 up to 5.x
 # Original posted over here: http://forum.xda-developers.com/showthread.php?t=2287494
-# All credits belongs to: 
+# All credits belongs to: class101
 # This also requires the Xposed framework to be installed:
 # http://repo.xposed.info/module/com.lemonsqueeze.fakewificonnection
 # Download the entire package: https://mega.nz/#!JccwHJJS!L7z2pD2r7P__2HkkvAMCVZICC0INvUKjLnEg7ZBUtZw
