@@ -4,6 +4,8 @@
 # All credits belongs to: 
 # This also requires the Xposed framework to be installed:
 # http://repo.xposed.info/module/com.lemonsqueeze.fakewificonnection
+# Download the entire package: https://mega.nz/#!JccwHJJS!L7z2pD2r7P__2HkkvAMCVZICC0INvUKjLnEg7ZBUtZw
+
 IP=192.168.137.101			# ip of the rndis interface (if using Windows Internet Connection Sharing usually set to an ip in the 192.168.137.x range, or your home network range if using a Network Bridge like 192.168.1.x)
 NETMASK=24					# netmask of the rndis interface (if you don't know this setting set it to 24, 255.255.255.255 = 32 | 255.255.255.0 = 24 | 255.255.0.0 = 16 | 255.0.0.0 = 8)
 GATEWAY=192.168.137.1		# gateway of the rndis interface (main route, if using Windows Internet Connection Sharing usually set to 192.168.137.1, or your home internet box if using a Network Bridge like 192.168.1.1)
