@@ -93,12 +93,13 @@ Useful links
 
 * [Official BusyBox Download Documentation Page | BusyBox.net](http://busybox.net/downloads/)
 * [Official BusyBox FAQ | BusyBox.net](http://www.busybox.net/FAQ.html)
-* [BusyBox Download on F-Droid | F-Droid](https://f-droid.org/wiki/page/stericson.busybox)
+* [Official Free Busybox | Stericson on GitHub](https://github.com/Stericson/busybox-free)
+* [Unofficial Busybox On Rails](https://play.google.com/store/apps/details?id=me.timos.busyboxonrails&hl=en)
+* [BusyBox (Free-Version) Download via F-Droid | F-Droid](https://f-droid.org/wiki/page/stericson.busybox)
 * [BusyBox NDK | GitHub.com](https://github.com/tias/android-busybox-ndk)
 * [Browse the git source code | git.busybox.net](http://git.busybox.net/busybox/)
 * [Anonymous GIT access | BusyBox.net](http://www.busybox.net/source.html)
 * [Bug Tracker | Bugs.BusyBox.net](https://bugs.busybox.net)
 * [Official BusyBox Installer | Google Play Store](https://play.google.com/store/apps/details?id=com.jrummy.busybox.installer)
-* [Free Busybox | Stericson on GitHub](https://github.com/Stericson/busybox-free)
 
 _ Final version 08.24.2015_
