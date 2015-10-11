@@ -4,7 +4,7 @@
 # All credits belongs to: class101
 # This also requires the Xposed framework to be installed:
 # http://repo.xposed.info/module/com.lemonsqueeze.fakewificonnection
-# Download the entire package: https://mega.nz/#!JccwHJJS!L7z2pD2r7P__2HkkvAMCVZICC0INvUKjLnEg7ZBUtZw
+# Download the entire package: https://mega.nz/#!QQ0zFK6I!GwnGj-zF7JnuMt9r0FEhq9NSX8ktX9Urvffv5mSfTlk
 
 # Ensure in AFWall+ that the incoming lan option was checked together with root and lan (for dhcp).
 
