@@ -48,3 +48,7 @@ else
 	dnsmasq --no-poll --pid-file --interface=rndis0 --interface=wlan0 --interface=rmnet0 --bogus-priv --filterwin2k --no-resolv --server=${DNS1} --server=${DNS2} < /dev/null
 fi
 ```
+
+![Step 1](http://fs5.directupload.net/images/151011/8akgee24.png)
+![Step 2](http://fs5.directupload.net/images/151011/cpjk35b5.png)
+![Step 3](http://fs5.directupload.net/images/151011/sycq84ik.png)
