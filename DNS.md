@@ -3,6 +3,7 @@ Index
 
 * [Description](#description)
 * [DNS under Android](#dns-under-android)
+* [Benchmark](#benchmark)
 * [resolv.conf](#resolv.conf)
 * [dnsmasq](#dnsmasq)
 * [DNSCrypt](#dnscrypt)
@@ -63,6 +64,13 @@ Android use a a dynamic DNS ([DDNS](https://en.wikipedia.org/wiki/Dynamic_DNS)) 
 By default the Google DNS server (since 2009) is set (8.8.8.8/8.8.4.4), currently the DNS servers gets overridden after each reboot even with [setprop](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=object;h=6d626d41e9db62a0eadb61ccb2aa4081a8b9f6d0). Googles public DNS supports DNSSEC validation since 2013 by default unless you do not want this (via opt-out), which means that this server is secured and nothing speaks against using it (except the anti-Google paranoia of course).
 
 // IP change or reconnection (connectivity changes -> RIL via e.g. ndc resolver setifdns rmnet0 x.x.x.x y.y.y.y). 
+
+
+Benchmark
+-----------
+
+An small and fast benchmark utility is available over [here](https://www.grc.com/dns/benchmark.htm) (also runs under Wine). 
+
 
 How can I gather DNS (A/AAA/...) requests?
 -----------
