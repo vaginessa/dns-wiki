@@ -71,6 +71,8 @@ Benchmark
 
 An small and fast benchmark utility is available over [here](https://www.grc.com/dns/benchmark.htm) (also runs under Wine). 
 
+![DNS Becnhmark (picture orig. by GHacks.net)](http://cdn.ghacks.net/wp-content/uploads/2015/10/verisign-public-dns.jpg)
+
 
 How can I gather DNS (A/AAA/...) requests?
 -----------
