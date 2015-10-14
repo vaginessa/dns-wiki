@@ -171,3 +171,4 @@ Useful links
 * [Compiling BusyBox](https://github.com/ukanth/afwall/wiki/HOWTO-Compiling-busybox)
 * [Compiling iptables](https://github.com/ukanth/afwall/wiki/HOWTO-Compiling-iptables-*under-construction!*)
 * [Some phone codes](https://github.com/ukanth/afwall/wiki/Phone-codes-secrets)
+* [Iproute2 cheatsheet](http://baturin.org/docs/iproute2/)
