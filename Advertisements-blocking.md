@@ -57,7 +57,7 @@ _Browser based Firefox (mobile) addons_:
 
 
 _Mixed ones (which are designed to work on Android + Browser)_:
-* [AdGuard](http://adguard.com/en/adguard-android/overview.html) - free version available but the important ones need a _Premium license_
+* [AdGuard](http://adguard.com/en/adguard-android/overview.html) - free version is available but the important ones need a _Premium license_ [Source](https://github.com/AdguardTeam/AdguardForAndroid/)
 
 
 _Hosts_ (_/system/etc/hosts_):
