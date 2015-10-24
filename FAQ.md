@@ -508,3 +508,9 @@ mount -o remount,ro /system
 ##### (56) Will AFWall+ work together with Android M 'verify boot' protection enabled?
 
 > This must be disabled since it will break SU, it checks every start if the firmware was manipulated (STOCK). An solution would be to disable it within the ROM or switch to another ROM like CM which will get an option to take control over it. See also, chainfire's statement [about the future of SU](https://plus.google.com/+Chainfire/posts/XJYJFPtS9Qb).
+
+<a name="FAQ57"></a>
+##### (57) I use Android 5/6 and 'Privacy Guard' shows me SMS and other Things, why AFWall+ needs this?
+
+> Privacy Guard isn't enabled by default and claims to 'secure' the OS a little bit more, in fact for beginners it can be a bit confusing if you enabled it, because the information which permission the app uses (in our case AFWall+) are 'wrong', means it shows common dangerous permissions that can/could compromise your security (like writtin/sending sms, share/access your location and other things). If the app isn't explicit designed to fit with privacy guard rules you possible see the mentioned 'wrong' permissions. In fact AFWall+ never ever requests for any of them, if you used any version which isn't original and you see that SMS will be send or something like that, this mostly means you use an infected/faked app!
+
