@@ -26,6 +26,7 @@ Index
 * [Protocol statistics](#protocol-statistics)
 * [How do I use this information?](#how-do-i-use-this-information-?)
 * [Capture all network traffic](#capture-all-network-traffic)
+* [Reduce traffic](#reduce-traffic)
 * [Tethering data](#tethering-data)
 * [Modem traffic](#modem-traffic)
 * [Closing words](#closing-words)
@@ -278,6 +279,33 @@ There're quite a few types of packets that are reported by the "data usage" app 
 But it's wrong:
 
 UID=1000 belongs to an Android component that is usually called "Android OS", but DNS requests come from a process running as root (UID=0 [root]) so if you see "Android OS" in an app list, it can mean a root process or an UID=1000 process as well.
+
+
+Reduce traffic
+-------
+
+There are some common 'tricks' to reduce the entire OS traffic.
+
+* Do not use sync or any account and no Google apps (in fact that possible lowers the fun since mostly every app depending on it, for push and and and).
+* Not install 200+ apps you never need (or only once). Less apps -> possible less data leakages due ads, infections and more.
+* In fact 'secure' protocols need more traffic due handshakes (we are talking about some byte). So to say that you better use old or compromised protocols instead is horrible wrong.
+* Use AdBlock/AdAway to block Domains you not need.
+* Capture the traffic and use Tools like tcpdump (included in every AOSP or e.g. AdAway) to see which Domains your OS wants to connect.
+* Do not block everything, because to block mtalk and such things could lead in much troubles (no signal and and and) it's not worth to waste the time to debug the problems because of some kB/mb's).
+* Use fly-mode/block mobile data as much as possible and use wlan instead.
+
+
+So for Google users (gapps) there are some 'special tricks':
+* Open up the 'Google settings' in your launcher, you see several Options like security and many more (depending on which Google Play Services Version you use) and uncheck every security mechanism which sends every sha1 to Google which checks your apps, similar to safe-browsing. There is also an option to let Google check your apps (means new installed ones) if present also disable it.
+* Google Play Store sends/check your apps because license verification (every 24/48) hours, These are only some kB (which can't or shouldn't be blocked). Even if you disabled the above mentioned security option's if will check/send the sha1 of your new installed apps anyway to Google (no option to disable it).
+* Uncheck all Google Play Store notification options.
+* Check your telephone.apk/dialer and surf the advanced option, some ROM's use a backtrace option to reveal more Information about your contact which calls you, disable it.
+* Use as less as possible 'push' apps or if possible disable the push/notification option. E.g. on Google+ app. because every push notification related app constantly send/recieve a small amount of data each xyz minutes.
+* Under develop options (must be manually enaled first) or advance option some roms have a switch to cut of OS statistics. If present also cut off the bugreport function and enable it only if you need it.
+* Try e.g. with privacy guard or external tools to cut off some functions e.g. the ads reciever (but be careful it could crash the app).
+* Only enable the sync and Google backup option if you are on wifi.
+
+Mostly you are done, now you see only 2-6 MB (depending on your usage) traffic, this is normal because some 'security' mechanism can't be disabled via the visible interface. I will explain (for experts) to also cut this off.
 
 
 How do I use this information?
