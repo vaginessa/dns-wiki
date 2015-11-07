@@ -515,6 +515,6 @@ mount -o remount,ro /system
 > Privacy Guard isn't enabled by default and claims to 'secure' the OS a little bit more, in fact for beginners it can be a bit confusing if you enabled it, because the information which permission the app uses (in our case AFWall+) are 'wrong', means it shows common dangerous permissions that can/could compromise your security (like writtin/sending sms, share/access your location and other things). If the app isn't explicit designed to fit with privacy guard rules you possible see the mentioned 'wrong' permissions. In fact AFWall+ never ever requests for any of them, if you used any version which isn't original and you see that SMS will be send or something like that, this mostly means you use an infected/faked app!
 
 <a name="FAQ58"></a>
-##### (58) What do I need to enable for the Google Play Store to work?
+##### (58) What do I need to get Google Play Store to work?
 
 > You need to whitelist the following com.google.android.gms (Google Play Services for authorization) + com.android.providers.downloads (For Downloads) + com.android.vending (this is the Play Store).
