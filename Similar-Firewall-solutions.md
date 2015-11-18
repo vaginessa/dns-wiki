@@ -47,8 +47,7 @@ _VPN/Proxy based:_
 * Dr. Web AntiVirus + Firewall
 * Kaspersky Internet Security
 * Comodo Internet Security
-* [NetGuard](https://github.com/M66B/NetGuard) from XPrivacy Author
-* ...
+* [NetGuard](https://github.com/M66B/NetGuard) (open source) from XPrivacy Author
 
 _[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:_
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
