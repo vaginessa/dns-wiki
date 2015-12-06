@@ -78,7 +78,7 @@ Install the latest API and related packages in Android SDK Manager:
 $ android
 ```
 
-Clone the git repository and build by using gradlew:
+Clone the git repository and build by using gradlew with Internet connection:
 
 ```
 $ git clone git://github.com/ukanth/afwall.git 
