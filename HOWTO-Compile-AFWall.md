@@ -72,44 +72,21 @@ Selecting "Open an existing Android Studio Project" doesn't work, as it doesn't 
 Build via Command Line 
 ----------------------
 
-Use the Android SDK Manager to install API 21 (or higher) and select it.
-To list all of available targets, type
+Install the latest API and related packages in Android SDK Manager:
 
 ```
-$ android list targets
+$ android
 ```
 
-Then, you will see something like
+Clone the git repository and build by using gradlew:
 
 ```
-"id: 4 or "Google Inc.:Google APIs:21"
-Name: Google APIs
-Type: Add-On
-Vendor: Google Inc. .... "
-```
-
-To select this, use the "-t" argument in the following build-process like
-
-```
-$ android update project -p . -s -t 4
-```
-
-After this we set our JAVA_HOME path and go into building:
-
-```
-$ export ANDROID_JAVA_HOME="/opt/sun-jdk-1.8.600__27" 
-$ mkdir afwall_build
-$ cd afwall_build
 $ git clone git://github.com/ukanth/afwall.git 
 $ cd afwall
 $ ./gradlew clean assembleDebug
-$ git submodule init
-$ git submodule update
-$ android update project -p . -s
-$ ant debug
 ```
 
-This build the afwall-debug.apk and place it into <code>/bin</code> folder.
+After successful build, afwall-debug.apk will be found in <code>aFWall/build/outputs/apk/</code> folder.
 
 Compiling native binaries
 -------------------------
