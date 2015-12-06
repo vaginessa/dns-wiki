@@ -86,7 +86,7 @@ $ cd afwall
 $ ./gradlew clean assembleDebug
 ```
 
-After successful build, afwall-debug.apk will be found in <code>aFWall/build/outputs/apk/</code> folder.
+After successful build, afwall-debug.apk will be found in <code>aFWall/build/outputs/apk/</code>.
 
 Compiling native binaries
 -------------------------
