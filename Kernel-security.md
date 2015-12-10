@@ -13,6 +13,7 @@ Index
 * [Disable binaries](#disable-binaries)
 * [Protection against other attacks](#protection-against-other-attacks)
 * [Android Marshmallow](#android-marshmallow)
+* [Android N](#android-n)
 * [Physical security](physical-security)
 * [Useful links](#useful-links)
 
@@ -348,6 +349,12 @@ See also AOSP Network Security Policy, over [here](https://android.googlesource.
 
 HTTPS:
 <code>application android:usesCleartextTraffic = "false” /</code> will prevent any component in the app from performing any network I/O over unencrypted socket connections (supports HTTP, FTP, WebSockets, IMAP, SMTP & XMPP). This was designed for third party libraries that use insecure channels of communication. In fact that could be bypassed in the future.
+
+
+Android N
+------------
+
+Android N is [coming 2016 and will bring a lot of changes](http://9to5google.com/2015/12/09/pixel-c-ama-roundup/), it get Chrome OS parts and possible break a lot of AFWall+ related stuff, which we need to track down to get it work again.  
 
 Physical security
 ------------
