@@ -1,4 +1,4 @@
-:exclamation: **Please do not send any eMail or ask here on GitHub how to block the Android advertisements!** :exclamation: 
+:exclamation: **Please do not send any eMail or ask here on GitHub/XDA how to block the Android advertisements!** :exclamation: 
 
 Index
 ---------
@@ -137,7 +137,7 @@ https://s3.amazonaws.com/lists.disconnect.me/simple_malware.txt
 
 ! Multipurpose and Misc
 !
-! Dan Pollock’s hosts file by someonewhocares.org [also avb. as IPv6 and nulled)
+! Dan Pollock’s hosts file by someonewhocares.org [also avb. as IPv6 and nulled]
 ! someonewhocares.org/hosts/hosts
 ! Fanboy's ultimate list (combines all)
 ! http://www.fanboy.co.nz/fanboy-ultimate.txt
@@ -145,6 +145,8 @@ https://s3.amazonaws.com/lists.disconnect.me/simple_malware.txt
 ! hosts-file.net/ad-servers
 ! MVPS HOSTS
 ! winhelp2002.mvps.org/hosts.txt
+! AdGuards blocking list (overview only)
+! -> https://adguard.com/en/filters.html
 
 
 
