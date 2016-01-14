@@ -46,7 +46,7 @@ AFWall+ needs the following to run at his best:
 Installation
 -------------
 
-* If you've not installed AFWall+ from the official stores like F-Droid or Google Play Store you may need to temporarily enable "Unknown sources" in your settings if that's disabled.
+* If you've not installed AFWall+ from the official stores like F-Droid or Google Play Store you may need to temporarily enable "Unknown sources" in your settings if that's disabled. An alternative option to get AFWall+ is to use [TorrAPK](https://www.torrapk.com/en/apps/30-rooted-phones/8187-AFWall-Android-Firewall) which is an unofficial source and maintained by [gianzalone77](https://github.com/gianzalone77).
 * Make a current settings backup (optional) - it will be saved under <code>/sdcard0/afwall/</code>
 * Download the latest release from [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall), [GitHub](https://github.com/ukanth/afwall/releases) or [F-Droid](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall).
 * Delete any previous version of the AFWall+ app, an upgrade from an existent installation is also possible.
@@ -142,7 +142,7 @@ https://github.com/ukanth/afwall/commits/<TAG or BRANCHES>.atom
 License
 -------
 
-Copyright (c) 2012-2015 Umakanthan Chandran alias [ukanth](http://forum.xda-developers.com/member.php?u=3249429)
+Copyright (c) 2012-2016 Umakanthan Chandran alias [ukanth](http://forum.xda-developers.com/member.php?u=3249429)
 All rights reserved
 
 [![Creative Commons License](https://licensebuttons.net/l/by/3.0/88x31.png)](https://www.gnu.org/licenses/gpl.txt).
