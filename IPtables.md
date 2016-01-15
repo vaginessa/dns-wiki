@@ -6,6 +6,7 @@ Index
 * [Explanation](#explanation)
 * [Extensions](#extensions)
 * [Important](#important)
+* [Androids default iptables](#androids-default-iptables)
 * [Basics](#basics)
 * [Useful links](#useful-links)
 
@@ -57,6 +58,38 @@ Important
 
 Please never ask basic questions how to handle or work with iptables if you not already have take a deeper look in the docs. AFWall+ is already a very easy to use GUI, it's not perfect, but we are working on it to improve it step-by-step. 
 If you like to working with [[custom scripts|CustomScripts]] you definitely need some basic knowledge, but for most users the preset GUI options that is given is almost enough to control the important parts. So please take care about the fact we don't have time to explain anything to every new user that ask the same question multiple times, that's why we have the Wiki - to answer the most questions. 
+
+
+Androids default iptables
+---------
+
+The following rules are the default AOSP rules, the order of execution plays an important role. These rules are been executed each time netd and the interface get an 'changed' command. 
+
+````
+// Default Whitelist rules to drop all traffic 
+if (ftype == WHITELIST) {
+res |= execIptables(V4V6, "-A", LOCAL_INPUT, "-j", "DROP", NULL);
+res |= execIptables(V4V6, "-A", LOCAL_OUTPUT, "-j", "REJECT", NULL);
+res |= execIptables(V4V6, "-A", LOCAL_FORWARD, "-j", "REJECT", NULL);
+
+// Default chains executed on something changed to not allow holes
+execIptablesSilently(target, "-t", table, "-D", parentChain, "-j", *childChain, NULL);
+execIptablesSilently(target, "-t", table, "-F", *childChain, NULL);
+execIptablesSilently(target, "-t", table, "-X", *childChain, NULL);
+execIptables(target, "-t", table, "-N", *childChain, NULL);
+execIptables(target, "-t", table, "-A", parentChain, "-j", *childChain, NULL);
+
+// Explanation:
+-D to delete any pre-existing jump rule (removes references that would prevent -X from working)
+-F to flush any existing chain
+-X to delete any existing chain
+-N to create the chain (also for each child process)
+-A to append the chain to parent
+
+// Blacklist 
+If no rules are activated or been executed then Blacklist Mode will be automatically used. 
+````
+
 
 Basics
 ------
@@ -154,7 +187,6 @@ Useful links
 ------------
 
 * [iptables | Wikipedia.org](http://en.wikipedia.org/wiki/iptables)
-* [
 * [netfilter/iptables project homepage | The netfilter.org project](http://netfilter.org/)
 * [netfilter/iptables documentation | The netfilter.org project](http://www.netfilter.org/documentation/)
 * [iptables developer page | netfilter.org](https://git.netfilter.org/iptables/)
