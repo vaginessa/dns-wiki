@@ -87,7 +87,14 @@ execIptables(target, "-t", table, "-A", parentChain, "-j", *childChain, NULL);
 -A to append the chain to parent
 
 // Blacklist 
-If no rules are activated or been executed then Blacklist Mode will be automatically used. 
+If no rules are activated or been executed then Blacklist Mode will be automatically used.
+
+// ndc firewall enable|disable 
+Activates or deactivates the entire firewall
+
+//Block a specific UID (example: 2000)
+ndc firewall set_uid_rule 2000 block
+
 ````
 
 
