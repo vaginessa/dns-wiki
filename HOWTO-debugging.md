@@ -151,6 +151,13 @@ iptables
 ```bash
 # Show which rules are supported to check e.g. if MASQUERADE is supported
 iptables -t nat --list-rules
+
+
+# Capture every packet and verify it with tcpdump ....
+adb shell iptables -t mangle -L idletimer_mangle_POSTROUTING -v && adb shell iptables -t raw -L idletimer_raw_PREROUTING -v
+
+# ... and then run right before the traffic goes in/out tcpdump
+adb shell tcpdump | tee tcpdump.log
 ```
 
 VPN
