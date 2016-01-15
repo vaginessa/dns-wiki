@@ -329,6 +329,13 @@ http://androidxref.com/5.1.0_r1/xref/system/netd/server/CommandListener.cpp#791
 * `ndc resolver clearnetdns <netId>`
 * `ndc resolver flushnet <netId>`
 
+## Android 6.0.0_r1
+http://androidxref.com/6.0.0_r1/xref/system/netd/server/CommandListener.cpp#831
+
+* `ndc resolver setnetdns <netId> <domains> <dns1> <dns2> ...`
+* `ndc resolver clearnetdns <netId>`
+* `ndc resolver flushnet <netId>`
+
 ## Master tree (latest version 08.07.2015 checked)
 https://android.googlesource.com/platform/system/netd/+/master/server/CommandListener.cpp#805
 
