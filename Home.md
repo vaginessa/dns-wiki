@@ -35,8 +35,7 @@ Requirements
 -------------
 
 AFWall+ needs the following to run at his best:
-
-- No Windows or iOS. :laughing: 
+ 
 - The Android 4.0 OS (ICS/API level 14, NDK 10) or a higher version.
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
@@ -47,7 +46,7 @@ Installation
 -------------
 
 * If you've not installed AFWall+ from the official stores like F-Droid or Google Play Store you may need to temporarily enable "Unknown sources" in your settings if that's disabled.
-* Make a current settings backup (optional) - it will be saved under <code>/sdcard0/afwall/</code>
+* Make a current settings backup (optional) - it will be saved under <code>/sdcard0/afwall/</code>.
 * Download the latest release from [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall), [GitHub](https://github.com/ukanth/afwall/releases) or [F-Droid](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall).
 * Delete any previous version of the AFWall+ app, an upgrade from an existent installation is also possible.
 * Delete/Restore any remnant application/setting(s) directory from <code>/sdcard0/afwall/</code> or similar.
@@ -57,7 +56,7 @@ Installation
 Important Information
 ---------------------
 
-Before you submit any issue report via the integrated AFWall+ option - or here on our GitHub page, you maybe first read the following stuff which may solve your problems or common questions.
+Before you submit any issue report via the integrated AFWall+ option - or here on GitHub, you maybe first read the following stuff which possible solve your problems questions.
 
 * Our official [[FAQ]] helps to solve the most known problems and questions.
 * Our [official issue tracker](https://github.com/ukanth/afwall/issues) here on GitHub, please always make a search before you open another ticket.
