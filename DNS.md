@@ -336,7 +336,7 @@ http://androidxref.com/6.0.0_r1/xref/system/netd/server/CommandListener.cpp#831
 * `ndc resolver clearnetdns <netId>`
 * `ndc resolver flushnet <netId>`
 
-## Master tree (latest version 08.07.2015 checked)
+## Master tree (latest version 01.16.2016 checked)
 https://android.googlesource.com/platform/system/netd/+/master/server/CommandListener.cpp#805
 
 * `ndc resolver setnetdns <netId> <domains> <dns1> <dns2> ...` 
@@ -498,7 +498,7 @@ Linux workstation security checklist | GitHub (lfit)](https://github.com/lfit/it
 Todo:
 * <s>I won't explain router side configuration, just use OpenWRT or any other mod (documented very well)</s>
 * <s>Complete the missing parts</s>
-* <s>Android 5.x doesn't support WPAD,....</s>
+* <s>Android 5.x doesn't support WPAD,.... but Android 6 does</s>
 * <s>Link all DNS related stuff in this thread (e.g. from the FAQ)</s>
 * <s>Add several workarounds since newer systems ignoring the etc/resolver.conf or dhcpcd/dhcpcd-hooks/20-dns.conf files</s>, explained with given links
 * <s>Add AFWall+ workarounds via custom scripts or separate tips</s>
