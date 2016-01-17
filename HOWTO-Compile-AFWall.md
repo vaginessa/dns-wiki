@@ -5,6 +5,7 @@ Index
 
 * [Software](#software)
 * [IDE Requirements](#ide-requirements)
+* [Setup Gradle](#setup-gradle)
 * [General procedure using Android Studio](#general-procedure-using-android-studio)
 * [After repository refactoring and cleanup](#after-repository-refactoring-and-cleanup)
 * [Build via Command Line](#build-via-command-line)
@@ -15,13 +16,14 @@ Index
 Software
 --------
 
-Android Studio:
+Build from Android Studio:
 * [AndroidSDK](http://developer.android.com/sdk/index.html)
+* [Gradle](http://gradle.org/gradle-download/) [Binary only distribution is enough]
 * [Java Develop Kit (JDK) 1.8](http://java.sun.com/javase/downloads/index.jsp)
 * [7-Zip](http://7-zip.org/) to extract Eclipse/Android SDK packages [**optional**]
 * Basic cmd/terminal knowledge [**optional**]
 
-Eclipse (old):
+Build from Eclipse (old):
 * [Eclipse Classic](http://www.eclipse.org/downloads/)
 * [ADT for Eclipse](http://developer.android.com/sdk/installing/installing-adt.html) or get the plugin via <code>https://dl-ssl.google.com/android/eclipse/</code> in Eclipse "Install New Software"
 
@@ -32,6 +34,15 @@ IDE Requirements
 ----------------------
 
 AFWall+ can be built using any IDE that supports the [Gradle](https://www.gradle.org/) build tool, used by projects such as [Android Studio](http://developer.android.com/sdk/installing/studio.html) or [Intellij IDEA](http://www.jetbrains.com/idea/) plus many others. (Gradle is the new equivalent of the old _"Ant"_ build tool.)
+
+Setup Gradle
+----------------------
+
+* Download Gradle
+* Extract it e.g. to C:\ or any dir your want
+* Setup the $Path (which is important so that Android Studio and your systems recognize it)
+
+![Gradle Path](http://i.imgur.com/qL1soiW.png)
 
 
 General procedure using Android Studio
