@@ -69,6 +69,8 @@ Example:
 > * KEY_ALIAS=*********************************
 > * KEY_PASSWORD=******************************
 
+![Generate signed APK](http://i.imgur.com/wzcjrzm.png)
+
 If all of the above succeeded, push the AFWall+ .apk to your device and run.
 
 
