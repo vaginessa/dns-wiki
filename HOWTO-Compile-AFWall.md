@@ -66,8 +66,7 @@ Apparently, the first time after you have added our repo using the (Windows) Git
 
 * Selecting **"Check out project from Version Control"**
 
-
-
+![Android Studio ](http://i.imgur.com/aBXIYDV.png)
 
 Build via Command Line 
 ----------------------
