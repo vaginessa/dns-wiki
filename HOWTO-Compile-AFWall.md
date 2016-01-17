@@ -38,11 +38,13 @@ AFWall+ can be built using any IDE that supports the [Gradle](https://www.gradle
 Setup Gradle
 ----------------------
 
-* Download Gradle
-* Extract it e.g. to C:\ or any dir your want
-* Setup the $Path (which is important so that Android Studio and your systems recognize it)
+* Download Gradle.
+* Extract it e.g. to C:\ or any dir your want.
+* Setup the $Path (which is important so that Android Studio and your systems recognize it).
 
 ![Gradle Path](http://i.imgur.com/qL1soiW.png)
+
+You not need to reproduce this steps for the Java JDK since it (if you used the installer) setup this automatically.  
 
 
 General procedure using Android Studio
