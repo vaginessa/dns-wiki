@@ -67,7 +67,8 @@ Apparently, the first time after you have added our repo using the (Windows) Git
 * Selecting **"Check out project from Version Control"**
 
 ![Android Studio ](http://i.imgur.com/aBXIYDV.png)
-![Select AFWall+ repo to fork](http://imgur.com/1EpQYuG)
+![Select AFWall+ repo to fork](http://i.imgur.com/1EpQYuG.png)
+![Default project view if all was imported correct](http://i.imgur.com/eGCZSOL.png)
 
 Build via Command Line 
 ----------------------
@@ -118,4 +119,4 @@ Useful links
 * [How-To: Decompile/Recompile APK's with ApkTool | AndroidForums](http://androidforums.com/esteem-all-things-root/520917-guide-how-properly-decompile-recompile-apks-apktool.html)
 * [How to Create Android Apps - Eclipse Export .APK Market Ready Files Step-by-Step Guide | YouTube](http://www.youtube.com/watch?v=DvBI16jv7xs)
 
-_ Final version 08.24.2015_
+_ Final version 01.17.2016_
