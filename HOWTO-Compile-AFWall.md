@@ -1,4 +1,4 @@
-:warning: If you don't know anything about compiling Android apps (apk's), you should better read this [article here](http://www.vogella.com/articles/Android/article.html) first. :warning:
+:grey_exclamation: If you don't know anything about compiling Android apps (apk's), you should better read this [article here](http://www.vogella.com/articles/Android/article.html) first. :grey_exclamation: :
 
 Index
 -----
@@ -64,9 +64,10 @@ After repository refactoring and cleanup
 
 Apparently, the first time after you have added our repo using the (Windows) GitHub app, or deleted a previous version from Android Studio, you need to import it into Android Studio by:
 
-* Selecting **"Import Non-Android Studio Project"**
+* Selecting **"Check out project from Version Control"**
 
-Selecting "Open an existing Android Studio Project" doesn't work, as it doesn't seem to setup the .gradle and .idea files etc.
+
+
 
 Build via Command Line 
 ----------------------
