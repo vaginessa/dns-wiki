@@ -81,7 +81,6 @@ Apparently, the first time after you have added our repo using the (Windows) Git
 
 ![Android Studio ](http://i.imgur.com/aBXIYDV.png)
 ![Select AFWall+ repo to fork](http://i.imgur.com/1EpQYuG.png)
-![Default project view if all was imported correct](http://i.imgur.com/eGCZSOL.png)
 
 Build via Command Line 
 ----------------------
@@ -115,11 +114,7 @@ On the host side you'll need to install (for compiling e.g. iptables):
 After Repository Refactoring
 -------------------------
 
-After the first time you have added our AFWall+ repo using the GitHub app, or deleted a previous version from Android Studio, you may need to import it into Android Studio again/by:
-
-    Selecting "Import Non-Android Studio Project"
-
-Selecting "Open an existing Android Studio Project" doesn't work, as it doesn't seem to setup the .gradle and .idea files etc. This is due a bug within Android Studio. 
+![Default project view if all was imported correct](http://i.imgur.com/eGCZSOL.png) 
 
 Useful links
 ------------
