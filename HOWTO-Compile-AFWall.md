@@ -1,4 +1,4 @@
-:grey_exclamation: If you don't know anything about compiling Android apps (apk's), you should better read this [article here](http://www.vogella.com/articles/Android/article.html) first. :grey_exclamation: :
+:grey_exclamation: If you don't know anything about compiling Android apps (apk's), you should better read this [article here](http://www.vogella.com/articles/Android/article.html) first. :grey_exclamation:
 
 Index
 -----
@@ -67,6 +67,7 @@ Apparently, the first time after you have added our repo using the (Windows) Git
 * Selecting **"Check out project from Version Control"**
 
 ![Android Studio ](http://i.imgur.com/aBXIYDV.png)
+![Select AFWall+ repo to fork](http://imgur.com/1EpQYuG)
 
 Build via Command Line 
 ----------------------
