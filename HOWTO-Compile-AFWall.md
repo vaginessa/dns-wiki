@@ -37,13 +37,12 @@ AFWall+ can be built using any IDE that supports the [Gradle](https://www.gradle
 General procedure using Android Studio
 ----------------------
 
-* Download and install your favorite GitHub sync-tool like [SmartGit](http://www.syntevo.com/smartgit/) or [GitHub for Win/Mac](https://github.com/).
-* Download and install the JAVA SE Development Kit 8 (JDK8) from [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html).
+* Download and install your favorite GitHub sync-tool like [Git for Windows](https://git-for-windows.github.io/) or any other compatible Android Studio Client. Android Studio supports every Version Control you only need (maybe, if not detected) to navigate to the correct executable and it grabs your settings automatically. 
+* Download and install the JAVA SE Development Kit 8 (JDK8) from [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * Install the latest Android Studio from [here](http://developer.android.com/sdk/installing/studio.html).
-* When you start Android Studio, you'll see "Welcome to Android Studio" with several options. Here you choose to Open Project and then navigate to your GitHub synchronization directory where you have added AFWall+, from your GitHub sync-tool.
+* When you start Android Studio, you'll see "Welcome to Android Studio" with several options. Here you choose to checkout from Version Control, select GitHub and the AFWall+ repo and select the dir you want to fork it to.
 
-The project will open immediately, but now you want to close it, so that you can return to the _Welcome screen_, this time you choose Configure >> SDK Manager. Here you select all APIs related to API 14 (or higher), which is our lowest supported API.
-For more details follow the setup instructions [here](http://developer.android.com/sdk/installing/index.html?pkg=studio).
+The project will open immediately, but now you want to close it, so that you can return to the _Welcome screen_, this time you choose Configure >> SDK Manager. Here you select all APIs related to API 15 (or higher), which is our lowest supported API for AFWall+, the IDE normally installs the latest (stable) API/SDK automatically. If you want to use an older API you need to download it separately (but it's not recommend). 
 Now click on the sideways Gradle tab, on the right side of the IDE. This will open a new window, once in it, double click on _Debug_ (_assembleDebug_). Check for build errors in the lower screen log window.
 If it compiles without errors, you can now build your own APK by clicking on the menu items: Build >> Generate Signed APK. This will ask you for 3 new passwords to be used in your "KeyStore" (1 master, 1 file, 1 APK alias). You may also add your credentials in signing.properties to enable automatic signing.
 
@@ -93,9 +92,9 @@ Compiling native binaries
 
 On the host side you'll need to install (for compiling e.g. iptables):
 
-* Android Studio 1.3.1 or higher (If you used the above steps you're mostly done).
+* Android Studio 1.5 or higher (If you used the above steps you're mostly done).
 * Ensure _Makefile_ are on the correct place.
-* Ensure you use _allDebug_ or _allRelease_ (since Android Studio may have problems with other flags).
+* Ensure you use _allDebug_.
 * Edit and compile the binaries as per needs, the debugger shows the important stuff within the output.txt file.
 
 After Repository Refactoring
