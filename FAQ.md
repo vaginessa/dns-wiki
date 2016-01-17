@@ -12,7 +12,7 @@ Index
 Quick Guide
 -----------
 
-Using AFWall+ the first time
+<ins>Using AFWall+ the first time</ins>
 
 1. Click on _Mode_ to switch between whitelist- (default enabled) and blacklist-mode.
 2. Mark the applications that you want to block or allow (depending on the selected mode), for each interface.
@@ -20,18 +20,18 @@ Using AFWall+ the first time
 4. The rules will be saved and automatically and restored when you restart your phone. If not check the "data leak" option.
 5. If you want to check all current IPTables rules, select _Firewall Rules_ in the menu.
 
-Widget(s)
+<ins>Widget(s)</ins>
 
 To quickly enable or disable the firewall, add the AFWall+ widget to your home screen. 
 There is no Widget description, the green shield means that the firewall is running, red means it's disabled. 
 AFWall+ comes with three widgets, an settings widget, and two to toggle the firewall between enabled/disabled with profile(s) support and some basic options. 
 
-Firewall logs
+<ins>Firewall logs</ins>
 
 If you want to see which applications have been blocked via AFWall+, open the menu and enable 'Log'.
 AFWall+ will then log each application blocked. You can check the log by opening the menu and selecting _More_ -> _Show log_.
 
-Password lock/unlock
+<ins>Password lock/unlock</ins>
 
 You can set a password lock for AFWall+ by using the set _password_ menu option.
 To remove the password protection, just reset it to blank (enter none).
