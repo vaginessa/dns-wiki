@@ -46,11 +46,11 @@ AFWall+ needs the following to run at his best:
 Not working on
 -------------
 
-Since Android supports over 11k devices it's impossible for AFWall+ to work on all of these. The community (YOU) must help in this case with a quality bug report to possible add the missing thing to your version/device to get it working, besides this we not supporting _special_ Android version like:
+Since Android supports over 11k devices it's impossible for AFWall+ to work on all of them. The community (YOU) must help in this case with a quality bug report to possible add the missing thing to your version/device to get it working, besides this we not supporting _special_ Android version like:
 
-* Android Wear
-* Android TV 
-* Android Auto 
+* [Android Wear](https://developer.android.com/wear/index.html)
+* [Android TV](https://developer.android.com/tv/index.html)
+* [Android Auto](https://developer.android.com/auto/index.html)
 * [Windows Mobile](https://github.com/ukanth/afwall/wiki/Windows-10-Mobile)
 
 Installation
