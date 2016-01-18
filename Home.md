@@ -4,7 +4,7 @@ AFWall+ is an Android open source firewall client, focused on making it easier t
 
 :exclamation: Before you ask anything please take a look first into our official [[FAQ]]. A general discussion platform can be found [here on XDA-Developers](http://forum.xda-developers.com/showthread.php?t=1957231). Use our GitHub platform only for [issue reports](https://github.com/ukanth/afwall/issues), [see here how-to do this](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug) - or [pull requests](https://github.com/ukanth/afwall/pulls). :exclamation: 
 
-:warning: We are not responsible for any external content mentioned here in this Wiki! 
+:warning: We are not responsible for any external content mentioned here on this Wiki! 
 [Due the mass of Chrome/Chromium security complications](https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs) read also [this](https://blog.torproject.org/blog/isec-partners-conducts-tor-browser-hardening-study) and [this](https://blog.torproject.org/blog/google-chrome-incognito-mode-tor-and-fingerprinting), our Wiki is focused on browsing with Firefox (mobile), please do not ask anything how to secure/harden Chrome/Chromium or any mod of this Browser which use the same engine. Thanks! :warning:
 
 Index
@@ -37,7 +37,7 @@ Requirements
 
 AFWall+ needs the following to run at his best:
  
-- The Android 4.0 OS (ICS/API level 14, NDK 10) or a higher version.
+- The Android 4.x OS (ICS/API level 15, NDK 10) or a higher version.
 - Your device **must be rooted**.
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
 - The Kernel/ROM _must have_ [[init.d support|init.d]] (for external custom script and data leakage fix)!
@@ -117,7 +117,7 @@ Making Donations
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation!
 It can be done directly on [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate) or just look at [F-Droid repository](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall) for more donations options.
 
-If you like to donate something without getting extra candy like the donating apk, you can simply do this over here:
+If you like to donate something without getting extra candy like the donating .apk, you can simply do this over here:
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6E4VZTULRB8GU) (official PayPal account)
 
