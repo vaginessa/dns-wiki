@@ -518,3 +518,8 @@ mount -o remount,ro /system
 ##### (58) What do I need to get Google Play Store to work?
 
 > You need to whitelist the following com.google.android.gms (Google Play Services for authorization) + com.android.providers.downloads (For Downloads) + com.android.vending (this is the Play Store).
+
+<a name="FAQ59"></a>
+##### (59) After using AFWall I constantly see a '#' symbol in the statusbar. 
+
+> This starts with CM/12/13/Android 5.1.1/6 which original was designed to add an indicator for applications which requiring root permission so this is not only AFWall+ related. You have three options: ignore the symbol, install chainfires SuperSU or install Xposed with an module to hide this icon. Please also read [this](http://www.androidexplained.com/cm12-remove-pound-symbol-status-bar/) and [this](https://github.com/ukanth/afwall/issues/480).
