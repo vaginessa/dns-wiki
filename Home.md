@@ -12,6 +12,7 @@ Index
 
 * [Contribution](#contribution)
 * [Requirements](#requirements)
+* [Not working on](#not-working-on)
 * [Installation](#installation)
 * [Important Information](#important-information)
 * [Similar firewall solutions](#similar-firewall-solutions)
@@ -41,6 +42,16 @@ AFWall+ needs the following to run at his best:
 - [[BusyBox]] and [[IPtables]] (also included as binary in AFWall+ for Kernel/ROM's without it!)
 - The Kernel/ROM _must have_ [[init.d support|init.d]] (for external custom script and data leakage fix)!
 - The Kernel _must have_ NETFILTER/CONFIG_NETFILTER enabled (<code>adb pull /proc/config.gz</code> - Once you unzip it, you can search for e.g. _NETFILTER_). AFWall+ normally check's it automatically if your Kernel does have support for it or not.
+
+Not working on
+-------------
+
+Since Android supports over 11k devices it's impossible for AFWall+ to work on all of these. The community (YOU) must help in this case with a quality bug report to possible add the missing thing to your version/device to get it working, besides this we not supporting _special_ Android version like:
+
+* Android Wear
+* Android TV 
+* Android Auto 
+* [Windows Mobile](https://github.com/ukanth/afwall/wiki/Windows-10-Mobile)
 
 Installation
 -------------
