@@ -32,11 +32,11 @@ But, there are some workarounds for this. First try to change the iptables binar
 <a name="Code3"></a>
 **(3) Error applying iptables rules. Exit code: 4**
 
-> IPTables can exit with status 4 if two or more processes tries to update the same table again and again. 
+> IPTables can exit with status 4 if two or more processes tries to update the same table again and again. See [here](https://github.com/ukanth/afwall/commit/909934d9b69c99120cfb495e998d9795468bbfed) for detailed information.
 
 <a name="Code4"></a>
 **(4) Error applying iptables rules. Exit code: 6**
 
 > Index of insertion too big - This mostly comes from custom ROM's (non CM). A workaround seems to play with the SuperSU settings (also try to update to latest first) and contact your ROM developer. In some situations it might help to play with AFWall+ internal binary options or to re-install busybox.
 
-_ Final version 09.24.2015_
+_ Final version 01.19.2016_
