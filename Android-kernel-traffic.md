@@ -16,6 +16,7 @@ Most Internet applications are using TCP as their protocol of choice, and TCP ma
 * [NetworkConnectivityListener](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob;f=core/java/android/net/NetworkConnectivityListener.java)
 * [ConnectivityService.java](http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob;f=services/java/com/android/server/ConnectivityService.java)
 * [android_filesystem_config.h](https://android.googlesource.com/platform/system/core.git/+/master/include/private/android_filesystem_config.h)
+* [Legit traffic](#legit-traffic)
 
 
 Index
@@ -315,6 +316,22 @@ How do I use this information?
 
 ~~- It's not done, so atm it only shows the important parts about kernel generated traffic. -~~ 
 
+
+Legit traffic
+-------
+
+The OS itself _collects_ the following data:
+* Google Safe-browsing
+* APK checksums (no opt-out) even if you disabled it within Google Play services it's been collected by Google Play Store
+* TLS certificate checks
+* Time synchronization, also needed for TLS certificates
+* Statistics about the device 
+* Google Play Services checks for license verification (once every 24 hours)
+* Android OS update check 
+* Android WebView update check (also for Google Play Store and Google Play Services)
+* Android debug infos (opt-out, default disabled)
+* Ads-services, depending if any app requires/ask for it (also depending what aps did you have installed, mostly free apps using 'ads' or asking for this. It's not always visible within the app itself or Android traffic overview [you see mostly Android OS or Google Play Services traffic].
+ 
 
 Closing words
 -------
