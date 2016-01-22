@@ -1,3 +1,5 @@
+:exclamation: There is absolute no malware/trojan/spyware/bloatware/whatever within UID 1000/0, please stop mention this or open bug reports with such questions. Android does not 'spy' in any way on you or your private data. Aftermarket firmware like CyanogenMod/MUI only have an opt-in/opt-out to send statistics to improve the product (but no personally information are been collected if it's enabled)! If you found any unknown or strange behavior, feel free to contact me directly (Nvinside [at] gmail.com) and I will look what it is (requires Whireshark/Burp logfile or tcpdump file). :exclamation: 
+
 :warning: On Windows I highly recommend to use Burp/HTTP Scoop/Fiddler for the [deep packet inspection](http://en.wikipedia.org/wiki/Deep_packet_inspection) instead of Wireshark for several reasons, one of them is that it's low-level and overpowered for quickly looking through HTTP(s) traces [but you're the boss].
 
 ![This is a typical Kernel request](http://i.imgur.com/yYjfyuLl.png)
