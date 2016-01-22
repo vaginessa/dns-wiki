@@ -320,9 +320,11 @@ How do I use this information?
 Legit traffic
 -------
 
-The OS itself _collects_ the following data:
+The OS itself _collects_ the following data (aka Android OS):
 * Google Safe-browsing
-* APK checksums (no opt-out) even if you disabled it within Google Play services it's been collected by Google Play Store
+* APK checksums (no opt-out) even if you disabled it within Google Play services it's been collected by Google Play Store and/or Google Play Services 
+* (*optional*) if _push_ apps installed Google Play services uses it to get notification e.g. WhatsApp, same with other services like Anti-Theft 
+* Location
 * TLS certificate checks
 * Time synchronization, also needed for TLS certificates
 * Statistics about the device 
@@ -331,6 +333,7 @@ The OS itself _collects_ the following data:
 * Android WebView update check (also for Google Play Store and Google Play Services)
 * Android debug infos (opt-out, default disabled)
 * Ads-services, depending if any app requires/ask for it (also depending what aps did you have installed, mostly free apps using 'ads' or asking for this. It's not always visible within the app itself or Android traffic overview [you see mostly Android OS or Google Play Services traffic].
+* (*optional*) CM Updater (if CyanogenMod is installed -> background data can be restricted).
  
 
 Closing words
