@@ -56,10 +56,10 @@ _<ins>[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) 
 * [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
 * [PeerBlock](https://play.google.com/store/apps/details?id=com.peerblock) & [Source](https://apeerblock.codeplex.com/) + [trusted blocklist's](http://list.iblocklist.com)
 
-_<ins>Proxy based (incl. iptables):</ins>_ 
+_<ins>Proxy based (incl. own iptables binary):</ins>_ 
 * ~~[Shadowsocks](https://github.com/shadowsocks/shadowsocks) + [Source](https://github.com/shadowsocks/shadowsocks)~~ _deprecated due censorship_ + [Story](https://www.reddit.com/r/programming/comments/3hy6f8/shadowsocks_a_socks5_proxy_with_9000_star_was/)
 
-_Internet Diagnostic/Debugg_:
+_<ins>Internet Diagnostic/Debugging:</ins>_
 * [Network Log](https://play.google.com/store/apps/details?id=com.googlecode.networklog&hl=en) (Real-time iptables logging)
 * [Network Monitor](http://fossdroid.com/a/network-monitor.html)
 * [RouterCheck](https://play.google.com/store/apps/details?id=com.Sericon.RouterCheck.client.android&hl=en)
