@@ -117,6 +117,7 @@ After Repository Refactoring
 -------------------------
 
 ![Default project view if all was imported correct](http://i.imgur.com/eGCZSOL.png) 
+![Successful synced](http://i.imgur.com/sr1K9KT.png) 
 
 Useful links
 ------------
