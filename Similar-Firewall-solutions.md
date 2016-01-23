@@ -59,10 +59,8 @@ _<ins>[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) 
 _<ins>Proxy based (incl. iptables):</ins>_ 
 * ~~[Shadowsocks](https://github.com/shadowsocks/shadowsocks) + [Source](https://github.com/shadowsocks/shadowsocks)~~ _deprecated due censorship_ + [Story](https://www.reddit.com/r/programming/comments/3hy6f8/shadowsocks_a_socks5_proxy_with_9000_star_was/)
 
-_<ins>Real-time iptables logging:</ins>_
-* [Network Log](https://play.google.com/store/apps/details?id=com.googlecode.networklog&hl=en)
-
-_Internet Diagnostic_:
+_Internet Diagnostic/Debugg_:
+* [Network Log](https://play.google.com/store/apps/details?id=com.googlecode.networklog&hl=en) (Real-time iptables logging)
 * [Network Monitor](http://fossdroid.com/a/network-monitor.html)
 * [RouterCheck](https://play.google.com/store/apps/details?id=com.Sericon.RouterCheck.client.android&hl=en)
 
