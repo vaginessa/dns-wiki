@@ -5,7 +5,7 @@ Index
 * [Non-root Firewalls](#non--root-firewalls)
 
 
-<ins>Similar Android Firewall solutions</ins>
+Similar Android Firewall solutions
 -----------------
 
 Generally there are seven categories of Android firewalls available:
@@ -80,7 +80,7 @@ _<ins>Application-Layer Firewalls:</ins>_
 * ~~[AndFire](https://code.google.com/p/andfire/)~~ _deprecated_
 * ~~[FireBlocker](https://code.google.com/p/fire-blocker/)~~ _deprecated_
 
-<ins>Non-root Android Firewalls</ins>
+Non-root Android Firewalls
 ---------------------
 
 All of these firewalls working with a local Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with IPtables like AFWall+. They only work on a app-layer size which _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest problem is that such VPN services not work with WiFi tethering or hotspot's. And another con is that you can't run other VPN services and VPN/Proxy's apps at the same time together. 
