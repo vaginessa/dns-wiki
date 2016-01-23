@@ -30,6 +30,9 @@ _IPTables based:_
 * [LBE Privacy Master](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
 * [Advanced Firewall](https://play.google.com/store/apps/details?id=advancedfirewall.educational.ae)
 
+_NFtables based:_
+* [nfwall](https://github.com/CHEF-KOCH/nfwall) (POC, will be uploaded if nftables hidds a stable stage)
+
 _Anti IMSI-Catcher (protects against IMSI/StingRay-Catchers and Silent/Stealth SMS):_
 * [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/) & Source (same link) + [stingraymappingproject.org](http://stingraymappingproject.org) (site to show which information are collected by AIMSICD)
 * [SnoopSnitch](https://play.google.com/store/apps/details?id=de.srlabs.snoopsnitch) + [F-Droid](https://f-droid.org/repository/browse/?fdid=de.srlabs.snoopsnitch) + [GSMMap Global Database](http://gsmmap.org/)
@@ -88,4 +91,4 @@ We not recommend to use any no-root firewall for above reasons, there are others
 * NetSpark/Mobiwol [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.netspark.firewall)
 * [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.jianjia.firewall)
 
-_Final version 09.25.2015_
+_Final version 01.23.2016_
