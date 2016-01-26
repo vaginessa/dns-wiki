@@ -354,6 +354,7 @@ Useful links
 * [[MOD]Any phone, any ROM: Wi-Fi only mode (disable cell radio) | RootWiki.com](http://rootzwiki.com/topic/25016-modany-phone-any-rom-wi-fi-only-mode-disable-cell-radio/)
 * [Connectivitymanager in Android SDK | MSDN Blogs](http://blogs.msdn.com/zhengpei/archive/2009/09/22/connectivitymanager-in-android-sdk.aspx)
 * [Robtex Swiss Army Knife Internet Tool | Robtex.com](https://www.robtex.com/)
+* [MobileApp-Pentest-Cheatsheet by tanprathan | GitHub.com](https://github.com/tanprathan/MobileApp-Pentest-Cheatsheet)
 
 Tutorials:
 * [Sniffing Network Traffic on Android | Infosec](http://resources.infosecinstitute.com/sniffing-network-traffic-android/)
