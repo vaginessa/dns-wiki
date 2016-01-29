@@ -328,7 +328,8 @@ The OS itself _collects_ the following data (aka Android OS):
 * (*optional*) if _push_ apps installed Google Play services uses it to get notification e.g. WhatsApp, same with other services like Anti-Theft 
 * Location
 * TLS certificate checks
-* Time synchronization, also needed for TLS certificates
+* Time synchronization (NTP) on UDP 123, also needed for TLS certificates to stay in sync
+* Cell Broadcasts (can be uninstalled/deactivated)
 * Statistics about the device (no opt-out)
 * Google Play Services checks for license verification (once every 24 hours)
 * Android OS update check 
