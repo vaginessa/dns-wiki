@@ -56,7 +56,8 @@ Known ports
 This is a small list which ports are open on every Linux/Android system, this is normally not critical as long there is no high traffic on it but you may need to understand what they do and how they should work. Remember: Closing all port's isn't a good idea (and in fact you not close the port you only disabling the application listening on it) since this will break most of internet stuff, but as long there are no suspect activity's all is good. For example one of a hacker goal is to send large volumes of network traffic at a host in order to cause legitimate traffic to be dropped, normally this behavior exists if the attacker doesn't control enough bandwidth himself to exceed the target's bandwidth. As a result you'll see that your sever or address is unreasonable over the network. 
 
 * <code>Port 53</code> (tcp/udp) - Port 53 is used by well known DNS (Domain Name System). DNS takes care of resolving human readable 'host names' into numeric IP addresses. A commonly used DNS server called BIND has had a rich history of security problems. As a result, [BIND](http://bindguard.activezone.de/) and port 53 are frequent targets and a couple worms used BIND exploits to propagate. There are [several attacks](https://www.dns-oarc.net/wiki/mitigating-dns-denial-of-service-attacks), like DNS resolver/recursive, poisoning, DOS, worms, ...
-* <code>Port 80</code> - Hypertext Transfer Protocol (HTTP) - BOOTP (for Android OS + MEID detection) 
+* <code>Port 80</code> (tcp/udp) - Hypertext Transfer Protocol (HTTP) - BOOTP (for Android OS + MEID detection) 
+* <code>Port 123</code> (udp) - Network Time Protocol (NTP)
 * <code>Port 443</code> - Hypertext Transfer Protocol over SSL/TLS (HTTPS)
 * <code>Port 5552</code> - Often used by messenger like WhatsApp, GTalk (Jabber)
 * Anything what cause <code>SYNC_SENT/BIND</code> (which shows traffic on some roms/apps in the notification bar) in fact that does not cause any real traffic and your provider does not log such traffic (no traffic lost).
@@ -277,7 +278,7 @@ pkts bytes target     prot opt in     out     source               destination
          udp dpt:53
 ```
 
-There're quite a few types of packets that are reported by the "data usage" app as part of the network traffic of "Android OS". Among others DNS requests belong to these kind of traffic. 
+They're quite a few types of packets that are reported by the "data usage" app as part of the network traffic of "Android OS". Among others DNS requests belong to these kind of traffic. 
 
 But it's wrong:
 
@@ -296,6 +297,7 @@ There are some common 'tricks' to reduce the entire OS traffic.
 * Capture the traffic and use Tools like tcpdump (included in every AOSP or e.g. AdAway) to see which Domains your OS wants to connect.
 * Do not block everything, because to block mtalk and such things could lead in much troubles (no signal and and and) it's not worth to waste the time to debug the problems because of some kB/mb's).
 * Use fly-mode/block mobile data as much as possible and use wlan instead.
+* Uninstall/Disable/Freeze Cell Broadcast which informs you about local warnings
 
 
 So for Google users (gapps) there are some 'special tricks':
