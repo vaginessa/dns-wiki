@@ -137,7 +137,8 @@ If you use any chain not listed above, then you need to manually purge it BEFORE
 Some examples
 -------------
 
-<pre># Necessary at the beginning of each script! 
+<pre># Necessary at the beginning of each script!
+OEM_SCRIPT_PATH=/system/bin/oem-iptables-init.sh (optional)
 IP6TABLES=/system/bin/ip6tables
 IPTABLES=/system/bin/iptables
 
