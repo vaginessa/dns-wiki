@@ -12,7 +12,7 @@ Generally there are seven categories of Android firewalls available:
 * Firewalls which uses a _local VPN_ for traffic filtering (Dr. Web Anti-Virus,[...])
 * Firewalls which use a _separate own VPN_ (Android doesn't allow to use two VPNs together the same time) like Opera's _Max/Turbo_ feature to compress/reduce the web traffic (if it's enabled the firewall may not work)
 * Firewalls which using _iptables_, like AFWall+, Droidwall, Avast,[...]. Iptables (netfilter) will be called to execute e.g. the NAT table. 
-* Firewalls which using a _local HTTP proxy_ (or integrate it in Android's VPN) like AdAway, AdGuard,...
+* Firewalls which using a _local HTTP proxy_ (or integrate it in Android's VPN) like AdAway, AdGuard (vpn is the first method but you can switch to http proxy method),...
 * Browser or app related firewalls, like NoScript, Bluetooth Firewalls and such, which basically only blocking specific functions and not the traffic itself.
 * Dynamic egress filtering: Monitors all outbound network traffic and issue dynamic prompts (on-demand) in order to determine egress filter rules. The rules are defined per application.
 * Application-Layer Firewalls (all outdated), they using the Android Framework to block app requests.
