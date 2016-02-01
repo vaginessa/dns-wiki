@@ -70,7 +70,7 @@ May not working on all devices or ROM's! Most codes are tested for Samsung phone
 | *#*#4636#*#* | Show HTC info menu | Only on HTC phones |
 | *#*#3424#*#* | Run HTC function test program | Only HTC phones |
 
-command line via direct URI broadcast call: <br>
+Command line via direct URI broadcast call: <br>
 > am broadcast -a android.provider.Telephony.SECRET_CODE -d android_secret_code://1111
 
 
