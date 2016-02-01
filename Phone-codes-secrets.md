@@ -2,31 +2,58 @@ This information is intended for experienced users. It is not intended for basic
 
 May not working on all devices or ROM's! Most codes are tested for Samsung phones only.
 
-*#32489#       | Cipher Info <br>
-*#0011#        | Network Info <br>
-*#197328640#   | General Service Mode <br>
-*#745#         | RIL Dump Menu <br>
-*#746#         | Debug Dump Menu <br>
-*#06#          | Shows IMEI (International Mobile Equipment Identity) number <br>
-*#1234#        | Software version <br>
-*#2222#        | H/W Version <br>
-*#197328640#   | Service Mode <br>
-*#5282837#     | Java Version <br>
-*#44336#       | Software Version Info <br>
-*#2263#        | RF Band Selection & Network modes select <br>
-*#3282727336*# | (Data Usage Status) <br>
-*#6984125*#    | Service-Menu: “Dial” <br>
-*#9072641*#    | Master-Key for ‘Internals’ menu (for Vodafone-branded phones use #3971258*#) <br>
-*#0228#        | Realtime battery-info <br>
-*#1575#        | GPS Control Menu <br>
-*#232337#      | Bluetooth ID <br>
-*#*3888#       | Bluetooth Test mode <br>
-*#232337#      | Bluetooth MAC Adress <br>
-*#232338#      | WLAN/WiFi MAC Address <br>
-*#232339#      | WLAN Test Mode <br>
-*#526# /*#528# | WLAN Engineering Mode <br>
-*#301279#      | HSDPA/HSUPA Control Menu <br>
-*#*#4636#*#*   | Device/Wifi/Battery/User stats <br>
+
+| Code | Info | Comment  |
+| :--- | :----: | ----: |
+| *#06# | Show IMEI number | Cell  |
+| *#0*# |  Enter the service menu on newer phones like Galaxy S III | Only Samsung phones |
+| *#*#4636#*#* | Phone information, usage statistics and battery | Cell  |
+| *#*#34971539#*#* | Detailed camera information | Cell  |
+| *#*#273282*255*663282*#*#* | Immediate backup of all media files | Only on Stock/AOSP ROM's|
+| *#*#197328640#*#* | Enable test mode for service | Cell  |
+| *#*#232339#*#* | Wireless LAN tests | Cell  |
+| *#*#0842#*#* | Backlight/vibration test | Cell |
+| *#*#2664#*#* | Test the touchscreen | Only on AOSP |
+| *#*#1111#*#* | FTA software version | 1234 in the same code will give PDA and firmware version |
+| *#12580*369# | Software and hardware info | Cell |
+| *#9090# | Diagnostic configuration | Only OEM |
+| *#872564# | USB logging control | Cell  |
+| *#9900# | System dump mode | Only OEM |
+| *#301279# | HSDPA/HSUPA Control Menu | Cell |
+| *#*#1234#*#* | Launch SuperSU from Dialer | Only with installed SuperSU (alternative: *#*#7873778#*#*) |
+| *#7465625# | View phone lock status | Cell  |
+| *#*#7780#*#* | Reset the /data partition to factory state  | !!!!! Be careful !!!!! |
+| *2767*3855# | Format device to factory state (will delete everything on phone) | !!!!! Be careful !!!!! |
+| ##7764726 | Hidden service menu for Motorola Droid | Only on Motorola Droid phones |
+| *#*#7594#*#* | Enable direct powering down of device once this code is entered | Cell  |
+| *#32489# | Cipher Info | Cell  |
+| *#0011# | Network Info | Right |
+| *#197328640# | Cell | Cell  |
+| *#745# | General Service Mode | Right |
+| *#746# | RIL Dump Menu | Cell  |
+| *#06#  | Debug Dump Menu | Right |
+| *#1234#  | Shows IMEI (International Mobile Equipment Identity) number | Cell  |
+| *#2222#  | Display Software version | Right |
+| *#197328640#  | Shows Hardware Version | Cell |
+| *#5282837# | Service Mode | Right |
+| *#44336# | Java Version | Cell  |
+| *#2263# | Software Version Info (OS) | Right |
+| *#3282727336# | RF Band Selection & Network modes select | Only on Stock Lollipop (Samsung) |
+| #6984125# | Shows Data Usage Status| Right |
+| #9072641#  | Service-Menu: “Dial” | Cell  |
+| *#0228# | Master-Key for ‘Internals’ menu | For Vodafone-branded phones try #3971258# |
+| *#1575# | Realtime battery-info | Cell  |
+| *#232337# | GPS Control Menu | Right |
+| *#3888# | Show Bluetooth ID | Cell  |
+| #232337#  | Bluetooth Test mode | Right |
+| *#232338# | Bluetooth MAC Address | Cell  |
+| *#232339# | WLAN/WiFi MAC Address | Right |
+| *#526# or #528# | WLAN Engineering Mode | Cell  |
+| #301279# | HSDPA/HSUPA Control Menu | Right |
+| *##4636## | Device/Wifi/Battery/User stats | Cell  |
+
+
+
 
 
 command line via direct URI broadcast call: <br>
@@ -34,10 +61,5 @@ command line via direct URI broadcast call: <br>
 
 
 ## Reference
-* [[REF][INFO][R&D] "Secret Codes" and other hidden features | XDA-Forum](http://forum.xda-developers.com/showthread.php?t=1687249) 
-
-
-Todo:
-* add table for a better look
-* add index 
-* ... more codes?
+* [[REF][INFO][R&D] "Secret Codes" and other hidden features | XDA-Forum](http://forum.xda-developers.com/showthread.php?t=1687249)
+* [Hidden Android Secret Codes For Samsung, HTC, Motorola, Sony, LG And Other Devices (redmondpie.com)](http://www.redmondpie.com/hidden-android-secret-codes-for-samsung-htc-motorola-sony-lg-and-other-devices/#)
