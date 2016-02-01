@@ -51,10 +51,24 @@ May not working on all devices or ROM's! Most codes are tested for Samsung phone
 | *#526# or #528# | WLAN Engineering Mode | Cell  |
 | #301279# | HSDPA/HSUPA Control Menu | Right |
 | *##4636## | Device/Wifi/Battery/User stats | Cell  |
-
-
-
-
+| *#*#273283*255*663282*#*#* | Make a quick backup of all the media files on your Android device | Cell |
+| *#*#232338#*#* | Shows Wi-Fi MAC address | Right |
+| *#*#1472365#*#* | Perform a quick GPS test | Cell  |
+| *#*#1575#*#* | For a more advanced GPS test | Cell  |
+| *#*#0283#*#* | Perform a packet loopback test | Right |
+| *#*#0*#*#* | Run an LCD display test | Cell  |
+| *#*#0289#*#* | Run Audio test | Cell  |
+| *#*#2663#*#* | Show device’s touch-screen version | Cell  |
+| *#*#0588#*# | Perform a proximity sensor test | Cell  |
+| *#*#3264#*#* | Show RAM version | Cell  |
+| *#*#232337#*# | Show device’s Bluetooth address | Cell  |
+| *#*#7262626#*#* | Perform a field test | Cell  |
+| *#*#8255#*#* | Monitor Google Talk service | Cell  |
+| *#*#4986*2650468#*#* | Show Phone, Hardware, PDA, RF Call Date firmware info | Cell  |
+| ##778 (+call) | Show EPST menu | Only on HTC phones |
+| ##786# | Reverse Logistics Support | Only on HTC phones |
+| *#*#4636#*#* | Show HTC info menu | Only on HTC phones |
+| *#*#3424#*#* | Run HTC function test program | Only HTC phones |
 
 command line via direct URI broadcast call: <br>
 > am broadcast -a android.provider.Telephony.SECRET_CODE -d android_secret_code://1111
@@ -63,3 +77,5 @@ command line via direct URI broadcast call: <br>
 ## Reference
 * [[REF][INFO][R&D] "Secret Codes" and other hidden features | XDA-Forum](http://forum.xda-developers.com/showthread.php?t=1687249)
 * [Hidden Android Secret Codes For Samsung, HTC, Motorola, Sony, LG And Other Devices (redmondpie.com)](http://www.redmondpie.com/hidden-android-secret-codes-for-samsung-htc-motorola-sony-lg-and-other-devices/#)
+
+_Final version 02.01.2016_
