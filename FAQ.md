@@ -523,3 +523,8 @@ mount -o remount,ro /system
 ##### (59) After using AFWall+ I constantly see a '#' symbol in my statusbar, how can I remove this?
 
 > This starts with CM/12/13/Android 5.1.1/6 which original was designed to add an indicator for applications which requiring root permission so this is not only AFWall+ related. You have three options: ignore the symbol, install chainfires SuperSU or install Xposed with an module to hide this icon. Please also read [this](http://www.androidexplained.com/cm12-remove-pound-symbol-status-bar/) and [this](https://github.com/ukanth/afwall/issues/480).
+
+<a name="FAQ60"></a>
+##### (60) I want use AFWall+/NetGuard with AdGuard together how can I do this?
+
+> AdGuard uses the Android VPN API which means the same API is required as for NetGuard, Android doesn't allow two VPN's together at the same time, so you need to set the http-proxy in AdGuard. On AFWall+ you only need to disable AdGuard's integrated firewall. Optional you can add exclusion in the low level setting to exclude dev.ukanth.ufirewall and eu.faircode.netguard so that the apps aren't filtered by ADGuard (not necessary but can possible avoid some problems), since both AFWall+ and NetGuard not integrating Ads I recommend to add this. 
