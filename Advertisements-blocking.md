@@ -47,7 +47,7 @@ Ad-blocking techniques and tools
 
 
 _Iptables_:
-* This is only for expert users which often working with scripts and know hot to debug things. 
+* This is only for expert users which often working with scripts and know how to debug things.
 
 
 _Browser based Firefox (mobile) addons_:
