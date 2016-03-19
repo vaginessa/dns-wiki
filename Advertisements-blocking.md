@@ -14,27 +14,27 @@ Index
 Overview
 ---------
 
-It's mentioned in our official FAQ that AFWall+ or iptables itself _wasn't explicit designed to block every ad_, yes iptables itself could handle and block it - but there is no fine control/GUI/filter for it - to really monitor + take control over each new single HTTP(s)/IP/GET/.. request(s). AFWall+ will not (or ever? soon?) get any interface for it since that will confuse beginners, would need more manpower we currently don't have and could never beat any existent solutions since they're all designed to only do block ads. AFWall+ is a firewall and not a all-in-one solution and was never designed to be one. 
+It's mentioned in our official FAQ that AFWall+ or iptables itself _wasn't explicit designed to block every ad_, yes, iptables itself could handle and block it - but there is no fine control/GUI/filter for it - to really monitor + take control over each new single HTTP(s)/IP/GET/.. request(s). AFWall+ will not (or ever? soon?) get any interface for it since that will confuse beginners, would need more manpower than we currently have and could never beat any existing solutions since they're all designed to only do block ads. AFWall+ is a firewall and not a all-in-one solution and was never designed to be one. 
 
 
-Google official decided to remove all Ad blocking apps from there own Google Play Store due [several reasons](https://adblockplus.org/blog/adblock-plus-for-android-removed-from-google-play-store) - same like any app that may need to change the SELinux policy to get property working, which are against there own [Play Store terms](https://play.google.com/about/developer-content-policy.html) [TOS](https://play.google.com/about/android-developer-policies.html) - overall that means ad-blocking on Android doesn't exists - _official_.
+Google official decided to remove all Ad blocking apps from their own Google Play Store due to [several reasons](https://adblockplus.org/blog/adblock-plus-for-android-removed-from-google-play-store) - same as any app that may need to change the SELinux policy to get property working, which are against their own [Play Store terms](https://play.google.com/about/developer-content-policy.html) [TOS](https://play.google.com/about/android-developer-policies.html) - overall that means ad-blocking on Android doesn't exist - _officially_.
 
 
 Reasons to block ads
 ---------
 
-Since _blocking ads is our good right_, the following app(s) solution(s) still makes it possible to block most annoying ads we simply does not want to see.
+Since _blocking ads is our good right_, the following app(s) solution(s) still makes it possible to block most annoying ads we simply do not want to see.
 
-Most people use the following reasons if it comes to the ad blocking question:
-* For [security reasons](https://www.fireeye.com/blog/threat-research/2015/10/kemoge_another_mobi.html), example story shown over [here](http://www.bbc.com/news/technology-26447423), [here](http://us.norton.com/yoursecurityresource/detail.jsp?aid=banner) or [here](https://news.ncsu.edu/2012/03/wms-jiang-app-ads/) + an article from theguardian if you should use it or not over [here](http://www.theguardian.com/technology/pda/2010/mar/09/adblock)
-* It's _important_ in areas with limited <code>bandwidth</code> like 3G or models without unlimited data plans
-* It's just <code>annoying</code> to watch videos with in-ads (it never can block hard-coded watermarks!)
-* <code>Speed reasons</code> (in fact if you use a HUGE list it also can be negative, because more always means more to load [_at start_]).
-* Enabling <code>acceptable ads</code> to <code>help and support you're favorite site</code> is always possible. Popular and small pages like [Ghacks are dying](http://www.ghacks.net/2015/02/27/ghacks-is-dying-and-needs-your-help/) because blocking everything, but just supporting by [making exclusions may help them](http://www.ghacks.net/2015/04/18/2-months-later-ghacks-is-still-dying-but-there-is-hope/) - which is a good compromise. 
-* <code>It's always up2you</code> what you doing with the given information. _Personally I think as long you're daily visiting pages documents and list there own ads (including there sources) - so that everyone can read what they collect it should be okay - in fact most pages place there ads very well, to not disturb the user - It's a matter of communication from the Webmaster to the community_
-* For reasons to hide from _illegal_ sites (like warez, drugs, ...), see example over [here](https://torrentfreak.com/uk-police-hijack-ads-on-251-pirate-sites-150825/).
-* <code>Other reasons</code>?!
-* ... <code>the rest is FUD</code> (fear, uncertainty, and doubt) and possible wrong myths e.g. blocking ads doesn't prevent the government to not watching you're activities you if you already under their microscope.  
+Most people use the following reasons when it comes to the ad blocking question:
+* For [security reasons](https://www.fireeye.com/blog/threat-research/2015/10/kemoge_another_mobi.html), an example story shown over [here](http://www.bbc.com/news/technology-26447423), [here](http://us.norton.com/yoursecurityresource/detail.jsp?aid=banner) or [here](https://news.ncsu.edu/2012/03/wms-jiang-app-ads/) and [an article from the Guardian](http://www.theguardian.com/technology/pda/2010/mar/09/adblock) if you should use it or not.
+* It's _important_ in areas with limited `bandwidth` (e.g. 3G) or models with limited data plans
+* It's just `annoying` to watch videos with in-ads (it never can block hard-coded watermarks!)
+* `Speed` (in fact if you use a HUGE list it also can be negative, because more always means more to load [_at start_]).
+* Enabling `acceptable ads` to `help and support your favorite site` is always possible. Popular and small pages like [Ghacks are dying](http://www.ghacks.net/2015/02/27/ghacks-is-dying-and-needs-your-help/) because blocking everything, but just supporting by [making exclusions may help them](http://www.ghacks.net/2015/04/18/2-months-later-ghacks-is-still-dying-but-there-is-hope/) - which is a good compromise. 
+* <code>It's always up to you</code> to decide what you do with any given information. _Personally I think as long you're daily visiting pages documents and list there own ads (including there sources) - so that everyone can read what they collect it should be okay - in fact most pages place there ads very well, to not disturb the user - It's a matter of communication from the Webmaster to the community_
+* For reasons to hide from _illegal_ sites (like warez, drugs, ...), see [this example](https://torrentfreak.com/uk-police-hijack-ads-on-251-pirate-sites-150825/).
+* `Other reasons`?!
+* ... `the rest is FUD` (fear, uncertainty, and doubt) and possible wrong myths e.g. blocking ads doesn't prevent the government to not watching you're activities you if you already under their microscope.  
 
 Ad-blocking techniques and tools
 ---------
