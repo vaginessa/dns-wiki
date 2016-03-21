@@ -33,6 +33,7 @@ Most people use the following reasons when it comes to the ad blocking question:
 * Enabling `acceptable ads` to `help and support your favorite site` is always possible. Popular and small pages like [Ghacks are dying](http://www.ghacks.net/2015/02/27/ghacks-is-dying-and-needs-your-help/) because blocking everything, but just supporting by [making exclusions may help them](http://www.ghacks.net/2015/04/18/2-months-later-ghacks-is-still-dying-but-there-is-hope/) - which is a good compromise. 
 * <code>It's always up to you</code> to decide what you do with any given information. _Personally I think as long you're daily visiting pages documents and list there own ads (including there sources) - so that everyone can read what they collect it should be okay - in fact most pages place there ads very well, to not disturb the user - It's a matter of communication from the Webmaster to the community_
 * For reasons to hide from _illegal_ sites (like warez, drugs, ...), see [this example](https://torrentfreak.com/uk-police-hijack-ads-on-251-pirate-sites-150825/).
+* Protection against malware served via ads on legal sites, see [this example](http://www.theguardian.com/technology/2016/mar/16/major-sites-new-york-times-bbc-ransomware-malvertising)
 * `Other reasons`?!
 * ... `the rest is FUD` (fear, uncertainty, and doubt) and possible wrong myths e.g. blocking ads doesn't prevent the government to not watching you're activities you if you already under their microscope.  
 
@@ -58,6 +59,7 @@ _Browser based Firefox (mobile) addons_:
 
 _Mixed ones (which are designed to work on Android + Browser)_:
 * [AdGuard](http://adguard.com/en/adguard-android/overview.html) - free version is available but the important ones need a _Premium license_ [Source](https://github.com/AdguardTeam/AdguardForAndroid/)
+* [NetGuard](https://github.com/M66B/NetGuard) - only the GitHub releases contain this functionality as per Google's policy
 
 
 _Hosts_ (_/system/etc/hosts_):
