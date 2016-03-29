@@ -1,4 +1,6 @@
 This page should explain and give an short overview which apps are good/bad to block. It can be seen as a similar database as the [Xprivacy crowd](https://crowd.xprivacy.eu/) to get an easier decision what is okay to allow and what really don't internet access. 
+
+Discussion/suggestion can be found [over here](https://github.com/ukanth/afwall/issues/518).
  
  ## **_Common System Apps_**
  
