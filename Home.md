@@ -136,7 +136,7 @@ To stay on sync, here is an [example](https://gist.github.com/larrybotha/1065041
 Feeds
 -------
 
-It's now very easy to stay up-to-date by subscribing latest changes via Browser live [feeds](https://atom.io/docs/latest/), via:
+It's now very easy to stay up-to-date by subscribing latest changes via Browser live [feeds](https://atom.io/docs/latest/):
 
 ```bash
 # The available feeds are:
