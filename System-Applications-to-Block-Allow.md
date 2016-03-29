@@ -1,4 +1,4 @@
-This page should explain and give an short overview which apps are good/bad to block. It can be seen as a similar database as the [Xprivacy crowd](https://crowd.xprivacy.eu/) to get an easier decision what is okay to allow and what really don't internet access. 
+This page should explain and give an short overview which system-apps are good or bad to block. It can be seen as a database like the [Xprivacy crowd](https://crowd.xprivacy.eu/) but only for the system-apps. This helps beginners to make an decision what is okay to block. 
 
 Discussion/suggestion can be found [over here](https://github.com/ukanth/afwall/issues/518).
  
