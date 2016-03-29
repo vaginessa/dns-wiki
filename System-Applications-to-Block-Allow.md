@@ -109,3 +109,11 @@ Discussion/suggestion can be found [over here](https://github.com/ukanth/afwall/
  *   Unclear exactly what this data this transmits/receives, but may be required for some tracking tools (finding lost device, for example)
  *   Rec: Block, unless determined that it is needed for any lost device finding tools
 
+
+
+
+Todo:
+* add UID's
+* add missing system apps
+* Add apk name + possible included packages (sub-processes)
+* Maybe table as main view incl. symbols for a legend to get shorter/cleaner look?
