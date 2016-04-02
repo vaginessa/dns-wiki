@@ -122,3 +122,4 @@ Todo:
 * add missing system apps
 * Add apk name + possible included packages (sub-processes)
 * Maybe table as main view incl. symbols for a legend to get shorter/cleaner look?
+* may add opengapps.org (apkmirror)? A trusted source (hosted on github, also with checksums and more) to get latest versions ^^ 
