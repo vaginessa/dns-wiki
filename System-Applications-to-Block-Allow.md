@@ -84,10 +84,10 @@ Discussion/suggestion can be found [over here](https://github.com/ukanth/afwall/
  *   If blocked, cannot use Google to submit feedback to app developers when apps crash
  *   Rec: Block if not using the Google Play store, otherwise allow for all connection types except LAN
  
- **PacProcessor**
+ **PacProcessor - Proxy Auto-Config (PAC) Processor**
  
- *   Unclear what this does and what data it transmits/receives
- *   Rec: Block
+ *   This is for auto proxy discovvering. If you switch/uninstall this .apk there will be no chance to assign to each specific app it's own specific custom proxy server for it's own way of webaccess.
+ *   Rec: Never block it, if you not need it uninstall it.
  
  **ProxyHandler**
  
