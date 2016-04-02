@@ -81,7 +81,7 @@ Discussion/suggestion can be found [over here](https://github.com/ukanth/afwall/
  
  **Market Feedback Agent**
  
- *   If blocked, cannot use Google to submit feedback to app developers when apps crash
+ *   If blocked, cannot use Google to submit feedback to app developers when apps crashes.
  *   Rec: Block if not using the Google Play store, otherwise allow for all connection types except LAN
  
  **PacProcessor - Proxy Auto-Config (PAC) Processor**
