@@ -64,15 +64,20 @@ Discussion/suggestion can be found [over here](https://github.com/ukanth/afwall/
  *   If blocked, cannot view content that requires DRM
  *   Rec: Block if not viewing any DRM content, otherwise allow for connection type(s) being used
  
- **GoogleAccount Manager, Google Play services, et al.**
+ **GoogleAccount Manager**
  
- *   If blocked, cannot use Google apps
+ *   If blocked, you can't login with you Google Account if an app uses e.g. Google/Facebook/.. login.
  *   Rec: Block if not using Google apps, otherwise allow for all connection types except LAN
  
  **Google Partner Setup**
  
  *   No one seems to know what this does and what data it transmits/receives
  *   Rec: Block
+
+**[Google Play-services](https://github.com/ukanth/afwall/wiki/Google-Play-services-and-other-special-cases)**
+
+* This service is critical and very important and should never blocked. It's for gcm (google cloud messaging).
+* Rec: Never block it, if you not use any Google Apps or apps with GCM you can uninstall but only if you really not use any apps which request for any of it's API's. 
  
  **Google Play Store**
  
