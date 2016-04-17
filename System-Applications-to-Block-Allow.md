@@ -119,6 +119,11 @@ Discussion/suggestion can be found [over here](https://github.com/ukanth/afwall/
  *   Unclear exactly what this is needed for, but blocking it causes an exclamation mark next to the Wifi/Cellular icons (indicating no Internet) even if there is Internet.
  *   Rec: Allow for all connection types
 
+ **Phone Services (uid 1001)**
+
+ *   Necessary for making and receiving SIP calls, among other things
+ *   Rec: Allow for all connection types
+
 
 
 
