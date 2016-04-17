@@ -114,6 +114,11 @@ Discussion/suggestion can be found [over here](https://github.com/ukanth/afwall/
  *   Unclear exactly what this data this transmits/receives, but may be required for some tracking tools (finding lost device, for example)
  *   Rec: Block, unless determined that it is needed for any lost device finding tools
 
+ **Android System (uid 1000)**
+
+ *   Unclear exactly what this is needed for, but blocking it causes an exclamation mark next to the Wifi/Cellular icons (indicating no Internet) even if there is Internet.
+ *   Rec: Allow for all connection types
+
 
 
 
