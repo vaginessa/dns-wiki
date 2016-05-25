@@ -4,7 +4,7 @@ Special thanks goes to our top contributors, developers and donators which helpe
 | :--- | :--: | :---: | :---: |
 | **Umakanthan Chandan** | | | cumakt+afwall [at] gmail.com |
 | <s>Kevin Cernekee</s> |  | | <s>cernekee [at] gmail.com</s> |
-| | CHEF-KOCH |  | CHEF-KOCH [at] draugr.de |
+| | <s>CHEF-KOCH</s> |  | CHEF-KOCH [at] protonmail.com |
 | | PdtS (Icons) | | [Website](http://pdts.net/) |
 | | Hush66 (Icons) | | [Devianart](http://www.hush66.devianart.com/) |
 | | shenm233 (Icons) | | some taken from [MaterialDesignIcons](https://materialdesignicons.com) |
