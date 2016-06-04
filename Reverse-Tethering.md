@@ -5,6 +5,7 @@
 # This also requires the Xposed framework to be installed:
 # http://repo.xposed.info/module/com.lemonsqueeze.fakewificonnection
 # Download the entire package: https://mega.nz/#!QQ0zFK6I!GwnGj-zF7JnuMt9r0FEhq9NSX8ktX9Urvffv5mSfTlk
+# App: https://play.google.com/store/apps/details?id=com.floriandraschbacher.reversetethering.free
 
 # Ensure in AFWall+ that the incoming LAN option was checked together with root and LAN (for DHCP).
 # Nexus 6 needs -> adb shell: settings put global tether_dun_required 0
