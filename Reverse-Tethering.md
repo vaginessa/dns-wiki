@@ -59,5 +59,3 @@ fi
 ![Step 2](http://fs5.directupload.net/images/151011/cpjk35b5.png)
 ![Step 3](http://fs5.directupload.net/images/151011/sycq84ik.png)
 
-
-:grey_exclamation: There is no app which proper work on all systems, so do not waste your time searching for them, the _best_ solution is that script. :grey_exclamation:
