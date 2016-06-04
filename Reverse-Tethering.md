@@ -6,7 +6,8 @@
 # http://repo.xposed.info/module/com.lemonsqueeze.fakewificonnection
 # Download the entire package: https://mega.nz/#!QQ0zFK6I!GwnGj-zF7JnuMt9r0FEhq9NSX8ktX9Urvffv5mSfTlk
 
-# Ensure in AFWall+ that the incoming lan option was checked together with root and lan (for dhcp).
+# Ensure in AFWall+ that the incoming LAN option was checked together with root and LAN (for DHCP).
+# Nexus 6 needs -> adb shell: settings put global tether_dun_required 0
 
 IP=192.168.137.101			# ip of the rndis interface (if using Windows Internet Connection Sharing usually set to an ip in the 192.168.137.x range, or your home network range if using a Network Bridge like 192.168.1.x)
 NETMASK=24					# netmask of the rndis interface (if you don't know this setting set it to 24, 255.255.255.255 = 32 | 255.255.255.0 = 24 | 255.255.0.0 = 16 | 255.0.0.0 = 8)
