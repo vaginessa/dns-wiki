@@ -196,6 +196,8 @@ There are also several tips, tricks and guides directly with a lot of examples o
 DNS problems 
 -----------
 
+:exclamation: Since Android 6.1.x you only can change the DNS for tether device and nothing else, everything else get ignored, no matter what you set or which app you're use :exclamation: 
+
 An easy method to look at opened or closed threads is to search via <code>is:issue is:open dns</code> / <code>is:issue is:closed dns</code> which shows the important threads (if the topic/thread content was correct labaled), alternative just click on the follow links (or copy/paste the issue number in the search e.g. <code>https://github.com/ukanth/afwall/issues/<insert-issue-number-here>.
 
 
