@@ -1,13 +1,13 @@
 Frequently Asked Questions (FAQ)
 ========
 
-:warning: This FAQ is designed to answer the most common questions, please take your :watch: to read it before you ask anything. :warning:
+:warning: This FAQ is designed to answer the most common questions.  Please take your :watch: to read it before you ask anything. :warning:
 
 Index
 -----
 
 * [Quick Guide](#quick-guide)
-* [Frequently asked questions](#frequently-asked-questions)
+* [Frequently Asked Questions](#frequently-asked-questions)
 
 Quick Guide
 -----------
@@ -119,12 +119,12 @@ which ip6tables
 > AFWall+ logs are depend on dmesg (kernel logs). Either your kernel disabled dmesg or it's getting overwritten quickly. Please check if you kernel does have an option like "Android logger Control" or something like that an enable this service.
 
 <a name="FAQ10"></a>
-##### (10) Does AFWall+ supports Android 4.4.4 or higher?
+##### (10) Does AFWall+ support Android 4.4.4 or higher?
 
-> Yes, it works with newer Android OS versions too!
+> Yes!
 * UID 0 (root) needs 53/UDP open for DNS on Android 4.3. - Enable DNS/DHCP from within the application(s) list!
 * UID 1000 (system) needs 123/udp open for NTP. - Enable NTP from application list!
-* Android L/M possible need a little configuration change and a external BusyBox app to get the rules apply, try to play with the binaries option.
+* Android L/M may need a little configuration change and an external BusyBox app to get the rules apply.  Try to experiment with the binaries option.
 
 <a name="FAQ11"></a>   
 ##### (11) Can I block incoming SMS/MMS? - Premium SMS?
@@ -208,7 +208,7 @@ Or
 > Only apps are listed that have **internet permissions** in the AndroidManifest.xml. If it's not listed this means that this app [don't use any internet permission](http://developer.android.com/reference/android/Manifest.permission.html). 
 
 <a name="FAQ20"></a>
-##### (20) AFWall+ does not work under CM 7.x - 12.x, how can I fix this?
+##### (20) AFWall+ does not work under CM 7.x - 12.x.  How can I fix this?
 
 > CM 7.x uses an old version of IPTables which has maybe conflicts with AFWall+ own built-in IPTables. As a workaround you can try to update your IPTables to the latest version. But it should work without it. 
 > CM 11 users may need to change the BusyBox version from _builtin_ to _system BusyBox_. Of course you need to install it first.
@@ -216,13 +216,13 @@ Or
 <a name="FAQ21"></a>
 ##### (21) How to install AFWall+ as a regular app?
 
-> Just download it via Google Play Store, F-Droid or here on GitHub and install it - that's it! 
+> Just download it via F-Droid, Google Play Store, or here on GitHub.  Then install it.  That's it! 
 
 > Advance users can directly install it via adb:
 
 <code> adb install afwall+.apk </code> (default install method)
 
-> Or you may also copy and download the afwall+.apk file on your device and install it using any file explorers. 
+> Or you may also copy and download the afwall+.apk file on your device and install it using any file explorer. 
 
 <a name="FAQ22"></a>
 ##### (22) How to install AFWall+ as system app (**only for test reasons!**)
@@ -230,7 +230,7 @@ Or
     adb remount
     adb push afwall+.apk /system/app (or /system/priv-app/ Android 4.3 or higher)
 
-> You may an also move the .APK file to the _/system/app_ directory manually. Make sure you set the file permission properly _-rw-r--r--_. To uninstall, please remove afwall+.apk from _/system/app_ manually.
+> You may also move the .APK file to the _/system/app_ directory manually. Make sure you set the file permission properly _-rw-r--r--_. To uninstall, please remove afwall+.apk from _/system/app_ manually.
 
 <a name="FAQ23"></a>
 ##### (23) Which permissions are used?
@@ -278,7 +278,7 @@ Or within AFWall+ itself, via the available widget(s).
 <a name="FAQ26"></a>
 ##### (26) Does AFWall+ needs a lot of battery/memory?
 
-> Not really. Usually around _11 - 16 MB_ (non shared memory), dependent which configuration you use. It also not use a lot of CPU cycles (which are really an indicator for wasting battery energy).
+> Not really. Usually around _11 - 16 MB_ (non shared memory), dependent which configuration you use. It also does not use many CPU cycles (which is a good an indicator that it does not waste battery energy).
 
 <a name="FAQ27"></a>
 ##### (27) How safe is AFWall+?
@@ -286,19 +286,19 @@ Or within AFWall+ itself, via the available widget(s).
 > Nothing is really secure, see the [limitations](https://github.com/ukanth/afwall#limitations) in the README.md for more details, but it's better to install a Firewall and control the incoming/outgoing packages than have nothing installed. If the app may crash sometimes than feel free to submit a error log report via eMail or here on our GitHub Issue tracker, we are always motivated to fix problems and answer your questions as soon as possible.
 
 <a name="FAQ28"></a>
-##### (28) How can I make a logcat to indicate which case the crash?
+##### (28) How can I make a logcat to indicate what caused the crash?
 
 > Please take a deeper look at our [[Howto report a bug|HOWTO Report Bug]] + [HOWTO debugging](https://github.com/ukanth/afwall/wiki/HOWTO-debugging) articles for additional help. 
 
 <a name="FAQ29"></a>
 ##### (29) Will there be an iOS or Windows version?
 
-> No, because it's too difficult to implement something like AFWall+ on mentioned systems, because they are not open source and/or not supporting netfilters.
+> No, because it's too difficult to implement something like AFWall+ on those systems since they are not open source and/or do not support netfilters.
 
 <a name="FAQ30"></a>
 ##### (30) Does AFWall+ work with SELinux (aka Fort Knox)?
 
-> It should be without any bigger problem. For more info please look [here](http://www.selinuxproject.org/page/Main_Page) and [here](https://danwalsh.livejournal.com/28545.html).
+> It should work without any big problem. For more info please look [here](http://www.selinuxproject.org/page/Main_Page) and [here](https://danwalsh.livejournal.com/28545.html).
 
 > To toggle between enforcing and permissive mode just use adb
 ```
@@ -325,17 +325,17 @@ emulator -selinux permissive
 Administration API. This ensures that other applications cannot uninstall AFWall+ without your knowledge. Device implementations must provide an implementation of the _DevicePolicyManager_ class. Device implementations that include support for lock screen must support the full range of device administration policies defined in the Android SDK documentation and report the platform feature _android.software.device_admin_.
 
 <a name="FAQ34"></a>
-##### (34) Why the Kernel need an internet connection all the time? AFWall+ shows AppID (-11) blocked.
+##### (34) Why does the Kernel need an internet connection all the time? AFWall+ shows AppID (-11) blocked.
 
 > The kernel does not communicate directly, it only pass packet information (for the interfaces e.g. uid0) from some applications.
 One problem with using policy routing based on fwmark with locally generated traffic (as is the case with Android) is that the mark must be set in the user process. It is because the routing decision is made before the fwmark can be set in any iptables rule, at least in vanilla kernels.
 
-> Since Android 4.3 and higher all DNS-requests are manged by the netd daemon, it works similar like an proxy/tunnel. That means AFWall+ can't detect the special UID's/DNS-requests. To disable such behavior you can use the _DNS-Proxy_ option under _Preferences_. Choose _Disable DNS via netd_ to restore the default behavior before 4.3. Now you should make sure that your apps are whitelisted, if not it will be blocked, same with your (Root) application, if not Android is maybe not able to establish a connection. Dnsproxy2, is an alternative app to redirect DNS-requests. But if there are troubles with your connection, check your logs, use Netzwerk Log app (identify all traffic), whitelist the specific app(s) that is maybe blocked or enable the netd daemon again. 
+> Since Android 4.3 and higher all DNS requests are manged by the netd daemon, it works similar like an proxy/tunnel. That means AFWall+ can't detect the special UID's / DNS requests. To disable such behavior you can use the _DNS-Proxy_ option under _Preferences_. Choose _Disable DNS via netd_ to restore the default behavior before 4.3. Now you should make sure that your apps are whitelisted, if not it will be blocked, same with your (Root) application, if not Android is maybe not able to establish a connection. Dnsproxy2, is an alternative app to redirect DNS requests. But if there are troubles with your connection, check your logs, use Netzwerk Log app (identify all traffic), whitelist the specific app(s) that is maybe blocked or enable the netd daemon again. 
 
 <a name="FAQ35"></a>
-##### (35) Why was my issue closed?
+##### (35) Why was my issue closed on GitHub?
 
-> Things like ***It doesn't work* or *it crashes* is insufficient**. So, please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help you. 
+> Things like ***It doesn't work* or *it crashes* are insufficient**. Please describe the exact steps to reproduce the problem and always provide a logcat. More info always means that we can better help you. 
 
 > It's also possible your issue is a duplicate, or is already fixed. Please watch the [Changelog.md](https://github.com/ukanth/afwall/blob/beta/Changelog.md) and [TODO.md](https://github.com/ukanth/afwall/blob/beta/TODO.md) files carefully.
 
@@ -347,19 +347,19 @@ One problem with using policy routing based on fwmark with locally generated tra
 <a name="FAQ37"></a>
 ##### (37) Can I use XPrivacy, Lightning Wall, or any other Firewalls/Security apps together with AFWall+?
 
->* XPrivacy: should work fine, if you not restrict any AFWall+ or System related important features like 'IPC' or internet access. Be careful, if there is any problem you can watch what is blocked under the watch list in XPrivacy and try to remove it. 
-* Lightning Wall: works fine together with AFWall+, because it does not interact with the existent IPTables (leave IPTables unchecked).
+>* XPrivacy: Will work fine with AFWall+ as long as you do not restrict any AFWall+ in any way that will prevent it from working (do not block its internet access or system-related functions like 'IPC'). If there is any problem you can watch what is blocked under the *Data Usage* section in XPrivacy and try to remove it. 
+* Lightning Wall: Works fine together with AFWall+, because it does not interact with IPTables (leave IPTables unchecked).
 * Avast: please disable this firewall if it's turned on (unchecked by default).
 * Android Tuner: Same as Avast, but the Firewall is disabled by default.
 * DonkeyGuard: It can't control IPTables, but Android's permission, so generally it work but don't restrict some important functions like _write_external_storage_, or AFWall+ log can't be created on your sdcard. 
 * OrWall: OrWall is not compatible with AFWall+. Please disable it and enable the _Transparent Proxy_ option in Orbot.
-* Adblock Plus: Comes with there own IPTables, but it should be no problem to use it together with AFWall+. If something went wrong and you like to report a bug, please disabled it first and try to reproduce the problem, if you manually created/enabled a proxy, shut it down first.
+* Adblock Plus: Comes with their own IPTables, but it should be no problem to use it together with AFWall+. If something went wrong and you like to report a bug, please disabled it first and try to reproduce the problem, if you manually created/enabled a proxy, shut it down first.
 * An overview of similar solutions is available over [here](https://github.com/ukanth/afwall/wiki/Similar-Firewall-solutions).
 
-> Generally it's not necessary to use two firewalls together and it could be problematic if you don't know what you are doing, or did you use two knifes at the same time? :8ball:
+> Generally it is not necessary to use two firewalls together and it could be problematic if you don't know what you are doing.  :8ball:
 
 <a name="FAQ38"></a>
-##### (38) Will you integrate an HOSTS blocking option?
+##### (38) Will you integrate a HOSTS blocking option?
 
 > No (see [#285](https://github.com/ukanth/afwall/issues/285) & [#223] (https://github.com/ukanth/afwall/issues/223)), AFWall+ is a firewall and not a all-in-one solution for all "security" related problems on Android. The goal is to control IPTables with some gimmicks such as custom scripts - which is already implemented.
 A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-down non high-end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like MoaAB or and Xposed module called UnbelovedHosts. For additional question take a look over [here](https://github.com/ukanth/afwall/wiki/Advertisements-blocking).
@@ -367,14 +367,14 @@ A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-
 <a name="FAQ39"></a>
 ##### (39) Can I ask xyz that was not written down over here?
 
-> If you have any question, please leave a message in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
+> If you have any questions, please create a post in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
 
-**If possible please do not ask questions using GitHub issues report!** Because GitHub issues are designed for [bug reports](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug) and feature requests.
+**If possible please do not ask questions using GitHub issues!** GitHub issues are designed for [bug reports](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug) and feature requests.
 
 <a name="FAQ40"></a>
 ##### (40) Is there a BusyBox solution that doesn't need root?
 
-> Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows) but it doesn't provide all extra binaries, the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly from Google Play Store. We not recommend to use it due several problems that package might contains.
+> Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows), but it doesn't provide all extra binaries, the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly from Google Play Store. We not recommend to use it due several problems that package might contains.
 
 <a name="FAQ41"></a>
 ##### (41) What does UID mean?
@@ -415,7 +415,7 @@ The easiest way is to block ads on Android seems to manipulate your DNS/Hosts fi
 <a name="FAQ46"></a>
 ##### (46) Is there a good app to collect basic Network Info?
 
-> AFWall+ already collect some useful infos in the _Firewall Rules_ dialog but if you need a good and free alternative tool to show some more infos use e.g. Network Info II.
+> AFWall+ already collects some useful information in the _Firewall Rules_ dialog but if you need a good and free alternative tool to show some more information use e.g. Network Info II.
 
 <a name="FAQ47"></a>
 ##### (47) The startup-script is still present how can I remove it?
@@ -431,7 +431,7 @@ reboot</pre>
 <a name="FAQ48"></a>
 ##### (48) How can my script survive an Over-the-Air (OTA) Update?
 
-> Just navigate to /system/addon.d/ and copy the 50-cm.sh file. You can rename the copy to whatever you want for example 98-myfiles.sh, now open it and search for the line etc/hosts and add the script you want to protect in our case we want to protect the afwallstart script (present if you use the experimental fix data leak option in AFWall+):
+> Just navigate to /system/addon.d/ and copy the `50-cm.sh` file. You can rename the copy to whatever you want for example 98-myfiles.sh, now open it and search for the line etc/hosts and add the script you want to protect in our case we want to protect the afwallstart script (present if you use the experimental fix data leak option in AFWall+):
 
 ```
 ...
@@ -521,7 +521,7 @@ mount -o remount,ro /system
 <a name="FAQ52"></a>
 ##### (52) I use Opera Max as Browser with "Turbo Mode" enabled, why does adblocking/firewalls seems to not working anymore?
 
-> For debugging and error reporting just disable the "Turbo Mode" option, this is mostly only another term for VPN/Proxy which works behind this option. No Firewall, IPTables, Proxy or any external app works with this option enabled, since it's not possible to use two VPNs the same time (ie local/inet). It's not possible for any app to look behind this traffic (local). Other Browser may have a similar function or add-ons (like Firefox Janus-Proxy or Chrome's bandwidth safer feature), ensure it's disabled.
+> For debugging and error reporting just disable the "Turbo Mode" option, this is mostly only another term for VPN/Proxy which works behind this option. No Firewall, IPTables, Proxy or any external app works with this option enabled, since it's not possible to use two VPNs the same time (i.e. local/inet). It's not possible for any app to look behind this traffic (local). Other Browser may have a similar function or add-ons (like Firefox Janus-Proxy or Chrome's bandwidth safer feature), ensure it's disabled.
 
 <a name="FAQ53"></a>
 ##### (53) Since AFWall+ 2.x I don't see any reload applications button
@@ -546,7 +546,7 @@ mount -o remount,ro /system
 <a name="FAQ57"></a>
 ##### (57) I use Android 5/6 and 'Privacy Guard' shows me SMS and other permissions, why AFWall+ requests for it?
 
-> Privacy Guard isn't enabled by default and claims to 'secure' the OS a little bit more, in fact for beginners it can be a bit confusing if you enabled it, because the information which permission the app uses (in our case AFWall+) are 'wrong', means it shows common dangerous permissions that can/could compromise your security (like writtin/sending sms, share/access your location and other things). If the app isn't explicit designed to fit with privacy guard rules you possible see the mentioned 'wrong' permissions. In fact AFWall+ never ever requests for any of them, if you used any version which isn't original and you see that SMS will be send or something like that, this mostly means you use an infected/faked app!
+> Privacy Guard isn't enabled by default and claims to 'secure' the OS a little bit more, in fact for beginners it can be a bit confusing if you enabled it, because the information which permission the app uses (in our case AFWall+) are 'wrong', means it shows common dangerous permissions that can/could compromise your security (like composing/sending SMS, share/access your location and other things). If the app isn't explicit designed to fit with privacy guard rules you possible see the mentioned 'wrong' permissions. In fact AFWall+ never ever requests for any of them, if you used any version which isn't original and you see that SMS will be send or something like that, this mostly means you use an infected/faked app!
 
 <a name="FAQ58"></a>
 ##### (58) What do I need to get Google Play Store to work?
@@ -554,11 +554,11 @@ mount -o remount,ro /system
 > You need to whitelist the following com.google.android.gms (Google Play Services for authorization) + com.android.providers.downloads (For Downloads) + com.android.vending (this is the Play Store).
 
 <a name="FAQ59"></a>
-##### (59) After using AFWall+ I constantly see a '#' symbol in my statusbar, how can I remove this?
+##### (59) After using AFWall+ I constantly see a '#' symbol in my notification bar, how can I remove this?
 
-> This starts with CM/12/13/Android 5.1.1/6 which original was designed to add an indicator for applications which requiring root permission so this is not only AFWall+ related. You have three options: ignore the symbol, install chainfires SuperSU or install Xposed with an module to hide this icon. Please also read [this](http://www.androidexplained.com/cm12-remove-pound-symbol-status-bar/) and [this](https://github.com/ukanth/afwall/issues/480).
+> This starts with CM/12/13/Android 5.1.1/6 which original was designed to add an indicator for applications which requiring root permission so this is not only AFWall+ related. You have three options: ignore the symbol, install chainfire's SuperSU or install Xposed with an module to hide this icon. Please also read [this](http://www.androidexplained.com/cm12-remove-pound-symbol-status-bar/) and [this](https://github.com/ukanth/afwall/issues/480).
 
 <a name="FAQ60"></a>
 ##### (60) I want use AFWall+/NetGuard with AdGuard together how can I do this?
 
-> AdGuard uses the Android VPN API which means the same API is required as for NetGuard, Android doesn't allow two VPN's together at the same time, so you need to set the http-proxy in AdGuard. On AFWall+ you only need to disable AdGuard's integrated firewall. Optional you can add exclusion in the low level setting to exclude dev.ukanth.ufirewall and eu.faircode.netguard so that the apps aren't filtered by ADGuard (not necessary but can possible avoid some problems), since both AFWall+ and NetGuard not integrating Ads I recommend to add this. 
+> AdGuard uses the Android VPN API which means the same API is required as for NetGuard, Android doesn't allow two VPN's together at the same time, so you need to set the http-proxy in AdGuard. On AFWall+ you only need to disable AdGuard's integrated firewall. Optionally, you can add exclusion in the low level setting to exclude dev.ukanth.ufirewall and eu.faircode.netguard so that the apps aren't filtered by ADGuard (not necessary but can possible avoid some problems), since both AFWall+ and NetGuard not integrating Ads I recommend to add this. 
