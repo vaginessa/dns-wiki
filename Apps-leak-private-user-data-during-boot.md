@@ -66,8 +66,8 @@ For the second workaround, you need [[init.d]] support. Ask your ROM/Kernel Deve
 
 **Warning**
 
-Please do not post this <code>bugreport such 'Fix Startup Data Leak' doesn't work</code> on GitHub, as we know about it and it has already been mentioned many times ([#7](https://github.com/ukanth/afwall/issues/7), [#91](https://github.com/ukanth/afwall/issues/91), [#172](https://github.com/ukanth/afwall/issues/172), [#235] (https://github.com/ukanth/afwall/issues/235) - and in the original Droidwall issue tracker).
-Once there is a final solution we will write it here, not as a workaround but as a solution.
+Please do not post a bug report such as *Fix Startup Data Leak doesn't work* on GitHub, as we know about it and it has been mentioned many times ([#7](https://github.com/ukanth/afwall/issues/7), [#91](https://github.com/ukanth/afwall/issues/91), [#172](https://github.com/ukanth/afwall/issues/172), [#235] (https://github.com/ukanth/afwall/issues/235) - and in the original Droidwall issue tracker).
+Once there is a final solution we will post it here, not as a workaround, but as a solution.
 
 
 
@@ -89,8 +89,8 @@ Method 5: **Xposed based**
 Similar to the XPrivacy Xposed app, the Xposed framework allows apps to manipulate at the OS level. This means Xposed will start directly right at the boot and before any app will be started; in this case no traffic will bypass the OS. An example app is LightningWall which use such a method.
 
 
-IPtables specific problem
------------------------------
+IPtables Specific Problem
+-------------------------
 
 * You should avoid complex scripts especially if you do not know what you're doing. Such complex scripts often result in security complications.
 * IPtables can suffer from a possible _Race Conditions_ exception. On each IPtables request, the host must switch between the user application layer (the one apps running from) and the kernel layer, that usually coasts time and can end up with the mentioned problem.
