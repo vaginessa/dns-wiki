@@ -44,56 +44,56 @@ You can list <code>/proc/uid_stat/</code> dir right now to see which UIDs have b
 Workarounds
 ----------------------
 
-**Maybe not working on all devices/ROM's!**
+**May not work on all devices/ROM's**
 
-Method 1: **Disable Data Connection on Android Core**
+Method 1: **Disable Data Connection of Android Core**
 - Open the 'Dialer'
 - Dial _'*#*#4636#*#*'_ or _'*#*#6436#*#*'_ (also take a look at the [[Phone codes secrets]] article)
 - Tap _'Phone Information'_
 - Press Menu button
 - Tap on _'More'_
 - Tap _'Disable data connection'_, or _'disable data on boot'_. 
-- Once the boot are complete you an re-enable the data connection.
+- Once the boot has completed you can re-enable the data connection.
 
 
 
 Method 2: **Disable Data Connection through AFWall+**
 
-For the second workaround you need [[init.d]] support. Ask you ROM/Kernel Developer or check the README.md if you have init.d support or not. Do **NOT** ask on this Github repository!
+For the second workaround, you need [[init.d]] support. Ask your ROM/Kernel Developer or check the README.md if you have init.d support or not. Please do **NOT** ask on this GitHub repository!
 - Open AFWall+ Settings
 - Scroll down until you see _'Experimental Preferences'_
 - Enable _'Fix Startup Data Leak'_
 
 **Warning**
 
-Please do not post this <code>bugreport such 'Fix Startup Data Leak' doesn't work</code> anymore here on Github, we know about it and it was already mentioned many many times ([#7](https://github.com/ukanth/afwall/issues/7), [#91](https://github.com/ukanth/afwall/issues/91), [#172](https://github.com/ukanth/afwall/issues/172), [#235] (https://github.com/ukanth/afwall/issues/235) - and in the original Droidwall issue tracker).
-It's pretty annoying and frustrating to see this again and again with every new Android OS version or new devices. Once there will be a final solution we will write it here not as workaround but as final solution.
+Please do not post this <code>bugreport such 'Fix Startup Data Leak' doesn't work</code> on GitHub, as we know about it and it has already been mentioned many times ([#7](https://github.com/ukanth/afwall/issues/7), [#91](https://github.com/ukanth/afwall/issues/91), [#172](https://github.com/ukanth/afwall/issues/172), [#235] (https://github.com/ukanth/afwall/issues/235) - and in the original Droidwall issue tracker).
+Once there is a final solution we will write it here, not as a workaround but as a solution.
 
 
 
 Method 3: **APNDroid to Turn Off Data Connection**
 
-[APNDroid](https://play.google.com/store/apps/developer?id=Apndroid+Inloop) prevents the phone from connecting to Internet through cellular data line by modifying the APN (Access Point Name) names and APN types by adding ‘apndroid’ suffix to them. There is also a script based Locale plug-in for free. 
+[APNDroid](https://play.google.com/store/apps/developer?id=Apndroid+Inloop) prevents the phone from connecting to the Internet through cellular data line by modifying the APN (Access Point Name) names and APN types by adding `apndroid` suffix to them. There is also a script-based Locale plug-in for free. 
 
 
 
 Method 4: **XPrivacy**
 
-There are a lot of difficult patches/apps like Openpdroid, Pdroid 2.0 or PDroid, XPrivacy which allow to prevent applications from leaking privacy sensitive data but this patches need to be integrate into the ROM (except XPrivacy which needs XPosed) you are using. It's possible to complicated for some users and may not work with all Apps without an FC (force close).
-[XPrivacy](https://github.com/M66B/XPrivacy#installation) is the only solution that works an almost every device/OS without patching everything (needs only the Xposed framework to be installed) after you upgrade your ROM like from CM 11 to 12 and do almost the same as PDroid.
+There are many different patches/apps like Openpdroid, Pdroid 2.0 or PDroid, and XPrivacy which prevent applications from leaking privacy sensitive data, but these patches need to be integrated into the ROM (except XPrivacy which needs the Xposed framework). Some of the patches/apps may not work with all apps without causing FC (Force Close) errors.
+[XPrivacy](https://github.com/M66B/XPrivacy#installation) is the only solution that works on almost every device/OS without patching everything (needs only the Xposed framework to be installed).
 
 
 
 Method 5: **Xposed based**
 
-Similar to the Xprivacy xposed depended app the Xposed framework allows to manipulate the OS level. This means Xposed will start directly right on the boot and before any app will be started - in this case no traffic will bypass the OS. An example app is LightningWall which use such a hack. Compared to XPrivacy is use a finer app configuration system to change stuff as per-app and connection basics, XPrivacy is more 'eat or die'. 
+Similar to the XPrivacy Xposed app, the Xposed framework allows apps to manipulate at the OS level. This means Xposed will start directly right at the boot and before any app will be started; in this case no traffic will bypass the OS. An example app is LightningWall which use such a method.
 
 
 IPtables specific problem
 -----------------------------
 
-* You should avoid complex scripts especially if you not know what you're doing. Such complex scripts are often lead in security complications.
-* IPTables suffering possible from an _Race Conditions_ exception. On each IPtables request, the host must switch between the user application layer (the one apps running from) and the kernel layer, that usually coasts time and can end up with the mentioned problem.
+* You should avoid complex scripts especially if you do not know what you're doing. Such complex scripts often result in security complications.
+* IPtables can suffer from a possible _Race Conditions_ exception. On each IPtables request, the host must switch between the user application layer (the one apps running from) and the kernel layer, that usually coasts time and can end up with the mentioned problem.
 
 An Race Condition example could be that the firewall rules aren't loaded completely/success, while the Kernel is already working on the network traffic (Output-Chain rules missing at this time) - This is an hole and answers the questions why there is still network traffic right after switch to the new rules. Closing this hole isn't possible, since iptables can't use the same ruleset for everything, only nftables not suffering from this. 
 
