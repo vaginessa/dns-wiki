@@ -119,4 +119,4 @@ Useful links
 * [iptables4n1 workaround for Android Froyo (Nexus One) | Google Code](http://code.google.com/p/iptables4n1/)
 * [Possible userinit.sh & Orbot leak fix](https://github.com/ukanth/afwall/wiki/CustomScripts#some-examples)
 
-_ Final version 09.25.2015_
+_ Updated 09.17.2016 _
