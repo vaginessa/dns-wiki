@@ -7,7 +7,7 @@ Index
 Description
 -----------
 
-This page explains details about some error codes that AFWall+ may gave you during the normal or custom script usage. 
+This page explains details about some error codes that AFWall+ may give you during standard or custom script usage. 
 
 Error Codes
 -----------
