@@ -17,7 +17,7 @@ Quick Guide
 1. Click on _Mode_ to switch between whitelist- (default enabled) and blacklist-mode.
 2. Mark the applications that you want to block or allow (depending on the selected mode), for each interface.
 3. Open the menu and enable the firewall (green shield means enabled). If AFWall+ is already enabled, just select _Apply_ and it will submit your changes.
-4. The rules will be saved and automatically and restored when you restart your phone. If not check the "data leak" option.
+4. The rules will be saved and automatically and restored when you restart your device. If not check the "data leak" option.
 5. If you want to check all current IPTables rules, select _Firewall Rules_ in the menu.
 
 <ins>Widget(s)</ins>
@@ -45,7 +45,7 @@ Frequently asked questions
 > Please take a look [[here|IPtables]] for a detailed overview.
 
 <a name="FAQ2"></a>
-##### (2) How do I know if my phone supports IPTables?
+##### (2) How do I know if my device supports IPTables?
 
 > Use the following command in ADB shell or in Terminal Emulator as root (`su`):
 
@@ -365,28 +365,28 @@ One problem with using policy routing based on fwmark with locally generated tra
 A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-down non high-end smartphones, block some ads which some developer need to get money and can block some sites you may need. There are also other solutions to handle it, like MoaAB or and Xposed module called UnbelovedHosts. For additional question take a look over [here](https://github.com/ukanth/afwall/wiki/Advertisements-blocking).
 
 <a name="FAQ39"></a>
-##### (39) Can I ask xyz that was not written down over here?
+##### (39) Can I ask about *xyz* that was not explained here?
 
 > If you have any questions, please create a post in the [XDA AFWall+ forum thread](http://forum.xda-developers.com/showthread.php?t=1957231).
 
 **If possible please do not ask questions using GitHub issues!** GitHub issues are designed for [bug reports](https://github.com/ukanth/afwall/wiki/HOWTO-Report-Bug) and feature requests.
 
 <a name="FAQ40"></a>
-##### (40) Is there a BusyBox solution that doesn't need root?
+##### (40) Is there a BusyBox solution that does not need root?
 
 > Yes, there is a solution coded by [Jared Burrows](https://plus.google.com/+JaredBurrows), but it doesn't provide all extra binaries, the most common used are included in this package. Visit [this page](http://www.burrowsapps.com/) for more information, or get it directly from Google Play Store. We not recommend to use it due several problems that package might contains.
 
 <a name="FAQ41"></a>
 ##### (41) What does UID mean?
 
-> The Android OS is based on Linux, so basically it's the same UID you have in a Unix-like OS. When installing an app/package, Android by default creates a [UID](http://developer.android.com/reference/android/os/Process.html#myUid%28%29) specifically for that package, so that it can have its private resources/storage space. When no packages are using anymore that UID (which could be shared), the UID is deleted.
+> The Android OS is based on Linux, so basically it is the same UID you have in a Unix-like OS. When installing an app/package, Android by default creates a [UID](http://developer.android.com/reference/android/os/Process.html#myUid%28%29) specifically for that package, so that it can have its private resources/storage space. When no packages are using anymore that UID (which could be shared), the UID is deleted.
 
 > We can override this behavior with [android:sharedUserId](http://developer.android.com/guide/topics/manifest/manifest-element.html#uid), but it has some [drawbacks](http://stackoverflow.com/questions/5529846/androidprocess-and-process-name/5530160#5530160).
 
 <a name="FAQ42"></a>
 ##### (42) How to change the DNS settings under Android? (optional, normally not necessary)
 
-> Please read [this](https://github.com/ukanth/afwall/wiki/DNS) article to answer most DNS related questions. By default [Googles DNS server](https://developers.google.com/speed/public-dns/) will be used.
+> Please read [this](https://github.com/ukanth/afwall/wiki/DNS) article to answer most DNS related questions. By default [the Google DNS servers](https://developers.google.com/speed/public-dns/) will be used.
 
 <a name="FAQ43"></a>
 ##### (43) Will there a "Connection confirm dialog" (on-demand) feature implemented soon?
@@ -398,17 +398,17 @@ A big [hosts](http://en.wikipedia.org/wiki/Hosts_%28file%29) file can also slow-
 
 > First of all, AFWall+ is not an Ad-blocker! It's a firewall, which is not able (and never will be) to block all your visible ads and there are some good reason. Some app developer make money with in-app advertising (ie AdMob) and if we block this, no one is motivated to make some awesome apps anymore. If you really want to block such ads, you still can use MinMinGuard, but it's [general a bad idea to block all things](http://forum.xda-developers.com/showpost.php?p=49112940&postcount=1). For a quick overview over ad blocking please take a look at the [Wikipedia article](http://en.wikipedia.org/wiki/Ad_filtering).
 
-> So I blocked my ads with ad server hostnames and IP addresses, why they are still visible?
+> I blocked ads with ad server hostnames and IP addresses.  Why they are still visible?
 
 > There are [some limitations](https://adblockplus.org/en/android-config#proxy) e.g. Adblock Plus for Android does not allow ads to be blocked on https/SSL encrypted websites [due Android limitations], some ad-servers use a proxy behind it, and it's generally hard to filter JavaScript generated content, currently there is no element hiding addon for Android. 
-The easiest way is to block ads on Android seems to manipulate your DNS/Hosts file, for this you can use [this](http://hosts-file.net/?s=Download) or [this](forum.xda-developers.com/showthread.php?t=1916098&page=201) Hosts file which getting regular updates. There are [some alternative ways](https://sfxpt.wordpress.com/2011/02/21/the-best-ad-blocking-method/), but on newer Android systems they not seems to work anymore due some internal changes. 
+The easiest way is to block ads on Android is to manipulate your DNS/Hosts file, for this you can use [this](http://hosts-file.net/?s=Download) or [this](forum.xda-developers.com/showthread.php?t=1916098&page=201) Hosts file which getting regular updates. There are [some alternative ways](https://sfxpt.wordpress.com/2011/02/21/the-best-ad-blocking-method/), but on newer Android systems they not seems to work anymore due some internal changes. 
 
 > And why was Adblock Plus removed from Google Play Store?
 
 > Read the full story [here](https://adblockplus.org/blog/adblock-plus-for-android-removed-from-google-play-store).
 
 <a name="FAQ45"></a>
-##### (45) I don't have the IPTables binary on my phone, what can I do?
+##### (45) I don't have the IPTables binary on my device, what can I do?
 
 > If you have netfilter enabled in your kernel and not have the IPTables binary you can use the AFWall+ in-build IPTables (make sure you enabled it in the options).
 
@@ -420,7 +420,7 @@ The easiest way is to block ads on Android seems to manipulate your DNS/Hosts fi
 <a name="FAQ47"></a>
 ##### (47) The startup-script is still present how can I remove it?
 
-> In the normal case AFWall+ should automatically check/detect if you have the _afwallstart_ script in the init.d dir. A simply press on the _Fix Startup Data Leak_ should remove/re-enable it again but in very rare situation maybe the system needs to be remounted again. In this case you can remove the script with your favorite file explorer app under <code>/system/etc/init.d/afwallstart</code> or via ADB/Terminal.
+> In the normal case, AFWall+ should automatically check/detect if you have the _afwallstart_ script in the init.d dir. A simply press of _Fix Startup Data Leak_ should remove/re-enable it again, but in a rare situation the system needs to be remounted again. In this case, you can remove the script with your favorite file explorer app under <code>/system/etc/init.d/afwallstart</code> or via ADB/Terminal.
 <pre>
 su
 mount -o remount,rw /system
@@ -478,7 +478,7 @@ esac
 > The last step is to save the file and set the correct permission. (root:root -rwxr-xr-x bzw. 755) 
 
 <a name="FAQ49"></a>
-##### (49) How can my script survive an system wipe?
+##### (49) How can my script survive a system wipe?
 
 > This is a little bit harder but not impossible. It's almost the same procedure as mentioned in FAQ48 except the dir you need to place the file in; /data/local/userinit.d/ (if not present just create it - root:root -rwxr-xr-x bzw. 755) Now place your script in there. To restore other script just put it under /data/local/. 
 
@@ -509,17 +509,17 @@ mount -o remount,ro /system
 ````
 
 <a name="FAQ50"></a>
-##### (50) Where are they AFWall's settings stored?
+##### (50) Where are AFWall's settings stored?
 
 > Exported content like profiles are stored under your internal sdcard /sdcard0/afwall all other stuff is stored under /data/data/dec.ukanth.ufirewall/. 
 
 <a name="FAQ51"></a>
 ##### (51) I get "Unable to parse package." if I try to install AFWall+, what can I do?
 
-> This means AFWalls's .apk file seems to be corrupt. Try disabling your popup-/ad-blocker, re-check your internet connection and re-download the entire apk.
+> This means AFWall's .apk file seems to be corrupt. Try disabling your popup-/ad-blocker, re-check your internet connection and re-download the apk.
 
 <a name="FAQ52"></a>
-##### (52) I use Opera Max as Browser with "Turbo Mode" enabled, why does adblocking/firewalls seems to not working anymore?
+##### (52) I use Opera Max as my browser with "Turbo Mode" enabled.  Why does adblocking/firewalls seem to not work anymore?
 
 > For debugging and error reporting just disable the "Turbo Mode" option, this is mostly only another term for VPN/Proxy which works behind this option. No Firewall, IPTables, Proxy or any external app works with this option enabled, since it's not possible to use two VPNs the same time (i.e. local/inet). It's not possible for any app to look behind this traffic (local). Other Browser may have a similar function or add-ons (like Firefox Janus-Proxy or Chrome's bandwidth safer feature), ensure it's disabled.
 
@@ -531,7 +531,7 @@ mount -o remount,ro /system
 <a name="FAQ54"></a>
 ##### (54) How can I sort the application(s) view in the main screen?
 
-> Under 'Preferences -> Experimental Preferences' is a new option called 'Sort Application' that allows to sort your apps via 'Name (default enabled)', by 'Install/Upgrade time' or by the app UID.
+> Under 'Preferences -> Experimental Preferences' there is the *Sort Application* option that allows you to sort your apps via 'Name (default enabled)', by 'Install/Upgrade time' or by the app's UID.
 
 <a name="FAQ55"></a>
 ##### (55) What's the difference between installing AFWall+ and AFWall+ Key and installing AFWall+ Donate?
@@ -541,24 +541,24 @@ mount -o remount,ro /system
 <a name="FAQ56"></a>
 ##### (56) Will AFWall+ work together with Android M 'verify boot' protection enabled?
 
-> This must be disabled since it will break SU, it checks every start if the firmware was manipulated (STOCK). An solution would be to disable it within the ROM or switch to another ROM like CM which will get an option to take control over it. See also, chainfire's statement [about the future of SU](https://plus.google.com/+Chainfire/posts/XJYJFPtS9Qb).
+> This must be disabled since it will break *SU*, it checks every start if the firmware was manipulated (STOCK). An solution would be to disable it within the ROM or switch to another ROM like CM which will get an option to take control over it. See also, Chainfire's statement [about the future of SU](https://plus.google.com/+Chainfire/posts/XJYJFPtS9Qb).
 
 <a name="FAQ57"></a>
 ##### (57) I use Android 5/6 and 'Privacy Guard' shows me SMS and other permissions, why AFWall+ requests for it?
 
-> Privacy Guard isn't enabled by default and claims to 'secure' the OS a little bit more, in fact for beginners it can be a bit confusing if you enabled it, because the information which permission the app uses (in our case AFWall+) are 'wrong', means it shows common dangerous permissions that can/could compromise your security (like composing/sending SMS, share/access your location and other things). If the app isn't explicit designed to fit with privacy guard rules you possible see the mentioned 'wrong' permissions. In fact AFWall+ never ever requests for any of them, if you used any version which isn't original and you see that SMS will be send or something like that, this mostly means you use an infected/faked app!
+> Privacy Guard isn't enabled by default and claims to 'secure' the OS a little bit more, in fact for beginners it can be a bit confusing if you enabled it, because the information which permission the app uses (in our case AFWall+) are 'wrong', means it shows common dangerous permissions that can/could compromise your security (like composing/sending SMS, share/access your location and other things). If the app is not explicitly designed to fit with privacy guard rules you possibly will see the mentioned 'wrong' permissions. In fact, AFWall+ never ever requests for any of them, if you used any version which isn't original and you see that SMS will be send or something like that, this mostly means you use an infected/faked app!
 
 <a name="FAQ58"></a>
-##### (58) What do I need to get Google Play Store to work?
+##### (58) What do I need to do to get Google Play Store to work?
 
-> You need to whitelist the following com.google.android.gms (Google Play Services for authorization) + com.android.providers.downloads (For Downloads) + com.android.vending (this is the Play Store).
+> You need to whitelist the following: com.google.android.gms (Google Play Services for authorization) + com.android.providers.downloads (For Downloads) + com.android.vending (this is the Play Store).
 
 <a name="FAQ59"></a>
-##### (59) After using AFWall+ I constantly see a '#' symbol in my notification bar, how can I remove this?
+##### (59) After using AFWall+ I constantly see a '#' symbol in the notification bar, how can I remove this?
 
 > This starts with CM/12/13/Android 5.1.1/6 which original was designed to add an indicator for applications which requiring root permission so this is not only AFWall+ related. You have three options: ignore the symbol, install chainfire's SuperSU or install Xposed with an module to hide this icon. Please also read [this](http://www.androidexplained.com/cm12-remove-pound-symbol-status-bar/) and [this](https://github.com/ukanth/afwall/issues/480).
 
 <a name="FAQ60"></a>
 ##### (60) I want use AFWall+/NetGuard with AdGuard together how can I do this?
 
-> AdGuard uses the Android VPN API which means the same API is required as for NetGuard, Android doesn't allow two VPN's together at the same time, so you need to set the http-proxy in AdGuard. On AFWall+ you only need to disable AdGuard's integrated firewall. Optionally, you can add exclusion in the low level setting to exclude dev.ukanth.ufirewall and eu.faircode.netguard so that the apps aren't filtered by ADGuard (not necessary but can possible avoid some problems), since both AFWall+ and NetGuard not integrating Ads I recommend to add this. 
+> AdGuard uses the Android VPN API which is the same API required for NetGuard. Android does not allow two VPN's to be used together at the same time, so you need to set the http-proxy in AdGuard. On AFWall+ you only need to disable AdGuard's integrated firewall. Optionally, you can add exclusions in the low level setting to exclude dev.ukanth.ufirewall and eu.faircode.netguard so that the apps aren't filtered by AdGuard (not necessary, but can possibly avoid some problems), since both AFWall+ and NetGuard are not integrating ads, it is recommended to add this. 
