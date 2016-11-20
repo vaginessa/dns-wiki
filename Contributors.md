@@ -6,7 +6,7 @@ Special thanks goes to our top contributors, developers and donators which helpe
 | <s>Kevin Cernekee</s> |  | | <s>cernekee [at] gmail.com</s> |
 | | <s>CHEF-KOCH</s> |  | <s>CHEF-KOCH [at] protonmail.com</s> |
 | | PdtS (Icons) | | [Website](http://pdts.net/) |
-| | Hush66 (Icons) | | [Devianart](http://www.hush66.devianart.com/) |
+| | Hush66 (Icons) | | [Devianart](http://hush66.deviantart.com/) |
 | | shenm233 (Icons) | | some taken from [MaterialDesignIcons](https://materialdesignicons.com) |
 | | | tianchaoren | Crowdin |
 | | | wuwufei | Crowdin |
