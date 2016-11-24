@@ -91,7 +91,7 @@ Want compile AFWall+ yourself?
 
 Some useful tricks:
 * [[WhatsApp blocking|HOWTO blocking WhatsApp]]
-* [[Orwall and AFWall+|HOWTO OrWall together with AFWall+]]
+* [[Orwall and AFWall+|HOWTO-OrWall-together-with-AFWall]]
 * [[Advertisements blocking]]
 
 
