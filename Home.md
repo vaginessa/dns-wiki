@@ -86,7 +86,7 @@ Found a bug?
 Want compile AFWall+ yourself?
 * [[All you need to know about compiling AFWall+|HOWTO Compile AFWall]]
 * [[All you need to know about compiling busybox|HOWTO Compiling busybox]]
-* [[All you need to know about compiling iptables|HOWTO Compiling iptable]]
+* [[All you need to know about compiling iptables|HOWTO-Compiling-iptables]]
 * [[All you need to know about debugging|HOWTO debugging]]
 
 Some useful tricks:
