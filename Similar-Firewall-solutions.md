@@ -4,7 +4,6 @@ Index
 * [Similar Android Firewall solutions](#similar-android-firewall-solutions)
 * [Non-root Firewalls](#non--root-firewalls)
 
-
 Similar Android Firewall solutions
 -----------------
 
@@ -19,72 +18,11 @@ Generally there are seven categories of Android firewalls available:
 * XPosed hacks to intercept directly on the OS layer (e.g. LightningWall). This doesn't need any iptables or additional scripts since the xposed framework provides the _hacking_ ability's. 
 
 
-_<ins>IPTables based:</ins>_
-* _Builtin_ [iptables](http://www.netfilter.org/projects/iptables/) (no GUI, but can be controlled via external scripts any Terminal Emulator app or ADB)
-* [Android Firewall](https://play.google.com/store/apps/details?id=com.jtschohl.androidfirewall) & [Source](https://github.com/skullone/android_firewall) [_removed from Google Play Store!_]
-* [FireWall Plus](https://play.google.com/store/apps/details?id=com.sethcottle.firewallplus) & [Source](https://github.com/Squario/Firewall-Plus) [_removed from Google Play Store!_]
-* [Firewall Gold](https://play.google.com/store/apps/details?id=com.anstudios.androidfirewall)
-* [3C Toolbox aka Android Tuner](https://play.google.com/store/apps/details?id=ccc71.at)
-* ~~[DroidWall](https://play.google.com/store/apps/details?id=com.googlecode.droidwall.free)~~ _deprecated_ 
-* [Avast Mobile Security & Antivirus](https://play.google.com/store/apps/details?id=com.avast.android.mobilesecurity) & [Forum](https://forum.avast.com/index.php?board=37.0)
-* [LBE Privacy Master](https://play.google.com/store/apps/details?id=com.lbe.security.lite)
-* [Advanced Firewall](https://play.google.com/store/apps/details?id=advancedfirewall.educational.ae)
-
-_<ins>NFtables based:</ins>_
-* [nfwall](https://github.com/CHEF-KOCH/nfwall) (POC, will be uploaded if nftables hidds a stable stage)
-
-_Anti IMSI-Catcher (protects against IMSI/StingRay-Catchers and Silent/Stealth SMS):_
-* [Android IMSI-Catcher Detector (AIMSICD)](https://secupwn.github.io/Android-IMSI-Catcher-Detector/) & Source (same link) + [stingraymappingproject.org](http://stingraymappingproject.org) (site to show which information are collected by AIMSICD)
-* [SnoopSnitch](https://play.google.com/store/apps/details?id=de.srlabs.snoopsnitch) + [F-Droid](https://f-droid.org/repository/browse/?fdid=de.srlabs.snoopsnitch) + [GSMMap Global Database](http://gsmmap.org/)
-* [Darshak](https://play.google.com/store/apps/details?id=com.darshak) & [Source](https://github.com/darshakframework/darshak)
-
-_<ins>Bluetooth Firewall:</ins>_
-* [Bluetooth Firewall](https://play.google.com/store/apps/details?id=com.fruitmobile.android.bluetooth.firewall)
-
-_<ins>Browser based Firewall (takes control over JavaScript,...):</ins>_
-* [Firefox NSA NoScript Anywhere](https://noscript.net/nsa/#download)
-
-_<ins>VPN/Proxy based:</ins>_
-* [LostNet Firewall](https://play.google.com/store/apps/details?id=com.lostnet.fw.pro)
-* [Grey Shirts NoRoot Firewall](https://play.google.com/store/apps/details?id=app.greyshirts.firewall)
-* Dr. Web AntiVirus + Firewall
-* Kaspersky Internet Security
-* Comodo Internet Security
-* [NetGuard](https://github.com/M66B/NetGuard) (open source) from XPrivacy Author
-
-_<ins>[Xposed](http://repo.xposed.info/module/de.robv.android.xposed.installer) based:</ins>_
-* [LightningWall](http://repo.xposed.info/module/de.defim.apk.lightningwall)
-* [PeerBlock](https://play.google.com/store/apps/details?id=com.peerblock) & [Source](https://apeerblock.codeplex.com/) + [trusted blocklist's](http://list.iblocklist.com)
-
-_<ins>Proxy based (incl. own iptables binary):</ins>_ 
-* ~~[Shadowsocks](https://github.com/shadowsocks/shadowsocks) + [Source](https://github.com/shadowsocks/shadowsocks)~~ _deprecated due censorship_ + [Story](https://www.reddit.com/r/programming/comments/3hy6f8/shadowsocks_a_socks5_proxy_with_9000_star_was/)
-
-_<ins>Internet Diagnostic/Debugging:</ins>_
-* [Network Log](https://play.google.com/store/apps/details?id=com.googlecode.networklog&hl=en) (Real-time iptables logging)
-* [Network Monitor](http://fossdroid.com/a/network-monitor.html)
-* [RouterCheck](https://play.google.com/store/apps/details?id=com.Sericon.RouterCheck.client.android&hl=en)
-
-_<ins>Dynamic egress filtering:</ins>_ (links aren't working - it's only for historical reasons)
-* ~~[WhisperMonitor](http://www.whispersys.com/whispermonitor.html)~~ _deprecated_
-* ~~[SnoopWall](https://play.google.com/store/apps/details?id=com.snoopwall.android)~~ _deprecated_
-
-_<ins>USB:</ins>_ (not really a firewall but monitors the usb host)
-* ~~[Android USB Serial Monitor Lite](https://play.google.com/store/apps/details?id=jp.ksksue.app.terminal)~~ & [Source](https://github.com/felHR85/UsbSerial) _deprecated_
-
-_<ins>Application-Layer Firewalls:</ins>_
-* ~~[NullWall](https://code.google.com/p/nullwall/)~~ _deprecated_
-* ~~[DroidGuard](https://code.google.com/p/droidguardian/)~~ _deprecated_
-* ~~[Lavender-Firewall](https://code.google.com/p/lavender-firewall/)~~, it's an hybrid that works on Linux and Android _deprecated_
-* ~~[AndFire](https://code.google.com/p/andfire/)~~ _deprecated_
-* ~~[FireBlocker](https://code.google.com/p/fire-blocker/)~~ _deprecated_
-
 Non-root Android Firewalls
 ---------------------
 
 All of these firewalls working with a local Proxy/[VPN](https://developer.android.com/reference/android/net/VpnService.html) service, which means that they not working with IPtables like AFWall+. They only work on a app-layer size which _fake_ a VPN connection, means the rules are applied on the VPN servers and not on the Android OS. The VPN package will be created to monitor incoming and outgoing traffic (which not need root access). The biggest problem is that such VPN services not work with WiFi tethering or hotspot's. And another con is that you can't run other VPN services and VPN/Proxy's apps at the same time together. 
 
 We not recommend to use any no-root firewall for above reasons, there are others too e.g. see [an German article](http://www.kuketz-blog.de/android-firewall-ohne-root-%E2%80%A2-noroot-firewall/):
-* NetSpark/Mobiwol [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.netspark.firewall)
-* [NoRoot Data Firewall](https://play.google.com/store/apps/details?id=com.jianjia.firewall)
 
 _Final version 01.23.2016_
