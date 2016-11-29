@@ -64,7 +64,7 @@ _Mixed ones (which are designed to work on Android + Browser)_:
 
 _Hosts_ (_/system/etc/hosts_):
 * [AdBlock Plus](https://adblockplus.org/de/android-install)
-* [AdAway](https://f-droid.org/repository/browse/?fdid=org.adaway) - should be preferred by root users, since AdBlock Plus have some limitations on Android (proxy/vpn ones). Please note that AdAway isn't anymore under active development (only pull requests and pre-compiled builds are supported).
+* [AdAway](https://f-droid.org/repository/browse/?fdid=org.adaway) - should be preferred by root users, since AdBlock Plus have some limitations on Android (proxy/vpn ones).
 * AdFree - [See AdAway vs. AdFree](http://forum.xda-developers.com/showthread.php?t=1247853)
 
 
