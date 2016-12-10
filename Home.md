@@ -120,7 +120,9 @@ It can be done directly on [Google Play Store](https://play.google.com/store/app
 
 If you like to donate something without getting extra candy like the donating .apk, you can simply do this over here:
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6E4VZTULRB8GU) (official PayPal account)
+Paypal - [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6E4VZTULRB8GU) (official PayPal account)
+
+Bitcoin Address : 1LBUdALwYXDv38wvnUSGvsFjituaWAHvFo
 
 Wiki cloning
 -------
