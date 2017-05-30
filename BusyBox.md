@@ -20,7 +20,7 @@ __Short description__
 * Provides many standard Unix tools
 * Necessary in AFWall+ to execute some Linux commands
 * AFWall+ comes with an integrated BusyBox binary, so you don't have to install BusyBox manually anymore
-* There are also some _non-root_ solutions on the Google Play Store, we do not recommend to use one of this!
+* There are also some _non-root_ solutions on the Google Play Store, we do not recommend use of these!
 
 Installation instructions
 ---------------------------
