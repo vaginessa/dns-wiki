@@ -72,7 +72,7 @@ Before you submit any issue report via the integrated AFWall+ option - or here o
 * Our official [[FAQ]] helps to solve the most known problems and questions.
 * Our [official issue tracker](https://github.com/ukanth/afwall/issues) here on GitHub, please always make a search before you open another ticket.
 * [Changelog](https://github.com/ukanth/afwall/blob/master/Changelog.md) describes changes in each new version of AFWall+.
-* [[Custom-Scripts]] for advanced users only. Some questions about working with IPTables script(s) might be answered over there, it also contains some predefined scripts templates and examples you can use.
+* [[Custom-Scripts(https://github.com/ukanth/afwall/wiki/CustomScripts)]] for advanced users only. Some questions about working with IPTables script(s) might be answered over there, it also contains some predefined scripts templates and examples you can use.
 * [Apps leak user privacy data during boot](Apps-leak-private-user-data-during-boot) contains background information about how to solve the 'Data leakage' during boot problem.
 * [[Android kernel traffic]] contains background information about the Android OS & Kernel generated traffic.
 * [Which system apps can I block?](https://github.com/ukanth/afwall/wiki/System-Applications-to-block-or-allow) contains background information about which (system-)apps are blockable and which should better not been blocked.  
