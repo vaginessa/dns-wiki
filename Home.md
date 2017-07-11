@@ -120,7 +120,7 @@ It can be done directly on [Google Play Store](https://play.google.com/store/app
 
 If you like to donate something without getting extra candy like the donating .apk, you can simply do this over here:
 
-Paypal - [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6E4VZTULRB8GU) (official PayPal account)
+Paypal - [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6E4VZTULRB8GU) (official PayPal account) - https://www.paypal.me/afwallplus
 
 Bitcoin Address : 1LBUdALwYXDv38wvnUSGvsFjituaWAHvFo
 
@@ -155,7 +155,7 @@ https://github.com/ukanth/afwall/commits/<TAG or BRANCHES>.atom
 License
 -------
 
-Copyright (c) 2012-2016 Umakanthan Chandran alias [ukanth](http://forum.xda-developers.com/member.php?u=3249429).
+Copyright (c) 2012-2017 [ukanth](http://forum.xda-developers.com/member.php?u=3249429).
 All rights reserved.
 
 [![Creative Commons License](https://licensebuttons.net/l/by/3.0/88x31.png)](https://www.gnu.org/licenses/gpl.txt).
