@@ -116,13 +116,14 @@ Making Donations
 -------
 
 Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation!
-It can be done directly on [Google Play Store](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate) or just look at [F-Droid repository](https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall) for more donations options.
 
-If you like to donate something without getting extra candy like the donating .apk, you can simply do this over here:
+It can be done directly on [Donate Version](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate), [Unlocker](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donatekey) or via below options.
 
 Paypal - [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6E4VZTULRB8GU) (official PayPal account) - https://www.paypal.me/afwallplus
 
 Bitcoin Address : 1LBUdALwYXDv38wvnUSGvsFjituaWAHvFo
+
+Please drop me an email after donation to get unlocker APK(closed source for now)
 
 Wiki cloning
 -------
