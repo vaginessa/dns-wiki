@@ -562,3 +562,16 @@ mount -o remount,ro /system
 ##### (60) I want use AFWall+/NetGuard with AdGuard together how can I do this?
 
 > AdGuard uses the Android VPN API which is the same API required for NetGuard. Android does not allow two VPN's to be used together at the same time, so you need to set the http-proxy in AdGuard. On AFWall+ you only need to disable AdGuard's integrated firewall. Optionally, you can add exclusions in the low level setting to exclude dev.ukanth.ufirewall and eu.faircode.netguard so that the apps aren't filtered by AdGuard (not necessary, but can possibly avoid some problems), since both AFWall+ and NetGuard are not integrating ads, it is recommended to add this. 
+
+<a name="FAQ61"></a>
+##### (61) What is Android's Captive Portal Check?
+
+> Each time you connect to your WLAN Access Point, Android tries to check if you're not only connected with it, it wants to do a check which ensures that there are really targets available. Usually a Captive Portal Check makes sense whenever you're in a hotel or airport because in such a case you get a code/coupon to login into the WLAN, this acts like a activation/authentification process. Android tries to send the packages over 'http://clients3.google.com' and if the answer is susessfully you get an HTTP Response-Code 204 (the answer is correct but it doesn't contain any data). Basically the IP and a timestamp will be transmitted. To change this behaviour you can use:
+```
+//Android 4+
+settings put global captive_portal_detection_enabled 0
+settings put global captive_portal_server localhost
+
+//Since Android 7
+settings put global captive_portal_mode 0
+```
