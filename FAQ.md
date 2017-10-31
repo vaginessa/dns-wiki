@@ -575,5 +575,5 @@ settings put global captive_portal_server localhost
 //Since Android 7
 settings put global captive_portal_mode 0
 
-You can also refer [Issue 761](https://github.com/ukanth/afwall/issues/761) for more details
+You can also refer [Issue-761](https://github.com/ukanth/afwall/issues/761) for more details
 ```
