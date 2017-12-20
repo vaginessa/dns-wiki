@@ -534,9 +534,20 @@ mount -o remount,ro /system
 > Under 'Preferences -> Experimental Preferences' there is the *Sort Application* option that allows you to sort your apps via 'Name (default enabled)', by 'Install/Upgrade time' or by the app's UID.
 
 <a name="FAQ55"></a>
-##### (55) What's the difference between installing AFWall+ and AFWall+ Key and installing AFWall+ Donate?
+##### (55) What's the difference between AFWall+ Unlocker and AFWall+ Donate?
 
-> AFWall+ (Donate) is the 'Donate' version of AFWall+ which includes 'donate features' (often called 'Pro')  like import/export most preferences enabled. The AFWall+ Key is the enabler to unlock 'Donate features'. So you need both AFWall+ Free version and the key apk.
+> 
+AFWall+ Free - Free version of AFWall+
+AFWall+ Donate - Donate version of AFWall+
+AFWall+ Unlocker - Unlock donate features in AFWall+ Free version
+
+Use Unlocker over Donate 
+
+1. Test AFWall+ Beta versions (usually updated first in AFWall+ Free version)
+2. Supporting development by IAP
+3. Works on multiple devices
+
+AFWall Free + Unlocker == AFWall Donate
 
 <a name="FAQ56"></a>
 ##### (56) Will AFWall+ work together with Android M 'verify boot' protection enabled?
