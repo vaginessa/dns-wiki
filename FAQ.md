@@ -588,4 +588,12 @@ settings put global captive_portal_mode 0
 ```
 You can also refer [Issue-761](https://github.com/ukanth/afwall/issues/761) for more details
 
+
+<a name="FAQ62"></a>
+##### (62) How to disable Firewall notification icon ?
+
+> AFWall+ needs to be running in background in order to receive events like network change and install and uninstall of application in order to reapply the iptables rules. It doesn't drain battery and prevent android from killing the application. 
+
+Can I disable it ? Yes. you can disable it, but firewall might not work properly. 
+
 --END--
