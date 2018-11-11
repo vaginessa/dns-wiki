@@ -123,6 +123,8 @@ Paypal - [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)
 
 Bitcoin Address : 1LBUdALwYXDv38wvnUSGvsFjituaWAHvFo
 
+Amazon Gift vouchers : cumakt+amazon at gmail.com
+
 Please drop me an email after donation to get unlocker APK(closed source for now)
 
 Wiki cloning
