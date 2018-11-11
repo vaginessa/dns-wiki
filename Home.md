@@ -158,7 +158,7 @@ https://github.com/ukanth/afwall/commits/<TAG or BRANCHES>.atom
 License
 -------
 
-Copyright (c) 2012-2017 [ukanth](http://forum.xda-developers.com/member.php?u=3249429).
+Copyright (c) 2012-2018 [ukanth](http://forum.xda-developers.com/member.php?u=3249429).
 All rights reserved.
 
 [![Creative Commons License](https://licensebuttons.net/l/by/3.0/88x31.png)](https://www.gnu.org/licenses/gpl.txt).
