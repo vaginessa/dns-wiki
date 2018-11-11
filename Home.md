@@ -119,11 +119,11 @@ Donations are optional and we don't want you to feel pressured to send money! Bu
 
 It can be done directly on [Donate Version](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate), [Unlocker](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donatekey) or via below options.
 
-Paypal - [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6E4VZTULRB8GU) (official PayPal account) - https://www.paypal.me/afwallplus
+> Paypal - [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6E4VZTULRB8GU) (official PayPal account) - https://www.paypal.me/afwallplus
 
-Bitcoin Address : 1LBUdALwYXDv38wvnUSGvsFjituaWAHvFo
+> Bitcoin Address : 1LBUdALwYXDv38wvnUSGvsFjituaWAHvFo
 
-Amazon Gift vouchers : cumakt+amazon at gmail.com
+> Amazon Gift vouchers : cumakt+amazon at gmail.com
 
 Please drop me an email after donation to get unlocker APK(closed source for now)
 
