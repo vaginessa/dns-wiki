@@ -1,0 +1,1 @@
+Information and description about redirects and how they work along with other components.
