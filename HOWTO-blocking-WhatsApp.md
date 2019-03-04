@@ -2,7 +2,7 @@ Index
 -----
 
 * [Intro](#intro)
-* [IP's](#ip's)
+* [IP's](#ips)
 * [Ports](#ports)
 * [iptables](#iptables)
 * [Encryption](#encryption)
