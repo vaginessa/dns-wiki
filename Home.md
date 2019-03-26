@@ -125,7 +125,7 @@ It can be done directly on [Donate Version](https://play.google.com/store/apps/d
 
 > Amazon Gift vouchers : cumakt+amazon at gmail.com
 
-Please drop me an email after donation to get unlocker APK(closed source for now)
+Please drop me an email (uzoftinc @ gmail.com ) after donation to get unlocker APK(closed source for now)
 
 Wiki cloning
 -------
