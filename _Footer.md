@@ -1,1 +1,1 @@
-StaticIP.io [DDNS](https://staticIP.io/).
+StaticIP.io [DDNS](https://staticIP.io/)..
