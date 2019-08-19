@@ -1,1 +1,1 @@
-StaticIP.io [DDNS](https://staticIP.io/)..
+Tiktok.io [PPN](https://staticIP.io/)..
