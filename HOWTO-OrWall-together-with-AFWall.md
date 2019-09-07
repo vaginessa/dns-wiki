@@ -1,4 +1,5 @@
-:warning: You normally do not need to use both apps at the same time - it's not recommend! 
+:warning: You normally do not need to use both apps at the same time — it's not recommended! :warning:
+
 But you're the boss, if you need it, here are some quick tips.
 
 Index
@@ -21,6 +22,7 @@ Requirements
 * [OrWall](https://orwall.org/) 
 * [AFWall+](https://github.com/ukanth/afwall)
 * Custom script code snippet
+
 
 First method using Orbot without OrWall
 ------------
@@ -86,7 +88,7 @@ Here are some little facts (because there are a lot of false info available):
 * Apps that use the built-in Android VPN interface do not require root access. This is the primary advantage of Orxify over Orbot.
 * On Android 4.x (or higher) apps can create a native VPN connection without root access to send and receive all network traffic. Orxify app creates a VPN connection to Tor and routes the internet traffic through the VPN.
 * The Orxify add-on is not open source and not free (Orxy itself is free but comes with in-app billing).
-* AFWall (IPTables) works with it but it's also not recommend to use both the same time.
+* AFWall (IPTables) works with it but it's also not recommend using both the same time.
 * On some ROMs like Lollipop it may not work due internal changes and other apps may not respect the Android OS proxy settings, please take a look [here](https://code.google.com/p/android-developer-preview/issues/detail?id=346).
 
 There are also some other free and open source apps like Drony, it also uses a VPN but redirect them all to the Orbot app.
@@ -95,8 +97,13 @@ There are also some other free and open source apps like Drony, it also uses a V
 Notice
 ------------
 
-With newer Orbot (15.0.1 RC-3) (Tor binary 0.2.6.10+) and Firefox (39+) releases, most of the mentioned steps are obsolete since most of all problems was fixed. Orbot does allow Brides which possible can bypass provider censorship and other blocking mechanism - together with the new implemented VPN configuration (both are not enabled by default) really all traffic goes trough the Tor network. The mentioned interface (see second method) allows the root user to select or deselected specific apps that goes through the entire network - that normally means we do not need any other external apps like OrWall/Orxy. The rest can be controlled via AFWall+ itself (behind the firewall must be enabled for this). NFlog or Orbots own logging system will show the rest. 
+* Starting with Orbot v15.0.1 RC-3+ & Tor binary v0.2.6.10+, Mozilla Firefox (39+) releases, most of the mentioned steps are obsolete because most of all problems got fixed. 
+* Orbot does allow _Brides_ which can bypass provider censorship and other blocking mechanism — together with the new implemented VPN configuration (both are not enabled by default) really all traffic goes trough the Tor network. 
+* The mentioned interface (see second method above) allows the root user to select or deselected specific apps that goes through the entire network — that normally means we do not need any other external apps like OrWall/Orxy. The rest can be controlled via AFWall+ itself (behind the firewall must be enabled for this). 
+* AFWall's NFlog or Orbots own integrated logging mechanism will show the rest and if there are any problems persisting. 
 
+
+:warning: Please keep in mind that OrWall isn't anymore under active development since 2016. There are several project related problems (see GitHub issue tracker for more details) which are (still) unresolved. :warning: 
 
 Useful Links
 ------------
