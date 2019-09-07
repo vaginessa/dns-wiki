@@ -595,3 +595,17 @@ You can also refer [Issue-761](https://github.com/ukanth/afwall/issues/761) for 
 > AFWall+ needs to be running in background in order to receive events like network change and install and uninstall of application in order to reapply the iptables rules. It doesn't drain battery and prevent android from killing the application. 
 
 Can I disable it? Yes, you can disable it, but the firewall might not work properly. 
+
+
+<a name="FAQ63"></a>
+##### (63) AFWall+ automatically blocks all WireGuard connections, how can I fix it?
+
+> In case you use WireGuard you might notice that AFWall+ blocks all in-/outgoing connections, no matter what settings you use, that's because WireGuard works a different from the normal VPN/OpenVPN connection. It creates it's own tunnel. This tunnel is named differently from the ones AFWall+ supports, this basically means you have to find out first which tunnel name WireGuard uses. See [here](https://github.com/ukanth/afwall/issues/819) for more information. 
+
+* Make sure WireGuard is turned _off_.
+* Open Termux or your default Terminal application and execute the `ifconfig` command, which lists a lot of information among the tunnel interface names. You will see several active and inactive interfaces, we are searching for the one which are called "tun". This is the Android created VPN default interface, however under WireGuard this is a bit different, so it might be called "my-interface" (example).
+* Since AFWall+ does not check custom interface names it tries to search for _"tun+", "ppp+" or "tap+"_ only.
+* The solution is really simple, we basically adding the "tun" prefix in front of your WireGuard created interface (my-interface) so that AFWall+ can detect it and pass trough the traffic. In our example _tunmy-interface_.
+* Go into AFWAll+ and turn on the separate VPN setting via the three dots > AFWall Preferences > Rules/Connectivity > VPN control)
+* In case you have other types of connections such as WiFi, Lan etc. allowed, but within AFWall+ choosed to block VPN traffic, it automatically will also block all off WireGuards connections.
+* Open the WireGuard configuration file and ensure your interface is renamed to e.g. "tunmy-interface", restart WireGuard and AFWall should now detect your VPN connection.
