@@ -12,7 +12,7 @@ Index
 Quick Guide
 -----------
 
-<ins>Using AFWall+ the first time</ins>
+<ins>Using AFWall+ for the first time</ins>
 
 1. Click on _Mode_ to switch between whitelist- (default enabled) and blacklist-mode.
 2. Mark the applications that you want to block or allow (depending on the selected mode), for each interface.
@@ -42,7 +42,7 @@ Frequently asked questions
 <a name="FAQ1"></a>
 ##### (1) What is IPTables?
 
-> Please take a look [[here|IPtables]] for a detailed overview.
+> Please take a look [[here|IPtables]] for more details.
 
 <a name="FAQ2"></a>
 ##### (2) How do I know if my device supports IPTables?
@@ -51,7 +51,7 @@ Frequently asked questions
 
 <code>iptables -h</code>
 
-It doesn't matter in which folder iptables are stored (/system/bin/ or /system/xbin/) als long they have the correct ownership and permissions 755:root:shell (-rwxr-xr-x). To check on which place IPTables are stored simply use:
+It doesn't matter in which folder the iptables binary is stored (_/system/bin/_ or _/system/xbin/_) als long as they have the correct ownership + permissions 755:root:shell (-rwxr-xr-x). To check on which place IPTables are been stored you could use:
 ```
 which iptables
 which ip6tables
@@ -87,7 +87,7 @@ which ip6tables
 > IPTables rules take effect immediately. Because your script is appending (-A) to the INPUT and OUTPUT chains, your rules are being added to the end of those chains. If you have other terminating rules that precede these rules, then they will take effect (and later rules will not). The only exception is that if the Kernel is busy with other network processing stuff.
 
 <a name="FAQ6"></a>
-##### (6) What is Active Rules?
+##### (6) What does the "Active Rules" setting do?
 
 > AFWall+ doesn't have control over IPTables itself. Any root/system application with access to IPTables can modify the rules. That's the reason, some time people gets app data leaks because some other process might have overwritten the OUTPUT chain to allow itself. To prevent this, AFWall+ will apply rules on every connectivity change. 
 
@@ -105,9 +105,9 @@ which ip6tables
 
 > **LAN** = All internal Local Area Network (LAN) traffic (default disabled, needs to be enabled in the options)
 
-> **WIFI** = All traffic that goes through the wlan0 interface
+> **WIFI** = All traffic that goes through the _wlan0_ interface.
 
-> **Mobile** = All traffic that comes in/out from 2G/3G/4G/5G
+> **Mobile** = All traffic that comes in/out from _2G/3G/4G_ or _5G_.
 
 > **Roaming** = Global roaming traffic which coasts money dependency on which provider you are connected to (default disabled, needs to be enabled in the options)
 
@@ -134,7 +134,7 @@ which ip6tables
 <a name="FAQ12"></a>
 ##### (12) Can I block IPv6 traffic?
 
-> [Sure](https://github.com/ukanth/afwall/issues/108), please use AFWall+ 1.2.4 (or higher). Some kernels have an option to disable IPv6, make sure it's enabled (reboot required). _Enable IPv6 support_ in AFWall+ options because this is disabled by default. Take also a closer look about the important notes from IPv6 over [here](https://github.com/ukanth/afwall/wiki/CustomScripts#important-notes-about-ipv4-and-ipv6-differences).
+> [Yes](https://github.com/ukanth/afwall/issues/108), please use AFWall+ 1.2.4 (or higher). Some kernels have an option to disable IPv6, make sure it's enabled (reboot required). _Enable IPv6 support_ in AFWall+ options because this is disabled by default. Take also a closer look about the important notes from IPv6 over [here](https://github.com/ukanth/afwall/wiki/CustomScripts#important-notes-about-ipv4-and-ipv6-differences).
 
 > If you use custom scripts this option could be problematic in some cases, uncheck it if you script returns an error message.
 
@@ -208,7 +208,7 @@ Or
 > Only apps are listed that have **internet permissions** in the AndroidManifest.xml. If it's not listed this means that this app [don't use any internet permission](http://developer.android.com/reference/android/Manifest.permission.html). 
 
 <a name="FAQ20"></a>
-##### (20) AFWall+ does not work under CM 7.x - 12.x.  How can I fix this?
+##### (20) AFWall+ does not work under CM 7.x - 12.x. How can I fix this?
 
 > CM 7.x uses an old version of IPTables which has maybe conflicts with AFWall+ own built-in IPTables. As a workaround you can try to update your IPTables to the latest version. But it should work without it. 
 > CM 11 users may need to change the BusyBox version from _builtin_ to _system BusyBox_. Of course you need to install it first.
@@ -586,14 +586,12 @@ settings put global captive_portal_server localhost
 //Since Android 7
 settings put global captive_portal_mode 0
 ```
-You can also refer [Issue-761](https://github.com/ukanth/afwall/issues/761) for more details
+You can also refer [Issue-761](https://github.com/ukanth/afwall/issues/761) for more details.
 
 
 <a name="FAQ62"></a>
-##### (62) How to disable Firewall notification icon ?
+##### (62) How to disable Firewall notification icon?
 
 > AFWall+ needs to be running in background in order to receive events like network change and install and uninstall of application in order to reapply the iptables rules. It doesn't drain battery and prevent android from killing the application. 
 
-Can I disable it ? Yes. you can disable it, but firewall might not work properly. 
-
---END--
+Can I disable it? Yes, you can disable it, but the firewall might not work properly. 
