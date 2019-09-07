@@ -14,16 +14,17 @@ Quick Guide
 
 <ins>Using AFWall+ for the first time</ins>
 
-1. Click on _Mode_ to switch between whitelist- (default enabled) and blacklist-mode.
-2. Mark the applications that you want to block or allow (depending on the selected mode), for each interface.
-3. Open the menu and enable the firewall (green shield means enabled). If AFWall+ is already enabled, just select _Apply_ and it will submit your changes.
-4. The rules will be saved and automatically and restored when you restart your device. If not check the "data leak" option.
-5. If you want to check all current IPTables rules, select _Firewall Rules_ in the menu.
+1. Open AFWall+ and click on _Mode_ to switch between whitelist-mode (by default enabled) and blacklist-mode.
+2. Mark the applications that you want to allow or block (depending on the mode you selected), for each interface.
+3. After you're done ensure the Firewall (AFWall+) is enabled - the green shield means its enabled. If AFWall+ is already enabled, just click on the _Apply_ button and it will commit your changes.
+4. The rules will be saved and automatically and restored when you restart/reboot your device. If not check make sure you enabled the "data leak" option.
+5. In case you like to check all current IPTables rules, select _Firewall Rules_ in the menu.
+6. All other options are optional and you usally don't need to change anything within the options. 
 
 <ins>Widget(s)</ins>
 
-To quickly enable or disable the firewall, add the AFWall+ widget to your home screen. 
-There is no Widget description, the green shield means that the firewall is running, red means it's disabled. 
+To quickly enable or disable the firewall, add the AFWall+ widget to your home screen. Long press/touch on your screen and select the AFWall+ widget you like to add.
+AFWall+ has no Widget description, which means the green shield indicates that the firewall is currently running, red means it's disabled. 
 AFWall+ comes with three widgets, an settings widget, and two to toggle the firewall between enabled/disabled with profile(s) support and some basic options. 
 
 <ins>Firewall logs</ins>
@@ -35,6 +36,7 @@ AFWall+ will then log each application blocked. You can check the log by opening
 
 You can set a password lock for AFWall+ by using the set _password_ menu option.
 To remove the password protection, just reset it to blank (enter none).
+The password protection is useful in order to prevent anyone to disable or alter your AFWall+ settings. However, on a rooted device there is no "full" protection since an attacker still could bypass such kind of protection. 
 
 Frequently asked questions
 --------------------------
@@ -600,7 +602,7 @@ Can I disable it? Yes, you can disable it, but the firewall might not work prope
 <a name="FAQ63"></a>
 ##### (63) AFWall+ automatically blocks all WireGuard connections, how can I fix it?
 
-> In case you use WireGuard you might notice that AFWall+ blocks all in-/outgoing connections, no matter what settings you use, that's because WireGuard works a different from the normal VPN/OpenVPN connection. It creates it's own tunnel. This tunnel is named differently from the ones AFWall+ supports, this basically means you have to find out first which tunnel name WireGuard uses. See [here](https://github.com/ukanth/afwall/issues/819) for more information. 
+> In case you use WireGuard you might notice that AFWall+ blocks all in-/outgoing connections, no matter what settings you use, that's because WireGuard works a bit different from the normal VPN/OpenVPN connection. It creates it's own tunnel. This tunnel is named differently from the ones AFWall+ supports, this basically means you have to find out first which tunnel name WireGuard uses. See [here](https://github.com/ukanth/afwall/issues/819) for more information. 
 
 * Make sure WireGuard is turned _off_.
 * Open Termux or your default Terminal application and execute the `ifconfig` command, which lists a lot of information among the tunnel interface names. You will see several active and inactive interfaces, we are searching for the one which are called "tun". This is the Android created VPN default interface, however under WireGuard this is a bit different, so it might be called "my-interface" (example).
