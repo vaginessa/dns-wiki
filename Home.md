@@ -46,7 +46,7 @@ AFWall+ needs the following to run at his best:
 Not working on
 -------------
 
-Since Android supports over 11k devices it's impossible for AFWall+ to work on all of them. The community (YOU) must help in this case with a quality bug report to possible add the missing thing to your version/device to get it working, besides this we not supporting _special_ Android version like:
+Android overall supports over 15k devices, which means it's impossible for AFWall+ to support each every single one of them. The community (_YOU_) can help in this case with a quality bug report to possible add the missing thing to your version/device to get it working, besides this we are not officially supporting _special_ Android version like:
 
 * [Android Wear](https://developer.android.com/wear/index.html)
 * [Android TV](https://developer.android.com/tv/index.html)
@@ -115,7 +115,7 @@ A quick overview of other Android firewalls and a short explanation how they're 
 Making Donations
 -------
 
-Donations are optional and we don't want you to feel pressured to send money! But everything may helps to improve the product - and of course it's always a good motivation!
+Donations are optional and we don't want you to feel pressured to send money! But everything may help to improve the our product — and of course it's always a good motivation!
 
 It can be done directly on [Donate Version](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donate), [Unlocker](https://play.google.com/store/apps/details?id=dev.ukanth.ufirewall.donatekey) or via below options.
 
@@ -125,7 +125,7 @@ It can be done directly on [Donate Version](https://play.google.com/store/apps/d
 
 > Amazon Gift vouchers : cumakt+amazon at gmail.com
 
-Please drop me an email (uzoftinc @ gmail.com ) after donation to get unlocker APK(closed source for now)
+Please drop me an eMail over to (uzoftinc @ gmail.com ) after your donation to get the unlocker APK (closed source for now).
 
 Wiki cloning
 -------
@@ -141,7 +141,7 @@ To stay on sync, here is an [example](https://gist.github.com/larrybotha/1065041
 Feeds
 -------
 
-It's now very easy to stay up-to-date by subscribing latest changes via Browser live [feeds](https://atom.io/docs/latest/):
+It's now very easy to stay up-to-date by subscribing the latest changes via Browser live [feeds](https://atom.io/docs/latest/):
 
 ```bash
 # The available feeds are:
@@ -158,7 +158,7 @@ https://github.com/ukanth/afwall/commits/<TAG or BRANCHES>.atom
 License
 -------
 
-Copyright (c) 2012-2018 [ukanth](http://forum.xda-developers.com/member.php?u=3249429).
+Copyright (c) 2012-2019 [ukanth](http://forum.xda-developers.com/member.php?u=3249429).
 All rights reserved.
 
 [![Creative Commons License](https://licensebuttons.net/l/by/3.0/88x31.png)](https://www.gnu.org/licenses/gpl.txt).
