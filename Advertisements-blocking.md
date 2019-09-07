@@ -1,4 +1,4 @@
-:exclamation: **Please do not send any eMail or ask here on GitHub/XDA how to block the Android advertisements!** :exclamation: 
+:exclamation: **Please do not send any eMail or ask here on GitHub/XDA regarding how to block the Android advertisements!** AFWall+ is not designed to be an AdBlocker. :exclamation: 
 
 Index
 ---------
@@ -184,7 +184,7 @@ It's depending on your needs:
 * If you really entirely block everything AND want fine control per-site ads just start with AdAway and NoScript (for JavaScript, XSS,[..]) + uBlock or uMatrix which also makes it quite easy for you to work with black-/whitelists that are useful if we want like to support our favorite website like e.g. GitHub.com (www.GitHub.com).
 
 
-Do I need Ghostery / Disconnect.me if I use an Ads blocker - or can I combine them?
+Do I need Ghostery / Disconnect.me if I use an Adblocker - or can I combine them?
 ---------
 
 Some say this and some say this but the truth somehow lies in the middle and is depending what background knowledge you might have. 
@@ -205,4 +205,4 @@ Final words
 Don't believe in myths that more tools and blocking always ends up with more privacy or less problems, the holy grail should be to use as less as possible addons + as less filtering as possible which does block stuff you hate or possible compromise your security. In fact more from everything always means that you need more time to manage it to stay secure and up-2-date. If you really want to hear my _recommendation_ (I normally not often give one) is that for a normal root user AdAway (to not manually update Android's hosts) + uBlock (for Browsers) should be enough to handle all above given reasons. 
 
 
-_ Final version 08.24.2015_
+_Final version 08.24.2015_
