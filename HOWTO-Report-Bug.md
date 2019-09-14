@@ -15,15 +15,15 @@ Index
 You should NOT
 --------------
 
-* You should NOT contact the carrier or the store in which you purchase the phone. They can't help you with software related problems. Any Application developers support their own applications! - So AFWall+ does!
-* You should NOT use the comment section in the Google Play Store section to report issues. The comment section is a peer-to-peer channel in which consumers can leave messages and ratings. This should be used to recommend or not recommend the application. If you are NOT a paid customer, developers can not access your email address to contact you about your concerns directly. Often developers get unusable comments in the Google Play Store (i.e. _This app does not work!!_). Without contacting the developer directly, there is nothing that can be done and your comment can be marked as SPAM.
-* You should NOT report bugs in the XDA thread because we may never see the message, since we not daily monitor all new comments.
-* DO NOT set a milestone unless you are a developer and expect to fix the bug yourself. By default disabled to any new contributor.
+* You should NOT contact the carrier or the store in which you purchase the phone. They can't help you with software related problems. Developers support their own applications!
+* You should NOT use the comment section on the official Google Play Store section to report issues. It cost a lot of time to track each new Google Play Store comment and answrring them there is often not helpful, it's simply the wrong platform. 
+* You should NOT report bugs via XDA thread because we may never see the message, since we don't monitor all new comments on a daily basis.
+* DO NOT set a milestone unless you are a developer and expect to fix the bug yourself. By default, this is disabled to any new contributor.
 
 Before contacting support
 -------------------------
 
-* Watch the Changelog.md / Todo.md files if the problem is already fixed or on our radar.
+* Watch the `Changelog.md` / `Todo.md` files if the problem is already fixed or on our radar.
 * Can you document the steps to reproduce it so that it happens every time? - Or is it only once?
 * [Search and browse current tickets](https://github.com/ukanth/afwall/issues) to make sure someone hasn't already reported your issue.
 * Make sure you have the latest version of the application/source code. This can be done by checking the Google Play Store, G+ or F-Droid for updates or push the latest GitHub source and compile it yourself.
@@ -85,12 +85,12 @@ Upload the captured logcat somewhere for example using your Google Drive, Dropbo
 Sending bug report
 ------------------
 
-Directly via AFWall+:
-* Copy and send the integrated logcat within AFWall+ (under _Firewall Rules_/_Send error report_) via eMail. Ensure AFWall+ isn't blocked. 
+Directly within the AFWall+ app:
+* Copy and send the integrated logcat via AFWall+. The otion is under _Firewall Rules_/_Send error report_, this will forward the bug via eMail to the developer. Make sure that AFWall+ isn't blocked via firewall or restricted by another app.
 
-Via GitHub:
+GitHub issue tickets:
 * Create a new ticket (click on "New Issues") [here on GitHub](https://github.com/ukanth/afwall/issues).
-* Make sure you include Phone Name and Model (ie Samsung Galaxy SII I-9100)
+* Make sure you include the phone name and model (ie Samsung Galaxy SII I-9100).
 * Make sure you include version of Android (ie Android 5.1)
 * Make sure you include your problem description. Your problem description should be a step-by-step way to reproduce your problem. Details are very important! Without any information it does not help the developers to find the problem and fix them!
 * Make sure you **not use any CyanogenMod nightly**, CM does not allow nightly bug reports because it's unstable and some things may change with upcoming versions. 
@@ -104,7 +104,7 @@ This is a small template you can use to provide a useful bug report. Make sure y
  
 >* **AFWall+ Mode (whitelist [default enabled]/blacklist)**
 >* [your text/file or link]
->* **Android ROM + exactly versions number**
+>* **Android ROM + exact version number**
 >* [your text/file or link]
 >* **What steps will reproduce the problem?**
 >* [your text/file or link]
@@ -112,17 +112,11 @@ This is a small template you can use to provide a useful bug report. Make sure y
 >* [your text/file or link]
 >* **What is the expected output? What do you see instead?**
 >* [your text/file or link]
->* **Attach your rules.log (IPv4 + IPv6)** 
+>* **Attach your exported rules.log (IPv4 + IPv6)** 
 >* [your text/file or link]
->* **iptables -v -n -L** 
+>* **iptables -L -t mangle (only behind VPN)** 
 >* [your text/file or link]
->* **ip rule list** 
->* [your text/file or link]
->* **ip route show table (number)** 
->* [your text/file or link]
->* **iptables -L -t mangle (only on VPN)** 
->* [your text/file or link]
->* **Type 'adb bugreport' via ADB (only necessary if there is a crash)** 
+>* **Type 'adb bugreport' via ADB (only necessary if there is an app crash)** 
 >* [your text/file or link]
 >* **Please provide any additional information below (e.g. logcat).**
 >* [your text/file or link]
@@ -148,7 +142,7 @@ After sending the report
 Custom ROMs
 -----------
 
-Some custom ROMs come with their own shells and utilities. If you are using a custom ROM, check its documentation to find out what's available and what's not. For security reasons some binary's are not present e.g. on the Guardian ROM.
+Some custom ROMs come with their own shells and utilities. If you are using a custom ROM like LineageOS, check its documentation to find out what's available and what's not. For security reasons some binary's are not present e.g. on the Guardian ROM.
 
 :warning: Again - We generally do not support nighty's/alpha's/rc's/beta's ROMs - due the mass of updates we not monitoring all changes that was possible included by them. First try a stable version and see if it works. :warning:
 
