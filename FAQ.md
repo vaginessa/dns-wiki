@@ -611,3 +611,12 @@ Can I disable it? Yes, you can disable it, but the firewall might not work prope
 * Go into AFWAll+ and turn on the separate VPN setting via the three dots > AFWall Preferences > Rules/Connectivity > VPN control)
 * In case you have other types of connections such as WiFi, Lan etc. allowed, but within AFWall+ choosed to block VPN traffic, it automatically will also block all off WireGuards connections.
 * Open the WireGuard configuration file and ensure your interface is renamed to e.g. "tunmy-interface", restart WireGuard and AFWall should now detect your VPN connection.
+
+<a name="FAQ64"></a>
+##### (64) Android P and Private DNS Feature
+
+Since Android 9 (P) the default mode for Private DNS is "Automatic" which means it will use the network specified DNS server and it will attempt a TLS connection to port 853 (`dns.google`) before falling back to DNS on port 53.
+
+* Private DNS feature does not work behind a VPN.
+* Private DNS does not work together with third-party "DNS changer" apps like Google Fi Enhanced Network, DNS Changer, OverrideDNS etc.
+* Most DNS changers send cleartext queries, not all e.g. [Intra](https://play.google.com/store/apps/details?id=app.intra) uses it's own secure DNS protocol, however that means that VPN apps (after the DNS got changed) may not secure queries beyond the VPN server. That's a possible risk and got fixed in Android 10.
