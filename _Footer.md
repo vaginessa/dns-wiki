@@ -1,1 +1,1 @@
-Tiktok.io [PPN](https://staticIP.io/)..
+Footer
