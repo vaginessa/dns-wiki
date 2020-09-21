@@ -24,7 +24,7 @@ c1.whatsapp.net
 c2.whatsapp.net //phone number check
 c3.whatsapp.net //initial login, this only used port 5222
 c4.whatsapp.net
-c5.whatsapp.net // Backup
+c5.whatsapp.net //backup
 c1.whatsapp.net
 c2.whatsapp.net
 c3.whatsapp.net //(all con. stuff are for the handshakes -> ^^ over 443 or 5222)
@@ -69,23 +69,23 @@ s7.whatsapp.net
 s8.whatsapp.net
 s9.whatsapp.net
 s10.whatsapp.net
-https://sro.whatsapp.net/client/iphone/iq.php (<- for post-request -> sro.whatsapp.net)
-https://sro.whatsapp.net/client/android/iq.php (^^)
-static.reverse.softlayer.com (main/status/auth/..)
+https://sro.whatsapp.net/client/iphone/iq.php //(<- for post-request -> sro.whatsapp.net)
+https://sro.whatsapp.net/client/android/iq.php //(^^)
+static.reverse.softlayer.com //(main/status/auth/..)
 
-WhatsApp.com site only (A record):
+//WhatsApp.com site only (A record):
 192.155.212.203
 184.173.147.38
 184.173.147.39
 192.155.212.202
 
-NS records:
+//NS records:
 ns2.p13.dynect.net 204.13.250.13
 ns1.p13.dynect.net 208.78.70.13
 ns3.p13.dynect.net 208.78.71.13
 ns4.p13.dynect.net 204.13.251.13
 
-Webchat (web.whatsapp.com):
+//Webchat (web.whatsapp.com):
 158.85.224.171
 158.85.224.176
 158.85.224.179
@@ -97,7 +97,7 @@ Webchat (web.whatsapp.com):
 158.85.224.177
 158.85.224.174
 
-Crash Log
+//Crash Log
 android-crashlog.whatsapp.net
 ```
 
