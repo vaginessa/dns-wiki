@@ -125,16 +125,14 @@ It can be done directly on [Donate Version](https://play.google.com/store/apps/d
 
 > Amazon Gift vouchers : cumakt+amazon at gmail.com
 
-Please drop me an eMail over to (uzoftinc @ gmail.com ) after your donation to get the unlocker APK (closed source for now).
+Please drop me an mail to (contact @ portgenix.com ) after your donation to get the unlocker APK (closed source for now) with details. I usually respond back within an day ( In worst case please allow 3 working days )
 
 Wiki cloning
 -------
 
 Feel free to fork/clone our Wiki, but remember to give proper credits where it belongs. 
 
-
 Via: <code>git clone https://github.com/ukanth/afwall.wiki.git</code>.
-
 
 To stay on sync, here is an [example](https://gist.github.com/larrybotha/10650410) how to do this. An API reference can be found over [here](https://github.com/mbostock/d3/wiki/API-Reference) or on the [official Docs](https://help.github.com/).
 
