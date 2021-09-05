@@ -121,7 +121,9 @@ It can be done directly on [Donate Version](https://play.google.com/store/apps/d
 
 > Paypal - [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6E4VZTULRB8GU) (official PayPal account) - https://www.paypal.me/afwallplus
 
-> Bitcoin Address : 1LBUdALwYXDv38wvnUSGvsFjituaWAHvFo
+> Bitcoin Address : bc1qehf4td7zg7t4lhmyxra0xf78aeuk44808ls52k
+
+
 
 > Amazon Gift vouchers : cumakt+amazon at gmail.com
 
